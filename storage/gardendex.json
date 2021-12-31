@@ -1,0 +1,50 @@
+{    
+    "1": {
+        "id": "1",
+        "name": "Tum Plant",
+        "image": "https://i.imgur.com/d5zetbA.png",
+        "info": "A legendary plant that can cure cancer (supposedly)."
+    },
+    "2": {
+        "id": "2",
+        "name": "Sunflower",
+        "image": "https://i.imgur.com/B9Lm3cz.png",
+        "info": "The surface temperature of this flower is 294K!"
+    },
+    "3": {
+        "id": "3",
+        "name": "Plant Three",
+        "image": "https://i.imgur.com/7XK7dVm.png",
+        "info": "The third (pog no way) plant ever created."
+    },
+    "4": {
+        "id": "4",
+        "name": "Copium Plant",
+        "image": "https://i.imgur.com/CYp40YG.png",
+        "info": "A new type of drug that helps zoomers cope with loss and failure."
+    },
+    "5": {
+        "id": "5",
+        "name": "Strange Plant",
+        "image": "https://i.imgur.com/KNm9Wqn.png",
+        "info": "That's a weird looking di-"
+    },
+    "6": {
+        "id": "6",
+        "name": "Pansy?",
+        "image": "https://i.imgur.com/PLbDwHG.png",
+        "info": "I think this is a pansy? I don't know. The artist doesn't even know."
+    },
+    "7": {
+        "id": "7",
+        "name": "Lollipop",
+        "image": "https://i.imgur.com/iRz78eP.png",
+        "info": "Yes, candy is a vegetable."
+    },
+    "8": {
+        "id": "8",
+        "name": "Sarah Ang Hay",
+        "image": "https://i.imgur.com/yR4hIy0.png",
+        "info": "Give this hay to someone and they will love you back."
+    }
+}

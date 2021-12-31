@@ -1,0 +1,317 @@
+{
+    "1": {
+        "id": "1",
+        "name": "Royal Tum Fish",
+        "image": "https://i.imgur.com/ZFHqtYu.png",
+        "value": 3000,
+        "info": "The man, the myth, the legend. Nobody believed this was real, but it is."
+    },
+    "2": {
+        "id": "2",
+        "name": "Tum Fish",
+        "image": "https://i.imgur.com/g5yYO2t.png",
+        "value": 1000,
+        "info": "The fish that started it all."
+    },
+    "3": {
+        "id": "3",
+        "name": "Pink Fish",
+        "image": "https://i.imgur.com/6UpljSS.png",
+        "value": 1,
+        "info": "The Pink Fish survives by being cute. This attracts other partners."
+    },
+    "4": {
+        "id": "4",
+        "name": "Yellow Fish",
+        "image": "https://i.imgur.com/DxITwbq.png",
+        "value": 1,
+        "info": "The Yellow Fish is obnoxious. This bright color pisses off every other fish."
+    },
+    "5": {
+        "id": "5",
+        "name": "Green Fish",
+        "image": "https://i.imgur.com/NW1Ujph.png",
+        "value": 1,
+        "info": "The Green Fish is vegetarian."
+    },
+    "6": {
+        "id": "6",
+        "name": "Teal Fish",
+        "image": "https://i.imgur.com/dZCl3O7.png",
+        "value": 1,
+        "info": "The Teal Fish is cold to the touch. Very useful for making drinks."
+    },
+    "7": {
+        "id": "7",
+        "name": "Indigo Fish",
+        "image": "https://i.imgur.com/xGJzbE8.png",
+        "value": 1,
+        "info": "The Indigo Fish lives near the bottom of the sea."
+    },
+    "8": {
+        "id": "8",
+        "name": "Rock Fish",
+        "image": "https://i.imgur.com/Z6wSC8A.png",
+        "value": 5,
+        "info": "Paper!"
+    },
+    "9": {
+        "id": "9",
+        "name": "Paper Fish",
+        "image": "https://i.imgur.com/rjXHinw.png",
+        "value": 5,
+        "info": "Rock! Wait..."
+    },
+    "10": {
+        "id": "10",
+        "name": "Scissor Fish",
+        "image": "https://i.imgur.com/QLpHud9.png",
+        "value": 5,
+        "info": "GUN! PEW PEW!"
+    },
+    "11": {
+        "id": "11",
+        "name": "Raccoon (M) Fish",
+        "image": "https://i.imgur.com/v9UPEAi.png",
+        "value": 50,
+        "info": "The male Raccoon Fish spends his time flirting with the female Raccoon Fish."
+    },
+    "12": {
+        "id": "12",
+        "name": "Raccoon (F) Fish",
+        "image": "https://i.imgur.com/aGPaO4T.png",
+        "value": 50,
+        "info": "The female Raccoon Fish spends his time flirting with the male Raccoon Fish."
+    },
+    "13": {
+        "id": "13",
+        "name": "Egg",
+        "image": "https://i.imgur.com/Ga1GIom.png",
+        "value": 5,
+        "info": "Who's egg is this?!"
+    },
+    "14": {
+        "id": "14",
+        "name": "Golden Egg",
+        "image": "https://i.imgur.com/g9l3oIR.png",
+        "value": 100,
+        "info": "Is there a goose that lays golden eggs in the sea?"
+    },
+    "15": {
+        "id": "15",
+        "name": "Aivy Fish",
+        "image": "https://i.imgur.com/Pu6oPNa.png",
+        "value": 1000,
+        "info": "Wow! It's the artist who draws everything!"
+    },
+    "16": {
+        "id": "16",
+        "name": "Seaweed",
+        "image": "https://i.imgur.com/XVU7VvH.png",
+        "value": 1,
+        "info": "Now I can make sushi!"
+    },
+    "17": {
+        "id": "17",
+        "name": "Shark Girl",
+        "image": "https://i.imgur.com/rP3Iwug.png",
+        "value": 50,
+        "info": "This shark got famous for saying 'A' during her first livestream."
+    },
+    "18": {
+        "id": "18",
+        "name": "Tomato Fish",
+        "image": "https://i.imgur.com/FwzgPCY.png",
+        "value": 5,
+        "info": "TomAHto."
+    },
+    "19": {
+        "id": "19",
+        "name": "Pink Starfish",
+        "image": "https://i.imgur.com/M1Y42op.png",
+        "value": 3,
+        "info": "No, this is Patrick!"
+    },
+    "20": {
+        "id": "20",
+        "name": "Green Starfish",
+        "image": "https://i.imgur.com/fWs6JJc.png",
+        "value": 3,
+        "info": "This is just Patrick covered in seaweed..."
+    },
+    "21": {
+        "id": "21",
+        "name": "Blue Starfish",
+        "image": "https://i.imgur.com/PUuue7m.png",
+        "value": 3,
+        "info": "Wait a minute, this isn't a Starmie..."
+    },
+    "22": {
+        "id": "22",
+        "name": "Whale",
+        "image": "https://i.imgur.com/PyzoQEE.png",
+        "value": 50,
+        "info": "Yes, that is a whale in my pocket. Wink wonk."
+    },
+    "23": {
+        "id": "23",
+        "name": "Clownfish",
+        "image": "https://i.imgur.com/E7wIh5e.png",
+        "value": 50,
+        "info": "They tend to tell jokes then go 'HONK HONK!'"
+    },
+    "24": {
+        "id": "24",
+        "name": "Booba Fish",
+        "image": "https://i.imgur.com/7IN1A8N.png",
+        "value": 3000,
+        "info": "This is actually a pigeon that fell in the water. The breasts of the pigeon developed into floaties."
+    },
+    "25": {
+        "id": "25",
+        "name": "Sea Karol",
+        "image": "https://i.imgur.com/bvM2904.png",
+        "value": 1000,
+        "info": "For some reason, this fish is always depressed."
+    },
+    "26": {
+        "id": "26",
+        "name": "Pink Shrimp",
+        "image": "https://i.imgur.com/mBFlQnu.png",
+        "value": 3,
+        "info": "Everyone's favorite shrimp!"
+    },
+    "27": {
+        "id": "27",
+        "name": "Cyan Shrimp",
+        "image": "https://i.imgur.com/hgQuDCu.png",
+        "value": 3,
+        "info": "This shrimp likes to eat human skin cells."
+    },
+    "28": {
+        "id": "28",
+        "name": "Lime Shrimp",
+        "image": "https://i.imgur.com/zAKlaKJ.png",
+        "value": 3,
+        "info": "Basically shrimp ceviche."
+    },
+    "29": {
+        "id": "29",
+        "name": "Violet Shrimp",
+        "image": "https://i.imgur.com/l3ctUhV.png",
+        "value": 3,
+        "info": "The last shrimp of the rainbow."
+    },
+    "30": {
+        "id": "30",
+        "name": "Airplane Fish",
+        "image": "https://i.imgur.com/kAiEGsp.png",
+        "value": 5,
+        "info": "Like a shooting star."
+    },
+    "31": {
+        "id": "31",
+        "name": "Bao",
+        "image": "https://i.imgur.com/XCZbhmS.png",
+        "value": 5,
+        "info": "I wonder what is inside? Egg? Pork? Soup?"
+    },
+    "32": {
+        "id": "32",
+        "name": "Potato Fish",
+        "image": "https://i.imgur.com/wATg8Gv.png",
+        "value": 5,
+        "info": "You can make fish and chips with this one fish!"
+    },
+    "33": {
+        "id": "33",
+        "name": "Fast AF Fish",
+        "image": "https://i.imgur.com/AW6DJHp.png",
+        "value": 5,
+        "info": "This fish FAST AF!"
+    },
+    "34": {
+        "id": "34",
+        "name": "Tumbao Fish",
+        "image": "https://i.imgur.com/ERiUBr4.png",
+        "value": 50,
+        "info": "This is just a Bao Fish with a face!"
+    },
+    "35": {
+        "id": "35",
+        "name": "Strawberry Milk",
+        "image": "https://i.imgur.com/0UD6sKn.png",
+        "value": 50,
+        "info": "Yes, this is a fish."
+    },
+    "36": {
+        "id": "36",
+        "name": "Swordfish",
+        "image": "https://i.imgur.com/fg6qdzZ.png",
+        "value": 50,
+        "info": "ENDGARDE!"
+    },
+    "37": {
+        "id": "37",
+        "name": "Melon Fish",
+        "image": "https://i.imgur.com/rjdmWwv.png",
+        "value": 50,
+        "info": "This fish tastes even better during summer seasons!"
+    },
+    "38": {
+        "id": "38",
+        "name": "Sand Dollar",
+        "image": "https://i.imgur.com/FTzHFsE.png",
+        "value": 50,
+        "info": "People are always dropping dollars at the beach!"
+    },
+    "39": {
+        "id": "39",
+        "name": "Wat",
+        "image": "https://i.imgur.com/5e4eR56.png",
+        "value": 50,
+        "info": "Wat."
+    },
+    "40": {
+        "id": "40",
+        "name": "Candy",
+        "image": "https://i.imgur.com/X0nYYz4.png",
+        "value": 50,
+        "info": "Candeez nutz fit in your mouth? Gottem!"
+    },
+    "41": {
+        "id": "41",
+        "name": "Butterfly Fish",
+        "image": "https://i.imgur.com/3Q5Spcw.png",
+        "value": 5,
+        "info": "Shouldn't this be fluttering in the air?"
+    },
+    "42": {
+        "id": "42",
+        "name": "Froge",
+        "image": "https://i.imgur.com/KAfh76T.png",
+        "value": 5,
+        "info": "Next cryptocurrency is going to be Frogecoin!"
+    },
+    "43": {
+        "id": "43",
+        "name": "Snek",
+        "image": "https://i.imgur.com/D3a8w9n.png",
+        "value": 5,
+        "info": "ARGH SNEK A SNEK! SNEK A SNEEEK OOOO ITS A SNEK!"
+    },
+    "44": {
+        "id": "44",
+        "name": "Bobfish",
+        "image": "https://i.imgur.com/nh4hXR1.png",
+        "value": 5,
+        "info": "Not a blobfish, but a fish named Bob."
+    },
+    "45": {
+        "id": "45",
+        "name": "Rainbow Fish",
+        "image": "https://i.imgur.com/UWBIlQj.png",
+        "value": 50,
+        "info": "A trail of rainbows follow this fish."
+    }
+}
