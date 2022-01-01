@@ -72,8 +72,7 @@ module.exports = {
               // And swap it with the current element.
               [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
             }
-            
-            console.log(array);
+
             return array;
         }
 
@@ -81,7 +80,7 @@ module.exports = {
             var newDeck = [];
             for (let i = 0; i < 8; i++) {
                 var shuffled = shuffle(deck);
-                newDeck.concat(shuffled);
+                newDeck = newDeck.concat(shuffled);
             }
             newDeck = shuffle(newDeck);
             return newDeck;
@@ -211,7 +210,6 @@ module.exports = {
                         }
                         else {
                             var newDeck = buildDeck();
-                            console.log(newDeck);
                             blackjack[userid] = {
                                 name: message.author.username,
                                 id: userid,
