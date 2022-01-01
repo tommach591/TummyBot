@@ -63,7 +63,7 @@ module.exports = {
         }
 
         let shuffle = function(array) {
-            let currentIndex = array.length,  randomIndex;
+            let currentIndex = array.length, randomIndex;
             // While there remain elements to shuffle...
             while (currentIndex != 0) {
               // Pick a remaining element...
@@ -72,7 +72,8 @@ module.exports = {
               // And swap it with the current element.
               [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
             }
-          
+            
+            console.log(array);
             return array;
         }
 
