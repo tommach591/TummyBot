@@ -207,11 +207,13 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
+                            var newDeck = buildDeck();
+                            console.log(newDeck);
                             blackjack[userid] = {
                                 name: message.author.username,
                                 id: userid,
                                 bet: bet,
-                                deck: buildDeck(),
+                                deck: newDeck,
                                 hand: [[], []],
                                 dealer: [],
                                 done: false,
