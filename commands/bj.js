@@ -30,6 +30,38 @@ module.exports = {
             }
         }
 
+        let getCard = function(card) {
+            var number = Math.round(Math.floor(card) % 13);
+            switch(number) {
+                case 1:
+                    return "Ace (1) ";
+                case 2:
+                    return "Two (2) ";
+                case 3:
+                    return "Three (3) ";
+                case 4:
+                    return "Four (4) ";
+                case 5:
+                    return "Five (5) ";
+                case 6:
+                    return "Six (6) ";
+                case 7:
+                    return "Seven (7) ";
+                case 8:
+                    return "Eight (8) ";
+                case 9:
+                    return "Nine (9) ";
+                case 10:
+                    return "Ten (10) ";
+                case 11:
+                    return "Jack (10) ";
+                case 12:
+                    return "Queen (10) ";
+                case 13:
+                    return "King (10) ";
+            }
+        }
+
         let shuffle = function(array) {
             let currentIndex = array.length,  randomIndex;
             // While there remain elements to shuffle...
@@ -42,6 +74,14 @@ module.exports = {
             }
           
             return array;
+        }
+
+        let buildDeck = function() {
+            var newDeck = [];
+            for (let i = 0; i < 8; i++) {
+                newDeck.concat(shuffle(deck));
+            }
+            return shuffle(newDeck);
         }
 
         let countHand = function(hand) {
@@ -63,20 +103,81 @@ module.exports = {
             return sum;
         }
 
-        var hand = [deck[39], deck[24]];
-        console.log(countHand(hand));
+        let displayGame = function() {
+            const handone = blackjack[userid].hand[0];
+            const handtwo = blackjack[userid].hand[1];
+            const dealer = blackjack[userid].dealer;
+
+            var handOnefield = "";
+            var handOneValue = countHand(handone);
+            for (let i = 0; i < handone.length; i++) {
+                var card = getCard(handone[i]);
+                var symbol = getSymbol(handone[i]);
+                handOnefield += "⠀⠀" + card + symbol + "\n";
+            }
+
+            var handTwofield = "";
+            var handTwoValue = 0;
+            if (handtwo.length != 0) {
+                handTwoValue = countHand(handtwo);
+                for (let i = 0; i < handtwo.length; i++) {
+                    var card = getCard(handtwo[i]);
+                    var symbol = getSymbol(handtwo[i]);
+                    handTwofield += "⠀⠀" + card + symbol + "\n";
+                }
+            }
+
+            var dealerField = "";
+            var dealerValue = 0;
+            if (!blackjack[userid].done) {
+                var card = getCard(dealer[0]);
+                var symbol = getSymbol(dealer[0]);
+                dealerField += "⠀⠀" + card + symbol + "\n";
+
+                var value = Math.floor(hand[0]);
+                if (value > 10) {
+                    value = 10;
+                }
+                if (value == 1) {
+                    value = 11;
+                }
+                dealerValue = value;
+            }
+            else {
+                dealerValue = countHand(dealer);
+                for (let i = 0; i < dealer.length; i++) {
+                    var card = getCard(dealer[i]);
+                    var symbol = getSymbol(dealer[i]);
+                    dealerField += "⠀⠀" + card + symbol + "\n";
+                }
+            }
+            
+            embedMsg.setTitle('Blackjack - Bet ' + blackjack[userid].bet + ' points');
+            if (handtwo.length != 0) {
+                embedMsg.setField("**__Hand One - " + handOneValue + " __**", handOnefield, true);
+                embedMsg.setField("**__Hand Two - " + handTwoValue + " __**", handTwofield, true);
+            }
+            else {
+                embedMsg.setField("**__Hand One - " + handOneValue + " __**", handOnefield);
+            }
+            embedMsg.setField("**__Dealer - " + dealerValue + " __**", dealerField);
+
+            message.channel.send({ embeds: [embedMsg] });
+        }
 
         var command = args[0];
         switch(command) {
             case 'help':
                 const bjCommands = new Map();
-                bjCommands.set('help', 'Displays list of gardening commands.');
-                bjCommands.set('hand', 'Displays gardening info.');
-                bjCommands.set('hit', 'Plant a random seed.');
-                bjCommands.set('stand', 'Harvest fully grown plants.');
-                bjCommands.set('double', 'Upgrade field, allowing you to plant more.');
+                bjCommands.set('help', 'Displays list of blackjack commands.');
+                bjCommands.set('bet', 'Start a blackjack game with your current bet. Win 2x bet or lost all.');
+                bjCommands.set('hand', 'Displays current hand.');
+                bjCommands.set('hit', 'Hit.');
+                bjCommands.set('stand', 'Stand.');
+                bjCommands.set('double', 'Double.');
+                bjCommands.set('split', 'Split.');
 
-                embedMsg.setTitle('List of Gardening Commands');
+                embedMsg.setTitle('List of BlackJack Commands');
                 embedMsg.setColor('FFF000');
 
                 bjCommands.forEach((values, keys)=> {
@@ -110,10 +211,18 @@ module.exports = {
                                 name: message.author.username,
                                 id: userid,
                                 bet: bet,
-                                deck: shuffle(deck),
+                                deck: buildDeck(),
                                 hand: [[], []],
-                                dealer: []
+                                dealer: [],
+                                done: false,
+                                onHand: 0
                             }
+                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
+                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
+
+                            displayGame();
                         }
                     }
                 }
@@ -123,8 +232,11 @@ module.exports = {
             case 'hit':
                 break;
             case 'stand':
+                delete blackjack[userid];
                 break;
             case 'double':
+                break;
+            case 'split':
                 break;
             default:
                 embedMsg.setTitle('Error!');
