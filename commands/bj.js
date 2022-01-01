@@ -17,8 +17,7 @@ module.exports = {
         embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
 
         let getSymbol = function(card) {
-            var symbolID = (card - Math.floor(card)) * 10;
-            console.log(symbolID);
+            var symbolID = Math.round((card - Math.floor(card)) * 10);
             switch (symbolID) {
                 case 0:
                     return ":spades:"
@@ -32,7 +31,7 @@ module.exports = {
         }
 
         embedMsg.setTitle("Test");
-        embedMsg.setDescription(getSymbol(deck[0]) + " " + getSymbol(deck[13]) + " " + getSymbol(deck[26]) + " " + getSymbol(deck[39]));
+        embedMsg.setDescription(getSymbol(deck[0]) + getSymbol(deck[13]) + getSymbol(deck[26]) + getSymbol(deck[39]));
         message.channel.send({ embeds: [embedMsg] });
     }
 }
