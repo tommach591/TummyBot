@@ -3,8 +3,8 @@
         "name": "Tummy",
         "id": "189892642627125248",
         "gm": 0,
-        "points": 559539,
-        "incomeTime": 1640995929376,
+        "points": 500962,
+        "incomeTime": 1641022642857,
         "income": 3,
         "begTime": 1640898280748
     },
@@ -12,10 +12,10 @@
         "name": "Law",
         "id": "181845361076338689",
         "gm": 0,
-        "points": 6384,
-        "incomeTime": 1640916131534,
+        "points": 286,
+        "incomeTime": 1641003523833,
         "income": 1,
-        "begTime": 1640916131534
+        "begTime": 1641003506040
     },
     "189978949500010496": {
         "name": "SoodleNoup",
@@ -48,17 +48,17 @@
         "name": "Lil Ricefarm",
         "id": "178161431198433280",
         "gm": 0,
-        "points": 2544,
-        "incomeTime": 1640988859528,
+        "points": 2836,
+        "incomeTime": 1641003571057,
         "income": 1,
-        "begTime": 1640938093835
+        "begTime": 1641003510358
     },
     "189885610276814849": {
         "name": "yaokow",
         "id": "189885610276814849",
         "gm": 0,
-        "points": 902,
-        "incomeTime": 1640986916738,
+        "points": 677,
+        "incomeTime": 1641003518353,
         "income": 1,
         "begTime": 1640916114538
     },
@@ -120,17 +120,17 @@
         "name": "RACCOON",
         "id": "270282996416905217",
         "gm": 0,
-        "points": 1600,
-        "incomeTime": 1640988513328,
+        "points": 1785,
+        "incomeTime": 1641006800024,
         "income": 1,
-        "begTime": 1640899996809
+        "begTime": 1641003777860
     },
     "284142925057753088": {
         "name": "raymond",
         "id": "284142925057753088",
         "gm": 0,
-        "points": 38,
-        "incomeTime": 1640898718285,
+        "points": 1858,
+        "incomeTime": 1641007971788,
         "income": 1,
         "begTime": 0
     }

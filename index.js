@@ -1,5 +1,7 @@
 
 const Discord = require("discord.js");
+const AWS = require("aws-sdk");
+
 const { MessageEmbed } = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] }); 
 
@@ -15,11 +17,79 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-var userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
-var userFish = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
+var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 var fishdex = JSON.parse(fs.readFileSync('storage/fishdex.json', 'utf8'));
-var userGarden = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
 var gardendex = JSON.parse(fs.readFileSync('storage/gardendex.json', 'utf8'));
+
+const userDataParams = {
+    Bucket: config.bucket,
+    Key: "storage/userData.json"
+};
+
+const userFishParams = {
+    Bucket: config.bucket,
+    Key: "storage/userFish.json"
+};
+
+const userGardenParams = {
+    Bucket: config.bucket,
+    Key: "storage/userGarden.json"
+};
+
+const s3 = new AWS.S3({
+    accessKeyId: config.accessKeyID,
+    secretAccessKey: config.secretAccessKey,
+    Bucket: config.bucket
+});
+
+async function getObject(params) {
+    try {  
+      const data = await s3.getObject(params).promise();
+      return data.Body.toString('utf8');
+    } 
+    catch (e) {
+      throw new Error(`Could not retrieve file from S3: ${e.message}`)
+    }
+}
+
+
+let x;
+getObject(userDataParams).then(
+    function(result) {
+        x = result;
+    },
+    function(err) {
+        console.log(err);
+    }
+)
+
+let y;
+getObject(userFishParams).then(
+    function(result) {
+        y = result;
+    },
+    function(err) {
+        console.log(err);
+    }
+)
+
+let z;
+getObject(userGardenParams).then(
+    function(result) {
+        z = result;
+    },
+    function(err) {
+        console.log(err);
+    }
+)
+
+//var userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
+//var userFish = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
+//var userGarden = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
+
+var userData = "";
+var userFish = "";
+var userGarden = "";
 
 const currentDate = new Date();
 
@@ -35,11 +105,21 @@ helpMsg.setDescription('Invalid command!');
 helpMsg.setFooter('Use !tp help for list of commands!');
 
 client.on('messageCreate', message => {
-    
     var newTime = new Date();
     var sender = message.author;
 
-    if (!message.content.startsWith(prefix) || message.author.bot) {
+    //console.log(x);
+    if (userData == "") {
+        userData = JSON.parse(x);
+    }
+    if (userFish == "") {
+        userFish = JSON.parse(y);
+    }
+    if (userGarden == "") {
+        userGarden = JSON.parse(z);
+    }
+
+    if (!message.content.startsWith(prefix) || message.author.bot || userData == "" || userFish == "" || userGarden == "") {
         return;
     }
 
@@ -112,6 +192,41 @@ client.on('messageCreate', message => {
         message.channel.send({ embeds: [embedMsg] });
     }
 
+    s3.putObject({
+        Bucket: config.bucket,
+        Key: userDataParams.Key,
+        Body: JSON.stringify(userData),
+        ContentType: "application/json"},
+        function (err, data) {
+            if (err) {
+                console.log(JSON.stringify(err));
+            }
+        }
+    );
+    s3.putObject({
+        Bucket: config.bucket,
+        Key: userFishParams.Key,
+        Body: JSON.stringify(userFish),
+        ContentType: "application/json"},
+        function (err, data) {
+            if (err) {
+                console.log(JSON.stringify(err));
+            }
+        }
+    );
+    s3.putObject({
+        Bucket: config.bucket,
+        Key: userGardenParams.Key,
+        Body: JSON.stringify(userGarden),
+        ContentType: "application/json"},
+        function (err, data) {
+            if (err) {
+                console.log(JSON.stringify(err));
+            }
+        }
+    );
+
+    /*
     fs.writeFile('storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
         if (err) console.error(err);
     });
@@ -121,6 +236,7 @@ client.on('messageCreate', message => {
     fs.writeFile('storage/userGarden.json', JSON.stringify(userGarden, null, 4), (err) => {
         if (err) console.error(err);
     });
+    */
 })
  
 client.login('OTI0OTM2Njk1NTY3MjIwODE2.Ycl0bA.GD_-9lJp3_koJa8Y1y_ucDjbK34'); // Last Line in File

@@ -16,6 +16,7 @@
     "node": ">=16.6.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.1048.0",
     "discord.js": "^13.4.0"
   }
 }
