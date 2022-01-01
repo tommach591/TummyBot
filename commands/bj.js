@@ -18,6 +18,7 @@ module.exports = {
 
         let getSymbol = function(card) {
             var symbolID = (card - Math.floor(card)) * 10;
+            console.log(symbolID);
             switch (symbolID) {
                 case 0:
                     return ":spades:"
@@ -31,7 +32,7 @@ module.exports = {
         }
 
         embedMsg.setTitle("Test");
-        embedMsg.setDescription("``` " + getSymbol(deck[0]) + " " + getSymbol(deck[13]) + " " + getSymbol(deck[26]) + " " + getSymbol(deck[39]) + " ```");
+        embedMsg.setDescription(getSymbol(deck[0]) + " " + getSymbol(deck[13]) + " " + getSymbol(deck[26]) + " " + getSymbol(deck[39]));
         message.channel.send({ embeds: [embedMsg] });
     }
 }
