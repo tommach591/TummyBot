@@ -112,13 +112,13 @@ client.on('messageCreate', message => {
         message.channel.send({ embeds: [embedMsg] });
     }
 
-    fs.writeFile('Storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
+    fs.writeFile('storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
         if (err) console.error(err);
     });
-    fs.writeFile('Storage/userFish.json', JSON.stringify(userFish, null, 4), (err) => {
+    fs.writeFile('storage/userFish.json', JSON.stringify(userFish, null, 4), (err) => {
         if (err) console.error(err);
     });
-    fs.writeFile('Storage/userGarden.json', JSON.stringify(userGarden, null, 4), (err) => {
+    fs.writeFile('storage/userGarden.json', JSON.stringify(userGarden, null, 4), (err) => {
         if (err) console.error(err);
     });
 })
