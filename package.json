@@ -12,6 +12,9 @@
   },
   "author": "Tom Mach",
   "license": "ISC",
+  "engines": {
+    "node": ">=16.6.0"
+  },
   "dependencies": {
     "discord.js": "^13.4.0"
   }
