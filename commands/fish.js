@@ -425,10 +425,10 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 break;
         }
-        fs.writeFile('Storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
+        fs.writeFile('storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
             if (err) console.error(err);
         });
-        fs.writeFile('Storage/userFish.json', JSON.stringify(userFish, null, 4), (err) => {
+        fs.writeFile('storage/userFish.json', JSON.stringify(userFish, null, 4), (err) => {
             if (err) console.error(err);
         });
     }
