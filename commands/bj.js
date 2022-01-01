@@ -79,9 +79,11 @@ module.exports = {
         let buildDeck = function() {
             var newDeck = [];
             for (let i = 0; i < 8; i++) {
-                newDeck.concat(shuffle(deck));
+                var shuffled = shuffle(deck);
+                newDeck.concat(shuffled);
             }
-            return shuffle(newDeck);
+            newDeck = shuffle(newDeck);
+            return newDeck;
         }
 
         let countHand = function(hand) {
