@@ -154,13 +154,13 @@ module.exports = {
             
             embedMsg.setTitle('Blackjack - Bet ' + blackjack[userid].bet + ' points');
             if (handtwo.length != 0) {
-                embedMsg.setField("**__Hand One - " + handOneValue + " __**", handOnefield, true);
-                embedMsg.setField("**__Hand Two - " + handTwoValue + " __**", handTwofield, true);
+                embedMsg.addField("**__Hand One - " + handOneValue + " __**", handOnefield, true);
+                embedMsg.addField("**__Hand Two - " + handTwoValue + " __**", handTwofield, true);
             }
             else {
-                embedMsg.setField("**__Hand One - " + handOneValue + " __**", handOnefield);
+                embedMsg.addField("**__Hand One - " + handOneValue + " __**", handOnefield);
             }
-            embedMsg.setField("**__Dealer - " + dealerValue + " __**", dealerField);
+            embedMsg.addField("**__Dealer - " + dealerValue + " __**", dealerField);
 
             message.channel.send({ embeds: [embedMsg] });
         }
