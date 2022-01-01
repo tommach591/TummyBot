@@ -217,10 +217,19 @@ module.exports = {
                                 done: false,
                                 onHand: 0
                             }
-                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
-                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
-                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
-                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
+                            var value = 0;
+                            value = blackjack[userid].deck.pop();
+                            console.log(value)
+                            blackjack[userid].hand[0].push(value);
+                            value = blackjack[userid].deck.pop();
+                            console.log(value)
+                            blackjack[userid].dealer.push(value);
+                            value = blackjack[userid].deck.pop();
+                            console.log(value)
+                            blackjack[userid].hand[0].push(value);
+                            value = blackjack[userid].deck.pop();
+                            console.log(value)
+                            blackjack[userid].dealer.push(value);
 
                             displayGame();
                         }
