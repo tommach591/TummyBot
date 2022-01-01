@@ -30,8 +30,109 @@ module.exports = {
             }
         }
 
-        embedMsg.setTitle("Test");
-        embedMsg.setDescription(getSymbol(deck[0]) + getSymbol(deck[13]) + getSymbol(deck[26]) + getSymbol(deck[39]));
-        message.channel.send({ embeds: [embedMsg] });
+        let shuffle = function(array) {
+            let currentIndex = array.length,  randomIndex;
+            // While there remain elements to shuffle...
+            while (currentIndex != 0) {
+              // Pick a remaining element...
+              randomIndex = Math.floor(Math.random() * currentIndex);
+              currentIndex--;
+              // And swap it with the current element.
+              [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+          
+            return array;
+        }
+
+        let countHand = function(hand) {
+            var sum = 0;
+            var hasAce = false;
+            for (let i = 0; i < hand.length; i++) {
+                var value = Math.floor(hand[i]);
+                if (value > 10) {
+                    value = 10;
+                }
+                if (value == 1) {
+                    hasAce = true;
+                }
+                sum += value;
+            }
+            if (hasAce && (sum + 10) <= 21) {
+                sum += 10;
+            }
+            return sum;
+        }
+
+        var hand = [deck[1], deck[0]];
+        console.log(countHand(hand));
+
+        var command = args[0];
+        switch(command) {
+            case 'help':
+                const bjCommands = new Map();
+                bjCommands.set('help', 'Displays list of gardening commands.');
+                bjCommands.set('hand', 'Displays gardening info.');
+                bjCommands.set('hit', 'Plant a random seed.');
+                bjCommands.set('stand', 'Harvest fully grown plants.');
+                bjCommands.set('double', 'Upgrade field, allowing you to plant more.');
+
+                embedMsg.setTitle('List of Gardening Commands');
+                embedMsg.setColor('FFF000');
+
+                bjCommands.forEach((values, keys)=> {
+                    embedMsg.addField("!tp bj " + keys, values);
+                });
+
+                message.channel.send({ embeds: [embedMsg] });
+                break;
+            case 'bet':
+                if (blackjack[userid]) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription(userData[userid].name + " is already playing blackjack!");
+                    embedMsg.setFooter('Use !tp bj (hit, stand, double) and lose before starting another one!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    var bet = args[1];
+                    if (!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) {
+                        bet = Math.floor(bet);
+                        if (userData.bet < bet) {
+                            embedMsg.setTitle('Error!');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription(userData[userid].name + " is broke!");
+                            embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
+                            embedMsg.setFooter('Come back when you have money punk!');
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else {
+                            blackjack[userid] = {
+                                name: message.author.username,
+                                id: userid,
+                                bet: bet,
+                                deck: shuffle(deck),
+                                hand: [[], []],
+                                dealer: []
+                            }
+                        }
+                    }
+                }
+                break;
+            case 'hand':
+                break;
+            case 'hit':
+                break;
+            case 'stand':
+                break;
+            case 'double':
+                break;
+            default:
+                embedMsg.setTitle('Error!');
+                embedMsg.setColor('FF0000');
+                embedMsg.setDescription("Invalid bj command!");
+                embedMsg.setFooter('Use !tp bj help for list of blackjack commands!');
+                message.channel.send({ embeds: [embedMsg] });
+                break;
+        }
     }
 }

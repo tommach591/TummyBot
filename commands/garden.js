@@ -273,11 +273,5 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 break;
         }
-        fs.writeFile('storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
-            if (err) console.error(err);
-        });
-        fs.writeFile('storage/userGarden.json', JSON.stringify(userGarden, null, 4), (err) => {
-            if (err) console.error(err);
-        });
     }
 }
