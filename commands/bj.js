@@ -63,7 +63,7 @@ module.exports = {
             return sum;
         }
 
-        var hand = [deck[1], deck[13]];
+        var hand = [deck[0], deck[13]];
         console.log(countHand(hand));
 
         var command = args[0];
