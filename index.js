@@ -18,6 +18,7 @@ for (const file of commandFiles) {
 }
 
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+var blackjack = JSON.parse(fs.readFileSync('storage/blackjack.json', 'utf8'));
 var fishdex = JSON.parse(fs.readFileSync('storage/fishdex.json', 'utf8'));
 var gardendex = JSON.parse(fs.readFileSync('storage/gardendex.json', 'utf8'));
 
@@ -178,6 +179,10 @@ client.on('messageCreate', message => {
         case 'garden':
             if (userData[sender.id])
                 client.commands.get('garden').execute(message, args, sender.id, userData, userGarden, gardendex, client, fs);
+            break;
+        case 'bj':
+            if (userData[sender.id])
+                client.commands.get('bj').execute(message, args, sender.id, userData, blackjack, client, fs);
             break;
         default:
             message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
