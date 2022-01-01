@@ -31,7 +31,7 @@ module.exports = {
         }
 
         embedMsg.setTitle("Test");
-        embedMsg.setDescription(getSymbol(deck[0]));
+        embedMsg.setDescription(getSymbol(deck[0]) + getSymbol(deck[13]) + getSymbol(deck[26]) + getSymbol(deck[39]));
         message.channel.send({ embeds: [embedMsg] });
     }
 }
