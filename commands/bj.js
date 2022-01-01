@@ -134,7 +134,7 @@ module.exports = {
                 var symbol = getSymbol(dealer[0]);
                 dealerField += "⠀⠀" + card + symbol + "\n";
 
-                var value = Math.floor(hand[0]);
+                var value = Math.floor(blackjack[userid].hand[0]);
                 if (value > 10) {
                     value = 10;
                 }
