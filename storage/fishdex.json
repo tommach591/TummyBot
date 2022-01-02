@@ -17,35 +17,35 @@
         "id": "3",
         "name": "Pink Fish",
         "image": "https://i.imgur.com/6UpljSS.png",
-        "value": 1,
+        "value": 3,
         "info": "The Pink Fish survives by being cute. This attracts other partners."
     },
     "4": {
         "id": "4",
         "name": "Yellow Fish",
         "image": "https://i.imgur.com/DxITwbq.png",
-        "value": 1,
+        "value": 3,
         "info": "The Yellow Fish is obnoxious. This bright color pisses off every other fish."
     },
     "5": {
         "id": "5",
         "name": "Green Fish",
         "image": "https://i.imgur.com/NW1Ujph.png",
-        "value": 1,
+        "value": 3,
         "info": "The Green Fish is vegetarian."
     },
     "6": {
         "id": "6",
         "name": "Teal Fish",
         "image": "https://i.imgur.com/dZCl3O7.png",
-        "value": 1,
+        "value": 3,
         "info": "The Teal Fish is cold to the touch. Very useful for making drinks."
     },
     "7": {
         "id": "7",
         "name": "Indigo Fish",
         "image": "https://i.imgur.com/xGJzbE8.png",
-        "value": 1,
+        "value": 3,
         "info": "The Indigo Fish lives near the bottom of the sea."
     },
     "8": {
@@ -108,7 +108,7 @@
         "id": "16",
         "name": "Seaweed",
         "image": "https://i.imgur.com/XVU7VvH.png",
-        "value": 1,
+        "value": 3,
         "info": "Now I can make sushi!"
     },
     "17": {

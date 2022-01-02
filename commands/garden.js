@@ -5,18 +5,6 @@ module.exports = {
     execute(message, args, userid, userData, userGarden, gardendex, client, fs) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
-        
-        /*
-        if (!userGarden[userid]) {
-            userGarden[userid] = {
-                id: userid,
-                name: userData[userid].name,
-                pots: ["0", "-1", "-1"],
-                potTime: [0, 0, 0],
-                gardendex: []
-            }
-        }
-        */
 
         var command = args[0];
         switch(command) {

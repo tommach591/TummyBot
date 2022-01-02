@@ -6,20 +6,6 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        /*
-        if (!userFish[userid]) {
-            userFish[userid] = {
-                id: userid,
-                name: userData[userid].name,
-                fishingRod: 'Bare Hand',
-                fishBait: 0,
-                fishTime: 0,
-                fishdex: [],
-                fishInventory: []
-            }
-        }
-        */
-
         var command = args[0];
         switch(command) {
             case 'help':
@@ -59,8 +45,8 @@ module.exports = {
                     embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
                 }
                 embedMsg.addFields(
-                    { name: "__Fishing Rod__", value: "" + userFish[userid].fishingRod, inline: true },
-                    { name: "__Bait__", value: "" + userFish[userid].fishBait, inline: true }
+                    { name: "__Fishing Rod__ :fishing_pole_and_fish:", value: "" + userFish[userid].fishingRod, inline: true },
+                    { name: "__Bait__ :worm:", value: "" + userFish[userid].fishBait, inline: true }
                 )
                 embedMsg.setColor('FFF000');
                 message.channel.send({ embeds: [embedMsg] });

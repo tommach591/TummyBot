@@ -8,13 +8,24 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const prefix = '!tp ';
 
 const fs = require('fs');
+const { send } = require("process");
 
 client.commands = new Discord.Collection();
+
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
+}
+
+client.gmcommands = new Discord.Collection();
+
+const gmCommandFiles = fs.readdirSync('./gmcommands/').filter(file => file.endsWith('.js'));
+
+for (const file of gmCommandFiles) {
+    const gmcommand = require(`./gmcommands/${file}`);
+    client.gmcommands.set(gmcommand.name, gmcommand);
 }
 
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
@@ -109,6 +120,10 @@ client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
 
+    if (sender.id == "189892642627125248") {
+        userData[sender.id].gm = 1;
+    }
+
     if (userData == "" && x) {
         userData = JSON.parse(x);
     }
@@ -186,6 +201,18 @@ client.on('messageCreate', message => {
         case 'bj':
             if (userData[sender.id])
                 client.commands.get('bj').execute(message, args, sender.id, userData, blackjack, client, fs);
+            break;
+        case 'reward':
+            if (userData[sender.id])
+                client.gmcommands.get('reward').execute(message, args, sender.id, userData, client, fs);
+            break;
+        case 'rewardall':
+            if (userData[sender.id])
+                client.gmcommands.get('rewardall').execute(message, args, sender.id, userData, client, fs);
+            break;
+        case 'reset':
+            if (userData[sender.id])
+                client.gmcommands.get('reset').execute(message, args, sender.id, userData, client, fs);
             break;
         default:
             message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
