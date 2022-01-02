@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'level',
-    description: "Spend points to increase income.",
+    name: 'leaderboard',
+    description: "Display the rankings.",
 
     execute(message, args, userid, userData, client) {
         const { MessageEmbed } = require('discord.js');
