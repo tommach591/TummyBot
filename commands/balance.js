@@ -27,17 +27,17 @@ module.exports = {
                 embedMsg.setThumbnail(target.displayAvatarURL());
                 embedMsg.setColor('FFF000');
                 embedMsg.setFields(
-                    {name: "Points: ", value: "" + userData[mention].points, inline: true},
-                    {name: "Income: ", value: "" + userData[mention].income, inline: true},
-                    {name: "Fishdex Entries: ", value: "" + userFish[mention].fishdex.length, inline: true},
-                    {name: "Gardendex Entries: ", value: "" + userGarden[mention].gardendex.length, inline: true}
+                    {name: "__Points:__", value: "" + userData[mention].points, inline: true},
+                    {name: "__Income:__", value: "" + userData[mention].income, inline: true},
+                    {name: "__Fishdex Entries:__", value: "" + userFish[mention].fishdex.length, inline: true},
+                    {name: "__Gardendex Entries:__", value: "" + userGarden[mention].gardendex.length, inline: true}
                 );
 
-                if (userData[mention].married != "") {
-                    embedMsg.addField("Married To", userData[userData[mention].married].name, true);
+                if (!userData[userid].married && userData[mention].married != "") {
+                    embedMsg.addField("__Married To:__", userData[userData[mention].married].name, true);
                 }
                 else {
-                    embedMsg.addField("Married To", "Nobody", true);
+                    embedMsg.addField("__Married To:__", "Nobody", true);
                 }
 
                 message.channel.send({ embeds: [embedMsg] });
@@ -56,9 +56,19 @@ module.exports = {
             embedMsg.setThumbnail(target.displayAvatarURL());
             embedMsg.setColor('FFF000');
             embedMsg.setFields(
-                {name: "Points: ", value: "" + userData[userid].points, inline: false},
-                {name: "Income: ", value: "" + userData[userid].income, inline: false}
+                {name: "Points: ", value: "" + userData[userid].points, inline: true},
+                {name: "Income: ", value: "" + userData[userid].income, inline: true},
+                {name: "__Fishdex Entries:__", value: "" + userFish[userid].fishdex.length, inline: true},
+                {name: "__Gardendex Entries:__", value: "" + userGarden[userid].gardendex.length, inline: true}
             );
+
+            if (!userData[userid].married && userData[userid].married != "") {
+                embedMsg.addField("__Married To:__", userData[userData[userid].married].name, true);
+            }
+            else {
+                embedMsg.addField("__Married To:__", "Nobody", true);
+            }
+
             message.channel.send({ embeds: [embedMsg] });
         }
     }

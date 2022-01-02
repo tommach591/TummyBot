@@ -175,7 +175,11 @@ module.exports = {
                     embedMsg.setDescription("Your harvest earned you " + profit + " points!");
                     if (newPlant.length != 0) {
                         for (let i = 0; i < newPlant.length; i++) {
-                            embedMsg.addField("**New Plant #" + newPlant[i] + "**", "Omg (oh my god) is that a " + gardendex[newPlant[i]].name + "!?");
+                            const newPlantMsg = new MessageEmbed();
+                            newPlantMsg.setTitle("**New Plant #" + newPlant[i] + "**");
+                            newPlantMsg.setDescription("Omg (oh my god) is that a " + gardendex[newPlant[i]].name + "!?");
+                            newPlantMsg.setThumbnail(gardendex[newPlant[i]].image);
+                            newPlantMsg.setFooter("New plant added to the Gardendex!");
                         }
                     }
                     message.channel.send({ embeds: [embedMsg] });
