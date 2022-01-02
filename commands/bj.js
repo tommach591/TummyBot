@@ -150,7 +150,7 @@ module.exports = {
             }
             else {
                 dealerValue = countHand(dealer);
-                while (dealerValue < 16) {
+                while (dealerValue <= 16) {
                     blackjack[userid].dealer.push(blackjack[userid].deck.pop());
                     dealerValue = countHand(dealer);
                 }
@@ -382,7 +382,7 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
-                            userData[userid].bet2 = bet;
+                            blackjack[userid].bet2 += bet;
                             userData[userid].points -= bet;
                             
                             blackjack[userid].hand[1].push(blackjack[userid].hand[0].pop());
