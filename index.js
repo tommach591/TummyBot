@@ -120,10 +120,6 @@ client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
 
-    if (sender.id == "189892642627125248") {
-        userData[sender.id].gm = 1;
-    }
-
     if (userData == "" && x) {
         userData = JSON.parse(x);
     }
