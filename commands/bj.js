@@ -197,8 +197,18 @@ module.exports = {
             
             embedMsg.setTitle('Blackjack - Bet ' + blackjack[userid].bet + ' points');
             if (handtwo.length != 0) {
-                embedMsg.addField("**__Hand One - " + handOneValue + " __**", handOnefield, true);
-                embedMsg.addField("**__Hand Two - " + handTwoValue + " __**", handTwofield, true);
+                if (blackjack[userid].onHand == 0 && !blackjack[userid].done) {
+                    embedMsg.addField("**__:point_right: Hand One - " + handOneValue + " __**", handOnefield, true);
+                }
+                else {
+                    embedMsg.addField("**__Hand One - " + handOneValue + " __**", handOnefield, true);
+                }
+                if (blackjack[userid].onHand == 1 && !blackjack[userid].done) {
+                    embedMsg.addField("**__:point_right: Hand Two - " + handTwoValue + " __**", handTwofield, true);
+                }
+                else {
+                    embedMsg.addField("**__Hand Two - " + handTwoValue + " __**", handTwofield, true);
+                }
             }
             else {
                 embedMsg.addField("**__Hand One - " + handOneValue + " __**", handOnefield);
@@ -403,7 +413,6 @@ module.exports = {
                         }
                         else {
                             userData[userid].points -= bet;
-                            blackjack[userid].bet += bet;
                             
                             blackjack[userid].hand[1].push(blackjack[userid].hand[0].pop());
                             blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
