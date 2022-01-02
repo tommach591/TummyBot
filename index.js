@@ -109,14 +109,13 @@ client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
 
-    //console.log(x);
-    if (userData == "") {
+    if (userData == "" && x) {
         userData = JSON.parse(x);
     }
-    if (userFish == "") {
+    if (userFish == "" && y) {
         userFish = JSON.parse(y);
     }
-    if (userGarden == "") {
+    if (userGarden == "" && z) {
         userGarden = JSON.parse(z);
     }
 
