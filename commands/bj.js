@@ -182,7 +182,7 @@ module.exports = {
                     embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points");
                 }
                 else if (reward == totalBet) {
-                    embedMsg.setColor('FF0000');
+                    embedMsg.setColor('FFB000');
                     outcome = "You TIED for " + totalBet + " points!";
                     embedMsg.setFooter("Net gain: 0 points");
                 }
@@ -197,10 +197,10 @@ module.exports = {
 
             for (var i = 0; i < blackjack[userid].hand.length; i++) {
                 if (i == blackjack[userid].index && !blackjack[userid].done && blackjack[userid].hand.length != 1) {
-                    embedMsg.addField("**__Hand (" + (i + 1) + ") - " + handValues[i] + " :point_left:__**", handFields[i], true);
+                    embedMsg.addField("**__(" + (i + 1) + ") Hand - " + handValues[i] + " :point_left:__**", handFields[i], true);
                 }
                 else {
-                    embedMsg.addField("**__Hand (" + (i + 1) + ") - " + handValues[i] + " __**", handFields[i], true);
+                    embedMsg.addField("**__(" + (i + 1) + ") Hand - " + handValues[i] + " __**", handFields[i], true);
                 }
             }
 
