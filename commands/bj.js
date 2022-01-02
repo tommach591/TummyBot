@@ -160,7 +160,11 @@ module.exports = {
                     dealerField += "⠀" + card + symbol + "\n";
                 }
 
-                if (handOneValue <= 21 && (dealerValue < handOneValue || dealerValue > 21)) {
+
+                if (firstTurn && handOneValue == 21) {
+                    reward += Math.floor(blackjack[userid].bet * 1.5);
+                }
+                else if (handOneValue <= 21 && (dealerValue < handOneValue || dealerValue > 21)) {
                     reward += blackjack[userid].bet * 2;
                 }
                 else if (handOneValue <= 21 && dealerValue == handOneValue) {
@@ -169,32 +173,29 @@ module.exports = {
 
                 if (handtwo.length != 0) {
                     if (handTwoValue <= 21 && dealerValue < handTwoValue) {
-                        reward += blackjack[userid].bet * 2;
+                        reward += blackjack[userid].bet2 * 2;
                     }
                     else if (handTwoValue <= 21 && dealerValue == handTwoValue) {
-                        reward += blackjack[userid].bet;
+                        reward += blackjack[userid].bet2;
                     }
                 }
 
-                if ((reward > blackjack[userid].bet && handtwo.length == 0) || (reward > (blackjack[userid].bet * 2))) {
+                
+
+                if (reward > (blackjack[userid].bet + blackjack[userid].bet2)) {
                     embedMsg.setColor('00FF00');
                     outcome = "You WON " + reward + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - blackjack[userid].bet) + " points");
+                    embedMsg.setFooter("Net gain: " + (reward - (blackjack[userid].bet + blackjack[userid].bet2)) + " points");
                 }
-                else if ((reward == blackjack[userid].bet && handtwo.length == 0) || (reward == (blackjack[userid].bet * 2))) {
+                else if (reward == (blackjack[userid].bet + blackjack[userid].bet2)) {
                     embedMsg.setColor('FF0000');
-                    outcome = "You TIED for " + blackjack[userid].bet + " points!";
+                    outcome = "You TIED for " + (blackjack[userid].bet + blackjack[userid].bet2) + " points!";
                     embedMsg.setFooter("Net gain: 0 points");
-                }
-                else if (handtwo.length == 0) {
-                    embedMsg.setColor('FF0000');
-                    outcome = "You LOST " + blackjack[userid].bet + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - blackjack[userid].bet) + " points");
                 }
                 else {
                     embedMsg.setColor('FF0000');
-                    outcome = "You LOST " + blackjack[userid].bet * 2 + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - (blackjack[userid].bet * 2)) + " points");
+                    outcome = "You LOST " + (blackjack[userid].bet + blackjack[userid].bet2) + " points!";
+                    embedMsg.setFooter("Net gain: " + (reward - (blackjack[userid].bet + blackjack[userid].bet2)) + " points");
                 }
 
                 userData[userid].points += reward;
@@ -326,7 +327,13 @@ module.exports = {
                     }
                     else if (blackjack[userid].hand[blackjack[userid].onHand].length == 2) {
                         userData[userid].points -= bet;
-                        blackjack[userid].bet += bet;
+
+                        if (blackjack[userid].onHand == 1) {
+                            blackjack[userid].bet2 += bet;
+                        }
+                        else {
+                            blackjack[userid].bet += bet;
+                        }
 
                         var currentHand = blackjack[userid].onHand;
                         blackjack[userid].hand[currentHand].push(blackjack[userid].deck.pop());
@@ -375,6 +382,7 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
+                            userData[userid].bet2 = bet;
                             userData[userid].points -= bet;
                             
                             blackjack[userid].hand[1].push(blackjack[userid].hand[0].pop());
@@ -420,11 +428,13 @@ module.exports = {
                                 name: message.author.username,
                                 id: userid,
                                 bet: bet,
+                                bet2: 0,
                                 deck: newDeck,
                                 hand: [[], []],
                                 dealer: [],
                                 done: false,
-                                onHand: 0
+                                onHand: 0,
+                                firstTurn = false
                             }
                             blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
                             blackjack[userid].dealer.push(blackjack[userid].deck.pop());
@@ -432,7 +442,7 @@ module.exports = {
                             blackjack[userid].dealer.push(blackjack[userid].deck.pop());
 
                             if (countHand(blackjack[userid].hand[0]) == 21) {
-                                blackjack[userid].bet = Math.floor(blackjack[userid].bet * 1.5);
+                                blackjack[userid].firstTurn = true;
                                 blackjack[userid].done = true;
                             }
 
