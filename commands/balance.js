@@ -33,14 +33,12 @@ module.exports = {
                     {name: "__Gardendex Entries:__", value: "" + userGarden[mention].gardendex.length, inline: false}
                 );
 
-                /*
-                if (!userData[userid].married && userData[mention].married != "") {
-                    embedMsg.addField("__Married To:__", userData[userData[mention].married].name, true);
-                }
-                else {
-                    embedMsg.addField("__Married To:__", "Nobody", true);
-                }
-                */
+            if (userData[mention].married != "" && userData[userData[mention].married]) {
+                embedMsg.addField("__Married To:__", userData[userData[mention].married].name, false);
+            }
+            else {
+                embedMsg.addField("__Married To:__", "Nobody", false);
+            }
 
                 message.channel.send({ embeds: [embedMsg] });
             }
@@ -64,14 +62,12 @@ module.exports = {
                 {name: "__Gardendex Entries:__", value: "" + userGarden[userid].gardendex.length, inline: false}
             );
 
-            /*
-            if (!userData[userid].married && userData[userid].married != "") {
-                embedMsg.addField("__Married To:__", userData[userData[userid].married].name, true);
+            if (userData[userid].married != "" && userData[userData[userid].married]) {
+                embedMsg.addField("__Married To:__", userData[userData[userid].married].name, false);
             }
             else {
-                embedMsg.addField("__Married To:__", "Nobody", true);
+                embedMsg.addField("__Married To:__", "Nobody", false);
             }
-            */
 
             message.channel.send({ embeds: [embedMsg] });
         }
