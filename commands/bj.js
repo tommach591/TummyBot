@@ -262,7 +262,7 @@ module.exports = {
                     var index = blackjack[userid].index;
                     blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
                     if (countHand(blackjack[userid].hand[index]) > 21 || countHand(blackjack[userid].hand[index]) == 21) {
-                        if (index < blackjack[userid].length - 1) {
+                        if (index < blackjack[userid].hand.length - 1) {
                             blackjack[userid].index++;
                         }
                         else {
@@ -282,7 +282,7 @@ module.exports = {
                 }
                 else {
                     var index = blackjack[userid].index;
-                    if (index < blackjack[userid].length - 1) {
+                    if (index < blackjack[userid].hand.length - 1) {
                         blackjack[userid].index++;
                     }
                     else {
@@ -317,7 +317,7 @@ module.exports = {
                         blackjack[userid].bet[index] += bet;
 
                         blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
-                        if (index < blackjack[userid].length - 1) {
+                        if (index < blackjack[userid].hand.length - 1) {
                             blackjack[userid].index++;
                         }
                         else {
@@ -370,7 +370,8 @@ module.exports = {
                             newHand.push(blackjack[userid].hand[index].pop());
 
                             blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
-                            newHand.push(blackjack[userid].deck.pop());
+                            //newHand.push(blackjack[userid].deck.pop());
+                            newHand.push(newHand[0]);
 
                             blackjack[userid].hand.push(newHand);
 
