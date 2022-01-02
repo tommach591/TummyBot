@@ -206,7 +206,7 @@ client.on('messageCreate', message => {
             if (userData[sender.id])
                 client.gmcommands.get('rewardall').execute(message, args, sender.id, userData, client, fs);
             break;
-        case 'reset':
+        case 'banish':
             if (userData[sender.id])
                 client.gmcommands.get('reset').execute(message, args, sender.id, userData, client, fs);
             break;
