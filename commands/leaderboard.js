@@ -24,11 +24,12 @@ module.exports = {
         var names = "";
         var points = "";
         for (var i = 0; i < keys.length; i++) {
-            names += userData[keys[i]].name + "\n";
-            points += userData[keys[i]].points + "\n";
+            names += userData[keys[i]].name + "⠀⠀⠀\n";
+            points += userData[keys[i]].points + "⠀⠀⠀\n";
         }
         embedMsg.setTitle("**__The Leaderboard__**");
         embedMsg.setThumbnail("https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif");
+        embedMsg.setColor('FFF000');
         embedMsg.setFields(
             {name: "**__Player__**", value: names, inline: true},
             {name: "**__Points__**", value: points, inline: true}
