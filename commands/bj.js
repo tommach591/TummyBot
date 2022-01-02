@@ -371,7 +371,7 @@ module.exports = {
                     if (cardTwo > 10) {
                         cardTwo = 10;
                     }
-                    if (blackjack[userid].onHand == 0 && blackjack[userid].hand[0].length == 2 && cardOne == cardTwo) {
+                    if (blackjack[userid].hand[1].length == 0 && blackjack[userid].hand[0].length == 2 && cardOne == cardTwo) {
                         var bet = blackjack[userid].bet;
                         if (userData[userid].points < bet) {
                             embedMsg.setTitle('Error!');
