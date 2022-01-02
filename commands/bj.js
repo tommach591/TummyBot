@@ -370,8 +370,7 @@ module.exports = {
                             newHand.push(blackjack[userid].hand[index].pop());
 
                             blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
-                            //newHand.push(blackjack[userid].deck.pop());
-                            newHand.push(newHand[0]);
+                            newHand.push(blackjack[userid].deck.pop());
 
                             blackjack[userid].hand.push(newHand);
 
