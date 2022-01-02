@@ -201,7 +201,7 @@ module.exports = {
                 userData[userid].points += reward;
             }
             
-            embedMsg.setTitle('Blackjack - Bet ' + blackjack[userid].bet + ' points');
+            embedMsg.setTitle('Blackjack - Bet ' + blackjack[userid].bet + blackjack[userid].bet2 + ' points');
             if (handtwo.length != 0) {
                 if (blackjack[userid].onHand == 0 && !blackjack[userid].done) {
                     embedMsg.addField("**__:point_right: Hand One - " + handOneValue + " __**", handOnefield, true);
