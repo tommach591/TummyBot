@@ -185,7 +185,7 @@ client.on('messageCreate', message => {
             break;
         case 'leaderboard':
             if (userData[sender.id])
-                client.commands.get('leaderboard').execute(message, args, sender.id, userData, blackjack, client, fs);
+                client.commands.get('leaderboard').execute(message, args, sender.id, userData, client);
             break;
         default:
             message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
