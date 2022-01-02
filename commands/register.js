@@ -2,7 +2,7 @@ module.exports = {
     name: 'register',
     description: "Register an account.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, userData, userFish, userGarden, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
