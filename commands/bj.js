@@ -323,13 +323,11 @@ module.exports = {
                 }
                 else {
                     var currentHand = blackjack[userid].onHand;
-                    if (countHand(blackjack[userid].hand[currentHand]) > 21) {
-                        if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
-                            blackjack[userid].onHand = 1;
-                        }
-                        else {
-                            blackjack[userid].done = true;
-                        }
+                    if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
+                        blackjack[userid].onHand = 1;
+                    }
+                    else {
+                        blackjack[userid].done = true;
                     }
                     displayGame();
                 }
