@@ -11,8 +11,6 @@ module.exports = {
             keys.push(k);
         }
 
-        console.log(keys);
-
         keys.sort((firstEl, secondEl) => { 
             if (userData[firstEl].points < userData[secondEl].points) {
                 return -1;
@@ -22,6 +20,8 @@ module.exports = {
             }
             return 0;
         });
+
+        console.log(keys);
 
         var names = "";
         var points = "";
