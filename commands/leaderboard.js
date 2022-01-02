@@ -21,8 +21,6 @@ module.exports = {
             return 0;
         });
 
-        console.log(keys);
-
         var names = "";
         var points = "";
         for (var i = 0; i < keys.length; i++) {
@@ -30,9 +28,10 @@ module.exports = {
             points += userData[keys[i]].points + "\n";
         }
         embedMsg.setTitle("**__The Leaderboard__**");
+        embedMsg.setThumbnail("https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif");
         embedMsg.setFields(
-            {name: "Player", value: names, inline: true},
-            {name: "Points", value: points, inline: true}
+            {name: "**__Player__**", value: names, inline: true},
+            {name: "**__Points__**", value: points, inline: true}
         )
         message.channel.send({ embeds: [embedMsg] });
     }
