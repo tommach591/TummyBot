@@ -27,10 +27,10 @@ module.exports = {
                 embedMsg.setThumbnail(target.displayAvatarURL());
                 embedMsg.setColor('FFF000');
                 embedMsg.setFields(
-                    {name: "__Points:__", value: "" + userData[mention].points, inline: true},
-                    {name: "__Income:__", value: "" + userData[mention].income, inline: true},
-                    {name: "__Fishdex Entries:__", value: "" + userFish[mention].fishdex.length, inline: true},
-                    {name: "__Gardendex Entries:__", value: "" + userGarden[mention].gardendex.length, inline: true}
+                    {name: "__Points:__", value: "" + userData[mention].points + "⠀⠀⠀⠀⠀", inline: true},
+                    {name: "__Income:__", value: "" + userData[mention].income + "⠀⠀⠀⠀⠀", inline: true},
+                    {name: "__Fishdex Entries:__", value: "" + userFish[mention].fishdex.length, inline: false},
+                    {name: "__Gardendex Entries:__", value: "" + userGarden[mention].gardendex.length, inline: false}
                 );
 
                 /*
@@ -58,10 +58,10 @@ module.exports = {
             embedMsg.setThumbnail(target.displayAvatarURL());
             embedMsg.setColor('FFF000');
             embedMsg.setFields(
-                {name: "Points: ", value: "" + userData[userid].points, inline: true},
-                {name: "Income: ", value: "" + userData[userid].income, inline: true},
-                {name: "__Fishdex Entries:__", value: "" + userFish[userid].fishdex.length, inline: true},
-                {name: "__Gardendex Entries:__", value: "" + userGarden[userid].gardendex.length, inline: true}
+                {name: "__Points:__", value: "" + userData[userid].points + "⠀⠀⠀⠀⠀", inline: true},
+                {name: "__Income:__", value: "" + userData[userid].income + "⠀⠀⠀⠀⠀", inline: true},
+                {name: "__Fishdex Entries:__", value: "" + userFish[userid].fishdex.length, inline: false},
+                {name: "__Gardendex Entries:__", value: "" + userGarden[userid].gardendex.length, inline: false}
             );
 
             /*
