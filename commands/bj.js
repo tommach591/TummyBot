@@ -276,6 +276,11 @@ module.exports = {
                             blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
                             blackjack[userid].dealer.push(blackjack[userid].deck.pop());
 
+                            if (countHand(blackjack[userid].hand[0]) == 21) {
+                                blackjack[userid].bet = Math.floor(blackjack[userid].bet * 1.5);
+                                blackjack[userid].done = true;
+                            }
+
                             displayGame();
                         }
                     }
