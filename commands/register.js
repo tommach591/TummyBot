@@ -20,21 +20,25 @@ module.exports = {
                 fameTime: 0,
                 married: ""
             }
-            userFish[userid] = {
-                name: userData[userid].name,
-                id: userid,
-                fishingRod: 'Bare Hand',
-                fishBait: 0,
-                fishTime: 0,
-                fishdex: [],
-                fishInventory: []
+            if (!userFish[userid]) {
+                userFish[userid] = {
+                    name: userData[userid].name,
+                    id: userid,
+                    fishingRod: 'Bare Hand',
+                    fishBait: 0,
+                    fishTime: 0,
+                    fishdex: [],
+                    fishInventory: []
+                }
             }
-            userGarden[userid] = {
-                id: userid,
-                name: userData[userid].name,
-                pots: ["0", "-1", "-1"],
-                potTime: [0, 0, 0],
-                gardendex: []
+            if (!userGarden[userid]) {
+                userGarden[userid] = {
+                    id: userid,
+                    name: userData[userid].name,
+                    pots: ["0", "-1", "-1"],
+                    potTime: [0, 0, 0],
+                    gardendex: []
+                }
             }
 
             embedMsg.setTitle('Welcome!');

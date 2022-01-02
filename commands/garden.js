@@ -36,13 +36,13 @@ module.exports = {
                     var pot = "";
                     switch(i) {
                         case 0:
-                            pot = "__Pot One__";
+                            pot = "__Pot One__ :potted_plant:";
                             break;
                         case 1:
-                            pot = "__Pot Two__";
+                            pot = "__Pot Two__ :potted_plant:";
                             break;
                         case 2:
-                            pot = "__Pot Three__";
+                            pot = "__Pot Three__ :potted_plant:";
                             break;
                     }
                     if (userGarden[userid].pots[i] == "-1") {

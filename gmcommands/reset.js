@@ -2,7 +2,7 @@ module.exports = {
     name: 'reset',
     description: "Basically delete an account.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, userData, userFish, userGarden, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -33,6 +33,9 @@ module.exports = {
                 var username = userData[mention].name;
 
                 delete userData[mention];
+                delete userFish[mention];
+                delete userGarden[mention];
+                
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
                 embedMsg.setThumbnail('https://c.tenor.com/AdaSVzqCxLIAAAAC/yugioh-anime.gif');
