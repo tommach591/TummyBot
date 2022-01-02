@@ -195,11 +195,11 @@ module.exports = {
             embedMsg.setTitle('Blackjack - Bet ' + totalBet + ' points');
 
             for (var i = 0; i < blackjack[userid].hand.length; i++) {
-                if (i == blackjack[userid].index && !blackjack[userid].done) {
-                    embedMsg.addField("**__:point_right: Hand " + i + " - " + handValues[i] + " __**", handFields[i], true);
+                if (i == blackjack[userid].index && !blackjack[userid].done && blackjack[userid].hand.length != 1) {
+                    embedMsg.addField("**__:point_right: Hand " + (i + 1) + " - " + handValues[i] + " __**", handFields[i], true);
                 }
                 else {
-                    embedMsg.addField("**__Hand " + i + " - " + handValues[i] + " __**", handFields[i], true);
+                    embedMsg.addField("**__Hand " + (i + 1) + " - " + handValues[i] + " __**", handFields[i], true);
                 }
             }
 
@@ -261,7 +261,7 @@ module.exports = {
                     var index = blackjack[userid].index;
                     blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
                     if (countHand(blackjack[userid].hand[index]) > 21 || countHand(blackjack[userid].hand[index]) == 21) {
-                        if (index != blackjack[userid].length - 1) {
+                        if (index < blackjack[userid].length - 1) {
                             blackjack[userid].index++;
                         }
                         else {
@@ -281,7 +281,7 @@ module.exports = {
                 }
                 else {
                     var index = blackjack[userid].index;
-                    if (index != blackjack[userid].length - 1) {
+                    if (index < blackjack[userid].length - 1) {
                         blackjack[userid].index++;
                     }
                     else {
@@ -316,7 +316,7 @@ module.exports = {
                         blackjack[userid].bet[index] += bet;
 
                         blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
-                        if (index != blackjack[userid].length - 1) {
+                        if (index < blackjack[userid].length - 1) {
                             blackjack[userid].index++;
                         }
                         else {
