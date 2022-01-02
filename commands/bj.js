@@ -106,27 +106,25 @@ module.exports = {
         }
 
         let displayGame = function() {
-            const handone = blackjack[userid].hand[0];
-            const handtwo = blackjack[userid].hand[1];
+
             const dealer = blackjack[userid].dealer;
+            var handFields = [];
+            var handValues = [];
 
-            var handOnefield = "";
-            var handOneValue = countHand(handone);
-            for (let i = 0; i < handone.length; i++) {
-                var card = getCard(handone[i]);
-                var symbol = getSymbol(handone[i]);
-                handOnefield += "⠀" + card + symbol + "\n";
-            }
+            const reducer = (previousValue, currentValue) => previousValue + currentValue;
+            var totalBet = blackjack[userid].bet.reduce(reducer)
 
-            var handTwofield = "";
-            var handTwoValue = 0;
-            if (handtwo.length != 0) {
-                handTwoValue = countHand(handtwo);
-                for (let i = 0; i < handtwo.length; i++) {
-                    var card = getCard(handtwo[i]);
-                    var symbol = getSymbol(handtwo[i]);
-                    handTwofield += "⠀" + card + symbol + "\n";
+            for (let i = 0; i < blackjack[userid].hand.length; i++) {
+                var hand = blackjack[userid].hand[i];
+                var handField = "";
+                var handValue = countHand(hand);
+                for (let i = 0; i < hand.length; i++) {
+                    var card = getCard(hand[i]);
+                    var symbol = getSymbol(hand[i]);
+                    handField += "⠀" + card + symbol + "\n";
                 }
+                handFields.push(handField);
+                handValues.push(handValue);
             }
 
             var dealerField = "";
@@ -161,64 +159,50 @@ module.exports = {
                 }
 
 
-                if (blackjack[userid].firstTurn && handOneValue == 21) {
-                    reward += Math.floor(blackjack[userid].bet * 1.5);
+                if (blackjack[userid].firstTurn && handValues[0] == 21) {
+                    reward += Math.floor(blackjack[userid].bet[0] * 1.5);
                 }
-                else if (handOneValue <= 21 && (dealerValue < handOneValue || dealerValue > 21)) {
-                    reward += blackjack[userid].bet * 2;
-                }
-                else if (handOneValue <= 21 && dealerValue == handOneValue) {
-                    reward += blackjack[userid].bet;
-                }
-
-                if (handtwo.length != 0) {
-                    if (handTwoValue <= 21 && dealerValue < handTwoValue) {
-                        reward += blackjack[userid].bet2 * 2;
-                    }
-                    else if (handTwoValue <= 21 && dealerValue == handTwoValue) {
-                        reward += blackjack[userid].bet2;
+                else {
+                    for (var i = 0; i < handValues.length; i++) {
+                        if (handValue[i] <= 21 && (dealerValue < handValue[i] || dealerValue > 21)) {
+                            reward += blackjack[userid].bet[i] * 2;
+                        }
+                        else if (handValue[i] <= 21 && dealerValue == handValue[i]) {
+                            reward += blackjack[userid].bet[i];
+                        }
                     }
                 }
 
-                
-
-                if (reward > (blackjack[userid].bet + blackjack[userid].bet2)) {
+                if (reward > totalBet) {
                     embedMsg.setColor('00FF00');
                     outcome = "You WON " + reward + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - (blackjack[userid].bet + blackjack[userid].bet2)) + " points");
+                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points");
                 }
-                else if (reward == (blackjack[userid].bet + blackjack[userid].bet2)) {
+                else if (reward == totalBet) {
                     embedMsg.setColor('FF0000');
-                    outcome = "You TIED for " + (blackjack[userid].bet + blackjack[userid].bet2) + " points!";
+                    outcome = "You TIED for " + totalBet + " points!";
                     embedMsg.setFooter("Net gain: 0 points");
                 }
                 else {
                     embedMsg.setColor('FF0000');
-                    outcome = "You LOST " + (blackjack[userid].bet + blackjack[userid].bet2) + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - (blackjack[userid].bet + blackjack[userid].bet2)) + " points");
+                    outcome = "You LOST " + totalBet + " points!";
+                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points");
                 }
 
                 userData[userid].points += reward;
             }
             
-            embedMsg.setTitle('Blackjack - Bet ' + (blackjack[userid].bet + blackjack[userid].bet2) + ' points');
-            if (handtwo.length != 0) {
-                if (blackjack[userid].onHand == 0 && !blackjack[userid].done) {
-                    embedMsg.addField("**__:point_right: Hand One - " + handOneValue + " __**", handOnefield, true);
+            embedMsg.setTitle('Blackjack - Bet ' + totalBet + ' points');
+
+            for (var i = 0; i < blackjack[userid].hand.length; i++) {
+                if (i == blackjack[userid].index && !blackjack[userid].done) {
+                    embedMsg.addField("**__:point_right: Hand " + i + " - " + handValues[i] + " __**", handFields[i], true);
                 }
                 else {
-                    embedMsg.addField("**__Hand One - " + handOneValue + " __**", handOnefield, true);
-                }
-                if (blackjack[userid].onHand == 1 && !blackjack[userid].done) {
-                    embedMsg.addField("**__:point_right: Hand Two - " + handTwoValue + " __**", handTwofield, true);
-                }
-                else {
-                    embedMsg.addField("**__Hand Two - " + handTwoValue + " __**", handTwofield, true);
+                    embedMsg.addField("**__Hand " + i + " - " + handValues[i] + " __**", handFields[i], true);
                 }
             }
-            else {
-                embedMsg.addField("**__Hand One - " + handOneValue + " __**", handOnefield);
-            }
+
             embedMsg.addField("**__Dealer - " + dealerValue + " __**", dealerField);
 
             if (blackjack[userid].done) {
@@ -274,11 +258,11 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var currentHand = blackjack[userid].onHand;
-                    blackjack[userid].hand[currentHand].push(blackjack[userid].deck.pop());
-                    if (countHand(blackjack[userid].hand[currentHand]) > 21 || countHand(blackjack[userid].hand[currentHand]) == 21) {
-                        if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
-                            blackjack[userid].onHand = 1;
+                    var index = blackjack[userid].index;
+                    blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
+                    if (countHand(blackjack[userid].hand[index]) > 21 || countHand(blackjack[userid].hand[index]) == 21) {
+                        if (index != blackjack[userid].length - 1) {
+                            blackjack[userid].index++;
                         }
                         else {
                             blackjack[userid].done = true;
@@ -296,9 +280,9 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var currentHand = blackjack[userid].onHand;
-                    if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
-                        blackjack[userid].onHand = 1;
+                    var index = blackjack[userid].index;
+                    if (index != blackjack[userid].length - 1) {
+                        blackjack[userid].index++;
                     }
                     else {
                         blackjack[userid].done = true;
@@ -315,7 +299,8 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var bet = blackjack[userid].bet;
+                    var index = blackjack[userid].index;
+                    var bet = blackjack[userid].bet[index];
 
                     if (userData[userid].points < bet) {
                         embedMsg.setTitle('Error!');
@@ -325,20 +310,14 @@ module.exports = {
                         embedMsg.setFooter('Come back when you have money punk!');
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else if (blackjack[userid].hand[blackjack[userid].onHand].length == 2) {
+                    else if (blackjack[userid].hand[index].length == 2) {
+
                         userData[userid].points -= bet;
+                        blackjack[userid].bet[index] += bet;
 
-                        if (blackjack[userid].onHand == 1) {
-                            blackjack[userid].bet2 += bet;
-                        }
-                        else {
-                            blackjack[userid].bet += bet;
-                        }
-
-                        var currentHand = blackjack[userid].onHand;
-                        blackjack[userid].hand[currentHand].push(blackjack[userid].deck.pop());
-                        if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
-                            blackjack[userid].onHand = 1;
+                        blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
+                        if (index != blackjack[userid].length - 1) {
+                            blackjack[userid].index++;
                         }
                         else {
                             blackjack[userid].done = true;
@@ -363,16 +342,17 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var cardOne = Math.floor(blackjack[userid].hand[0][0]);
-                    var cardTwo = Math.floor(blackjack[userid].hand[0][1]);
+                    var index = blackjack[userid].index
+                    var cardOne = Math.floor(blackjack[userid].hand[index][0]);
+                    var cardTwo = Math.floor(blackjack[userid].hand[index][1]);
                     if (cardOne > 10) {
                         cardOne = 10;
                     }
                     if (cardTwo > 10) {
                         cardTwo = 10;
                     }
-                    if (blackjack[userid].hand[1].length == 0 && blackjack[userid].hand[0].length == 2 && cardOne == cardTwo) {
-                        var bet = blackjack[userid].bet;
+                    if (blackjack[userid].hand[index].length == 2 && cardOne == cardTwo) {
+                        var bet = blackjack[userid].bet[index];
                         if (userData[userid].points < bet) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
@@ -382,12 +362,17 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
-                            blackjack[userid].bet2 += bet;
+                            blackjack[userid].bet.push(bet);
                             userData[userid].points -= bet;
                             
-                            blackjack[userid].hand[1].push(blackjack[userid].hand[0].pop());
-                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
-                            blackjack[userid].hand[1].push(blackjack[userid].deck.pop());
+                            var newHand = []
+                            newHand.push(blackjack[userid].hand[index].pop());
+
+                            blackjack[userid].hand[index].push(blackjack[userid].deck.pop());
+                            newHand.push(blackjack[userid].deck.pop());
+
+                            blackjack[userid].hand.push(newHand);
+
                             displayGame();
                         }
                     }
@@ -427,21 +412,20 @@ module.exports = {
                             blackjack[userid] = {
                                 name: message.author.username,
                                 id: userid,
-                                bet: bet,
-                                bet2: 0,
                                 deck: newDeck,
-                                hand: [[], []],
+                                bet: [bet],
+                                hand: [[]],
+                                index: 0,
                                 dealer: [],
                                 done: false,
-                                onHand: 0,
                                 firstTurn: false
                             }
-                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].hand[blackjack[userid].index].push(blackjack[userid].deck.pop());
                             blackjack[userid].dealer.push(blackjack[userid].deck.pop());
-                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].hand[blackjack[userid].index].push(blackjack[userid].deck.pop());
                             blackjack[userid].dealer.push(blackjack[userid].deck.pop());
 
-                            if (countHand(blackjack[userid].hand[0]) == 21) {
+                            if (countHand(blackjack[userid].hand[blackjack[userid].index]) == 21) {
                                 blackjack[userid].firstTurn = true;
                                 blackjack[userid].done = true;
                             }
