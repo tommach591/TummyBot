@@ -383,7 +383,15 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    if (blackjack[userid].onHand == 0 && blackjack[userid].hand[0].length == 2 && Math.floor(blackjack[userid].hand[0][0]) == Math.floor(blackjack[userid].hand[0][1])) {
+                    var cardOne = Math.floor(blackjack[userid].hand[0][0]);
+                    var cardTwo = Math.floor(blackjack[userid].hand[0][1]);
+                    if (cardOne > 10) {
+                        cardOne = 10;
+                    }
+                    if (cardTwo > 10) {
+                        cardTwo = 10;
+                    }
+                    if (blackjack[userid].onHand == 0 && blackjack[userid].hand[0].length == 2 && cardOne == cardTwo) {
                         var bet = blackjack[userid].bet;
                         if (userData[userid].points < bet) {
                             embedMsg.setTitle('Error!');
