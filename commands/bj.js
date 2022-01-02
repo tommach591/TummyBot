@@ -302,7 +302,7 @@ module.exports = {
                 else {
                     var currentHand = blackjack[userid].onHand;
                     blackjack[userid].hand[currentHand].push(blackjack[userid].deck.pop());
-                    if (countHand(blackjack[userid].hand[currentHand]) > 21) {
+                    if (countHand(blackjack[userid].hand[currentHand]) > 21 || countHand(blackjack[userid].hand[currentHand]) == 21) {
                         if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
                             blackjack[userid].onHand = 1;
                         }
