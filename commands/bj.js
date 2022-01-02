@@ -160,7 +160,7 @@ module.exports = {
                     dealerField += "⠀" + card + symbol + "\n";
                 }
 
-                if (handOneValue <= 21 && dealerValue < handOneValue) {
+                if (handOneValue <= 21 && (dealerValue < handOneValue || dealerValue > 21)) {
                     reward += blackjack[userid].bet * 2;
                 }
                 else if (handOneValue <= 21 && dealerValue == handOneValue) {
