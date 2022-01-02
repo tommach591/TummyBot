@@ -378,7 +378,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    if (blackjack[userid].onHand == 1 && blackjack[userid].hand[0].length == 2 && Math.floor(blackjack[userid].hand[0][0]) == Math.floor(blackjack[userid].hand[0][1])) {
+                    if (blackjack[userid].onHand == 0 && blackjack[userid].hand[0].length == 2 && Math.floor(blackjack[userid].hand[0][0]) == Math.floor(blackjack[userid].hand[0][1])) {
                         var bet = blackjack[userid].bet;
                         if (userData[userid].points < bet) {
                             embedMsg.setTitle('Error!');
