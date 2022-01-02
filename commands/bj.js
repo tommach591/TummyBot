@@ -145,6 +145,7 @@ module.exports = {
                     value = 11;
                 }
                 dealerValue = value;
+                embedMsg.setFooter("!tp bj hit/stand/double/split");
             }
             else {
                 dealerValue = countHand(dealer);
