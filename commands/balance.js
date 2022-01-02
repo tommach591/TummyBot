@@ -33,12 +33,14 @@ module.exports = {
                     {name: "__Gardendex Entries:__", value: "" + userGarden[mention].gardendex.length, inline: true}
                 );
 
+                /*
                 if (!userData[userid].married && userData[mention].married != "") {
                     embedMsg.addField("__Married To:__", userData[userData[mention].married].name, true);
                 }
                 else {
                     embedMsg.addField("__Married To:__", "Nobody", true);
                 }
+                */
 
                 message.channel.send({ embeds: [embedMsg] });
             }
@@ -62,12 +64,14 @@ module.exports = {
                 {name: "__Gardendex Entries:__", value: "" + userGarden[userid].gardendex.length, inline: true}
             );
 
+            /*
             if (!userData[userid].married && userData[userid].married != "") {
                 embedMsg.addField("__Married To:__", userData[userData[userid].married].name, true);
             }
             else {
                 embedMsg.addField("__Married To:__", "Nobody", true);
             }
+            */
 
             message.channel.send({ embeds: [embedMsg] });
         }
