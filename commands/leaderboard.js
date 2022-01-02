@@ -11,6 +11,8 @@ module.exports = {
             keys.push(k);
         }
 
+        console.log("HI");
+
         keys.sort((firstEl, secondEl) => { 
             if (userData[firstEl].points < userData[secondEl].points) {
                 return -1;
