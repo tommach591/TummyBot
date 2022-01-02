@@ -2,7 +2,7 @@ module.exports = {
     name: 'balance',
     description: "Displays your or somebody's balance.",
     
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, userData, userFish, userGarden, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -27,9 +27,19 @@ module.exports = {
                 embedMsg.setThumbnail(target.displayAvatarURL());
                 embedMsg.setColor('FFF000');
                 embedMsg.setFields(
-                    {name: "Points: ", value: "" + userData[mention].points, inline: false},
-                    {name: "Income: ", value: "" + userData[mention].income, inline: false}
+                    {name: "Points: ", value: "" + userData[mention].points, inline: true},
+                    {name: "Income: ", value: "" + userData[mention].income, inline: true},
+                    {name: "Fishdex Entries: ", value: "" + userFish[mention].fishdex.length, inline: true},
+                    {name: "Gardendex Entries: ", value: "" + userGarden[mention].gardendex.length, inline: true}
                 );
+
+                if (userData[mention].married != "") {
+                    embedMsg.addField("Married To", userData[userData[mention].married].name, true);
+                }
+                else {
+                    embedMsg.addField("Married To", "Nobody", true);
+                }
+
                 message.channel.send({ embeds: [embedMsg] });
             }
             else {

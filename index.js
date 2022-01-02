@@ -151,7 +151,7 @@ client.on('messageCreate', message => {
         case 'info':
         case 'balance':
             if (userData[sender.id])
-                client.commands.get('balance').execute(message, args, sender.id, userData, client, fs);
+                client.commands.get('balance').execute(message, args, sender.id, userData, userFish, userGarden, client, fs);
             break;
         case 'give':
             if (userData[sender.id])
