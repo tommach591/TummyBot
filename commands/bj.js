@@ -115,7 +115,7 @@ module.exports = {
             for (let i = 0; i < handone.length; i++) {
                 var card = getCard(handone[i]);
                 var symbol = getSymbol(handone[i]);
-                handOnefield += "⠀⠀" + card + symbol + "\n";
+                handOnefield += "⠀" + card + symbol + "\n";
             }
 
             var handTwofield = "";
@@ -125,7 +125,7 @@ module.exports = {
                 for (let i = 0; i < handtwo.length; i++) {
                     var card = getCard(handtwo[i]);
                     var symbol = getSymbol(handtwo[i]);
-                    handTwofield += "⠀⠀" + card + symbol + "\n";
+                    handTwofield += "⠀" + card + symbol + "\n";
                 }
             }
 
@@ -136,8 +136,8 @@ module.exports = {
             if (!blackjack[userid].done) {
                 var card = getCard(dealer[0]);
                 var symbol = getSymbol(dealer[0]);
-                dealerField += "⠀⠀" + card + symbol + "\n";
-                dealerField += "⠀⠀" + "???\n";
+                dealerField += "⠀" + card + symbol + "\n";
+                dealerField += "⠀" + "???\n";
 
                 var value = Math.floor(blackjack[userid].dealer[0]);
                 if (value > 10) {
@@ -157,7 +157,7 @@ module.exports = {
                 for (let i = 0; i < dealer.length; i++) {
                     var card = getCard(dealer[i]);
                     var symbol = getSymbol(dealer[i]);
-                    dealerField += "⠀⠀" + card + symbol + "\n";
+                    dealerField += "⠀" + card + symbol + "\n";
                 }
 
                 if (handOneValue <= 21 && dealerValue < handOneValue) {
