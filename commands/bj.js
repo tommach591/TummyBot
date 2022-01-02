@@ -236,7 +236,7 @@ module.exports = {
             case 'help':
                 const bjCommands = new Map();
                 bjCommands.set('help', 'Displays list of blackjack commands.');
-                bjCommands.set('bet', 'Start a blackjack game with your current bet. Win 2x bet or lost all.');
+                bjCommands.set('#', 'Start a blackjack game with the # you entered. Win 2x bet or lost all.');
                 bjCommands.set('hand', 'Displays current hand.');
                 bjCommands.set('hit', 'Hit.');
                 bjCommands.set('stand', 'Stand.');
@@ -392,7 +392,6 @@ module.exports = {
                     }
                 }
                 break;
-            case 'bet':
             default:
                 if (blackjack[userid]) {
                     embedMsg.setTitle('Error!');
@@ -402,7 +401,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var bet = args[1];
+                    var bet = args[0];
                     if (!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) {
                         bet = Math.floor(bet);
 
