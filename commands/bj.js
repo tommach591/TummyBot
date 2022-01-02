@@ -405,7 +405,7 @@ module.exports = {
                             userData[userid].points -= bet;
                             blackjack[userid].bet += bet;
                             
-                            blackjack[userid].hand[1].push(blackjack[userid].hand[0]);
+                            blackjack[userid].hand[1].push(blackjack[userid].hand[0].pop());
                             blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
                             blackjack[userid].hand[1].push(blackjack[userid].deck.pop());
                             displayGame();
