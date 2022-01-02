@@ -34,7 +34,7 @@ module.exports = {
             var number = Math.round(Math.floor(card) % 13);
             switch(number) {
                 case 1:
-                    return "Ace (1) ";
+                    return "Ace (A) ";
                 case 2:
                     return "Two (2) ";
                 case 3:
@@ -176,20 +176,25 @@ module.exports = {
                     }
                 }
 
-                if (reward > blackjack[userid].bet) {
+                if ((reward > blackjack[userid].bet && handtwo.length == 0) || (reward > (blackjack[userid].bet * 2))) {
                     embedMsg.setColor('00FF00');
                     outcome = "You WON " + reward + " points!";
                     embedMsg.setFooter("Net gain: " + (reward - blackjack[userid].bet) + " points");
                 }
-                else if (reward == blackjack[userid].bet) {
+                else if ((reward == blackjack[userid].bet && handtwo.length == 0) || (reward == (blackjack[userid].bet * 2))) {
                     embedMsg.setColor('FF0000');
                     outcome = "You TIED for " + blackjack[userid].bet + " points!";
                     embedMsg.setFooter("Net gain: 0 points");
                 }
-                else {
+                else if (handtwo.length == 0) {
                     embedMsg.setColor('FF0000');
                     outcome = "You LOST " + blackjack[userid].bet + " points!";
                     embedMsg.setFooter("Net gain: " + (reward - blackjack[userid].bet) + " points");
+                }
+                else {
+                    embedMsg.setColor('FF0000');
+                    outcome = "You LOST " + blackjack[userid].bet * 2 + " points!";
+                    embedMsg.setFooter("Net gain: " + (reward - (blackjack[userid].bet * 2)) + " points");
                 }
 
                 userData[userid].points += reward;
