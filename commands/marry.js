@@ -2,7 +2,7 @@ module.exports = {
     name: 'marry',
     description: "Marry someone.",
 
-    execute(message, args, userid, userData, client){
+    execute(message, args, userid, userData, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
