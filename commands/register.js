@@ -15,7 +15,8 @@ module.exports = {
                 points: 100,
                 incomeTime: newTime.getTime(),
                 income: 1,
-                begTime: 0
+                begTime: 0,
+                married: ""
             }
             userFish[userid] = {
                 name: userData[userid].name,
