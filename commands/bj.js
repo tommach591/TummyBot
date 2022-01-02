@@ -252,55 +252,6 @@ module.exports = {
 
                 message.channel.send({ embeds: [embedMsg] });
                 break;
-            case 'bet':
-                if (blackjack[userid]) {
-                    embedMsg.setTitle('Error!');
-                    embedMsg.setColor('FF0000');
-                    embedMsg.setDescription(userData[userid].name + " is already playing blackjack!");
-                    embedMsg.setFooter('Use !tp bj (hit, stand, double) and lose before starting another one!');
-                    message.channel.send({ embeds: [embedMsg] });
-                }
-                else {
-                    var bet = args[1];
-                    if (!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) {
-                        bet = Math.floor(bet);
-
-                        if (userData[userid].points < bet) {
-                            embedMsg.setTitle('Error!');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " is broke!");
-                            embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
-                            embedMsg.setFooter('Come back when you have money punk!');
-                            message.channel.send({ embeds: [embedMsg] });
-                        }
-                        else {
-                            userData[userid].points -= bet;
-                            var newDeck = buildDeck();
-                            blackjack[userid] = {
-                                name: message.author.username,
-                                id: userid,
-                                bet: bet,
-                                deck: newDeck,
-                                hand: [[], []],
-                                dealer: [],
-                                done: false,
-                                onHand: 0
-                            }
-                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
-                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
-                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
-                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
-
-                            if (countHand(blackjack[userid].hand[0]) == 21) {
-                                blackjack[userid].bet = Math.floor(blackjack[userid].bet * 1.5);
-                                blackjack[userid].done = true;
-                            }
-
-                            displayGame();
-                        }
-                    }
-                }
-                break;
             case 'hand':
                 if (!blackjack[userid]) {
                     embedMsg.setTitle('Error!');
@@ -441,12 +392,62 @@ module.exports = {
                     }
                 }
                 break;
+            case 'bet':
             default:
-                embedMsg.setTitle('Error!');
-                embedMsg.setColor('FF0000');
-                embedMsg.setDescription("Invalid bj command!");
-                embedMsg.setFooter('Use !tp bj help for list of blackjack commands!');
-                message.channel.send({ embeds: [embedMsg] });
+                if (blackjack[userid]) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription(userData[userid].name + " is already playing blackjack!");
+                    embedMsg.setFooter('Use !tp bj (hit, stand, double) and lose before starting another one!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    var bet = args[1];
+                    if (!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) {
+                        bet = Math.floor(bet);
+
+                        if (userData[userid].points < bet) {
+                            embedMsg.setTitle('Error!');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription(userData[userid].name + " is broke!");
+                            embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
+                            embedMsg.setFooter('Come back when you have money punk!');
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else {
+                            userData[userid].points -= bet;
+                            var newDeck = buildDeck();
+                            blackjack[userid] = {
+                                name: message.author.username,
+                                id: userid,
+                                bet: bet,
+                                deck: newDeck,
+                                hand: [[], []],
+                                dealer: [],
+                                done: false,
+                                onHand: 0
+                            }
+                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
+                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
+
+                            if (countHand(blackjack[userid].hand[0]) == 21) {
+                                blackjack[userid].bet = Math.floor(blackjack[userid].bet * 1.5);
+                                blackjack[userid].done = true;
+                            }
+
+                            displayGame();
+                        }
+                    }
+                    else {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription("Please enter a command or valid value!");
+                        embedMsg.setFooter('Use !tp bj help for commands!');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                }
                 break;
         }
     }
