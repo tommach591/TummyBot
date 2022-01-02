@@ -273,7 +273,13 @@ client.on('messageCreate', message => {
         );
     }
     catch (err) {
-        console.log("Oh no! " + err);
+        const embedMsg = new MessageEmbed();
+        embedMsg.setTitle('Error!');
+        embedMsg.setColor('FF0000');
+        embedMsg.setDescription('Oh no! Something went wrong with the bot!');
+        embedMsg.setFooter('Try not to use that same command again!');
+        message.channel.send({ embeds: [embedMsg] });
+        console.log(err);
     }
 
     /*

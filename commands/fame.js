@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'fame1',
+    name: 'fame',
     description: "Fame someone.",
 
     execute(message, args, userid, userData, client){
