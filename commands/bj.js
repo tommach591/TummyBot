@@ -434,7 +434,7 @@ module.exports = {
                                 dealer: [],
                                 done: false,
                                 onHand: 0,
-                                firstTurn = false
+                                firstTurn: false
                             }
                             blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
                             blackjack[userid].dealer.push(blackjack[userid].deck.pop());
