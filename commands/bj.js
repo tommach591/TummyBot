@@ -57,7 +57,7 @@ module.exports = {
                     return "Jack (10) ";
                 case 12:
                     return "Queen (10) ";
-                case 13:
+                case 0:
                     return "King (10) ";
             }
         }
