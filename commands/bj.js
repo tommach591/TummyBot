@@ -167,10 +167,10 @@ module.exports = {
                 }
                 else {
                     for (var i = 0; i < handValues.length; i++) {
-                        if (handValue[i] <= 21 && (dealerValue < handValue[i] || dealerValue > 21)) {
+                        if (handValues[i] <= 21 && (dealerValue < handValues[i] || dealerValue > 21)) {
                             reward += blackjack[userid].bet[i] * 2;
                         }
-                        else if (handValue[i] <= 21 && dealerValue == handValue[i]) {
+                        else if (handValues[i] <= 21 && dealerValue == handValues[i]) {
                             reward += blackjack[userid].bet[i];
                         }
                     }
