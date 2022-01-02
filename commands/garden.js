@@ -152,7 +152,7 @@ module.exports = {
                                 if (Number(firstEl) < Number(secondEl)) {
                                     return -1;
                                 }
-                                if (Number(firstEl) < Number(secondEl)) {
+                                if (Number(firstEl) > Number(secondEl)) {
                                     return 1;
                                 }
                                 return 0;
