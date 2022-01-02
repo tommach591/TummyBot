@@ -8,7 +8,7 @@ module.exports = {
 
         var keys = [];
         for (var k in userData) {
-            keys.push(k.userid);
+            keys.push(k);
         }
 
         console.log(keys);
