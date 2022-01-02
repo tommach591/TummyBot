@@ -34,6 +34,7 @@ module.exports = {
             message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
+                console.log(user.id + " " + userid);
                 return ['👍', '👎'].includes(reaction.emoji.name) && user.id == userid;
             };
 
