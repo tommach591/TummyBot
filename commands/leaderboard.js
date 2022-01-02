@@ -6,8 +6,6 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        console.log("HI");
-
         var keys = [];
         for (var k in userData) {
             keys.push(k);
