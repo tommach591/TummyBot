@@ -126,6 +126,7 @@ module.exports = {
                             embedMsg.setFooter('Next level: 100000 points');
                         }
                         message.channel.send({ embeds: [embedMsg] });
+                        break;
                     case 'Good Rod':
                         if (userData[userid].points < 100000) {
                             embedMsg.setTitle('Error!');
