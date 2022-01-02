@@ -131,6 +131,8 @@ module.exports = {
 
             var dealerField = "";
             var dealerValue = 0;
+            var reward = 0;
+            var outcome = "";
             if (!blackjack[userid].done) {
                 var card = getCard(dealer[0]);
                 var symbol = getSymbol(dealer[0]);
@@ -148,10 +150,46 @@ module.exports = {
             }
             else {
                 dealerValue = countHand(dealer);
+                while (dealerValue < 16) {
+                    blackjack[userid].dealer.push(blackjack[userid].deck.pop());
+                    dealerValue = countHand(dealer);
+                }
                 for (let i = 0; i < dealer.length; i++) {
                     var card = getCard(dealer[i]);
                     var symbol = getSymbol(dealer[i]);
                     dealerField += "⠀⠀" + card + symbol + "\n";
+                }
+
+                if (handOneValue <= 21 && dealerValue < handOneValue) {
+                    reward += blackjack[userid].bet * 2;
+                }
+                else if (handOneValue <= 21 && dealerValue == handOneValue) {
+                    reward += blackjack[userid].bet;
+                }
+
+                if (handtwo.length != 0) {
+                    if (handTwoValue <= 21 && dealerValue < handTwoValue) {
+                        reward += blackjack[userid].bet * 2;
+                    }
+                    else if (handTwoValue <= 21 && dealerValue == handTwoValue) {
+                        reward += blackjack[userid].bet;
+                    }
+                }
+
+                if (reward > blackjack[userid].bet) {
+                    embedMsg.setColor('00FF00');
+                    outcome = "You WON " + reward + " points!";
+                    embedMsg.setFooter("Net gain: " + (reward - blackjack[userid].bet) + " points");
+                }
+                else if (reward == blackjack[userid].bet) {
+                    embedMsg.setColor('FF0000');
+                    outcome = "You TIED for " + blackjack[userid].bet + " points!";
+                    embedMsg.setFooter("Net gain: 0 points");
+                }
+                else {
+                    embedMsg.setColor('FF0000');
+                    outcome = "You LOST " + blackjack[userid].bet + " points!";
+                    embedMsg.setFooter("Net gain: " + (reward - blackjack[userid].bet) + " points");
                 }
             }
             
@@ -165,7 +203,15 @@ module.exports = {
             }
             embedMsg.addField("**__Dealer - " + dealerValue + " __**", dealerField);
 
+            if (blackjack[userid].done) {
+                embedMsg.addField("**__Outcome__**", outcome);
+            }
+
             message.channel.send({ embeds: [embedMsg] });
+
+            if (blackjack[userid].done) {
+                delete blackjack[userid];
+            }
         }
 
         var command = args[0];
@@ -177,8 +223,8 @@ module.exports = {
                 bjCommands.set('hand', 'Displays current hand.');
                 bjCommands.set('hit', 'Hit.');
                 bjCommands.set('stand', 'Stand.');
-                bjCommands.set('double', 'Double.');
-                bjCommands.set('split', 'Split.');
+                bjCommands.set('double', 'Double the bet and hit once.');
+                bjCommands.set('split', 'Split if you have two matching values for starting hand.');
 
                 embedMsg.setTitle('List of BlackJack Commands');
                 embedMsg.setColor('FFF000');
@@ -201,7 +247,8 @@ module.exports = {
                     var bet = args[1];
                     if (!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) {
                         bet = Math.floor(bet);
-                        if (userData.bet < bet) {
+
+                        if (userData[userid].points < bet) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription(userData[userid].name + " is broke!");
@@ -210,6 +257,7 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
+                            userData[userid].points -= bet;
                             var newDeck = buildDeck();
                             blackjack[userid] = {
                                 name: message.author.username,
@@ -221,19 +269,10 @@ module.exports = {
                                 done: false,
                                 onHand: 0
                             }
-                            var value = 0;
-                            value = blackjack[userid].deck.pop();
-                            console.log(value)
-                            blackjack[userid].hand[0].push(value);
-                            value = blackjack[userid].deck.pop();
-                            console.log(value)
-                            blackjack[userid].dealer.push(value);
-                            value = blackjack[userid].deck.pop();
-                            console.log(value)
-                            blackjack[userid].hand[0].push(value);
-                            value = blackjack[userid].deck.pop();
-                            console.log(value)
-                            blackjack[userid].dealer.push(value);
+                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
+                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].dealer.push(blackjack[userid].deck.pop());
 
                             displayGame();
                         }
@@ -241,15 +280,132 @@ module.exports = {
                 }
                 break;
             case 'hand':
+                if (!blackjack[userid]) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription(userData[userid].name + " is not playing blackjack!");
+                    embedMsg.setFooter('Use !tp bj bet # to start!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    displayGame();
+                }
                 break;
             case 'hit':
+                if (!blackjack[userid]) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription(userData[userid].name + " is not playing blackjack!");
+                    embedMsg.setFooter('Use !tp bj bet # to start!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    var currentHand = blackjack[userid].onHand;
+                    blackjack[userid].hand[currentHand].push(blackjack[userid].deck.pop());
+                    if (countHand(blackjack[userid].hand[currentHand]) > 21) {
+                        if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
+                            blackjack[userid].onHand = 1;
+                        }
+                        else {
+                            blackjack[userid].done = true;
+                        }
+                    }
+                    displayGame();
+                }
                 break;
             case 'stand':
-                delete blackjack[userid];
+                if (!blackjack[userid]) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription(userData[userid].name + " is not playing blackjack!");
+                    embedMsg.setFooter('Use !tp bj bet # to start!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    var currentHand = blackjack[userid].onHand;
+                    if (countHand(blackjack[userid].hand[currentHand]) > 21) {
+                        if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
+                            blackjack[userid].onHand = 1;
+                        }
+                        else {
+                            blackjack[userid].done = true;
+                        }
+                    }
+                    displayGame();
+                }
                 break;
             case 'double':
+                if (!blackjack[userid]) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription(userData[userid].name + " is not playing blackjack!");
+                    embedMsg.setFooter('Use !tp bj bet # to start!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    var bet = blackjack[userid].bet;
+
+                    if (userData[userid].points < bet) {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription(userData[userid].name + " is broke!");
+                        embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
+                        embedMsg.setFooter('Come back when you have money punk!');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else {
+                        userData[userid].points -= bet;
+                        blackjack[userid].bet += bet;
+
+                        var currentHand = blackjack[userid].onHand;
+                        blackjack[userid].hand[currentHand].push(blackjack[userid].deck.pop());
+                        if (currentHand != 1 && blackjack[userid].hand[1].length != 0) {
+                            blackjack[userid].onHand = 1;
+                        }
+                        else {
+                            blackjack[userid].done = true;
+                        }
+                        displayGame();
+                    }
+                }
                 break;
             case 'split':
+                if (!blackjack[userid]) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription(userData[userid].name + " is not playing blackjack!");
+                    embedMsg.setFooter('Use !tp bj bet # to start!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    if (blackjack[userid].onHand == 1 && blackjack[userid].hand[0].length == 2 && Math.floor(blackjack[userid].hand[0][0]) == Math.floor(blackjack[userid].hand[0][1])) {
+                        var bet = blackjack[userid].bet;
+                        if (userData[userid].points < bet) {
+                            embedMsg.setTitle('Error!');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription(userData[userid].name + " is broke!");
+                            embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
+                            embedMsg.setFooter('Come back when you have money punk!');
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else {
+                            userData[userid].points -= bet;
+                            blackjack[userid].bet += bet;
+                            
+                            blackjack[userid].hand[1].push(blackjack[userid].hand[0]);
+                            blackjack[userid].hand[0].push(blackjack[userid].deck.pop());
+                            blackjack[userid].hand[1].push(blackjack[userid].deck.pop());
+                            displayGame();
+                        }
+                    }
+                    else {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription("You cannot split unless you have two matching values!");
+                        embedMsg.setFooter('Use !tp bj help for list of blackjack commands!');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                }
                 break;
             default:
                 embedMsg.setTitle('Error!');
