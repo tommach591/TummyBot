@@ -368,7 +368,7 @@ module.exports = {
                         embedMsg.setFooter('Come back when you have money punk!');
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else {
+                    else if (blackjack[userid].hand[blackjack[userid].onHand].length == 2) {
                         userData[userid].points -= bet;
                         blackjack[userid].bet += bet;
 
@@ -381,6 +381,13 @@ module.exports = {
                             blackjack[userid].done = true;
                         }
                         displayGame();
+                    }
+                    else {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription("It is too late to double!");
+                        embedMsg.setFooter('You can only double with your starting hand!');
+                        message.channel.send({ embeds: [embedMsg] });
                     }
                 }
                 break;
