@@ -2,7 +2,7 @@ module.exports = {
     name: 'fish',
     description: "Fish for hot waifus.",
 
-    execute(message, args, userid, userData, userFish, fishdex, client, fs) {
+    execute(message, args, userid, userData, userFish, fishdex, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -74,7 +74,7 @@ module.exports = {
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + amount + " point(s)!");
+                            embedMsg.setDescription(userData[userid].name + " does not have " + (amount * cost) + " point(s)!");
                             embedMsg.setFooter("Bait costs " + cost + " points each!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
@@ -207,8 +207,9 @@ module.exports = {
                         if (fishCaught == "-1") {
                             tierfive = ["1", "24"];
                             for (let i = 0; i < fishingPower; i++) {
-                                var luck = Math.floor(Math.random() * 100001);
-                                if (luck >= 99990) {
+                                var luck = Math.floor((Math.random() * 100000) + 1);
+                                var chance = 100000 * 0.0001;
+                                if (luck <= chance) {
                                     embedMsg.setTitle('OMG (OH MY GOD)!');
                                     fishCaught = fishdex[tierfive[Math.floor(Math.random() * tierfive.length)]];
                                     break;
@@ -218,8 +219,9 @@ module.exports = {
                         if (fishCaught == "-1") {
                             tierfour = ["2","15", "25"];
                             for (let i = 0; i < fishingPower; i++) {
-                                var luck = Math.floor(Math.random() * 100001);
-                                if (luck > 99900) {
+                                var luck = Math.floor((Math.random() * 100000) + 1);
+                                var chance = 100000 * 0.001;
+                                if (luck <= chance) {
                                     embedMsg.setTitle('POG!');
                                     fishCaught = fishdex[tierfour[Math.floor(Math.random() * tierfour.length)]];
                                     break;
@@ -229,8 +231,9 @@ module.exports = {
                         if (fishCaught == "-1") {
                             tierthree = ["11", "12", "14", "17", "22", "23", "34", "35", "36", "37", "38", "39", "40", "45"];
                             for (let i = 0; i < fishingPower; i++) {
-                                var luck = Math.floor(Math.random() * 100001);
-                                if (luck > 97000) {
+                                var luck = Math.floor((Math.random() * 100000) + 1);
+                                var chance = 100000 * 0.03;
+                                if (luck <= chance) {
                                     embedMsg.setTitle('WOAH!');
                                     fishCaught = fishdex[tierthree[Math.floor(Math.random() * tierthree.length)]];
                                     break;
@@ -240,8 +243,9 @@ module.exports = {
                         if (fishCaught == "-1") {
                             tiertwo = ["8", "9", "10", "13", "18", "30", "31", "32", "33", "41", "42", "43", "44"];
                             for (let i = 0; i < fishingPower; i++) {
-                                var luck = Math.floor(Math.random() * 100001);
-                                if (luck > 70000) {
+                                var luck = Math.floor((Math.random() * 100000) + 1);
+                                var chance = 100000 * 0.3;
+                                if (luck <= chance) {
                                     embedMsg.setTitle('Wow!');
                                     fishCaught = fishdex[tiertwo[Math.floor(Math.random() * tiertwo.length)]];
                                     break;

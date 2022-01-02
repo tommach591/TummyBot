@@ -2,7 +2,7 @@ module.exports = {
     name: 'bj',
     description: "Blackjack to lose all your money.",
 
-    execute(message, args, userid, userData, blackjack, client, fs) {
+    execute(message, args, userid, userData, blackjack, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -183,7 +183,7 @@ module.exports = {
                 }
                 else if (reward == totalBet) {
                     embedMsg.setColor('FFB000');
-                    outcome = "You TIED for " + totalBet + " points!";
+                    outcome = "You PUSH for " + totalBet + " points!";
                     embedMsg.setFooter("Net gain: 0 points");
                 }
                 else {

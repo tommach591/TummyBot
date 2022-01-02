@@ -2,7 +2,7 @@ module.exports = {
     name: 'garden',
     description: "Garden for hot waifus.",
 
-    execute(message, args, userid, userData, userGarden, gardendex, client, fs) {
+    execute(message, args, userid, userData, userGarden, gardendex, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
