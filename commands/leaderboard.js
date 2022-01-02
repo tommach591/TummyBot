@@ -25,11 +25,9 @@ module.exports = {
 
         var names = "";
         var points = "";
-        for (var k in keys) {
-            if (userData[k]) {
-                names += userData[k].name + "\n";
-                points += userData[k].points + "\n";
-            }
+        for (var i = 0; i < keys.length; i++) {
+            names += userData[keys[i]].name + "\n";
+            points += userData[keys[i]].points + "\n";
         }
         embedMsg.setTitle("**__The Leaderboard__**");
         embedMsg.setFields(
