@@ -113,6 +113,8 @@ module.exports = {
 
             const reducer = (previousValue, currentValue) => previousValue + currentValue;
             var totalBet = blackjack[userid].bet.reduce(reducer)
+            
+            embedMsg.setTitle('Blackjack - Bet ' + totalBet + ' points');
 
             for (let i = 0; i < blackjack[userid].hand.length; i++) {
                 var hand = blackjack[userid].hand[i];
@@ -192,8 +194,6 @@ module.exports = {
 
                 userData[userid].points += reward;
             }
-            
-            embedMsg.setTitle('Blackjack - Bet ' + totalBet + ' points');
 
             for (var i = 0; i < blackjack[userid].hand.length; i++) {
                 if (i == blackjack[userid].index && !blackjack[userid].done && blackjack[userid].hand.length != 1) {
