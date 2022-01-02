@@ -191,6 +191,8 @@ module.exports = {
                     outcome = "You LOST " + blackjack[userid].bet + " points!";
                     embedMsg.setFooter("Net gain: " + (reward - blackjack[userid].bet) + " points");
                 }
+
+                userData[userid].points += reward;
             }
             
             embedMsg.setTitle('Blackjack - Bet ' + blackjack[userid].bet + ' points');
