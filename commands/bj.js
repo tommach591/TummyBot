@@ -161,7 +161,7 @@ module.exports = {
                 }
 
 
-                if (firstTurn && handOneValue == 21) {
+                if (blackjack[userid].firstTurn && handOneValue == 21) {
                     reward += Math.floor(blackjack[userid].bet * 1.5);
                 }
                 else if (handOneValue <= 21 && (dealerValue < handOneValue || dealerValue > 21)) {
