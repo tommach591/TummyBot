@@ -29,14 +29,12 @@ module.exports = {
                 fishdex: [],
                 fishInventory: []
             }
-            if (!userGarden[userid]) {
-                userGarden[userid] = {
-                    id: userid,
-                    name: userData[userid].name,
-                    pots: ["0", "-1", "-1"],
-                    potTime: [0, 0, 0],
-                    gardendex: []
-                }
+            userGarden[userid] = {
+                id: userid,
+                name: userData[userid].name,
+                pots: ["0", "-1", "-1"],
+                potTime: [0, 0, 0],
+                gardendex: []
             }
 
             embedMsg.setTitle('Welcome!');
