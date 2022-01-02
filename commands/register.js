@@ -16,6 +16,8 @@ module.exports = {
                 incomeTime: newTime.getTime(),
                 income: 1,
                 begTime: 0,
+                fame: 0,
+                fameTime: 0,
                 married: ""
             }
             userFish[userid] = {

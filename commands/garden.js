@@ -6,6 +6,7 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
         
+        /*
         if (!userGarden[userid]) {
             userGarden[userid] = {
                 id: userid,
@@ -15,6 +16,7 @@ module.exports = {
                 gardendex: []
             }
         }
+        */
 
         var command = args[0];
         switch(command) {

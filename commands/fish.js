@@ -6,7 +6,7 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        // Delete when wipe!
+        /*
         if (!userFish[userid]) {
             userFish[userid] = {
                 id: userid,
@@ -18,6 +18,7 @@ module.exports = {
                 fishInventory: []
             }
         }
+        */
 
         var command = args[0];
         switch(command) {

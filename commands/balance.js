@@ -29,6 +29,7 @@ module.exports = {
                 embedMsg.setFields(
                     {name: "__Points:__  :moneybag:", value: "" + userData[mention].points + "⠀⠀⠀⠀⠀⠀⠀\n", inline: true},
                     {name: "__Income:__  :money_with_wings:", value: "" + userData[mention].income + "⠀⠀⠀⠀⠀⠀⠀\n", inline: true},
+                    {name: "__Fame:__  :sparkles:", value: "" + userData[mention].fame + "⠀⠀⠀⠀⠀⠀⠀\n", inline: true},
                     {name: "__Fishdex Entries:__  :fishing_pole_and_fish:", value: "" + userFish[mention].fishdex.length + "\n", inline: false},
                     {name: "__Gardendex Entries:__  :sunflower:", value: "" + userGarden[mention].gardendex.length + "\n", inline: false}
                 );
@@ -58,6 +59,7 @@ module.exports = {
             embedMsg.setFields(
                 {name: "__Points:__  :moneybag:", value: "" + userData[userid].points + "⠀⠀⠀⠀⠀⠀⠀\n", inline: true},
                 {name: "__Income:__  :money_with_wings:", value: "" + userData[userid].income + "⠀⠀⠀⠀⠀⠀⠀\n", inline: true},
+                {name: "__Fame:__  :sparkles:", value: "" + userData[userid].fame + "⠀⠀⠀⠀⠀⠀⠀\n", inline: true},
                 {name: "__Fishdex Entries:__  :fishing_pole_and_fish:", value: "" + userFish[userid].fishdex.length + "\n", inline: false},
                 {name: "__Gardendex Entries:__  :sunflower:", value: "" + userGarden[userid].gardendex.length + "\n", inline: false}
             );
