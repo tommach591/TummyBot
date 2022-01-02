@@ -196,10 +196,10 @@ module.exports = {
 
             for (var i = 0; i < blackjack[userid].hand.length; i++) {
                 if (i == blackjack[userid].index && !blackjack[userid].done && blackjack[userid].hand.length != 1) {
-                    embedMsg.addField("**__:point_right: Hand " + (i + 1) + " - " + handValues[i] + " __**", handFields[i], true);
+                    embedMsg.addField("**__Hand (" + (i + 1) + ") - " + handValues[i] + " :point_left:__**", handFields[i], true);
                 }
                 else {
-                    embedMsg.addField("**__Hand " + (i + 1) + " - " + handValues[i] + " __**", handFields[i], true);
+                    embedMsg.addField("**__Hand (" + (i + 1) + ") - " + handValues[i] + " __**", handFields[i], true);
                 }
             }
 
