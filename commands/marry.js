@@ -31,16 +31,16 @@ module.exports = {
             }
             const target = client.users.cache.get(mention);
 
-            message.react(':thumbsup:').then(() => message.react(':thumbsdown:'));
+            message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
-                return [':thumbsup:', ':thumbsdown:'].includes(reaction.emoji.name) && user.id === message.author.id;
+                return ['👍', '👎'].includes(reaction.emoji.name);
             };
 
             message.awaitReactions({ filter, max: 1, time: (1000 * 10), errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
-                    if (reaction.emoji.name == ':thumbsup:') {
+                    if (reaction.emoji.name == '👍') {
                         message.reply('You reacted with a thumbs up.');
                     } else {
                         message.reply('You reacted with a thumbs down.');
