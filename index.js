@@ -256,6 +256,7 @@ client.on('messageCreate', message => {
         }
     }
     catch (err) {
+        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
         const embedMsg = new MessageEmbed();
         embedMsg.setTitle('Error!');
         embedMsg.setColor('FF0000');
@@ -264,10 +265,6 @@ client.on('messageCreate', message => {
         message.channel.send({ embeds: [embedMsg] });
         console.log(err);
     }
-    finally {
-        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
-    }
-
     /*
     fs.writeFile('storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
         if (err) console.error(err);
