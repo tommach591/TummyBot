@@ -31,15 +31,14 @@ module.exports = {
             }
             const target = client.users.cache.get(mention);
 
-            message.react('👍').then(() => message.react('👎'));
-
             const filter = (reaction, user) => {
                 console.log(user.id);
                 console.log(message.author.id);
                 return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
 
-            message.awaitReactions({ filter, max: 1, time: (1000 * 10), errors: ['time'] })
+            message.react('👍').then(() => message.react('👎')).then(
+                message.awaitReactions({ filter, max: 1, time: (1000 * 10), errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
                     if (reaction.emoji.name == '👍') {
@@ -50,7 +49,8 @@ module.exports = {
                 })
                 .catch(collected => {
                     message.reply('You reacted with neither a thumbs up, nor a thumbs down.');
-                });
+                })
+            );
         }
         else {
             embedMsg.setTitle('Error!');
