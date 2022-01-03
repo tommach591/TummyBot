@@ -2,7 +2,7 @@ module.exports = {
     name: 'save',
     description: "Save files.",
 
-    execute(message, userData, userFish, userGarden, s3, userDataParams, userFishParams, userGardenParams) {
+    execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
