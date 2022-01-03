@@ -36,7 +36,7 @@ module.exports = {
             embedMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
 
             let proposal;
-            message.channel.send({ embeds: [embedMsg] }).then(sent => { proposal = sent.id} );
+            message.channel.send({ embeds: [embedMsg] }).then(sent => { proposal = sent} );
 
             proposal.react('👍').then(() => proposal.react('👎'));
 
