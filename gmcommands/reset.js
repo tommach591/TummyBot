@@ -32,8 +32,11 @@ module.exports = {
                 }
                 var username = userData[mention].name;
 
-                delete userFish[mention];
-                delete userGarden[mention];
+                if (userFish[mention])
+                    delete userFish[mention];
+                if (userGarden[mention])
+                    delete userGarden[mention];
+                    
                 delete userData[mention];
                 
                 embedMsg.setTitle('Success!');

@@ -592,22 +592,55 @@ module.exports = {
                     }
                 }
                 else {
-                    var fishes = "";
+                    var fishes = [];
+                    var index = 0;
+                    var count = 0;
                     var keys = [];
                     for (var k in fishdex) {
                         keys.push(k);
                     }
                     for (let i = 1; i < keys.length + 1; i++) {
+                        if (count >= 20) {
+                            index++;
+                            count = 0;
+                        }
                         if (userFish[userid].fishdex.includes(i.toString())) {
-                            fishes += "#" + fishdex[i].id + ". " + fishdex[i].name + "\n";
+                            fishes[index] += "#" + fishdex[i].id + ". " + fishdex[i].name + "\n";
                         }
                         else {
-                            fishes += "#" + fishdex[i].id + ". ???\n";
+                            fishes[index] += "#" + fishdex[i].id + ". ???\n";
                         }
+                        count++;
                     }
-                    embedMsg.setDescription("```" + fishes + "```");
+                    index = 0;
+                    embedMsg.setDescription("```" + fishes[index] + "```");
                 }
-                message.channel.send({ embeds: [embedMsg] });
+                let messageSent;
+                message.channel.send({ embeds: [embedMsg] }).then(
+                    sent => { messageSent = sent } 
+                ).then(
+                    () => {
+                        messageSent.react('◀️').then(() => messageSent.react('▶️'));
+                        const filter = (reaction, user) => {
+                            return ['◀️', '▶️'].includes(reaction.emoji.name) && user.id === userid;
+                        };
+                        messageSent.awaitReactions({ filter })
+                        .then(
+                            collected => {
+                            const reaction = collected.first();
+                            if (reaction.emoji.name === '◀️' && index > 0) {
+                                index--;
+                                embedMsg.setDescription("```" + fishes[index] + "```");
+                                messageSent.edit({ embeds: [embedMsg] });
+                            } 
+                            else if (reaction.emoji.name === '▶️' && index < (fishes.length - 1)) {
+                                index++;
+                                embedMsg.setDescription("```" + fishes[index] + "```");
+                                messageSent.edit({ embeds: [embedMsg] });
+                            }
+                        });
+                    }
+                );
                 break;
             default:
                 embedMsg.setTitle('Error!');
