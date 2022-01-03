@@ -183,6 +183,10 @@ client.on('messageCreate', message => {
                 if (userData[sender.id])
                     client.commands.get('marry').execute(message, args, sender.id, userData, client);
                 break;
+            case 'divorce':
+                if (userData[sender.id])
+                    client.commands.get('divorce').execute(message, args, sender.id, userData, client);
+                break;
             case 'scratch':
                 if (userData[sender.id])
                     client.commands.get('scratch').execute(message, args, sender.id, userData, client);

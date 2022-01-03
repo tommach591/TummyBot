@@ -31,51 +31,67 @@ module.exports = {
             }
             const target = client.users.cache.get(mention);
 
-            const proposalMsg = new MessageEmbed();
-            proposalMsg.setTitle('Marriage Proposal!');
-            proposalMsg.setColor('FF80AB');
-            proposalMsg.setThumbnail("https://c.tenor.com/XyTOSR4H93wAAAAC/rosycheeks-mochi-peach.gif");
-            proposalMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
+            if (userData[userid].married != "") {
+                embedMsg.setTitle('Error!');
+                embedMsg.setColor('FF0000');
+                embedMsg.setFooter("Wow you're horrible...");
+                embedMsg.setDescription(userData[userid].name + " is already married!");
+                message.channel.send({ embeds: [embedMsg] });
+            }
+            else if (userData[mention].married != "") {
+                embedMsg.setTitle('Error!');
+                embedMsg.setColor('FF0000');
+                embedMsg.setFooter("Try getting them to divorce!");
+                embedMsg.setDescription(userData[mention].name + " is already married!");
+                message.channel.send({ embeds: [embedMsg] });
+            }
+            else {
 
-            
-            let proposal; 
-            message.channel.send({ embeds: [proposalMsg] }).then(
-                sent => { proposal = sent } 
-            ).then(
-                () => {
-                    proposal.react('👍').then(() => proposal.react('👎'));
-                    const filter = (reaction, user) => {
-                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === mention;
-                    };
-                    proposal.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
-                    .then(collected => {
-                        const reaction = collected.first();
-                        if (reaction.emoji.name === '👍') {
-                            userData[userid].married = mention;
-                            userData[mention].married = userid;
-                            embedMsg.setTitle('Congratulations!');
-                            embedMsg.setColor('FF80AB');
-                            embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
-                            embedMsg.setDescription(userData[userid].name + " and " + userData[mention].name + " are now married!");
-                            message.channel.send({ embeds: [embedMsg] });
-                        } else {
+                const proposalMsg = new MessageEmbed();
+                proposalMsg.setTitle('Marriage Proposal!');
+                proposalMsg.setColor('FF80AB');
+                proposalMsg.setThumbnail("https://c.tenor.com/XyTOSR4H93wAAAAC/rosycheeks-mochi-peach.gif");
+                proposalMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
+
+                
+                let proposal; 
+                message.channel.send({ embeds: [proposalMsg] }).then(
+                    sent => { proposal = sent } 
+                ).then(
+                    () => {
+                        proposal.react('👍').then(() => proposal.react('👎'));
+                        const filter = (reaction, user) => {
+                            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === mention;
+                        };
+                        proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                        .then(collected => {
+                            const reaction = collected.first();
+                            if (reaction.emoji.name === '👍') {
+                                userData[userid].married = mention;
+                                userData[mention].married = userid;
+                                embedMsg.setTitle('Congratulations!');
+                                embedMsg.setColor('FF80AB');
+                                embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
+                                embedMsg.setDescription(userData[userid].name + " and " + userData[mention].name + " are now married!");
+                                message.channel.send({ embeds: [embedMsg] });
+                            } else {
+                                embedMsg.setTitle('HAHA!');
+                                embedMsg.setColor('FF0000');
+                                embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
+                                embedMsg.setDescription(userData[mention].name + " rejected you!");
+                                message.channel.send({ embeds: [embedMsg] });
+                            }
+                        })
+                        .catch(collected => {
                             embedMsg.setTitle('HAHA!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
-                            embedMsg.setDescription(userData[mention].name + " rejected you!");
+                            embedMsg.setDescription(userData[mention].name + " ignored you!");
                             message.channel.send({ embeds: [embedMsg] });
-                        }
-                    })
-                    .catch(collected => {
-                        embedMsg.setTitle('HAHA!');
-                        embedMsg.setColor('FF0000');
-                        embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
-                        embedMsg.setDescription(userData[mention].name + " ignored you!");
-                        message.channel.send({ embeds: [embedMsg] });
-                    });
-                }
-            )
-
+                        });
+                    }
+                )
+            }
         }
         else {
             embedMsg.setTitle('Error!');
