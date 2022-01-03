@@ -387,7 +387,7 @@ module.exports = {
                         }
                     });
                     embedMsg.setDescription(fishes);
-                    embedMsg.setFooter("Value: " + cost);
+                    embedMsg.setFooter("Total Value: " + cost + " points");
                 }
                 message.channel.send({ embeds: [embedMsg] });
                 break;

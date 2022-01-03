@@ -29,6 +29,7 @@ for (const file of gmCommandFiles) {
 }
 
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+var savefile = JSON.parse(fs.readFileSync('storage/savefile.json', 'utf8'));
 var blackjack = JSON.parse(fs.readFileSync('storage/blackjack.json', 'utf8'));
 var fishdex = JSON.parse(fs.readFileSync('storage/fishdex.json', 'utf8'));
 var gardendex = JSON.parse(fs.readFileSync('storage/gardendex.json', 'utf8'));
@@ -171,6 +172,7 @@ client.on('messageCreate', message => {
             case 'b':
             case 'bal':
             case 'info':
+            case 'profile':
             case 'balance':
                 if (userData[sender.id])
                     client.commands.get('balance').execute(message, args, sender.id, userData, userFish, userGarden, client);
@@ -279,6 +281,15 @@ client.on('messageCreate', message => {
         message.channel.send({ embeds: [embedMsg] });
         console.log(err);
     }
+
+    if (!savefile.lastSave) {
+        savefile.lastSave = newTime.getTime();
+    }
+    else if (newTime.getTime() - savefile.lastSave >= (1000 * 60 * 60)) {
+        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
+        savefile["0"].lastSave = newTime.getTime();
+    }
+
     /*
     fs.writeFile('storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
         if (err) console.error(err);
