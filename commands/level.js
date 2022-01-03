@@ -255,6 +255,7 @@ module.exports = {
                 embedMsg.setDescription(userData[userid].name + " you are already maxed level!");
                 embedMsg.setThumbnail('https://media2.giphy.com/media/xT9IgC2RzpbE7vBZ6M/giphy.gif');
                 embedMsg.setFooter('Next level: Infinite points');
+                message.channel.send({ embeds: [embedMsg] });
                 break;
         }
     }

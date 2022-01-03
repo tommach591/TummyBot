@@ -32,9 +32,9 @@ module.exports = {
                 }
                 var username = userData[mention].name;
 
-                delete userData[mention];
                 delete userFish[mention];
                 delete userGarden[mention];
+                delete userData[mention];
                 
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
