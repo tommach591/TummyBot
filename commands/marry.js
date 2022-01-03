@@ -32,7 +32,7 @@ module.exports = {
             const target = client.users.cache.get(mention);
 
             const filter = (reaction, user) => {
-                return user.id === message.author.id;
+                return ['👍', '👎'].includes(reaction.emoji.name);
             };
 
             message.react('👍').then(() => message.react('👎'));
