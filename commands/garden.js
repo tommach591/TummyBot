@@ -169,7 +169,7 @@ module.exports = {
                         for (let i = 0; i < newPlant.length; i++) {
                             const newPlantMsg = new MessageEmbed();
                             newPlantMsg.setTitle("**New Plant #" + newPlant[i] + "**");
-                            newPlantMsg.setDescription("Omg (oh my god) is that a " + gardendex[newPlant[i]].name + "!?");
+                            newPlantMsg.setDescription("Omg (oh my god) is that a " + gardendex[newPlant[i]].name + "!?\n\n **Gardendex Entry** \n" + gardendex[newPlant[i]].info);
                             newPlantMsg.setThumbnail(gardendex[newPlant[i]].image);
                             newPlantMsg.setFooter("New plant added to the Gardendex!");
                             message.channel.send({ embeds: [newPlantMsg] });

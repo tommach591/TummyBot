@@ -282,7 +282,7 @@ module.exports = {
                                 }
                                 return 0;
                             });
-                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n\n" + fishCaught.info);
+                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n\n **Fishdex Entry**\n" + fishCaught.info);
                             embedMsg.setFooter("Value: " + fishCaught.value + " points (New!)");
                         }
                         else {
