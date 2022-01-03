@@ -41,7 +41,6 @@ module.exports = {
             message.channel.send({ embeds: [embedMsg] }).then(
                 sent => { 
                     proposal = sent;
-                    setTimeout(() => sent.delete(), 60500) 
                 }
             ).then(
                 () => {
