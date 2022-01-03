@@ -6,6 +6,13 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
+        var sixstar = ["1", "24"];
+        var fivestar = ["2","15", "25", "68", "69"];
+        var fourstar = ["51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67"];
+        var threestar = ["11", "12", "14", "17", "22", "23", "34", "35", "36", "37", "38", "39", "40", "45"];
+        var twostar = ["8", "9", "10", "13", "18", "30", "31", "32", "33", "41", "42", "43", "44"];
+        var onestar = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29", "46", "47", "48", "49", "50"];
+
         var command = args[0];
         switch(command) {
             case 'help':
@@ -63,13 +70,53 @@ module.exports = {
                     var cost = 5;
                     if (!isNaN(amount)) {
                         if (userData[userid].points >= amount * cost && amount > 0) {
-                            userData[userid].points -= amount * cost;
-                            userFish[userid].fishBait += amount;
-                            embedMsg.setTitle('Success!');
-                            embedMsg.setColor('00FF00');
-                            embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                            embedMsg.setDescription(userData[userid].name + " buys " + amount + " fish bait for " + amount * cost + " points!");
-                            message.channel.send({ embeds: [embedMsg] });
+
+                            const proposalMsg = new MessageEmbed();
+                            proposalMsg.setTitle('Buying Bait!');
+                            proposalMsg.setColor('FFF000');
+                            proposalMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
+                            proposalMsg.setDescription("Would " + userData[userid].name + " like to buy " + amount + " fish bait for " + (amount * cost) + " points?");
+                            proposalMsg.setFooter("Bait costs " + cost + " points each!");
+
+                            let proposal; 
+                            message.channel.send({ embeds: [proposalMsg] }).then(
+                                sent => { proposal = sent } 
+                            ).then(
+                                () => {
+                                    proposal.react('👍').then(() => proposal.react('👎'));
+                                    const filter = (reaction, user) => {
+                                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                    };
+                                    proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                    .then(
+                                        collected => {
+                                        const reaction = collected.first();
+                                        if (reaction.emoji.name === '👍') {
+                                            userData[userid].points -= amount * cost;
+                                            userFish[userid].fishBait += amount;
+                                            embedMsg.setTitle('Success!');
+                                            embedMsg.setColor('00FF00');
+                                            embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
+                                            embedMsg.setDescription(userData[userid].name + " buys " + amount + " fish bait for " + amount * cost + " points!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        } 
+                                        else {
+                                            embedMsg.setTitle('Success!');
+                                            embedMsg.setColor('00FF00');
+                                            embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
+                                            embedMsg.setDescription(userData[userid].name + " declined!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        }
+                                    })
+                                    .catch(collected => {
+                                        embedMsg.setTitle('Fail!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
+                                        embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    });
+                                }
+                            );
                         }
                         else {
                             embedMsg.setTitle('Error!');
@@ -206,7 +253,6 @@ module.exports = {
 
                         var fishCaught = "-1";
                         if (fishCaught == "-1") {
-                            sixstar = ["1", "24"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.0001;
@@ -218,7 +264,6 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            fivestar = ["2","15", "25", "68", "69"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.001;
@@ -230,7 +275,6 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            fourstar = ["51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.01;
@@ -242,7 +286,6 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            threestar = ["11", "12", "14", "17", "22", "23", "34", "35", "36", "37", "38", "39", "40", "45"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.03;
@@ -254,7 +297,6 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            twostar = ["8", "9", "10", "13", "18", "30", "31", "32", "33", "41", "42", "43", "44"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.3;
@@ -266,7 +308,6 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            onestar = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29", "46", "47", "48", "49", "50"];
                             embedMsg.setTitle('Yay! (★)');
                             fishCaught = fishdex[onestar[Math.floor(Math.random() * onestar.length)]];
                         }
@@ -402,7 +443,23 @@ module.exports = {
                 if (args.length > 1) {
                     var selected = args[1];
                     if (!isNaN(Number(selected)) && fishdex[selected] && userFish[userid].fishdex.includes(selected)) {
-                        embedMsg.setDescription("#" + fishdex[selected].id + ". " + fishdex[selected].name + "\n");
+                        var stars = " (★)";
+                        if (sixstar.includes(fishdex[selected].id)) {
+                            stars = " (★★★★★★)";
+                        }
+                        else if (fivestar.includes(fishdex[selected].id)) {
+                            stars = " (★★★★★)";
+                        }
+                        else if (fourstar.includes(fishdex[selected].id)) {
+                            stars = " (★★★★)";
+                        }
+                        else if (threestar.includes(fishdex[selected].id)) {
+                            stars = " (★★★)";
+                        }
+                        else if (twostar.includes(fishdex[selected].id)) {
+                            stars = " (★★)";
+                        }
+                        embedMsg.setDescription("#" + fishdex[selected].id + ". " + fishdex[selected].name + stars + "\n");
                         embedMsg.setThumbnail(fishdex[selected].image);
                         embedMsg.addField('Fishdex Entry', "" + fishdex[selected].info);
                         embedMsg.addField('Value', "" + fishdex[selected].value);

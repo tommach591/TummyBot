@@ -71,7 +71,8 @@ module.exports = {
                             return ['👍', '👎'].includes(reaction.emoji.name) && user.id === mention;
                         };
                         proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
-                        .then(collected => {
+                        .then(
+                            collected => {
                             const reaction = collected.first();
                             if (reaction.emoji.name === '👍') {
                                 userData[userid].married = mention;
@@ -97,7 +98,7 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         });
                     }
-                )
+                );
             }
         }
         else {
