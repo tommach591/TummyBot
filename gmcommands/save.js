@@ -41,7 +41,7 @@ module.exports = {
         );
 
         embedMsg.setTitle('Saved!');
-        embedMsg.setColor('FF0000');
+        embedMsg.setColor('FFF000');
         embedMsg.setDescription('Files have been saved!');
         message.channel.send({ embeds: [embedMsg] });
     }

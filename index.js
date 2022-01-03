@@ -122,13 +122,22 @@ client.on('messageCreate', message => {
 
     try {
         if (userData == "") {
-            userData = JSON.parse(x);
+            if (x)
+                userData = JSON.parse(x);
+            else
+                return;
         }
         if (userFish == "") {
-            userFish = JSON.parse(y);
+            if (y)
+                userFish = JSON.parse(y);
+            else
+                return;
         }
         if (userGarden == "") {
-            userGarden = JSON.parse(z);
+            if (z)
+                userGarden = JSON.parse(z);
+            else
+                return;
         }
 
         if (!message.content.startsWith(prefix) || message.author.bot || userData == "" || userFish == "" || userGarden == "") {
@@ -253,8 +262,10 @@ client.on('messageCreate', message => {
         embedMsg.setDescription('Oh no! Something went wrong with the bot!');
         embedMsg.setFooter('Try not to use that same command again!');
         message.channel.send({ embeds: [embedMsg] });
-        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
         console.log(err);
+    }
+    finally {
+        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
     }
 
     /*
