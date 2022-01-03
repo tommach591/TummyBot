@@ -34,7 +34,7 @@ module.exports = {
             message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
-                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === interaction.user.id;
+                return ['👍', '👎'].includes(reaction.emoji.name) && userid === interaction.user.id;
             };
 
             message.awaitReactions({ filter, max: 1, time: (1000 * 10), errors: ['time'] })
@@ -47,8 +47,6 @@ module.exports = {
                     }
                 })
                 .catch(collected => {
-                    console.log(user.id);
-                    console.log(interaction.user.id);
                     message.reply('You reacted with neither a thumbs up, nor a thumbs down.');
                 });
         }
