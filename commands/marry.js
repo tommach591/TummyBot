@@ -40,7 +40,7 @@ module.exports = {
             let proposal; 
             message.channel.send({ embeds: [embedMsg] }).then(
                 sent => { 
-                    proposal = sent;
+                    proposal = sent; 
                 }
             ).then(
                 () => {
