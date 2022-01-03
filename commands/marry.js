@@ -31,24 +31,31 @@ module.exports = {
             }
             const target = client.users.cache.get(mention);
 
-            message.react('👍').then(() => message.react('👎'));
+            embedMsg.setTitle('Marriage Proposal!');
+            embedMsg.setColor('FFAAAA');
+            embedMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
+
+            let proposal;
+            message.channel.send({ embeds: [embedMsg] }).then(sent => { proposal = sent.id} );
+
+            proposal.react('👍').then(() => proposal.react('👎'));
 
             const filter = (reaction, user) => {
                 return ['👍', '👎'].includes(reaction.emoji.name) && user.id === mention;
             };
             
-            message.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
+            proposal.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
             
                     if (reaction.emoji.name === '👍') {
-                        message.reply('You are now married! (not really didnt code it yet)');
+                        proposal.reply('You are now married! (not really didnt code it yet)');
                     } else {
-                        message.reply('You got rejected! HAHA');
+                        proposal.reply('You got rejected! HAHA');
                     }
                 })
                 .catch(collected => {
-                    message.reply('You didnt respond.');
+                    proposal.reply('You didnt respond.');
                 });
         }
         else {
