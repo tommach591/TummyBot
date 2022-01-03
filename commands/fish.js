@@ -218,7 +218,7 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            fivestar = ["2","15", "25"];
+                            fivestar = ["2","15", "25", "68", "69"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.001;
@@ -230,7 +230,7 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            fourstar = [];
+                            fourstar = ["51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.01;
@@ -266,7 +266,7 @@ module.exports = {
                             }
                         }
                         if (fishCaught == "-1") {
-                            onestar = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29"];
+                            onestar = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29", "46", "47", "48", "49", "50"];
                             embedMsg.setTitle('Yay!');
                             fishCaught = fishdex[onestar[Math.floor(Math.random() * onestar.length)]];
                         }
