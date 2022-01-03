@@ -34,13 +34,21 @@ module.exports = {
             message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
-                return reaction.emoji.name === '👍' && user.id === message.author.id;
+                //return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                return true;
             };
-            
-            message.awaitReactions({ filter, max: 4, time: 60000, errors: ['time'] })
-                .then(collected => console.log(collected.size))
+
+            message.awaitReactions({ filter, max: 1, time: (1000 * 10), errors: ['time'] })
+                .then(collected => {
+                    const reaction = collected.first();
+                    if (reaction.emoji.name == '👍') {
+                        message.reply('You reacted with a thumbs up.');
+                    } else {
+                        message.reply('You reacted with a thumbs down.');
+                    }
+                })
                 .catch(collected => {
-                    console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
+                    message.reply('You reacted with neither a thumbs up, nor a thumbs down.');
                 });
         }
         else {
