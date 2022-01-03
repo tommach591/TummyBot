@@ -39,7 +39,10 @@ module.exports = {
 
             let proposal; 
             message.channel.send({ embeds: [embedMsg] }).then(
-                sent => { proposal = sent } 
+                sent => { 
+                    proposal = sent;
+                    setTimeout(() => sent.delete(), 60500) 
+                }
             ).then(
                 () => {
                     proposal.react('👍').then(() => proposal.react('👎'));
@@ -73,7 +76,7 @@ module.exports = {
                         message.channel.send({ embeds: [embedMsg] });
                     });
                 }
-            ).then(proposal.delete());
+            );
 
         }
         else {
