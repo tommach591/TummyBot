@@ -183,6 +183,7 @@ module.exports = {
 
                     fishingMsg.setTitle('Fishing!');
                     fishingMsg.setDescription('Waiting...');
+                    fishingMsg.setColor('0000FF');
                     fishingMsg.setImage('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0ab4b036812305.572a1cada9fdc.gif');
                     message.channel.send({ embeds: [fishingMsg] }).then(msg=> {setTimeout(() => msg.delete(), fishTime - 500)});
                     

@@ -39,7 +39,7 @@ module.exports = {
 
             
             let proposal; 
-            message.channel.send({ embeds: [embedMsg] }).then(
+            message.channel.send({ embeds: [proposalMsg] }).then(
                 sent => { proposal = sent } 
             ).then(
                 () => {
