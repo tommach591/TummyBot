@@ -287,7 +287,7 @@ client.on('messageCreate', message => {
     }
     else if (newTime.getTime() - savefile.lastSave >= (1000 * 60 * 60)) {
         client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
-        savefile["0"].lastSave = newTime.getTime();
+        savefile.lastSave = newTime.getTime();
     }
 
     /*
