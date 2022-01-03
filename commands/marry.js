@@ -30,31 +30,6 @@ module.exports = {
                 return;
             }
             const target = client.users.cache.get(mention);
-
-            const filter = (reaction, user) => {
-                return ['👍', '👎'].includes(reaction.emoji.name);
-            };
-
-            message.react('👍').then(() => message.react('👎'));
-            const collector  = message.createReactionCollector({
-                filter,
-                max: 1,
-                time: 1000 * 10
-            });
-
-            collector.on('collect', (reaction) => {
-                console.log(reaction.emoji);
-            });
-
-            collector.on('end', (collected) => {
-                if (collected.size === 0) {
-                    message.reply("You did not reply in time");
-                    return;
-                }
-
-                message.reply("You reacted!");
-            });
-
         }
         else {
             embedMsg.setTitle('Error!');

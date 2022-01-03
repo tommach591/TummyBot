@@ -234,6 +234,27 @@ client.on('messageCreate', message => {
                 break;
         }
 
+        message.react('👍').then(() => message.react('👎'));
+
+        const filter = (reaction, user) => {
+            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+        };
+        
+        message.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
+            .then(collected => {
+                const reaction = collected.first();
+        
+                if (reaction.emoji.name === '👍') {
+                    message.reply('You reacted with a thumbs up.');
+                } else {
+                    message.reply('You reacted with a thumbs down.');
+                }
+            })
+            .catch(collected => {
+                message.reply('You reacted with neither a thumbs up, nor a thumbs down.');
+            });
+
+
         if (!userData[sender.id]) {
             const embedMsg = new MessageEmbed();
             embedMsg.setTitle('New User!');
