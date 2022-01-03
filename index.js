@@ -231,7 +231,7 @@ client.on('messageCreate', message => {
                 break;
             case 'save':
                 if (userData[sender.id] && userData[sender.id].gm > 0)
-                    client.gmcommands.get('save').execute(message, args, sender.id, userData, userFish, userGarden, client, s3, userDataParams, userFishParams, userGardenParams);
+                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, s3, userDataParams, userFishParams, userGardenParams);
                 break;
             default:
                 message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
@@ -253,7 +253,7 @@ client.on('messageCreate', message => {
         embedMsg.setDescription('Oh no! Something went wrong with the bot!');
         embedMsg.setFooter('Try not to use that same command again!');
         message.channel.send({ embeds: [embedMsg] });
-        client.gmcommands.get('save').execute(message, args, sender.id, userData, userFish, userGarden, client, s3, userDataParams, userFishParams, userGardenParams);
+        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, s3, userDataParams, userFishParams, userGardenParams);
         console.log(err);
     }
 
