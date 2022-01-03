@@ -163,7 +163,7 @@ module.exports = {
 
 
                 if (blackjack[userid].firstTurn && handValues[0] == 21) {
-                    reward += Math.floor(blackjack[userid].bet[0] * 1.5);
+                    reward += Math.floor(blackjack[userid].bet[0] * 2.5);
                 }
                 else {
                     for (var i = 0; i < handValues.length; i++) {

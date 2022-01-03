@@ -38,7 +38,7 @@ module.exports = {
                             userData[userid].married = "";
                             embedMsg.setTitle('Congratulations!');
                             embedMsg.setColor('00FF00');
-                            embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
+                            embedMsg.setThumbnail("https://c.tenor.com/3rT81tCWpkIAAAAC/dance-cute.gif");
                             embedMsg.setDescription(userData[userid].name + " is are now single!");
                             embedMsg.setFooter("AND READY TO MINGLE!");
                             message.channel.send({ embeds: [embedMsg] });
@@ -48,14 +48,16 @@ module.exports = {
                             embedMsg.setColor('FF80AB');
                             embedMsg.setThumbnail("https://c.tenor.com/PzUoQ5JIihsAAAAC/cute-cat.gif");
                             embedMsg.setDescription("Maybe " + userData[userid].name + " just wasn't feeling loved at the moment...");
+                            embedMsg.setFooter("Make up your mind please.");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     })
                     .catch(collected => {
-                        embedMsg.setTitle('Decide already!');
+                        embedMsg.setTitle('Huh?');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setThumbnail("https://c.tenor.com/11msF_DFe2wAAAAC/rosycheeks-mochi-peach.gif");
-                        embedMsg.setDescription("The bot got sick of waiting for " + userData[userid].name + " to make up their mind!");
+                        embedMsg.setThumbnail("https://c.tenor.com/MQiDUNqWZZwAAAAC/peachcat-sleepy.gif");
+                        embedMsg.setDescription("The bot got bored of " + userData[userid].name + "'s life issues!");
+                        embedMsg.setFooter("Either you took too long or something went wrong...");
                         message.channel.send({ embeds: [embedMsg] });
                     });
                 }

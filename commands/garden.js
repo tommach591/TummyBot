@@ -164,6 +164,7 @@ module.exports = {
                     embedMsg.setColor('00FF00');
                     embedMsg.setDescription("Your harvest earned you " + profit + " points!");
                     userData[userid].points += profit;
+                    message.channel.send({ embeds: [embedMsg] });
                     if (newPlant.length != 0) {
                         for (let i = 0; i < newPlant.length; i++) {
                             const newPlantMsg = new MessageEmbed();
@@ -174,7 +175,6 @@ module.exports = {
                             message.channel.send({ embeds: [newPlantMsg] });
                         }
                     }
-                    message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
             case 'upgrade':
