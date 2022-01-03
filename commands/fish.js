@@ -282,9 +282,11 @@ module.exports = {
                                 }
                                 return 0;
                             });
+                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n\n" + fishCaught.info);
                             embedMsg.setFooter("Value: " + fishCaught.value + " points (New!)");
                         }
                         else {
+                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!");
                             embedMsg.setFooter("Value: " + fishCaught.value + " points");
                         }
                         userFish[userid].fishInventory.push(fishCaught.id);
@@ -298,7 +300,6 @@ module.exports = {
                             return 0;
                         });
                         embedMsg.setColor('00FF00');
-                        embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!");
                         embedMsg.setThumbnail(fishCaught.image);
                         message.channel.send({ embeds: [embedMsg] });
                     }, fishTime);
