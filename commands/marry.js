@@ -32,25 +32,29 @@ module.exports = {
             const target = client.users.cache.get(mention);
 
             const filter = (reaction, user) => {
-                console.log(user.id);
-                console.log(message.author.id);
                 return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
 
-            message.react('👍').then(() => message.react('👎')).then(
-                message.awaitReactions({ filter, max: 1, time: (1000 * 10), errors: ['time'] })
-                .then(collected => {
-                    const reaction = collected.first();
-                    if (reaction.emoji.name == '👍') {
-                        message.reply('You reacted with a thumbs up.');
-                    } else {
-                        message.reply('You reacted with a thumbs down.');
-                    }
-                })
-                .catch(collected => {
-                    message.reply('You reacted with neither a thumbs up, nor a thumbs down.');
-                })
-            );
+            message.react('👍').then(() => message.react('👎'));
+            const collector  = message.createReactionCollector({
+                filter,
+                max: 1,
+                time: 1000 * 10
+            });
+
+            collector.on('collect', (reaction) => {
+                console.log(reaction.emoji);
+            });
+
+            collector.on('end', (collected) => {
+                if (collected.size === 0) {
+                    message.reply("You did not reply in time");
+                    return;
+                }
+
+                message.reply("You reacted!");
+            });
+
         }
         else {
             embedMsg.setTitle('Error!');
