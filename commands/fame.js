@@ -22,10 +22,11 @@ module.exports = {
                 mention = mention.slice(1);
             }
     
-            if (!userData[mention]) {
+            if (!userData[mention] || mention == userid) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setDescription('User does not exist!');
+                embedMsg.setFooter("Don't try to fame yourself either!");
                 message.channel.send({ embeds: [embedMsg] });
                 return;
             }
