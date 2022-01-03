@@ -35,28 +35,31 @@ module.exports = {
             embedMsg.setColor('FFAAAA');
             embedMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
 
-            let proposal;
-            message.channel.send({ embeds: [embedMsg] }).then(sent => { proposal = sent} );
+            let proposalid;
+            message.channel.send({ embeds: [embedMsg] }).then(
+                sent => { proposal = sent } 
+            ).then(
+                () => {
+                    proposal.react('👍').then(() => proposal.react('👎'));
+                    const filter = (reaction, user) => {
+                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === mention;
+                    };
+                    proposal.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
+                    .then(collected => {
+                        const reaction = collected.first();
+                
+                        if (reaction.emoji.name === '👍') {
+                            proposal.reply('You are now married! (not really didnt code it yet)');
+                        } else {
+                            proposal.reply('You got rejected! HAHA');
+                        }
+                    })
+                    .catch(collected => {
+                        proposal.reply('You didnt respond.');
+                    });
+                }
+            );
 
-            proposal.react('👍').then(() => proposal.react('👎'));
-
-            const filter = (reaction, user) => {
-                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === mention;
-            };
-            
-            proposal.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
-                .then(collected => {
-                    const reaction = collected.first();
-            
-                    if (reaction.emoji.name === '👍') {
-                        proposal.reply('You are now married! (not really didnt code it yet)');
-                    } else {
-                        proposal.reply('You got rejected! HAHA');
-                    }
-                })
-                .catch(collected => {
-                    proposal.reply('You didnt respond.');
-                });
         }
         else {
             embedMsg.setTitle('Error!');
