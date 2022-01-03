@@ -29,6 +29,13 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 return;
             }
+            if (userData[mention] == userData[userid]) {
+                embedMsg.setTitle('Error!');
+                embedMsg.setColor('FF0000');
+                embedMsg.setDescription('You can\'t marry yourself!');
+                message.channel.send({ embeds: [embedMsg] });
+                return;
+            }
             const target = client.users.cache.get(mention);
 
             if (userData[userid].married != "") {
@@ -50,7 +57,7 @@ module.exports = {
                 const proposalMsg = new MessageEmbed();
                 proposalMsg.setTitle('Marriage Proposal!');
                 proposalMsg.setColor('FF80AB');
-                proposalMsg.setThumbnail("https://c.tenor.com/XyTOSR4H93wAAAAC/rosycheeks-mochi-peach.gif");
+                proposalMsg.setThumbnail("https://i.imgur.com/H069LVz.png");
                 proposalMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
 
                 

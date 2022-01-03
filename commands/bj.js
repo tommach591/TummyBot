@@ -210,6 +210,7 @@ module.exports = {
                 embedMsg.addField("**__Outcome__**", outcome);
             }
 
+            embedMsg.setThumbnail("https://i.imgur.com/Fmn1zNY.png");
             message.channel.send({ embeds: [embedMsg] });
 
             if (blackjack[userid].done) {
@@ -352,7 +353,7 @@ module.exports = {
                     if (cardTwo > 10) {
                         cardTwo = 10;
                     }
-                    if (blackjack[userid].hand[index].length == 2 && cardOne == cardTwo) {
+                    if (blackjack[userid].hand[index].length == 2 && cardOne == cardTwo && blackjack[userid].hand.length < 4) {
                         var bet = blackjack[userid].bet[index];
                         if (userData[userid].points < bet) {
                             embedMsg.setTitle('Error!');
@@ -380,8 +381,8 @@ module.exports = {
                     else {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setDescription("You cannot split unless you have two matching values!");
-                        embedMsg.setFooter('Use !tp bj help for list of blackjack commands!');
+                        embedMsg.setDescription("You cannot split!");
+                        embedMsg.setFooter('Reason: Hand size is not 2 / Not matching pair value / Maxed split reached!');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }

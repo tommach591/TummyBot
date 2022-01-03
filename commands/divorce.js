@@ -17,7 +17,7 @@ module.exports = {
             const proposalMsg = new MessageEmbed();
             proposalMsg.setTitle('Divorce Proposal!');
             proposalMsg.setColor('FF80AB');
-            proposalMsg.setThumbnail("https://i.pinimg.com/originals/a1/7e/bf/a17ebf72052f630e892e56a32419af97.gif");
+            proposalMsg.setThumbnail("https://i.imgur.com/C7XXOTl.png");
             proposalMsg.setDescription("Would you, " + userData[userid].name + " , like to divorce " + userData[userData[userid].married].name + "?");
 
             

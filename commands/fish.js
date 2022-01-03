@@ -206,57 +206,69 @@ module.exports = {
 
                         var fishCaught = "-1";
                         if (fishCaught == "-1") {
-                            tierfive = ["1", "24"];
+                            sixstar = ["1", "24"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.0001;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('OMG (OH MY GOD)!');
-                                    fishCaught = fishdex[tierfive[Math.floor(Math.random() * tierfive.length)]];
+                                    fishCaught = fishdex[sixstar[Math.floor(Math.random() * sixstar.length)]];
                                     break;
                                 }
                             }
                         }
                         if (fishCaught == "-1") {
-                            tierfour = ["2","15", "25"];
+                            fivestar = ["2","15", "25"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.001;
                                 if (luck <= chance) {
-                                    embedMsg.setTitle('POG!');
-                                    fishCaught = fishdex[tierfour[Math.floor(Math.random() * tierfour.length)]];
+                                    embedMsg.setTitle('POGGY WOGGY!');
+                                    fishCaught = fishdex[fivestar[Math.floor(Math.random() * fivestar.length)]];
                                     break;
                                 }
                             }
                         }
                         if (fishCaught == "-1") {
-                            tierthree = ["11", "12", "14", "17", "22", "23", "34", "35", "36", "37", "38", "39", "40", "45"];
+                            fourstar = [];
+                            for (let i = 0; i < fishingPower; i++) {
+                                var luck = Math.floor((Math.random() * 100000) + 1);
+                                var chance = 100000 * 0.01;
+                                if (luck <= chance) {
+                                    embedMsg.setTitle('NO WAY!');
+                                    fishCaught = fishdex[fourstar[Math.floor(Math.random() * fourstar.length)]];
+                                    break;
+                                }
+                            }
+                        }
+                        if (fishCaught == "-1") {
+                            threestar = ["11", "12", "14", "17", "22", "23", "34", "35", "36", "37", "38", "39", "40", "45"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.03;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('WOAH!');
-                                    fishCaught = fishdex[tierthree[Math.floor(Math.random() * tierthree.length)]];
+                                    fishCaught = fishdex[threestar[Math.floor(Math.random() * threestar.length)]];
                                     break;
                                 }
                             }
                         }
                         if (fishCaught == "-1") {
-                            tiertwo = ["8", "9", "10", "13", "18", "30", "31", "32", "33", "41", "42", "43", "44"];
+                            twostar = ["8", "9", "10", "13", "18", "30", "31", "32", "33", "41", "42", "43", "44"];
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.3;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('Wow!');
-                                    fishCaught = fishdex[tiertwo[Math.floor(Math.random() * tiertwo.length)]];
+                                    fishCaught = fishdex[twostar[Math.floor(Math.random() * twostar.length)]];
                                     break;
                                 }
                             }
                         }
                         if (fishCaught == "-1") {
-                            tierone = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29"];
+                            onestar = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29"];
                             embedMsg.setTitle('Yay!');
-                            fishCaught = fishdex[tierone[Math.floor(Math.random() * tierone.length)]];
+                            fishCaught = fishdex[onestar[Math.floor(Math.random() * onestar.length)]];
                         }
 
                         if (!userFish[userid].fishdex.includes(fishCaught.id)) {
@@ -309,6 +321,7 @@ module.exports = {
                         userData[userid].points += profit;
                         embedMsg.setTitle('Sold!');
                         embedMsg.setColor('00FF00');
+                        embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
                         embedMsg.setDescription('Sold everything for ' + profit + ' points!');
                         message.channel.send({ embeds: [embedMsg] });
                     }
@@ -337,6 +350,7 @@ module.exports = {
                                 userData[userid].points += profit;
                                 embedMsg.setTitle('Sold!');
                                 embedMsg.setColor('00FF00');
+                                embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
                                 embedMsg.setDescription('Sold ' + fishdex[target].name + ' for ' + profit + ' points!');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
@@ -379,6 +393,7 @@ module.exports = {
                 var target = client.users.cache.get(userid);
                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Fishdex');
+                embedMsg.setThumbnail('https://i.imgur.com/liDWgLr.png');
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];

@@ -207,7 +207,7 @@ module.exports = {
                         embedMsg.setTitle('Congratz!');
                         embedMsg.setColor('00FF00');
                         embedMsg.setDescription(userData[userid].name + " bought a new pot!");
-                        embedMsg.setThumbnail('https://w1.pngwing.com/pngs/970/200/png-transparent-flower-pot-drawing-crab-hot-pot-food-cangrejo-casserole-clay-pot-cooking-meat.png');
+                        embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                         if (potIndex == 1)
                             embedMsg.setFooter('Next pot: 5000 points');
                         else 
@@ -231,6 +231,7 @@ module.exports = {
                 var target = client.users.cache.get(userid);
                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Gardendex');
+                embedMsg.setThumbnail('https://i.imgur.com/CCkcmSz.png');
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];

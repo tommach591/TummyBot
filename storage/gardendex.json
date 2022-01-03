@@ -46,5 +46,17 @@
         "name": "Sarah Ang Hay",
         "image": "https://i.imgur.com/yR4hIy0.png",
         "info": "Give this hay to someone and they will love you back."
+    },
+    "9": {
+        "id": "9",
+        "name": "Deathweed",
+        "image": "https://i.imgur.com/cqZFfQW.png",
+        "info": "Someone's corpse became a flower."
+    },
+    "10": {
+        "id": "10",
+        "name": "A(n) Ivy",
+        "image": "https://i.imgur.com/WlydpCW.png",
+        "info": "The artist is getting their growth spurt."
     }
 }

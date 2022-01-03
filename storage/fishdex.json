@@ -313,5 +313,173 @@
         "image": "https://i.imgur.com/UWBIlQj.png",
         "value": 50,
         "info": "A trail of rainbows follow this fish."
+    },
+    "46": {
+        "id": "46",
+        "name": "Sussy Baka (Red)",
+        "image": "https://i.imgur.com/PXYUWBp.png",
+        "value": 3,
+        "info": "Most likely sus."
+    },
+    "47": {
+        "id": "47",
+        "name": "Sussy Baka (Yellow)",
+        "image": "https://i.imgur.com/kyfwuhP.png",
+        "value": 3,
+        "info": "Probably dead."
+    },
+    "48": {
+        "id": "48",
+        "name": "Sussy Baka (Green)",
+        "image": "https://i.imgur.com/rwkcHah.png",
+        "value": 3,
+        "info": "Probably doing tasks."
+    },
+    "49": {
+        "id": "49",
+        "name": "Sussy Baka (Blue)",
+        "image": "https://i.imgur.com/ZZiI6sV.png",
+        "value": 3,
+        "info": "Doing some weird 50000 IQ strat."
+    },
+    "50": {
+        "id": "50",
+        "name": "Sussy Baka (Purple)",
+        "image": "https://i.imgur.com/NjDw6QK.png",
+        "value": 3,
+        "info": "Probably on cams."
+    },
+    "51": {
+        "id": "51",
+        "name": "Apple Fish",
+        "image": "https://i.imgur.com/bqrKTcY.png",
+        "value": 150,
+        "info": "An apple fish a day, keeps the doctors away!"
+    },
+    "52": {
+        "id": "52",
+        "name": "Orange Fish",
+        "image": "https://i.imgur.com/RNgmb9p.png",
+        "value": 150,
+        "info": "Lots of Vitamin Sea."
+    },
+    "53": {
+        "id": "53",
+        "name": "Grape Fish",
+        "image": "https://i.imgur.com/R27xZzI.png",
+        "value": 150,
+        "info": "Grape to see you!"
+    },
+    "54": {
+        "id": "54",
+        "name": "Eggplant Fish",
+        "image": "https://i.imgur.com/kwoDhAU.png",
+        "value": 150,
+        "info": "Such an enormous girth!"
+    },
+    "55": {
+        "id": "55",
+        "name": "Cat Fish",
+        "image": "https://i.imgur.com/pp5lltu.png",
+        "value": 150,
+        "info": "Fried cat fish is delicious!"
+    },
+    "56": {
+        "id": "56",
+        "name": "Dog Fish",
+        "image": "https://i.imgur.com/TC5Kl9I.png",
+        "value": 150,
+        "info": "Don't eat this."
+    },
+    "57": {
+        "id": "57",
+        "name": "Sea Horse",
+        "image": "https://i.imgur.com/pKiDn3I.png",
+        "value": 150,
+        "info": "Neigh nay?!"
+    },
+    "58": {
+        "id": "58",
+        "name": "Sea Lion",
+        "image": "https://i.imgur.com/CxtAC7k.png",
+        "value": 150,
+        "info": "Rawr! Nuzzles! Pounces on you! Uwu u so warm!"
+    },
+    "59": {
+        "id": "59",
+        "name": "Sea Bear",
+        "image": "https://i.imgur.com/ZLsQYIH.png",
+        "value": 150,
+        "info": "Beary cute~!"
+    },
+    "60": {
+        "id": "60",
+        "name": "Zebra Turkey Fish",
+        "image": "https://i.imgur.com/JSiyngl.png",
+        "value": 150,
+        "info": "What is this thing?!"
+    },
+    "61": {
+        "id": "61",
+        "name": "Tuna",
+        "image": "https://i.imgur.com/UYScRB0.png",
+        "value": 150,
+        "info": "The chicken of the sea!"
+    },
+    "62": {
+        "id": "62",
+        "name": "Dolphin",
+        "image": "https://i.imgur.com/eEpE7Vt.png",
+        "value": 150,
+        "info": "Enjoys eating tuna!"
+    },
+    "63": {
+        "id": "63",
+        "name": "Blow Fish",
+        "image": "https://i.imgur.com/5QFVXgR.png",
+        "value": 150,
+        "info": "I heard this is poisonous! (and tasty!)"
+    },
+    "64": {
+        "id": "64",
+        "name": "Sam Fish",
+        "image": "https://i.imgur.com/aGWkoBT.png",
+        "value": 150,
+        "info": "Comes with ham and lettuce!"
+    },
+    "65": {
+        "id": "65",
+        "name": "Octopus",
+        "image": "https://i.imgur.com/Gljq24A.png",
+        "value": 150,
+        "info": "Takodachi!"
+    },
+    "66": {
+        "id": "66",
+        "name": "Magical Karp",
+        "image": "https://i.imgur.com/Zw2w50J.png",
+        "value": 150,
+        "info": "This karp is actually just useless."
+    },
+    "67": {
+        "id": "67",
+        "name": "L Fish",
+        "image": "https://i.imgur.com/xJ0rct8.png",
+        "value": 150,
+        "info": "It is just an L."
+    },
+    "68": {
+        "id": "68",
+        "name": "Naru Fish",
+        "image": "https://i.imgur.com/GZYMUcx.png",
+        "value": 1000,
+        "info": "SASUKEEEEEEEEEEEE!"
+    },
+    "69": {
+        "id": "69",
+        "name": "Sasu Fish",
+        "image": "https://i.imgur.com/o424LAN.png",
+        "value": 1000,
+        "info": "NARUTOOOOOOOOOOOO!"
     }
 }

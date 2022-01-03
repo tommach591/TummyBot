@@ -246,6 +246,16 @@ client.on('messageCreate', message => {
                 if (userData[sender.id] && userData[sender.id].gm > 0)
                     client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
                 break;
+            case 'iv':
+                if (userData[sender.id] && userData[sender.id].gm > 0) {
+                    const embedMsg = new MessageEmbed();
+                    embedMsg.setTitle('Mint and Scarlet!');
+                    embedMsg.setColor('00FF00');
+                    embedMsg.setThumbnail("https://i.imgur.com/2hWPL7A.png");
+                    embedMsg.setDescription('Drawing of Mint and Scarlet!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+            break;
             default:
                 message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
                 break;

@@ -39,7 +39,7 @@ module.exports = {
                 userData[mention].fame++;
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
-                embedMsg.setThumbnail('https://media0.giphy.com/media/0OgdJVNjbcIifqSb7U/giphy.gif');
+                embedMsg.setThumbnail('https://i.imgur.com/xEg1ecb.png');
                 embedMsg.setDescription(userData[userid].name + " famed " + target.username + "!");
                 message.channel.send({ embeds: [embedMsg] });
                 userData[userid].fameTime = newTime.getTime();
