@@ -37,8 +37,7 @@ module.exports = {
             proposalMsg.setThumbnail("https://c.tenor.com/XyTOSR4H93wAAAAC/rosycheeks-mochi-peach.gif");
             proposalMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
 
-            var answer = 0;
-
+            
             let proposal; 
             message.channel.send({ embeds: [embedMsg] }).then(
                 sent => { proposal = sent } 
@@ -52,19 +51,6 @@ module.exports = {
                     .then(collected => {
                         const reaction = collected.first();
                         if (reaction.emoji.name === '👍') {
-                            answer = 1;
-                        } else {
-                            answer = 2;
-                        }
-                    })
-                    .catch(collected => {
-
-                    });
-                }
-            ).then( 
-                () => {
-                    switch(answer) {
-                        case 1:
                             userData[userid].married = userid;
                             userData[mention].married = mention;
                             embedMsg.setTitle('Congratulations!');
@@ -72,23 +58,23 @@ module.exports = {
                             embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
                             embedMsg.setDescription(userData[userid].name + " and " + userData[mention].name + " are now married!");
                             message.channel.send({ embeds: [embedMsg] });
-                            break;
-                        case 2:
+                        } else {
                             embedMsg.setTitle('HAHA!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
                             embedMsg.setDescription(userData[mention].name + " rejected you!");
                             message.channel.send({ embeds: [embedMsg] });
-                            break;
-                        default:
-                            embedMsg.setTitle('HAHA!');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
-                            embedMsg.setDescription(userData[mention].name + " ignored you!");
-                            message.channel.send({ embeds: [embedMsg] });
-                            break;
-                    }
-            });
+                        }
+                    })
+                    .catch(collected => {
+                        embedMsg.setTitle('HAHA!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
+                        embedMsg.setDescription(userData[mention].name + " ignored you!");
+                        message.channel.send({ embeds: [embedMsg] });
+                    });
+                }
+            )
 
         }
         else {
