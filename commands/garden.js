@@ -163,6 +163,7 @@ module.exports = {
                     embedMsg.setTitle('Successfully Harvested!');
                     embedMsg.setColor('00FF00');
                     embedMsg.setDescription("Your harvest earned you " + profit + " points!");
+                    userData[userid].points += profit;
                     if (newPlant.length != 0) {
                         for (let i = 0; i < newPlant.length; i++) {
                             const newPlantMsg = new MessageEmbed();
@@ -170,6 +171,7 @@ module.exports = {
                             newPlantMsg.setDescription("Omg (oh my god) is that a " + gardendex[newPlant[i]].name + "!?");
                             newPlantMsg.setThumbnail(gardendex[newPlant[i]].image);
                             newPlantMsg.setFooter("New plant added to the Gardendex!");
+                            message.channel.send({ embeds: [newPlantMsg] });
                         }
                     }
                     message.channel.send({ embeds: [embedMsg] });

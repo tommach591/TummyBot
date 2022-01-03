@@ -34,15 +34,16 @@ module.exports = {
                     .then(collected => {
                         const reaction = collected.first();
                         if (reaction.emoji.name === '👍') {
-                            userData[userid].married = "";
                             userData[userData[userid].married].married = "";
+                            userData[userid].married = "";
                             embedMsg.setTitle('Congratulations!');
                             embedMsg.setColor('00FF00');
                             embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
                             embedMsg.setDescription(userData[userid].name + " is are now single!");
                             embedMsg.setFooter("AND READY TO MINGLE!");
                             message.channel.send({ embeds: [embedMsg] });
-                        } else {
+                        } 
+                        else {
                             embedMsg.setTitle('Huh?');
                             embedMsg.setColor('FF80AB');
                             embedMsg.setThumbnail("https://c.tenor.com/PzUoQ5JIihsAAAAC/cute-cat.gif");
