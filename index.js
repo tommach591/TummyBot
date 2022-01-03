@@ -180,7 +180,7 @@ client.on('messageCreate', message => {
                     client.commands.get('give').execute(message, args, sender.id, userData, client);
                 break;
             case 'marry':
-                if (userData[sender.id] && userData[sender.id].gm > 0)
+                if (userData[sender.id])
                     client.commands.get('marry').execute(message, args, sender.id, userData, client);
                 break;
             case 'scratch':

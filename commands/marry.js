@@ -51,8 +51,8 @@ module.exports = {
                     .then(collected => {
                         const reaction = collected.first();
                         if (reaction.emoji.name === '👍') {
-                            userData[userid].married = userid;
-                            userData[mention].married = mention;
+                            userData[userid].married = mention;
+                            userData[mention].married = userid;
                             embedMsg.setTitle('Congratulations!');
                             embedMsg.setColor('FF80AB');
                             embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
