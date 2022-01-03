@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const AWS = require("aws-sdk");
 
 const { MessageEmbed } = require('discord.js');
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] }); 
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"] }); 
 
 const prefix = '!tp ';
 
