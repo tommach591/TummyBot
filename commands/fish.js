@@ -377,7 +377,9 @@ module.exports = {
                 else {
                     var fishes = "";
                     var lastFish = "";
+                    var cost = 0;
                     userFish[userid].fishInventory.forEach((element) => {
+                        cost += fishdex[element].value;
                         if (lastFish != element) {
                             var amount = userFish[userid].fishInventory.filter(match => match == element).length;
                             fishes += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + fishdex[element].value + "\n\n";
@@ -385,6 +387,7 @@ module.exports = {
                         }
                     });
                     embedMsg.setDescription(fishes);
+                    embedMsg.setFooter("Value: " + cost);
                 }
                 message.channel.send({ embeds: [embedMsg] });
                 break;
