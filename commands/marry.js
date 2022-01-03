@@ -54,17 +54,18 @@ module.exports = {
                         if (reaction.emoji.name === '👍') {
                             userData[userid].married = userid;
                             userData[mention].married = mention;
-                            embedMsg.setTitle('Congratulations!');
-                            embedMsg.setColor('FF80AB');
-                            embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
-                            embedMsg.setDescription(userData[userid].name + " and " + userData[mention].name + " are now married!");
-                            message.channel.send({ embeds: [embedMsg] });
+                            const responseMsg = new MessageEmbed();
+                            responseMsg.setTitle('Congratulations!');
+                            responseMsg.setColor('FF80AB');
+                            responseMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
+                            responseMsg.setDescription(userData[userid].name + " and " + userData[mention].name + " are now married!");
+                            message.channel.send({ embeds: [responseMsg] });
                         } else {
-                            embedMsg.setTitle('HAHA!');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
-                            embedMsg.setDescription(userData[mention].name + " rejected you!");
-                            message.channel.send({ embeds: [embedMsg] });
+                            responseMsg.setTitle('HAHA!');
+                            responseMsg.setColor('FF0000');
+                            responseMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
+                            responseMsg.setDescription(userData[mention].name + " rejected you!");
+                            message.channel.send({ embeds: [responseMsg] });
                         }
                     })
                     .catch(collected => {
