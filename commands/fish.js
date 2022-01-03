@@ -211,7 +211,7 @@ module.exports = {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.0001;
                                 if (luck <= chance) {
-                                    embedMsg.setTitle('OMG (OH MY GOD)!');
+                                    embedMsg.setTitle('OMG (OH MY GOD)! - ★★★★★★');
                                     fishCaught = fishdex[sixstar[Math.floor(Math.random() * sixstar.length)]];
                                     break;
                                 }
@@ -223,7 +223,7 @@ module.exports = {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.001;
                                 if (luck <= chance) {
-                                    embedMsg.setTitle('POGGY WOGGY!');
+                                    embedMsg.setTitle('POGGERS! - ★★★★★');
                                     fishCaught = fishdex[fivestar[Math.floor(Math.random() * fivestar.length)]];
                                     break;
                                 }
@@ -235,7 +235,7 @@ module.exports = {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.01;
                                 if (luck <= chance) {
-                                    embedMsg.setTitle('NO WAY!');
+                                    embedMsg.setTitle('NO WAY! - ★★★★');
                                     fishCaught = fishdex[fourstar[Math.floor(Math.random() * fourstar.length)]];
                                     break;
                                 }
@@ -247,7 +247,7 @@ module.exports = {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.03;
                                 if (luck <= chance) {
-                                    embedMsg.setTitle('WOAH!');
+                                    embedMsg.setTitle('WOAH! - ★★★');
                                     fishCaught = fishdex[threestar[Math.floor(Math.random() * threestar.length)]];
                                     break;
                                 }
@@ -259,7 +259,7 @@ module.exports = {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
                                 var chance = 100000 * 0.3;
                                 if (luck <= chance) {
-                                    embedMsg.setTitle('Wow!');
+                                    embedMsg.setTitle('Wow! - ★★');
                                     fishCaught = fishdex[twostar[Math.floor(Math.random() * twostar.length)]];
                                     break;
                                 }
@@ -267,7 +267,7 @@ module.exports = {
                         }
                         if (fishCaught == "-1") {
                             onestar = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29", "46", "47", "48", "49", "50"];
-                            embedMsg.setTitle('Yay!');
+                            embedMsg.setTitle('Yay! - ★');
                             fishCaught = fishdex[onestar[Math.floor(Math.random() * onestar.length)]];
                         }
 
@@ -298,7 +298,7 @@ module.exports = {
                             return 0;
                         });
                         embedMsg.setColor('00FF00');
-                        embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!");
+                        embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n Value: " + fishCaught.value + " points");
                         embedMsg.setThumbnail(fishCaught.image);
                         message.channel.send({ embeds: [embedMsg] });
                     }, fishTime);
