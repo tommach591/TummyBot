@@ -93,36 +93,75 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var planted = false;
-                    var keys = [];
-                    for (var k in gardendex) {
-                        keys.push(k);
-                    }
-                    var newDate = new Date();
-                    for (let i = 0; i < 3; i++) {
-                        if (userGarden[userid].pots[i] == "0") {
-                            userGarden[userid].pots[i] = keys[Math.floor(Math.random() * keys.length)];
-                            userGarden[userid].potTime[i] = newDate.getTime();
-                            userData[userid].points -= cost;
-                            planted = true;
-                            break;
+                    const proposalMsg = new MessageEmbed();
+                    proposalMsg.setTitle('Gardening Info!');
+                    proposalMsg.setColor('FFF000');
+                    proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                    proposalMsg.setDescription("Would " + userData[userid].name + " like to plant a mystery seed for " + cost + " points?");
+                    proposalMsg.setFooter("Harvest in 20 hours to make 200 profit!");
+
+                    let proposal; 
+                    message.channel.send({ embeds: [proposalMsg] }).then(
+                        sent => { proposal = sent } 
+                    ).then(
+                        () => {
+                            proposal.react('👍').then(() => proposal.react('👎'));
+                            const filter = (reaction, user) => {
+                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                            };
+                            proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                            .then(
+                                collected => {
+                                const reaction = collected.first();
+                                if (reaction.emoji.name === '👍') {
+                                    var planted = false;
+                                    var keys = [];
+                                    for (var k in gardendex) {
+                                        keys.push(k);
+                                    }
+                                    var newDate = new Date();
+                                    for (let i = 0; i < 3; i++) {
+                                        if (userGarden[userid].pots[i] == "0") {
+                                            userGarden[userid].pots[i] = keys[Math.floor(Math.random() * keys.length)];
+                                            userGarden[userid].potTime[i] = newDate.getTime();
+                                            userData[userid].points -= cost;
+                                            planted = true;
+                                            break;
+                                        }
+                                    }
+                                    if (planted) {
+                                        embedMsg.setTitle('Success!');
+                                        embedMsg.setColor('00FF00');
+                                        embedMsg.setDescription("Successfully planted mysterious seed!");
+                                        embedMsg.setThumbnail("https://i.imgur.com/yNgyFnp.png");
+                                        embedMsg.setFooter("Harvest in 20 hours!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    }
+                                    else {
+                                        embedMsg.setTitle('Oh nyoooooo~!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setDescription("Your pots are all filled!");
+                                        embedMsg.setThumbnail("https://c.tenor.com/xDxd1bVH4ccAAAAM/peach-peach-cat.gif");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    }
+                                } 
+                                else {
+                                    embedMsg.setTitle('Declined!');
+                                    embedMsg.setColor('FF0000');
+                                    embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                                    embedMsg.setDescription(userData[userid].name + " declined!");
+                                    message.channel.send({ embeds: [embedMsg] });
+                                }
+                            })
+                            .catch(collected => {
+                                embedMsg.setTitle('Fail!');
+                                embedMsg.setColor('FF0000');
+                                embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                                message.channel.send({ embeds: [embedMsg] });
+                            });
                         }
-                    }
-                    if (planted) {
-                        embedMsg.setTitle('Success!');
-                        embedMsg.setColor('00FF00');
-                        embedMsg.setDescription("Successfully planted mysterious seed!");
-                        embedMsg.setThumbnail("https://i.imgur.com/yNgyFnp.png");
-                        embedMsg.setFooter("Harvest in 20 hours!");
-                        message.channel.send({ embeds: [embedMsg] });
-                    }
-                    else {
-                        embedMsg.setTitle('Oh nyoooooo~!');
-                        embedMsg.setColor('FF0000');
-                        embedMsg.setDescription("Your pots are all filled!");
-                        embedMsg.setThumbnail("https://c.tenor.com/xDxd1bVH4ccAAAAM/peach-peach-cat.gif");
-                        message.channel.send({ embeds: [embedMsg] });
-                    }
+                    );
                 }
                 break;
             case 'harvest':
@@ -202,16 +241,63 @@ module.exports = {
                 }
                 else {
                     if (userData[userid].points >= cost) {
-                        userData[userid].points -= cost;
-                        userGarden[userid].pots[potIndex] = "0";
-                        embedMsg.setTitle('Congratz!');
-                        embedMsg.setColor('00FF00');
-                        embedMsg.setDescription(userData[userid].name + " bought a new pot!");
-                        embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
-                        if (potIndex == 1)
-                            embedMsg.setFooter('Next pot: 5000 points');
-                        else 
-                            embedMsg.setFooter('Maxed pot!');
+                        const proposalMsg = new MessageEmbed();
+                        proposalMsg.setTitle('Buying Pot!');
+                        proposalMsg.setColor('FFF000');
+                        proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to buy a new pot for " + cost + " points?");
+    
+                        let proposal; 
+                        message.channel.send({ embeds: [proposalMsg] }).then(
+                            sent => { proposal = sent } 
+                        ).then(
+                            () => {
+                                proposal.react('👍').then(() => proposal.react('👎'));
+                                const filter = (reaction, user) => {
+                                    return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                };
+                                proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                .then(
+                                    collected => {
+                                    const reaction = collected.first();
+                                    if (reaction.emoji.name === '👍') {
+                                        userData[userid].points -= cost;
+                                        userGarden[userid].pots[potIndex] = "0";
+                                        embedMsg.setTitle('Congratz!');
+                                        embedMsg.setColor('00FF00');
+                                        embedMsg.setDescription(userData[userid].name + " bought a new pot!");
+                                        embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                                        if (potIndex == 1)
+                                            embedMsg.setFooter('Next pot: 5000 points');
+                                        else 
+                                            embedMsg.setFooter('Maxed pot!');
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    } 
+                                    else {
+                                        embedMsg.setTitle('Declined!');
+                                        embedMsg.setColor('FF0000');
+                                        proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                        if (potIndex == 0)
+                                            embedMsg.setFooter('Next pot: 3000 points');
+                                        else 
+                                            embedMsg.setFooter('Next pot: 5000 points');
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    }
+                                })
+                                .catch(collected => {
+                                    embedMsg.setTitle('Fail!');
+                                    embedMsg.setColor('FF0000');
+                                    embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                    proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                                    if (potIndex == 0)
+                                        embedMsg.setFooter('Next pot: 3000 points');
+                                    else 
+                                        embedMsg.setFooter('Next pot: 5000 points');
+                                    message.channel.send({ embeds: [embedMsg] });
+                                });
+                            }
+                        );
                     }
                     else {
                         embedMsg.setTitle('Error!');
@@ -222,8 +308,8 @@ module.exports = {
                             embedMsg.setDescription("Next pot costs 5000 points!");
                         embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
                         embedMsg.setFooter('Haha you\'re poor!');
+                        message.channel.send({ embeds: [embedMsg] });
                     }
-                    message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
             case 'dex':
