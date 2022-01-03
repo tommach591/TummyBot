@@ -282,10 +282,10 @@ module.exports = {
                                 }
                                 return 0;
                             });
-                            embedMsg.setFooter("wow a new fish!");
+                            embedMsg.setFooter("Value: " + fishCaught.value + " points (New!)");
                         }
                         else {
-                            embedMsg.setFooter("omg (oh my god) so cool!");
+                            embedMsg.setFooter("Value: " + fishCaught.value + " points");
                         }
                         userFish[userid].fishInventory.push(fishCaught.id);
                         userFish[userid].fishInventory.sort((firstEl, secondEl) => { 
@@ -298,7 +298,7 @@ module.exports = {
                             return 0;
                         });
                         embedMsg.setColor('00FF00');
-                        embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n\n Value: " + fishCaught.value + " points");
+                        embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!");
                         embedMsg.setThumbnail(fishCaught.image);
                         message.channel.send({ embeds: [embedMsg] });
                     }, fishTime);
