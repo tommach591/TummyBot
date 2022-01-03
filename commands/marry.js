@@ -30,6 +30,26 @@ module.exports = {
                 return;
             }
             const target = client.users.cache.get(mention);
+
+            message.react('👍').then(() => message.react('👎'));
+
+            const filter = (reaction, user) => {
+                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === mention;
+            };
+            
+            message.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
+                .then(collected => {
+                    const reaction = collected.first();
+            
+                    if (reaction.emoji.name === '👍') {
+                        message.reply('You are now married! (not really didnt code it yet)');
+                    } else {
+                        message.reply('You got rejected! HAHA');
+                    }
+                })
+                .catch(collected => {
+                    message.reply('You didnt respond.');
+                });
         }
         else {
             embedMsg.setTitle('Error!');
