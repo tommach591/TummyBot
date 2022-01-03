@@ -35,7 +35,7 @@ module.exports = {
             embedMsg.setColor('FFAAAA');
             embedMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
 
-            let proposalid;
+            let proposal;
             message.channel.send({ embeds: [embedMsg] }).then(
                 sent => { proposal = sent } 
             ).then(
