@@ -40,7 +40,7 @@ module.exports = {
             message.awaitReactions({ filter, max: 1, time: (1000 * 10), errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
-
+                    console.log("A button was clicked");
                     if (reaction.emoji.name === '👍') {
                         message.reply('You reacted with a thumbs up.');
                     } else {
