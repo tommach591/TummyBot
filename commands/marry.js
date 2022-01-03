@@ -50,11 +50,11 @@ module.exports = {
                     };
                     proposal.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
                     .then(collected => {
+                        const responseMsg = new MessageEmbed();
                         const reaction = collected.first();
                         if (reaction.emoji.name === '👍') {
                             userData[userid].married = userid;
                             userData[mention].married = mention;
-                            const responseMsg = new MessageEmbed();
                             responseMsg.setTitle('Congratulations!');
                             responseMsg.setColor('FF80AB');
                             responseMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
@@ -69,11 +69,12 @@ module.exports = {
                         }
                     })
                     .catch(collected => {
-                        embedMsg.setTitle('HAHA!');
-                        embedMsg.setColor('FF0000');
-                        embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
-                        embedMsg.setDescription(userData[mention].name + " ignored you!");
-                        message.channel.send({ embeds: [embedMsg] });
+                        const responseMsg = new MessageEmbed();
+                        responseMsg.setTitle('HAHA!');
+                        responseMsg.setColor('FF0000');
+                        responseMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
+                        responseMsg.setDescription(userData[mention].name + " ignored you!");
+                        message.channel.send({ embeds: [responseMsg] });
                     });
                 }
             );
