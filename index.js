@@ -229,6 +229,10 @@ client.on('messageCreate', message => {
                 if (userData[sender.id])
                     client.gmcommands.get('gm').execute(message, args, sender.id, userData, client);
                 break;
+            case 'save':
+                if (userData[sender.id] && userData[sender.id].gm > 0)
+                    client.gmcommands.get('save').execute(message, args, sender.id, userData, userFish, userGarden, client, s3, userDataParams, userFishParams, userGardenParams);
+                break;
             default:
                 message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
                 break;
@@ -241,40 +245,6 @@ client.on('messageCreate', message => {
             embedMsg.setDescription('Register with the !tp register command!')
             message.channel.send({ embeds: [embedMsg] });
         }
-
-        s3.putObject({
-            Bucket: config.bucket,
-            Key: userDataParams.Key,
-            Body: JSON.stringify(userData),
-            ContentType: "application/json"},
-            function (err, data) {
-                if (err) {
-                    console.log(JSON.stringify(err));
-                }
-            }
-        );
-        s3.putObject({
-            Bucket: config.bucket,
-            Key: userFishParams.Key,
-            Body: JSON.stringify(userFish),
-            ContentType: "application/json"},
-            function (err, data) {
-                if (err) {
-                    console.log(JSON.stringify(err));
-                }
-            }
-        );
-        s3.putObject({
-            Bucket: config.bucket,
-            Key: userGardenParams.Key,
-            Body: JSON.stringify(userGarden),
-            ContentType: "application/json"},
-            function (err, data) {
-                if (err) {
-                    console.log(JSON.stringify(err));
-                }
-            }
-        );
     }
     catch (err) {
         const embedMsg = new MessageEmbed();
@@ -283,6 +253,7 @@ client.on('messageCreate', message => {
         embedMsg.setDescription('Oh no! Something went wrong with the bot!');
         embedMsg.setFooter('Try not to use that same command again!');
         message.channel.send({ embeds: [embedMsg] });
+        client.gmcommands.get('save').execute(message, args, sender.id, userData, userFish, userGarden, client, s3, userDataParams, userFishParams, userGardenParams);
         console.log(err);
     }
 
