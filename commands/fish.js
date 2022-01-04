@@ -631,13 +631,9 @@ module.exports = {
 
                     const yourdex = require('discord.js-pagination');
                     const buttons = ["◀️", "▶️"];
-                    const timelimit = 1000 * 60 * 30;
+                    const timelimit = '1800000';
 
-                    for (let i = 0; i < pages.length; i++) {
-                        message.channel.send({ embeds: [pages[i]] });
-                    }
-
-                    //yourdex(theMessage, pages, buttons, timelimit);
+                    yourdex(message, pages, buttons, timelimit);
 
                 }
                 break;
