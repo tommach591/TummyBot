@@ -638,7 +638,6 @@ module.exports = {
                                     }
                                     embedMsg.setDescription("```" + fishes[index] + "```");
                                     messageSent.edit({ embeds: [embedMsg] });
-                                    reaction.users.remove(userid);
                                 } 
                                 else if (reaction.emoji.name === '▶️') {
                                     if (index < (fishes.length - 1)) {
@@ -646,7 +645,6 @@ module.exports = {
                                     }
                                     embedMsg.setDescription("```" + fishes[index] + "```");
                                     messageSent.edit({ embeds: [embedMsg] });
-                                    reaction.users.remove(userid);
                                 }
                             }).catch(collected => {
                                 messageSent.delete();
