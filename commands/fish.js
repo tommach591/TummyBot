@@ -638,7 +638,7 @@ module.exports = {
                                     }
                                     console.log("Left");
                                     embedMsg.setDescription("```" + fishes[index] + "```");
-                                    messageSent.edit({ embeds: [embedMsg] });
+                                    messageSent.edit({ embeds: [embedMsg] }).then(updated => { messageSent = updated } );
                                     reaction.users.remove(userid);
                                 } 
                                 else if (reaction.emoji.name === '▶️') {
@@ -647,7 +647,7 @@ module.exports = {
                                     }
                                     console.log("Right");
                                     embedMsg.setDescription("```" + fishes[index] + "```");
-                                    messageSent.edit({ embeds: [embedMsg] });
+                                    messageSent.edit({ embeds: [embedMsg] }).then(updated => { messageSent = updated } );;
                                     reaction.users.remove(userid);
                                 }
                             });
