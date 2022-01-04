@@ -627,7 +627,7 @@ module.exports = {
                             const filter = (reaction, user) => {
                                 return ['◀️', '▶️'].includes(reaction.emoji.name) && user.id === userid;
                             };
-                            messageSent.awaitReactions({ filter, max: 10, time: 30000, errors: ['time'] })
+                            messageSent.awaitReactions({ filter })
                             .then(
                                 collected => {
                                 const reaction = collected.first();
@@ -650,11 +650,9 @@ module.exports = {
                                     messageSent.edit({ embeds: [embedMsg] });
                                     reaction.users.remove(userid);
                                 }
-                            }).catch(collected => {
-                                messageSent.delete();
                             });
                         }
-                    );
+                    ).then(() => {setTimeout(() => messageSent.delete(), 30000)});;
                 }
                 break;
             default:
