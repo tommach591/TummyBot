@@ -618,11 +618,9 @@ module.exports = {
                     index = 0;
                     embedMsg.setDescription("```" + fishes[index] + "```");
 
-                    console.log(fishes);
-
                     var pages = [];
                     for (let i = 0; i < fishes.length; i++) {
-                        const page = new MessageEmbed();
+                        var page = new MessageEmbed();
                         page.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                         page.setTitle('Fishdex');
                         page.setThumbnail('https://i.imgur.com/liDWgLr.png');
@@ -634,7 +632,14 @@ module.exports = {
                     const yourdex = require('discord.js-pagination');
                     const buttons = ["◀️", "▶️"];
                     const timelimit = 1000 * 60 * 30;
-                    yourdex(message, pages, buttons, timelimit);
+
+                    let theMessage;
+                    message.channel.send({ embeds: [embedMsg] }).then( (sent) => {
+                        theMessage = sent;
+                    }).then(() => {
+                        yourdex(theMessage, pages, buttons, timelimit);
+                    });
+
                 }
                 break;
             default:
