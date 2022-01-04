@@ -633,12 +633,11 @@ module.exports = {
                     const buttons = ["◀️", "▶️"];
                     const timelimit = 1000 * 60 * 30;
 
-                    let theMessage;
-                    message.channel.send({ embeds: [embedMsg] }).then( (sent) => {
-                        theMessage = sent;
-                    }).then(() => {
-                        yourdex(theMessage, pages, buttons, timelimit);
-                    });
+                    for (let i = 0; i < pages.length; i++) {
+                        message.channel.send({ embeds: [pages[i]] });
+                    }
+
+                    //yourdex(theMessage, pages, buttons, timelimit);
 
                 }
                 break;
