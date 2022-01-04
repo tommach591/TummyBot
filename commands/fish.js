@@ -629,14 +629,8 @@ module.exports = {
                         pages.push(page);
                     }
 
-                    console.log(pages.length);
-
-                    const pagination = require('discord.js-pagination');
-
-                    const emoji = ["⏪", "⏩"]
-                    const timeout = '180000'
-
-                    pagination(message, pages, emoji, timeout)
+                    for (let i = 0; i < pages.length; i++)
+                        message.channel.send({ embeds: [pages[i]] });
                 }
                 break;
             default:
