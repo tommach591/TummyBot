@@ -618,6 +618,8 @@ module.exports = {
                     index = 0;
                     embedMsg.setDescription("```" + fishes[index] + "```");
 
+                    console.log(fishes);
+
                     var pages = [];
                     for (let i = 0; i < fishes.length; i++) {
                         const page = new MessageEmbed();
