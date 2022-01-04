@@ -1,3 +1,4 @@
+
 module.exports = {
     name: 'fish',
     description: "Fish for hot waifus.",
@@ -446,7 +447,7 @@ module.exports = {
                                 }
                                 return 0;
                             });
-                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n\n **Fishdex Entry**\n" + fishCaught.info);
+                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n\n**Fishdex Entry**\n" + fishCaught.info);
                             embedMsg.setFooter("Value: " + fishCaught.value + " points (New!)");
                         }
                         else {
@@ -586,11 +587,11 @@ module.exports = {
                         embedMsg.setThumbnail(fishdex[selected].image);
                         embedMsg.addField('Fishdex Entry', "" + fishdex[selected].info);
                         embedMsg.addField('Value', "" + fishdex[selected].value);
-                        messageSent.edit({ embeds: [embedMsg] });
+                        message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
                         embedMsg.setDescription('You never caught this fish or it does not exist!');
-                        messageSent.edit({ embeds: [embedMsg] });
+                        message.channel.send(embedMsg);
                     }
                 }
                 else {
@@ -615,22 +616,59 @@ module.exports = {
                         }
                         count++;
                     }
-                    index = 0;
-                    embedMsg.setDescription("```" + fishes[index] + "```");
 
-                    const pages = [];
+                    let pages = [];
                     for (let i = 0; i < fishes.length; i++) {
-                        const page = new MessageEmbed();
-                        page.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
-                        page.setTitle('Fishdex');
-                        page.setThumbnail('https://i.imgur.com/liDWgLr.png');
-                        page.setColor('FFF000');
-                        page.setDescription("```" + fishes[i] + "```");
-                        pages.push(page);
+                        pages.push("```" + fishes[i] + "```");
                     }
 
-                    for (let i = 0; i < pages.length; i++)
-                        message.channel.send({ embeds: [pages[i]] });
+                    let page = 1;
+                    embedMsg
+                        .setFooter(`Page ${page} of ${pages.length}`)
+                        .setDescription(pages[page-1])
+                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setTitle('Fishdex')
+                        .setThumbnail('https://i.imgur.com/liDWgLr.png')
+                        .setColor('FFF000');
+
+                    message.channel.send({ embeds: [embedMsg] }).then(msg => {
+                        msg.react("◀️").then(r => {
+                            msg.react("▶️")
+
+                            const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 60 * 30 });
+
+                            collector.on('collect', r => {
+                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setTitle('Fishdex');
+                                embedMsg.setThumbnail('https://i.imgur.com/liDWgLr.png');
+                                embedMsg.setColor('FFF000');
+                                
+                                if (r.emoji.name === "◀️") {
+                                    if (page === 1) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page--;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                else if (r.emoji.name === "▶️") {
+                                    if (page === pages.length) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page++;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                r.users.remove(userid);
+                            })
+
+                        })
+                    });
                 }
                 break;
             default:

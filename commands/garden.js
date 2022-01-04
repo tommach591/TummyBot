@@ -331,22 +331,81 @@ module.exports = {
                     }
                 }
                 else {
-                    var plants = "";
+                    var plants = [""];
+                    var index = 0;
+                    var count = 0;
                     var keys = [];
                     for (var k in gardendex) {
                         keys.push(k);
                     }
                     for (let i = 1; i < keys.length + 1; i++) {
+                        if (count >= 20) {
+                            index++;
+                            count = 0;
+                            plants[index] = "";
+                        }
                         if (userGarden[userid].gardendex.includes(i.toString())) {
-                            plants += "#" + gardendex[i].id + ". " + gardendex[i].name + "\n";
+                            plants[index] += "#" + gardendex[i].id + ". " + gardendex[i].name + "\n";
                         }
                         else {
-                            plants += "#" + gardendex[i].id + ". ???\n";
+                            plants[index] += "#" + gardendex[i].id + ". ???\n";
                         }
+                        count++;
                     }
-                    embedMsg.setDescription("```" + plants + "```");
+
+                    let pages = [];
+                    for (let i = 0; i < plants.length; i++) {
+                        pages.push("```" + plants[i] + "```");
+                    }
+    
+                    let page = 1;
+                    embedMsg
+                        .setFooter(`Page ${page} of ${pages.length}`)
+                        .setDescription(pages[page-1])
+                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setTitle('Gardendex')
+                        .setThumbnail('https://i.imgur.com/liDWgLr.png')
+                        .setColor('FFF000');
+    
+                    message.channel.send({ embeds: [embedMsg] }).then(msg => {
+                        msg.react("◀️").then(r => {
+                            msg.react("▶️")
+    
+                            const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 60 * 30 });
+    
+                            collector.on('collect', r => {
+                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setTitle('Gardendex');
+                                embedMsg.setThumbnail('https://i.imgur.com/CCkcmSz.png');
+                                embedMsg.setColor('FFF000');
+                                
+                                if (r.emoji.name === "◀️") {
+                                    if (page === 1) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page--;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                else if (r.emoji.name === "▶️") {
+                                    if (page === pages.length) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page++;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                r.users.remove(userid);
+                            })
+    
+                        })
+                    });
                 }
-                message.channel.send({ embeds: [embedMsg] });
                 break;
             default:
                 embedMsg.setTitle('Error!');
