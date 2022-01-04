@@ -629,7 +629,6 @@ module.exports = {
                         pages.push(page);
                     }
 
-                    let index = 0;
                     var proposalMsg = pages[index];
 
                     let proposal; 
