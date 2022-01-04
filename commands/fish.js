@@ -627,7 +627,7 @@ module.exports = {
                             const filter = (reaction, user) => {
                                 return ['◀️', '▶️'].includes(reaction.emoji.name) && user.id === userid;
                             };
-                            messageSent.awaitReactions({ filter })
+                            messageSent.awaitReactions({ filter, max: 100 })
                             .then(
                                 collected => {
                                 const reaction = collected.first();
@@ -638,7 +638,7 @@ module.exports = {
                                     }
                                     console.log("Left");
                                     embedMsg.setDescription("```" + fishes[index] + "```");
-                                    messageSent.edit({ embeds: [embedMsg] }).then(updated => { messageSent = updated } );
+                                    messageSent.edit({ embeds: [embedMsg] });
                                     reaction.users.remove(userid);
                                 } 
                                 else if (reaction.emoji.name === '▶️') {
@@ -647,7 +647,7 @@ module.exports = {
                                     }
                                     console.log("Right");
                                     embedMsg.setDescription("```" + fishes[index] + "```");
-                                    messageSent.edit({ embeds: [embedMsg] }).then(updated => { messageSent = updated } );;
+                                    messageSent.edit({ embeds: [embedMsg] });
                                     reaction.users.remove(userid);
                                 }
                             });
