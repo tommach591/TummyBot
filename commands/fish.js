@@ -567,7 +567,7 @@ module.exports = {
                 if (args.length > 1) {
                     var selected = args[1];
                     if (!isNaN(Number(selected)) && fishdex[selected] && userFish[userid].fishdex.includes(selected)) {
-                        var stars = " (★)";
+                        var stars = "";
                         if (sixstar.includes(fishdex[selected].id)) {
                             stars = " (★★★★★★)";
                         }
@@ -583,6 +583,9 @@ module.exports = {
                         else if (twostar.includes(fishdex[selected].id)) {
                             stars = " (★★)";
                         }
+                        else {
+                            stars = " (★)"
+                        }
                         embedMsg.setDescription("#" + fishdex[selected].id + ". " + fishdex[selected].name + stars + "\n");
                         embedMsg.setThumbnail(fishdex[selected].image);
                         embedMsg.addField('Fishdex Entry', "" + fishdex[selected].info);
@@ -591,7 +594,7 @@ module.exports = {
                     }
                     else {
                         embedMsg.setDescription('You never caught this fish or it does not exist!');
-                        message.channel.send(embedMsg);
+                        message.channel.send(embedMsg); 
                     }
                 }
                 else {
