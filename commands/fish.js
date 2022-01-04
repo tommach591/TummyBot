@@ -629,6 +629,8 @@ module.exports = {
                         pages.push(page);
                     }
 
+                    console.log(pages.length);
+
                     const pagination = require('discord.js-pagination');
 
                     const emoji = ["⏪", "⏩"]
