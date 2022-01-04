@@ -594,7 +594,7 @@ module.exports = {
                     }
                     else {
                         embedMsg.setDescription('You never caught this fish or it does not exist!');
-                        message.channel.send(embedMsg); 
+                        message.channel.send({ embeds: [embedMsg] }); 
                     }
                 }
                 else {
