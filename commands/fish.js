@@ -629,6 +629,10 @@ module.exports = {
                         pages.push(page);
                     }
 
+                    for (let i = 0; i < pages.length; i++) {
+                        message.channel.send({ embeds: [pages[i]] });
+                    }
+
                     const pagination = require('discord.js-pagination');
 
                     pagination(message, pages);
