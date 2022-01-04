@@ -631,20 +631,24 @@ module.exports = {
                             .then(
                                 collected => {
                                 const reaction = collected.first();
-
+                                console.log("Clicked");
                                 if (reaction.emoji.name === '◀️') {
                                     if (index > 0) {
                                         index--;
                                     }
+                                    console.log("Left");
                                     embedMsg.setDescription("```" + fishes[index] + "```");
                                     messageSent.edit({ embeds: [embedMsg] });
+                                    reaction.users.remove(userid);
                                 } 
                                 else if (reaction.emoji.name === '▶️') {
                                     if (index < (fishes.length - 1)) {
                                         index++;
                                     }
+                                    console.log("Right");
                                     embedMsg.setDescription("```" + fishes[index] + "```");
                                     messageSent.edit({ embeds: [embedMsg] });
+                                    reaction.users.remove(userid);
                                 }
                             }).catch(collected => {
                                 messageSent.delete();
