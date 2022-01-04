@@ -231,7 +231,7 @@ module.exports = {
                                 else {
                                     embedMsg.setTitle('Declined!');
                                     embedMsg.setColor('FF0000');
-                                    proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
+                                    embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                     embedMsg.setDescription(userData[userid].name + " declined!");
                                     embedMsg.setFooter('Next level: 100000 points');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -241,7 +241,7 @@ module.exports = {
                                 embedMsg.setTitle('Fail!');
                                 embedMsg.setColor('FF0000');
                                 embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
+                                embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                 embedMsg.setFooter('Next level: 100000 points');
                                 message.channel.send({ embeds: [embedMsg] });
                             });

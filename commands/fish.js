@@ -618,9 +618,9 @@ module.exports = {
                     index = 0;
                     embedMsg.setDescription("```" + fishes[index] + "```");
 
-                    var pages = [];
+                    const pages = [];
                     for (let i = 0; i < fishes.length; i++) {
-                        var page = new MessageEmbed();
+                        const page = new MessageEmbed();
                         page.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                         page.setTitle('Fishdex');
                         page.setThumbnail('https://i.imgur.com/liDWgLr.png');
@@ -629,41 +629,10 @@ module.exports = {
                         pages.push(page);
                     }
 
-                    var proposalMsg = pages[index];
+                    const emoji = ["⏪", "⏩"]
+                    const timeout = '180000'
 
-                    let proposal; 
-                    message.channel.send({ embeds: [proposalMsg] }).then(
-                        sent => { proposal = sent } 
-                    ).then(
-                        () => {
-                            proposal.react('◀️').then(() => proposal.react('▶️'));
-                            const filter = (reaction, user) => {
-                                return ['◀️', '▶️'].includes(reaction.emoji.name) && user.id === userid;
-                            };
-                            proposal.awaitReactions({ filter, max: 100, time: 30000, errors: ['time'] })
-                            .then(
-                                collected => {
-                                const reaction = collected.first();
-                                if (reaction.emoji.name === '◀️') {
-                                    index--;
-                                    proposal.edit({ embeds: [pages[index]] });
-                                } 
-                                else {
-                                    index++;
-                                    proposal.edit({ embeds: [pages[index]] });
-                                }
-                            })
-                            .catch(collected => {
-                                embedMsg.setTitle('Fail!');
-                                embedMsg.setColor('FF0000');
-                                embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
-                                embedMsg.setFooter('Next level: 100000 points');
-                                message.channel.send({ embeds: [embedMsg] });
-                            });
-                        }
-                    );
-
+                    pagination(message, pages, emoji, timeout)
                 }
                 break;
             default:
