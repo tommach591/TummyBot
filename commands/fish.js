@@ -642,14 +642,6 @@ module.exports = {
                                     messageSent.edit({ embeds: [embedMsg] });
                                 }
 
-                                const userReactions = messageSent.reactions.cache.filter(reaction => reaction.users.cache.has(userid));
-                                try {
-                                    for (const reaction of userReactions.values()) {
-                                        await reaction.users.remove(userid);
-                                    }
-                                } catch (error) {
-                                    console.error('Failed to remove reactions.');
-                                }
                             }).catch(collected => {
 
                             });
