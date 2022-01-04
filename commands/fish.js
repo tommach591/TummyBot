@@ -618,41 +618,21 @@ module.exports = {
                     index = 0;
                     embedMsg.setDescription("```" + fishes[index] + "```");
 
-                    let messageSent;
-                    message.channel.send({ embeds: [embedMsg] }).then(
-                        sent => { messageSent = sent } 
-                    ).then(
-                        () => {
-                            messageSent.react('◀️').then(() => messageSent.react('▶️'));
-                            const filter = (reaction, user) => {
-                                return ['◀️', '▶️'].includes(reaction.emoji.name) && user.id === userid;
-                            };
-                            messageSent.awaitReactions({ filter, max: 100 })
-                            .then(
-                                collected => {
-                                const reaction = collected.first();
-                                console.log("Clicked");
-                                if (reaction.emoji.name === '◀️') {
-                                    if (index > 0) {
-                                        index--;
-                                    }
-                                    console.log("Left");
-                                    embedMsg.setDescription("```" + fishes[index] + "```");
-                                    messageSent.edit({ embeds: [embedMsg] });
-                                    reaction.users.remove(userid);
-                                } 
-                                else if (reaction.emoji.name === '▶️') {
-                                    if (index < (fishes.length - 1)) {
-                                        index++;
-                                    }
-                                    console.log("Right");
-                                    embedMsg.setDescription("```" + fishes[index] + "```");
-                                    messageSent.edit({ embeds: [embedMsg] });
-                                    reaction.users.remove(userid);
-                                }
-                            });
-                        }
-                    ).then(() => {setTimeout(() => messageSent.delete(), 30000)});;
+                    var pages = [];
+                    for (let i = 0; i < fishes.length; i++) {
+                        const page = new MessageEmbed();
+                        page.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                        page.setTitle('Fishdex');
+                        page.setThumbnail('https://i.imgur.com/liDWgLr.png');
+                        page.setColor('FFF000');
+                        page.setDescription("```" + fishes[i] + "```");
+                        pages.push(page);
+                    }
+
+                    const yourdex = require('discord.js-pagination');
+                    const buttons = ["◀️", "▶️"];
+                    const timelimit = 1000 * 60 * 30;
+                    yourdex(message, pages, buttons, timelimit);
                 }
                 break;
             default:
