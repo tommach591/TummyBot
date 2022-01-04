@@ -629,11 +629,9 @@ module.exports = {
                         pages.push(page);
                     }
 
-                    const yourdex = require('discord.js-pagination');
-                    const buttons = ["◀️", "▶️"];
-                    const timelimit = '1800000';
+                    const pagination = require('discord.js-pagination');
 
-                    yourdex(message, pages, buttons, timelimit);
+                    pagination(message, pages);
 
                 }
                 break;
