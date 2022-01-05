@@ -77,6 +77,10 @@ module.exports = {
                             if (reaction.emoji.name === '👍') {
                                 userData[userid].married = mention;
                                 userData[mention].married = userid;
+
+                                userData[userid].bankTick = newDate.getTime();
+                                userData[mention].bankTick = newDate.getTime();
+
                                 embedMsg.setTitle('Congratulations!');
                                 embedMsg.setColor('FF80AB');
                                 embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");

@@ -79,7 +79,7 @@ module.exports = {
                 var timeDiff = newDate.getTime() - userData[userid].bankTick;
                 var tickTime = 1000 * 60 * 30;
 
-                if (timeDiff < tickTime && userData[userid].bank != 0) {
+                if (timeDiff < tickTime && ((userData[userid].bank != 0) || (userData[userid].married != "" && userData[userData[userid].married] && (userData[userData[userid].married].bank != 0)))) {
                     var hours = Math.floor((tickTime - timeDiff) / (1000 * 60 * 60));
                     var min = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) / (1000 * 60));
                     var sec = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) % (1000 * 60) / (1000));
