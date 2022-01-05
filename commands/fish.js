@@ -541,19 +541,79 @@ module.exports = {
                     embedMsg.setDescription('No fish :(');
                 }
                 else {
-                    var fishes = "";
+                    var fishes = [""];
                     var lastFish = "";
+                    var index = 0;
+                    var count = 0;
                     var cost = 0;
                     userFish[userid].fishInventory.forEach((element) => {
                         cost += fishdex[element].value;
+                        if (count >= 5) {
+                            fishes[index] += "\n";
+                            index++;
+                            count = 0;
+                            fishes.push("");
+                        }
                         if (lastFish != element) {
                             var amount = userFish[userid].fishInventory.filter(match => match == element).length;
-                            fishes += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + fishdex[element].value + "\n\n";
+                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + fishdex[element].value + "\n\n";
                             lastFish = element;
+                            count++;
                         }
                     });
-                    embedMsg.setDescription(fishes);
-                    embedMsg.setFooter("Total Value: " + cost + " points");
+
+                    let pages = [];
+                    for (let i = 0; i < fishes.length; i++) {
+                        pages.push(fishes[i]);
+                    }
+
+                    let page = 1;
+                    embedMsg
+                        .setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                        .setDescription(pages[page-1])
+                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setTitle('Fish Inventory')
+                        .setThumbnail('https://i.imgur.com/ME2PxQ3.png')
+                        .setColor('FFF000');
+
+                    message.channel.send({ embeds: [embedMsg] }).then(msg => {
+                        msg.react("◀️").then(r => {
+                            msg.react("▶️")
+
+                            const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
+
+                            collector.on('collect', r => {
+                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setTitle('Fish Inventory');
+                                embedMsg.setThumbnail('https://i.imgur.com/ME2PxQ3.png');
+                                embedMsg.setColor('FFF000');
+                                
+                                if (r.emoji.name === "◀️") {
+                                    if (page === 1) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page--;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                else if (r.emoji.name === "▶️") {
+                                    if (page === pages.length) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page++;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                r.users.remove(userid);
+                            })
+
+                        })
+                    });
                 }
                 message.channel.send({ embeds: [embedMsg] });
                 break;

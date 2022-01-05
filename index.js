@@ -29,8 +29,8 @@ for (const file of gmCommandFiles) {
 }
 
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
-var savefile = JSON.parse(fs.readFileSync('storage/savefile.json', 'utf8'));
-var blackjack = JSON.parse(fs.readFileSync('storage/blackjack.json', 'utf8'));
+var savefile = JSON.parse("{}");
+var blackjack = JSON.parse("{}");
 var fishdex = JSON.parse(fs.readFileSync('storage/fishdex.json', 'utf8'));
 var gardendex = JSON.parse(fs.readFileSync('storage/gardendex.json', 'utf8'));
 

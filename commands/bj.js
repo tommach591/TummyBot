@@ -436,10 +436,10 @@ module.exports = {
                         }
                     }
                     else {
-                        embedMsg.setTitle('Error!');
+                        embedMsg.setTitle('Invalid blackjack command or ammount!');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setDescription("Please enter a command or valid value!");
-                        embedMsg.setFooter('Use !tp bj help for commands!');
+                        embedMsg.setDescription("Use __!tp bj help__ for commands!");
+                        embedMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }

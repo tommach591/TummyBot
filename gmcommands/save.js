@@ -42,7 +42,7 @@ module.exports = {
 
         embedMsg.setTitle('Saved!');
         embedMsg.setColor('B5EAFF');
-        embedMsg.setThumbnail("https://c.tenor.com/TgPXdDAfIeIAAAAM/gawr-gura-gura.gif");
+        embedMsg.setImage("https://c.tenor.com/TgPXdDAfIeIAAAAM/gawr-gura-gura.gif");
         embedMsg.setDescription('Files have been saved!');
         message.channel.send({ embeds: [embedMsg] });
     }

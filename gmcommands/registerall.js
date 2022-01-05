@@ -17,9 +17,14 @@ module.exports = {
 
             for (var i = 0; i < keys.length; i++) {
 
-                userData[keys[i]].married = "";
-                userData[keys[i]].bank = 0;
-                userData[keys[i]].bankTick = newTime.getTime();
+                /*
+                    Below this is to add to userData
+                */
+
+
+                /*
+                    Erase after done ^
+                */
 
                 if (!userFish[keys[i]]) {
                     userFish[keys[i]] = {
