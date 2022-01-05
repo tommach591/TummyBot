@@ -77,7 +77,7 @@ module.exports = {
 
                 var newDate = new Date();
                 var timeDiff = newDate.getTime() - userData[userid].bankTick;
-                var tickTime = 1000 * 60;
+                var tickTime = 1000 * 60 * 30;
 
                 if (timeDiff < tickTime && userData[userid].bank != 0) {
                     var hours = Math.floor((tickTime - timeDiff) / (1000 * 60 * 60));
