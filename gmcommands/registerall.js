@@ -16,6 +16,11 @@ module.exports = {
             var newTime = new Date();
 
             for (var i = 0; i < keys.length; i++) {
+
+                userData[keys[i]].married = "";
+                userData[keys[i]].bank = 0;
+                userData[keys[i]].bankTick = newTime.getTime();
+
                 if (!userFish[keys[i]]) {
                     userFish[keys[i]] = {
                         name: userData[keys[i]].name,

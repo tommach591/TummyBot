@@ -447,11 +447,11 @@ module.exports = {
                                 }
                                 return 0;
                             });
-                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!\n\n**Fishdex Entry**\n" + fishCaught.info);
+                            embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!\n\n**Fishdex Entry**\n" + fishCaught.info);
                             embedMsg.setFooter("Value: " + fishCaught.value + " points (New!)");
                         }
                         else {
-                            embedMsg.setDescription(userData[userid].name + " caught a " + fishCaught.name + "!");
+                            embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!");
                             embedMsg.setFooter("Value: " + fishCaught.value + " points");
                         }
                         userFish[userid].fishInventory.push(fishCaught.id);
@@ -639,7 +639,7 @@ module.exports = {
                             msg.react("▶️")
 
                             const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
-                            const collector = msg.createReactionCollector({ filter, time: 1000 * 60 * 30 });
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
 
                             collector.on('collect', r => {
                                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });

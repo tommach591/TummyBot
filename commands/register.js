@@ -18,7 +18,9 @@ module.exports = {
                 begTime: 0,
                 fame: 0,
                 fameTime: 0,
-                married: ""
+                married: "",
+                bank: 0,
+                bankTick: newTime.getTime()
             }
             if (!userFish[userid]) {
                 userFish[userid] = {

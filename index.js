@@ -117,9 +117,21 @@ helpMsg.setColor('FF0000');
 helpMsg.setDescription('Invalid command!');
 helpMsg.setFooter('Use !tp help for list of commands!');
 
+const admin = "<@!189892642627125248>";
+
+const errorMsg = new MessageEmbed();
+errorMsg.setTitle('CRITICAL ERROR!');
+errorMsg.setColor('FF0000');
+errorMsg.setDescription('The bot is at risk of crashing!!!');
+errorMsg.setImage("https://c.tenor.com/i51CEmR_1x4AAAAC/ame-gura.gif")
+errorMsg.setFooter("Don't type that command again!!!");
+
+let msg;
 client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
+
+    msg = message;
 
     try {
         if (userData == "") {
@@ -153,7 +165,7 @@ client.on('messageCreate', message => {
             var incomeCD = 1000 * 60; // 1min
             if (timeDiff >= incomeCD) {
                 userData[sender.id].points += Math.floor(timeDiff / incomeCD) * userData[sender.id].income;
-                userData[sender.id].incomeTime = newTime.getTime();
+                userData[sender.id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
             }
         }
 
@@ -214,6 +226,10 @@ client.on('messageCreate', message => {
             case 'garden':
                 if (userData[sender.id])
                     client.commands.get('garden').execute(message, args, sender.id, userData, userGarden, gardendex, client);
+                break;
+            case 'bank':
+                if (userData[sender.id])
+                    client.commands.get('bank').execute(message, args, sender.id, userData, client);
                 break;
             case 'bj':
                 if (userData[sender.id])
@@ -301,6 +317,16 @@ client.on('messageCreate', message => {
         if (err) console.error(err);
     });
     */
-})
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    var newDate = new Date();
+    console.log(reason);
+    msg.channel.send({ embeds: [errorMsg] }).then(
+        msg => { 
+            msg.reply(admin + "\n\nError Date: " + newDate);
+        });
+    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
+});
  
 client.login('OTI0OTM2Njk1NTY3MjIwODE2.Ycl0bA.GD_-9lJp3_koJa8Y1y_ucDjbK34'); // Last Line in File
