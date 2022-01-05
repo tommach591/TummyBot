@@ -408,10 +408,9 @@ module.exports = {
                 }
                 break;
             default:
-                embedMsg.setTitle('Error!');
+                embedMsg.setTitle('Invalid gardening command!');
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription("Invalid gardening command!");
-                embedMsg.setFooter('Use !tp garden help for list of gardening commands!');
+                embedMsg.setDescription('Use *__!tp garden help__* for list of gardening commands!');
                 message.channel.send({ embeds: [embedMsg] });
                 break;
         }

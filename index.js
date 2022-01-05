@@ -112,10 +112,9 @@ client.once('ready', () => {
 });
 
 const helpMsg = new MessageEmbed();
-helpMsg.setTitle('Error!');
+helpMsg.setTitle('Invalid command!');
 helpMsg.setColor('FF0000');
-helpMsg.setDescription('Invalid command!');
-helpMsg.setFooter('Use !tp help for list of commands!');
+helpMsg.setDescription('Use *__!tp help__* for list of commands!');
 
 const admin = "<@!189892642627125248>";
 

@@ -196,10 +196,9 @@ module.exports = {
                 }
                 break;
             default:
-                embedMsg.setTitle('Error!');
+                embedMsg.setTitle("Invalid bank command!");
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription("Invalid bank command!");
-                embedMsg.setFooter('Use !tp bank help for list of bank commands!');
+                embedMsg.setDescription('Use *__!tp bank help__* for list of bank commands!');
                 message.channel.send({ embeds: [embedMsg] });
                 break;
         }

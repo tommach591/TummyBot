@@ -675,10 +675,9 @@ module.exports = {
                 }
                 break;
             default:
-                embedMsg.setTitle('Error!');
+                embedMsg.setTitle("Invalid fishing command!");
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription("Invalid fishing command!");
-                embedMsg.setFooter('Use !tp fish help for list of fishing commands!');
+                embedMsg.setDescription('Use *__!tp fish help__* for list of fishing commands!');
                 message.channel.send({ embeds: [embedMsg] });
                 break;
         }

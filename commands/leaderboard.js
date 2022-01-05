@@ -12,10 +12,10 @@ module.exports = {
         }
 
         keys.sort((firstEl, secondEl) => { 
-            if (userData[firstEl].points > userData[secondEl].points) {
+            if (userData[firstEl].points + userData[firstEl].bank > userData[secondEl].points + userData[secondEl].bank) {
                 return -1;
             }
-            if (userData[firstEl].points < userData[secondEl].points) {
+            if (userData[firstEl].points + userData[firstEl].bank < userData[secondEl].points + userData[secondEl].bank) {
                 return 1;
             }
             return 0;
@@ -25,7 +25,7 @@ module.exports = {
         var points = "";
         for (var i = 0; i < keys.length; i++) {
             names += userData[keys[i]].name + "⠀⠀⠀\n";
-            points += userData[keys[i]].points + "⠀⠀⠀\n";
+            points += (userData[keys[i]].points + userData[keys[i]].bank) + "⠀⠀⠀\n";
         }
         embedMsg.setTitle("**__The Leaderboard__**");
         embedMsg.setThumbnail("https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif");
