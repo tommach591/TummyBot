@@ -114,7 +114,8 @@ client.once('ready', () => {
 const helpMsg = new MessageEmbed();
 helpMsg.setTitle('Invalid command!');
 helpMsg.setColor('FF0000');
-helpMsg.setDescription('Use *__!tp help__* for list of commands!');
+helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
+helpMsg.setDescription('Use __!tp help__ for list of commands!');
 
 const admin = "<@!189892642627125248>";
 
