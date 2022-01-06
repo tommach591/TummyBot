@@ -21,19 +21,85 @@ module.exports = {
             return 0;
         });
 
-        var names = "";
-        var points = "";
+        var names = [""];
+        var points = [""];
+        var ranks = [""];
+
+        var index = 0;
+        var count = 0;
+
         for (var i = 0; i < keys.length; i++) {
-            names += userData[keys[i]].name + "⠀⠀⠀\n";
-            points += (userData[keys[i]].points + userData[keys[i]].bank) + "⠀⠀⠀\n";
+            if (count >= 20) {
+                count = 0;
+                index++;
+                names[index] = "";
+                points[index] = "";
+                ranks[index] = "";
+            }
+
+            names[index] += userData[keys[i]].name + "\n";
+            points[index] += (userData[keys[i]].points + userData[keys[i]].bank) + "⠀⠀⠀\n";
+            ranks[index] += "" + (i + 1) + ".\n";
+            count++;
         }
-        embedMsg.setTitle("**__The Leaderboard__**");
-        embedMsg.setThumbnail("https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif");
-        embedMsg.setColor('FFF000');
-        embedMsg.setFields(
-            {name: "**__Player__**", value: names, inline: true},
-            {name: "**__Points__**", value: points, inline: true}
+
+        let page = 1;
+
+        embedMsg
+        .setTitle("**__The Leaderboard__**")
+        .setThumbnail('https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif')
+        .setColor('FFF000')
+        .setFooter(`Page ${page} of ${ranks.length}`)
+        .setFields(
+            {name: "**__Rank__**", value: ranks[page-1], inline: true},
+            {name: "**__Player__**", value: names[page-1], inline: true},
+            {name: "**__Points__**", value: points[page-1], inline: true}
         )
-        message.channel.send({ embeds: [embedMsg] });
+
+        message.channel.send({ embeds: [embedMsg] }).then(msg => {
+            msg.react("◀️").then(r => {
+                msg.react("▶️")
+
+                const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
+                const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
+
+                collector.on('collect', r => {
+                    embedMsg.setTitle("**__The Leaderboard__**")
+                    embedMsg.setThumbnail('https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif')
+                    embedMsg.setColor('FFF000')
+                    
+                    if (r.emoji.name === "◀️") {
+                        if (page === 1) {
+                            r.users.remove(userid);
+                            return;
+                        }
+                        page--;
+                        embedMsg.setFooter(`Page ${page} of ${ranks.length}`);
+                        embedMsg.setFields(
+                            {name: "**__Rank__**", value: ranks[page-1], inline: true},
+                            {name: "**__Player__**", value: names[page-1], inline: true},
+                            {name: "**__Points__**", value: points[page-1], inline: true}
+                        )
+                        msg.edit({ embeds: [embedMsg] });
+                    }
+                    else if (r.emoji.name === "▶️") {
+                        if (page === ranks.length) {
+                            r.users.remove(userid);
+                            return;
+                        }
+                        page++;
+                        embedMsg.setFooter(`Page ${page} of ${ranks.length}`);
+                        embedMsg.setFields(
+                            {name: "**__Rank__**", value: ranks[page-1], inline: true},
+                            {name: "**__Player__**", value: names[page-1], inline: true},
+                            {name: "**__Points__**", value: points[page-1], inline: true}
+                        )
+                        msg.edit({ embeds: [embedMsg] });
+                    }
+                    r.users.remove(userid);
+                })
+
+            })
+        });
     }
 }

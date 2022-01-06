@@ -539,6 +539,7 @@ module.exports = {
                 embedMsg.setThumbnail('https://i.imgur.com/ME2PxQ3.png');
                 if (userFish[userid].fishInventory.length == 0) {
                     embedMsg.setDescription('No fish :(');
+                    message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
                     var fishes = [""];
@@ -615,7 +616,6 @@ module.exports = {
                         })
                     });
                 }
-                message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'dex':
             case 'fishdex':
