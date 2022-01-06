@@ -147,7 +147,7 @@ module.exports = {
                     value = 11;
                 }
                 dealerValue = value;
-                embedMsg.setFooter("!tp bj hit/stand/double/split ⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
+                embedMsg.setFooter("!tp bj hit/stand/double/split ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
             }
             else {
                 dealerValue = countHand(dealer);
@@ -179,17 +179,17 @@ module.exports = {
                 if (reward > totalBet) {
                     embedMsg.setColor('00FF00');
                     outcome = "You WON " + reward + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
+                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
                 }
                 else if (reward == totalBet) {
                     embedMsg.setColor('FFB000');
                     outcome = "You PUSH for " + totalBet + " points!";
-                    embedMsg.setFooter("Net gain: 0 points ⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
+                    embedMsg.setFooter("Net gain: 0 points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
                 }
                 else {
                     embedMsg.setColor('FF0000');
                     outcome = "You LOST " + totalBet + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
+                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
                 }
 
                 userData[userid].points += reward;

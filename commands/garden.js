@@ -98,7 +98,7 @@ module.exports = {
                     proposalMsg.setColor('FFF000');
                     proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                     proposalMsg.setDescription("Would " + userData[userid].name + " like to plant a mystery seed for " + cost + " points?");
-                    proposalMsg.setFooter("Harvest in 20 hours to make 200 profit!");
+                    proposalMsg.setFooter("Harvest in 8 hours to make 200 profit!");
 
                     let proposal; 
                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -134,7 +134,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setDescription("Successfully planted mysterious seed!");
                                         embedMsg.setThumbnail("https://i.imgur.com/yNgyFnp.png");
-                                        embedMsg.setFooter("Harvest in 20 hours!");
+                                        embedMsg.setFooter("Harvest in 8 hours!");
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
