@@ -38,6 +38,29 @@ module.exports = {
 
                 userData[userid].bankTick = newDate.getTime() - (timeDiff % tickTime);
             }
+
+            if (userData[userid].married != "" && userData[userData[userid].married]) {
+                var spouseTimeDiff = newDate.getTime() - userData[userData[userid].married].bankTick
+                if (spouseTimeDiff >= tickTime) {
+                    var totalTicks = Math.floor(timeDiff / tickTime);
+                    for (let i = 0; i < totalTicks; i++) {
+                        var addBalance = 0;
+                        var currentBalance = userData[userid].bank + userData[userData[userid].married].bank;
+        
+                        for (let j = 0; j < currentBalance; j++) {
+                            var luck = Math.floor((Math.random() * 1000) + 1);
+                            var chance = 100 * 0.01;
+                            if (luck <= chance) {
+                                addBalance++;
+                            }
+                        }
+
+                        userData[userData[userid].married].bank += addBalance;
+                    }
+
+                    userData[userData[userid].married].bankTick = newDate.getTime() - (timeDiff % tickTime);
+                }
+            }
         }
 
         updateBank();
