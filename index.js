@@ -456,6 +456,7 @@ client.on('messageCreate', message => {
                             items[k].slots = 0;
                         }
                     }
+                    console.log(items[k].slots);
                 }
                 break;
             case 'gm':
