@@ -447,12 +447,8 @@ client.on('messageCreate', message => {
             case 'registerall':
                 if (userData[sender.id]) {
                     client.gmcommands.get('registerall').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, client);
-                    var keys = [];
                     for (var k in items) {
-                        keys.push(k);
-                    }
-                    for (let i = 0; i < keys.length; i++) {
-                        var rarity = equips[items[keys[i]].name].rarity;
+                        var rarity = equips[items[k.name]].rarity;
                         items[keys[i]].slots = (10 * rarity) + 5;
                     }
                 }
