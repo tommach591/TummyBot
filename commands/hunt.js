@@ -365,13 +365,13 @@ module.exports = {
                                     {
                                     setTimeout(() => {
                                         currHunt["active"].channels[i].send({ embeds: [rewardMsg] });
-                                    }, 5000);
+                                    }, 3000);
                                 }).then(() => 
                                 {
                                     setTimeout(() => {
                                         delete currHunt["active"];
                                         currHunt.lastSpawn = newTime.getTime();
-                                    }, 10000);
+                                    }, 30000);
                                 });
                             }
                         }
