@@ -416,11 +416,12 @@ module.exports = {
                         var standard = equips[items[element].name]
                         equipment[index] += "**__" + (userHunt[userid].equips.indexOf(element) + 1) + ". " + items[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                         + "\nRarity: " + standard.rarity
-                        + "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + "(+" + items[element].maxHP + ")"
-                        + "\nAttack: " + (items[element].attack + standard.attack) + "(+" + items[element].attack + ")"
-                        + "\nMagic: " + (items[element].magic + standard.magic) + "(+" + items[element].magic + ")"
-                        + "\nDefense: " + (items[element].defense + standard.defense) + "(+" + items[element].defense + ")"
-                        + "\nSpeed: " + (items[element].speed + standard.speed) + "(+" + items[element].speed + ")"
+                        + "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")"
+                        + "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")"
+                        + "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")"
+                        + "\nDefense: " + (items[element].defense + standard.defense) + " (+" + items[element].defense + ")"
+                        + "\nSpeed: " + (items[element].speed + standard.speed) + " (+" + items[element].speed + ")"
+                        + "\nSlots: " + items[element].slots
                         + "\n\n";
                         count++;
                     });
@@ -696,7 +697,7 @@ module.exports = {
                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
                         switch (choice) {
                             case "weapon":
-                                if (userHunt[userid].weapon != "000000") {
+                                if (userHunt[userid].weapon != "000000" && items[element].slots > 0) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * theScroll.rate;
                                     if (luck <= chance) {
@@ -723,12 +724,12 @@ module.exports = {
                                 else {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription('You don\'t have anything equiped!');
+                                    embedMsg.setDescription('You don\'t have anything equiped or your equip ran out of slots!');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 break;
                             case "armor":
-                                if (userHunt[userid].armor != "000000") {
+                                if (userHunt[userid].armor != "000000" && items[element].slots > 0) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * theScroll.rate;
                                     if (luck <= chance) {
@@ -756,13 +757,13 @@ module.exports = {
                                 else {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription('You don\'t have anything equiped!');
+                                    embedMsg.setDescription('You don\'t have anything equiped or your equip ran out of slots!');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 break;
                             case "accessory":
                             case "acc":
-                                if (userHunt[userid].accessory != "000000") {
+                                if (userHunt[userid].accessory != "000000" && items[element].slots > 0) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * theScroll.rate;
                                     if (luck <= chance) {
@@ -790,7 +791,7 @@ module.exports = {
                                 else {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription('You don\'t have anything equiped!');
+                                    embedMsg.setDescription('You don\'t have anything equiped or your equip ran out of slots!');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 break;

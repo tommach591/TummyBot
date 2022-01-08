@@ -228,7 +228,7 @@ let attackAll = (newTime) => {
                     defense += weapon.defense + weaponBase.defense;
                 }
                 if (armor != "000000") {
-                    defense += armor.defense + defenseBase.defense;
+                    defense += armor.defense + armorBase.defense;
                 }
                 if (accessory != "000000") {
                     defense += accessory.defense + accessoryBase.defense;
@@ -445,8 +445,17 @@ client.on('messageCreate', message => {
                     client.gmcommands.get('reset').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, items, client);
                 break;
             case 'registerall':
-                if (userData[sender.id])
+                if (userData[sender.id]) {
                     client.gmcommands.get('registerall').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, client);
+                    var keys = [];
+                    for (var k in items) {
+                        keys.push(k);
+                    }
+                    for (let i = 0; i < keys.length; i++) {
+                        var rarity = equips[items[keys[i]].name];
+                        items[keys[i]].slots = (10 * rarity) + 5;
+                    }
+                }
                 break;
             case 'gm':
                 if (userData[sender.id])
