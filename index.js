@@ -230,8 +230,6 @@ let attackAll = (newTime) => {
                     defense += accessory.defense;
                 }
 
-                console.log("pain");
-
                 var damageDealt = currHunt["active"].attack - defense;
                 if (currHunt["active"].targets.length == 1) {
                     damageDealt *= 2;
