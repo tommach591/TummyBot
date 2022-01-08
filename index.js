@@ -450,10 +450,10 @@ client.on('messageCreate', message => {
                     for (var k in items) {
                         if (k != "000000") {
                             var rarity = equips[items[k.name]].rarity;
-                            items[keys[i]].slots = (10 * rarity) + 5;
+                            items[k].slots = (10 * rarity) + 5;
                         }
                         else {
-                            items[keys[i]].slots = 0;
+                            items[k].slots = 0;
                         }
                     }
                 }
