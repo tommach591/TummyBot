@@ -310,7 +310,7 @@ module.exports = {
 
                                 for (let i = 0; i < rewardLevel; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.02;
+                                    var chance = 100000 * 0.03;
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(twostar[Math.floor(Math.random() * twostar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -320,7 +320,7 @@ module.exports = {
 
                                 for (let i = 0; i < rewardLevel; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.03;
+                                    var chance = 100000 * 0.05;
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(onestar[Math.floor(Math.random() * onestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -330,7 +330,7 @@ module.exports = {
 
                                 for (let i = 0; i < rewardLevel; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.05;
+                                    var chance = 100000 * 0.10;
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(zerostar[Math.floor(Math.random() * zerostar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -340,7 +340,7 @@ module.exports = {
 
                                 for (let i = 0; i < rewardLevel; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.05;
+                                    var chance = 100000 * 0.10;
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         userHunt[player].scrolls.push(scrollobtained);
@@ -371,7 +371,7 @@ module.exports = {
                                     setTimeout(() => {
                                         delete currHunt["active"];
                                         currHunt.lastSpawn = newTime.getTime();
-                                    }, 30000);
+                                    }, 300000);
                                 });
                             }
                         }
@@ -1001,7 +1001,12 @@ module.exports = {
                                 }
                                 else {
                                     var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
-                                    var price = selectedWeapon.rarity * 1000;
+                                    if (selectedWeapon.rarity != 0) {
+                                        var price = selectedWeapon.rarity * 1000;
+                                    }
+                                    else {
+                                        var price = 500;
+                                    }
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
