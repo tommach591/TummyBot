@@ -221,16 +221,13 @@ let attackAll = (newTime) => {
                 var defense = userHunt[target].defense;
 
                 if (weapon != "000000") {
-                    var weaponBase = equips[weapon.name];
-                    defense += weapon.defense + weaponBase.defense;
+                    defense += weapon.defense;
                 }
                 if (armor != "000000") {
-                    var armorBase = equips[armor.name];
-                    defense += armor.defense + armorBase.defense;
+                    defense += armor.defense;
                 }
                 if (accessory != "000000") {
-                    var accessoryBase = equips[accessory.name];
-                    defense += accessory.defense + accessoryBase.defense;
+                    defense += accessory.defense;
                 }
 
                 var damageDealt = currHunt["active"].attack - defense;
