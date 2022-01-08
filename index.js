@@ -34,11 +34,6 @@ var blackjack = JSON.parse("{}");
 var fishdex = JSON.parse(fs.readFileSync('storage/fishdex.json', 'utf8'));
 var gardendex = JSON.parse(fs.readFileSync('storage/gardendex.json', 'utf8'));
 
-var monsterdex = JSON.parse(fs.readFileSync('storage/monsterdex.json', 'utf8'));
-var currHunt = JSON.parse("{}");
-var equips = JSON.parse(fs.readFileSync('storage/equips.json', 'utf8'));
-var scrolls = JSON.parse(fs.readFileSync('storage/scrolls.json', 'utf8'));
-
 const userDataParams = {
     Bucket: config.bucket,
     Key: "storage/userData.json"
@@ -52,16 +47,6 @@ const userFishParams = {
 const userGardenParams = {
     Bucket: config.bucket,
     Key: "storage/userGarden.json"
-};
-
-const userHuntParams = {
-    Bucket: config.bucket,
-    Key: "storage/userHunt.json"
-};
-
-const itemsParams = {
-    Bucket: config.bucket,
-    Key: "storage/items.json"
 };
 
 const s3 = new AWS.S3({
@@ -111,26 +96,6 @@ getObject(userGardenParams).then(
     }
 )
 
-let w;
-getObject(userHuntParams).then(
-    function(result) {
-        w = result;
-    },
-    function(err) {
-        console.log(err);
-    }
-)
-
-let v;
-getObject(itemsParams).then(
-    function(result) {
-        v = result;
-    },
-    function(err) {
-        console.log(err);
-    }
-)
-
 //var userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
 //var userFish = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
 //var userGarden = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
@@ -138,8 +103,6 @@ getObject(itemsParams).then(
 var userData = "";
 var userFish = "";
 var userGarden = "";
-var userHunt = "";
-var items = "";
 
 const currentDate = new Date();
 
@@ -162,136 +125,6 @@ errorMsg.setColor('FF0000');
 errorMsg.setDescription('The bot is at risk of crashing!!!');
 errorMsg.setImage("https://c.tenor.com/i51CEmR_1x4AAAAC/ame-gura.gif")
 errorMsg.setFooter("Don't type that command again!!!");
-
-let spawnMonster = (newTime) => {
-    if (!currHunt.lastSpawn) {
-        currHunt.lastSpawn = newTime.getTime();
-        currHunt.nextSpawn = 1000 * 60 * 60;
-    }
-    var timeDiff = newTime.getTime() - currHunt.lastSpawn;
-    var nextSpawn = currHunt.nextSpawn;
-    if (!currHunt["active"] && timeDiff >= nextSpawn) {
-        var keys = [];
-        for (var k in monsterdex) {
-            keys.push(k);
-        }
-        var selectedMonster = monsterdex[keys[Math.floor(Math.random() * keys.length)]];
-        currHunt["active"] = {
-            id: selectedMonster.id,
-            name: selectedMonster.name,
-            info: selectedMonster.info,
-            entry: selectedMonster.entry,
-            shoutout: selectedMonster.shoutout,
-            death: selectedMonster.death,
-            image: selectedMonster.image,
-            attackImage: selectedMonster.attackImage,
-            maxHP: selectedMonster.maxHP,
-            attack: selectedMonster.attack,
-            defense: selectedMonster.defense,
-            magicdefense: selectedMonster.magicdefense,
-            attackCD: selectedMonster.attackCD,
-            difficulty: selectedMonster.difficulty,
-            currentHP: selectedMonster.maxHP,
-            lastAttack: selectedMonster.attackCD + newTime.getTime(),
-            targets: [],
-            playerDamage: [],
-            channels: [],
-            lastPlayerAttack: newTime.getTime(),
-            deathCount: 0,
-            deathLimit: 20
-        }
-
-        return true;
-    }
-    return false;
-}
-
-let attackAll = (newTime) => {
-    if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= currHunt["active"].attackCD) {
-        var count = 0;
-        var playersHit = "";
-        for (let i = 0; i < currHunt["active"].targets.length; i++) {
-            var target = currHunt["active"].targets[i];
-
-            if (userHunt[target].currentHP > 0) {
-                var weapon = items[userHunt[target].weapon];
-                var armor = items[userHunt[target].armor];
-                var accessory = items[userHunt[target].accessory];
-
-                var defense = userHunt[target].defense;
-
-                if (weapon != "000000") {
-                    defense += weapon.defense;
-                }
-                if (armor != "000000") {
-                    defense += armor.defense;
-                }
-                if (accessory != "000000") {
-                    defense += accessory.defense;
-                }
-
-                var damageDealt = currHunt["active"].attack - defense;
-                if (currHunt["active"].targets.length == 1) {
-                    damageDealt *= 2;
-                }
-                if (damageDealt <= 0) {
-                    damageDealt = 1;
-                }
-
-                userHunt[target].currentHP -= damageDealt;
-                if (userHunt[target].currentHP <= 0) {
-                    userHunt[target].deathTime = newTime.getTime();
-                    playersHit += userData[target].name + " has fainted!\n";
-                    currHunt["active"].deathCount++
-                }
-                else {
-                    playersHit += userData[target].name + " takes " + damageDealt + " damage!\n";
-                }
-                count++;
-            }
-        }
-        currHunt["active"].lastAttack = newTime.getTime();
-
-        if (count > 0) {
-            const embedMsg = new MessageEmbed();
-            var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
-                stars += "★";
-            }
-            stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars + " - Attacks!");
-            embedMsg.setDescription(currHunt["active"].shoutout + "\n\n" + playersHit);
-            embedMsg.setImage(currHunt["active"].attackImage);
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
-            embedMsg.setColor("49000F");
-            for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                currHunt["active"].channels[i].send({ embeds: [embedMsg] });
-            }
-        }
-
-        if (currHunt["active"].deathCount >= currHunt["active"].deathLimit) {
-            const embedMsg = new MessageEmbed();
-            var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
-                stars += "★";
-            }
-            stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars + " - Retreats!");
-            embedMsg.setDescription("After defeating " + currHunt["active"].deathCount + " players, " + currHunt["active"].name + " left the battlegrounds.");
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
-            embedMsg.setColor("FF0000");
-            for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(() => 
-                {
-                    setTimeout(() => {
-                        delete currHunt["active"];
-                        currHunt.lastSpawn = newTime.getTime();
-                    }, 2000);
-                });
-            }
-        }
-    }
-}
 
 let msg;
 client.on('messageCreate', message => {
@@ -316,19 +149,6 @@ client.on('messageCreate', message => {
         if (userGarden == "") {
             if (z)
                 userGarden = JSON.parse(z);
-            else
-                console.log(z);
-                return;
-        }
-        if (userHunt == "") {
-            if (w)
-                userGarden = JSON.parse(w);
-            else
-                return;
-        }
-        if (items == "") {
-            if (v)
-                userGarden = JSON.parse(v);
             else
                 return;
         }
@@ -419,11 +239,6 @@ client.on('messageCreate', message => {
                 if (userData[sender.id])
                     client.commands.get('fame').execute(message, args, sender.id, userData, client);
                 break;
-            case 'h':
-            case 'hunt':
-                if (userData[sender.id])
-                    client.commands.get('hunt').execute(message, args, sender.id, userData, userHunt, monsterdex, currHunt, items, equips, scrolls, client);
-                break;
             // GM Commands
             case 'reward':
                 if (userData[sender.id])
@@ -432,10 +247,6 @@ client.on('messageCreate', message => {
             case 'rewardall':
                 if (userData[sender.id])
                     client.gmcommands.get('rewardall').execute(message, args, sender.id, userData, client);
-                break;
-            case 'spawntime':
-                if (userData[sender.id])
-                    client.gmcommands.get('spawntime').execute(message, args, sender.id, userData, currHunt, client);
                 break;
             case 'banish':
                 if (userData[sender.id])
@@ -475,48 +286,6 @@ client.on('messageCreate', message => {
             embedMsg.setDescription('Register with the !tp register command!')
             message.channel.send({ embeds: [embedMsg] });
         }
-
-        if (spawnMonster(newTime) && !currHunt["active"].channels.includes(message.channel)) {
-            currHunt["active"].channels.push(message.channel);
-            const embedMsg = new MessageEmbed();
-            var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
-                stars += "★";
-            }
-            stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars);
-            embedMsg.setDescription(currHunt["active"].entry);
-            embedMsg.setImage(currHunt["active"].image);
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
-            embedMsg.setColor("49000F");
-            currHunt["active"].channels[0].send({ embeds: [embedMsg] });
-        }
-
-        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 30) {
-            const embedMsg = new MessageEmbed();
-            var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
-                stars += "★";
-            }
-            stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars + " - Retreats!");
-            embedMsg.setDescription(currHunt["active"].name + " got bored and left the battlegrounds.");
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
-            embedMsg.setColor("FF0000");
-            currHunt["active"].deathCount = currHunt["active"].deathLimit;
-            for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(() => 
-                {
-                    setTimeout(() => {
-                        delete currHunt["active"];
-                        currHunt.lastSpawn = newTime.getTime();
-                    }, 2000);
-                });
-            }
-        }
-
-        attackAll(newTime);
-
     }
     catch (err) {
         client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
