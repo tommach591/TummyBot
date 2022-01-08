@@ -81,50 +81,50 @@ async function getObject(params) {
 }
 
 
-let x;
+let dataPromise;
 getObject(userDataParams).then(
     function(result) {
-        x = result;
+        dataPromise = result;
     },
     function(err) {
         console.log(err);
     }
 )
 
-let y;
+let fishPromise;
 getObject(userFishParams).then(
     function(result) {
-        y = result;
+        fishPromise = result;
     },
     function(err) {
         console.log(err);
     }
 )
 
-let z;
+let gardenPromise;
 getObject(userGardenParams).then(
     function(result) {
-        z = result;
+        gardenPromise = result;
     },
     function(err) {
         console.log(err);
     }
 )
 
-let w;
+let huntPromise;
 getObject(userHuntParams).then(
     function(result) {
-        w = result;
+        huntPromise = result;
     },
     function(err) {
         console.log(err);
     }
 )
 
-let v;
+let itemsPromise;
 getObject(itemsParams).then(
     function(result) {
-        v = result;
+        itemsPromise = result;
     },
     function(err) {
         console.log(err);
@@ -302,32 +302,32 @@ client.on('messageCreate', message => {
 
     try {
         if (userData == "") {
-            if (x)
-                userData = JSON.parse(x);
+            if (dataPromise)
+                userData = JSON.parse(dataPromise);
             else
                 return;
         }
         if (userFish == "") {
-            if (y)
-                userFish = JSON.parse(y);
+            if (fishPromise)
+                userFish = JSON.parse(fishPromise);
             else
                 return;
         }
         if (userGarden == "") {
-            if (z)
-                userGarden = JSON.parse(z);
+            if (gardenPromise)
+                userGarden = JSON.parse(gardenPromise);
             else
                 return;
         }
         if (userHunt == "") {
-            if (w)
-                userGarden = JSON.parse(w);
+            if (huntPromise)
+                userHunt = JSON.parse(huntPromise);
             else
                 return;
         }
         if (items == "") {
-            if (v)
-                userGarden = JSON.parse(v);
+            if (itemsPromise)
+                items = JSON.parse(itemsPromise);
             else
                 return;
         }
@@ -347,8 +347,6 @@ client.on('messageCreate', message => {
                 userData[sender.id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
             }
         }
-
-        console.log(userGarden);
 
         switch(command) {
             // Base Commands
