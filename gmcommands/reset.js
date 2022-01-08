@@ -2,7 +2,7 @@ module.exports = {
     name: 'reset',
     description: "Basically delete an account.",
 
-    execute(message, args, userid, userData, userFish, userGarden, client) {
+    execute(message, args, userid, userData, userFish, userGarden, userHunt, items, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -36,6 +36,12 @@ module.exports = {
                     delete userFish[mention];
                 if (userGarden[mention])
                     delete userGarden[mention];
+                if (userHunt[mention]) {
+                    for (let i = 0 ; i < userHunt[mention].equips.length; i++) {
+                        delete items[userHunt[mention].equips[i]];
+                    }
+                    delete userHunt[mention];
+                }
                     
                 delete userData[mention];
                 
