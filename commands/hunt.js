@@ -290,8 +290,8 @@ module.exports = {
 
                             getDrops();
 
-                            var rewardLevel = currHunt["active"].difficulty * 2;
-                            var goldReward = 1000 * rewardLevel;
+                            var rewardLevel = currHunt["active"].difficulty;
+                            var goldReward = 2000 * rewardLevel;
                             var reward = "";
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
                                 var player = currHunt["active"].targets[i];
@@ -299,7 +299,7 @@ module.exports = {
                                 goldEarned += Math.floor(goldReward * (currHunt["active"].playerDamage[i] / currHunt["active"].maxHP));
 
                                 var itemsEarned = "";
-                                for (let i = 0; i < rewardLevel; i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.01;
                                     if (luck <= chance) {
@@ -309,7 +309,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < rewardLevel; i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.03;
                                     if (luck <= chance) {
@@ -319,7 +319,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < rewardLevel; i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.05;
                                     if (luck <= chance) {
@@ -329,7 +329,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < rewardLevel; i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.10;
                                     if (luck <= chance) {
@@ -339,7 +339,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < rewardLevel; i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.15;
                                     if (luck <= chance) {
@@ -698,7 +698,7 @@ module.exports = {
                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
                         switch (choice) {
                             case "weapon":
-                                if (userHunt[userid].weapon != "000000" && items[element].slots > 0) {
+                                if (userHunt[userid].weapon != "000000" && items[userHunt[userid].weapon].slots > 0) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * theScroll.rate;
                                     if (luck <= chance) {
@@ -731,7 +731,7 @@ module.exports = {
                                 }
                                 break;
                             case "armor":
-                                if (userHunt[userid].armor != "000000" && items[element].slots > 0) {
+                                if (userHunt[userid].armor != "000000" && items[userHunt[userid].armor].slots > 0) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * theScroll.rate;
                                     if (luck <= chance) {
@@ -766,7 +766,7 @@ module.exports = {
                                 break;
                             case "accessory":
                             case "acc":
-                                if (userHunt[userid].accessory != "000000" && items[element].slots > 0) {
+                                if (userHunt[userid].accessory != "000000" && items[userHunt[userid].accessory].slots > 0) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * theScroll.rate;
                                     if (luck <= chance) {
