@@ -42,6 +42,7 @@ module.exports = {
                 magic: 0,
                 defense: 0,
                 speed: 0,
+                slots: (equips[itemName].rarity * 10) + 5
             }
             return id;
         }
@@ -289,8 +290,8 @@ module.exports = {
 
                             getDrops();
 
-                            var rewardLevel = currHunt["active"].difficulty;
-                            var goldReward = 2000 * rewardLevel;
+                            var rewardLevel = currHunt["active"].difficulty * 2;
+                            var goldReward = 1000 * rewardLevel;
                             var reward = "";
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
                                 var player = currHunt["active"].targets[i];
@@ -340,7 +341,7 @@ module.exports = {
 
                                 for (let i = 0; i < rewardLevel; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.20;
+                                    var chance = 100000 * 0.15;
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         userHunt[player].scrolls.push(scrollobtained);
