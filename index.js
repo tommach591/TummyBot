@@ -452,7 +452,7 @@ client.on('messageCreate', message => {
                         keys.push(k);
                     }
                     for (let i = 0; i < keys.length; i++) {
-                        var rarity = equips[items[keys[i]].name];
+                        var rarity = equips[items[keys[i]].name].rarity;
                         items[keys[i]].slots = (10 * rarity) + 5;
                     }
                 }
