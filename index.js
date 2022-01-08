@@ -218,19 +218,18 @@ let attackAll = (newTime) => {
                 var armor = items[userHunt[target].armor];
                 var accessory = items[userHunt[target].accessory];
 
-                var weaponBase = equips[weapon.name];
-                var armorBase = equips[armor.name];
-                var accessoryBase = equips[accessory.name];
-
                 var defense = userHunt[target].defense;
 
                 if (weapon != "000000") {
+                    var weaponBase = equips[weapon.name];
                     defense += weapon.defense + weaponBase.defense;
                 }
                 if (armor != "000000") {
+                    var armorBase = equips[armor.name];
                     defense += armor.defense + armorBase.defense;
                 }
                 if (accessory != "000000") {
+                    var accessoryBase = equips[accessory.name];
                     defense += accessory.defense + accessoryBase.defense;
                 }
 
