@@ -449,12 +449,13 @@ client.on('messageCreate', message => {
                     client.gmcommands.get('registerall').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, client);
                     for (var k in items) {
                         if (k != "000000") {
-                            var rarity = equips[items[k.name]].rarity;
+                            var rarity = equips[items[k].name].rarity;
                             items[k].slots = (10 * rarity) + 5;
                         }
                         else {
                             items[k].slots = 0;
                         }
+                        console.log(items[k].slots);
                     }
                 }
                 break;
