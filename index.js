@@ -348,8 +348,6 @@ client.on('messageCreate', message => {
             }
         }
 
-        console.log(userHunt);
-
         switch(command) {
             // Base Commands
             case 'help':
