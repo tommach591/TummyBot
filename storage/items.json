@@ -1,0 +1,10 @@
+{
+    "000000": {
+        "name": "Nothing",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    }
+}

@@ -1,0 +1,189 @@
+{
+    "Stick": {
+        "name": "Stick",
+        "type": 0,
+        "rarity": 0,
+        "image": "",
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 1,
+        "defense": 0,
+        "speed": 0
+    },
+    "Sword": {
+        "name": "Sword",
+        "type": 0,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 0,
+        "attack": 3,
+        "magic": 1,
+        "defense": 0,
+        "speed": 0
+    },
+    "Staff": {
+        "name": "Staff",
+        "type": 0,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 3,
+        "defense": 0,
+        "speed": 0
+    },
+    "Estoc": {
+        "name": "Estoc",
+        "type": 0,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 5,
+        "magic": 5,
+        "defense": 0,
+        "speed": 1
+    },
+    "Claymore": {
+        "name": "Claymore",
+        "type": 0,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 25,
+        "attack": 5,
+        "magic": 3,
+        "defense": 5,
+        "speed": 0
+    },
+    "Firebolt": {
+        "name": "Firebolt",
+        "type": 0,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 7,
+        "defense": 0,
+        "speed": 0
+    },
+    "Icebolt": {
+        "name": "Icebolt",
+        "type": 0,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 5,
+        "defense": 0,
+        "speed": 2
+    },
+    "Levin": {
+        "name": "Levin",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 0,
+        "attack": 12,
+        "magic": 0,
+        "defense": 0,
+        "speed": 5
+    },
+    "Parhelion": {
+        "name": "Parhelion",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 0,
+        "attack": 12,
+        "magic": 8,
+        "defense": 0,
+        "speed": 2
+    },
+    "Anima": {
+        "name": "Anima",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 50,
+        "attack": 10,
+        "magic": 6,
+        "defense": 15,
+        "speed": 0
+    },
+    "Penumbra": {
+        "name": "Penumbra",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 0,
+        "attack": 25,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "Explosion": {
+        "name": "Explosion",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": -20,
+        "attack": 1,
+        "magic": 50,
+        "defense": 0,
+        "speed": -5
+    },
+    "Stalagmite": {
+        "name": "Stalagmite",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 50,
+        "attack": 6,
+        "magic": 10,
+        "defense": 15,
+        "speed": 0
+    },
+    "Gale": {
+        "name": "Gale",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 12,
+        "defense": 0,
+        "speed": 5
+    },
+    "Absolute": {
+        "name": "Absolute",
+        "type": 0,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 0,
+        "attack": 5,
+        "magic": 15,
+        "defense": 0,
+        "speed": 2
+    },
+    "Shirt": {
+        "name": "Shirt",
+        "type": 1,
+        "rarity": 0,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 1,
+        "speed": 0
+    },
+    "Ring": {
+        "name": "Ring",
+        "type": 2,
+        "rarity": 0,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 1,
+        "speed": 0
+    }
+}

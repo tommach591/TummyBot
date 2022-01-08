@@ -15,7 +15,7 @@ module.exports = {
                 gardeningCommands.set('plant', 'Plant a random seed.');
                 gardeningCommands.set('harvest', 'Harvest fully grown plants.');
                 gardeningCommands.set('upgrade', 'Upgrade field, allowing you to plant more.');
-                gardeningCommands.set('gardendex', 'Shows unique plants you have grown.');
+                gardeningCommands.set('dex', 'Shows unique plants you have grown.');
 
                 embedMsg.setTitle('List of Gardening Commands');
                 embedMsg.setColor('FFF000');

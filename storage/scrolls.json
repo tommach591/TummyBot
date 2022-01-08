@@ -1,0 +1,47 @@
+{
+    "0": {
+        "name": "Scroll for Ten HP 60%",
+        "rate": 0.60,
+        "maxHP": 10,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "1": {
+        "name": "Scroll for One Attack 60%",
+        "rate": 0.60,
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "2": {
+        "name": "Scroll for One Magic Attack 60%",
+        "rate": 0.60,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 1,
+        "defense": 0,
+        "speed": 0
+    },
+    "3": {
+        "name": "Scroll for Five Defense 60%",
+        "rate": 0.60,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 5,
+        "speed": 0
+    },
+    "4": {
+        "name": "Scroll for One Speed 10%",
+        "rate": 0.10,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 1
+    }
+}

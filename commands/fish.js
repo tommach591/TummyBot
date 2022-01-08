@@ -25,7 +25,7 @@ module.exports = {
                 fishingCommands.set('sell', 'Sell your fish.');
                 fishingCommands.set('upgrade', 'Upgrades fishing rod.');
                 fishingCommands.set('inventory', 'Show all the fishes you have.');
-                fishingCommands.set('fishdex', 'Shows unique fishes you have caught.');
+                fishingCommands.set('dex', 'Shows unique fishes you have caught.');
 
                 embedMsg.setTitle('List of Fishing Commands');
                 embedMsg.setColor('FFF000');
