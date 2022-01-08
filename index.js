@@ -348,13 +348,15 @@ client.on('messageCreate', message => {
             }
         }
 
+        console.log(userGarden);
+
         switch(command) {
             // Base Commands
             case 'help':
                 client.commands.get('help').execute(message, args, sender.id, userData, client);
                 break;
             case 'register':
-                client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, client);
+                client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, client);
                 break;
             case 'leaderboard':
                 if (userData[sender.id])
