@@ -121,10 +121,10 @@
         "image": "https://c.tenor.com/FUZ634sMnpcAAAAd/sonic.gif",
         "attackImage": "https://c.tenor.com/KTYZfnLQ3jMAAAAC/sonic-punch.gif",
         "maxHP": 1000,
-        "attack": 1,
+        "attack": 2,
         "defense": 0,
         "magicdefense": 0,
-        "attackCD": 5000,
+        "attackCD": 10000,
         "difficulty": 1
     },
     "9": {

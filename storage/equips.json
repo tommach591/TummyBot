@@ -41,17 +41,17 @@
         "attack": 5,
         "magic": 5,
         "defense": 0,
-        "speed": 1
+        "speed": 5
     },
     "Claymore": {
         "name": "Claymore",
         "type": 0,
         "rarity": 2,
         "image": "",
-        "maxHP": 25,
+        "maxHP": 10,
         "attack": 5,
         "magic": 3,
-        "defense": 5,
+        "defense": 3,
         "speed": 0
     },
     "Firebolt": {
@@ -85,7 +85,7 @@
         "attack": 12,
         "magic": 0,
         "defense": 0,
-        "speed": 5
+        "speed": 10
     },
     "Parhelion": {
         "name": "Parhelion",
@@ -96,17 +96,17 @@
         "attack": 12,
         "magic": 8,
         "defense": 0,
-        "speed": 2
+        "speed": 0
     },
     "Anima": {
         "name": "Anima",
         "type": 0,
         "rarity": 3,
         "image": "",
-        "maxHP": 50,
+        "maxHP": 25,
         "attack": 10,
         "magic": 6,
-        "defense": 15,
+        "defense": 10,
         "speed": 0
     },
     "Penumbra": {
@@ -136,10 +136,10 @@
         "type": 0,
         "rarity": 3,
         "image": "",
-        "maxHP": 50,
+        "maxHP": 25,
         "attack": 6,
         "magic": 10,
-        "defense": 15,
+        "defense": 10,
         "speed": 0
     },
     "Gale": {
@@ -151,7 +151,7 @@
         "attack": 0,
         "magic": 12,
         "defense": 0,
-        "speed": 5
+        "speed": 10
     },
     "Absolute": {
         "name": "Absolute",
@@ -162,7 +162,7 @@
         "attack": 5,
         "magic": 15,
         "defense": 0,
-        "speed": 2
+        "speed": 5
     },
     "Shirt": {
         "name": "Shirt",

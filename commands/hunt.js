@@ -340,7 +340,7 @@ module.exports = {
 
                                 for (let i = 0; i < rewardLevel; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.10;
+                                    var chance = 100000 * 0.20;
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         userHunt[player].scrolls.push(scrollobtained);
