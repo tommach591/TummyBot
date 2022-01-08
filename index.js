@@ -317,6 +317,7 @@ client.on('messageCreate', message => {
             if (z)
                 userGarden = JSON.parse(z);
             else
+                console.log(z);
                 return;
         }
         if (userHunt == "") {
