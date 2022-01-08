@@ -46,6 +46,27 @@ module.exports = {
                         gardendex: []
                     }
                 }
+
+                if (!userHunt[keys[i]]) {
+                    userHunt[keys[i]] = {
+                        id: keys[i],
+                        name: userData[keys[i]].name,
+                        maxHP: 100,
+                        attack: 3,
+                        magic: 3,
+                        defense: 0,
+                        speed: 0,
+                        currentHP: 100,
+                        lastAttack: 0,
+                        deathTime: 0,
+                        weapon: "000000",
+                        armor: "000000",
+                        accessory: "000000",
+                        equips: [],
+                        scrolls: [],
+                        monsterdex: []
+                    }
+                }
             }
 
             embedMsg.setTitle('Finished!');

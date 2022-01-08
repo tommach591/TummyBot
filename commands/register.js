@@ -42,6 +42,26 @@ module.exports = {
                     gardendex: []
                 }
             }
+            if (!userHunt[userid]) {
+                userHunt[userid] = {
+                    id: userid,
+                    name: userData[userid].name,
+                    maxHP: 100,
+                    attack: 3,
+                    magic: 3,
+                    defense: 0,
+                    speed: 0,
+                    currentHP: 100,
+                    lastAttack: 0,
+                    deathTime: 0,
+                    weapon: "000000",
+                    armor: "000000",
+                    accessory: "000000",
+                    equips: [],
+                    scrolls: [],
+                    monsterdex: []
+                }
+            }
 
             embedMsg.setTitle('Welcome!');
             embedMsg.setColor('00FF00');
