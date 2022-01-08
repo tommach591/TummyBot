@@ -21,7 +21,7 @@ module.exports = {
             "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif",
             "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif",
             "https://i.makeagif.com/media/2-16-2015/P0tA1a.gif"
-        ]
+        ];
 
         let generateEquip = (itemName) => {
             if (!equips[itemName]) {
@@ -118,6 +118,10 @@ module.exports = {
                 magic += accessory.magic + equips[accessory.name].magic;
                 defense += accessory.defense + equips[accessory.name].defense;
                 speed += accessory.speed + equips[accessory.name].speed;
+            }
+
+            if (!currHunt["active"]) {
+                userHunt[userid].currentHP = maxHP;
             }
         }
 
@@ -301,7 +305,7 @@ module.exports = {
                                 var itemsEarned = "";
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.01;
+                                    var chance = 100000 * 0.005;
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(threestar[Math.floor(Math.random() * threestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -311,7 +315,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.03;
+                                    var chance = 100000 * 0.01;
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(twostar[Math.floor(Math.random() * twostar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -321,7 +325,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.05;
+                                    var chance = 100000 * 0.03;
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(onestar[Math.floor(Math.random() * onestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -350,7 +354,6 @@ module.exports = {
                                 }
 
                                 userData[player].points += goldEarned;
-                                userHunt[player].currentHP = maxHP;
                                 
                                 reward += userData[player].name + " has been awarded with: " + goldEarned + " points" + itemsEarned + "\n";
                             }
@@ -1007,10 +1010,10 @@ module.exports = {
                                 else {
                                     var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
                                     if (selectedWeapon.rarity != 0) {
-                                        var price = selectedWeapon.rarity * 1000;
+                                        var price = selectedWeapon.rarity * 500;
                                     }
                                     else {
-                                        var price = 500;
+                                        var price = 100;
                                     }
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
@@ -1066,7 +1069,7 @@ module.exports = {
                                 }
                                 else {
                                     var selectedScroll = scrolls[userHunt[userid].scrolls[target]];
-                                    var price = 1000;
+                                    var price = 100;
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');

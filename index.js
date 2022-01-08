@@ -171,11 +171,49 @@ let spawnMonster = (newTime) => {
     var timeDiff = newTime.getTime() - currHunt.lastSpawn;
     var nextSpawn = currHunt.nextSpawn;
     if (!currHunt["active"] && timeDiff >= nextSpawn) {
-        var keys = [];
+        var diffOne = [];
+        var diffTwo = [];
+        var diffThree = [];
+        var diffFour = [];
+        var diffFive = [];
         for (var k in monsterdex) {
-            keys.push(k);
+            switch(monsterdex[k].difficulty) {
+                case 1:
+                    diffOne.push(k);
+                    break;
+                case 2:
+                    diffTwo.push(k);
+                    break;
+                case 3:
+                    diffThree.push(k);
+                    break;
+                case 4:
+                    diffFour.push(k);
+                    break;
+                case 5:
+                    diffFive.push(k);
+                    break;
+            }
         }
-        var selectedMonster = monsterdex[keys[Math.floor(Math.random() * keys.length)]];
+        var selectedMonster;
+        var luck = Math.random() * 101;
+
+        if (luck <= 5) {
+            selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
+        }
+        else if (luck <= 15) {
+            selectedMonster = monsterdex[diffFour[Math.floor(Math.random() * diffFour.length)]];
+        }
+        else if (luck <= 35) {
+            selectedMonster = monsterdex[diffThree[Math.floor(Math.random() * diffThree.length)]];
+        }
+        else if (luck <= 65) {
+            selectedMonster = monsterdex[diffTwo[Math.floor(Math.random() * diffTwo.length)]];
+        }
+        else {
+            selectedMonster = monsterdex[diffOne[Math.floor(Math.random() * diffOne.length)]];
+        }
+        
         currHunt["active"] = {
             id: selectedMonster.id,
             name: selectedMonster.name,
@@ -220,14 +258,14 @@ let attackAll = (newTime) => {
 
                 var defense = userHunt[target].defense;
 
-                if (weapon != "000000") {
-                    defense += weapon.defense;
+                if (weapon.name != "Nothing") {
+                    defense += weapon.defense + equips[weapon.name].defense;
                 }
-                if (armor != "000000") {
-                    defense += armor.defense;
+                if (armor.name != "Nothing") {
+                    defense += armor.defense + equips[armor.name].defense;
                 }
-                if (accessory != "000000") {
-                    defense += accessory.defense;
+                if (accessory.name != "Nothing") {
+                    defense += accessory.defense + equips[accessory.name].defense;
                 }
 
                 var damageDealt = currHunt["active"].attack - defense;
