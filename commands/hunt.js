@@ -706,6 +706,7 @@ module.exports = {
                                         items[userHunt[userid].weapon].magic += theScroll.magic;
                                         items[userHunt[userid].weapon].defense += theScroll.defense;
                                         items[userHunt[userid].weapon].speed += theScroll.speed;
+                                        items[userHunt[userid].weapon].slots--;
                                         updateStats();
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
@@ -739,6 +740,7 @@ module.exports = {
                                         items[userHunt[userid].armor].magic += theScroll.magic;
                                         items[userHunt[userid].armor].defense += theScroll.defense;
                                         items[userHunt[userid].armor].speed += theScroll.speed;
+                                        items[userHunt[userid].armor].slots--;
                                         updateStats();
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
@@ -773,6 +775,7 @@ module.exports = {
                                         items[userHunt[userid].accessory].magic += theScroll.magic;
                                         items[userHunt[userid].accessory].defense += theScroll.defense;
                                         items[userHunt[userid].accessory].speed += theScroll.speed;
+                                        items[userHunt[userid].accessory].slots--;
                                         updateStats();
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
