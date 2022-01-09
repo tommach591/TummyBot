@@ -364,7 +364,7 @@ module.exports = {
                         .setDescription(pages[page-1])
                         .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Gardendex')
-                        .setThumbnail('https://i.imgur.com/liDWgLr.png')
+                        .setThumbnail('https://i.imgur.com/CCkcmSz.png')
                         .setColor('FFF000');
     
                     message.channel.send({ embeds: [embedMsg] }).then(msg => {
