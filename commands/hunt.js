@@ -275,7 +275,16 @@ module.exports = {
                             });
                         }
 
-                        var flatDamage = Math.floor(((attack - currHunt["active"].defense) + (magic - currHunt["active"].magicdefense)));
+
+                        var physical = (attack - currHunt["active"].defense);
+                        var magical = (magic - currHunt["active"].magicdefense);
+                        if (physical < 0) {
+                            physical = 0;
+                        }
+                        if (magical < 0) {
+                            magical = 0;
+                        }
+                        var flatDamage = Math.floor(physical + magical);
                         var damageDealt = Math.floor(flatDamage + (flatDamage * ((Math.random() * 6) - 3) / 10));
                         if (damageDealt <= 0) {
                             damageDealt = 1;
