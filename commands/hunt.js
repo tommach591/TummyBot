@@ -121,7 +121,7 @@ module.exports = {
                 speed += accessory.speed + equips[accessory.name].speed;
             }
 
-            if (!currHunt["active"]) {
+            if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
                 userHunt[userid].currentHP = maxHP;
             }
         }
@@ -162,7 +162,7 @@ module.exports = {
 
                 var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\nRespawn: ";
-                if (userHunt[userid].currentHP <= 0) {
+                if (userHunt[userid].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated) {
                     currentCondition += Math.floor((1000 * 65 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + "s\n";
                 }
                 else {
@@ -218,7 +218,7 @@ module.exports = {
                         message.channel.send({ embeds: [reviveMsg] });
                     }
                 }
-                
+
                 if (currHunt["active"]) {
                     if (!currHunt["active"].channels.includes(message.channel)) {
                         currHunt["active"].channels.push(message.channel);
