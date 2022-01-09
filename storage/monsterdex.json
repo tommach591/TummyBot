@@ -158,5 +158,37 @@
         "magicdefense": 2,
         "attackCD": 15000,
         "difficulty": 2
+    },
+    "11": {
+        "id": "11",
+        "name": "G-Dragon",
+        "info": "Leader of Big Bang. Yessir, he's one of a kind.",
+        "entry": "G-Dragon waves to the crowd!",
+        "shoutout": "G-Dragon smiles at you and sends heart fingers!",
+        "death": "G-Dragon joins the military!",
+        "image": "https://c.tenor.com/-Km65Q8Q5Z0AAAAC/g-dragon-bigbang-gd.gif",
+        "attackImage": "https://data.whicdn.com/images/283208286/original.gif",
+        "maxHP": 2000,
+        "attack": 20,
+        "defense": 0,
+        "magicdefense": 20,
+        "attackCD": 20000,
+        "difficulty": 2
+    },
+    "12": {
+        "id": "12",
+        "name": "Donkey Kong",
+        "info": "He's leader of the bunch, you know him well. He's finally back to kick some tail.",
+        "entry": "DK is here, he's bigger, faster, and stronger too!",
+        "shoutout": "Donkey Kong punches you!",
+        "death": "Donkey Kong drops his bananas!",
+        "image": "https://c.tenor.com/PxwLHiupI2oAAAAM/super-smash-bros-brawl-super-smash-bros.gif",
+        "attackImage": "https://c.tenor.com/0Pmy2H1b19gAAAAC/donkey-kong-giant-punch.gif",
+        "maxHP": 1200,
+        "attack": 20,
+        "defense": 0,
+        "magicdefense": 0,
+        "attackCD": 40000,
+        "difficulty": 1
     }
 }

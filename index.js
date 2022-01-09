@@ -198,22 +198,22 @@ let spawnMonster = (newTime) => {
         var selectedMonster;
         var luck = Math.random() * 101;
 
-        if (luck <= 5) {
+        if (luck <= 3) {
             selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
         }
-        else if (luck <= 15) {
+        else if (luck <= 10) {
             selectedMonster = monsterdex[diffFour[Math.floor(Math.random() * diffFour.length)]];
         }
-        else if (luck <= 35) {
+        else if (luck <= 20) {
             selectedMonster = monsterdex[diffThree[Math.floor(Math.random() * diffThree.length)]];
         }
-        else if (luck <= 65) {
+        else if (luck <= 50) {
             selectedMonster = monsterdex[diffTwo[Math.floor(Math.random() * diffTwo.length)]];
         }
         else {
             selectedMonster = monsterdex[diffOne[Math.floor(Math.random() * diffOne.length)]];
         }
-        
+
         currHunt["active"] = {
             id: selectedMonster.id,
             name: selectedMonster.name,
@@ -300,7 +300,7 @@ let attackAll = (newTime) => {
             embedMsg.setTitle(currHunt["active"].name + stars + " - Attacks!");
             embedMsg.setDescription(currHunt["active"].shoutout + "\n\n" + playersHit);
             embedMsg.setImage(currHunt["active"].attackImage);
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
             embedMsg.setColor("49000F");
             for (let i = 0; i < currHunt["active"].channels.length; i++) {
                 currHunt["active"].channels[i].send({ embeds: [embedMsg] });
@@ -324,6 +324,7 @@ let attackAll = (newTime) => {
                     setTimeout(() => {
                         delete currHunt["active"];
                         currHunt.lastSpawn = newTime.getTime();
+                        currHunt.nextSpawn = 1000 * 60 * 15;
                     }, 300000);
                 });
             }
@@ -530,7 +531,7 @@ client.on('messageCreate', message => {
             currHunt["active"].channels[0].send({ embeds: [embedMsg] });
         }
 
-        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 30) {
+        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 15) {
             const embedMsg = new MessageEmbed();
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
@@ -548,6 +549,7 @@ client.on('messageCreate', message => {
                     setTimeout(() => {
                         delete currHunt["active"];
                         currHunt.lastSpawn = newTime.getTime();
+                        currHunt.nextSpawn = 1000 * 60 * 15;
                     }, 300000);
                 });
             }

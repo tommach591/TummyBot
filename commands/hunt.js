@@ -20,7 +20,8 @@ module.exports = {
             "https://i.makeagif.com/media/8-26-2017/pcdhp5.gif",
             "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif",
             "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif",
-            "https://i.makeagif.com/media/2-16-2015/P0tA1a.gif"
+            "https://i.makeagif.com/media/2-16-2015/P0tA1a.gif",
+            "https://64.media.tumblr.com/d981321c38e5a5e02dff933d764bb309/6360bb5914a25010-fe/s500x750/a00c0bceb847786de11e5b0add2033cce34616a7.gifv"
         ];
 
         let generateEquip = (itemName) => {
@@ -203,7 +204,7 @@ module.exports = {
                     embedMsg.setTitle(currHunt["active"].name + stars);
                     embedMsg.setDescription(currHunt["active"].name + " is here!");
                     embedMsg.setImage(currHunt["active"].image);
-                    embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+                    embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
                     embedMsg.setColor("49000F");
                     message.channel.send({ embeds: [embedMsg] });
                 }
@@ -290,7 +291,7 @@ module.exports = {
                             embedMsg.setDescription(userData[userid].name + " lands the finishing blow on " + currHunt["active"].name + "!\n\n" + currHunt["active"].death);
                             embedMsg.setImage("https://c.tenor.com/1Sd82w25kacAAAAM/one-punch-man-punch.gif");
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
 
                             getDrops();
 
@@ -375,6 +376,7 @@ module.exports = {
                                     setTimeout(() => {
                                         delete currHunt["active"];
                                         currHunt.lastSpawn = newTime.getTime();
+                                        currHunt.nextSpawn = 1000 * 60 * 60;
                                     }, 300000);
                                 });
                             }
@@ -384,7 +386,7 @@ module.exports = {
                             embedMsg.setDescription(userData[userid].name + " deals " + damageDealt + " damage to " + currHunt["active"].name + "!");
                             embedMsg.setImage(randomAttackGifs[Math.floor(Math.random() * randomAttackGifs.length)]);
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
