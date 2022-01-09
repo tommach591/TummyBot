@@ -81,7 +81,7 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'plant':
-                var cost = 200;
+                var cost = 300;
                 var target = client.users.cache.get(userid);
                 embedMsg.setTitle('Gardening Info');
                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
@@ -98,7 +98,7 @@ module.exports = {
                     proposalMsg.setColor('FFF000');
                     proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                     proposalMsg.setDescription("Would " + userData[userid].name + " like to plant a mystery seed for " + cost + " points?");
-                    proposalMsg.setFooter("Harvest in 8 hours to make 200 profit!");
+                    proposalMsg.setFooter("Harvest in 8 hours to make " + cost + " profit!");
 
                     let proposal; 
                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -166,7 +166,7 @@ module.exports = {
                 break;
             case 'harvest':
                 var profit = 0;
-                var reward = 400;
+                var reward = 600;
                 var newPlant = [];
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();

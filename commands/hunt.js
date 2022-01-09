@@ -244,6 +244,7 @@ module.exports = {
                     else if (userHunt[userid].currentHP <= 0) {
                         embedMsg.setTitle(userData[userid].name + " is dead!");
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
+                        embedMsg.setImage("https://i.imgur.com/5ZyHVIU.png");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 65 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
@@ -251,6 +252,7 @@ module.exports = {
                     else if (timeDiff < attackCD) {
                         embedMsg.setTitle("Chill!");
                         embedMsg.setDescription(userData[userid].name + " can't attack yet!");
+                        embedMsg.setImage("https://i.imgur.com/5ZyHVIU.png");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((attackCD - timeDiff) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
@@ -1143,7 +1145,7 @@ module.exports = {
                 var target = client.users.cache.get(userid);
                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Monsterdex');
-                embedMsg.setThumbnail('https://i.imgur.com/liDWgLr.png');
+                embedMsg.setThumbnail('https://i.imgur.com/EJA4Vzn.png');
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];
@@ -1215,7 +1217,7 @@ module.exports = {
                             collector.on('collect', r => {
                                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                                 embedMsg.setTitle('Monsterdex');
-                                embedMsg.setThumbnail('https://i.imgur.com/liDWgLr.png');
+                                embedMsg.setThumbnail('https://i.imgur.com/EJA4Vzn.png');
                                 embedMsg.setColor('FFF000');
                                 
                                 if (r.emoji.name === "◀️") {

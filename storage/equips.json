@@ -60,8 +60,8 @@
         "rarity": 2,
         "image": "",
         "maxHP": 0,
-        "attack": 1,
-        "magic": 7,
+        "attack": 0,
+        "magic": 11,
         "defense": 0,
         "speed": 0
     },
@@ -72,9 +72,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 1,
-        "magic": 5,
+        "magic": 9,
         "defense": 0,
-        "speed": 2
+        "speed": 5
     },
     "Levin": {
         "name": "Levin",
@@ -103,7 +103,7 @@
         "type": 0,
         "rarity": 3,
         "image": "",
-        "maxHP": 25,
+        "maxHP": 50,
         "attack": 10,
         "magic": 6,
         "defense": 10,
@@ -129,14 +129,14 @@
         "attack": 1,
         "magic": 50,
         "defense": 0,
-        "speed": -5
+        "speed": -10
     },
     "Stalagmite": {
         "name": "Stalagmite",
         "type": 0,
         "rarity": 3,
         "image": "",
-        "maxHP": 25,
+        "maxHP": 50,
         "attack": 6,
         "magic": 10,
         "defense": 10,
@@ -184,6 +184,138 @@
         "attack": 0,
         "magic": 0,
         "defense": 1,
+        "speed": 0
+    },
+    "Chestplate": {
+        "name": "Chestplate",
+        "type": 1,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 3,
+        "speed": 0
+    },
+    "Robe": {
+        "name": "Robe",
+        "type": 1,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 10,
+        "attack": 0,
+        "magic": 1,
+        "defense": 1,
+        "speed": 0
+    },
+    "Shield": {
+        "name": "Shield",
+        "type": 1,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 15,
+        "attack": 0,
+        "magic": 0,
+        "defense": 5,
+        "speed": 0
+    },
+    "Kimono": {
+        "name": "Kimono",
+        "type": 1,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 3,
+        "speed": 3
+    },
+    "Aegis": {
+        "name": "Aegis",
+        "type": 1,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 30,
+        "attack": 0,
+        "magic": 0,
+        "defense": 15,
+        "speed": 0
+    },
+    "Blackbelt": {
+        "name": "Blackbelt",
+        "type": 1,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 0,
+        "attack": 5,
+        "magic": 5,
+        "defense": 0,
+        "speed": 3
+    },
+    "Pendant": {
+        "name": "Pendant",
+        "type": 2,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 10,
+        "attack": 0,
+        "magic": 0,
+        "defense": 2,
+        "speed": 0
+    },
+    "Earring": {
+        "name": "Earring",
+        "type": 2,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 0,
+        "attack": 2,
+        "magic": 2,
+        "defense": 0,
+        "speed": 0
+    },
+    "Sash": {
+        "name": "Sash",
+        "type": 2,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 15,
+        "attack": 0,
+        "magic": 0,
+        "defense": 2,
+        "speed": 3
+    },
+    "Gloves": {
+        "name": "Gloves",
+        "type": 2,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 4,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "Wings": {
+        "name": "Wings",
+        "type": 2,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 15,
+        "attack": 0,
+        "magic": 5,
+        "defense": 5,
+        "speed": 5
+    },
+    "Cape": {
+        "name": "Cape",
+        "type": 2,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 25,
+        "attack": 6,
+        "magic": 0,
+        "defense": 10,
         "speed": 0
     }
 }
