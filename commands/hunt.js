@@ -21,7 +21,7 @@ module.exports = {
             "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif",
             "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif",
             "https://i.makeagif.com/media/2-16-2015/P0tA1a.gif",
-            "https://64.media.tumblr.com/d981321c38e5a5e02dff933d764bb309/6360bb5914a25010-fe/s500x750/a00c0bceb847786de11e5b0add2033cce34616a7.gifv"
+            "https://i.makeagif.com/media/4-19-2017/F5U3KL.gif"
         ];
 
         let generateEquip = (itemName) => {
@@ -128,24 +128,11 @@ module.exports = {
 
         updateStats();
 
-        if (userHunt[userid].currentHP <= 0) {
-            var newTime = new Date();
-            var timeDiff = newTime.getTime() - userHunt[userid].deathTime;
-            if (timeDiff >= 1000 * 65) {
-                userHunt[userid].currentHP = maxHP;
-                const reviveMsg = new MessageEmbed()
-                reviveMsg.setTitle("A Hero Returned to Battle!");
-                reviveMsg.setDescription(userData[userid].name + " has revived!");
-                reviveMsg.setFooter('Don\'t die again!');
-                message.channel.send({ embeds: [reviveMsg] });
-            }
-        }
-
         var command = args[0];
         switch(command) {
             case 'help':
                 const huntingCommands = new Map();
-                huntingCommands.set('help', 'Displays list of gardening commands.');
+                huntingCommands.set('help', 'Displays list of hunting commands.');
                 huntingCommands.set('info', 'Displays hunting info.');
                 huntingCommands.set('boss', 'Checks current boss.');
                 huntingCommands.set('attack', 'Attack the boss if active!');
@@ -218,6 +205,20 @@ module.exports = {
                 break;
             case 'attack':
                 var newTime = new Date();
+
+                if (userHunt[userid].currentHP <= 0) {
+                    var newTime = new Date();
+                    var timeDiff = newTime.getTime() - userHunt[userid].deathTime;
+                    if (timeDiff >= 1000 * 65) {
+                        userHunt[userid].currentHP = maxHP;
+                        const reviveMsg = new MessageEmbed()
+                        reviveMsg.setTitle("A Hero Returned to Battle!");
+                        reviveMsg.setDescription(userData[userid].name + " has revived!");
+                        reviveMsg.setFooter('Don\'t die again!');
+                        message.channel.send({ embeds: [reviveMsg] });
+                    }
+                }
+                
                 if (currHunt["active"]) {
                     if (!currHunt["active"].channels.includes(message.channel)) {
                         currHunt["active"].channels.push(message.channel);
@@ -228,9 +229,9 @@ module.exports = {
                         attackCD = 1000 * 1;
                     }
 
-                    if (currHunt["active"].deathCount >= currHunt["active"].deathLimit) {    
+                    if (currHunt["active"].retreated) {    
                         embedMsg.setTitle("Chill!");
-                        embedMsg.setDescription(currHunt["active"].name + " is fleeing!");
+                        embedMsg.setDescription(currHunt["active"].name + " has left the field!");
                         embedMsg.setColor("FF0000");
                         message.channel.send({ embeds: [embedMsg] });
                     }
@@ -272,7 +273,7 @@ module.exports = {
                             });
                         }
 
-                        var damageDealt = Math.floor(((attack - currHunt["active"].defense) + (magic - currHunt["active"].magicdefense)) * ((Math.random() * 1) + 0.5));
+                        var damageDealt = Math.floor(((attack - currHunt["active"].defense) + (magic - currHunt["active"].magicdefense)) * ((Math.random() * 4) - 2));
                         if (damageDealt <= 0) {
                             damageDealt = 1;
                         }
@@ -296,7 +297,7 @@ module.exports = {
                             getDrops();
 
                             var rewardLevel = currHunt["active"].difficulty;
-                            var goldReward = 2000 * rewardLevel;
+                            var goldReward = 1000 * rewardLevel;
                             var reward = "";
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
                                 var player = currHunt["active"].targets[i];
@@ -859,7 +860,7 @@ module.exports = {
                         if (!isNaN(index)) {
                             switch(choice) {
                                 case "weapon":
-                                    if (index > userHunt[userid].equips.length || index < 0) {
+                                    if ((index > userHunt[userid].equips.length || index < 0) && items[userHunt[userid].equips[index]]) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
@@ -913,7 +914,7 @@ module.exports = {
                                     }
                                     break;
                                 case "scroll":
-                                    if (index > userHunt[userid].scrolls.length || index < 0) {
+                                    if ((index > userHunt[userid].scrolls.length || index < 0) && scrolls[userHunt[userid].scrolls[index]]) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');

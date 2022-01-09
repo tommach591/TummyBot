@@ -236,7 +236,8 @@ let spawnMonster = (newTime) => {
             channels: [],
             lastPlayerAttack: newTime.getTime(),
             deathCount: 0,
-            deathLimit: 20
+            deathLimit: 20,
+            retreated: false
         }
 
         return true;
@@ -307,8 +308,9 @@ let attackAll = (newTime) => {
             }
         }
 
-        if (currHunt["active"].deathCount >= currHunt["active"].deathLimit) {
+        if (currHunt["active"].deathCount >= currHunt["active"].deathLimit && !currHunt["active"].retreated) {
             const embedMsg = new MessageEmbed();
+            currHunt["active"].retreated = true;
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
                 stars += "★";
@@ -531,8 +533,9 @@ client.on('messageCreate', message => {
             currHunt["active"].channels[0].send({ embeds: [embedMsg] });
         }
 
-        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 15) {
+        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 15 && !currHunt["active"].retreated) {
             const embedMsg = new MessageEmbed();
+            currHunt["active"].retreated = true;
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
                 stars += "★";
@@ -542,7 +545,6 @@ client.on('messageCreate', message => {
             embedMsg.setDescription(currHunt["active"].name + " got bored and left the battlegrounds.");
             embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
             embedMsg.setColor("FF0000");
-            currHunt["active"].deathCount = currHunt["active"].deathLimit;
             for (let i = 0; i < currHunt["active"].channels.length; i++) {
                 currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(() => 
                 {
@@ -555,11 +557,13 @@ client.on('messageCreate', message => {
             }
         }
 
-        attackAll(newTime);
+        if (currHunt["active"] && !currHunt["active"].retreated) {
+            attackAll(newTime);
+        }
 
     }
     catch (err) {
-        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams);
+        //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams);
         const embedMsg = new MessageEmbed();
         embedMsg.setTitle('Error!');
         embedMsg.setColor('FF0000');
@@ -573,7 +577,7 @@ client.on('messageCreate', message => {
         savefile.lastSave = newTime.getTime();
     }
     else if (newTime.getTime() - savefile.lastSave >= (1000 * 60 * 60)) {
-        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams);
+        //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams);
         savefile.lastSave = newTime.getTime();
     }
 
@@ -597,7 +601,7 @@ process.on('unhandledRejection', (reason, promise) => {
         msg => { 
             msg.reply(admin + "\n\nError Date: " + newDate);
         });
-    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
+    //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
 });
  
 client.login('OTI0OTM2Njk1NTY3MjIwODE2.Ycl0bA.GD_-9lJp3_koJa8Y1y_ucDjbK34'); // Last Line in File
