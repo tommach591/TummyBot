@@ -326,7 +326,7 @@ let attackAll = (newTime) => {
                     setTimeout(() => {
                         delete currHunt["active"];
                         currHunt.lastSpawn = newTime.getTime();
-                        currHunt.nextSpawn = 1000 * 60 * 15;
+                        currHunt.nextSpawn = 1000 * 60 * 20;
                     }, 300000);
                 });
             }
@@ -533,7 +533,7 @@ client.on('messageCreate', message => {
             currHunt["active"].channels[0].send({ embeds: [embedMsg] });
         }
 
-        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 15 && !currHunt["active"].retreated) {
+        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 10 && !currHunt["active"].retreated) {
             const embedMsg = new MessageEmbed();
             currHunt["active"].retreated = true;
             var stars = " (";
@@ -551,7 +551,7 @@ client.on('messageCreate', message => {
                     setTimeout(() => {
                         delete currHunt["active"];
                         currHunt.lastSpawn = newTime.getTime();
-                        currHunt.nextSpawn = 1000 * 60 * 15;
+                        currHunt.nextSpawn = 1000 * 60 * 20;
                     }, 300000);
                 });
             }

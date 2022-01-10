@@ -6,22 +6,27 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
         const randomAttackGifs = [
-            "https://i.imgur.com/O62yU0U.gif",
-            "https://c.tenor.com/O0Rd9v0NpjkAAAAC/keqing-genshin-impact.gif",
-            "https://c.tenor.com/fG4HO_ccb68AAAAC/anime-my-hero-academia.gif",
-            "https://c.tenor.com/kWtHiHKx0EYAAAAd/naruto-vs.gif",
-            "https://i.makeagif.com/media/8-02-2015/0jqzEj.gif",
-            "https://c.tenor.com/P951zVBB_vkAAAAC/ao-t-shingeki-no-kyojin.gif",
-            "https://c.tenor.com/IM60lqQKKY0AAAAC/kid-goku-kamehameha.gif",
-            "https://c.tenor.com/xc19_U9dSNMAAAAC/chika-fujiwara-hit.gif",
-            "https://c.tenor.com/Oxl7m7l88FwAAAAC/megumin-konosuba.gif",
-            "https://c.tenor.com/w9MEZlRNxOUAAAAC/sword-art-online-sinon-asada.gif",
-            "https://c.tenor.com/p7fVqdR0FWkAAAAC/punch-vi.gif",
-            "https://i.makeagif.com/media/8-26-2017/pcdhp5.gif",
-            "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif",
-            "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif",
-            "https://i.makeagif.com/media/2-16-2015/P0tA1a.gif",
-            "https://i.makeagif.com/media/4-19-2017/F5U3KL.gif"
+            "https://i.imgur.com/O62yU0U.gif", // Starburst Stream
+            "https://c.tenor.com/O0Rd9v0NpjkAAAAC/keqing-genshin-impact.gif", // Keqing Q
+            "https://c.tenor.com/fG4HO_ccb68AAAAC/anime-my-hero-academia.gif", // Deku Smash
+            "https://c.tenor.com/kWtHiHKx0EYAAAAd/naruto-vs.gif", // Uzumaki Barrage
+            "https://i.makeagif.com/media/8-02-2015/0jqzEj.gif", // Night Guy
+            "https://c.tenor.com/P951zVBB_vkAAAAC/ao-t-shingeki-no-kyojin.gif", // Levi Spin
+            "https://c.tenor.com/IM60lqQKKY0AAAAC/kid-goku-kamehameha.gif", // Goku Kamehameha
+            "https://c.tenor.com/xc19_U9dSNMAAAAC/chika-fujiwara-hit.gif", // Chika Fan
+            "https://c.tenor.com/Oxl7m7l88FwAAAAC/megumin-konosuba.gif", // Explosion
+            "https://c.tenor.com/w9MEZlRNxOUAAAAC/sword-art-online-sinon-asada.gif", // Sinon Gun
+            "https://c.tenor.com/p7fVqdR0FWkAAAAC/punch-vi.gif", // Vi Punch
+            "https://i.makeagif.com/media/8-26-2017/pcdhp5.gif", // MHW Greatsword
+            "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif", // Haru All Out Attack
+            "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif", // Rock Lee Hidden Lotus
+            "https://i.makeagif.com/media/4-19-2017/F5U3KL.gif", // Windwaker Ganon Plunge
+            "https://thumbs.gfycat.com/AcademicAltruisticAsianwaterbuffalo-size_restricted.gif", // MHW Longsword
+            "https://i.imgur.com/Db207vf.gif", // MHR SnS
+            "https://i.imgur.com/JiiWAYm.gif", // Vi and Cait Vs Urgot
+            "https://media0.giphy.com/media/dyjrpqaUVqCELGuQVr/giphy.gif", // Demon Slayer Tanjiro
+            "https://www.icegif.com/wp-content/uploads/demon-slayer-icegif-1.gif", // Demon Slayer Zenitsu
+            "https://i.imgur.com/jOJhpgq.gif" // Eris Vs Ruijerd
         ];
 
         let generateEquip = (itemName) => {
@@ -139,9 +144,9 @@ module.exports = {
                 huntingCommands.set('inv', 'Display inventory.');
                 huntingCommands.set('equip #', 'Equip an item from the index of your inventory.');
                 huntingCommands.set('unequip weapon/armor/acc', 'Unequip an item.');
-                huntingCommands.set('scroll weapon/armor/acc #', 'Select a scroll from scroll invnetory to use on one type of equipment you are wearing.');
+                huntingCommands.set('scroll weapon/armor/acc #', 'Select a scroll from scroll inventory to use on one type of equipment you are wearing.');
                 huntingCommands.set('give equip/scroll #', 'Give an item from equip or scroll inventory at that index.');
-                huntingCommands.set('sell equip/scroll #', 'Sell an itemfrom equip or scroll inventory at that index.');
+                huntingCommands.set('sell equip/scroll #', 'Sell an item from equip or scroll inventory at that index.');
                 huntingCommands.set('dex', 'Shows unique monsters you have fought.');
 
                 embedMsg.setTitle('List of Hunting Commands');
@@ -154,6 +159,7 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'info':
+                var newTime = new Date();
                 var target = client.users.cache.get(userid);
                 embedMsg.setTitle('Hunting Equipment');
                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
@@ -163,7 +169,7 @@ module.exports = {
                 var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\nRespawn: ";
                 if (userHunt[userid].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated) {
-                    currentCondition += Math.floor((1000 * 65 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + "s\n";
+                    currentCondition += Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + "s\n";
                 }
                 else {
                     currentCondition += "0s\n";
@@ -209,11 +215,12 @@ module.exports = {
                 if (userHunt[userid].currentHP <= 0) {
                     var newTime = new Date();
                     var timeDiff = newTime.getTime() - userHunt[userid].deathTime;
-                    if (timeDiff >= 1000 * 65) {
+                    if (timeDiff >= 1000 * 180) {
                         userHunt[userid].currentHP = maxHP;
                         const reviveMsg = new MessageEmbed()
                         reviveMsg.setTitle("A Hero Returned to Battle!");
                         reviveMsg.setDescription(userData[userid].name + " has revived!");
+                        reviveMsg.setImage("https://c.tenor.com/HNPszjXhDdUAAAAC/monster-hunter-world-mhw.gif");
                         reviveMsg.setFooter('Don\'t die again!');
                         message.channel.send({ embeds: [reviveMsg] });
                     }
@@ -244,15 +251,15 @@ module.exports = {
                     else if (userHunt[userid].currentHP <= 0) {
                         embedMsg.setTitle(userData[userid].name + " is dead!");
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
-                        embedMsg.setImage("https://i.imgur.com/5ZyHVIU.png");
+                        embedMsg.setThumbnail("https://i.imgur.com/5ZyHVIU.png");
                         embedMsg.setColor("FF0000");
-                        embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 65 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
+                        embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (timeDiff < attackCD) {
                         embedMsg.setTitle("Chill!");
                         embedMsg.setDescription(userData[userid].name + " can't attack yet!");
-                        embedMsg.setImage("https://i.imgur.com/5ZyHVIU.png");
+                        embedMsg.setThumbnail("https://i.imgur.com/5ZyHVIU.png");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((attackCD - timeDiff) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
@@ -513,7 +520,7 @@ module.exports = {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('Please select a valid equipment # from equipments!');
-                            embedMsg.setFooter("Look at __!tp hunt inv__ and select a number!");
+                            embedMsg.setFooter("Look at !tp hunt inv and select a number!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
@@ -550,7 +557,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
-                        embedMsg.setFooter("Look at __!tp hunt inv__ and select a number!");
+                        embedMsg.setFooter("Look at !tp hunt inv and select a number!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }
@@ -666,7 +673,7 @@ module.exports = {
 
                         let page = 1;
                         embedMsg
-                            .setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ __To use scroll - !tp hunt scroll weapon/armor/acc #__")
+                            .setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #")
                             .setDescription(pages[page-1])
                             .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
                             .setTitle('Scroll Inventory')
@@ -691,7 +698,7 @@ module.exports = {
                                         }
                                         page--;
                                         embedMsg.setDescription(pages[page-1]);
-                                        embedMsg.setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ __To use scroll - !tp hunt scroll weapon/armor/acc #__");
+                                        embedMsg.setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #");
                                         msg.edit({ embeds: [embedMsg] });
                                     }
                                     else if (r.emoji.name === "▶️") {
@@ -701,7 +708,7 @@ module.exports = {
                                         }
                                         page++;
                                         embedMsg.setDescription(pages[page-1]);
-                                        embedMsg.setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ __To use scroll - !tp hunt scroll weapon/armor/acc #__");
+                                        embedMsg.setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #");
                                         msg.edit({ embeds: [embedMsg] });
                                     }
                                     r.users.remove(userid);
@@ -748,6 +755,7 @@ module.exports = {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
+                                    embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 break;
@@ -782,6 +790,7 @@ module.exports = {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
+                                    embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 break;
@@ -817,6 +826,7 @@ module.exports = {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
+                                    embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 break;
@@ -824,6 +834,7 @@ module.exports = {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
                                 embedMsg.setDescription('Please select weapon/armor/acc to scroll!');
+                                embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
                                 message.channel.send({ embeds: [embedMsg] });
                                 break;
                         }
@@ -879,7 +890,7 @@ module.exports = {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
-                                        embedMsg.setFooter("Look at __!tp hunt inv__ and select a number!")
+                                        embedMsg.setFooter("Look at !tp hunt inv and select a number!")
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
@@ -933,7 +944,7 @@ module.exports = {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
-                                        embedMsg.setFooter("Look at __!tp hunt scroll__ and select a number!")
+                                        embedMsg.setFooter("Look at !tp hunt scroll and select a number!")
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
@@ -1259,7 +1270,7 @@ module.exports = {
             default:
                 embedMsg.setTitle('Invalid hunting command!');
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription('Use __!tp hunt help__ for list of hunting commands!');
+                embedMsg.setDescription('Use !tp hunt help for list of hunting commands!');
                 embedMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
                 message.channel.send({ embeds: [embedMsg] });
                 break;

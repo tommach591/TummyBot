@@ -481,5 +481,110 @@
         "image": "https://i.imgur.com/o424LAN.png",
         "value": 1000,
         "info": "NARUTOOOOOOOOOOOO!"
+    },
+    "70": {
+        "id": "70",
+        "name": "Mini Scarlet",
+        "image": "https://i.imgur.com/7opjYBl.png",
+        "value": 3000,
+        "info": "A mini version of Scarlet!"
+    },
+    "71": {
+        "id": "71",
+        "name": "Mini Mint",
+        "image": "https://i.imgur.com/pinXGna.png",
+        "value": 3000,
+        "info": "A mini version of Mint!"
+    },
+    "72": {
+        "id": "72",
+        "name": "Pantsu",
+        "image": "https://i.imgur.com/eKETIA6.png",
+        "value": 1000,
+        "info": "Ew, someone lost their pantsu!"
+    },
+    "73": {
+        "id": "73",
+        "name": "Koi Fish",
+        "image": "https://i.imgur.com/GyN2UH6.png",
+        "value": 200,
+        "info": "Tis but a kiss I beg, Why art thou koi?"
+    },
+    "74": {
+        "id": "74",
+        "name": "Peach Fish",
+        "image": "https://i.imgur.com/8rYVeBg.png",
+        "value": 150,
+        "info": "How peachy!"
+    },
+    "75": {
+        "id": "76",
+        "name": "Trash Fish",
+        "image": "https://i.imgur.com/i98RSzg.png",
+        "value": 125,
+        "info": "If you look inside, you find a burger! +125 points!"
+    },
+    "76": {
+        "id": "76",
+        "name": "Angel Fish",
+        "image": "https://i.imgur.com/McHvPpJ.png",
+        "value": 200,
+        "info": "Not to be confused with Angle Fish."
+    },
+    "77": {
+        "id": "77",
+        "name": "Devil Fish",
+        "image": "https://i.imgur.com/DsheovW.png",
+        "value": 200,
+        "info": "#edgy."
+    },
+    "78": {
+        "id": "78",
+        "name": "Moustache Fish",
+        "image": "https://i.imgur.com/DsheovW.png",
+        "value": 125,
+        "info": "I moustache you a question! To be, or not to be, that is the question!"
+    },
+    "79": {
+        "id": "79",
+        "name": "Hamster",
+        "image": "https://i.imgur.com/lmNbSgr.png",
+        "value": 125,
+        "info": "This hamster is excellent at swimming. Insane."
+    },
+    "80": {
+        "id": "80",
+        "name": "Ditto?",
+        "image": "https://i.imgur.com/06qivD5.png",
+        "value": 125,
+        "info": "This might be a Ditto? Weird. The artist doesn't play Pokemon."
+    },
+    "81": {
+        "id": "81",
+        "name": "Icecube Fish",
+        "image": "https://i.imgur.com/PQUGUf6.png",
+        "value": 125,
+        "info": "STRAIGHT OUTTA COMPTON! CRAZY MF NAMED ICECUBE!"
+    },
+    "82": {
+        "id": "82",
+        "name": "Dory",
+        "image": "https://i.imgur.com/zQeK6M4.png",
+        "value": 125,
+        "info": "MOOOWEEEEENEEEEEDTOOOOOOOOOOFFFIIIIIINDDDHIIISSSSSSSONNNN!"
+    },
+    "83": {
+        "id": "83",
+        "name": "Omega Whale",
+        "image": "https://i.imgur.com/5Zf2pRZ.png",
+        "value": 125,
+        "info": "OMEGALUL!"
+    },
+    "85": {
+        "id": "85",
+        "name": "Salt and Pepper",
+        "image": "https://i.imgur.com/vDCn1Yb.png",
+        "value": 125,
+        "info": "Of course you can fish salt and pepper, how is the ocean so salty? Pepper? What about it?"
     }
 }

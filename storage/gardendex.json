@@ -58,5 +58,59 @@
         "name": "A(n) Ivy",
         "image": "https://i.imgur.com/WlydpCW.png",
         "info": "The artist is getting their growth spurt."
+    },
+    "11": {
+        "id": "11",
+        "name": "Sardine",
+        "image": "https://i.imgur.com/HDcx1RO.png",
+        "info": "Yes, you can grow fish too!"
+    },
+    "12": {
+        "id": "12",
+        "name": "Peace",
+        "image": "https://i.imgur.com/RZc8625.png",
+        "info": "You can raise Peace with love and care!"
+    },
+    "13": {
+        "id": "13",
+        "name": "Heart",
+        "image": "https://i.imgur.com/41THSqI.png",
+        "info": "You ever cut grass in Legend of Zelda?"
+    },
+    "14": {
+        "id": "14",
+        "name": "Ball",
+        "image": "https://i.imgur.com/sMjpc0Z.png",
+        "info": "Ah, so that's where schools get their rubber balls!"
+    },
+    "15": {
+        "id": "15",
+        "name": "Feather",
+        "image": "https://i.imgur.com/z1ipCCq.png",
+        "info": "If you let it grow longer, maybe it'll become a bird! (jk you can't)"
+    },
+    "16": {
+        "id": "16",
+        "name": "Coffefe",
+        "image": "https://i.imgur.com/FEAZxtT.png",
+        "info": "Grean tea."
+    },
+    "17": {
+        "id": "17",
+        "name": "Bread",
+        "image": "https://i.imgur.com/qIY3Gn7.png",
+        "info": "This is just wheat, but we skipped the whole process."
+    },
+    "18": {
+        "id": "18",
+        "name": "Baby",
+        "image": "https://i.imgur.com/qDD6550.png",
+        "info": "So this is where babies come from!"
+    },
+    "19": {
+        "id": "19",
+        "name": "Chocolate",
+        "image": "https://i.imgur.com/u6y7oXB.png",
+        "info": "This is just cocoa, but we skipped the whole process."
     }
 }
