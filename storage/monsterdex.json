@@ -216,11 +216,11 @@
         "death": "papyrus, do you want anything?",
         "image": "https://i.imgur.com/J99Ys28.gif",
         "attackImage": "https://thumbs.gfycat.com/DifferentImaginaryGrizzlybear-size_restricted.gif",
-        "maxHP": 333,
+        "maxHP": 500,
         "attack": 1,
-        "defense": 333,
-        "magicdefense": 333,
-        "attackCD": 333,
+        "defense": 500,
+        "magicdefense": 500,
+        "attackCD": 500,
         "difficulty": 3
     },
     "15": {
