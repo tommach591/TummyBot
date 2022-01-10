@@ -166,7 +166,7 @@ errorMsg.setFooter("Don't type that command again!!!");
 let spawnMonster = (newTime) => {
     if (!currHunt.lastSpawn) {
         currHunt.lastSpawn = newTime.getTime();
-        currHunt.nextSpawn = 1000 * 60 * 60;
+        currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
     }
     var timeDiff = newTime.getTime() - currHunt.lastSpawn;
     var nextSpawn = currHunt.nextSpawn;

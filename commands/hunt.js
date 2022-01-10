@@ -223,6 +223,7 @@ module.exports = {
                         reviveMsg.setTitle("A Hero Returned to Battle!");
                         reviveMsg.setDescription(userData[userid].name + " has revived!");
                         reviveMsg.setImage("https://c.tenor.com/HNPszjXhDdUAAAAC/monster-hunter-world-mhw.gif");
+                        reviveMsg.setColor('00FF00');
                         reviveMsg.setFooter('Don\'t die again!');
                         message.channel.send({ embeds: [reviveMsg] });
                     }
@@ -398,7 +399,7 @@ module.exports = {
                                     setTimeout(() => {
                                         delete currHunt["active"];
                                         currHunt.lastSpawn = newTime.getTime();
-                                        currHunt.nextSpawn = 1000 * 60 * 60;
+                                        currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
                                     }, 300000);
                                 });
                             }
