@@ -518,7 +518,7 @@
         "info": "How peachy!"
     },
     "75": {
-        "id": "76",
+        "id": "75",
         "name": "Trash Fish",
         "image": "https://i.imgur.com/i98RSzg.png",
         "value": 125,
@@ -580,8 +580,8 @@
         "value": 125,
         "info": "OMEGALUL!"
     },
-    "85": {
-        "id": "85",
+    "84": {
+        "id": "84",
         "name": "Salt and Pepper",
         "image": "https://i.imgur.com/vDCn1Yb.png",
         "value": 125,
