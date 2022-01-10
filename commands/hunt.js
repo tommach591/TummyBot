@@ -246,8 +246,9 @@ module.exports = {
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (currHunt["active"].currentHP <= 0) {    
-                        embedMsg.setTitle("Chill!");
+                        embedMsg.setTitle("Stop!");
                         embedMsg.setDescription(currHunt["active"].name + " is already dead!");
+                        embedMsg.setImage("https://media1.giphy.com/media/JCAZQKoMefkoX6TyTb/giphy.gif");
                         embedMsg.setColor("FF0000");
                         message.channel.send({ embeds: [embedMsg] });
                     }
