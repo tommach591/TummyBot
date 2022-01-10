@@ -234,8 +234,8 @@
         "attackImage": "https://i.imgur.com/33gtZgw.gif",
         "maxHP": 1500,
         "attack": 17,
-        "defense": 5,
-        "magicdefense": 5,
+        "defense": 2,
+        "magicdefense": 2,
         "attackCD": 12000,
         "difficulty": 2
     },
