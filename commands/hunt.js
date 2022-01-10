@@ -26,7 +26,9 @@ module.exports = {
             "https://i.imgur.com/JiiWAYm.gif", // Vi and Cait Vs Urgot
             "https://media0.giphy.com/media/dyjrpqaUVqCELGuQVr/giphy.gif", // Demon Slayer Tanjiro
             "https://www.icegif.com/wp-content/uploads/demon-slayer-icegif-1.gif", // Demon Slayer Zenitsu
-            "https://i.imgur.com/jOJhpgq.gif" // Eris Vs Ruijerd
+            "https://i.imgur.com/jOJhpgq.gif", // Eris Vs Ruijerd
+            "https://i.imgur.com/7uTs615.gif", // Phoenix Molly
+            "https://i.imgur.com/VIoBlJq.gif" // Yoru Ult
         ];
 
         let generateEquip = (itemName) => {
