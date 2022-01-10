@@ -238,5 +238,21 @@
         "magicdefense": 5,
         "attackCD": 12000,
         "difficulty": 2
+    },
+    "16": {
+        "id": "16",
+        "name": "Crimson Glow Valstrax",
+        "info": "This elder dragon typically secludes itself in the upper atmosphere, but it has been driven mad by its own rampant energy, causing it to lash out at anything in its sight.",
+        "entry": "The crimson comet draws near!",
+        "shoutout": "Crimson Glow Valstrax ambushes you!",
+        "death": "Crimson Glow Valstrax has been slayed!",
+        "image": "https://i.imgur.com/7u909YK.gif",
+        "attackImage": "https://i.imgur.com/ufS7i1Y.gif",
+        "maxHP": 3500,
+        "attack": 50,
+        "defense": 5,
+        "magicdefense": 15,
+        "attackCD": 35000,
+        "difficulty": 3
     }
 }
