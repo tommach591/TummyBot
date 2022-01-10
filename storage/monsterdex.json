@@ -25,10 +25,10 @@
         "image": "https://media4.giphy.com/media/lclHzXZjbIXKh0Zb6J/giphy.gif?cid=790b76113bb5c16a8c4f509facd7a79ece635e41aff63cc7&rid=giphy.gif&ct=g",
         "attackImage": "https://media1.giphy.com/media/rwtJ7aRk6EKwB0eOk9/giphy.gif?cid=790b761116212cb7829a21f72336fae1f81b0eab0c574e42&rid=giphy.gif&ct=g",
         "maxHP": 4000,
-        "attack": 30,
+        "attack": 25,
         "defense": 30,
-        "magicdefense": 0,
-        "attackCD": 15000,
+        "magicdefense": 5,
+        "attackCD": 12000,
         "difficulty": 4
     },
     "3": {
