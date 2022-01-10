@@ -56,9 +56,9 @@
         "death": "Charizard has fainted!",
         "image": "https://media2.giphy.com/media/QYvr2Xvp9Fuh2/giphy.gif",
         "attackImage": "https://i.pinimg.com/originals/cd/26/3f/cd263f2e9c0e1d433aa73f407469b59a.gif",
-        "maxHP": 2000,
+        "maxHP": 2500,
         "attack": 15,
-        "defense": 3,
+        "defense": 6,
         "magicdefense": 5,
         "attackCD": 20000,
         "difficulty": 2
@@ -124,7 +124,7 @@
         "attack": 3,
         "defense": 0,
         "magicdefense": 0,
-        "attackCD": 10000,
+        "attackCD": 5000,
         "difficulty": 1
     },
     "9": {
@@ -254,5 +254,21 @@
         "magicdefense": 15,
         "attackCD": 35000,
         "difficulty": 3
+    },
+    "17": {
+        "id": "17",
+        "name": "Michael Scott",
+        "info": "World's best boss.",
+        "entry": "Michael Scott!",
+        "shoutout": "Michael Scott pretends to fire you!",
+        "death": "Ryan started the fire!",
+        "image": "https://media0.giphy.com/media/3KAwlKHT3oOzA4Q4No/giphy.gif",
+        "attackImage": "https://media1.giphy.com/media/cXblnKXr2BQOaYnTni/200w.gif",
+        "maxHP": 1500,
+        "attack": 10,
+        "defense": 0,
+        "magicdefense": 5,
+        "attackCD": 15000,
+        "difficulty": 1
     }
 }
