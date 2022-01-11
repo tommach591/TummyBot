@@ -328,7 +328,7 @@ module.exports = {
                                 goldEarned += Math.floor(goldReward * (currHunt["active"].playerDamage[i] / currHunt["active"].maxHP));
 
                                 var itemsEarned = "";
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.005;
                                     if (luck <= chance) {
@@ -338,7 +338,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.01;
                                     if (luck <= chance) {
@@ -348,7 +348,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.03;
                                     if (luck <= chance) {
@@ -358,7 +358,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.10;
                                     if (luck <= chance) {
@@ -368,7 +368,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.5); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.175;
                                     if (luck <= chance) {

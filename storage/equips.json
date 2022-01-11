@@ -38,8 +38,8 @@
         "rarity": 2,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
-        "magic": 5,
+        "attack": 7,
+        "magic": 3,
         "defense": 0,
         "speed": 5
     },
@@ -82,7 +82,7 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 12,
+        "attack": 15,
         "magic": 0,
         "defense": 0,
         "speed": 10
@@ -94,9 +94,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 12,
-        "magic": 8,
-        "defense": 0,
-        "speed": 0
+        "magic": 12,
+        "defense": 2,
+        "speed": 2
     },
     "Anima": {
         "name": "Anima",
@@ -149,7 +149,7 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 12,
+        "magic": 15,
         "defense": 0,
         "speed": 10
     },
@@ -159,10 +159,10 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
-        "magic": 15,
+        "attack": 0,
+        "magic": 25,
         "defense": 0,
-        "speed": 5
+        "speed": 0
     },
     "Shirt": {
         "name": "Shirt",

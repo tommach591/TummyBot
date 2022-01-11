@@ -26,7 +26,7 @@
         "attackImage": "https://media1.giphy.com/media/rwtJ7aRk6EKwB0eOk9/giphy.gif?cid=790b761116212cb7829a21f72336fae1f81b0eab0c574e42&rid=giphy.gif&ct=g",
         "maxHP": 4000,
         "attack": 25,
-        "defense": 30,
+        "defense": 50,
         "magicdefense": 5,
         "attackCD": 12000,
         "difficulty": 4
@@ -201,7 +201,7 @@
         "image": "https://i.pinimg.com/originals/f4/5b/2a/f45b2a55130f06b82de9e11a032af614.gif",
         "attackImage": "https://c.tenor.com/1aT5RrfsntYAAAAC/inosuke-hashibira-kimetsu-no-yaiba.gif",
         "maxHP": 1500,
-        "attack": 20,
+        "attack": 35,
         "defense": 0,
         "magicdefense": 0,
         "attackCD": 10000,
@@ -286,5 +286,21 @@
         "magicdefense": 15,
         "attackCD": 30000,
         "difficulty": 5
+    },
+    "19": {
+        "id": "19",
+        "name": "Dark Magician Girl",
+        "info": "Gain 300 ATK for every \"Dark Magician\" or \"Magician of Black Chaos\" in the graveyard.",
+        "entry": "With Monster Reborn, I special summon Dark Magician Girl!",
+        "shoutout": "Dark Burning Magic!",
+        "death": "Dark Magician Girl has been destroyed!",
+        "image": "https://c.tenor.com/vbjVBbG8bTQAAAAC/yugioh-dark-magician-girl.gif",
+        "attackImage": "https://c.tenor.com/Mml3GT0gMAoAAAAM/dark-magician-girl-yu-gi-oh.gif",
+        "maxHP": 1700,
+        "attack": 20,
+        "defense": 3,
+        "magicdefense": 7,
+        "attackCD": 20000,
+        "difficulty": 2
     }
 }
