@@ -270,5 +270,21 @@
         "magicdefense": 5,
         "attackCD": 15000,
         "difficulty": 1
+    },
+    "18": {
+        "id": "18",
+        "name": "Sephiroth",
+        "info": "The Man in the Black Cape, One-Winged Angel.",
+        "entry": "Only death awaits you all, but do not fear. For is it through death that a new spirit energy is born. Soon, you will live again as a part of me.",
+        "shoutout": "On your knees. I want you to beg for forgiveness.",
+        "death": "I will never be a memory.",
+        "image": "https://c.tenor.com/FZHEiqVbPVMAAAAd/sephiroth.gif",
+        "attackImage": "https://i.imgur.com/6b0z1lE.gif",
+        "maxHP": 5000,
+        "attack": 110,
+        "defense": 15,
+        "magicdefense": 15,
+        "attackCD": 30000,
+        "difficulty": 5
     }
 }

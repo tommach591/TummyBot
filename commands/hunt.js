@@ -255,7 +255,7 @@ module.exports = {
                     else if (userHunt[userid].currentHP <= 0) {
                         embedMsg.setTitle(userData[userid].name + " is dead!");
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
-                        embedMsg.setThumbnail("https://i.imgur.com/5ZyHVIU.png");
+                        embedMsg.setThumbnail("https://i.imgur.com/yF8TSt4.png");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });

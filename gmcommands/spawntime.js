@@ -15,12 +15,14 @@ module.exports = {
                 return;
             }
             var newtime = Math.floor(Number(args[0]));
+            var lastspawn = new Date();
 
             if (!isNaN(newtime)) {
-                currHunt.nextSpawn = newtime;
+                currHunt.lastSpawn = lastspawn.getTime();
+                currHunt.nextSpawn = (1000 * 60) * newtime;
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
-                embedMsg.setDescription('Set a new boss spawn time!');
+                embedMsg.setDescription('New boss spawn time set to next ' + newtime + ' minutes!');
                 message.channel.send({ embeds: [embedMsg] });
             }
             else {
