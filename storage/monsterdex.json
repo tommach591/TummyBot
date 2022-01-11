@@ -92,7 +92,7 @@
         "attack": 25,
         "defense": 10,
         "magicdefense": 8,
-        "attackCD": 20000,
+        "attackCD": 17000,
         "difficulty": 3
     },
     "7": {
@@ -248,10 +248,10 @@
         "death": "Crimson Glow Valstrax has been slayed!",
         "image": "https://i.imgur.com/7u909YK.gif",
         "attackImage": "https://i.imgur.com/ufS7i1Y.gif",
-        "maxHP": 3500,
+        "maxHP": 2500,
         "attack": 50,
         "defense": 5,
-        "magicdefense": 15,
+        "magicdefense": 10,
         "attackCD": 35000,
         "difficulty": 3
     },
@@ -302,5 +302,21 @@
         "magicdefense": 7,
         "attackCD": 20000,
         "difficulty": 2
+    },
+    "20": {
+        "id": "20",
+        "name": "TaKeRu9Z",
+        "info": "노래 쩐다 ㅅㅂ ㅋㅋㅋㅋㅋㅋㅋㅋ (The song is cool hahahahahahahaha).",
+        "entry": "Mae-e-pul-sul-tor-e!",
+        "shoutout": "( Mae-mae-mae-ey-mae-mae ) May-pul-sul-tor-e Mae-ay-ay-ay-pul-o-o-ul May-pul-sul-tor ( Mae-e-pul-stor-e )!",
+        "death": "Mae-ay-pul-mae-eh-pul-su-u-u-tou-aw [ re-e-e-e-e ] e-e { e-e-e-e-e-e-e } e-ye-e-ye-e-ye-e-ye-e-ye!",
+        "image": "https://imgur.com/BuNGuTF.gif",
+        "attackImage": "https://imgur.com/oXCx8HT.gif",
+        "maxHP": 3000,
+        "attack": 100,
+        "defense": 5,
+        "magicdefense": 5,
+        "attackCD": 75000,
+        "difficulty": 3
     }
 }

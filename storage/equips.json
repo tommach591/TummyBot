@@ -228,17 +228,17 @@
         "attack": 0,
         "magic": 0,
         "defense": 3,
-        "speed": 3
+        "speed": 5
     },
     "Aegis": {
         "name": "Aegis",
         "type": 1,
         "rarity": 3,
         "image": "",
-        "maxHP": 30,
+        "maxHP": 25,
         "attack": 0,
         "magic": 0,
-        "defense": 15,
+        "defense": 10,
         "speed": 0
     },
     "Blackbelt": {
@@ -247,10 +247,10 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
-        "magic": 5,
+        "attack": 3,
+        "magic": 3,
         "defense": 0,
-        "speed": 3
+        "speed": 5
     },
     "Pendant": {
         "name": "Pendant",
@@ -269,8 +269,8 @@
         "rarity": 1,
         "image": "",
         "maxHP": 0,
-        "attack": 2,
-        "magic": 2,
+        "attack": 1,
+        "magic": 1,
         "defense": 0,
         "speed": 0
     },

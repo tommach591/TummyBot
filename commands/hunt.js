@@ -141,6 +141,7 @@ module.exports = {
                 const huntingCommands = new Map();
                 huntingCommands.set('help', 'Displays list of hunting commands.');
                 huntingCommands.set('info', 'Displays hunting info.');
+                huntingCommands.set('gear', 'Displays equiped item info.');
                 huntingCommands.set('boss', 'Checks current boss.');
                 huntingCommands.set('attack', 'Attack the boss if active!');
                 huntingCommands.set('inv', 'Display inventory.');
@@ -183,6 +184,55 @@ module.exports = {
                     {name: "__Accessory:__  :feather: ⠀⠀⠀⠀", value: "" + accessory.name + "\n", inline: true},
                     {name: "__Stats:__  :bow_and_arrow: ⠀⠀⠀⠀", value: stats + "\n", inline: true},
                     {name: "__Battle Stats:__  :crossed_swords: ⠀⠀⠀⠀", value: currentCondition + "\n", inline: true},
+                );
+                message.channel.send({ embeds: [embedMsg] });
+                break;
+            case 'gear':
+                var target = client.users.cache.get(userid);
+                embedMsg.setTitle('Equiped Gear');
+                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setThumbnail(target.displayAvatarURL());
+                embedMsg.setColor('FFF000');
+
+                var weapon = userHunt[userid].weapon;
+                var armor = userHunt[userid].armor;
+                var accessory = userHunt[userid].accessory;
+
+                var baseWeapon = equips[weapon.name];
+                var baseArmor = equips[armor.name];
+                var baseAccessory = equips[accessory.name];
+
+                var weaponText = "\nRarity: " + baseWeapon.rarity
+                + "\nMaxHP: " + (weapon.maxHP + baseWeapon.maxHP) + " (+" + weapon.maxHP + ")"
+                + "\nAttack: " + (weapon.attack + baseWeapon.attack) + " (+" + weapon.attack + ")"
+                + "\nMagic: " + (weapon.magic + baseWeapon.magic) + " (+" + weapon.magic + ")"
+                + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (+" + weapon.defense + ")"
+                + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (+" + weapon.speed + ")"
+                + "\nSlots: " + weapon.slots
+                + "\n\n";
+
+                var armorText = "\nRarity: " + baseArmor.rarity
+                + "\nMaxHP: " + (armor.maxHP + baseArmor.maxHP) + " (+" + armor.maxHP + ")"
+                + "\nAttack: " + (armor.attack + baseArmor.attack) + " (+" + armor.attack + ")"
+                + "\nMagic: " + (armor.magic + baseArmor.magic) + " (+" + armor.magic + ")"
+                + "\nDefense: " + (armor.defense + baseArmor.defense) + " (+" + armor.defense + ")"
+                + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (+" + armor.speed + ")"
+                + "\nSlots: " + armor.slots
+                + "\n\n";
+
+                var accessoryText = "\nRarity: " + baseAccessory.rarity
+                + "\nMaxHP: " + (accessory.maxHP + baseAccessory.maxHP) + " (+" + accessory.maxHP + ")"
+                + "\nAttack: " + (accessory.attack + baseAccessory.attack) + " (+" + accessory.attack + ")"
+                + "\nMagic: " + (accessory.magic + baseAccessory.magic) + " (+" + accessory.magic + ")"
+                + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (+" + accessory.defense + ")"
+                + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (+" + accessory.speed + ")"
+                + "\nSlots: " + accessory.slots
+                + "\n\n";
+
+                embedMsg.setFields(
+                    {name: "" + weapon.name, value: weaponText, inline: true},
+                    {name: "" + armor.name, value: armorText, inline: true},
+                    {name: "" + accessory.name, value: accessoryText, inline: true}
                 );
                 message.channel.send({ embeds: [embedMsg] });
                 break;
@@ -255,7 +305,7 @@ module.exports = {
                     else if (userHunt[userid].currentHP <= 0) {
                         embedMsg.setTitle(userData[userid].name + " is dead!");
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
-                        embedMsg.setThumbnail("https://i.imgur.com/yF8TSt4.png");
+                        embedMsg.setThumbnail("https://i.imgur.com/35PQfF5.png");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
