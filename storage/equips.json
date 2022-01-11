@@ -1,4 +1,15 @@
 {
+    "Nothing": {
+        "name": "Nothing",
+        "type": 0,
+        "rarity": 0,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
     "Stick": {
         "name": "Stick",
         "type": 0,
