@@ -229,6 +229,7 @@ let spawnMonster = (newTime) => {
             magicdefense: selectedMonster.magicdefense,
             attackCD: selectedMonster.attackCD,
             difficulty: selectedMonster.difficulty,
+            loot: selectedMonster.loot,
             currentHP: selectedMonster.maxHP,
             lastAttack: selectedMonster.attackCD + newTime.getTime(),
             targets: [],
@@ -249,12 +250,12 @@ let attackAll = (newTime) => {
     if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= currHunt["active"].attackCD) {
         var count = 0;
         var playersHit = "";
-        var alivePlayers = [];
+        var alivePlayers = 0;
 
         for (let i = 0; i < currHunt["active"].targets.length; i++) {
             var target = currHunt["active"].targets[i];
             if (userHunt[target].currentHP > 0) {
-                alivePlayers.push[target];
+                alivePlayers++;
             }
         }
 
@@ -279,7 +280,7 @@ let attackAll = (newTime) => {
                 }
 
                 var damageDealt = currHunt["active"].attack - defense;
-                if (currHunt["active"].targets.length == 1 || alivePlayers.length == 1) {
+                if (alivePlayers == 1) {
                     damageDealt = Math.floor(1.5 * damageDealt);
                 }
                 if (damageDealt <= 0) {

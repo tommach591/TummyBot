@@ -13,7 +13,8 @@
         "defense": 30,
         "magicdefense": 30,
         "attackCD": 20000,
-        "difficulty": 5
+        "difficulty": 5,
+        "loot": ["Fatalis Dual Skies", "Fatalis Alpha", "Exploiter Charm III"]
     },
     "2": {
         "id": "2",
@@ -29,7 +30,8 @@
         "defense": 50,
         "magicdefense": 5,
         "attackCD": 12000,
-        "difficulty": 4
+        "difficulty": 4,
+        "loot": []
     },
     "3": {
         "id": "3",
@@ -45,7 +47,8 @@
         "defense": 10,
         "magicdefense": 5,
         "attackCD": 45000,
-        "difficulty": 3
+        "difficulty": 3,
+        "loot": []
     },
     "4": {
         "id": "4",
@@ -61,7 +64,8 @@
         "defense": 6,
         "magicdefense": 5,
         "attackCD": 20000,
-        "difficulty": 2
+        "difficulty": 2,
+        "loot": []
     },
     "5": {
         "id": "5",
@@ -77,7 +81,8 @@
         "defense": 2,
         "magicdefense": 2,
         "attackCD": 20000,
-        "difficulty": 1
+        "difficulty": 1,
+        "loot": []
     },
     "6": {
         "id": "6",
@@ -93,7 +98,8 @@
         "defense": 10,
         "magicdefense": 8,
         "attackCD": 17000,
-        "difficulty": 3
+        "difficulty": 3,
+        "loot": []
     },
     "7": {
         "id": "7",
@@ -109,7 +115,8 @@
         "defense": 1,
         "magicdefense": 1,
         "attackCD": 20000,
-        "difficulty": 1
+        "difficulty": 1,
+        "loot": []
     },
     "8": {
         "id": "8",
@@ -125,7 +132,8 @@
         "defense": 0,
         "magicdefense": 0,
         "attackCD": 5000,
-        "difficulty": 1
+        "difficulty": 1,
+        "loot": []
     },
     "9": {
         "id": "9",
@@ -141,7 +149,8 @@
         "defense": 15,
         "magicdefense": 15,
         "attackCD": 60000,
-        "difficulty": 4
+        "difficulty": 4,
+        "loot": []
     },
     "10": {
         "id": "10",
@@ -157,7 +166,8 @@
         "defense": 5,
         "magicdefense": 5,
         "attackCD": 15000,
-        "difficulty": 2
+        "difficulty": 2,
+        "loot": []
     },
     "11": {
         "id": "11",
@@ -173,7 +183,8 @@
         "defense": 0,
         "magicdefense": 20,
         "attackCD": 20000,
-        "difficulty": 2
+        "difficulty": 2,
+        "loot": []
     },
     "12": {
         "id": "12",
@@ -189,7 +200,8 @@
         "defense": 0,
         "magicdefense": 0,
         "attackCD": 40000,
-        "difficulty": 1
+        "difficulty": 1,
+        "loot": []
     },
     "13": {
         "id": "13",
@@ -205,7 +217,8 @@
         "defense": 0,
         "magicdefense": 0,
         "attackCD": 10000,
-        "difficulty": 2
+        "difficulty": 2,
+        "loot": []
     },
     "14": {
         "id": "14",
@@ -221,7 +234,8 @@
         "defense": 500,
         "magicdefense": 500,
         "attackCD": 500,
-        "difficulty": 3
+        "difficulty": 3,
+        "loot": []
     },
     "15": {
         "id": "15",
@@ -237,7 +251,8 @@
         "defense": 2,
         "magicdefense": 2,
         "attackCD": 12000,
-        "difficulty": 2
+        "difficulty": 2,
+        "loot": []
     },
     "16": {
         "id": "16",
@@ -253,7 +268,8 @@
         "defense": 5,
         "magicdefense": 10,
         "attackCD": 35000,
-        "difficulty": 3
+        "difficulty": 3,
+        "loot": []
     },
     "17": {
         "id": "17",
@@ -269,7 +285,8 @@
         "defense": 0,
         "magicdefense": 5,
         "attackCD": 15000,
-        "difficulty": 1
+        "difficulty": 1,
+        "loot": []
     },
     "18": {
         "id": "18",
@@ -281,11 +298,12 @@
         "image": "https://c.tenor.com/FZHEiqVbPVMAAAAd/sephiroth.gif",
         "attackImage": "https://i.imgur.com/6b0z1lE.gif",
         "maxHP": 5000,
-        "attack": 110,
+        "attack": 100,
         "defense": 15,
         "magicdefense": 15,
-        "attackCD": 30000,
-        "difficulty": 5
+        "attackCD": 20000,
+        "difficulty": 5,
+        "loot": ["Masamune", "Black Coat", "Black Wing"]
     },
     "19": {
         "id": "19",
@@ -301,7 +319,8 @@
         "defense": 3,
         "magicdefense": 7,
         "attackCD": 20000,
-        "difficulty": 2
+        "difficulty": 2,
+        "loot": []
     },
     "20": {
         "id": "20",
@@ -317,6 +336,7 @@
         "defense": 5,
         "magicdefense": 5,
         "attackCD": 75000,
-        "difficulty": 3
+        "difficulty": 3,
+        "loot": []
     }
 }

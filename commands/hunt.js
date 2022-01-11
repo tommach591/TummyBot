@@ -55,6 +55,7 @@ module.exports = {
             return id;
         }
 
+        var fourstar = [];
         var threestar = [];
         var twostar = [];
         var onestar = [];
@@ -64,6 +65,11 @@ module.exports = {
         let getDrops = () => {
             for (var k in equips) {
                 switch(equips[k].rarity) {
+                    case 0:
+                        if (k != "Nothing") {
+                            zerostar.push(k);
+                        }
+                        break;
                     case 1:
                         onestar.push(k);
                         break;
@@ -74,11 +80,14 @@ module.exports = {
                         threestar.push(k);
                         break;
                     default:
-                        if (k != "Nothing")
-                            zerostar.push(k);
                         break;
                 }
             }
+
+            if (currHunt["active"].difficulty >= 5 && currHunt["active"].loot.length != 0) {
+                fourstar = currHunt["active"].loot;
+            }
+
             for (var k in scrolls) {
                 scrolldrop.push(k);
             }
@@ -379,6 +388,19 @@ module.exports = {
                                 goldEarned += Math.floor(goldReward * (currHunt["active"].playerDamage[i] / currHunt["active"].maxHP));
 
                                 var itemsEarned = "";
+
+                                if (fourstar.length != 0) {
+                                    for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
+                                        var luck = Math.floor((Math.random() * 100000) + 1);
+                                        var chance = 100000 * 0.0025;
+                                        if (luck <= chance) {
+                                            var itemObtained = generateEquip(fourstar[Math.floor(Math.random() * fourstar.length)]);
+                                            userHunt[player].equips.push(itemObtained);
+                                            itemsEarned += ", " + items[itemObtained].name;
+                                        }
+                                    }
+                                }
+
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.005;

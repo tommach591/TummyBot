@@ -312,7 +312,7 @@
         "type": 2,
         "rarity": 3,
         "image": "",
-        "maxHP": 15,
+        "maxHP": 0,
         "attack": 0,
         "magic": 5,
         "defense": 5,
@@ -324,9 +324,75 @@
         "rarity": 3,
         "image": "",
         "maxHP": 25,
+        "attack": 5,
+        "magic": 0,
+        "defense": 5,
+        "speed": 0
+    },
+    "Fatalis Dual Skies": {
+        "name": "Fatalis Dual Skies",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 15,
+        "magic": 15,
+        "defense": 0,
+        "speed": 10
+    },
+    "Fatalis Alpha": {
+        "name": "Fatalis Alpha",
+        "type": 1,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 50,
+        "attack": 0,
+        "magic": 0,
+        "defense": 15,
+        "speed": 0
+    },
+    "Exploiter Charm III": {
+        "name": "Exploiter Charm III",
+        "type": 2,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 10,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "Masamune": {
+        "name": "Masamune",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 25,
+        "magic": 0,
+        "defense": 0,
+        "speed": 10
+    },
+    "Black Coat": {
+        "name": "Black Coat",
+        "type": 1,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 25,
         "attack": 6,
         "magic": 0,
-        "defense": 10,
+        "defense": 5,
         "speed": 0
+    },
+    "Black Wing": {
+        "name": "Black Wing",
+        "type": 2,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 25,
+        "attack": 5,
+        "magic": 0,
+        "defense": 5,
+        "speed": 5
     }
 }
