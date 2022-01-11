@@ -249,6 +249,15 @@ let attackAll = (newTime) => {
     if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= currHunt["active"].attackCD) {
         var count = 0;
         var playersHit = "";
+        var alivePlayers = [];
+
+        for (let i = 0; i < currHunt["active"].targets.length; i++) {
+            var target = currHunt["active"].targets[i];
+            if (userHunt[target].currentHP > 0) {
+                alivePlayers.push[target];
+            }
+        }
+
         for (let i = 0; i < currHunt["active"].targets.length; i++) {
             var target = currHunt["active"].targets[i];
 
@@ -270,8 +279,8 @@ let attackAll = (newTime) => {
                 }
 
                 var damageDealt = currHunt["active"].attack - defense;
-                if (currHunt["active"].targets.length == 1) {
-                    damageDealt *= 2;
+                if (currHunt["active"].targets.length == 1 || alivePlayers.length == 1) {
+                    damageDealt = Math.floor(1.5 * damageDealt);
                 }
                 if (damageDealt <= 0) {
                     damageDealt = 1;

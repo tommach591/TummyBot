@@ -74,7 +74,8 @@ module.exports = {
                         threestar.push(k);
                         break;
                     default:
-                        zerostar.push(k);
+                        if (k != "Nothing")
+                            zerostar.push(k);
                         break;
                 }
             }
@@ -206,7 +207,7 @@ module.exports = {
                 + "\nMaxHP: " + (weapon.maxHP + baseWeapon.maxHP) + " (+" + weapon.maxHP + ")"
                 + "\nAttack: " + (weapon.attack + baseWeapon.attack) + " (+" + weapon.attack + ")"
                 + "\nMagic: " + (weapon.magic + baseWeapon.magic) + " (+" + weapon.magic + ")"
-                + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (+" + weapon.defense + ") ⠀⠀⠀⠀⠀⠀"
+                + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (+" + weapon.defense + ")"
                 + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (+" + weapon.speed + ")"
                 + "\nSlots: " + weapon.slots
                 + "\n\n";
@@ -215,7 +216,7 @@ module.exports = {
                 + "\nMaxHP: " + (armor.maxHP + baseArmor.maxHP) + " (+" + armor.maxHP + ")"
                 + "\nAttack: " + (armor.attack + baseArmor.attack) + " (+" + armor.attack + ")"
                 + "\nMagic: " + (armor.magic + baseArmor.magic) + " (+" + armor.magic + ")"
-                + "\nDefense: " + (armor.defense + baseArmor.defense) + " (+" + armor.defense + ") ⠀⠀⠀⠀⠀⠀"
+                + "\nDefense: " + (armor.defense + baseArmor.defense) + " (+" + armor.defense + ")"
                 + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (+" + armor.speed + ")"
                 + "\nSlots: " + armor.slots
                 + "\n\n";
@@ -224,15 +225,15 @@ module.exports = {
                 + "\nMaxHP: " + (accessory.maxHP + baseAccessory.maxHP) + " (+" + accessory.maxHP + ")"
                 + "\nAttack: " + (accessory.attack + baseAccessory.attack) + " (+" + accessory.attack + ")"
                 + "\nMagic: " + (accessory.magic + baseAccessory.magic) + " (+" + accessory.magic + ")"
-                + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (+" + accessory.defense + ") ⠀⠀⠀⠀⠀⠀"
+                + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (+" + accessory.defense + ")"
                 + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (+" + accessory.speed + ")"
                 + "\nSlots: " + accessory.slots
                 + "\n\n";
 
                 embedMsg.setFields(
-                    {name: "" + weapon.name, value: weaponText, inline: true},
-                    {name: "" + armor.name, value: armorText, inline: true},
-                    {name: "" + accessory.name, value: accessoryText, inline: true}
+                    {name: "" + weapon.name + "⠀⠀⠀⠀⠀⠀", value: weaponText, inline: true},
+                    {name: "" + armor.name + "⠀⠀⠀⠀⠀⠀", value: armorText, inline: true},
+                    {name: "" + accessory.name + "⠀⠀⠀⠀⠀⠀", value: accessoryText, inline: true}
                 );
                 message.channel.send({ embeds: [embedMsg] });
                 break;
