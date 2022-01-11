@@ -194,9 +194,9 @@ module.exports = {
                 embedMsg.setThumbnail(target.displayAvatarURL());
                 embedMsg.setColor('FFF000');
 
-                var weapon = userHunt[userid].weapon;
-                var armor = userHunt[userid].armor;
-                var accessory = userHunt[userid].accessory;
+                var weapon = items[userHunt[userid].weapon];
+                var armor = items[userHunt[userid].armor];
+                var accessory = items[userHunt[userid].accessory];
 
                 var baseWeapon = equips[weapon.name];
                 var baseArmor = equips[armor.name];
