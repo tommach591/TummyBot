@@ -263,11 +263,11 @@ module.exports = {
                     embedMsg.setColor("49000F");
 
                     var selected = currHunt["active"].id;
-                    embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP);
-                    embedMsg.addField('Attack', "" + monsterdex[selected].attack);
-                    embedMsg.addField('Defense', "" + monsterdex[selected].defense);
-                    embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense);
-                    embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s");
+                    embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP, true);
+                    embedMsg.addField('Attack', "" + monsterdex[selected].attack, true);
+                    embedMsg.addField('Defense', "" + monsterdex[selected].defense, true);
+                    embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense, true);
+                    embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s", true);
 
                     message.channel.send({ embeds: [embedMsg] });
                 }
@@ -822,6 +822,7 @@ module.exports = {
                                         items[userHunt[userid].weapon].speed += theScroll.speed;
                                         items[userHunt[userid].weapon].slots--;
                                         updateStats();
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
@@ -857,6 +858,7 @@ module.exports = {
                                         items[userHunt[userid].armor].speed += theScroll.speed;
                                         items[userHunt[userid].armor].slots--;
                                         updateStats();
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
@@ -893,6 +895,7 @@ module.exports = {
                                         items[userHunt[userid].accessory].speed += theScroll.speed;
                                         items[userHunt[userid].accessory].slots--;
                                         updateStats();
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
@@ -923,7 +926,6 @@ module.exports = {
                                 message.channel.send({ embeds: [embedMsg] });
                                 break;
                         }
-                        userHunt[userid].scrolls.splice(selectedindex, 1);
                     }
                     else {
                         embedMsg.setTitle('Error!');
