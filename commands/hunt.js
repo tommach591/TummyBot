@@ -261,6 +261,14 @@ module.exports = {
                     embedMsg.setImage(currHunt["active"].image);
                     embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
                     embedMsg.setColor("49000F");
+
+                    var selected = currHunt["active"].id;
+                    embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP);
+                    embedMsg.addField('Attack', "" + monsterdex[selected].attack);
+                    embedMsg.addField('Defense', "" + monsterdex[selected].defense);
+                    embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense);
+                    embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s");
+
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
