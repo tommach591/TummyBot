@@ -281,7 +281,7 @@ module.exports = {
                     var nextSpawn = currHunt.nextSpawn;
                     var bossTime = nextSpawn - timeDiff;
 
-                    if (bossTime <= 1000 * 60 * 5) {
+                    if (bossTime <= 1000 * 60 * 5 && !currHunt["active"]) {
                         embedMsg.setFooter("You feel an ominous presence...");
                     }
                     else if (bossTime <= 1000 * 60 * 10) {
@@ -518,7 +518,25 @@ module.exports = {
                     embedMsg.setTitle("Emptiness...");
                     embedMsg.setDescription("There is no boss!");
                     embedMsg.setImage("https://ze-robot.com/images/source/25034.jpg");
-                    embedMsg.setFooter("Let's wait for a little longer...");
+
+                    var newtime = new Date();
+                    var timeDiff = newtime.getTime() - currHunt.lastSpawn;
+                    var nextSpawn = currHunt.nextSpawn;
+                    var bossTime = nextSpawn - timeDiff;
+
+                    if (bossTime <= 1000 * 60 * 5 && !currHunt["active"]) {
+                        embedMsg.setFooter("You feel an ominous presence...");
+                    }
+                    else if (bossTime <= 1000 * 60 * 10) {
+                        embedMsg.setFooter("Nature is panicking...");
+                    }
+                    else if (bossTime <= 1000 * 60 * 15) {
+                        embedMsg.setFooter("You hear the howling winds...");
+                    }
+                    else {
+                        embedMsg.setFooter("Let's wait for a little longer...");
+                    }
+
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
