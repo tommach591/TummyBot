@@ -282,7 +282,7 @@ module.exports = {
                     var bossTime = nextSpawn - timeDiff;
 
                     if (bossTime <= 1000 * 60 * 5) {
-                        embedMsg.setFooter("You feel an ominous pressence...");
+                        embedMsg.setFooter("You feel an ominous presence...");
                     }
                     else if (bossTime <= 1000 * 60 * 10) {
                         embedMsg.setFooter("Nature is panicking...");
