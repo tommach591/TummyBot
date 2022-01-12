@@ -822,12 +822,12 @@ module.exports = {
                                         items[userHunt[userid].weapon].speed += theScroll.speed;
                                         items[userHunt[userid].weapon].slots--;
                                         updateStats();
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                         message.channel.send({ embeds: [embedMsg] });
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                     else {
                                         embedMsg.setTitle('Oh nyo!');
@@ -835,6 +835,7 @@ module.exports = {
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
                                         message.channel.send({ embeds: [embedMsg] });
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                 }
                                 else {
@@ -858,12 +859,12 @@ module.exports = {
                                         items[userHunt[userid].armor].speed += theScroll.speed;
                                         items[userHunt[userid].armor].slots--;
                                         updateStats();
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                         message.channel.send({ embeds: [embedMsg] });
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                     else {
                                         embedMsg.setTitle('Oh nyo!');
@@ -871,6 +872,7 @@ module.exports = {
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
                                         message.channel.send({ embeds: [embedMsg] });
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                 }
                                 else {
@@ -895,12 +897,12 @@ module.exports = {
                                         items[userHunt[userid].accessory].speed += theScroll.speed;
                                         items[userHunt[userid].accessory].slots--;
                                         updateStats();
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                         message.channel.send({ embeds: [embedMsg] });
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                     else {
                                         embedMsg.setTitle('Oh nyo!');
@@ -908,6 +910,7 @@ module.exports = {
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
                                         message.channel.send({ embeds: [embedMsg] });
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                 }
                                 else {
