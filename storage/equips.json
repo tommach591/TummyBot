@@ -337,7 +337,7 @@
         "maxHP": 0,
         "attack": 15,
         "magic": 15,
-        "defense": 0,
+        "defense": 5,
         "speed": 10
     },
     "Fatalis Alpha": {
@@ -370,7 +370,7 @@
         "maxHP": 0,
         "attack": 25,
         "magic": 0,
-        "defense": 0,
+        "defense": 5,
         "speed": 10
     },
     "Black Coat": {
