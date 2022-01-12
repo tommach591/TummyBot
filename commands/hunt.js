@@ -84,7 +84,7 @@ module.exports = {
                 }
             }
 
-            if (currHunt["active"].difficulty >= 5 && currHunt["active"].loot.length != 0) {
+            if (currHunt["active"].loot.length != 0) {
                 fourstar = currHunt["active"].loot;
             }
 

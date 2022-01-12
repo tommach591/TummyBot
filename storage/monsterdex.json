@@ -234,7 +234,7 @@
         "defense": 500,
         "magicdefense": 500,
         "attackCD": 500,
-        "difficulty": 3,
+        "difficulty": 4,
         "loot": []
     },
     "15": {
@@ -333,10 +333,27 @@
         "attackImage": "https://imgur.com/oXCx8HT.gif",
         "maxHP": 3000,
         "attack": 100,
-        "defense": 5,
-        "magicdefense": 5,
+        "defense": 0,
+        "magicdefense": 30,
         "attackCD": 75000,
         "difficulty": 3,
         "loot": []
+    },
+    "21": {
+        "id": "21",
+        "name": "Blackpink",
+        "info": "The best Kpop group ever made. Not biased.",
+        "entry": "Let's kill this love!",
+        "shoutout": "Blackpink makes a comeback!",
+        "death": "Don't worry, Blackpink never dies! #BLACKPINK #BLINK",
+        "image": "https://media3.giphy.com/media/xT3i1cvbSQSXENS9rO/giphy.gif",
+        "attackImage": "https://media2.giphy.com/media/AFBmwFcWqQpPymsgqZ/200.gif",
+        "maxHP": 4000,
+        "attack": 100,
+        "defense": 15,
+        "magicdefense": 35,
+        "attackCD": 60000,
+        "difficulty": 4,
+        "loot": ["BLACKPINK Official Light Stick"]
     }
 }
