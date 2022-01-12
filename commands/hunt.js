@@ -994,7 +994,7 @@ module.exports = {
                         if (!isNaN(index)) {
                             switch(choice) {
                                 case "equip":
-                                    if (items[userHunt[userid].equips[index]] && (index > userHunt[userid].equips.length && index < 0)) {
+                                    if (items[userHunt[userid].equips[index]] && (index > userHunt[userid].equips.length || index < 0)) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
@@ -1048,7 +1048,7 @@ module.exports = {
                                     }
                                     break;
                                 case "scroll":
-                                    if (scrolls[userHunt[userid].scrolls[index]] && (index > userHunt[userid].scrolls.length && index < 0)) {
+                                    if (scrolls[userHunt[userid].scrolls[index]] && (index > userHunt[userid].scrolls.length || index < 0)) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
