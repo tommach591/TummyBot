@@ -275,7 +275,25 @@ module.exports = {
                     embedMsg.setTitle("Emptiness...");
                     embedMsg.setDescription("There is no boss!");
                     embedMsg.setImage("https://ze-robot.com/images/source/25034.jpg");
-                    embedMsg.setFooter("Let's wait for a little longer...");
+
+                    var newtime = new Date();
+                    var timeDiff = newtime.getTime() - currHunt.lastSpawn;
+                    var nextSpawn = currHunt.nextSpawn;
+                    var bossTime = nextSpawn - timeDiff;
+
+                    if (bossTime <= 1000 * 60 * 5) {
+                        embedMsg.setFooter("You feel an ominous pressence...");
+                    }
+                    else if (bossTime <= 1000 * 60 * 10) {
+                        embedMsg.setFooter("Nature is panicking...");
+                    }
+                    else if (bossTime <= 1000 * 60 * 15) {
+                        embedMsg.setFooter("You hear the howling winds...");
+                    }
+                    else {
+                        embedMsg.setFooter("Let's wait for a little longer...");
+                    }
+
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
@@ -976,7 +994,7 @@ module.exports = {
                         if (!isNaN(index)) {
                             switch(choice) {
                                 case "equip":
-                                    if ((index > userHunt[userid].equips.length || index < 0) && items[userHunt[userid].equips[index]]) {
+                                    if (items[userHunt[userid].equips[index]] && (index > userHunt[userid].equips.length && index < 0)) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
@@ -1030,7 +1048,7 @@ module.exports = {
                                     }
                                     break;
                                 case "scroll":
-                                    if ((index > userHunt[userid].scrolls.length || index < 0) && scrolls[userHunt[userid].scrolls[index]]) {
+                                    if (scrolls[userHunt[userid].scrolls[index]] && (index > userHunt[userid].scrolls.length && index < 0)) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
