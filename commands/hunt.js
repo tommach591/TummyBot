@@ -151,14 +151,14 @@ module.exports = {
                 const huntingCommands = new Map();
                 huntingCommands.set('help', 'Displays list of hunting commands.');
                 huntingCommands.set('info', 'Displays hunting info.');
-                huntingCommands.set('gear', 'Displays equiped item info.');
+                huntingCommands.set('gear', 'Displays equipped item info.');
                 huntingCommands.set('boss', 'Checks current boss.');
                 huntingCommands.set('attack', 'Attack the boss if active!');
                 huntingCommands.set('inv', 'Display inventory.');
                 huntingCommands.set('equip #', 'Equip an item from the index of your inventory.');
                 huntingCommands.set('unequip weapon/armor/acc', 'Unequip an item.');
                 huntingCommands.set('scroll weapon/armor/acc #', 'Select a scroll from scroll inventory to use on one type of equipment you are wearing.');
-                huntingCommands.set('give equip/scroll #', 'Give an item from equip or scroll inventory at that index.');
+                huntingCommands.set('give name equip/scroll #', 'Give an item from equip or scroll inventory at that index.');
                 huntingCommands.set('sell equip/scroll #', 'Sell an item from equip or scroll inventory at that index.');
                 huntingCommands.set('dex', 'Shows unique monsters you have fought.');
 
@@ -469,7 +469,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.175;
+                                    var chance = 100000 * 0.2;
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         userHunt[player].scrolls.push(scrollobtained);
