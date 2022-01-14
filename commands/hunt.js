@@ -503,7 +503,7 @@ module.exports = {
                                         delete currHunt["active"];
                                         currHunt.lastSpawn = newTime.getTime();
                                         currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
-                                    }, 300000);
+                                    }, 600000);
                                 });
                             }
                         }
