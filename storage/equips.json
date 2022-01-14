@@ -140,7 +140,7 @@
         "attack": 0,
         "magic": 50,
         "defense": 0,
-        "speed": -30
+        "speed": -20
     },
     "Stalagmite": {
         "name": "Stalagmite",
