@@ -344,7 +344,7 @@ module.exports = {
                     else if (userHunt[userid].currentHP <= 0) {
                         embedMsg.setTitle(userData[userid].name + " is dead!");
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
-                        embedMsg.setThumbnail("https://i.imgur.com/35PQfF5.png");
+                        embedMsg.setImage("https://media4.giphy.com/media/Wr2747CnxwBSqyK6xt/200.gif");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
@@ -352,7 +352,7 @@ module.exports = {
                     else if (timeDiff < attackCD) {
                         embedMsg.setTitle("Chill!");
                         embedMsg.setDescription(userData[userid].name + " can't attack yet!");
-                        embedMsg.setThumbnail("https://i.imgur.com/5ZyHVIU.png");
+                        embedMsg.setImage("https://c.tenor.com/eBByy4ihCocAAAAC/angry-fist.gif");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((attackCD - timeDiff) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
