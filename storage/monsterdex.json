@@ -355,5 +355,22 @@
         "attackCD": 60000,
         "difficulty": 4,
         "loot": ["BLACKPINK Official Light Stick"]
+    },
+    "22": {
+        "id": "22",
+        "name": "John Wick",
+        "info": "John is a man of focus. Commitment. Sheer will. I once saw him kill three man at a bar. With a pencil. A fucking pencil.",
+        "entry": "John Wick is back!",
+        "shoutout": "He has a pencil!",
+        "death": "Waiting for next movie!",
+        "image": "https://c.tenor.com/vRxU_nW8CSsAAAAC/keanu-reeves-john-wick.gif",
+        "attackImage": "https://c.tenor.com/TCqMo0W-AIYAAAAM/john-pencil.gif",
+        "maxHP": 12000,
+        "attack": 60,
+        "defense": 0,
+        "magicdefense": 0,
+        "attackCD": 30000,
+        "difficulty": 4,
+        "loot": []
     }
 }

@@ -93,7 +93,7 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 15,
+        "attack": 17,
         "magic": 0,
         "defense": 0,
         "speed": 10
@@ -104,10 +104,10 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 12,
-        "magic": 12,
-        "defense": 2,
-        "speed": 2
+        "attack": 16,
+        "magic": 16,
+        "defense": 5,
+        "speed": 0
     },
     "Anima": {
         "name": "Anima",
@@ -115,8 +115,8 @@
         "rarity": 3,
         "image": "",
         "maxHP": 50,
-        "attack": 10,
-        "magic": 6,
+        "attack": 15,
+        "magic": 0,
         "defense": 10,
         "speed": 0
     },
@@ -136,11 +136,11 @@
         "type": 0,
         "rarity": 3,
         "image": "",
-        "maxHP": -30,
+        "maxHP": -25,
         "attack": 0,
         "magic": 50,
         "defense": 0,
-        "speed": -10
+        "speed": -30
     },
     "Stalagmite": {
         "name": "Stalagmite",
@@ -148,8 +148,8 @@
         "rarity": 3,
         "image": "",
         "maxHP": 50,
-        "attack": 6,
-        "magic": 10,
+        "attack": 0,
+        "magic": 15,
         "defense": 10,
         "speed": 0
     },
@@ -160,7 +160,7 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 15,
+        "magic": 17,
         "defense": 0,
         "speed": 10
     },
@@ -335,17 +335,17 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 18,
-        "magic": 18,
+        "attack": 20,
+        "magic": 20,
         "defense": 5,
-        "speed": 10
+        "speed": 20
     },
     "Fatalis Alpha": {
         "name": "Fatalis Alpha",
         "type": 1,
         "rarity": 4,
         "image": "",
-        "maxHP": 50,
+        "maxHP": 75,
         "attack": 0,
         "magic": 0,
         "defense": 15,
@@ -357,7 +357,7 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 10,
+        "attack": 15,
         "magic": 5,
         "defense": 0,
         "speed": 0
@@ -368,7 +368,7 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 30,
+        "attack": 35,
         "magic": 0,
         "defense": 5,
         "speed": 10
@@ -381,7 +381,7 @@
         "maxHP": 25,
         "attack": 5,
         "magic": 0,
-        "defense": 10,
+        "defense": 15,
         "speed": 0
     },
     "Black Wing": {
