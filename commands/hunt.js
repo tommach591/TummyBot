@@ -779,14 +779,16 @@ module.exports = {
                         var allscrolls = [""];
                         var index = 0;
                         var count = 0;
-                        userHunt[userid].scrolls.forEach((element) => {
+
+                        for (let i = 0; i < userHunt[userid].scrolls.length; i++) {
                             if (count >= 3) {
                                 allscrolls[index] += "\n";
                                 index++;
                                 count = 0;
                                 allscrolls.push("");
                             }
-                            allscrolls[index] += "**__" + (userHunt[userid].scrolls.indexOf(element) + 1) + ". " + scrolls[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+                            var element = userHunt[userid].scrolls[i];
+                            allscrolls[index] += "**__" + (i + 1) + ". " + scrolls[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                             + "\nMaxHP: " + (scrolls[element].maxHP) 
                             + "\nAttack: " + (scrolls[element].attack)
                             + "\nMagic: " + (scrolls[element].magic) 
@@ -794,7 +796,7 @@ module.exports = {
                             + "\nSpeed: " + (scrolls[element].speed)
                             + "\n\n";
                             count++;
-                        });
+                        }
 
                         let pages = [];
                         for (let i = 0; i < allscrolls.length; i++) {

@@ -265,9 +265,9 @@
         "attackImage": "https://i.imgur.com/ufS7i1Y.gif",
         "maxHP": 2500,
         "attack": 50,
-        "defense": 5,
-        "magicdefense": 10,
-        "attackCD": 35000,
+        "defense": 6,
+        "magicdefense": 12,
+        "attackCD": 30000,
         "difficulty": 3,
         "loot": []
     },
@@ -359,7 +359,7 @@
     "22": {
         "id": "22",
         "name": "John Wick",
-        "info": "John is a man of focus. Commitment. Sheer will. I once saw him kill three man at a bar. With a pencil. A fucking pencil.",
+        "info": "John is a man of focus. Commitment. Sheer will. I once saw him kill three man at a bar. With a pencil. A f-ing pencil.",
         "entry": "John Wick is back!",
         "shoutout": "He has a pencil!",
         "death": "Waiting for next movie!",
