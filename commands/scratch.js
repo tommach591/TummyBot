@@ -207,14 +207,14 @@ module.exports = {
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
-                                else if (luck > 80) {
+                                else if (luck > 90) {
                                     user.points += 2000;
                                     embedMsg.setDescription(user.name + " won 2000 points!");
                                     embedMsg.setFooter("Net gain: 1500 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
-                                else if (luck > 60) {
+                                else if (luck > 70) {
                                     user.points += 1000;
                                     embedMsg.setDescription(user.name + " won 1000 points!");
                                     embedMsg.setFooter("Net gain: 500 points");
@@ -222,9 +222,9 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (luck > 40) {
-                                    user.points += 500;
-                                    embedMsg.setDescription(user.name + " won 500 points!");
-                                    embedMsg.setFooter("Net gain: 0 points");
+                                    user.points += 100;
+                                    embedMsg.setDescription(user.name + " won 100 points!");
+                                    embedMsg.setFooter("Net gain: -400 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }

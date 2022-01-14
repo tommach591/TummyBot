@@ -9,18 +9,22 @@ module.exports = {
         var command = args[0];
         switch(command) {
             case 'help':
-                const gardeningCommands = new Map();
-                gardeningCommands.set('help', 'Displays list of pet commands.');
-                gardeningCommands.set('buy', 'Plant a random seed.');
-                gardeningCommands.set('harvest', 'Harvest fully grown plants.');
-                gardeningCommands.set('upgrade', 'Upgrade field, allowing you to plant more.');
-                gardeningCommands.set('dex', 'Shows unique plants you have grown.');
+                const petCommands = new Map();
+                petCommands.set('help', 'Displays list of pet commands.');
+                petCommands.set('buy', 'Buy a random pet.');
+                petCommands.set('abandon', 'Horribly abandon your pet.');
+                petCommands.set('food', 'Buy pet food.');
+                petCommands.set('feed', 'Feed your pet.');
+                petCommands.set('water', 'Hydrate your pet.');
+                petCommands.set('groom', 'Groom your pet.');
+                petCommands.set('play', 'Play with your pet.');
+                petCommands.set('leaderboard', 'Leaderboard of pets.');
 
-                embedMsg.setTitle('List of Gardening Commands');
+                embedMsg.setTitle('List of Pet Commands');
                 embedMsg.setColor('FFF000');
 
-                gardeningCommands.forEach((values, keys)=> {
-                    embedMsg.addField("!tp garden " + keys, values);
+                petCommands.forEach((values, keys)=> {
+                    embedMsg.addField("!tp pet " + keys, values);
                 });
 
                 message.channel.send({ embeds: [embedMsg] });
@@ -35,9 +39,9 @@ module.exports = {
             case 'gardendex':
                 break;
             default:
-                embedMsg.setTitle('Invalid gardening command!');
+                embedMsg.setTitle('Invalid pet command!');
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription('Use __!tp garden help__ for list of gardening commands!');
+                embedMsg.setDescription('Use __!tp pet help__ for list of pet commands!');
                 embedMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
                 message.channel.send({ embeds: [embedMsg] });
                 break;
