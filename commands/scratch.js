@@ -225,7 +225,7 @@ module.exports = {
                                     user.points += 100;
                                     embedMsg.setDescription(user.name + " won 100 points!");
                                     embedMsg.setFooter("Net gain: -400 points");
-                                    embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
+                                    embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                                     embedMsg.setColor('FF0000');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }

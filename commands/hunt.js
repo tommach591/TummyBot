@@ -873,6 +873,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -881,6 +882,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -910,6 +912,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -918,6 +921,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -948,6 +952,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -956,6 +961,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
