@@ -137,7 +137,7 @@
         "rarity": 3,
         "image": "",
         "maxHP": -20,
-        "attack": 1,
+        "attack": 0,
         "magic": 50,
         "defense": 0,
         "speed": -10
@@ -335,8 +335,8 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 15,
-        "magic": 15,
+        "attack": 18,
+        "magic": 18,
         "defense": 5,
         "speed": 10
     },
@@ -358,7 +358,7 @@
         "image": "",
         "maxHP": 0,
         "attack": 10,
-        "magic": 0,
+        "magic": 5,
         "defense": 0,
         "speed": 0
     },
@@ -368,7 +368,7 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 25,
+        "attack": 30,
         "magic": 0,
         "defense": 5,
         "speed": 10
@@ -379,9 +379,9 @@
         "rarity": 4,
         "image": "",
         "maxHP": 25,
-        "attack": 6,
+        "attack": 5,
         "magic": 0,
-        "defense": 5,
+        "defense": 10,
         "speed": 0
     },
     "Black Wing": {
@@ -392,7 +392,7 @@
         "maxHP": 25,
         "attack": 5,
         "magic": 0,
-        "defense": 5,
+        "defense": 10,
         "speed": 5
     },
     "BLACKPINK Official Light Stick": {

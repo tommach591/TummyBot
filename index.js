@@ -337,7 +337,7 @@ let attackAll = (newTime) => {
                         delete currHunt["active"];
                         currHunt.lastSpawn = newTime.getTime();
                         currHunt.nextSpawn = 1000 * 60 * 20;
-                    }, 300000);
+                    }, 600000);
                 });
             }
         }
@@ -562,7 +562,7 @@ client.on('messageCreate', message => {
                         delete currHunt["active"];
                         currHunt.lastSpawn = newTime.getTime();
                         currHunt.nextSpawn = 1000 * 60 * 20;
-                    }, 300000);
+                    }, 600000);
                 });
             }
         }

@@ -290,6 +290,9 @@ module.exports = {
                     else if (bossTime <= 1000 * 60 * 15 && !currHunt["active"]) {
                         embedMsg.setFooter("You hear the howling winds...");
                     }
+                    else if (bossTime <= 1000 * 60 * 30 && !currHunt["active"]) {
+                        embedMsg.setFooter("It is suddenly very quiet...");
+                    }
                     else {
                         embedMsg.setFooter("Let's wait for a little longer...");
                     }
@@ -532,6 +535,9 @@ module.exports = {
                     }
                     else if (bossTime <= 1000 * 60 * 15 && !currHunt["active"]) {
                         embedMsg.setFooter("You hear the howling winds...");
+                    }
+                    else if (bossTime <= 1000 * 60 * 30 && !currHunt["active"]) {
+                        embedMsg.setFooter("It is suddenly very quiet...");
                     }
                     else {
                         embedMsg.setFooter("Let's wait for a little longer...");
