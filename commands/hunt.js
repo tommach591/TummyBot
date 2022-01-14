@@ -859,8 +859,8 @@ module.exports = {
                         switch (choice) {
                             case "weapon":
                                 if (userHunt[userid].weapon != "000000" && items[userHunt[userid].weapon].slots > 0) {
-                                    var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * theScroll.rate;
+                                    var luck = (Math.random() * 100) + 1
+                                    var chance = 100 * theScroll.rate;
                                     if (luck <= chance) {
                                         items[userHunt[userid].weapon].maxHP += theScroll.maxHP;
                                         items[userHunt[userid].weapon].attack += theScroll.attack;
@@ -895,8 +895,8 @@ module.exports = {
                                 break;
                             case "armor":
                                 if (userHunt[userid].armor != "000000" && items[userHunt[userid].armor].slots > 0) {
-                                    var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * theScroll.rate;
+                                    var luck = (Math.random() * 100) + 1
+                                    var chance = 100 * theScroll.rate;
                                     if (luck <= chance) {
                                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
                                         items[userHunt[userid].armor].maxHP += theScroll.maxHP;
@@ -933,8 +933,8 @@ module.exports = {
                             case "accessory":
                             case "acc":
                                 if (userHunt[userid].accessory != "000000" && items[userHunt[userid].accessory].slots > 0) {
-                                    var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * theScroll.rate;
+                                    var luck = (Math.random() * 100) + 1
+                                    var chance = 100 * theScroll.rate;
                                     if (luck <= chance) {
                                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
                                         items[userHunt[userid].accessory].maxHP += theScroll.maxHP;
