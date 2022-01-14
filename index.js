@@ -320,7 +320,11 @@ let attackAll = (newTime) => {
 
         if (currHunt["active"].deathCount >= currHunt["active"].deathLimit && !currHunt["active"].retreated) {
             const embedMsg = new MessageEmbed();
+            
             currHunt["active"].retreated = true;
+            currHunt.lastSpawn = newTime.getTime();
+            currHunt.nextSpawn = 1000 * 60 * 20;
+
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
                 stars += "★";
@@ -330,13 +334,12 @@ let attackAll = (newTime) => {
             embedMsg.setDescription("After defeating " + currHunt["active"].deathCount + " players, " + currHunt["active"].name + " left the battlegrounds.");
             embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
             embedMsg.setColor("FF0000");
+
             for (let i = 0; i < currHunt["active"].channels.length; i++) {
                 currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(() => 
                 {
                     setTimeout(() => {
                         delete currHunt["active"];
-                        currHunt.lastSpawn = newTime.getTime();
-                        currHunt.nextSpawn = 1000 * 60 * 20;
                     }, 600000);
                 });
             }
@@ -546,6 +549,9 @@ client.on('messageCreate', message => {
         if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 10 && !currHunt["active"].retreated) {
             const embedMsg = new MessageEmbed();
             currHunt["active"].retreated = true;
+            currHunt.lastSpawn = newTime.getTime();
+            currHunt.nextSpawn = 1000 * 60 * 20;
+
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
                 stars += "★";
@@ -555,13 +561,12 @@ client.on('messageCreate', message => {
             embedMsg.setDescription(currHunt["active"].name + " got bored and left the battlegrounds.");
             embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
             embedMsg.setColor("FF0000");
+
             for (let i = 0; i < currHunt["active"].channels.length; i++) {
                 currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(() => 
                 {
                     setTimeout(() => {
                         delete currHunt["active"];
-                        currHunt.lastSpawn = newTime.getTime();
-                        currHunt.nextSpawn = 1000 * 60 * 20;
                     }, 600000);
                 });
             }

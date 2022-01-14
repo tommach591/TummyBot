@@ -408,6 +408,9 @@ module.exports = {
 
                             getDrops();
 
+                            currHunt.lastSpawn = newTime.getTime();
+                            currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
+
                             var rewardLevel = currHunt["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
                             var reward = "";
@@ -501,8 +504,6 @@ module.exports = {
                                 {
                                     setTimeout(() => {
                                         delete currHunt["active"];
-                                        currHunt.lastSpawn = newTime.getTime();
-                                        currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
                                     }, 600000);
                                 });
                             }
