@@ -274,7 +274,8 @@ module.exports = {
                 else {
                     embedMsg.setTitle("Emptiness...");
                     embedMsg.setDescription("There is no boss!");
-                    embedMsg.setImage("https://64.media.tumblr.com/8536ab73de4315cc168472454d34abc7/e95789fc2ae76e5f-e7/s640x960/0406f44f53d040d52ce7d27f3545aefdcc8b2c8c.gif");
+                    embedMsg.setColor('A0FF71');
+                    embedMsg.setImage("http://i.imgur.com/7ZHrijt.gif");
 
                     var newtime = new Date();
                     var timeDiff = newtime.getTime() - currHunt.lastSpawn;
@@ -521,7 +522,8 @@ module.exports = {
                 else {
                     embedMsg.setTitle("Emptiness...");
                     embedMsg.setDescription("There is no boss!");
-                    embedMsg.setImage("https://64.media.tumblr.com/8536ab73de4315cc168472454d34abc7/e95789fc2ae76e5f-e7/s640x960/0406f44f53d040d52ce7d27f3545aefdcc8b2c8c.gif");
+                    embedMsg.setColor('A0FF71');
+                    embedMsg.setImage("http://i.imgur.com/7ZHrijt.gif");
 
                     var newtime = new Date();
                     var timeDiff = newtime.getTime() - currHunt.lastSpawn;
