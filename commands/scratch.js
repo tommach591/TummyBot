@@ -222,17 +222,17 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (luck > 40) {
-                                    user.points += 100;
-                                    embedMsg.setDescription(user.name + " won 100 points!");
-                                    embedMsg.setFooter("Net gain: -400 points");
+                                    user.points += 250;
+                                    embedMsg.setDescription(user.name + " won 250 points!");
+                                    embedMsg.setFooter("Net gain: -250 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                                     embedMsg.setColor('FF0000');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (luck > 20) {
-                                    user.points += 500;
-                                    embedMsg.setDescription(user.name + " won 250 points!");
-                                    embedMsg.setFooter("Net gain: -250 points");
+                                    user.points += 100;
+                                    embedMsg.setDescription(user.name + " won 100 points!");
+                                    embedMsg.setFooter("Net gain: -400 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                                     embedMsg.setColor('FF0000');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -281,7 +281,7 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (luck > 33) {
-                                    user.points += 2000;
+                                    user.points += 500;
                                     embedMsg.setDescription(user.name + " won 500 points!");
                                     embedMsg.setFooter("Net gain: -500 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');

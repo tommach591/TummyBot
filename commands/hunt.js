@@ -859,7 +859,7 @@ module.exports = {
                         switch (choice) {
                             case "weapon":
                                 if (userHunt[userid].weapon != "000000" && items[userHunt[userid].weapon].slots > 0) {
-                                    var luck = (Math.random() * 100) + 1
+                                    var luck = Math.floor((Math.random() * 100) + 1);
                                     var chance = 100 * theScroll.rate;
                                     if (luck <= chance) {
                                         items[userHunt[userid].weapon].maxHP += theScroll.maxHP;
@@ -873,7 +873,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -882,7 +882,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -897,7 +897,7 @@ module.exports = {
                                 break;
                             case "armor":
                                 if (userHunt[userid].armor != "000000" && items[userHunt[userid].armor].slots > 0) {
-                                    var luck = (Math.random() * 100) + 1
+                                    var luck = Math.floor((Math.random() * 100) + 1);
                                     var chance = 100 * theScroll.rate;
                                     if (luck <= chance) {
                                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
@@ -912,7 +912,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -921,7 +921,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -937,7 +937,7 @@ module.exports = {
                             case "accessory":
                             case "acc":
                                 if (userHunt[userid].accessory != "000000" && items[userHunt[userid].accessory].slots > 0) {
-                                    var luck = (Math.random() * 100) + 1
+                                    var luck = Math.floor((Math.random() * 100) + 1);
                                     var chance = 100 * theScroll.rate;
                                     if (luck <= chance) {
                                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
@@ -952,7 +952,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -961,7 +961,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + " out of 100.");
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
