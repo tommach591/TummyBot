@@ -400,10 +400,10 @@
         "type": 0,
         "rarity": 4,
         "image": "",
-        "maxHP": 0,
-        "attack": 20,
-        "magic": 20,
+        "maxHP": -25,
+        "attack": 60,
+        "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": -20
     }
 }
