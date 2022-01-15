@@ -593,5 +593,131 @@
         "image": "https://i.imgur.com/5ZyHVIU.png",
         "value": 125,
         "info": "Chill! You can't attack yet!"
+    },
+    "86": {
+        "id": "86",
+        "name": "Pickle",
+        "image": "https://i.imgur.com/rEXBuhu.png",
+        "value": 175,
+        "info": "I'M PICKLE RIIIIIIIIIIIIIIIIIICK!"
+    },
+    "87": {
+        "id": "87",
+        "name": "Frag",
+        "image": "https://i.imgur.com/BFUtpa5.png",
+        "value": 175,
+        "info": "Look at this top frag!"
+    },
+    "88": {
+        "id": "88",
+        "name": "Lobster",
+        "image": "https://i.imgur.com/sq3Zs7G.png",
+        "value": 125,
+        "info": "Don't mess with the lobster!"
+    },
+    "89": {
+        "id": "89",
+        "name": "Green Crab",
+        "image": "https://i.imgur.com/3rRmm5x.png",
+        "value": 125,
+        "info": "This crab is green!"
+    },
+    "90": {
+        "id": "90",
+        "name": "Red Crab",
+        "image": "https://i.imgur.com/OcBdai6.png",
+        "value": 125,
+        "info": "This crab is red!"
+    },
+    "91": {
+        "id": "91",
+        "name": "Sea Panda",
+        "image": "https://i.imgur.com/BOqj9qE.png",
+        "value": 200,
+        "info": "So kyute!"
+    },
+    "92": {
+        "id": "92",
+        "name": "Toy Gun",
+        "image": "https://i.imgur.com/tePHmIX.png",
+        "value": 200,
+        "info": "Wait a minute, this is fake!"
+    },
+    "93": {
+        "id": "93",
+        "name": "Note in a Bottle",
+        "image": "https://i.imgur.com/bCOEaZ1.png",
+        "value": 200,
+        "info": "Deeznutz gottem!"
+    },
+    "94": {
+        "id": "94",
+        "name": "Key",
+        "image": "https://i.imgur.com/88zAhCz.png",
+        "value": 200,
+        "info": "The key to my heart! (jk that was kind of gross.)"
+    },
+    "95": {
+        "id": "95",
+        "name": "French Bread",
+        "image": "https://i.imgur.com/ZwdIcKV.png",
+        "value": 200,
+        "info": "Bread in French is Pain."
+    },
+    "96": {
+        "id": "96",
+        "name": "Donut",
+        "image": "https://i.imgur.com/kmZkDLM.png",
+        "value": 200,
+        "info": "Donut gamble. Just fish."
+    },
+    "97": {
+        "id": "97",
+        "name": "Oyster",
+        "image": "https://i.imgur.com/BSkHY6X.png",
+        "value": 200,
+        "info": "What did the Oyster send to the Lobster? A shellfie."
+    },
+    "98": {
+        "id": "98",
+        "name": "Unicorn",
+        "image": "https://i.imgur.com/a7SnprM.png",
+        "value": 200,
+        "info": "Its the unicorn of the sea!"
+    },
+    "99": {
+        "id": "99",
+        "name": "Cake",
+        "image": "https://i.imgur.com/spj8iJ6.png",
+        "value": 200,
+        "info": "The cake is a lie!"
+    },
+    "100": {
+        "id": "100",
+        "name": "Penguin",
+        "image": "https://i.imgur.com/u5evYYB.png",
+        "value": 200,
+        "info": "Penguin use Bubble!"
+    },
+    "101": {
+        "id": "101",
+        "name": "Octopus 2",
+        "image": "https://i.imgur.com/hppOiqH.png",
+        "value": 200,
+        "info": "A rare octopus!"
+    },
+    "102": {
+        "id": "102",
+        "name": "Real Shark",
+        "image": "https://i.imgur.com/qORokpX.png",
+        "value": 200,
+        "info": "Oh my god, its a shark!"
+    },
+    "103": {
+        "id": "103",
+        "name": "Chicken Nugget",
+        "image": "https://i.imgur.com/4YR9UGd.png",
+        "value": 1000,
+        "info": "CHIKMNUGET!!!"
     }
 }

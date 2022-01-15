@@ -75,11 +75,12 @@ module.exports = {
                             collected => {
                             const reaction = collected.first();
                             if (reaction.emoji.name === '👍') {
+                                var newTime = new Date();
                                 userData[userid].married = mention;
                                 userData[mention].married = userid;
 
-                                userData[userid].bankTick = newDate.getTime();
-                                userData[mention].bankTick = newDate.getTime();
+                                userData[userid].bankTick = newTime.getTime();
+                                userData[mention].bankTick = newTime.getTime();
 
                                 embedMsg.setTitle('Congratulations!');
                                 embedMsg.setColor('FF80AB');

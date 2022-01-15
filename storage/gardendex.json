@@ -112,5 +112,41 @@
         "name": "Chocolate",
         "image": "https://i.imgur.com/u6y7oXB.png",
         "info": "This is just cocoa, but we skipped the whole process."
+    },
+    "20": {
+        "id": "20",
+        "name": "1000 TP",
+        "image": "https://i.imgur.com/1e1hGyg.png",
+        "info": "Just kidding, you can't grow money!"
+    },
+    "21": {
+        "id": "21",
+        "name": "100 TP",
+        "image": "https://i.imgur.com/PYdWp8V.png",
+        "info": "Wait a minute, a seed costs more than this!"
+    },
+    "22": {
+        "id": "22",
+        "name": "Pink Balloon",
+        "image": "https://i.imgur.com/DX6DOzu.png",
+        "info": "Don't pop it!"
+    },
+    "23": {
+        "id": "23",
+        "name": "Blue Balloon",
+        "image": "https://i.imgur.com/tfdB7GE.png",
+        "info": "Wow! A blue balloon!"
+    },
+    "24": {
+        "id": "24",
+        "name": "Yellow Balloon",
+        "image": "https://i.imgur.com/yzI9txy.png",
+        "info": "Ew, a yellow balloon!"
+    },
+    "25": {
+        "id": "25",
+        "name": "Green Balloon",
+        "image": "https://i.imgur.com/i5oUAlp.png",
+        "info": "No way! A green balloon!"
     }
 }

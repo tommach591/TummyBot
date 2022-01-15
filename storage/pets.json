@@ -1,12 +1,17 @@
 {
     "1": {
-        "name": "",
-        "imageOne": "",
-        "imageTwo": "",
-        "imageThree": "",
-        "imageFour": "",
+        "name": "Raccoon",
+        "imageOne": "https://i.imgur.com/ZeGNT74.png",
+        "imageTwo": "https://i.imgur.com/ULKBLIU.png",
+        "imageThree": "https://i.imgur.com/8ENr4zs.png",
+        "imageFour": "https://i.imgur.com/dEAyZGv.png",
         "quotes": [
-            ""
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
         ]
     }
 }
