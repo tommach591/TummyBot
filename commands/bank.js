@@ -69,7 +69,6 @@ module.exports = {
             case 'help':
                 const bankCommands = new Map();
                 bankCommands.set('help', 'Displays list of bank commands.');
-                bankCommands.set('info', 'Displays bank info.');
                 bankCommands.set('deposit', 'Store into bank.');
                 bankCommands.set('withdraw', 'Withdraw from bank.');
 
@@ -79,47 +78,6 @@ module.exports = {
                 bankCommands.forEach((values, keys)=> {
                     embedMsg.addField("!tp bank " + keys, values);
                 });
-
-                message.channel.send({ embeds: [embedMsg] });
-                break;
-            case 'info':
-                var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
-                embedMsg.setThumbnail("https://i.imgur.com/jxuwNmo.png");
-                embedMsg.setColor('FFF000');
-                embedMsg.setFooter('Bank tick resets on withdraw and deposit from either you or your spouse.');
-
-                embedMsg.addField("__Bank:__  :coin: ⠀⠀⠀⠀", "" + userData[userid].bank + "\n", true);
-
-                if (userData[userid].married != "" && userData[userData[userid].married]) {
-                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀", userData[userData[userid].married].bank + "\n", true);
-                }
-                else {
-                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀",  "*Not Married*\n", true);
-                }
-
-                var newDate = new Date();
-                var timeDiff = newDate.getTime() - userData[userid].bankTick;
-                var tickTime = 1000 * 60 * 30;
-
-                if (timeDiff < tickTime && ((userData[userid].bank != 0) || (userData[userid].married != "" && userData[userData[userid].married] && (userData[userData[userid].married].bank != 0)))) {
-                    var hours = Math.floor((tickTime - timeDiff) / (1000 * 60 * 60));
-                    var min = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) / (1000 * 60));
-                    var sec = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) % (1000 * 60) / (1000));
-                    if (hours < 10) {
-                        hours = "0" + hours.toString();
-                    }
-                    if (min < 10) {
-                        min = "0" + min.toString();
-                    }
-                    if (sec < 10) {
-                        sec = "0" + sec.toString();
-                    }
-                    embedMsg.addField("__Next Tick:__  :alarm_clock: ⠀⠀⠀⠀⠀", hours + ":" + min + ":" + sec, false);
-                }
-                else {
-                    embedMsg.addField("__Next Tick:__  :alarm_clock: ⠀⠀⠀⠀⠀", "00:00:00", false);
-                }
 
                 message.channel.send({ embeds: [embedMsg] });
                 break;
@@ -219,10 +177,44 @@ module.exports = {
                 }
                 break;
             default:
-                embedMsg.setTitle("Invalid bank command!");
-                embedMsg.setColor('FF0000');
-                embedMsg.setDescription('Use __!tp bank help__ for list of bank commands!');
-                embedMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
+                var target = client.users.cache.get(userid);
+                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setThumbnail("https://i.imgur.com/jxuwNmo.png");
+                embedMsg.setColor('FFF000');
+                embedMsg.setFooter('Bank tick resets on withdraw and deposit from either you or your spouse.');
+
+                embedMsg.addField("__Bank:__  :coin: ⠀⠀⠀⠀", "" + userData[userid].bank + "\n", true);
+
+                if (userData[userid].married != "" && userData[userData[userid].married]) {
+                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀", userData[userData[userid].married].bank + "\n", true);
+                }
+                else {
+                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀",  "*Not Married*\n", true);
+                }
+
+                var newDate = new Date();
+                var timeDiff = newDate.getTime() - userData[userid].bankTick;
+                var tickTime = 1000 * 60 * 30;
+
+                if (timeDiff < tickTime && ((userData[userid].bank != 0) || (userData[userid].married != "" && userData[userData[userid].married] && (userData[userData[userid].married].bank != 0)))) {
+                    var hours = Math.floor((tickTime - timeDiff) / (1000 * 60 * 60));
+                    var min = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) / (1000 * 60));
+                    var sec = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) % (1000 * 60) / (1000));
+                    if (hours < 10) {
+                        hours = "0" + hours.toString();
+                    }
+                    if (min < 10) {
+                        min = "0" + min.toString();
+                    }
+                    if (sec < 10) {
+                        sec = "0" + sec.toString();
+                    }
+                    embedMsg.addField("__Next Tick:__  :alarm_clock: ⠀⠀⠀⠀⠀", hours + ":" + min + ":" + sec, false);
+                }
+                else {
+                    embedMsg.addField("__Next Tick:__  :alarm_clock: ⠀⠀⠀⠀⠀", "00:00:00", false);
+                }
+
                 message.channel.send({ embeds: [embedMsg] });
                 break;
         }
