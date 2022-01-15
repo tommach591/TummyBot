@@ -366,7 +366,7 @@
         "image": "https://c.tenor.com/vRxU_nW8CSsAAAAC/keanu-reeves-john-wick.gif",
         "attackImage": "https://c.tenor.com/TCqMo0W-AIYAAAAM/john-pencil.gif",
         "maxHP": 4000,
-        "attack": 35,
+        "attack": 50,
         "defense": 0,
         "magicdefense": 0,
         "attackCD": 10000,
