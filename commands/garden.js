@@ -276,7 +276,7 @@ module.exports = {
                                     else {
                                         embedMsg.setTitle('Declined!');
                                         embedMsg.setColor('FF0000');
-                                        proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                                        embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                         embedMsg.setDescription(userData[userid].name + " declined!");
                                         if (potIndex == 0)
                                             embedMsg.setFooter('Next pot: 3000 points');
@@ -289,7 +289,7 @@ module.exports = {
                                     embedMsg.setTitle('Fail!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                    proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
+                                    embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                     if (potIndex == 0)
                                         embedMsg.setFooter('Next pot: 3000 points');
                                     else 
