@@ -241,6 +241,17 @@
         "defense": 3,
         "speed": 5
     },
+    "Witch Hat": {
+        "name": "Witch Hat",
+        "type": 1,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 5,
+        "defense": 0,
+        "speed": 0
+    },
     "Aegis": {
         "name": "Aegis",
         "type": 1,
@@ -262,6 +273,17 @@
         "magic": 3,
         "defense": 0,
         "speed": 5
+    },
+    "Cursed Armor": {
+        "name": "Cursed Armor",
+        "type": 1,
+        "rarity": 3,
+        "image": "",
+        "maxHP": -25,
+        "attack": 10,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
     },
     "Pendant": {
         "name": "Pendant",
@@ -307,6 +329,17 @@
         "defense": 0,
         "speed": 0
     },
+    "Watch": {
+        "name": "Watch",
+        "type": 2,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 6
+    },
     "Wings": {
         "name": "Wings",
         "type": 2,
@@ -329,6 +362,17 @@
         "defense": 5,
         "speed": 0
     },
+    "Cursed Ring": {
+        "name": "Cursed Ring",
+        "type": 2,
+        "rarity": 3,
+        "image": "",
+        "maxHP": -25,
+        "attack": 10,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
     "Fatalis Dual Skies": {
         "name": "Fatalis Dual Skies",
         "type": 0,
@@ -337,7 +381,7 @@
         "maxHP": 0,
         "attack": 20,
         "magic": 20,
-        "defense": 5,
+        "defense": 0,
         "speed": 20
     },
     "Fatalis Alpha": {
@@ -405,5 +449,27 @@
         "magic": 0,
         "defense": 0,
         "speed": -20
+    },
+    "Blue Rose Sword": {
+        "name": "Blue Rose Sword",
+        "type": 2,
+        "rarity": 4,
+        "image": "",
+        "maxHP": -50,
+        "attack": 10,
+        "magic": 0,
+        "defense": 0,
+        "speed": 15
+    },
+    "Amyr": {
+        "name": "Amyr",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 25,
+        "attack": 20,
+        "magic": 0,
+        "defense": 10,
+        "speed": 0
     }
 }

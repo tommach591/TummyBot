@@ -138,6 +138,19 @@ module.exports = {
                 speed += accessory.speed + equips[accessory.name].speed;
             }
 
+            if (maxHP < 1) {
+                maxHP = 1;
+            }
+            if (attack < 0) {
+                attack = 0;
+            }
+            if (magic < 0) {
+                magic = 0;
+            }
+            if (defense < 0) {
+                defense = 0;
+            }
+
             if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
                 userHunt[userid].currentHP = maxHP;
             }
