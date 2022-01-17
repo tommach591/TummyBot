@@ -39,6 +39,8 @@ var currHunt = JSON.parse("{}");
 var equips = JSON.parse(fs.readFileSync('storage/equips.json', 'utf8'));
 var scrolls = JSON.parse(fs.readFileSync('storage/scrolls.json', 'utf8'));
 
+var pets = JSON.parse(fs.readFileSync('storage/pets.json', 'utf8'));
+
 const userDataParams = {
     Bucket: config.bucket,
     Key: "storage/userData.json"
@@ -62,6 +64,11 @@ const userHuntParams = {
 const itemsParams = {
     Bucket: config.bucket,
     Key: "storage/items.json"
+};
+
+const userPetParams = {
+    Bucket: config.bucket,
+    Key: "storage/userPet.json"
 };
 
 const s3 = new AWS.S3({
@@ -131,6 +138,17 @@ getObject(itemsParams).then(
     }
 )
 
+let petPromise;
+getObject(userPetParams).then(
+    function(result) {
+        petPromise = result;
+    },
+    function(err) {
+        console.log(err);
+    }
+)
+
+
 //var userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
 //var userFish = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
 //var userGarden = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
@@ -140,6 +158,7 @@ var userFish = "";
 var userGarden = "";
 var userHunt = "";
 var items = "";
+var userPet = "";
 
 const currentDate = new Date();
 
@@ -385,6 +404,12 @@ client.on('messageCreate', message => {
             else
                 return;
         }
+        if (userPet == "") {
+            if (petPromise)
+                userPet = JSON.parse(petPromise);
+            else
+                return;
+        }
 
         if (!message.content.startsWith(prefix) || message.author.bot || userData == "" || userFish == "" || userGarden == "") {
             return;
@@ -408,7 +433,7 @@ client.on('messageCreate', message => {
                 client.commands.get('help').execute(message, args, sender.id, userData, client);
                 break;
             case 'register':
-                client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, client);
+                client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, userPet, client);
                 break;
             case 'leaderboard':
                 if (userData[sender.id])
@@ -477,6 +502,11 @@ client.on('messageCreate', message => {
                 if (userData[sender.id])
                     client.commands.get('hunt').execute(message, args, sender.id, userData, userHunt, monsterdex, currHunt, items, equips, scrolls, client);
                 break;
+            case 'p':
+            case 'pet':
+                if (userData[sender.id])
+                    client.commands.get('pet').execute(message, args, sender.id, userData, userPet, pets, client);
+                break;
             // GM Commands
             case 'reward':
                 if (userData[sender.id])
@@ -496,7 +526,7 @@ client.on('messageCreate', message => {
                 break;
             case 'registerall':
                 if (userData[sender.id]) {
-                    client.gmcommands.get('registerall').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, client);
+                    client.gmcommands.get('registerall').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, userPet, client);
                 }
                 break;
             case 'gm':
@@ -505,7 +535,7 @@ client.on('messageCreate', message => {
                 break;
             case 'save':
                 if (userData[sender.id] && userData[sender.id].gm > 0)
-                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams);
+                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
                 break;
             case 'iv':
                 if (userData[sender.id] && userData[sender.id].gm > 0) {
@@ -578,7 +608,7 @@ client.on('messageCreate', message => {
 
     }
     catch (err) {
-        //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams);
+        //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
         const embedMsg = new MessageEmbed();
         embedMsg.setTitle('Error!');
         embedMsg.setColor('FF0000');
@@ -592,7 +622,7 @@ client.on('messageCreate', message => {
         savefile.lastSave = newTime.getTime();
     }
     else if (newTime.getTime() - savefile.lastSave >= (1000 * 60 * 60)) {
-        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams);
+        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
         savefile.lastSave = newTime.getTime();
     }
 
@@ -616,7 +646,7 @@ process.on('unhandledRejection', (reason, promise) => {
         msg => { 
             msg.reply(admin + "\n\nError Date: " + newDate);
         });
-    //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, config, s3, userDataParams, userFishParams, userGardenParams);
+    //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
 });
  
 client.login('OTI0OTM2Njk1NTY3MjIwODE2.Ycl0bA.GD_-9lJp3_koJa8Y1y_ucDjbK34'); // Last Line in File

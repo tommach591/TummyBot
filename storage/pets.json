@@ -1,17 +1,74 @@
 {
     "1": {
-        "name": "Raccoon",
-        "imageOne": "https://i.imgur.com/ZeGNT74.png",
-        "imageTwo": "https://i.imgur.com/ULKBLIU.png",
-        "imageThree": "https://i.imgur.com/8ENr4zs.png",
-        "imageFour": "https://i.imgur.com/dEAyZGv.png",
+        "species": "Raccoon",
+        "names": ["Raccoon", "Cute Raccoon", "Panda Raccoon", "Pink Raccoon"],
+        "images": ["https://i.imgur.com/ZeGNT74.png", "https://i.imgur.com/ULKBLIU.png", "https://i.imgur.com/8ENr4zs.png", "https://i.imgur.com/dEAyZGv.png"],
         "quotes": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F"
+            "*\"Sugoi raccoon noises\"*",
+            "*\"Smile\"*",
+            "*\"Spins\"*",
+            "*\"Raccoon things\"*",
+            "*\"Sits\"*"
+        ]
+    },
+    "2": {
+        "species": "Cat",
+        "names": ["Cat", "Jaguar", "Cheeta", "Katuwu"],
+        "images": ["https://i.imgur.com/nzoDG96.png", "https://i.imgur.com/UxmRl8i.png", "https://i.imgur.com/x1MDDr6.png", "https://i.imgur.com/UIzTrAg.png"],
+        "quotes": [
+            "*\"Purr\"*",
+            "*\"Nuzzles\"*",
+            "*\"Cat things\"*",
+            "*\"Sits\"*",
+            "*\"Yawns\"*"
+        ]
+    },
+    "3": {
+        "species": "Pig",
+        "names": ["Pig", "Cute Pig", "Yig", "Cow"],
+        "images": ["https://i.imgur.com/7Tm3dmS.png", "https://i.imgur.com/aydy0HW.png", "https://i.imgur.com/uYyYCwh.png", "https://i.imgur.com/9WF5QfI.png"],
+        "quotes": [
+            "*\"Oink\"*",
+            "*\"Rolls around\"*",
+            "*\"Pig things\"*",
+            "*\"Sits\"*",
+            "*\"Snort\"*"
+        ]
+    },
+    "4": {
+        "species": "Dog",
+        "names": ["Doge", "Corgi", "Pom", "Samoyed"],
+        "images": ["https://i.imgur.com/tehYSXO.png", "https://i.imgur.com/xnTPtCa.png", "https://i.imgur.com/60UeTTE.png", "https://i.imgur.com/WlcW8OM.png"],
+        "quotes": [
+            "*\"Woof\"*",
+            "*\"Bark\"*",
+            "*\"Dog things\"*",
+            "*\"Wags tail\"*",
+            "*\"Whimpurs\"*"
+        ]
+    },
+    "5": {
+        "species": "Duck",
+        "names": ["Duck", "Mallard", "Ugly Duckling", "Chicken"],
+        "images": ["https://i.imgur.com/llnRHFA.png", "https://i.imgur.com/dI3QHkp.png", "https://i.imgur.com/MSXdJkW.png", "https://i.imgur.com/VGzO3yK.png"],
+        "quotes": [
+            "*\"Quack\"*",
+            "*\"Honk honk\"*",
+            "*\"Duck things\"*",
+            "*\"Wiggle wiggle\"*",
+            "*\"Splash splash\"*"
+        ]
+    },
+    "6": {
+        "species": "Bear",
+        "names": ["Bear", "Pink Bear", "Halfsie Bear", "Majestic Bear"],
+        "images": ["https://i.imgur.com/j7CvV6s.png", "https://i.imgur.com/mR4bZrF.png", "https://i.imgur.com/JpzHFUf.png", "https://i.imgur.com/aktipFY.png"],
+        "quotes": [
+            "*\"Growl\"*",
+            "*\"Sleeps\"*",
+            "*\"Bear things\"*",
+            "*\"Nuzzles\"*",
+            "*\"Toot toot\"*"
         ]
     }
 }

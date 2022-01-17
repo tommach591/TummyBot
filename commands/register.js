@@ -2,7 +2,7 @@ module.exports = {
     name: 'register',
     description: "Register an account.",
 
-    execute(message, args, userid, userData, userFish, userGarden, userHunt, client) {
+    execute(message, args, userid, userData, userFish, userGarden, userHunt, userPet, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -60,6 +60,28 @@ module.exports = {
                     equips: [],
                     scrolls: [],
                     monsterdex: []
+                }
+            }
+            if (!userPet[userid]) {
+                userPet[userid] = {
+                    id: userid,
+                    name: userData[userid].name,
+                    pet: "0",
+                    petName: "",
+                    type: 0,
+                    image: "",
+                    food: 0,
+                    hunger: 0,
+                    hydration: 0,
+                    cleanliness: 0,
+                    happiness: 0,
+                    level: 0,
+                    hungerTimer: 0,
+                    hydrationTimer: 0,
+                    cleanlinessTimer: 0,
+                    happinessTimer: 0,
+                    deathTimer: 0,
+                    dead: false
                 }
             }
 

@@ -2,7 +2,7 @@ module.exports = {
     name: 'save',
     description: "Save files.",
 
-    execute(message, userData, userFish, userGarden, userHunt, items, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams) {
+    execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -54,6 +54,17 @@ module.exports = {
             Bucket: config.bucket,
             Key: itemsParams.Key,
             Body: JSON.stringify(items),
+            ContentType: "application/json"},
+            function (err, data) {
+                if (err) {
+                    console.log(JSON.stringify(err));
+                }
+            }
+        );
+        s3.putObject({
+            Bucket: config.bucket,
+            Key: userPetParams.Key,
+            Body: JSON.stringify(userPet),
             ContentType: "application/json"},
             function (err, data) {
                 if (err) {

@@ -2,7 +2,7 @@ module.exports = {
     name: 'registerall',
     description: "Register all accounts.",
 
-    execute(message, args, userid, userData, userFish, userGarden, userHunt, client) {
+    execute(message, args, userid, userData, userFish, userGarden, userHunt, userPet, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -65,6 +65,29 @@ module.exports = {
                         equips: [],
                         scrolls: [],
                         monsterdex: []
+                    }
+                }
+
+                if (!userPet[keys[i]]) {
+                    userPet[keys[i]] = {
+                        id: keys[i],
+                        name: userData[keys[i]].name,
+                        pet: "0",
+                        petName: "",
+                        type: 0,
+                        image: "",
+                        food: 0,
+                        hunger: 0,
+                        hydration: 0,
+                        cleanliness: 0,
+                        happiness: 0,
+                        level: 0,
+                        hungerTimer: 0,
+                        hydrationTimer: 0,
+                        cleanlinessTimer: 0,
+                        happinessTimer: 0,
+                        deathTimer: 0,
+                        dead: false
                     }
                 }
             }
