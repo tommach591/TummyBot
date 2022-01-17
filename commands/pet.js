@@ -838,6 +838,7 @@ module.exports = {
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
+                        embedMsg.setColor('FF0000');
                         embedMsg.setDescription('This pet does not exist!');
                         message.channel.send({ embeds: [embedMsg] }); 
                     }
