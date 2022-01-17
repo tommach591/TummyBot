@@ -285,6 +285,17 @@
         "defense": 0,
         "speed": 0
     },
+    "Diamond Robe": {
+        "name": "Diamond Robe",
+        "type": 1,
+        "rarity": 3,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 5,
+        "defense": 5,
+        "speed": 0
+    },
     "Pendant": {
         "name": "Pendant",
         "type": 2,

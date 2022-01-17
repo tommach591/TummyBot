@@ -607,13 +607,13 @@ module.exports = {
                 }
                 else {
                     var happy = 1;
-                    if (userPet[userid].hunger == 100) {
+                    if (userPet[userid].hunger >= 80) {
                         happy++;
                     }
-                    if (userPet[userid].hydration == 100) {
+                    if (userPet[userid].hydration >= 80) {
                         happy++;
                     }
-                    if (userPet[userid].cleanliness == 100) {
+                    if (userPet[userid].cleanliness >= 80) {
                         happy++;
                     }
 
@@ -805,6 +805,112 @@ module.exports = {
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription("Get a pet first!");
                     message.channel.send({ embeds: [embedMsg] });
+                }
+                break;
+            case 'dex':
+            case 'gacha':
+                var target = client.users.cache.get(userid);
+                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setTitle('Pets!');
+                embedMsg.setColor('FFF000');
+                if (args.length > 1) {
+                    var selected = args[1] - 1;
+                    if (!isNaN(Number(selected)) && pets[Math.floor(selected / 4) + 1]) {
+                        embedMsg.setDescription("#" + (selected + 1) + ". " + pets[Math.floor(selected / 4) + 1].names[selected % 4] + "\n");
+                        embedMsg.setThumbnail(pets[Math.floor(selected / 4) + 1].images[selected % 4]);
+                        embedMsg.addField('Species: ', "" + pets[Math.floor(selected / 4) + 1].species);
+                        embedMsg.addField('Type: ', "" + (selected % 4) + 1);
+
+                        var chance = "";
+                        switch((selected % 4) + 1) {
+                            case 4:
+                                chance = "4%"
+                                break;
+                            case 3:
+                                chance = "16%"
+                                break;
+                            default:
+                                chance = "40%"
+                                break;
+                        }
+
+                        embedMsg.addField('Chance: ', "" + chance);
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else {
+                        embedMsg.setDescription('This pet does not exist!');
+                        message.channel.send({ embeds: [embedMsg] }); 
+                    }
+                }
+                else {
+                    var petDisplay = [""];
+                    var index = 0;
+                    var count = 0;
+                    var keys = [];
+                    for (var k in pets) {
+                        keys.push(k);
+                    }
+                    for (let i = 0; i < (keys.length * 4); i++) {
+                        if (count >= 10) {
+                            index++;
+                            count = 0;
+                            petDisplay[index] = "";
+                        }
+                        petDisplay[index] += "#" + (i + 1) + ". " + pets[Math.floor(i / 4) + 1].names[i % 4] + "\n";
+                        count++;
+                    }
+
+                    let pages = [];
+                    for (let i = 0; i < petDisplay.length; i++) {
+                        pages.push("```" + petDisplay[i] + "```");
+                    }
+
+                    let page = 1;
+                    embedMsg
+                        .setFooter(`Page ${page} of ${pages.length}`)
+                        .setDescription(pages[page-1])
+                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setTitle('Pets')
+                        .setThumbnail('https://i.imgur.com/EJA4Vzn.png')
+                        .setColor('FFF000');
+
+                    message.channel.send({ embeds: [embedMsg] }).then(msg => {
+                        msg.react("◀️").then(r => {
+                            msg.react("▶️")
+
+                            const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
+
+                            collector.on('collect', r => {
+                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setTitle('Pets');
+                                embedMsg.setColor('FFF000');
+                                
+                                if (r.emoji.name === "◀️") {
+                                    if (page === 1) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page--;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                else if (r.emoji.name === "▶️") {
+                                    if (page === pages.length) {
+                                        r.users.remove(userid);
+                                        return;
+                                    }
+                                    page++;
+                                    embedMsg.setDescription(pages[page-1]);
+                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    msg.edit({ embeds: [embedMsg] });
+                                }
+                                r.users.remove(userid);
+                            })
+
+                        })
+                    });
                 }
                 break;
             case 'leaderboard':
