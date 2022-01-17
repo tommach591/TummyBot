@@ -819,7 +819,7 @@ module.exports = {
                         embedMsg.setDescription("#" + (selected + 1) + ". " + pets[Math.floor(selected / 4) + 1].names[selected % 4] + "\n");
                         embedMsg.setThumbnail(pets[Math.floor(selected / 4) + 1].images[selected % 4]);
                         embedMsg.addField('Species: ', "" + pets[Math.floor(selected / 4) + 1].species);
-                        embedMsg.addField('Type: ', "" + (selected % 4) + 1);
+                        embedMsg.addField('Type: ', "" + ((selected % 4) + 1));
 
                         var chance = "";
                         switch((selected % 4) + 1) {
