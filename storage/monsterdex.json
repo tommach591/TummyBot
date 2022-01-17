@@ -471,7 +471,7 @@
         "attack": 50,
         "defense": 25,
         "magicdefense": 20,
-        "attackCD": 90000,
+        "attackCD": 75000,
         "difficulty": 4,
         "loot": ["Amyr"]
     }
