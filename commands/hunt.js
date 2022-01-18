@@ -582,9 +582,24 @@ module.exports = {
                             count = 0;
                             equipment.push("");
                         }
-                        var standard = equips[items[element].name]
+                        var standard = equips[items[element].name];
+                        var equipType = "";
+
+                        switch (items[element].type) {
+                            case 0:
+                                equipType = "Weapon";
+                                break;
+                            case 1:
+                                equipType = "Armor";
+                                break;
+                            case 2:
+                                equipType = "Accessory";
+                                break;
+                        }
+
                         equipment[index] += "**__" + (userHunt[userid].equips.indexOf(element) + 1) + ". " + items[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                         + "\nRarity: " + standard.rarity
+                        + "\nType: " + equipType; 
                         + "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")"
                         + "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")"
                         + "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")"

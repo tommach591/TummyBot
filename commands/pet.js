@@ -606,15 +606,15 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var happy = 1;
+                    var happy = 2;
                     if (userPet[userid].hunger >= 80) {
-                        happy++;
+                        happy += 4;
                     }
                     if (userPet[userid].hydration >= 80) {
-                        happy++;
+                        happy += 2;
                     }
                     if (userPet[userid].cleanliness >= 80) {
-                        happy++;
+                        happy += 2;
                     }
 
                     var levelupMsg = "";

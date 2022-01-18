@@ -233,6 +233,8 @@ let spawnMonster = (newTime) => {
             selectedMonster = monsterdex[diffOne[Math.floor(Math.random() * diffOne.length)]];
         }
 
+        selectedMonster = monsterdex["21"];
+
         currHunt["active"] = {
             id: selectedMonster.id,
             name: selectedMonster.name,
