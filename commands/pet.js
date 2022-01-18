@@ -662,7 +662,7 @@ module.exports = {
                 
                                     embedMsg.setTitle('Pet!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[userid].name + " pet " + userPet[userid].petName + "!\n\n" + levelupMsg 
+                                    embedMsg.setDescription(userData[userid].name + " pets " + userPet[userid].petName + "!\n\n" + levelupMsg 
                                      + userPet[userid].petName + ": " + pets[userPet[userid].pet].quotes[Math.floor(Math.random() * pets[userPet[userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(userPet[userid].image);
                                     embedMsg.setFooter("Current Happiness: " + userPet[userid].happiness + "%");
