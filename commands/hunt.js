@@ -338,8 +338,8 @@ module.exports = {
                     }
                     var timeDiff = newTime.getTime() - userHunt[userid].lastAttack;
                     var attackCD = (1000 * 3) - (speed * 100);
-                    if (attackCD < 1000 * 1) {
-                        attackCD = 1000 * 1;
+                    if (attackCD < 500) {
+                        attackCD = 500;
                     }
 
                     if (currHunt["active"].retreated) {    
