@@ -233,8 +233,6 @@ let spawnMonster = (newTime) => {
             selectedMonster = monsterdex[diffOne[Math.floor(Math.random() * diffOne.length)]];
         }
 
-        selectedMonster = monsterdex["21"];
-
         currHunt["active"] = {
             id: selectedMonster.id,
             name: selectedMonster.name,
@@ -521,6 +519,10 @@ client.on('messageCreate', message => {
             case 'spawntime':
                 if (userData[sender.id])
                     client.gmcommands.get('spawntime').execute(message, args, sender.id, userData, currHunt, client);
+                break;
+            case 'spawnboss':
+                if (userData[sender.id])
+                    client.gmcommands.get('spawnboss').execute(message, args, sender.id, userData, currHunt, monsterdex, client);
                 break;
             case 'banish':
                 if (userData[sender.id])

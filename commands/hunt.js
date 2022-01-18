@@ -599,7 +599,7 @@ module.exports = {
 
                         equipment[index] += "**__" + (userHunt[userid].equips.indexOf(element) + 1) + ". " + items[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                         + "\nRarity: " + standard.rarity
-                        + "\nType: " + equipType; 
+                        + "\nType: " + equipType 
                         + "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")"
                         + "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")"
                         + "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")"
