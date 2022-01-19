@@ -571,6 +571,18 @@ module.exports = {
                     embedMsg.setDescription('No equips :(');
                     message.channel.send({ embeds: [embedMsg] });
                 }
+                else if (args.length >= 2 && args[1] == "sort") {
+                    userHunt[userid].equips.sort((firstEl, secondEl) => { 
+                        equips[userHunt[userid].equips[firstEl].name].rarity
+                        if (equips[userHunt[userid].equips[firstEl].name].rarity < equips[userHunt[userid].equips[secondEl].name].rarity) {
+                            return -1;
+                        }
+                        if (equips[userHunt[userid].equips[firstEl].name].rarity > equips[userHunt[userid].equips[secondEl].name].rarity) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+                }
                 else {
                     var equipment = [""];
                     var index = 0;
