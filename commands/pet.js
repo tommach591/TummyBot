@@ -72,7 +72,7 @@ module.exports = {
         }
 
         updateTime();
-        
+
         var command = args[0];
         switch(command) {
             case 'help':
@@ -607,13 +607,13 @@ module.exports = {
                 }
                 else {
                     var happy = 2;
-                    if (userPet[userid].hunger >= 80) {
+                    if (userPet[userid].hunger >= 50) {
                         happy += 4;
                     }
-                    if (userPet[userid].hydration >= 80) {
+                    if (userPet[userid].hydration >= 50) {
                         happy += 2;
                     }
-                    if (userPet[userid].cleanliness >= 80) {
+                    if (userPet[userid].cleanliness >= 50) {
                         happy += 2;
                     }
 
@@ -673,7 +673,7 @@ module.exports = {
                                     if (userPet[userid].happiness >= 100) {
                                         if (userPet[userid].level != 100) {
                                             userPet[userid].level++;
-                                            userPet[userid].happiness = 0;
+                                            userPet[userid].happiness %= 100;
                                             levelupMsg = userPet[userid].petName + " leveled to level " + userPet[userid].level + "!\n\n";
                                         }
                                         else {
@@ -703,7 +703,7 @@ module.exports = {
                                     if (userPet[userid].happiness >= 100) {
                                         if (userPet[userid].level != 100) {
                                             userPet[userid].level++;
-                                            userPet[userid].happiness = 0;
+                                            userPet[userid].happiness %= 100;
                                             levelupMsg = userPet[userid].petName + " leveled to level " + userPet[userid].level + "!\n\n";
                                         }
                                         else {
