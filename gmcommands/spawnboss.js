@@ -18,10 +18,7 @@ module.exports = {
             var newTime = new Date();
 
             if (currHunt["active"]) {
-                embedMsg.setTitle('Error!');
-                embedMsg.setColor('FF0000');
-                embedMsg.setDescription('Boss is already active!');
-                message.channel.send({ embeds: [embedMsg] });
+                delete currHunt["active"];
             }
             else if (!isNaN(boss) && monsterdex[boss]) {
 
