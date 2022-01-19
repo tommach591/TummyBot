@@ -573,6 +573,7 @@ module.exports = {
                 }
                 else if (args.length >= 2 && args[1] == "sort") {
                     userHunt[userid].equips.sort((firstEl, secondEl) => { 
+                    console.log(firstEl);
                         if (equips[firstEl.name].rarity < equips[secondEl.name].rarity) {
                             return -1;
                         }
@@ -581,6 +582,10 @@ module.exports = {
                         }
                         return 0;
                     });
+                    embedMsg.setTitle('Success!');
+                    embedMsg.setColor('00FF00');
+                    embedMsg.setDescription('Inventory sorted!');
+                    message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
                     var equipment = [""];
