@@ -573,19 +573,10 @@ module.exports = {
                 }
                 else if (args.length >= 2 && args[1] == "sort") {
                     userHunt[userid].equips.sort((firstEl, secondEl) => { 
-                        var firstIndex = userHunt[userid].equips.indexOf(firstEl);
-                        var secondIndex = userHunt[userid].equips.indexOf(secondEl);
-                        var first = userHunt[userid].equips[firstIndex];
-                        var second = userHunt[userid].equips[secondIndex];
-
-                        console.log(firstEl);
-                        console.log(firstIndex);
-                        console.log(first);
-
-                        if (equips[first].rarity < equips[second].rarity) {
+                        if (equips[items[firstEl].name].rarity < equips[items[secondEl].name].rarity) {
                             return -1;
                         }
-                        if (equips[first].rarity > equips[second].rarity) {
+                        if (equips[items[firstEl].name].rarity > equips[items[secondEl].name].rarity) {
                             return 1;
                         }
                         return 0;
