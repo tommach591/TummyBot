@@ -575,13 +575,13 @@ module.exports = {
                     userHunt[userid].equips.sort((firstEl, secondEl) => { 
                         var firstIndex = userHunt[userid].equips.indexOf(firstEl);
                         var secondIndex = userHunt[userid].equips.indexOf(secondEl);
-                        var first = userHunt[userid].equips[firstIndex].name;
-                        var second = userHunt[userid].equips[secondIndex].name;
+                        var first = userHunt[userid].equips[firstIndex];
+                        var second = userHunt[userid].equips[secondIndex];
 
                         console.log(firstEl);
                         console.log(firstIndex);
                         console.log(first);
-                        
+
                         if (equips[first].rarity < equips[second].rarity) {
                             return -1;
                         }
