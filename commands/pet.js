@@ -72,11 +72,7 @@ module.exports = {
         }
 
         updateTime();
-
-        if (userid == "189885610276814849") {
-            userPet[userid].image = "https://i.imgur.com/qc7Q3k3.png";
-        }
-
+        
         var command = args[0];
         switch(command) {
             case 'help':
