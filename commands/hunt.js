@@ -578,7 +578,10 @@ module.exports = {
                         var first = userHunt[userid].equips[firstIndex].name;
                         var second = userHunt[userid].equips[secondIndex].name;
 
+                        console.log(firstEl);
+                        console.log(firstIndex);
                         console.log(first);
+                        
                         if (equips[first].rarity < equips[second].rarity) {
                             return -1;
                         }
