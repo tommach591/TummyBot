@@ -17,12 +17,14 @@ module.exports = {
             var boss = Math.floor(Number(args[0]));
             var newTime = new Date();
 
-            if (!isNaN(boss) && monsterdex[boss]) {
+            if (currHunt["active"]) {
+                embedMsg.setTitle('Error!');
+                embedMsg.setColor('FF0000');
+                embedMsg.setDescription('Boss is already active!');
+                message.channel.send({ embeds: [embedMsg] });
+            }
+            else if (!isNaN(boss) && monsterdex[boss]) {
 
-                if (currHunt["active"]) {
-                    delete currHunt["active"];
-                }
-                
                 var selectedMonster = monsterdex[boss];
 
                 currHunt["active"] = {
