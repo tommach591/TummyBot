@@ -573,10 +573,12 @@ module.exports = {
                 }
                 else if (args.length >= 2 && args[1] == "sort") {
                     userHunt[userid].equips.sort((firstEl, secondEl) => { 
-                        if (equips[userHunt[userid].equips[firstEl].name].rarity < equips[userHunt[userid].equips[secondEl].name].rarity) {
+                        var first = userHunt[userid].equips.indexOf(firstEl);
+                        var second = userHunt[userid].equips.indexOf(secondEl);
+                        if (equips[userHunt[userid].equips[first].name].rarity < equips[userHunt[userid].equips[second].name].rarity) {
                             return -1;
                         }
-                        if (equips[userHunt[userid].equips[firstEl].name].rarity > equips[userHunt[userid].equips[secondEl].name].rarity) {
+                        if (equips[userHunt[userid].equips[first].name].rarity > equips[userHunt[userid].equips[second].name].rarity) {
                             return 1;
                         }
                         return 0;
