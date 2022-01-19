@@ -17,11 +17,12 @@ module.exports = {
             var boss = Math.floor(Number(args[0]));
             var newTime = new Date();
 
-            if (currHunt["active"]) {
-                delete currHunt["active"];
-            }
-            else if (!isNaN(boss) && monsterdex[boss]) {
+            if (!isNaN(boss) && monsterdex[boss]) {
 
+                if (currHunt["active"]) {
+                    delete currHunt["active"];
+                }
+                
                 var selectedMonster = monsterdex[boss];
 
                 currHunt["active"] = {
