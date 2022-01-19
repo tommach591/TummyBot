@@ -438,7 +438,7 @@ module.exports = {
                                 if (fourstar.length != 0) {
                                     for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                         var luck = Math.floor((Math.random() * 100000) + 1);
-                                        var chance = 100000 * 0.0025;
+                                        var chance = 100000 * 0.0025; // 0.25%
                                         if (luck <= chance) {
                                             var itemObtained = generateEquip(fourstar[Math.floor(Math.random() * fourstar.length)]);
                                             userHunt[player].equips.push(itemObtained);
@@ -449,7 +449,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.005;
+                                    var chance = 100000 * 0.005; // 0.50%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(threestar[Math.floor(Math.random() * threestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -459,7 +459,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.01;
+                                    var chance = 100000 * 0.01; // 1.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(twostar[Math.floor(Math.random() * twostar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -469,7 +469,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.03;
+                                    var chance = 100000 * 0.03; // 3.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(onestar[Math.floor(Math.random() * onestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -479,7 +479,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.10;
+                                    var chance = 100000 * 0.10; // 10.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(zerostar[Math.floor(Math.random() * zerostar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -489,7 +489,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.2;
+                                    var chance = 100000 * 0.2; // 20.00%
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         userHunt[player].scrolls.push(scrollobtained);

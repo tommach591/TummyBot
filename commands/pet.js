@@ -643,7 +643,7 @@ module.exports = {
                                     if (userPet[userid].happiness >= 100) {
                                         if (userPet[userid].level != 100) {
                                             userPet[userid].level++;
-                                            userPet[userid].happiness = 0;
+                                            userPet[userid].happiness %= 100;
                                             levelupMsg = userPet[userid].petName + " leveled to level " + userPet[userid].level + "!\n\n";
                                         }
                                         else {
@@ -742,7 +742,7 @@ module.exports = {
                 break;
             case 'revive':
                 if (userPet[userid].pet != "0") {
-                    var cost = 50000;
+                    var cost = 100000;
                     if (!userPet[userid].dead) {
                         embedMsg.setTitle('Chill!');
                         embedMsg.setColor('FF0000');
@@ -967,7 +967,7 @@ module.exports = {
                         ranks[index] = "";
                     }
                     if (userPet[keys[i]].pet != 0) {
-                        names[index] += userData[keys[i]].name + " - " + pets[userPet[keys[i]].pet].names[userPet[keys[i]].type] + "\n";
+                        names[index] += userData[keys[i]].name + " - " + userPet[keys[i]].petName + " (" + pets[userPet[keys[i]].pet].names[userPet[keys[i]].type] + ")\n";
                         levels[index] += userPet[keys[i]].level + "⠀⠀⠀\n";
                         ranks[index] += "" + (i + 1) + ".\n";
                         count++;
