@@ -436,7 +436,7 @@ module.exports = {
                                 var itemsEarned = "";
 
                                 if (fourstar.length != 0) {
-                                    for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
+                                    for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                         var luck = Math.floor((Math.random() * 100000) + 1);
                                         var chance = 100000 * 0.0025; // 0.25%
                                         if (luck <= chance) {
@@ -447,7 +447,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.005; // 0.50%
                                     if (luck <= chance) {
@@ -457,7 +457,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.01; // 1.00%
                                     if (luck <= chance) {
@@ -467,7 +467,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.03; // 3.00%
                                     if (luck <= chance) {
@@ -477,7 +477,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.10; // 10.00%
                                     if (luck <= chance) {
@@ -487,7 +487,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.75); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.2; // 20.00%
                                     if (luck <= chance) {
