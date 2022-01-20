@@ -138,7 +138,7 @@
         "image": "",
         "maxHP": -25,
         "attack": 0,
-        "magic": 50,
+        "magic": 45,
         "defense": 0,
         "speed": -20
     },
@@ -400,10 +400,10 @@
         "type": 1,
         "rarity": 4,
         "image": "",
-        "maxHP": 75,
+        "maxHP": 150,
         "attack": 0,
         "magic": 0,
-        "defense": 15,
+        "defense": 20,
         "speed": 0
     },
     "Exploiter Charm III": {
@@ -411,9 +411,9 @@
         "type": 2,
         "rarity": 4,
         "image": "",
-        "maxHP": 0,
+        "maxHP": 25,
         "attack": 15,
-        "magic": 5,
+        "magic": 15,
         "defense": 0,
         "speed": 0
     },
@@ -423,9 +423,9 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 35,
+        "attack": 40,
         "magic": 0,
-        "defense": 5,
+        "defense": 0,
         "speed": 10
     },
     "Black Coat": {
@@ -433,10 +433,10 @@
         "type": 1,
         "rarity": 4,
         "image": "",
-        "maxHP": 25,
-        "attack": 5,
+        "maxHP": 100,
+        "attack": 10,
         "magic": 0,
-        "defense": 15,
+        "defense": 10,
         "speed": 0
     },
     "Black Wing": {
@@ -444,11 +444,11 @@
         "type": 2,
         "rarity": 4,
         "image": "",
-        "maxHP": 25,
-        "attack": 5,
+        "maxHP": 100,
+        "attack": 10,
         "magic": 0,
         "defense": 10,
-        "speed": 5
+        "speed": 10
     },
     "Bl-ping-bong": {
         "name": "Bl-ping-bong",
@@ -456,7 +456,7 @@
         "rarity": 4,
         "image": "",
         "maxHP": -25,
-        "attack": 60,
+        "attack": 55,
         "magic": 0,
         "defense": 0,
         "speed": -20
@@ -481,6 +481,61 @@
         "attack": 20,
         "magic": 0,
         "defense": 12,
+        "speed": 0
+    },
+    "Slifer the Sky Dragon Card": {
+        "name": "Slifer the Sky Dragon Card",
+        "type": 2,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 12,
+        "defense": 0,
+        "speed": 0
+    },
+    "Nashor's Tooth": {
+        "name": "Nashor's Tooth",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 30,
+        "defense": 0,
+        "speed": 10
+    },
+    "Daedric Armor": {
+        "name": "Daedric Armor",
+        "type": 1,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 100,
+        "attack": 0,
+        "magic": 0,
+        "defense": 10,
+        "speed": 0
+    },
+    "Dragoon": {
+        "name": "Dragoon",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 50,
+        "magic": 50,
+        "defense": 0,
+        "speed": -70
+    },
+    "The Gutsy Bat": {
+        "name": "The Gutsy Bat",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 50,
+        "attack": 35,
+        "magic": 0,
+        "defense": 0,
         "speed": 0
     }
 }

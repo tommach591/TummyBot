@@ -178,5 +178,212 @@
         "magic": 1,
         "defense": 2,
         "speed": 1
+    },
+    "20": {
+        "name": "Lucky Scroll for Ten HP 50%",
+        "rate": 0.50,
+        "maxHP": 10,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "21": {
+        "name": "Lucky Scroll for One Attack 50%",
+        "rate": 0.50,
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "22": {
+        "name": "Lucky Scroll for One Magic Attack 50%",
+        "rate": 0.50,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 1,
+        "defense": 0,
+        "speed": 0
+    },
+    "23": {
+        "name": "Lucky Scroll for Two Defense 50%",
+        "rate": 0.50,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 2,
+        "speed": 0
+    },
+    "24": {
+        "name": "Lucky Scroll for One Speed 50%",
+        "rate": 0.50,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 1
+    },
+    "25": {
+        "name": "Lucky Scroll for Twenty HP 15%",
+        "rate": 0.15,
+        "maxHP": 20,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "26": {
+        "name": "Lucky Scroll for Two Attack 15%",
+        "rate": 0.15,
+        "maxHP": 0,
+        "attack": 2,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "27": {
+        "name": "Lucky Scroll for Two Magic Attack 15%",
+        "rate": 0.10,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 2,
+        "defense": 0,
+        "speed": 0
+    },
+    "28": {
+        "name": "Lucky Scroll for Four Defense 15%",
+        "rate": 0.15,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 4,
+        "speed": 0
+    },
+    "29": {
+        "name": "Lucky Scroll for Two Speed 15%",
+        "rate": 0.15,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 2
+    },
+    "30": {
+        "name": "Lucky Scroll for One Attack and One Magic 15%",
+        "rate": 0.15,
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 1,
+        "defense": 0,
+        "speed": 0
+    },
+    "31": {
+        "name": "Lucky Scroll for Ten HP and Two Defense 15%",
+        "rate": 0.15,
+        "maxHP": 10,
+        "attack": 0,
+        "magic": 0,
+        "defense": 2,
+        "speed": 0
+    },
+    "32": {
+        "name": "Lucky Scroll for Thirty HP 7.5%",
+        "rate": 0.075,
+        "maxHP": 30,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "33": {
+        "name": "Lucky Scroll for Three Attack 7.5%",
+        "rate": 0.075,
+        "maxHP": 0,
+        "attack": 3,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "34": {
+        "name": "Lucky Scroll for Three Magic Attack 7.5%",
+        "rate": 0.075,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 3,
+        "defense": 0,
+        "speed": 0
+    },
+    "35": {
+        "name": "Lucky Scroll for Six Defense 7.5%",
+        "rate": 0.075,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 6,
+        "speed": 0
+    },
+    "36": {
+        "name": "Lucky Scroll for Three Speed 7.5%",
+        "rate": 0.075,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 3
+    },
+    "37": {
+        "name": "Lucky Scroll for All Stats (10/1/1/2/1) 7.5%",
+        "rate": 0.075,
+        "maxHP": 10,
+        "attack": 1,
+        "magic": 1,
+        "defense": 2,
+        "speed": 1
+    },
+    "38": {
+        "name": "Cursed Scroll for Four Attack 15%",
+        "rate": 0.15,
+        "maxHP": -30,
+        "attack": 4,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "39": {
+        "name": "Cursed Scroll for Four Magic 15%",
+        "rate": 0.15,
+        "maxHP": -30,
+        "attack": 0,
+        "magic": 4,
+        "defense": 0,
+        "speed": 0
+    },
+    "40": {
+        "name": "Cursed Scroll for Four Speed 15%",
+        "rate": 0.15,
+        "maxHP": -30,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 4
+    },
+    "41": {
+        "name": "Cursed Scroll for Forty Health 15%",
+        "rate": 0.15,
+        "maxHP": 40,
+        "attack": -3,
+        "magic": -3,
+        "defense": 0,
+        "speed": 0
+    },
+    "42": {
+        "name": "Cursed Scroll for Eight Defense 15%",
+        "rate": 0.15,
+        "maxHP": 0,
+        "attack": -3,
+        "magic": -3,
+        "defense": 8,
+        "speed": 0
     }
 }

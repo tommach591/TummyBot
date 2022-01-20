@@ -16,7 +16,7 @@ module.exports = {
 
                 var hungerTick = 1000 * 60 * 7;
                 var hydrationTick = 1000 * 60 * 5;
-                var cleanlinessTick = 1000 * 60 * 12;
+                var cleanlinessTick = 1000 * 60 * 60 * 3;
                 var deathTick = 1000 * 60 * 60 * 24 * 2;
 
                 if (hungerTimeDiff >= hungerTick && userPet[userid].hunger > 0) {
@@ -574,7 +574,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    userPet[userid].cleanliness += 100;
+                    userPet[userid].cleanliness += 5;
                     if (userPet[userid].cleanliness > 100) {
                         userPet[userid].cleanliness = 100;
                     }
@@ -582,7 +582,7 @@ module.exports = {
                     userPet[userid].cleanlinessTimer = newTime.getTime();
                     embedMsg.setTitle('All Cleaned Up!');
                     embedMsg.setColor('00FF00');
-                    embedMsg.setDescription(userData[userid].name + " groomed " + userPet[userid].petName + "!");
+                    embedMsg.setDescription(userData[userid].name + " cleaned " + userPet[userid].petName + "!");
                     embedMsg.setThumbnail(userPet[userid].image);
                     embedMsg.setFooter("Current Cleanliness: " + userPet[userid].cleanliness + "%");
                     message.channel.send({ embeds: [embedMsg] });
