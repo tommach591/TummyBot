@@ -225,30 +225,67 @@ module.exports = {
                 var baseArmor = equips[armor.name];
                 var baseAccessory = equips[accessory.name];
 
+                var weaponMaxHP = weapon.maxHP.toString();
+                var weaponAttack = weapon.attack.toString();
+                var weaponMagic = weapon.magic.toString();
+                var weaponDefense = weapon.defense.toString();
+                var weaponSpeed = weapon.speed.toString();
+                
+                var armorMaxHP = armor.maxHP.toString();
+                var armorAttack = armor.attack.toString();
+                var armorMagic = armor.magic.toString();
+                var armorDefense = armor.defense.toString();
+                var armorSpeed = armor.speed.toString();
+
+                var accessoryMaxHP = accessory.maxHP.toString();
+                var accessoryAttack = accessory.attack.toString();
+                var accessoryMagic = accessory.magic.toString();
+                var accessoryDefense = accessory.defense.toString();
+                var accessorySpeed = accessory.speed.toString();
+
+                if (weapon.maxHP >= 0) weaponMaxHP = "+" + weaponMaxHP;
+                if (weapon.attack >= 0) weaponAttack = "+" + weaponAttack;
+                if (weapon.magic >= 0) weaponMagic = "+" + weaponMagic;
+                if (weapon.defense >= 0) weaponDefense = "+" + weaponDefense;
+                if (weapon.speed >= 0) weaponSpeed = "+" + weaponSpeed;
+
+                if (armor.maxHP >= 0) armorMaxHP = "+" + armorMaxHP;
+                if (armor.attack >= 0) armorAttack = "+" + armorAttack;
+                if (armor.magic >= 0) armorMagic = "+" + armorMagic;
+                if (armor.defense >= 0) armorDefense = "+" + armorDefense;
+                if (armor.speed >= 0) armorSpeed = "+" + armorSpeed;
+
+                if (accessory.maxHP >= 0) accessoryMaxHP = "+" + accessoryMaxHP;
+                if (accessory.attack >= 0) accessoryAttack = "+" + accessoryAttack;
+                if (accessory.magic >= 0) accessoryMagic = "+" + accessoryMagic;
+                if (accessory.defense >= 0) accessoryDefense = "+" + accessoryDefense;
+                if (accessory.speed >= 0) accessorySpeed = "+" + accessorySpeed;
+
+
                 var weaponText = "\nRarity: " + baseWeapon.rarity
-                + "\nMaxHP: " + (weapon.maxHP + baseWeapon.maxHP) + " (+" + weapon.maxHP + ")"
-                + "\nAttack: " + (weapon.attack + baseWeapon.attack) + " (+" + weapon.attack + ")"
-                + "\nMagic: " + (weapon.magic + baseWeapon.magic) + " (+" + weapon.magic + ")"
-                + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (+" + weapon.defense + ")"
-                + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (+" + weapon.speed + ")"
+                + "\nMaxHP: " + (weapon.maxHP + baseWeapon.maxHP) + " (" + weaponMaxHP + ")"
+                + "\nAttack: " + (weapon.attack + baseWeapon.attack) + " (" + weaponAttack + ")"
+                + "\nMagic: " + (weapon.magic + baseWeapon.magic) + " (" + weaponMagic + ")"
+                + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (" + weaponDefense + ")"
+                + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (" + weaponSpeed + ")"
                 + "\nSlots: " + weapon.slots
                 + "\n\n";
 
                 var armorText = "\nRarity: " + baseArmor.rarity
-                + "\nMaxHP: " + (armor.maxHP + baseArmor.maxHP) + " (+" + armor.maxHP + ")"
-                + "\nAttack: " + (armor.attack + baseArmor.attack) + " (+" + armor.attack + ")"
-                + "\nMagic: " + (armor.magic + baseArmor.magic) + " (+" + armor.magic + ")"
-                + "\nDefense: " + (armor.defense + baseArmor.defense) + " (+" + armor.defense + ")"
-                + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (+" + armor.speed + ")"
+                + "\nMaxHP: " + (armor.maxHP + baseArmor.maxHP) + " (" + armorMaxHP + ")"
+                + "\nAttack: " + (armor.attack + baseArmor.attack) + " (" + armorAttack + ")"
+                + "\nMagic: " + (armor.magic + baseArmor.magic) + " (" + armorMagic + ")"
+                + "\nDefense: " + (armor.defense + baseArmor.defense) + " (" + armorDefense + ")"
+                + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (" + armorSpeed + ")"
                 + "\nSlots: " + armor.slots
                 + "\n\n";
 
                 var accessoryText = "\nRarity: " + baseAccessory.rarity
-                + "\nMaxHP: " + (accessory.maxHP + baseAccessory.maxHP) + " (+" + accessory.maxHP + ")"
-                + "\nAttack: " + (accessory.attack + baseAccessory.attack) + " (+" + accessory.attack + ")"
-                + "\nMagic: " + (accessory.magic + baseAccessory.magic) + " (+" + accessory.magic + ")"
-                + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (+" + accessory.defense + ")"
-                + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (+" + accessory.speed + ")"
+                + "\nMaxHP: " + (accessory.maxHP + baseAccessory.maxHP) + " (" + accessoryMaxHP + ")"
+                + "\nAttack: " + (accessory.attack + baseAccessory.attack) + " (" + accessoryAttack + ")"
+                + "\nMagic: " + (accessory.magic + baseAccessory.magic) + " (" + accessoryMagic + ")"
+                + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (" + accessoryDefense + ")"
+                + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (" + accessorySpeed + ")"
                 + "\nSlots: " + accessory.slots
                 + "\n\n";
 
