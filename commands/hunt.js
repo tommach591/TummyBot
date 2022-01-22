@@ -380,7 +380,7 @@ module.exports = {
                     }
 
                     if (currHunt["active"].retreated) {    
-                        embedMsg.setTitle("Chill!");
+                        embedMsg.setTitle("Chotto matte!");
                         embedMsg.setDescription(currHunt["active"].name + " has left the field!");
                         embedMsg.setColor("FF0000");
                         message.channel.send({ embeds: [embedMsg] });
@@ -401,7 +401,7 @@ module.exports = {
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (timeDiff < attackCD) {
-                        embedMsg.setTitle("Chill!");
+                        embedMsg.setTitle("Chotto matte!");
                         embedMsg.setDescription(userData[userid].name + " can't attack yet!");
                         embedMsg.setImage("https://c.tenor.com/eBByy4ihCocAAAAC/angry-fist.gif");
                         embedMsg.setColor("FF0000");
