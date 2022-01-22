@@ -631,10 +631,8 @@ module.exports = {
                     ).then(
                         () => {
                             proposal.react('👋').then(() => proposal.react('😚')).then(() => proposal.react('🎾'));
-                            let interacter;
                             const filter = (reaction, user) => {
-                                interacter = user.id;
-                                return ['👋', '😚', '🎾'].includes(reaction.emoji.name);
+                                return ['👋', '😚', '🎾'].includes(reaction.emoji.name) && user.id === userid;
                             };
                             proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
                             .then(
@@ -664,7 +662,7 @@ module.exports = {
                 
                                     embedMsg.setTitle('Pet!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[interacter].name + " pets " + userPet[userid].petName + "!\n\n" + levelupMsg 
+                                    embedMsg.setDescription(userData[userid].name + " pets " + userPet[userid].petName + "!\n\n" + levelupMsg 
                                      + userPet[userid].petName + ": " + pets[userPet[userid].pet].quotes[Math.floor(Math.random() * pets[userPet[userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(userPet[userid].image);
                                     embedMsg.setFooter("Current Happiness: " + userPet[userid].happiness + "%");
@@ -694,7 +692,7 @@ module.exports = {
                 
                                     embedMsg.setTitle('Kiss!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[interacter].name + " kissed " + userPet[userid].petName + "!\n\n" + levelupMsg 
+                                    embedMsg.setDescription(userData[userid].name + " kissed " + userPet[userid].petName + "!\n\n" + levelupMsg 
                                      + userPet[userid].petName + ": " + pets[userPet[userid].pet].quotes[Math.floor(Math.random() * pets[userPet[userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(userPet[userid].image);
                                     embedMsg.setFooter("Current Happiness: " + userPet[userid].happiness + "%");
@@ -724,7 +722,7 @@ module.exports = {
                 
                                     embedMsg.setTitle('Fetch!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[interacter].name + " played fetch with " + userPet[userid].petName + "!\n\n" + levelupMsg 
+                                    embedMsg.setDescription(userData[userid].name + " played fetch with " + userPet[userid].petName + "!\n\n" + levelupMsg 
                                      + userPet[userid].petName + ": " + pets[userPet[userid].pet].quotes[Math.floor(Math.random() * pets[userPet[userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(userPet[userid].image);
                                     embedMsg.setFooter("Current Happiness: " + userPet[userid].happiness + "%");
