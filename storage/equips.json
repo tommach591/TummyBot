@@ -290,10 +290,10 @@
         "type": 1,
         "rarity": 3,
         "image": "",
-        "maxHP": 0,
+        "maxHP": 25,
         "attack": 0,
-        "magic": 5,
-        "defense": 5,
+        "magic": 8,
+        "defense": 0,
         "speed": 0
     },
     "Pendant": {

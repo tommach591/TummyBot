@@ -389,7 +389,7 @@
     "48": {
         "name": "Cursed Scroll for Three Attack and Three Magic 15%",
         "rate": 0.15,
-        "maxHP": -30,
+        "maxHP": -40,
         "attack": 3,
         "magic": 3,
         "defense": 0,
