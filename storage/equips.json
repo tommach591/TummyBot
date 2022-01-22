@@ -248,7 +248,7 @@
         "image": "",
         "maxHP": 15,
         "attack": 0,
-        "magic": 7,
+        "magic": 5,
         "defense": 0,
         "speed": 0
     },
@@ -292,7 +292,7 @@
         "image": "",
         "maxHP": 25,
         "attack": 0,
-        "magic": 8,
+        "magic": 7,
         "defense": 0,
         "speed": 0
     },
