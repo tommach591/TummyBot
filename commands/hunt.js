@@ -1264,6 +1264,7 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else {
+                                    var original = userHunt[userid].equips;
                                     var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
                                     if (selectedWeapon.rarity != 0) {
                                         var price = selectedWeapon.rarity * 500;
@@ -1289,7 +1290,7 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍') {
+                                                if (reaction.emoji.name === '👍' && original == userHunt[userid].equips) {
                                                     userData[userid].points += price;
                                                     var itemToDelete = userHunt[userid].equips[target];
                                                     userHunt[userid].equips.splice(target, 1);
@@ -1299,10 +1300,16 @@ module.exports = {
                                                     embedMsg.setDescription(userData[userid].name + " sold " + selectedWeapon.name + " for " + price + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
-                                                else {
+                                                else if (reaction.emoji.name === '👎') {
                                                     embedMsg.setTitle('Declined!');
                                                     embedMsg.setColor('FF0000');
                                                     embedMsg.setDescription(userData[userid].name + " declined!");
+                                                    message.channel.send({ embeds: [embedMsg] });
+                                                }
+                                                else {
+                                                    embedMsg.setTitle('Fail!');
+                                                    embedMsg.setColor('FF0000');
+                                                    embedMsg.setDescription(userData[userid].name + " sold something earlier!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })
@@ -1325,6 +1332,7 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else {
+                                    var original = userHunt[userid].scrolls;
                                     var selectedScroll = scrolls[userHunt[userid].scrolls[target]];
                                     var price = 100;
                                     const proposalMsg = new MessageEmbed();
@@ -1345,7 +1353,7 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍') {
+                                                if (reaction.emoji.name === '👍' && original == userHunt[userid].scrolls) {
                                                     userData[userid].points += price;
                                                     userHunt[userid].scrolls.splice(target, 1)
                                                     embedMsg.setTitle('Sold!');
@@ -1353,10 +1361,16 @@ module.exports = {
                                                     embedMsg.setDescription(userData[userid].name + " sold " + selectedScroll.name + " for " + price + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
-                                                else {
+                                                else if (reaction.emoji.name === '👎') {
                                                     embedMsg.setTitle('Declined!');
                                                     embedMsg.setColor('FF0000');
                                                     embedMsg.setDescription(userData[userid].name + " declined!");
+                                                    message.channel.send({ embeds: [embedMsg] });
+                                                }
+                                                else {
+                                                    embedMsg.setTitle('Fail!');
+                                                    embedMsg.setColor('FF0000');
+                                                    embedMsg.setDescription(userData[userid].name + " sold something earlier!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })

@@ -734,6 +734,7 @@ module.exports = {
                                 embedMsg.setColor('FF0000');
                                 embedMsg.setDescription(userPet[userid].petName + " got distracted with something more fun than you!");
                                 embedMsg.setThumbnail(userPet[userid].image);
+                                embedMsg.setFooter("Or the dev can't find what went wrong.");
                                 message.channel.send({ embeds: [embedMsg] });
                             });
                         }
