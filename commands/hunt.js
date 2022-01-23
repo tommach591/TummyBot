@@ -1266,7 +1266,8 @@ module.exports = {
                                 else {
                                     let original = [...userHunt[userid].equips];
                                     console.log(original);
-                                    
+                                    console.log(userHunt[userid].equips);
+
                                     var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
                                     if (selectedWeapon.rarity != 0) {
                                         var price = selectedWeapon.rarity * 500;
