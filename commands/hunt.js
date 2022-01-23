@@ -1293,7 +1293,7 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && original.equals(userHunt[userid].equips)) {
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
                                                     userData[userid].points += price;
                                                     var itemToDelete = userHunt[userid].equips[target];
                                                     userHunt[userid].equips.splice(target, 1);
@@ -1356,7 +1356,7 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && original.equals(userHunt[userid].scrolls)) {
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
                                                     userData[userid].points += price;
                                                     userHunt[userid].scrolls.splice(target, 1)
                                                     embedMsg.setTitle('Sold!');
