@@ -1264,7 +1264,7 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else {
-                                    var original = userHunt[userid].equips;
+                                    var original = [...userHunt[userid].equips];
                                     var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
                                     if (selectedWeapon.rarity != 0) {
                                         var price = selectedWeapon.rarity * 500;
@@ -1332,7 +1332,7 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else {
-                                    var original = userHunt[userid].scrolls;
+                                    var original = [...userHunt[userid].scrolls];
                                     var selectedScroll = scrolls[userHunt[userid].scrolls[target]];
                                     var price = 100;
                                     const proposalMsg = new MessageEmbed();
