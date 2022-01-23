@@ -520,8 +520,8 @@
         "attackImage": "https://media2.giphy.com/media/U3n3hOE1mFVeulmpnf/giphy-downsized-large.gif",
         "maxHP": 7000,
         "attack": 50,
-        "defense": 35,
-        "magicdefense": 35,
+        "defense": 25,
+        "magicdefense": 30,
         "attackCD": 20000,
         "difficulty": 4,
         "loot": ["Daedric Armor"]
