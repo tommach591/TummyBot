@@ -332,16 +332,16 @@ module.exports = {
                     var nextSpawn = currHunt.nextSpawn;
                     var bossTime = nextSpawn - timeDiff;
 
-                    if (bossTime <= 1000 * 60 * 5 && !currHunt["active"]) {
+                    if (bossTime <= 1000 * 60 * 5 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You feel an ominous presence...");
                     }
-                    else if (bossTime <= 1000 * 60 * 10 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 10 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("Nature is panicking...");
                     }
-                    else if (bossTime <= 1000 * 60 * 15 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 15 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You hear the howling winds...");
                     }
-                    else if (bossTime <= 1000 * 60 * 30 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 30 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("It is suddenly very quiet...");
                     }
                     else {
@@ -580,16 +580,16 @@ module.exports = {
                     var nextSpawn = currHunt.nextSpawn;
                     var bossTime = nextSpawn - timeDiff;
 
-                    if (bossTime <= 1000 * 60 * 5 && !currHunt["active"]) {
+                    if (bossTime <= 1000 * 60 * 5 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You feel an ominous presence...");
                     }
-                    else if (bossTime <= 1000 * 60 * 10 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 10 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("Nature is panicking...");
                     }
-                    else if (bossTime <= 1000 * 60 * 15 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 15 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You hear the howling winds...");
                     }
-                    else if (bossTime <= 1000 * 60 * 30 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 30 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("It is suddenly very quiet...");
                     }
                     else {

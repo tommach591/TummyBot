@@ -279,7 +279,7 @@ module.exports = {
                 else {
                     var newName = args[1].replace(/[^a-zA-Z0-9]/gi,'');
                     var cost = 50000;
-                    var maxSize = 12;
+                    var maxSize = 16;
                     const badnames = ["4r5e", "5h1t", "5hit", "a55", "anal", "anus", "ar5e", "arrse", "arse", "ass", "ass-fucker", "asses", "assfucker",
                     "assfukka", "asshole", "assholes", "asswhole", "a_s_s", "b!tch", "b00bs", "b17ch", "b1tch", "ballbag", "balls", "ballsack", "bastard",
                     "beastial", "beastiality", "bellend", "bestial", "bestiality", "bi+ch", "biatch", "bitch", "bitcher", "bitchers", "bitches", "bitchin",
@@ -902,7 +902,7 @@ module.exports = {
                             msg.react("▶️")
 
                             const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
-                            const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                             collector.on('collect', r => {
                                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });

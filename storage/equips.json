@@ -537,5 +537,16 @@
         "magic": 0,
         "defense": 0,
         "speed": 0
+    },
+    "Z-Ring": {
+        "name": "Z-Ring",
+        "type": 2,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 50,
+        "attack": 5,
+        "magic": 5,
+        "defense": 5,
+        "speed": 5
     }
 }
