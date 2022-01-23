@@ -584,7 +584,7 @@ module.exports = {
                             msg.react("▶️")
 
                             const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
-                            const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                             collector.on('collect', r => {
                                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
@@ -701,7 +701,7 @@ module.exports = {
                             msg.react("▶️")
 
                             const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
-                            const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
+                            const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                             collector.on('collect', r => {
                                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
