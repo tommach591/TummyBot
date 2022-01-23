@@ -289,7 +289,7 @@
     },
     "32": {
         "name": "Lucky Scroll for Thirty HP 7%",
-        "rate": 0.07,
+        "rate": 0.070,
         "maxHP": 30,
         "attack": 0,
         "magic": 0,
@@ -298,7 +298,7 @@
     },
     "33": {
         "name": "Lucky Scroll for Three Attack 7%",
-        "rate": 0.07,
+        "rate": 0.070,
         "maxHP": 0,
         "attack": 3,
         "magic": 0,
@@ -307,7 +307,7 @@
     },
     "34": {
         "name": "Lucky Scroll for Three Magic Attack 7%",
-        "rate": 0.07,
+        "rate": 0.070,
         "maxHP": 0,
         "attack": 0,
         "magic": 3,
@@ -316,7 +316,7 @@
     },
     "35": {
         "name": "Lucky Scroll for Six Defense 7%",
-        "rate": 0.07,
+        "rate": 0.070,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
@@ -325,7 +325,7 @@
     },
     "36": {
         "name": "Lucky Scroll for Three Speed 7%",
-        "rate": 0.07,
+        "rate": 0.070,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
@@ -334,7 +334,7 @@
     },
     "37": {
         "name": "Lucky Scroll for All Stats (10/1/1/2/1) 7%",
-        "rate": 0.07,
+        "rate": 0.070,
         "maxHP": 10,
         "attack": 1,
         "magic": 1,
