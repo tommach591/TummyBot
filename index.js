@@ -309,7 +309,7 @@ let attackAll = (newTime) => {
                 userHunt[target].currentHP -= damageDealt;
                 if (userHunt[target].currentHP <= 0) {
                     userHunt[target].deathTime = newTime.getTime();
-                    playersHit += userData[target].name + " has fainted!\n";
+                    playersHit += userData[target].name + " takes " + damageDealt + " damage! " + userData[target].name + " has fainted!\n";
                     currHunt["active"].deathCount++
                 }
                 else {

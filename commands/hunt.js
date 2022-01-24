@@ -194,8 +194,10 @@ module.exports = {
 
                 var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\nRespawn: ";
-                if (userHunt[userid].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated) {
-                    currentCondition += Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + "s\n";
+                
+                var respawntime = Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000);
+                if (userHunt[userid].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated && respawntime > 0) {
+                    currentCondition += respawntime.toString() + "s\n";
                 }
                 else {
                     currentCondition += "0s\n";
@@ -332,16 +334,16 @@ module.exports = {
                     var nextSpawn = currHunt.nextSpawn;
                     var bossTime = nextSpawn - timeDiff;
 
-                    if (bossTime <= 1000 * 60 * 5 && !currHunt["active"]) {
+                    if (bossTime <= 1000 * 60 * 5 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You feel an ominous presence...");
                     }
-                    else if (bossTime <= 1000 * 60 * 10 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 10 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("Nature is panicking...");
                     }
-                    else if (bossTime <= 1000 * 60 * 15 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 15 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You hear the howling winds...");
                     }
-                    else if (bossTime <= 1000 * 60 * 30 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 30 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("It is suddenly very quiet...");
                     }
                     else {
@@ -536,7 +538,7 @@ module.exports = {
 
                                 userData[player].points += goldEarned;
                                 
-                                reward += userData[player].name + " has been awarded with: " + goldEarned + " points" + itemsEarned + "\n";
+                                reward += userData[player].name + " has been awarded with: " + goldEarned + " points" + itemsEarned + "\n\n";
                             }
 
                             const rewardMsg = new MessageEmbed();
@@ -580,16 +582,16 @@ module.exports = {
                     var nextSpawn = currHunt.nextSpawn;
                     var bossTime = nextSpawn - timeDiff;
 
-                    if (bossTime <= 1000 * 60 * 5 && !currHunt["active"]) {
+                    if (bossTime <= 1000 * 60 * 5 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You feel an ominous presence...");
                     }
-                    else if (bossTime <= 1000 * 60 * 10 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 10 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("Nature is panicking...");
                     }
-                    else if (bossTime <= 1000 * 60 * 15 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 15 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("You hear the howling winds...");
                     }
-                    else if (bossTime <= 1000 * 60 * 30 && !currHunt["active"]) {
+                    else if (bossTime <= 1000 * 60 * 30 && (!currHunt["active"] || currHunt["active"].retreated)) {
                         embedMsg.setFooter("It is suddenly very quiet...");
                     }
                     else {
