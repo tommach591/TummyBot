@@ -390,28 +390,28 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 20,
-        "magic": 20,
+        "attack": 30,
+        "magic": 30,
         "defense": 0,
         "speed": 20
     },
     "Fatalis Alpha": {
         "name": "Fatalis Alpha",
         "type": 1,
-        "rarity": 4,
+        "rarity": 5,
         "image": "",
         "maxHP": 150,
         "attack": 0,
         "magic": 0,
-        "defense": 20,
+        "defense": 30,
         "speed": 0
     },
     "Exploiter Charm III": {
         "name": "Exploiter Charm III",
         "type": 2,
-        "rarity": 4,
+        "rarity": 5,
         "image": "",
-        "maxHP": 25,
+        "maxHP": 50,
         "attack": 15,
         "magic": 15,
         "defense": 0,
@@ -420,10 +420,10 @@
     "Masamune": {
         "name": "Masamune",
         "type": 0,
-        "rarity": 4,
+        "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 40,
+        "attack": 75,
         "magic": 0,
         "defense": 0,
         "speed": 10
@@ -431,10 +431,10 @@
     "Black Coat": {
         "name": "Black Coat",
         "type": 1,
-        "rarity": 4,
+        "rarity": 5,
         "image": "",
-        "maxHP": 100,
-        "attack": 10,
+        "maxHP": 125,
+        "attack": 15,
         "magic": 0,
         "defense": 10,
         "speed": 0
@@ -442,9 +442,9 @@
     "Black Wing": {
         "name": "Black Wing",
         "type": 2,
-        "rarity": 4,
+        "rarity": 5,
         "image": "",
-        "maxHP": 100,
+        "maxHP": 125,
         "attack": 10,
         "magic": 0,
         "defense": 10,
@@ -548,5 +548,16 @@
         "magic": 5,
         "defense": 5,
         "speed": 5
+    },
+    "Satanael": {
+        "name": "Satanael",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 25,
+        "attack": 0,
+        "magic": 35,
+        "defense": 5,
+        "speed": 0
     }
 }

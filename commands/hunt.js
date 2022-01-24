@@ -55,7 +55,7 @@ module.exports = {
             return id;
         }
 
-        var fourstar = [];
+        var unqiueDrops = [];
         var threestar = [];
         var twostar = [];
         var onestar = [];
@@ -85,7 +85,7 @@ module.exports = {
             }
 
             if (currHunt["active"].loot.length != 0) {
-                fourstar = currHunt["active"].loot;
+                unqiueDrops = currHunt["active"].loot;
             }
 
             for (var k in scrolls) {
@@ -474,12 +474,12 @@ module.exports = {
 
                                 var itemsEarned = "";
 
-                                if (fourstar.length != 0) {
+                                if (unqiueDrops.length != 0) {
                                     for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                         var luck = Math.floor((Math.random() * 100000) + 1);
                                         var chance = 100000 * 0.0025; // 0.25%
                                         if (luck <= chance) {
-                                            var itemObtained = generateEquip(fourstar[Math.floor(Math.random() * fourstar.length)]);
+                                            var itemObtained = generateEquip(unqiueDrops[Math.floor(Math.random() * unqiueDrops.length)]);
                                             userHunt[player].equips.push(itemObtained);
                                             itemsEarned += ", " + items[itemObtained].name;
                                         }
@@ -951,7 +951,7 @@ module.exports = {
                                         items[userHunt[userid].weapon].speed += theScroll.speed;
                                         items[userHunt[userid].weapon].slots--;
                                         updateStats();
-                                        embedMsg.setTitle('Success!');
+                                        embedMsg.setTitle('Success! - ' + theScroll.name);
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
@@ -960,7 +960,7 @@ module.exports = {
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                     else {
-                                        embedMsg.setTitle('Oh nyo!');
+                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
@@ -990,7 +990,7 @@ module.exports = {
                                         items[userHunt[userid].armor].speed += theScroll.speed;
                                         items[userHunt[userid].armor].slots--;
                                         updateStats();
-                                        embedMsg.setTitle('Success!');
+                                        embedMsg.setTitle('Success! - ' + theScroll.name);
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
@@ -999,7 +999,7 @@ module.exports = {
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                     else {
-                                        embedMsg.setTitle('Oh nyo!');
+                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
@@ -1030,7 +1030,7 @@ module.exports = {
                                         items[userHunt[userid].accessory].speed += theScroll.speed;
                                         items[userHunt[userid].accessory].slots--;
                                         updateStats();
-                                        embedMsg.setTitle('Success!');
+                                        embedMsg.setTitle('Success! - ' + theScroll.name);
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
@@ -1039,7 +1039,7 @@ module.exports = {
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
                                     else {
-                                        embedMsg.setTitle('Oh nyo!');
+                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');

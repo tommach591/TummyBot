@@ -467,10 +467,10 @@
         "death": "Edelgard retreats for now!",
         "image": "https://c.tenor.com/ZTS2ERNZQQoAAAAC/fire-emblem-three-houses-fire-emblem.gif",
         "attackImage": "https://64.media.tumblr.com/44b7ee276a80810e93a2969b6850dc2e/72c3f0e33fc2b9fe-39/s540x810/f8f4030c8cbf75021352b93132b95260e98ce8eb.gif",
-        "maxHP": 6000,
+        "maxHP": 7000,
         "attack": 60,
-        "defense": 25,
-        "magicdefense": 20,
+        "defense": 35,
+        "magicdefense": 15,
         "attackCD": 75000,
         "difficulty": 4,
         "loot": ["Amyr"]
@@ -746,5 +746,22 @@
         "attackCD": 20000,
         "difficulty": 4,
         "loot": ["Z-Ring"]
+    },
+    "45": {
+        "id": "45",
+        "name": "Joker",
+        "info": "The first champion of Alola!",
+        "entry": "Looking cool, Joker!",
+        "shoutout": "Arsène!",
+        "death": "Joker gets sent to jail!",
+        "image": "https://c.tenor.com/xp-iWpgqbYcAAAAC/persona5-joker.gif",
+        "attackImage": "https://c.tenor.com/6hiEp9E7YeQAAAAC/p5-persona.gif",
+        "maxHP": 6500,
+        "attack": 25,
+        "defense": 20,
+        "magicdefense": 20,
+        "attackCD": 10000,
+        "difficulty": 4,
+        "loot": ["Satanael"]
     }
 }
