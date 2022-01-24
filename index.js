@@ -269,6 +269,7 @@ let attackAll = (newTime) => {
     if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= currHunt["active"].attackCD) {
         var count = 0;
         var playersHit = "";
+        var faints = "";
         var alivePlayers = 0;
 
         for (let i = 0; i < currHunt["active"].targets.length; i++) {
@@ -309,7 +310,8 @@ let attackAll = (newTime) => {
                 userHunt[target].currentHP -= damageDealt;
                 if (userHunt[target].currentHP <= 0) {
                     userHunt[target].deathTime = newTime.getTime();
-                    playersHit += userData[target].name + " takes " + damageDealt + " damage! " + userData[target].name + " has fainted!\n";
+                    playersHit += userData[target].name + " takes " + damageDealt + " damage!\n";
+                    faints += userData[target].name + " has fainted!\n";
                     currHunt["active"].deathCount++
                 }
                 else {
@@ -328,7 +330,7 @@ let attackAll = (newTime) => {
             }
             stars += ")"
             embedMsg.setTitle(currHunt["active"].name + stars + " - Attacks!");
-            embedMsg.setDescription(currHunt["active"].shoutout + "\n\n" + playersHit);
+            embedMsg.setDescription(currHunt["active"].shoutout + "\n\n" + playersHit + "\n" + faints);
             embedMsg.setImage(currHunt["active"].attackImage);
             embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
             embedMsg.setColor("49000F");
@@ -338,7 +340,7 @@ let attackAll = (newTime) => {
         }
 
         if (currHunt["active"].deathCount >= currHunt["active"].deathLimit && !currHunt["active"].retreated) {
-            const embedMsg = new MessageEmbed();
+            const retreatMsg = new MessageEmbed();
             
             currHunt["active"].retreated = true;
             currHunt.lastSpawn = newTime.getTime();
@@ -349,13 +351,13 @@ let attackAll = (newTime) => {
                 stars += "★";
             }
             stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars + " - Retreats!");
-            embedMsg.setDescription("After defeating " + currHunt["active"].deathCount + " players, " + currHunt["active"].name + " left the battlegrounds.");
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
-            embedMsg.setColor("FF0000");
+            retreatMsg.setTitle(currHunt["active"].name + stars + " - Retreats!");
+            retreatMsg.setDescription("After defeating " + currHunt["active"].deathCount + " players, " + currHunt["active"].name + " left the battlegrounds.");
+            retreatMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+            retreatMsg.setColor("FF0000");
 
             for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(() => 
+                currHunt["active"].channels[i].send({ embeds: [retreatMsg] }).then(() => 
                 {
                     setTimeout(() => {
                         delete currHunt["active"];
