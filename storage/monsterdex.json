@@ -382,13 +382,13 @@
         "death": "Ugh... I'm feeling a little... off...",
         "image": "https://c.tenor.com/K1jIPS7dAp4AAAAC/zhongli.gif",
         "attackImage": "https://c.tenor.com/iSYyA7eqW3wAAAAd/zhongli-genshin.gif",
-        "maxHP": 12000,
+        "maxHP": 15000,
         "attack": 40,
         "defense": 0,
         "magicdefense": 0,
         "attackCD": 12000,
         "difficulty": 4,
-        "loot": []
+        "loot": ["Staff of Homa"]
     },
     "24": {
         "id": "24",
@@ -763,5 +763,22 @@
         "attackCD": 10000,
         "difficulty": 4,
         "loot": ["Satanael"]
+    },
+    "46": {
+        "id": "46",
+        "name": "Naruto Uzumaki",
+        "info": "7th Hokage of the Hidden Leaf Village. Jinchuriki of the Nine-Tails.",
+        "entry": "I am gonna be Hokage! Believe it!",
+        "shoutout": "Rasengan!",
+        "death": "NARUTOOOOOOO!",
+        "image": "https://c.tenor.com/R-TsjhE34poAAAAC/naruto-shippuden-naruto.gif",
+        "attackImage": "https://thumbs.gfycat.com/PlainFriendlyFowl-size_restricted.gif",
+        "maxHP": 20000,
+        "attack": 60,
+        "defense": 20,
+        "magicdefense": 20,
+        "attackCD": 7500,
+        "difficulty": 5,
+        "loot": ["Rasengan", "Kurama", "Nyawuto Uwumaki's Shadow Clone"]
     }
 }
