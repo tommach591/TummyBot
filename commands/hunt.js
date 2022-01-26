@@ -1207,7 +1207,7 @@ module.exports = {
                                                 .then(
                                                     collected => {
                                                     const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
+                                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
                                                         var selected = userHunt[userid].scrolls[index];
                                                         userHunt[mention].scrolls.push(userHunt[userid].scrolls[index]);
                                                         userHunt[userid].scrolls.splice(index, 1);
