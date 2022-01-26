@@ -463,6 +463,7 @@ module.exports = {
 
                             currHunt.lastSpawn = newTime.getTime();
                             currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
+                            currHunt.lastDifficulty = 0;
 
                             var rewardLevel = currHunt["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
@@ -528,7 +529,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.2; // 20.00%
+                                    var chance = 100000 * 0.20; // 20.00%
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         userHunt[player].scrolls.push(scrollobtained);
@@ -1119,6 +1120,9 @@ module.exports = {
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
+
+                                        let original = [...userHunt[userid].equips];
+
                                         const proposalMsg = new MessageEmbed();
                                         proposalMsg.setTitle('Give Item!');
                                         proposalMsg.setColor('FFF000');
@@ -1138,7 +1142,7 @@ module.exports = {
                                                 .then(
                                                     collected => {
                                                     const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍') {
+                                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
                                                         var selected = userHunt[userid].equips[index];
                                                         userHunt[mention].equips.push(userHunt[userid].equips[index]);
                                                         userHunt[userid].equips.splice(index, 1);
@@ -1147,10 +1151,18 @@ module.exports = {
                                                         embedMsg.setColor('00FF00');
                                                         embedMsg.setDescription(userData[userid].name + " gave " + userData[mention].name + " " + items[selected].name + "!");
                                                         message.channel.send({ embeds: [embedMsg] });
-                                                    } else {
+                                                    } 
+                                                    else if (reaction.emoji.name === '👎')
+                                                    {
                                                         embedMsg.setTitle('Error!');
                                                         embedMsg.setColor('FF0000');
-                                                        embedMsg.setDescription(userData[userid].name + " changed their mind!");
+                                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                                        message.channel.send({ embeds: [embedMsg] });
+                                                    }
+                                                    else {
+                                                        embedMsg.setTitle('Fail!');
+                                                        embedMsg.setColor('FF0000');
+                                                        embedMsg.setDescription(userData[userid].name + " inventory changed!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     }
                                                 })
@@ -1173,6 +1185,9 @@ module.exports = {
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
+
+                                        let original = [...userHunt[userid].scrolls];
+
                                         const proposalMsg = new MessageEmbed();
                                         proposalMsg.setTitle('Give Item!');
                                         proposalMsg.setColor('FFF000');
@@ -1192,7 +1207,7 @@ module.exports = {
                                                 .then(
                                                     collected => {
                                                     const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍') {
+                                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
                                                         var selected = userHunt[userid].scrolls[index];
                                                         userHunt[mention].scrolls.push(userHunt[userid].scrolls[index]);
                                                         userHunt[userid].scrolls.splice(index, 1);
@@ -1201,10 +1216,17 @@ module.exports = {
                                                         embedMsg.setColor('00FF00');
                                                         embedMsg.setDescription(userData[userid].name + " gave " + userData[mention].name + " " + scrolls[selected].name + "!");
                                                         message.channel.send({ embeds: [embedMsg] });
-                                                    } else {
+                                                    } 
+                                                    else if (reaction.emoji.name === '👎') {
                                                         embedMsg.setTitle('Error!');
                                                         embedMsg.setColor('FF0000');
                                                         embedMsg.setDescription(userData[userid].name + " declined!");
+                                                        message.channel.send({ embeds: [embedMsg] });
+                                                    }
+                                                    else {
+                                                        embedMsg.setTitle('Fail!');
+                                                        embedMsg.setColor('FF0000');
+                                                        embedMsg.setDescription(userData[userid].name + " inventory changed!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     }
                                                 })
@@ -1312,7 +1334,7 @@ module.exports = {
                                                 else {
                                                     embedMsg.setTitle('Fail!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " sold something earlier!");
+                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })
@@ -1373,7 +1395,7 @@ module.exports = {
                                                 else {
                                                     embedMsg.setTitle('Fail!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " sold something earlier!");
+                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })

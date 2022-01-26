@@ -774,11 +774,11 @@
         "image": "https://c.tenor.com/R-TsjhE34poAAAAC/naruto-shippuden-naruto.gif",
         "attackImage": "https://thumbs.gfycat.com/PlainFriendlyFowl-size_restricted.gif",
         "maxHP": 20000,
-        "attack": 60,
-        "defense": 20,
-        "magicdefense": 20,
+        "attack": 55,
+        "defense": 15,
+        "magicdefense": 15,
         "attackCD": 7500,
         "difficulty": 5,
-        "loot": ["Rasengan", "Kurama", "Nyawuto Uwumaki's Shadow Clone"]
+        "loot": ["Rasengan", "Kurama", "Sexy Jutsu Clone"]
     }
 }

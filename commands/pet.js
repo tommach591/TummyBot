@@ -607,13 +607,13 @@ module.exports = {
                 }
                 else {
                     var happy = 1;
-                    if (userPet[userid].hunger >= 50) {
+                    if (userPet[userid].hunger > 0) {
                         happy += 2;
                     }
-                    if (userPet[userid].hydration >= 50) {
+                    if (userPet[userid].hydration > 0) {
                         happy += 1;
                     }
-                    if (userPet[userid].cleanliness >= 50) {
+                    if (userPet[userid].cleanliness > 0) {
                         happy += 1;
                     }
 
@@ -654,10 +654,16 @@ module.exports = {
                                     userPet[userid].happinessTimer = newTime.getTime();
 
                                     var goodluck = ""
-                                    var luck = Math.floor(Math.random() * 101);
+                                    var luck = Math.random() * 101;
                                     if (luck <= 20) {
-                                        userData[userid].points++;
-                                        goodluck = "\n\n" + userPet[userid].petName + " found 1 point while playing!\n\n";
+                                        if (luck <= 1.0001) {
+                                            userData[userid].points += 100000;
+                                            goodluck = "\n\n" + userPet[userid].petName + " found 100000 point while playing!\n\n";
+                                        }
+                                        else {
+                                            userData[userid].points++;
+                                            goodluck = "\n\n" + userPet[userid].petName + " found 1 point while playing!\n\n";
+                                        }
                                     }
                 
                                     embedMsg.setTitle('Pet!');

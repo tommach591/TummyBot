@@ -186,6 +186,7 @@ let spawnMonster = (newTime) => {
     if (!currHunt.lastSpawn) {
         currHunt.lastSpawn = newTime.getTime();
         currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
+        currHunt.lastDifficulty = 0;
     }
     var timeDiff = newTime.getTime() - currHunt.lastSpawn;
     var nextSpawn = currHunt.nextSpawn;
@@ -215,22 +216,24 @@ let spawnMonster = (newTime) => {
             }
         }
         var selectedMonster;
-        var luck = Math.random() * 101;
 
-        if (luck <= 5) {
-            selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
-        }
-        else if (luck <= 15) {
-            selectedMonster = monsterdex[diffFour[Math.floor(Math.random() * diffFour.length)]];
-        }
-        else if (luck <= 30) {
-            selectedMonster = monsterdex[diffThree[Math.floor(Math.random() * diffThree.length)]];
-        }
-        else if (luck <= 60) {
-            selectedMonster = monsterdex[diffTwo[Math.floor(Math.random() * diffTwo.length)]];
-        }
-        else {
-            selectedMonster = monsterdex[diffOne[Math.floor(Math.random() * diffOne.length)]];
+        while (!selectedMonster || selectedMonster.difficulty == currHunt.lastDifficulty) {
+            var luck = Math.random() * 101;
+            if (luck <= 5) {
+                selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
+            }
+            else if (luck <= 15) {
+                selectedMonster = monsterdex[diffFour[Math.floor(Math.random() * diffFour.length)]];
+            }
+            else if (luck <= 35) {
+                selectedMonster = monsterdex[diffThree[Math.floor(Math.random() * diffThree.length)]];
+            }
+            else if (luck <= 65) {
+                selectedMonster = monsterdex[diffTwo[Math.floor(Math.random() * diffTwo.length)]];
+            }
+            else {
+                selectedMonster = monsterdex[diffOne[Math.floor(Math.random() * diffOne.length)]];
+            }
         }
 
         currHunt["active"] = {
@@ -345,6 +348,7 @@ let attackAll = (newTime) => {
             currHunt["active"].retreated = true;
             currHunt.lastSpawn = newTime.getTime();
             currHunt.nextSpawn = 1000 * 60 * 20;
+            currHunt.lastDifficulty = currHunt["active"].difficulty;
 
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
@@ -591,6 +595,7 @@ client.on('messageCreate', message => {
             currHunt["active"].retreated = true;
             currHunt.lastSpawn = newTime.getTime();
             currHunt.nextSpawn = 1000 * 60 * 20;
+            currHunt.lastDifficulty = currHunt["active"].difficulty;
 
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {

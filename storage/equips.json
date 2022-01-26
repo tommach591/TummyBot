@@ -589,12 +589,12 @@
         "image": "",
         "maxHP": 100,
         "attack": 5,
-        "magic": 5,
-        "defense": 15,
+        "magic": 10,
+        "defense": 10,
         "speed": 0
     },
-    "Nyawuto Uwumaki's Shadow Clone": {
-        "name": "Nyawuto Uwumaki's Shadow Clone",
+    "Sexy Jutsu Clone": {
+        "name": "Sexy Jutsu Clone",
         "type": 2,
         "rarity": 5,
         "image": "",
