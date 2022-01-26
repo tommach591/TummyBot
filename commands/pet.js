@@ -654,9 +654,9 @@ module.exports = {
                                     userPet[userid].happinessTimer = newTime.getTime();
 
                                     var goodluck = ""
-                                    var luck = Math.random() * 101;
+                                    var luck = (Math.random() * 100) + 1;
                                     if (luck <= 20) {
-                                        if (luck <= 1.0001) {
+                                        if (luck <= 1.001) {
                                             userData[userid].points += 100000;
                                             goodluck = "\n\n" + userPet[userid].petName + " found 100000 point while playing!\n\n";
                                         }
