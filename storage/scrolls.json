@@ -244,7 +244,7 @@
     },
     "27": {
         "name": "Lucky Scroll for Two Magic Attack 15%",
-        "rate": 0.10,
+        "rate": 0.15,
         "maxHP": 0,
         "attack": 0,
         "magic": 2,
