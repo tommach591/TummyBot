@@ -607,13 +607,13 @@ module.exports = {
                 }
                 else {
                     var happy = 1;
-                    if (userPet[userid].hunger > 0) {
+                    if (userPet[userid].hunger > 20) {
                         happy += 2;
                     }
-                    if (userPet[userid].hydration > 0) {
+                    if (userPet[userid].hydration > 20) {
                         happy += 1;
                     }
-                    if (userPet[userid].cleanliness > 0) {
+                    if (userPet[userid].cleanliness > 20) {
                         happy += 1;
                     }
 
@@ -1095,14 +1095,14 @@ module.exports = {
                 if (userPet[userid].dead) {
                     status = "Dead";
                 }
-                else if (userPet[userid].hunger == 0 && userPet[userid].hydration == 0) {
+                else if (userPet[userid].hunger <= 20 && userPet[userid].hydration <= 20) {
                     var newTime = new Date();
                     status = "Dying";
                 }
-                else if (userPet[userid].hunger == 0) {
+                else if (userPet[userid].hunger <= 20) {
                     status = "Hungry";
                 }
-                else if (userPet[userid].hydration == 0) {
+                else if (userPet[userid].hydration <= 20) {
                     status = "Thirsty";
                 }
                 

@@ -657,10 +657,12 @@ client.on('messageCreate', message => {
 process.on('unhandledRejection', (reason, promise) => {
     var newDate = new Date();
     console.log(reason);
+    /*
     msg.channel.send({ embeds: [errorMsg] }).then(
         msg => { 
             msg.reply(admin + "\n\nError Date: " + newDate);
         });
+    */
     //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
 });
  
