@@ -780,5 +780,22 @@
         "attackCD": 7500,
         "difficulty": 5,
         "loot": ["Rasengan", "Kurama", "Sexy Jutsu Clone"]
+    },
+    "47": {
+        "id": "47",
+        "name": "Miles Edgeworth",
+        "info": "Miles Edgeworth is a Chief Prosecutor of the prosecutor's office.",
+        "entry": "Hold it!",
+        "shoutout": "Objection!",
+        "death": "Edgeworth quits being a prosecutor!",
+        "image": "https://i.imgur.com/BZR4fN7.gif",
+        "attackImage": "https://i.imgur.com/kj5vi9p.gif",
+        "maxHP": 7000,
+        "attack": 60,
+        "defense": 10,
+        "magicdefense": 40,
+        "attackCD": 15000,
+        "difficulty": 4,
+        "loot": ["Updated Autopsy Report"]
     }
 }
