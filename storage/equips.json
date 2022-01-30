@@ -614,5 +614,38 @@
         "magic": 45,
         "defense": 0,
         "speed": -10
+    },
+    "Ultimate Dreadwyrm Blade": {
+        "name": "Ultimate Dreadwyrm Blade",
+        "type": 0,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 50,
+        "attack": 0,
+        "magic": 50,
+        "defense": 0,
+        "speed": 0
+    },
+    "Ultimate Dreadwyrm Shield": {
+        "name": "Ultimate Dreadwyrm Shield",
+        "type": 1,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 30,
+        "speed": 0
+    },
+    "Ultimate Dreadwyrm Earring": {
+        "name": "Ultimate Dreadwyrm Earring",
+        "type": 2,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 50,
+        "attack": 12,
+        "magic": 12,
+        "defense": 0,
+        "speed": 0
     }
 }

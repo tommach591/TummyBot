@@ -186,7 +186,7 @@ let spawnMonster = (newTime) => {
     if (!currHunt.lastSpawn) {
         currHunt.lastSpawn = newTime.getTime();
         currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
-        currHunt.lastDifficulty = 0;
+        currHunt.lastDifficulty = [];
     }
     var timeDiff = newTime.getTime() - currHunt.lastSpawn;
     var nextSpawn = currHunt.nextSpawn;
@@ -217,7 +217,11 @@ let spawnMonster = (newTime) => {
         }
         var selectedMonster;
 
-        while (!selectedMonster || selectedMonster.difficulty == currHunt.lastDifficulty) {
+        if (currHunt.lastDifficulty.length == 5) {
+            currHunt.lastDifficulty = [];
+        }
+
+        while (!selectedMonster || currHunt.lastDifficulty.includes[selectedMonster.difficulty]) {
             var luck = Math.random() * 101;
             if (luck <= 5) {
                 selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
@@ -348,7 +352,7 @@ let attackAll = (newTime) => {
             currHunt["active"].retreated = true;
             currHunt.lastSpawn = newTime.getTime();
             currHunt.nextSpawn = 1000 * 60 * 20;
-            currHunt.lastDifficulty = currHunt["active"].difficulty;
+            currHunt.lastDifficulty.push(currHunt["active"].difficulty);
 
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
@@ -590,12 +594,12 @@ client.on('messageCreate', message => {
             currHunt["active"].channels[0].send({ embeds: [embedMsg] });
         }
 
-        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 10 && !currHunt["active"].retreated && currHunt["active"].currentHP > 0) {
+        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 1 && !currHunt["active"].retreated && currHunt["active"].currentHP > 0) {
             const embedMsg = new MessageEmbed();
             currHunt["active"].retreated = true;
             currHunt.lastSpawn = newTime.getTime();
             currHunt.nextSpawn = 1000 * 60 * 20;
-            currHunt.lastDifficulty = currHunt["active"].difficulty;
+            currHunt.lastDifficulty.push(currHunt["active"].difficulty);
 
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {

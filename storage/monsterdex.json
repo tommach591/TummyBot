@@ -797,5 +797,22 @@
         "attackCD": 15000,
         "difficulty": 4,
         "loot": ["Updated Autopsy Report"]
+    },
+    "48": {
+        "id": "48",
+        "name": "Bahamut",
+        "info": "Once freed, the terrible being wrought fiery destruction across the length and breadth of Eorzea, his devastating rampage marking the beginning of the Seventh Umbral Era.",
+        "entry": "Bahamut breaks free!",
+        "shoutout": "Bahamut brings destruction!",
+        "death": "Bahamut has been slain!",
+        "image": "https://i.gifer.com/3t4.gif",
+        "attackImage": "https://thumbs.gfycat.com/SmoggyGroundedAtlanticbluetang-size_restricted.gif",
+        "maxHP": 15000,
+        "attack": 100,
+        "defense": 25,
+        "magicdefense": 25,
+        "attackCD": 15000,
+        "difficulty": 5,
+        "loot": ["Ultimate Dreadwyrm Blade", "Ultimate Dreadwyrm Shield", "Ultimate Dreadwyrm Earring"]
     }
 }
