@@ -602,7 +602,7 @@
         "attack": 10,
         "magic": 10,
         "defense": 0,
-        "speed": 10
+        "speed": 15
     },
     "Updated Autopsy Report": {
         "name": "Updated Autopsy Report",
@@ -621,8 +621,8 @@
         "rarity": 5,
         "image": "",
         "maxHP": 50,
-        "attack": 0,
-        "magic": 50,
+        "attack": 50,
+        "magic": 0,
         "defense": 0,
         "speed": 0
     },
@@ -642,7 +642,7 @@
         "type": 2,
         "rarity": 5,
         "image": "",
-        "maxHP": 50,
+        "maxHP": 100,
         "attack": 12,
         "magic": 12,
         "defense": 0,
