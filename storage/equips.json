@@ -387,34 +387,34 @@
     "Fatalis Dual Skies": {
         "name": "Fatalis Dual Skies",
         "type": 0,
-        "rarity": 5,
+        "rarity": 6,
         "image": "",
         "maxHP": 0,
-        "attack": 30,
+        "attack": 70,
         "magic": 30,
         "defense": 0,
-        "speed": 20
+        "speed": 25
     },
     "Fatalis Alpha": {
         "name": "Fatalis Alpha",
         "type": 1,
-        "rarity": 5,
+        "rarity": 6,
         "image": "",
-        "maxHP": 150,
+        "maxHP": 500,
         "attack": 0,
         "magic": 0,
-        "defense": 30,
+        "defense": 75,
         "speed": 0
     },
     "Exploiter Charm III": {
         "name": "Exploiter Charm III",
         "type": 2,
-        "rarity": 5,
+        "rarity": 6,
         "image": "",
-        "maxHP": 50,
-        "attack": 15,
-        "magic": 15,
-        "defense": 0,
+        "maxHP": 250,
+        "attack": 25,
+        "magic": 25,
+        "defense": 25,
         "speed": 0
     },
     "Masamune": {
@@ -490,7 +490,7 @@
         "image": "",
         "maxHP": 25,
         "attack": 0,
-        "magic": 10,
+        "magic": 15,
         "defense": 0,
         "speed": 0
     },
@@ -634,7 +634,7 @@
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 30,
+        "defense": 50,
         "speed": 0
     },
     "Ultimate Dreadwyrm Earring": {
