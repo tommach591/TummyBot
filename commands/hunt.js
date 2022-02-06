@@ -948,15 +948,114 @@ module.exports = {
                     var selectedindex = Math.floor(Number(args[2])) - 1;
 
                     if (args[1] == "sort") {
-                        userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                            if (scrolls[firstEl].name < scrolls[secondEl].name) {
-                                return -1;
-                            }
-                            if (scrolls[firstEl].name > scrolls[secondEl].name) {
-                                return 1;
-                            }
-                            return 0;
-                        });
+
+                        var type = args[2];
+
+                        switch(type) {
+                            case "hp":
+                            case "maxhp":
+                            case "health":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].maxHP < scrolls[secondEl].maxHP) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].maxHP > scrolls[secondEl].maxHP) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                break;
+                            case "atk":
+                            case "attack":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                break;
+                            case "mag":
+                            case "matk":
+                            case "magic":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].magic < scrolls[secondEl].magic) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].magic > scrolls[secondEl].magic) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                break;
+                            case "def":
+                            case "defense":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].defense < scrolls[secondEl].defense) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].defense > scrolls[secondEl].defense) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                break;
+                            case "spd":
+                            case "speed":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].speed < scrolls[secondEl].speed) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].speed > scrolls[secondEl].speed) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                break;
+                            default:
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                break;
+                        }
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
                         embedMsg.setDescription('Scrolls sorted!');
