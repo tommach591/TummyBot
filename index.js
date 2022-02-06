@@ -217,7 +217,7 @@ let spawnMonster = (newTime) => {
         }
         var selectedMonster;
 
-        if (currHunt.lastDifficulty.length == 5) {
+        if (currHunt.lastDifficulty.length == 3) {
             currHunt.lastDifficulty = [];
         }
 

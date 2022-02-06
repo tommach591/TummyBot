@@ -456,7 +456,7 @@
         "magicdefense": 0,
         "attackCD": 180000,
         "difficulty": 5,
-        "loot": []
+        "loot": ["Giftbox"]
     },
     "28": {
         "id": "28",
@@ -814,5 +814,39 @@
         "attackCD": 15000,
         "difficulty": 5,
         "loot": ["Ultimate Dreadwyrm Blade", "Ultimate Dreadwyrm Shield", "Ultimate Dreadwyrm Earring"]
+    },
+    "49": {
+        "id": "49",
+        "name": "Inuyasha",
+        "info": "The half demon.",
+        "entry": "Give me the shikon no tama!",
+        "shoutout": "Wind Scar!",
+        "death": "One day I'll get my hands on the shikon no tama...",
+        "image": "https://c.tenor.com/GlZmqFJhIVkAAAAC/inuyasha.gif",
+        "attackImage": "https://c.tenor.com/1JDPpVKp3gEAAAAC/inuyasha-sword.gif",
+        "maxHP": 7000,
+        "attack": 50,
+        "defense": 20,
+        "magicdefense": 20,
+        "attackCD": 12000,
+        "difficulty": 4,
+        "loot": ["Tessaiga"]
+    },
+    "50": {
+        "id": "50",
+        "name": "Sangonomiya Kokomi",
+        "info": "The young Divine Priestess of Watatsumi Island and a descendant of the Sangonomiya Clan.",
+        "entry": "I am Sangonomiya Kokomi, the Divine Priestess of Watatsumi Island.",
+        "shoutout": "Torrents, bring refuge!",
+        "death": "Must learn from my mistakes...",
+        "image": "https://c.tenor.com/af1VbWzivI8AAAAC/kokomi-kokomi-genshin.gif",
+        "attackImage": "https://c.tenor.com/91d8EEhocw0AAAAC/sangonomiya-kokomi-kokomi.gif",
+        "maxHP": 12000,
+        "attack": 50,
+        "defense": 10,
+        "magicdefense": 30,
+        "attackCD": 15000,
+        "difficulty": 4,
+        "loot": ["Everlasting Moonglow"]
     }
 }

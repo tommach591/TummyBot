@@ -647,5 +647,38 @@
         "magic": 12,
         "defense": 0,
         "speed": 0
+    },
+    "Giftbox": {
+        "name": "Giftbox",
+        "type": 0,
+        "rarity": 5,
+        "image": "",
+        "maxHP": -10000,
+        "attack": 250,
+        "magic": 250,
+        "defense": 0,
+        "speed": -1800
+    },
+    "Tessaiga": {
+        "name": "Tessaiga",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 40,
+        "magic": 0,
+        "defense": 0,
+        "speed": 5
+    },
+    "Everlasting Moonglow": {
+        "name": "Everlasting Moonglow",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 120,
+        "attack": 0,
+        "magic": 30,
+        "defense": 0,
+        "speed": 0
     }
 }
