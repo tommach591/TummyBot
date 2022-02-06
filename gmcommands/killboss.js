@@ -8,7 +8,6 @@ module.exports = {
 
         if (userData[userid].gm >= 1) {
             if (currHunt["active"]) {
-                currHunt.lastDifficulty.push(currHunt["active"].difficulty);
                 delete currHunt["active"];
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('FF0000');
