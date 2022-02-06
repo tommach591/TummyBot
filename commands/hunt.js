@@ -1136,6 +1136,7 @@ module.exports = {
                         
                         if (!isNaN(index)) {
                             switch(choice) {
+                                case "inv":
                                 case "equip":
                                     if (index >= userHunt[userid].equips.length || index < 0) {
                                         embedMsg.setTitle('Error!');
@@ -1304,6 +1305,7 @@ module.exports = {
                     var target = Math.floor(Number(args[2]) - 1);
                     if (!isNaN(target)) {
                         switch(type) {
+                            case "inv":
                             case "equip":
                                 if (target < 0 || target >= userHunt[userid].equips.length) {
                                     embedMsg.setTitle('Error!');
