@@ -864,20 +864,30 @@ module.exports = {
                         var count = 0;
 
                         for (let i = 0; i < userHunt[userid].scrolls.length; i++) {
-                            if (count >= 3) {
+                            if (count >= 9) {
                                 allscrolls[index] += "\n";
                                 index++;
                                 count = 0;
                                 allscrolls.push("");
                             }
                             var element = userHunt[userid].scrolls[i];
-                            allscrolls[index] += "**__" + (i + 1) + ". " + scrolls[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-                            + "\nMaxHP: " + (scrolls[element].maxHP) 
-                            + "\nAttack: " + (scrolls[element].attack)
-                            + "\nMagic: " + (scrolls[element].magic) 
-                            + "\nDefense: " + (scrolls[element].defense)
-                            + "\nSpeed: " + (scrolls[element].speed)
-                            + "\n\n";
+                            allscrolls[index] += "**__" + (i + 1) + ". " + scrolls[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
+                            if (scrolls[element].maxHP != 0) {
+                                allscrolls[index] += "\nMaxHP: " + (scrolls[element].maxHP);
+                            }
+                            if (scrolls[element].attack != 0) {
+                                allscrolls[index] += "\nAttack: " + (scrolls[element].attack);
+                            }
+                            if (scrolls[element].magic != 0) {
+                                allscrolls[index] += "\nMagic: " + (scrolls[element].magic);
+                            }
+                            if (scrolls[element].defense != 0) {
+                                allscrolls[index] += "\nDefense: " + (scrolls[element].defense);
+                            }
+                            if (scrolls[element].speed != 0) {
+                                allscrolls[index] += "\nSpeed: " + (scrolls[element].speed);
+                            }
+                            allscrolls[index] += "\n\n";
                             count++;
                         }
 
