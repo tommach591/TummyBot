@@ -864,7 +864,7 @@ module.exports = {
                         var count = 0;
 
                         for (let i = 0; i < userHunt[userid].scrolls.length; i++) {
-                            if (count >= 9) {
+                            if (count >= 6) {
                                 allscrolls[index] += "\n";
                                 index++;
                                 count = 0;
