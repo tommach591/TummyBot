@@ -463,7 +463,7 @@ module.exports = {
 
                             currHunt.lastSpawn = newTime.getTime();
                             currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
-                            currHunt.lastDifficulty = 0;
+                            currHunt.lastDifficulty = [];
 
                             var rewardLevel = currHunt["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
