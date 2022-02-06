@@ -956,10 +956,10 @@ module.exports = {
                             case "maxhp":
                             case "health":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].maxHP < scrolls[secondEl].maxHP) {
+                                    if (scrolls[firstEl].maxHP > scrolls[secondEl].maxHP) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].maxHP > scrolls[secondEl].maxHP) {
+                                    if (scrolls[firstEl].maxHP < scrolls[secondEl].maxHP) {
                                         return 1;
                                     }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
@@ -974,10 +974,10 @@ module.exports = {
                             case "atk":
                             case "attack":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack) {
+                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack) {
+                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack) {
                                         return 1;
                                     }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
@@ -993,10 +993,10 @@ module.exports = {
                             case "matk":
                             case "magic":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].magic < scrolls[secondEl].magic) {
+                                    if (scrolls[firstEl].magic > scrolls[secondEl].magic) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].magic > scrolls[secondEl].magic) {
+                                    if (scrolls[firstEl].magic < scrolls[secondEl].magic) {
                                         return 1;
                                     }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
@@ -1011,10 +1011,10 @@ module.exports = {
                             case "def":
                             case "defense":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].defense < scrolls[secondEl].defense) {
+                                    if (scrolls[firstEl].defense > scrolls[secondEl].defense) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].defense > scrolls[secondEl].defense) {
+                                    if (scrolls[firstEl].defense < scrolls[secondEl].defense) {
                                         return 1;
                                     }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
@@ -1029,10 +1029,10 @@ module.exports = {
                             case "spd":
                             case "speed":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].speed < scrolls[secondEl].speed) {
+                                    if (scrolls[firstEl].speed > scrolls[secondEl].speed) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].speed > scrolls[secondEl].speed) {
+                                    if (scrolls[firstEl].speed < scrolls[secondEl].speed) {
                                         return 1;
                                     }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
