@@ -937,7 +937,22 @@ module.exports = {
                     var choice = args[1];
                     var selectedindex = Math.floor(Number(args[2])) - 1;
 
-                    if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < userHunt[userid].scrolls.length) {
+                    if (args[1] == "sort") {
+                        userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                            if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                return -1;
+                            }
+                            if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                        embedMsg.setTitle('Success!');
+                        embedMsg.setColor('00FF00');
+                        embedMsg.setDescription('Scrolls sorted!');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < userHunt[userid].scrolls.length) {
                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
                         switch (choice) {
                             case "weapon":
