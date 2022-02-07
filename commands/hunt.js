@@ -970,6 +970,7 @@ module.exports = {
                                     }
                                     return 0;
                                 });
+                                embedMsg.setDescription('Scrolls sorted by HP!');
                                 break;
                             case "atk":
                             case "attack":
@@ -988,6 +989,7 @@ module.exports = {
                                     }
                                     return 0;
                                 });
+                                embedMsg.setDescription('Scrolls sorted by attack!');
                                 break;
                             case "mag":
                             case "matk":
@@ -1007,6 +1009,7 @@ module.exports = {
                                     }
                                     return 0;
                                 });
+                                embedMsg.setDescription('Scrolls sorted by magic!');
                                 break;
                             case "def":
                             case "defense":
@@ -1025,6 +1028,7 @@ module.exports = {
                                     }
                                     return 0;
                                 });
+                                embedMsg.setDescription('Scrolls sorted by defense!');
                                 break;
                             case "spd":
                             case "speed":
@@ -1043,6 +1047,7 @@ module.exports = {
                                     }
                                     return 0;
                                 });
+                                embedMsg.setDescription('Scrolls sorted by speed!');
                                 break;
                             default:
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
@@ -1054,11 +1059,11 @@ module.exports = {
                                     }
                                     return 0;
                                 });
+                                embedMsg.setDescription('Scrolls sorted by name!');
                                 break;
                         }
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
-                        embedMsg.setDescription('Scrolls sorted!');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < userHunt[userid].scrolls.length) {
