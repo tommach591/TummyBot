@@ -619,6 +619,18 @@ module.exports = {
                         if (equips[items[firstEl].name].rarity < equips[items[secondEl].name].rarity) {
                             return 1;
                         }
+                        if (equips[items[firstEl].name].type < equips[items[secondEl].name].type) {
+                            return -1;
+                        }
+                        if (equips[items[firstEl].name].type > equips[items[secondEl].name].type) {
+                            return 1;
+                        }
+                        if (items[firstEl].name < items[secondEl].name) {
+                            return -1;
+                        }
+                        if (items[firstEl].name > items[secondEl].name) {
+                            return 1;
+                        }
                         return 0;
                     });
                     embedMsg.setTitle('Success!');
