@@ -674,19 +674,44 @@ module.exports = {
                         + "\nRarity: " + standard.rarity
                         + "\nType: " + equipType;
                         if (items[element].maxHP + standard.maxHP != 0) {
-                            equipment[index] += "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")";
+                            if (items[element].maxHP < 0) {
+                                equipment[index] += "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (" + items[element].maxHP + ")";
+                            }
+                            else {
+                                equipment[index] += "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")";
+                            }
                         }
                         if (items[element].attack + standard.attack != 0) {
-                            equipment[index] += "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")";
+                            if (items[element].attack < 0) {
+                                equipment[index] += "\nAttack: " + (items[element].attack + standard.attack) + " (" + items[element].attack + ")";
+                            }
+                            else {
+                                equipment[index] += "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")";
+                            }
                         }
                         if (items[element].magic + standard.magic != 0) {
-                            equipment[index] += "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")";
+                            if (items[element].magic < 0) {
+                                equipment[index] += "\nMagic: " + (items[element].magic + standard.magic) + " (" + items[element].magic + ")";
+                            }
+                            else {
+                                equipment[index] += "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")";
+                            }
                         }
                         if (items[element].defense + standard.defense != 0) {
-                            equipment[index] += "\nDefense: " + (items[element].defense + standard.defense) + " (+" + items[element].defense + ")";
+                            if (items[element].defense < 0) {
+                                equipment[index] += "\nDefense: " + (items[element].defense + standard.defense) + " (" + items[element].defense + ")";
+                            }
+                            else {
+                                equipment[index] += "\nDefense: " + (items[element].defense + standard.defense) + " (+" + items[element].defense + ")";
+                            }
                         }
                         if (items[element].speed + standard.speed != 0) {
-                            equipment[index] += "\nSpeed: " + (items[element].speed + standard.speed) + " (+" + items[element].speed + ")";
+                            if (items[element].speed < 0) {
+                                equipment[index] += "\nSpeed: " + (items[element].speed + standard.speed) + " (" + items[element].speed + ")";
+                            }
+                            else {
+                                equipment[index] += "\nSpeed: " + (items[element].speed + standard.speed) + " (+" + items[element].speed + ")";
+                            }
                         }
                         equipment[index] += "\nSlots: " + items[element].slots;
                         equipment[index] += "\n\n";
