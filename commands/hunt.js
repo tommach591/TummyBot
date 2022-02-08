@@ -625,6 +625,12 @@ module.exports = {
                         if (equips[items[firstEl].name].type > equips[items[secondEl].name].type) {
                             return 1;
                         }
+                        if (items[firstEl].slots < items[secondEl].slots) {
+                            return -1;
+                        }
+                        if (items[firstEl].slots > items[secondEl].slots) {
+                            return 1;
+                        }
                         if (items[firstEl].name < items[secondEl].name) {
                             return -1;
                         }
@@ -643,7 +649,7 @@ module.exports = {
                     var index = 0;
                     var count = 0;
                     userHunt[userid].equips.forEach((element) => {
-                        if (count >= 3) {
+                        if (count >= 4) {
                             equipment[index] += "\n";
                             index++;
                             count = 0;
@@ -666,14 +672,24 @@ module.exports = {
 
                         equipment[index] += "**__" + (userHunt[userid].equips.indexOf(element) + 1) + ". " + items[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                         + "\nRarity: " + standard.rarity
-                        + "\nType: " + equipType 
-                        + "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")"
-                        + "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")"
-                        + "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")"
-                        + "\nDefense: " + (items[element].defense + standard.defense) + " (+" + items[element].defense + ")"
-                        + "\nSpeed: " + (items[element].speed + standard.speed) + " (+" + items[element].speed + ")"
-                        + "\nSlots: " + items[element].slots
-                        + "\n\n";
+                        + "\nType: " + equipType;
+                        if (items[element].maxHP + standard.maxHP != 0) {
+                            equipment[index] += "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")";
+                        }
+                        if (items[element].attack + standard.attack != 0) {
+                            equipment[index] += "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")";
+                        }
+                        if (items[element].magic + standard.magic != 0) {
+                            equipment[index] += "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")";
+                        }
+                        if (items[element].defense + standard.defense != 0) {
+                            equipment[index] += "\nDefense: " + (items[element].defense + standard.defense) + " (+" + items[element].defense + ")";
+                        }
+                        if (items[element].speed + standard.speed != 0) {
+                            equipment[index] += "\nSpeed: " + (items[element].speed + standard.speed) + " (+" + items[element].speed + ")";
+                        }
+                        equipment[index] += "\nSlots: " + items[element].slots;
+                        equipment[index] += "\n\n";
                         count++;
                     });
 
