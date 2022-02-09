@@ -848,5 +848,22 @@
         "attackCD": 15000,
         "difficulty": 4,
         "loot": ["Everlasting Moonglow"]
+    },
+    "51": {
+        "id": "51",
+        "name": "Calamity Ganon",
+        "info": "Calamity Ganon is known as a primal evil that has appeared throughout Hyrule's history.",
+        "entry": "Ganon awakens!",
+        "shoutout": "Ganon rains down malice!",
+        "death": "Ganon has been sealed!",
+        "image": "https://pa1.narvii.com/6177/6cad9ea2bdeee418e2d88372482e0f8fddf64917_hq.gif",
+        "attackImage": "https://pa1.narvii.com/6408/2c71c2038ba9a23793983159913cea41cd3de735_hq.gif",
+        "maxHP": 12000,
+        "attack": 300,
+        "defense": 50,
+        "magicdefense": 50,
+        "attackCD": 30000,
+        "difficulty": 5,
+        "loot": ["Master Sword", "Hero's Tunic", "Triforce of Courage"]
     }
 }

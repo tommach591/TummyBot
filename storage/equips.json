@@ -691,5 +691,38 @@
         "magic": 25,
         "defense": 0,
         "speed": 0
+    },
+    "Master Sword": {
+        "name": "Master Sword",
+        "type": 0,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 45,
+        "magic": 0,
+        "defense": 0,
+        "speed": 10
+    },
+    "Hero's Tunic": {
+        "name": "Hero's Tunic",
+        "type": 1,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 150,
+        "attack": 0,
+        "magic": 0,
+        "defense": 20,
+        "speed": 0
+    },
+    "Triforce of Courage": {
+        "name": "Triforce of Courage",
+        "type": 2,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 100,
+        "attack": 20,
+        "magic": 0,
+        "defense": 0,
+        "speed": 5
     }
 }
