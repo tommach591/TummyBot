@@ -455,8 +455,8 @@
         "type": 0,
         "rarity": 4,
         "image": "",
-        "maxHP": -25,
-        "attack": 55,
+        "maxHP": 0,
+        "attack": 60,
         "magic": 0,
         "defense": 0,
         "speed": -20
@@ -478,9 +478,9 @@
         "rarity": 4,
         "image": "",
         "maxHP": 50,
-        "attack": 20,
+        "attack": 25,
         "magic": 0,
-        "defense": 12,
+        "defense": 20,
         "speed": 0
     },
     "Slifer the Sky Dragon Card": {
@@ -522,8 +522,8 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 50,
-        "magic": 50,
+        "attack": 55,
+        "magic": 55,
         "defense": 0,
         "speed": -70
     },
@@ -535,7 +535,7 @@
         "maxHP": 50,
         "attack": 35,
         "magic": 0,
-        "defense": 5,
+        "defense": 0,
         "speed": 0
     },
     "Z-Ring": {
@@ -557,7 +557,7 @@
         "maxHP": 50,
         "attack": 0,
         "magic": 35,
-        "defense": 5,
+        "defense": 0,
         "speed": 0
     },
     "Staff of Homa": {
@@ -565,10 +565,10 @@
         "type": 0,
         "rarity": 4,
         "image": "",
-        "maxHP": 75,
+        "maxHP": 50,
         "attack": 0,
         "magic": 25,
-        "defense": 15,
+        "defense": 20,
         "speed": 0
     },
     "Rasengan": {
@@ -613,7 +613,7 @@
         "attack": 0,
         "magic": 45,
         "defense": 0,
-        "speed": -10
+        "speed": -5
     },
     "Ultimate Dreadwyrm Blade": {
         "name": "Ultimate Dreadwyrm Blade",
@@ -686,9 +686,9 @@
         "type": 0,
         "rarity": 4,
         "image": "",
-        "maxHP": 25,
-        "attack": 25,
-        "magic": 25,
+        "maxHP": 0,
+        "attack": 20,
+        "magic": 20,
         "defense": 0,
         "speed": 0
     },
@@ -724,5 +724,16 @@
         "magic": 0,
         "defense": 0,
         "speed": 5
+    },
+    "Real Knife": {
+        "name": "Real Knife",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 40,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
     }
 }
