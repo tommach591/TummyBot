@@ -64,7 +64,7 @@ module.exports = {
 
                 if (equips[itemName]) {
                     var itemObtained = generateEquip(itemName);
-                    userHunt[player].equips.push(itemObtained);
+                    userHunt[mention].equips.push(itemObtained);
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
                     embedMsg.setDescription(userData[mention].name + ' was gifted a ' + itemName + '!');
