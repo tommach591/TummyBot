@@ -534,6 +534,10 @@ client.on('messageCreate', message => {
                 if (userData[sender.id])
                     client.gmcommands.get('spawnboss').execute(message, args, sender.id, userData, currHunt, monsterdex, client);
                 break;
+            case 'spawnequip':
+                if (userData[sender.id])
+                    client.gmcommands.get('spawnequip').execute(message, args, sender.id, userData, userHunt, items, equips, client);
+                break;
             case 'killboss':
                 if (userData[sender.id])
                     client.gmcommands.get('killboss').execute(message, args, sender.id, userData, currHunt, monsterdex, client);
