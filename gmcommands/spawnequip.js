@@ -59,7 +59,10 @@ module.exports = {
 
                 var itemName = "";
                 for (let i = 1; i < args.length; i++) {
-                    itemName += args[i] + " ";
+                    if (i != 1) {
+                        itemName += " ";
+                    }
+                    itemName += args[i];
                 }
 
                 if (equips[itemName]) {
