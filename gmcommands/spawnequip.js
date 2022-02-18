@@ -62,7 +62,7 @@ module.exports = {
                     itemName += args[i];
                 }
 
-                if (items[itemName]) {
+                if (equips[itemName]) {
                     var itemObtained = generateEquip(itemName);
                     userHunt[player].equips.push(itemObtained);
                     embedMsg.setTitle('Success!');
