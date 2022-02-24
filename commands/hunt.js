@@ -453,7 +453,7 @@ module.exports = {
                         userHunt[userid].lastAttack = newTime.getTime();
 
                         var isCrit = false;
-                        var critDmg = 2.00;
+                        var critDmg = 5.00;
 
                         var crit = Math.floor((Math.random() * 100) + 1);
                         var critChance = (100 * (speed / 100)) + 1;
@@ -585,7 +585,7 @@ module.exports = {
                         else {
                             embedMsg.setTitle("Attack!");
                             if (isCrit) {
-                                embedMsg.setDescription(userData[userid].name + " lands a critical hit! Deals " + damageDealt + "(" + critDmg + "%)" + " damage to " + currHunt["active"].name + "!");
+                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt + "(" + critDmg + "x)" + " damage to " + currHunt["active"].name + "!");
                             }
                             else {
                                 embedMsg.setDescription(userData[userid].name + " deals " + damageDealt + " damage to " + currHunt["active"].name + "!");
