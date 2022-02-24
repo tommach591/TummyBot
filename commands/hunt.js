@@ -376,10 +376,13 @@ module.exports = {
                         currHunt["active"].channels.push(message.channel);
                     }
                     var timeDiff = newTime.getTime() - userHunt[userid].lastAttack;
-                    var attackCD = (1000 * 3) - (speed * 100);
+                    //var attackCD = (1000 * 3) - (speed * 100);
+                    var attackCD = (1000 * 4.75);
+                    /*
                     if (attackCD < 500) {
                         attackCD = 500;
                     }
+                    */
 
                     if (currHunt["active"].retreated) {    
                         embedMsg.setTitle("Chotto matte!");
@@ -439,6 +442,7 @@ module.exports = {
                         }
                         var flatDamage = Math.floor(physical + magical);
                         var damageDealt = Math.floor(flatDamage + (flatDamage * ((Math.random() * 6) - 3) / 10));
+
                         if (damageDealt <= 0) {
                             damageDealt = 1;
                         }
@@ -447,6 +451,22 @@ module.exports = {
                         }
 
                         userHunt[userid].lastAttack = newTime.getTime();
+
+                        var isCrit = false;
+                        var critDmg = 2.00;
+
+                        var crit = Math.floor((Math.random() * 100) + 1);
+                        var critChance = (100 * (speed / 100)) + 1;
+                        if (crit <= critChance) {
+                            isCrit = true;
+                        }
+
+                        if (isCrit) {
+                            if (speed > 100) {
+                                critDmg += (speed - 100) / 10000;
+                            }
+                            damageDealt = Math.floor(damageDealt * critDmg);
+                        }
 
                         currHunt["active"].currentHP -= damageDealt;
                         currHunt["active"].playerDamage[currHunt["active"].targets.indexOf(userid)] += damageDealt;
@@ -564,7 +584,12 @@ module.exports = {
                         }
                         else {
                             embedMsg.setTitle("Attack!");
-                            embedMsg.setDescription(userData[userid].name + " deals " + damageDealt + " damage to " + currHunt["active"].name + "!");
+                            if (isCrit) {
+                                embedMsg.setDescription(userData[userid].name + " lands a critical hit! Deals " + damageDealt + "(" + critDmg + "%)" + " damage to " + currHunt["active"].name + "!");
+                            }
+                            else {
+                                embedMsg.setDescription(userData[userid].name + " deals " + damageDealt + " damage to " + currHunt["active"].name + "!");
+                            }
                             embedMsg.setImage(randomAttackGifs[Math.floor(Math.random() * randomAttackGifs.length)]);
                             embedMsg.setColor("00FF00");
                             embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
