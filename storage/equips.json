@@ -746,5 +746,16 @@
         "magic": -3,
         "defense": 1337,
         "speed": 1337
+    },
+    "Legendary Stick": {
+        "name": "Legendary Stick",
+        "type": 0,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 0,
+        "attack": 1,
+        "magic": 1,
+        "defense": 0,
+        "speed": 0
     }
 }
