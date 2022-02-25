@@ -456,7 +456,7 @@ module.exports = {
                         if (magical < 0) {
                             magical = 0;
                         }
-                        
+
                         var flatDamage = Math.floor(physical + magical);
                         var damageDealt = Math.floor(flatDamage + (flatDamage * ((Math.random() * 6) - 3) / 10));
 
@@ -471,7 +471,7 @@ module.exports = {
 
                         if (isCrit) {
                             if (speed > 100) {
-                                critDmg += (speed - 100) / 10000;
+                                critDmg += ((speed - 100) / 100);
                             }
                             damageDealt = Math.floor(damageDealt * critDmg);
                         }
