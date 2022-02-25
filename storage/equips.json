@@ -757,5 +757,38 @@
         "magic": 1,
         "defense": 0,
         "speed": 0
+    },
+    "Chidori": {
+        "name": "Chidori",
+        "type": 0,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 30,
+        "defense": 0,
+        "speed": 20
+    },
+    "Senjutsu Susanoo": {
+        "name": "Senjutsu Susanoo",
+        "type": 1,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 30,
+        "defense": 0,
+        "speed": 20
+    },
+    "Rinnegan": {
+        "name": "Rinnegan",
+        "type": 2,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 50
     }
 }
