@@ -214,7 +214,7 @@ module.exports = {
                 currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
 
                 currentCondition += "Respawn: ";
-                var respawntime = Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000);
+                var respawntime = Math.floor((1000 * 120 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000);
                 if (userHunt[userid].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated && respawntime > 0) {
                     currentCondition += respawntime.toString() + "s\n";
                 }
@@ -378,7 +378,7 @@ module.exports = {
                 if (userHunt[userid].currentHP <= 0) {
                     var newTime = new Date();
                     var timeDiff = newTime.getTime() - userHunt[userid].deathTime;
-                    if (timeDiff >= 1000 * 180) {
+                    if (timeDiff >= 1000 * 120) {
                         userHunt[userid].currentHP = maxHP;
                         const reviveMsg = new MessageEmbed()
                         reviveMsg.setTitle("A Hero Returned to Battle!");
@@ -421,7 +421,7 @@ module.exports = {
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
                         embedMsg.setImage("https://media4.giphy.com/media/Wr2747CnxwBSqyK6xt/200.gif");
                         embedMsg.setColor("FF0000");
-                        embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
+                        embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 120 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (timeDiff < attackCD) {
