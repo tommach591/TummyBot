@@ -199,7 +199,7 @@ module.exports = {
                 if (critChance > 100) {
                     critChance = 100;
                 }
-                currentCondition += "Affinity: " + critChance + "%\n";
+                currentCondition += "Affinity: " + critChance,toFixed(2) + "%\n";
 
                 var critDmg = 5;
                 if (speed > 100) {
