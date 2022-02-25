@@ -203,7 +203,7 @@ module.exports = {
 
                 var critDmg = 5;
                 if (speed > 100) {
-                    critDmg += ((speed - 100) / 100);
+                    critDmg += (((speed - 100) / 100) * 5);
                 }
                 currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
 
@@ -456,18 +456,12 @@ module.exports = {
                         var physical = 0;
                         var magical = 0;
                         if (isCrit) {
-                            physical = (attack - Math.floor(currHunt["active"].defense / 2));
-                            magical = (magic - Math.floor(currHunt["active"].magicdefense / 2));
+                            physical = Math.floor(attack * (100 / (100 + (currHunt["active"].defense / 2))));
+                            magical = Math.floor(magic * (100 / (100 + (currHunt["active"].magicdefense / 2))));
                         }
                         else {
-                            physical = (attack - currHunt["active"].defense);
-                            magical = (magic - currHunt["active"].magicdefense);
-                        }
-                        if (physical < 0) {
-                            physical = 0;
-                        }
-                        if (magical < 0) {
-                            magical = 0;
+                            physical = Math.floor(attack * (100 / (100 + currHunt["active"].defense)));
+                            magical = Math.floor(magic * (100 / (100 + currHunt["active"].magicdefense)));
                         }
 
                         var flatDamage = Math.floor(physical + magical);
@@ -484,7 +478,7 @@ module.exports = {
 
                         if (isCrit) {
                             if (speed > 100) {
-                                critDmg += ((speed - 100) / 100);
+                                critDmg += (((speed - 100) / 100) * 5);
                             }
                             damageDealt = Math.floor(damageDealt * critDmg);
                         }

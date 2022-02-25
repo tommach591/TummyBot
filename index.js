@@ -306,7 +306,7 @@ let attackAll = (newTime) => {
                     defense += accessory.defense + equips[accessory.name].defense;
                 }
 
-                var damageDealt = currHunt["active"].attack - defense;
+                var damageDealt = Math.floor(currHunt["active"].attack * (100 / (100 + defense)));
                 if (alivePlayers == 1) {
                     damageDealt = Math.floor(1.5 * damageDealt);
                 }
