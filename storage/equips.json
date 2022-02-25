@@ -742,10 +742,10 @@
         "rarity": 10,
         "image": "",
         "maxHP": 1337,
-        "attack": -2,
-        "magic": -3,
+        "attack": -1337,
+        "magic": -1337,
         "defense": 1337,
-        "speed": 1337
+        "speed": 133700
     },
     "Legendary Stick": {
         "name": "Legendary Stick",
