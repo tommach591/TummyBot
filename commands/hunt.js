@@ -196,7 +196,7 @@ module.exports = {
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\n";
 
                 if (currHunt["active"])
-                    currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 5)))) * 100).toFixed(2) + "%\n";
+                    currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense)))) * 100).toFixed(2) + "%\n";
                 else {
                     currentCondition += "Resistance: 0.00%\n";
                 }
