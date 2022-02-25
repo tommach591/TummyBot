@@ -195,7 +195,11 @@ module.exports = {
                 var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\n";
 
-                currentCondition += "Resistance: " + ((1 - (100 / (100 + (defense * 5)))) * 100).toFixed(2) + "%\n";
+                if (currHunt["active"])
+                    currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 5)))) * 100).toFixed(2) + "%\n";
+                else {
+                    currentCondition += "Resistance: " + ((1 - (100 / (100 + (defense * 5)))) * 100).toFixed(2) + "%\n";
+                }
                 
                 var critChance = (100 * (speed / 100));
                 if (critChance > 100) {
