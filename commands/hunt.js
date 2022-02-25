@@ -198,7 +198,7 @@ module.exports = {
                 if (currHunt["active"])
                     currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 5)))) * 100).toFixed(2) + "%\n";
                 else {
-                    currentCondition += "Resistance: --.--%\n";
+                    currentCondition += "Resistance: 0.00%\n";
                 }
                 
                 var critChance = (100 * (speed / 100));
