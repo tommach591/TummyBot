@@ -599,10 +599,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 10,
-        "magic": 10,
+        "attack": 5,
+        "magic": 5,
         "defense": 0,
-        "speed": 30
+        "speed": 40
     },
     "Updated Autopsy Report": {
         "name": "Updated Autopsy Report",
