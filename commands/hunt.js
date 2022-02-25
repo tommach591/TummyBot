@@ -199,13 +199,13 @@ module.exports = {
                 if (critChance > 100) {
                     critChance = 100;
                 }
-                currentCondition += "Crit Chance: " + critChance + "%\n";
+                currentCondition += "Affinity: " + critChance + "%\n";
 
                 var critDmg = 5;
                 if (speed > 100) {
                     critDmg += ((speed - 100) / 100);
                 }
-                currentCondition += "Crit Damage: " + critDmg.toFixed(2) + "x\n";
+                currentCondition += "Multiplier: " + critDmg.toFixed(2) + "x\n";
 
                 currentCondition += "Respawn: ";
                 var respawntime = Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000);
