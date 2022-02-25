@@ -735,5 +735,16 @@
         "magic": 0,
         "defense": 0,
         "speed": 0
+    },
+    "Ban Hammer": {
+        "name": "Ban Hammer",
+        "type": 0,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 1337,
+        "attack": 1337,
+        "magic": 1337,
+        "defense": 1337,
+        "speed": 1337
     }
 }

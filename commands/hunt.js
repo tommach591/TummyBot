@@ -430,28 +430,7 @@ module.exports = {
                                 return 0;
                             });
                         }
-
-
-                        var physical = (attack - currHunt["active"].defense);
-                        var magical = (magic - currHunt["active"].magicdefense);
-                        if (physical < 0) {
-                            physical = 0;
-                        }
-                        if (magical < 0) {
-                            magical = 0;
-                        }
-                        var flatDamage = Math.floor(physical + magical);
-                        var damageDealt = Math.floor(flatDamage + (flatDamage * ((Math.random() * 6) - 3) / 10));
-
-                        if (damageDealt <= 0) {
-                            damageDealt = 1;
-                        }
-                        if (damageDealt > currHunt["active"].currentHP) {
-                            damageDealt = currHunt["active"].currentHP;
-                        }
-
-                        userHunt[userid].lastAttack = newTime.getTime();
-
+                        
                         var isCrit = false;
                         var critDmg = 5.00;
 
@@ -460,6 +439,35 @@ module.exports = {
                         if (crit <= critChance) {
                             isCrit = true;
                         }
+
+                        var physical = 0;
+                        var magical = 0;
+                        if (isCrit) {
+                            physical = (attack - Math.floor(currHunt["active"].defense / 2));
+                            magical = (magic - Math.floor(currHunt["active"].magicdefense / 2));
+                        }
+                        else {
+                            physical = (attack - currHunt["active"].defense);
+                            magical = (magic - currHunt["active"].magicdefense);
+                        }
+                        if (physical < 0) {
+                            physical = 0;
+                        }
+                        if (magical < 0) {
+                            magical = 0;
+                        }
+                        
+                        var flatDamage = Math.floor(physical + magical);
+                        var damageDealt = Math.floor(flatDamage + (flatDamage * ((Math.random() * 6) - 3) / 10));
+
+                        if (damageDealt <= 0) {
+                            damageDealt = 1;
+                        }
+                        if (damageDealt > currHunt["active"].currentHP) {
+                            currHunt["active"].currentHP = 0;
+                        }
+
+                        userHunt[userid].lastAttack = newTime.getTime();
 
                         if (isCrit) {
                             if (speed > 100) {
@@ -585,7 +593,7 @@ module.exports = {
                         else {
                             embedMsg.setTitle("Attack!");
                             if (isCrit) {
-                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt + "(" + critDmg + "x)" + " damage to " + currHunt["active"].name + "!");
+                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt + " (" + critDmg + "x)" + " damage to " + currHunt["active"].name + "!");
                             }
                             else {
                                 embedMsg.setDescription(userData[userid].name + " deals " + damageDealt + " damage to " + currHunt["active"].name + "!");
