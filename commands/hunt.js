@@ -195,6 +195,18 @@ module.exports = {
                 var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\nRespawn: ";
                 
+                var critChance = (100 * (speed / 100)) + 1;
+                if (critChance > 100) {
+                    critChance = 100;
+                }
+                currentCondition += "Crit Chance: " + critChance + "%\n";
+
+                var critDmg = 5;
+                if (speed > 100) {
+                    critDmg += ((speed - 100) / 100);
+                }
+                currentCondition += "Crit Damage: " + critDmg.toFixed(2) + "x\n";
+                
                 var respawntime = Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000);
                 if (userHunt[userid].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated && respawntime > 0) {
                     currentCondition += respawntime.toString() + "s\n";
