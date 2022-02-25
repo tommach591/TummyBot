@@ -593,7 +593,7 @@ module.exports = {
                         else {
                             embedMsg.setTitle("Attack!");
                             if (isCrit) {
-                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt + " (" + critDmg + "x)" + " damage to " + currHunt["active"].name + "!");
+                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt + " (" + critDmg.toFixed(2) + "x)" + " damage to " + currHunt["active"].name + "!");
                             }
                             else {
                                 embedMsg.setDescription(userData[userid].name + " deals " + damageDealt + " damage to " + currHunt["active"].name + "!");
