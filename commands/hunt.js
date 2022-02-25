@@ -205,7 +205,7 @@ module.exports = {
                 if (speed > 100) {
                     critDmg += ((speed - 100) / 100);
                 }
-                currentCondition += "Multiplier: " + critDmg.toFixed(2) + "x\n";
+                currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
 
                 currentCondition += "Respawn: ";
                 var respawntime = Math.floor((1000 * 180 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000);
