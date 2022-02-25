@@ -195,7 +195,7 @@ module.exports = {
                 var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\n";
 
-                currentCondition += "Resistance: " + (100 - (100 / (100 + (defense * 15)))).toFixed + "%\n";
+                currentCondition += "Resistance: " + (100 - (100 / (100 + (defense * 15)))).toFixed(2) + "%\n";
                 
                 var critChance = (100 * (speed / 100));
                 if (critChance > 100) {
