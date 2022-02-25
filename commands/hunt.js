@@ -195,7 +195,7 @@ module.exports = {
                 var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\n";
                 
-                var critChance = (100 * (speed / 100)) + 1;
+                var critChance = (100 * (speed / 100));
                 if (critChance > 100) {
                     critChance = 100;
                 }
@@ -447,8 +447,8 @@ module.exports = {
                         var isCrit = false;
                         var critDmg = 5.00;
 
-                        var crit = Math.floor((Math.random() * 100) + 1);
-                        var critChance = (100 * (speed / 100)) + 1;
+                        var crit = Math.floor((Math.random() * 100));
+                        var critChance = (100 * (speed / 100));
                         if (crit <= critChance) {
                             isCrit = true;
                         }
