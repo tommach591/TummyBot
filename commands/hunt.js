@@ -464,7 +464,7 @@ module.exports = {
                             damageDealt = 1;
                         }
                         if (damageDealt > currHunt["active"].currentHP) {
-                            currHunt["active"].currentHP = 0;
+                            currHunt["active"].currentHP = damageDealt;
                         }
 
                         userHunt[userid].lastAttack = newTime.getTime();
