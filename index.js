@@ -322,7 +322,7 @@ let attackAll = (newTime) => {
                     currHunt["active"].deathCount++
                 }
                 else {
-                    playersHit += userData[target].name + " takes " + damageDealt + " damage!\n"; 
+                    playersHit += userData[target].name + " takes " + damageDealt + " damage!\n";
                 }
                 count++;
             }
