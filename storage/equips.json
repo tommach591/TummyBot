@@ -790,5 +790,27 @@
         "magic": 0,
         "defense": 0,
         "speed": 50
+    },
+    "Pencil": {
+        "name": "Pencil",
+        "type": 0,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 0,
+        "attack": 5,
+        "magic": 0,
+        "defense": 0,
+        "speed": 35
+    },
+    "Soap": {
+        "name": "Soap",
+        "type": 2,
+        "rarity": 4,
+        "image": "",
+        "maxHP": 150,
+        "attack": 0,
+        "magic": 15,
+        "defense": 0,
+        "speed": 10
     }
 }
