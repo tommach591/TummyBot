@@ -631,10 +631,10 @@
         "type": 1,
         "rarity": 5,
         "image": "",
-        "maxHP": 0,
+        "maxHP": 500,
         "attack": 0,
         "magic": 0,
-        "defense": 100,
+        "defense": 50,
         "speed": 0
     },
     "Ultimate Dreadwyrm Earring": {
