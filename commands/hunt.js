@@ -208,7 +208,7 @@ module.exports = {
                 currentCondition += "Affinity: " + critChance.toFixed(2) + "%\n";
 
                 var critDmg = 4;
-                critDmg += (((speed - 100) / 100) * 2);
+                critDmg += (speed * 0.02);
 
                 currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
 
@@ -479,7 +479,7 @@ module.exports = {
                         userHunt[userid].lastAttack = newTime.getTime();
 
                         if (isCrit) {
-                            critDmg += (((speed - 100) / 100) * 2);
+                            critDmg += (speed * 0.02);
                             damageDealt = Math.floor(damageDealt * critDmg);
                         }
 
