@@ -201,16 +201,15 @@ module.exports = {
                     currentCondition += "Resistance: 0.00%\n";
                 }
                 
-                var critChance = (100 * (speed / 100));
+                var critChance = (100 * (speed * 0.75 / 100));
                 if (critChance > 100) {
                     critChance = 100;
                 }
                 currentCondition += "Affinity: " + critChance.toFixed(2) + "%\n";
 
-                var critDmg = 5;
-                if (speed > 100) {
-                    critDmg += (((speed - 100) / 100) * 5);
-                }
+                var critDmg = 4;
+                critDmg += (((speed - 100) / 100) * 2);
+
                 currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
 
                 currentCondition += "Respawn: ";
@@ -451,10 +450,10 @@ module.exports = {
                         }
                         
                         var isCrit = false;
-                        var critDmg = 5.00;
+                        var critDmg = 4.00;
 
                         var crit = Math.floor((Math.random() * 100));
-                        var critChance = (100 * (speed / 100));
+                        var critChance = (100 * (speed * 0.75 / 100));
                         if (crit <= critChance) {
                             isCrit = true;
                         }
@@ -480,9 +479,7 @@ module.exports = {
                         userHunt[userid].lastAttack = newTime.getTime();
 
                         if (isCrit) {
-                            if (speed > 100) {
-                                critDmg += (((speed - 100) / 100) * 5);
-                            }
+                            critDmg += (((speed - 100) / 100) * 2);
                             damageDealt = Math.floor(damageDealt * critDmg);
                         }
 
