@@ -556,8 +556,15 @@ client.on('messageCreate', message => {
                     client.gmcommands.get('gm').execute(message, args, sender.id, userData, client);
                 break;
             case 'save':
-                if (userData[sender.id] && userData[sender.id].gm > 0)
+                if (userData[sender.id] && userData[sender.id].gm > 0) {
                     client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
+                    const embedMsg = new MessageEmbed();
+                    embedMsg.setTitle('Saved!');
+                    embedMsg.setColor('B5EAFF');
+                    embedMsg.setImage("https://c.tenor.com/TgPXdDAfIeIAAAAM/gawr-gura-gura.gif");
+                    embedMsg.setDescription('Files have been saved!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
                 break;
             case 'iv':
                 if (userData[sender.id] && userData[sender.id].gm > 0) {
