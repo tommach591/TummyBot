@@ -527,11 +527,11 @@ client.on('messageCreate', message => {
                     client.gmcommands.get('rewardall').execute(message, args, sender.id, userData, client);
                 break;
             case 'spawntime':
-                if (userData[sender.id])
+                if (userData[sender.id] && currHunt.lastSpawn)
                     client.gmcommands.get('spawntime').execute(message, args, sender.id, userData, currHunt, client);
                 break;
             case 'spawnboss':
-                if (userData[sender.id])
+                if (userData[sender.id] && currHunt.lastSpawn)
                     client.gmcommands.get('spawnboss').execute(message, args, sender.id, userData, currHunt, monsterdex, client);
                 break;
             case 'spawnequip':
