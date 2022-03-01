@@ -812,5 +812,38 @@
         "magic": 15,
         "defense": 0,
         "speed": 10
+    },
+    "Dual Spadroon": {
+        "name": "Dual Spadroon",
+        "type": 0,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 10,
+        "magic": 0,
+        "defense": 0,
+        "speed": 40
+    },
+    "Philosopher's Stone": {
+        "name": "Philosopher's Stone",
+        "type": 1,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 500,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "The Ultimate Eye": {
+        "name": "The Ultimate Eye",
+        "type": 2,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 20,
+        "magic": 0,
+        "defense": 0,
+        "speed": 30
     }
 }

@@ -688,11 +688,11 @@
         "death": "..?",
         "image": "https://media3.giphy.com/media/Kxf9Rgz20cx72DFGlv/200.gif",
         "attackImage": "https://c.tenor.com/g7_vznXJupgAAAAM/fall-guys-running.gif",
-        "maxHP": 5000,
+        "maxHP": 3500,
         "attack": 1,
         "defense": 0,
         "magicdefense": 0,
-        "attackCD": 3500,
+        "attackCD": 5000,
         "difficulty": 1,
         "loot": []
     },
@@ -899,5 +899,22 @@
         "attackCD": 15000,
         "difficulty": 1,
         "loot": []
+    },
+    "54": {
+        "id": "54",
+        "name": "Führer King Bradley",
+        "info": "One of the seven Homunculi. He was known as Wrath, the final homunculus created by Father.",
+        "entry": "God you say? Now this is intriguing, how much longer do you think your 'God' plans to wait before unleashing his fury? Just how many more thousands of lives must I take before he decides to strike me down?",
+        "shoutout": "The life of each human is worth one life, that's it. Nothing more, nothing less.",
+        "death": "I've lived my life by forever following the path that had been set for me. Thanks to the idiosyncrasies of humanity, it was... at least a life worth living for... and maybe even a life worth dying for.",
+        "image": "https://c.tenor.com/uUU_YxySmNUAAAAC/king-bradley-perfect-eye.gif",
+        "attackImage": "https://c.tenor.com/1iho87ZG91IAAAAC/king-bradley-greed.gif",
+        "maxHP": 20000,
+        "attack": 40,
+        "defense": 25,
+        "magicdefense": 15,
+        "attackCD": 2500,
+        "difficulty": 5,
+        "loot": ["Dual Spadroon", "Philosopher's Stone", "The Ultimate Eye"]
     }
 }
