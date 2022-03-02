@@ -153,7 +153,10 @@ module.exports = {
                 defense = 0;
             }
 
-            critChance = 0.05 + (100 * (speed * 0.75 / 100));
+            critChance = 5 + (100 * (speed * 0.75 / 100));
+            if (critChance > 100) {
+                critChance = 100;
+            }
             critDmg = 4 + (speed * 0.02);
 
             if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
@@ -207,11 +210,7 @@ module.exports = {
                     currentCondition += "Resistance: 0.00%\n";
                 }
                 
-                if (critChance > 100) {
-                    critChance = 100;
-                }
                 currentCondition += "Affinity: " + critChance.toFixed(2) + "%\n";
-
                 currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
 
                 currentCondition += "Respawn: ";
