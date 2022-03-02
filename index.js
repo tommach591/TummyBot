@@ -4,7 +4,6 @@ const AWS = require("aws-sdk");
 
 const { MessageEmbed } = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"] }); 
-process.env.DISCORD_TOKEN;
 
 const prefix = '!tp ';
 
@@ -682,4 +681,4 @@ process.on('unhandledRejection', (reason, promise) => {
     //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
 });
  
-client.login(DISCORD_TOKEN); // Last Line in File
+client.login(process.env.DISCORD_TOKEN); // Last Line in File
