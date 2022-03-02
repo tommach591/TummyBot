@@ -10,10 +10,6 @@ const prefix = '!tp ';
 const fs = require('fs');
 const { send } = require("process");
 
-const s3 = new aws.S3({
-    token: proccess.env.DISCORD_TOKEN
-});
-
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -78,7 +74,8 @@ const userPetParams = {
 const s3 = new AWS.S3({
     accessKeyId: config.accessKeyID,
     secretAccessKey: config.secretAccessKey,
-    Bucket: config.bucket
+    Bucket: config.bucket,
+    token: proccess.env.DISCORD_TOKEN
 });
 
 async function getObject(params) {
