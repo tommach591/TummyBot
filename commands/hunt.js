@@ -102,6 +102,8 @@ module.exports = {
         var magic;
         var defense;
         var speed;
+        var critChance;
+        var critDmg;
 
         let updateStats = () => {
             weapon = items[userHunt[userid].weapon];
@@ -151,9 +153,13 @@ module.exports = {
                 defense = 0;
             }
 
+            critChance = 0.05 + (100 * (speed * 0.75 / 100));
+            critDmg = 4 + (speed * 0.02);
+
             if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
                 userHunt[userid].currentHP = maxHP;
             }
+            
         }
 
         updateStats();
@@ -201,14 +207,10 @@ module.exports = {
                     currentCondition += "Resistance: 0.00%\n";
                 }
                 
-                var critChance = (100 * (speed * 0.75 / 100));
                 if (critChance > 100) {
                     critChance = 100;
                 }
                 currentCondition += "Affinity: " + critChance.toFixed(2) + "%\n";
-
-                var critDmg = 4;
-                critDmg += (speed * 0.02);
 
                 currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
 
@@ -450,10 +452,9 @@ module.exports = {
                         }
                         
                         var isCrit = false;
-                        var critDmg = 4.00;
 
                         var crit = Math.floor((Math.random() * 100));
-                        var critChance = (100 * (speed * 0.75 / 100));
+
                         if (crit <= critChance) {
                             isCrit = true;
                         }
@@ -479,7 +480,6 @@ module.exports = {
                         userHunt[userid].lastAttack = newTime.getTime();
 
                         if (isCrit) {
-                            critDmg += (speed * 0.02);
                             damageDealt = Math.floor(damageDealt * critDmg);
                         }
 
