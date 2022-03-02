@@ -9,7 +9,10 @@ const prefix = '!tp ';
 
 const fs = require('fs');
 const { send } = require("process");
-proccess.env.DISCORD_TOKEN;
+
+const s3 = new aws.S3({
+    token: proccess.env.DISCORD_TOKEN
+});
 
 client.commands = new Discord.Collection();
 
@@ -682,4 +685,4 @@ process.on('unhandledRejection', (reason, promise) => {
     //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
 });
  
-client.login(DISCORD_TOKEN); // Last Line in File
+client.login(s3.token); // Last Line in File
