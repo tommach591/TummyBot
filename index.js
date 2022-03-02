@@ -9,6 +9,7 @@ const prefix = '!tp ';
 
 const fs = require('fs');
 const { send } = require("process");
+proccess.env.DISCORD_TOKEN;
 
 client.commands = new Discord.Collection();
 
@@ -681,4 +682,4 @@ process.on('unhandledRejection', (reason, promise) => {
     //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
 });
  
-client.login('OTI0OTM2Njk1NTY3MjIwODE2.Ycl0bA.GD_-9lJp3_koJa8Y1y_ucDjbK34'); // Last Line in File
+client.login(DISCORD_TOKEN); // Last Line in File
