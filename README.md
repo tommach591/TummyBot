@@ -1,7 +1,7 @@
 # TummyBot
  A Discord Bot Project for fun.
  
-**Features**
+****Features****
 
 Gambling - Spend points on scratchers and blackjack
 
