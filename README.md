@@ -1,16 +1,17 @@
 # TummyBot
  A Discord Bot project for fun.
  
-# Features
+# Local Host
+ 1. Download repo
 
- Gambling - Spend points on scratchers and blackjack
+ 2. Install Node.js, if you haven't
 
- Fishing - Fish to make money
+ 3. In console project directory, type npm install discord.js
 
- Garden - Plant to make money
+ 4. Uncomment out Local Host Save Files in index.js
 
- Hunting - Fight cool bosses and get strong
+ 5. In save.js, comment out onlineSave() and uncomment localSave()
 
- Bank - Rich get richer
+ 6. In console project directory, type node .
 
- Pet - Raise a pet
+

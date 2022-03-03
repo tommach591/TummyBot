@@ -69,7 +69,7 @@ const userPetParams = {
 const s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
-    Bucket: config.bucket
+    Bucket: process.env.BUCKET
 });
 
 async function getObject(params) {
@@ -150,6 +150,14 @@ var userHunt = "";
 var items = "";
 var userPet = "";
 
+/* Local Host Save Files */
+// userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
+// userFish = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
+// userGarden = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
+// userHunt = JSON.parse(fs.readFileSync('storage/userHunt.json', 'utf8'));
+// items = JSON.parse(fs.readFileSync('storage/items.json', 'utf8'));
+// userPet = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
+
 const currentDate = new Date();
 
 client.once('ready', () => {
@@ -162,15 +170,6 @@ helpMsg.setTitle('Invalid command!');
 helpMsg.setColor('FF0000');
 helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
 helpMsg.setDescription('Use __!tp help__ for list of commands!');
-
-const admin = "<@!189892642627125248>"; // My Discord ID
-
-const errorMsg = new MessageEmbed();
-errorMsg.setTitle('CRITICAL ERROR!');
-errorMsg.setColor('FF0000');
-errorMsg.setDescription('The bot is at risk of crashing!!!');
-errorMsg.setImage("https://c.tenor.com/i51CEmR_1x4AAAAC/ame-gura.gif")
-errorMsg.setFooter("Don't type that command again!!!");
 
 let spawnMonster = (newTime) => {
     if (!currHunt.lastSpawn) {
@@ -547,7 +546,7 @@ client.on('messageCreate', message => {
                 break;
             case 'save':
                 if (userData[sender.id] && userData[sender.id].gm > 0) {
-                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
+                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
                     const embedMsg = new MessageEmbed();
                     embedMsg.setTitle('Saved!');
                     embedMsg.setColor('B5EAFF');
