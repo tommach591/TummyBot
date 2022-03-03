@@ -37,32 +37,32 @@ var scrolls = JSON.parse(fs.readFileSync('storage/scrolls.json', 'utf8'));
 var pets = JSON.parse(fs.readFileSync('storage/pets.json', 'utf8'));
 
 const userDataParams = {
-    Bucket: config.bucket,
+    Bucket: process.env.BUCKET,
     Key: "storage/userData.json"
 };
 
 const userFishParams = {
-    Bucket: config.bucket,
+    Bucket: process.env.BUCKET,
     Key: "storage/userFish.json"
 };
 
 const userGardenParams = {
-    Bucket: config.bucket,
+    Bucket: process.env.BUCKET,
     Key: "storage/userGarden.json"
 };
 
 const userHuntParams = {
-    Bucket: config.bucket,
+    Bucket: process.env.BUCKET,
     Key: "storage/userHunt.json"
 };
 
 const itemsParams = {
-    Bucket: config.bucket,
+    Bucket: process.env.BUCKET,
     Key: "storage/items.json"
 };
 
 const userPetParams = {
-    Bucket: config.bucket,
+    Bucket: process.env.BUCKET,
     Key: "storage/userPet.json"
 };
 
