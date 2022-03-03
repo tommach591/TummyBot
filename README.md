@@ -1,16 +1,16 @@
 # TummyBot
- A Discord Bot Project for fun.
+ A Discord Bot project for fun.
  
-****Features****
+# Features
 
-Gambling - Spend points on scratchers and blackjack
+ Gambling - Spend points on scratchers and blackjack
 
-Fishing - Fish to make money
+ Fishing - Fish to make money
 
-Garden - Plant to make money
+ Garden - Plant to make money
 
-Hunting - Fight cool bosses and get strong
+ Hunting - Fight cool bosses and get strong
 
-Bank - Rich get richer
+ Bank - Rich get richer
 
-Pet - Raise a pet
+ Pet - Raise a pet
