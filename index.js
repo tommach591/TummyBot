@@ -1,4 +1,3 @@
-
 const Discord = require("discord.js");
 const AWS = require("aws-sdk");
 
@@ -11,18 +10,14 @@ const fs = require('fs');
 const { send } = require("process");
 
 client.commands = new Discord.Collection();
-
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 }
 
 client.gmcommands = new Discord.Collection();
-
 const gmCommandFiles = fs.readdirSync('./gmcommands/').filter(file => file.endsWith('.js'));
-
 for (const file of gmCommandFiles) {
     const gmcommand = require(`./gmcommands/${file}`);
     client.gmcommands.set(gmcommand.name, gmcommand);
@@ -148,11 +143,6 @@ getObject(userPetParams).then(
     }
 )
 
-
-//var userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
-//var userFish = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
-//var userGarden = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
-
 var userData = "";
 var userFish = "";
 var userGarden = "";
@@ -173,7 +163,7 @@ helpMsg.setColor('FF0000');
 helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
 helpMsg.setDescription('Use __!tp help__ for list of commands!');
 
-const admin = "<@!189892642627125248>";
+const admin = "<@!189892642627125248>"; // My Discord ID
 
 const errorMsg = new MessageEmbed();
 errorMsg.setTitle('CRITICAL ERROR!');
@@ -638,7 +628,6 @@ client.on('messageCreate', message => {
 
     }
     catch (err) {
-        //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
         const embedMsg = new MessageEmbed();
         embedMsg.setTitle('Error!');
         embedMsg.setColor('FF0000');
@@ -655,30 +644,10 @@ client.on('messageCreate', message => {
         client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
         savefile.lastSave = newTime.getTime();
     }
-
-    /*
-    fs.writeFile('storage/userData.json', JSON.stringify(userData, null, 4), (err) => {
-        if (err) console.error(err);
-    });
-    fs.writeFile('storage/userFish.json', JSON.stringify(userFish, null, 4), (err) => {
-        if (err) console.error(err);
-    });
-    fs.writeFile('storage/userGarden.json', JSON.stringify(userGarden, null, 4), (err) => {
-        if (err) console.error(err);
-    });
-    */
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-    var newDate = new Date();
     console.log(reason);
-    /*
-    msg.channel.send({ embeds: [errorMsg] }).then(
-        msg => { 
-            msg.reply(admin + "\n\nError Date: " + newDate);
-        });
-    */
-    //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
 });
 
 client.login(process.env.DISCORD_TOKEN); // Last Line in File
