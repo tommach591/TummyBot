@@ -74,8 +74,7 @@ const userPetParams = {
 const s3 = new AWS.S3({
     accessKeyId: config.accessKeyID,
     secretAccessKey: config.secretAccessKey,
-    Bucket: config.bucket,
-    token: process.env.DISCORD_TOKEN
+    Bucket: config.bucket
 });
 
 async function getObject(params) {
@@ -681,6 +680,5 @@ process.on('unhandledRejection', (reason, promise) => {
     */
     //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
 });
- 
-console.log(s3.token);
-client.login(s3.token); // Last Line in File
+
+client.login(process.env.DISCORD_TOKEN); // Last Line in File
