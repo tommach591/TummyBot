@@ -2,9 +2,9 @@
  A Discord Bot Project for fun.
  
 **Features**
-Gambling - Spend points on scratchers and blackjack
-Fishing - Fish to make money
-Garden - Plant to make money
-Hunting - Fight cool bosses and get strong
-Bank - Rich get richer
-Pet - Raise a pet
+\nGambling - Spend points on scratchers and blackjack
+\nFishing - Fish to make money
+\nGarden - Plant to make money
+\nHunting - Fight cool bosses and get strong
+\nBank - Rich get richer
+\nPet - Raise a pet
