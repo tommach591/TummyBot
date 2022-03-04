@@ -41,7 +41,7 @@ module.exports = {
 
         let onlineSave = () => {
             s3.putObject({
-                Bucket: config.bucket,
+                Bucket: process.env.BUCKET,
                 Key: userDataParams.Key,
                 Body: JSON.stringify(userData),
                 ContentType: "application/json"},
@@ -52,7 +52,7 @@ module.exports = {
                 }
             );
             s3.putObject({
-                Bucket: config.bucket,
+                Bucket: process.env.BUCKET,
                 Key: userFishParams.Key,
                 Body: JSON.stringify(userFish),
                 ContentType: "application/json"},
@@ -63,7 +63,7 @@ module.exports = {
                 }
             );
             s3.putObject({
-                Bucket: config.bucket,
+                Bucket: process.env.BUCKET,
                 Key: userGardenParams.Key,
                 Body: JSON.stringify(userGarden),
                 ContentType: "application/json"},
@@ -74,7 +74,7 @@ module.exports = {
                 }
             );
             s3.putObject({
-                Bucket: config.bucket,
+                Bucket: process.env.BUCKET,
                 Key: userHuntParams.Key,
                 Body: JSON.stringify(userHunt),
                 ContentType: "application/json"},
@@ -85,7 +85,7 @@ module.exports = {
                 }
             );
             s3.putObject({
-                Bucket: config.bucket,
+                Bucket: process.env.BUCKET,
                 Key: itemsParams.Key,
                 Body: JSON.stringify(items),
                 ContentType: "application/json"},
@@ -96,7 +96,7 @@ module.exports = {
                 }
             );
             s3.putObject({
-                Bucket: config.bucket,
+                Bucket: process.env.BUCKET,
                 Key: userPetParams.Key,
                 Body: JSON.stringify(userPet),
                 ContentType: "application/json"},
