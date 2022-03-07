@@ -25,7 +25,7 @@ module.exports = {
         
         embedMsg.setTitle('Uptime!');
         embedMsg.setColor('00FF00');
-        embedMsg.setDescription("Online since: " + startTime.toLocaleString());
+        embedMsg.setDescription("Online Since: " + startTime.toLocaleString());
         embedMsg.setFooter('Uptime: ' + hours + ":" + min + ":" + sec + "\n");
         message.channel.send({ embeds: [embedMsg] });
     }
