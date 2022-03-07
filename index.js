@@ -158,15 +158,28 @@ var userPet = "";
 // items = JSON.parse(fs.readFileSync('storage/items.json', 'utf8'));
 // userPet = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
 
-const currentDate = new Date();
+savefile.startTime = new Date();
 
-currHunt.lastSpawn = currentDate.getTime();
+currHunt.lastSpawn = savefile.startTime.getTime();
 currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
 
+let saveBeforeReset = () => {
+    var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 30);
+    resetTime = 10000;
+    setTimeout(
+        function() {
+            if (userData != "")
+            //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs),
+            console.log("hi")},
+        resetTime
+    ).then(saveBeforeReset());
+}
+
 client.once('ready', () => {
-    console.log(currentDate.toLocaleString());
+    console.log(savefile.startTime.toLocaleString());
     console.log("TummyBot is online!");
+    saveBeforeReset();
 });
 
 const helpMsg = new MessageEmbed();
@@ -434,7 +447,7 @@ client.on('messageCreate', message => {
                 client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, userPet, client);
                 break;
             case 'uptime':
-                client.commands.get('uptime').execute(message, args, currentDate);
+                client.commands.get('uptime').execute(message, args, savefile.startTime);
                 break;
             case 'leaderboard':
                 if (userData[sender.id])
