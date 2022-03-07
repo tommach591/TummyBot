@@ -160,6 +160,11 @@ var userPet = "";
 
 const currentDate = new Date();
 
+currHunt.lastSpawn = currentDate.getTime();
+//currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
+currHunt.nextSpawn = (1000 * 60 * 3);
+currHunt.lastDifficulty = [];
+
 client.once('ready', () => {
     console.log(currentDate.toLocaleString());
     console.log("TummyBot is online!");
@@ -172,11 +177,6 @@ helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAA
 helpMsg.setDescription('Use __!tp help__ for list of commands!');
 
 let spawnMonster = (newTime) => {
-    if (!currHunt.lastSpawn) {
-        currHunt.lastSpawn = newTime.getTime();
-        currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
-        currHunt.lastDifficulty = [];
-    }
     var timeDiff = newTime.getTime() - currHunt.lastSpawn;
     var nextSpawn = currHunt.nextSpawn;
     if (!currHunt["active"] && timeDiff >= nextSpawn) {
@@ -433,6 +433,9 @@ client.on('messageCreate', message => {
                 break;
             case 'register':
                 client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, userPet, client);
+                break;
+            case 'uptime':
+                client.commands.get('uptime').execute(message, args, currentDate);
                 break;
             case 'leaderboard':
                 if (userData[sender.id])
