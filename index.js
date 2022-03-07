@@ -171,15 +171,17 @@ let saveBeforeReset = () => {
         function() {
             if (userData != "")
             //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs),
-            console.log("hi")},
+            console.log("hi");
+            saveBeforeReset()
+        },
         resetTime
-    ).then(saveBeforeReset());
+    );
 }
 
 client.once('ready', () => {
     console.log(savefile.startTime.toLocaleString());
     console.log("TummyBot is online!");
-    saveBeforeReset();
+    //saveBeforeReset();
 });
 
 const helpMsg = new MessageEmbed();
