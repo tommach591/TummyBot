@@ -166,13 +166,12 @@ currHunt.lastDifficulty = [];
 
 let saveBeforeReset = () => {
     var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 30);
-    resetTime = 10000;
     setTimeout(
         function() {
-            if (userData != "")
-            //client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs),
-            console.log("hi");
-            saveBeforeReset()
+            if (userData != "") {
+                client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
+            }
+            saveBeforeReset();
         },
         resetTime
     );
