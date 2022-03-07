@@ -161,8 +161,7 @@ var userPet = "";
 const currentDate = new Date();
 
 currHunt.lastSpawn = currentDate.getTime();
-//currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
-currHunt.nextSpawn = (1000 * 60 * 3);
+currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
 
 client.once('ready', () => {
