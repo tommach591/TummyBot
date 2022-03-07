@@ -181,7 +181,7 @@ let saveBeforeReset = () => {
 client.once('ready', () => {
     console.log(savefile.startTime.toLocaleString());
     console.log("TummyBot is online!");
-    //saveBeforeReset();
+    saveBeforeReset();
 });
 
 const helpMsg = new MessageEmbed();
