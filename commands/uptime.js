@@ -23,13 +23,14 @@ module.exports = {
             sec = "0" + sec.toString();
         }
         
-        embedMsg.setTitle('Uptime!');
+        embedMsg.setTitle('Bot Status');
         embedMsg.setColor('00FF00');
         embedMsg.setFields(
             {name: "**__Online Since__** :sunrise:", value: savefile.startTime.toLocaleString() + " PST", inline: false},
             {name: "**__Uptime__** :white_sun_small_cloud:", value: hours + ":" + min + ":" + sec, inline: false},
             {name: "**__Last Saved__** :pencil:", value: savefile.lastSave.toLocaleString() + " PST", inline: false}
         );
+        embedMsg.setThumbnail("https://c.tenor.com/9dxJDRZinKYAAAAM/good-morning-sun.gif");
         message.channel.send({ embeds: [embedMsg] });
     }
 }
