@@ -158,7 +158,9 @@ var userPet = "";
 // items = JSON.parse(fs.readFileSync('storage/items.json', 'utf8'));
 // userPet = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
 
-savefile.startTime = new Date();
+var startTime = new Date();
+savefile.startTime = startTime;
+savefile.lastSave = startTime;
 
 currHunt.lastSpawn = savefile.startTime.getTime();
 currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
@@ -652,10 +654,7 @@ client.on('messageCreate', message => {
         console.log(err);
     }
 
-    if (!savefile.lastSave) {
-        savefile.lastSave = newTime.getTime();
-    }
-    else if (newTime.getTime() - savefile.lastSave >= (1000 * 60 * 15)) {
+    if (newTime.getTime() - savefile.lastSave >= (1000 * 60 * 15)) {
         client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
         savefile.lastSave = newTime.getTime();
     }
