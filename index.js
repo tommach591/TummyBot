@@ -171,7 +171,7 @@ let saveBeforeReset = () => {
     setTimeout(
         function() {
             if (userData != "") {
-                client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
+                client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
             }
             saveBeforeReset();
         },
@@ -655,7 +655,7 @@ client.on('messageCreate', message => {
     }
 
     if (newTime.getTime() - savefile.lastSave >= (1000 * 60 * 15)) {
-        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
+        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
         savefile.lastSave = newTime.getTime();
     }
 });
