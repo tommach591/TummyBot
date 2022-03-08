@@ -159,6 +159,7 @@ var userPet = "";
 // userPet = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
 
 savefile.startTime = new Date();
+savefile.lastSave = savefile.startTime;
 
 currHunt.lastSpawn = savefile.startTime.getTime();
 currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
@@ -448,7 +449,7 @@ client.on('messageCreate', message => {
                 client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, userPet, client);
                 break;
             case 'uptime':
-                client.commands.get('uptime').execute(message, args, savefile.startTime);
+                client.commands.get('uptime').execute(message, args, savefile);
                 break;
             case 'leaderboard':
                 if (userData[sender.id])
@@ -562,7 +563,7 @@ client.on('messageCreate', message => {
                 break;
             case 'save':
                 if (userData[sender.id] && userData[sender.id].gm > 0) {
-                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
+                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
                     const embedMsg = new MessageEmbed();
                     embedMsg.setTitle('Saved!');
                     embedMsg.setColor('B5EAFF');

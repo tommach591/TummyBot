@@ -2,7 +2,7 @@ module.exports = {
     name: 'save',
     description: "Save files.",
 
-    execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs) {
+    execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -110,5 +110,8 @@ module.exports = {
 
         // localSave();
         onlineSave();
+
+        var time = new Date();
+        savefile.lastSave = time;
     }
 }

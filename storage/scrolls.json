@@ -394,5 +394,23 @@
         "magic": 3,
         "defense": 0,
         "speed": 0
+    },
+    "49": {
+        "name": "Scroll for Two Attack and Two Magic 5%",
+        "rate": 0.05,
+        "maxHP": 0,
+        "attack": 2,
+        "magic": 2,
+        "defense": 0,
+        "speed": 0
+    },
+    "50": {
+        "name": "Lucky Scroll for Two Attack and Two Magic 7.5%",
+        "rate": 0.075,
+        "maxHP": 0,
+        "attack": 2,
+        "magic": 2,
+        "defense": 0,
+        "speed": 0
     }
 }
