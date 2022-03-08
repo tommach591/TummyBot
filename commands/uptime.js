@@ -25,9 +25,11 @@ module.exports = {
         
         embedMsg.setTitle('Uptime!');
         embedMsg.setColor('00FF00');
-        embedMsg.setDescription("Online Since: " + savefile.startTime.toLocaleString() + " PST\nUptime: " + hours + ":" + min + ":" + sec + "\n");
-        embedMsg.setFooter("Uptime: " + hours + ":" + min + ":" + sec + "\n");
-        embedMsg.setFooter("Last Saved: " + savefile.lastSave.toLocaleString() + " PST\n");
+        embedMsg.setFields(
+            {name: "Online Since", value: savefile.startTime.toLocaleString() + " PST\n\nUptime: " + hours + ":" + min + ":" + sec, inline: true},
+            {name: "Uptime", value: hours + ":" + min + ":" + sec, inline: true},
+            {name: "Last Saved", value: savefile.lastSave.toLocaleString() + " PST", inline: true}
+        );
         message.channel.send({ embeds: [embedMsg] });
     }
 }
