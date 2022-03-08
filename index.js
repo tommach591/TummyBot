@@ -159,7 +159,6 @@ var userPet = "";
 // userPet = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
 
 savefile.startTime = new Date();
-savefile.lastSave = savefile.startTime;
 
 currHunt.lastSpawn = savefile.startTime.getTime();
 currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
