@@ -153,7 +153,7 @@ module.exports = {
                 defense = 0;
             }
 
-            critChance = 5 + (100 * (speed * 0.75 / 100));
+            critChance = 5 + (100 * (speed * 0.5 / 100));
             if (critChance > 100) {
                 critChance = 100;
             }
