@@ -16,7 +16,7 @@
         "rarity": 0,
         "image": "",
         "maxHP": 0,
-        "attack": 1,
+        "attack": 2,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -27,7 +27,7 @@
         "rarity": 1,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
+        "attack": 10,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -39,7 +39,7 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 5,
+        "magic": 10,
         "defense": 0,
         "speed": 0
     },
@@ -49,7 +49,7 @@
         "rarity": 2,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
+        "attack": 10,
         "magic": 0,
         "defense": 0,
         "speed": 5
@@ -60,7 +60,7 @@
         "rarity": 2,
         "image": "",
         "maxHP": 20,
-        "attack": 6,
+        "attack": 12,
         "magic": 0,
         "defense": 4,
         "speed": 0
@@ -72,7 +72,7 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 10,
+        "magic": 20,
         "defense": 0,
         "speed": 0
     },
@@ -83,9 +83,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 5,
+        "magic": 10,
         "defense": 0,
-        "speed": 5
+        "speed": 10
     },
     "Levin": {
         "name": "Levin",
@@ -93,10 +93,10 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 10,
+        "attack": 20,
         "magic": 0,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Parhelion": {
         "name": "Parhelion",
@@ -104,8 +104,8 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 10,
-        "magic": 10,
+        "attack": 20,
+        "magic": 20,
         "defense": 0,
         "speed": 0
     },
@@ -115,7 +115,7 @@
         "rarity": 3,
         "image": "",
         "maxHP": 100,
-        "attack": 10,
+        "attack": 20,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -126,7 +126,7 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 20,
+        "attack": 40,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -138,9 +138,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 40,
+        "magic": 80,
         "defense": 0,
-        "speed": -20
+        "speed": -40
     },
     "Stalagmite": {
         "name": "Stalagmite",
@@ -149,7 +149,7 @@
         "image": "",
         "maxHP": 50,
         "attack": 0,
-        "magic": 10,
+        "magic": 20,
         "defense": 10,
         "speed": 0
     },
@@ -160,9 +160,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 10,
+        "magic": 20,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Absolute": {
         "name": "Absolute",
@@ -171,7 +171,7 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 20,
+        "magic": 40,
         "defense": 0,
         "speed": 0
     },
@@ -183,7 +183,7 @@
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 1,
+        "defense": 2,
         "speed": 0
     },
     "Ring": {
@@ -194,7 +194,7 @@
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 1,
+        "defense": 2,
         "speed": 0
     },
     "Chestplate": {
@@ -215,7 +215,7 @@
         "image": "",
         "maxHP": 20,
         "attack": 0,
-        "magic": 2,
+        "magic": 4,
         "defense": 2,
         "speed": 0
     },
@@ -239,7 +239,7 @@
         "attack": 0,
         "magic": 0,
         "defense": 6,
-        "speed": 5
+        "speed": 10
     },
     "Witch Hat": {
         "name": "Witch Hat",
@@ -248,7 +248,7 @@
         "image": "",
         "maxHP": 30,
         "attack": 0,
-        "magic": 7,
+        "magic": 14,
         "defense": 0,
         "speed": 0
     },
@@ -269,10 +269,10 @@
         "rarity": 3,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
-        "magic": 5,
+        "attack": 10,
+        "magic": 10,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Cursed Armor": {
         "name": "Cursed Armor",
@@ -280,7 +280,7 @@
         "rarity": 3,
         "image": "",
         "maxHP": -100,
-        "attack": 30,
+        "attack": 60,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -292,7 +292,7 @@
         "image": "",
         "maxHP": 50,
         "attack": 0,
-        "magic": 15,
+        "magic": 30,
         "defense": 0,
         "speed": 0
     },
@@ -313,10 +313,10 @@
         "rarity": 1,
         "image": "",
         "maxHP": 0,
-        "attack": 2,
-        "magic": 2,
+        "attack": 4,
+        "magic": 4,
         "defense": 0,
-        "speed": 1
+        "speed": 2
     },
     "Sash": {
         "name": "Sash",
@@ -327,7 +327,7 @@
         "attack": 0,
         "magic": 0,
         "defense": 4,
-        "speed": 5
+        "speed": 10
     },
     "Gloves": {
         "name": "Gloves",
@@ -335,10 +335,10 @@
         "rarity": 2,
         "image": "",
         "maxHP": 0,
-        "attack": 15,
+        "attack": 30,
         "magic": 0,
         "defense": 0,
-        "speed": 5
+        "speed": 10
     },
     "Watch": {
         "name": "Watch",
@@ -349,7 +349,7 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 20
+        "speed": 40
     },
     "Wings": {
         "name": "Wings",
@@ -358,9 +358,9 @@
         "image": "",
         "maxHP": 50,
         "attack": 0,
-        "magic": 5,
+        "magic": 10,
         "defense": 0,
-        "speed": 5
+        "speed": 10
     },
     "Cape": {
         "name": "Cape",
@@ -368,10 +368,10 @@
         "rarity": 3,
         "image": "",
         "maxHP": 50,
-        "attack": 5,
+        "attack": 10,
         "magic": 0,
         "defense": 0,
-        "speed": 5
+        "speed": 10
     },
     "Cursed Ring": {
         "name": "Cursed Ring",
@@ -379,7 +379,7 @@
         "rarity": 3,
         "image": "",
         "maxHP": -100,
-        "attack": 30,
+        "attack": 60,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -390,10 +390,10 @@
         "rarity": 6,
         "image": "",
         "maxHP": 0,
-        "attack": 25,
-        "magic": 25,
+        "attack": 50,
+        "magic": 50,
         "defense": 0,
-        "speed": 20
+        "speed": 40
     },
     "Fatalis Alpha": {
         "name": "Fatalis Alpha",
@@ -415,7 +415,7 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 70
+        "speed": 140
     },
     "Masamune": {
         "name": "Masamune",
@@ -423,10 +423,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 30,
+        "attack": 60,
         "magic": 0,
         "defense": 0,
-        "speed": 20
+        "speed": 40
     },
     "Black Coat": {
         "name": "Black Coat",
@@ -434,10 +434,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 100,
-        "attack": 20,
+        "attack": 40,
         "magic": 0,
         "defense": 20,
-        "speed": 10
+        "speed": 20
     },
     "Black Wing": {
         "name": "Black Wing",
@@ -445,10 +445,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 100,
-        "attack": 10,
-        "magic": 10,
+        "attack": 20,
+        "magic": 20,
         "defense": 20,
-        "speed": 10
+        "speed": 20
     },
     "Bl-ping-bong": {
         "name": "Bl-ping-bong",
@@ -456,10 +456,10 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 60,
+        "attack": 120,
         "magic": 0,
         "defense": 0,
-        "speed": -20
+        "speed": -40
     },
     "Blue Rose Sword": {
         "name": "Blue Rose Sword",
@@ -467,10 +467,10 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 10,
+        "attack": 20,
         "magic": 0,
         "defense": 0,
-        "speed": 30
+        "speed": 60
     },
     "Amyr": {
         "name": "Amyr",
@@ -478,7 +478,7 @@
         "rarity": 4,
         "image": "",
         "maxHP": 50,
-        "attack": 25,
+        "attack": 50,
         "magic": 0,
         "defense": 20,
         "speed": 0
@@ -490,7 +490,7 @@
         "image": "",
         "maxHP": 100,
         "attack": 0,
-        "magic": 30,
+        "magic": 60,
         "defense": 0,
         "speed": 0
     },
@@ -501,9 +501,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 30,
+        "magic": 60,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Daedric Armor": {
         "name": "Daedric Armor",
@@ -522,10 +522,10 @@
         "rarity": 4,
         "image": "",
         "maxHP": -200,
-        "attack": 20,
-        "magic": 20,
+        "attack": 40,
+        "magic": 40,
         "defense": 0,
-        "speed": 20
+        "speed": 40
     },
     "The Gutsy Bat": {
         "name": "The Gutsy Bat",
@@ -533,7 +533,7 @@
         "rarity": 4,
         "image": "",
         "maxHP": 50,
-        "attack": 35,
+        "attack": 70,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -544,10 +544,10 @@
         "rarity": 4,
         "image": "",
         "maxHP": 55,
-        "attack": 10,
-        "magic": 10,
+        "attack": 20,
+        "magic": 20,
         "defense": 5,
-        "speed": 10
+        "speed": 20
     },
     "Satanael": {
         "name": "Satanael",
@@ -556,7 +556,7 @@
         "image": "",
         "maxHP": 50,
         "attack": 0,
-        "magic": 35,
+        "magic": 70,
         "defense": 0,
         "speed": 0
     },
@@ -567,7 +567,7 @@
         "image": "",
         "maxHP": 50,
         "attack": 0,
-        "magic": 25,
+        "magic": 50,
         "defense": 20,
         "speed": 0
     },
@@ -578,9 +578,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 40,
+        "magic": 80,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Kurama": {
         "name": "Kurama",
@@ -588,8 +588,8 @@
         "rarity": 5,
         "image": "",
         "maxHP": 100,
-        "attack": 10,
-        "magic": 20,
+        "attack": 20,
+        "magic": 40,
         "defense": 20,
         "speed": 0
     },
@@ -599,10 +599,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
-        "magic": 5,
+        "attack": 10,
+        "magic": 10,
         "defense": 0,
-        "speed": 40
+        "speed": 80
     },
     "Updated Autopsy Report": {
         "name": "Updated Autopsy Report",
@@ -611,9 +611,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 50,
+        "magic": 100,
         "defense": 0,
-        "speed": -10
+        "speed": -20
     },
     "Ultimate Dreadwyrm Blade": {
         "name": "Ultimate Dreadwyrm Blade",
@@ -621,7 +621,7 @@
         "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 50,
+        "attack": 100,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -643,8 +643,8 @@
         "rarity": 5,
         "image": "",
         "maxHP": 100,
-        "attack": 20,
-        "magic": 20,
+        "attack": 40,
+        "magic": 40,
         "defense": 0,
         "speed": 0
     },
@@ -654,8 +654,8 @@
         "rarity": 5,
         "image": "",
         "maxHP": -10000,
-        "attack": 100,
-        "magic": 100,
+        "attack": 250,
+        "magic": 250,
         "defense": 0,
         "speed": -10000
     },
@@ -665,10 +665,10 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 30,
+        "attack": 60,
         "magic": 0,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Everlasting Moonglow": {
         "name": "Everlasting Moonglow",
@@ -677,7 +677,7 @@
         "image": "",
         "maxHP": 100,
         "attack": 0,
-        "magic": 30,
+        "magic": 60,
         "defense": 0,
         "speed": 0
     },
@@ -687,10 +687,10 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 15,
-        "magic": 15,
+        "attack": 30,
+        "magic": 30,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Master Sword": {
         "name": "Master Sword",
@@ -698,10 +698,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 40,
+        "attack": 80,
         "magic": 0,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Hero's Tunic": {
         "name": "Hero's Tunic",
@@ -712,7 +712,7 @@
         "attack": 0,
         "magic": 0,
         "defense": 20,
-        "speed": 20
+        "speed": 40
     },
     "Triforce of Courage": {
         "name": "Triforce of Courage",
@@ -720,10 +720,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 150,
-        "attack": 25,
+        "attack": 50,
         "magic": 0,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Real Knife": {
         "name": "Real Knife",
@@ -731,7 +731,7 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 40,
+        "attack": 80,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -753,8 +753,8 @@
         "rarity": 10,
         "image": "",
         "maxHP": 0,
-        "attack": 1,
-        "magic": 1,
+        "attack": 0,
+        "magic": 0,
         "defense": 0,
         "speed": 0
     },
@@ -765,9 +765,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 30,
+        "magic": 60,
         "defense": 0,
-        "speed": 20
+        "speed": 40
     },
     "Senjutsu Susanoo": {
         "name": "Senjutsu Susanoo",
@@ -776,9 +776,9 @@
         "image": "",
         "maxHP": 0,
         "attack": 0,
-        "magic": 30,
+        "magic": 60,
         "defense": 0,
-        "speed": 20
+        "speed": 40
     },
     "Rinnegan": {
         "name": "Rinnegan",
@@ -789,7 +789,7 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 50
+        "speed": 100
     },
     "Pencil": {
         "name": "Pencil",
@@ -797,10 +797,10 @@
         "rarity": 4,
         "image": "",
         "maxHP": 0,
-        "attack": 5,
+        "attack": 10,
         "magic": 0,
         "defense": 0,
-        "speed": 35
+        "speed": 70
     },
     "Soap": {
         "name": "Soap",
@@ -809,9 +809,9 @@
         "image": "",
         "maxHP": 150,
         "attack": 0,
-        "magic": 15,
+        "magic": 30,
         "defense": 0,
-        "speed": 10
+        "speed": 20
     },
     "Dual Spadroon": {
         "name": "Dual Spadroon",
@@ -819,10 +819,10 @@
         "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 10,
+        "attack": 20,
         "magic": 0,
         "defense": 0,
-        "speed": 40
+        "speed": 80
     },
     "Philosopher's Stone": {
         "name": "Philosopher's Stone",
@@ -841,9 +841,9 @@
         "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 20,
+        "attack": 40,
         "magic": 0,
         "defense": 0,
-        "speed": 30
+        "speed": 60
     }
 }
