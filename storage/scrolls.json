@@ -396,20 +396,20 @@
         "speed": 0
     },
     "49": {
-        "name": "Scroll for Four Attack and Four Magic 10%",
+        "name": "Scroll for Three Attack and Three Magic 10%",
         "rate": 0.10,
         "maxHP": 0,
-        "attack": 4,
-        "magic": 4,
+        "attack": 3,
+        "magic": 3,
         "defense": 0,
         "speed": 0
     },
     "50": {
-        "name": "Lucky Scroll for Two Attack and Two Magic 15%",
+        "name": "Lucky Scroll for Three Attack and Three Magic 15%",
         "rate": 0.15,
         "maxHP": 0,
-        "attack": 4,
-        "magic": 4,
+        "attack": 3,
+        "magic": 3,
         "defense": 0,
         "speed": 0
     }
