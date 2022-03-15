@@ -110,8 +110,9 @@ module.exports = {
 
         // localSave();
         onlineSave();
-
         var time = new Date();
         savefile.lastSave = time;
+
+        console.log("Saved on " + time.toLocaleString());
     }
 }
