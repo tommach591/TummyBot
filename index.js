@@ -167,8 +167,7 @@ currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
 
 let saveBeforeReset = () => {
-    var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 54);
-    resetTime = 1000 * 30;
+    var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 50);
     setTimeout(
         function() {
             if (userData != "") {
