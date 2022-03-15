@@ -167,16 +167,24 @@ currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
 
 let saveBeforeReset = () => {
-    var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 55);
+    var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 54);
+    resetTime = 1000 * 30;
     setTimeout(
         function() {
             if (userData != "") {
-                client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
+                client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs)
+                .then(resetBot);
             }
             saveBeforeReset();
         },
         resetTime
     );
+}
+
+let resetBot = () => {
+    console.log("Reseting...")
+    .then(() => client.destroy())
+    .then(() => client.login(process.env.DISCORD_TOKEN));
 }
 
 client.once('ready', () => {
