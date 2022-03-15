@@ -172,12 +172,11 @@ let saveBeforeReset = () => {
     setTimeout(
         function() {
             if (userData != "") {
-                client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs)
+                client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs)
                 .then(resetBot);
             }
             saveBeforeReset();
         },
-        resetTime
     );
 }
 
@@ -572,7 +571,7 @@ client.on('messageCreate', message => {
                 break;
             case 'save':
                 if (userData[sender.id] && userData[sender.id].gm > 0) {
-                    client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
+                    client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
                     const embedMsg = new MessageEmbed();
                     embedMsg.setTitle('Saved!');
                     embedMsg.setColor('B5EAFF');
@@ -663,7 +662,7 @@ client.on('messageCreate', message => {
     }
 
     if (newTime.getTime() - savefile.lastSave.getTime() >= (1000 * 60 * 60)) {
-        client.gmcommands.get('save').execute(message, userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
+        client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
     }
 });
 
