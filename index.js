@@ -181,8 +181,8 @@ let saveBeforeReset = () => {
 }
 
 let resetBot = () => {
-    console.log("Reseting...")
-    .then(() => client.destroy())
+    console.log("Reseting...");
+    client.destroy()
     .then(() => client.login(process.env.DISCORD_TOKEN));
 }
 
