@@ -173,7 +173,7 @@ let saveBeforeReset = () => {
         function() {
             if (userData != "") {
                 client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs)
-                .then(resetBot);
+                .then(resetBot());
             }
             saveBeforeReset();
         },
