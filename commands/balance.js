@@ -42,7 +42,7 @@ module.exports = {
                             break;
                         case 4:
                             tier = "Platinum";
-                            embedMsg.setColor('34E3B2');
+                            embedMsg.setColor('3BF2A0');
                             break;
                         case 5:
                             tier = "Diamond";
@@ -94,7 +94,7 @@ module.exports = {
                         break;
                     case 4:
                         tier = "Platinum";
-                        embedMsg.setColor('34E3B2');
+                        embedMsg.setColor('3BF2A0');
                         break;
                     case 5:
                         tier = "Diamond";
