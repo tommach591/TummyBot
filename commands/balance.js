@@ -26,10 +26,32 @@ module.exports = {
                     var target = client.users.cache.get(mention);
                     embedMsg.setTitle(userData[mention].name);
                     embedMsg.setThumbnail(target.displayAvatarURL());
-                    embedMsg.setColor('FFF000');
+                    var tier = "";
+                    switch (userData[mention].income) {
+                        case 1:
+                            tier = "Bronze";
+                            embedMsg.setColor('CD7F32');
+                            break;
+                        case 2:
+                            tier = "Silver";
+                            embedMsg.setColor('C0C0C0');
+                            break;
+                        case 3:
+                            tier = "Gold";
+                            embedMsg.setColor('FFD700');
+                            break;
+                        case 4:
+                            tier = "Platinum";
+                            embedMsg.setColor('34E3B2');
+                            break;
+                        case 5:
+                            tier = "Diamond";
+                            embedMsg.setColor('2EFAFF');
+                            break;
+                    }
                     embedMsg.setFields(
                         {name: "__Points:__  :moneybag: ⠀⠀⠀⠀", value: "" + userData[mention].points + "\n", inline: true},
-                        {name: "__Income:__  :money_with_wings: ⠀⠀⠀⠀⠀", value: "" + userData[mention].income + "\n", inline: true},
+                        {name: "__Income:__  :money_with_wings: ⠀⠀⠀⠀⠀", value: "" + tier + "\n", inline: true},
                         {name: "__Fame:__  :sparkles: ⠀⠀⠀⠀", value: "" + userData[mention].fame + "\n", inline: true},
                         {name: "__Fishdex Entries:__  :fish: ⠀⠀⠀⠀⠀⠀⠀", value: "" + userFish[mention].fishdex.length + "\n", inline: false},
                         {name: "__Gardendex Entries:__  :sunflower: ⠀⠀⠀⠀⠀⠀⠀", value: "" + userGarden[mention].gardendex.length + "\n", inline: false}
