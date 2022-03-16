@@ -43,7 +43,7 @@ module.exports = {
                                     userData[userid].income = 2;
                                     embedMsg.setTitle('Congratz!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[userid].name + " leveled up to 2!");
+                                    embedMsg.setDescription(userData[userid].name + " leveled up to Silver tier!");
                                     embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                     embedMsg.setFooter('Next level: 100000 points');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -103,7 +103,7 @@ module.exports = {
                                     userData[userid].income = 3;
                                     embedMsg.setTitle('Congratz!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[userid].name + " leveled up to 3!");
+                                    embedMsg.setDescription(userData[userid].name + " leveled up to Gold tier!");
                                     embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                     embedMsg.setFooter('Next level: 1000000 points');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -163,7 +163,7 @@ module.exports = {
                                     userData[userid].income = 4;
                                     embedMsg.setTitle('Congratz!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[userid].name + " leveled up to 4!");
+                                    embedMsg.setDescription(userData[userid].name + " leveled up to Platinum tier!");
                                     embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                     embedMsg.setFooter('Next level: 10000000 points');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -223,7 +223,7 @@ module.exports = {
                                     userData[userid].income = 5;
                                     embedMsg.setTitle('Congratz!');
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setDescription(userData[userid].name + " leveled up to 5! You are now maxed level!");
+                                    embedMsg.setDescription(userData[userid].name + " leveled up to Diamond tier!");
                                     embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                     embedMsg.setFooter('Next level: Infinite points');
                                     message.channel.send({ embeds: [embedMsg] });
