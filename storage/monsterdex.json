@@ -916,5 +916,22 @@
         "attackCD": 2500,
         "difficulty": 5,
         "loot": ["Dual Spadroon", "Philosopher's Stone", "The Ultimate Eye"]
+    },
+    "55": {
+        "id": "55",
+        "name": "Xu Wenwu",
+        "info": "Xu Wenwu was a legendary and nearly mythical figure who rose to power after discovering a set of mythical rings, and founded the army known as the Ten Rings.",
+        "entry": "I have to save her. She's calling to me.",
+        "shoutout": "Have you been practicing your English?",
+        "death": "Xu Wenwu gets sucked!",
+        "image": "https://64.media.tumblr.com/25e3f7c9f928bc7cd52a7beafa4215ed/f9a8cde23e313fa4-10/s540x810/188fa50fa7191bfdf635d040863ef3eb0fda1250.gif",
+        "attackImage": "https://64.media.tumblr.com/6bd56ce44f00c34d1d3ff26d4743802d/f9a8cde23e313fa4-5f/s540x810/c53d81d54d3db5da6276e74059fe9a05b8e8a140.gif",
+        "maxHP": 25000,
+        "attack": 75,
+        "defense": 0,
+        "magicdefense": 0,
+        "attackCD": 30000,
+        "difficulty": 4,
+        "loot": ["Ten Rings"]
     }
 }
