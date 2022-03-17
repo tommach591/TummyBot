@@ -424,7 +424,7 @@ client.on('messageCreate', message => {
                 return;
         }
 
-        if (!message.content.startsWith(prefix) || message.author.bot || userData == "" || userFish == "" || userGarden == "") {
+        if (!message.content.startsWith(prefix) || message.author.bot) {
             return;
         }
 
