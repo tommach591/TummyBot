@@ -618,6 +618,7 @@ module.exports = {
                     }
 
                     var levelupMsg = "";
+                    var currentHappy = userPet[userid].happiness;
 
                     const proposalMsg = new MessageEmbed();
                     proposalMsg.setTitle('Play Time!');
@@ -638,7 +639,7 @@ module.exports = {
                             .then(
                                 collected => {
                                 const reaction = collected.first();
-                                if (reaction.emoji.name === '👋') {
+                                if (reaction.emoji.name === '👋' && userPet[userid].happiness == currentHappy) {
                                     userPet[userid].happiness += happy;
                                     if (userPet[userid].happiness >= 100) {
                                         if (userPet[userid].level != 100) {
@@ -674,7 +675,7 @@ module.exports = {
                                     embedMsg.setFooter("Current Happiness: " + userPet[userid].happiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
                                 } 
-                                else if (reaction.emoji.name === '😚') {
+                                else if (reaction.emoji.name === '😚' && userPet[userid].happiness == currentHappy) {
                                     userPet[userid].happiness += happy;
                                     if (userPet[userid].happiness >= 100) {
                                         if (userPet[userid].level != 100) {
@@ -704,7 +705,7 @@ module.exports = {
                                     embedMsg.setFooter("Current Happiness: " + userPet[userid].happiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
-                                else {
+                                else if (reaction.emoji.name === '🎾' && userPet[userid].happiness == currentHappy) {
                                     userPet[userid].happiness += happy;
                                     if (userPet[userid].happiness >= 100) {
                                         if (userPet[userid].level != 100) {
@@ -732,6 +733,14 @@ module.exports = {
                                      + userPet[userid].petName + ": " + pets[userPet[userid].pet].quotes[Math.floor(Math.random() * pets[userPet[userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(userPet[userid].image);
                                     embedMsg.setFooter("Current Happiness: " + userPet[userid].happiness + "%");
+                                    message.channel.send({ embeds: [embedMsg] });
+                                }
+                                else {
+                                    embedMsg.setTitle('Tired!');
+                                    embedMsg.setColor('FF0000');
+                                    embedMsg.setDescription(userPet[userid].petName + " is tired!");
+                                    embedMsg.setFooter("Why not wait " + Math.floor((playTime - (newTime.getTime() - userPet[userid].happinessTimer)) / 1000) + ' seconds?');
+                                    embedMsg.setThumbnail(userPet[userid].image);
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                             })
