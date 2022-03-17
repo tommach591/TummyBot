@@ -379,12 +379,9 @@ let attackAll = (newTime) => {
     }
 }
 
-let msg;
 client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
-
-    msg = message;
 
     try {
         if (userData == "") {
