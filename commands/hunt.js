@@ -1665,7 +1665,7 @@ module.exports = {
                         }
                         stars += ")"
                         embedMsg.setDescription("#" + monsterdex[selected].id + ". " + monsterdex[selected].name + stars + "\n");
-                        embedMsg.setThumbnail(monsterdex[selected].image);
+                        embedMsg.setImage(monsterdex[selected].image);
                         embedMsg.addField('Monsterdex Entry', "" + monsterdex[selected].info);
                         embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP);
                         embedMsg.addField('Attack', "" + monsterdex[selected].attack);
