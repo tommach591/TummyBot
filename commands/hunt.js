@@ -1667,11 +1667,11 @@ module.exports = {
                         embedMsg.setDescription("#" + monsterdex[selected].id + ". " + monsterdex[selected].name + stars + "\n");
                         embedMsg.setImage(monsterdex[selected].image);
                         embedMsg.addField('Monsterdex Entry', "" + monsterdex[selected].info);
-                        embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP);
-                        embedMsg.addField('Attack', "" + monsterdex[selected].attack);
-                        embedMsg.addField('Defense', "" + monsterdex[selected].defense);
-                        embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense);
-                        embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s");
+                        embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP, true);
+                        embedMsg.addField('Attack', "" + monsterdex[selected].attack, true);
+                        embedMsg.addField('Defense', "" + monsterdex[selected].defense, true);
+                        embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense, true);
+                        embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s", true);
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
