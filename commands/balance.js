@@ -68,7 +68,7 @@ module.exports = {
                     return;
                 }
 
-                endMsg(mention);
+                sendMsg(mention);
             }
             else {
                 embedMsg.setTitle('Error!');
@@ -79,7 +79,7 @@ module.exports = {
             }
         }
         else {
-            endMsg(userid);
+            sendMsg(userid);
         }
     }
 }
