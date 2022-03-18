@@ -205,7 +205,7 @@ module.exports = {
                 var currentCondition = "HP: " + userHunt[userid].currentHP + "\n";
 
                 if (currHunt["active"])
-                    currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 1)))) * 100).toFixed(2) + "%\n";
+                    currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 1.5)))) * 100).toFixed(2) + "%\n";
                 else {
                     currentCondition += "Resistance: 0.00%\n";
                 }
@@ -461,12 +461,12 @@ module.exports = {
                         var physical = 0;
                         var magical = 0;
                         if (isCrit) {
-                            physical = Math.floor(attack * (100 / (100 + (currHunt["active"].defense / 2))));
-                            magical = Math.floor(magic * (100 / (100 + (currHunt["active"].magicdefense / 2))));
+                            physical = Math.floor(attack * (attack / (attack + (currHunt["active"].defense / 2))));
+                            magical = Math.floor(magic * (magic / (magic + (currHunt["active"].magicdefense / 2))));
                         }
                         else {
-                            physical = Math.floor(attack * (100 / (100 + currHunt["active"].defense)));
-                            magical = Math.floor(magic * (100 / (100 + currHunt["active"].magicdefense)));
+                            physical = Math.floor(attack * (attack / (attack + currHunt["active"].defense)));
+                            magical = Math.floor(magic * (magic / (magic + currHunt["active"].magicdefense)));
                         }
 
                         var flatDamage = Math.floor(physical + magical);
