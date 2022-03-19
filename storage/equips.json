@@ -856,5 +856,38 @@
         "magic": 20,
         "defense": 0,
         "speed": 0
+    },
+    "Charizard": {
+        "name": "Charizard",
+        "type": 0,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 30,
+        "magic": 30,
+        "defense": 0,
+        "speed": 40
+    },
+    "Blastoise": {
+        "name": "Blastoise",
+        "type": 1,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 200,
+        "attack": 0,
+        "magic": 0,
+        "defense": 60,
+        "speed": 0
+    },
+    "Venusaur": {
+        "name": "Venusaur",
+        "type": 2,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 50,
+        "defense": 50,
+        "speed": 0
     }
 }

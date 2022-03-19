@@ -933,5 +933,22 @@
         "attackCD": 30000,
         "difficulty": 4,
         "loot": ["Ten Rings"]
+    },
+    "56": {
+        "id": "56",
+        "name": "Pokemon Trainer Red",
+        "info": "The greatest Pokemon trainer.",
+        "entry": "... ... ...",
+        "shoutout": "... ... ...",
+        "death": "... ... ...",
+        "image": "https://thumbs.gfycat.com/DeafeningBackAnkole-max-1mb.gif",
+        "attackImage": "https://i.kym-cdn.com/photos/images/original/001/185/223/1dc.gif",
+        "maxHP": 15000,
+        "attack": 100,
+        "defense": 100,
+        "magicdefense": 100,
+        "attackCD": 30000,
+        "difficulty": 5,
+        "loot": ["Charizard", "Blastoise", "Venusaur"]
     }
 }
