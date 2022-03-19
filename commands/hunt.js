@@ -383,7 +383,7 @@ module.exports = {
                         const reviveMsg = new MessageEmbed()
                         reviveMsg.setTitle("A Hero Returned to Battle!");
                         reviveMsg.setDescription(userData[userid].name + " has revived!");
-                        reviveMsg.setImage("https://c.tenor.com/HNPszjXhDdUAAAAC/monster-hunter-world-mhw.gif");
+                        reviveMsg.setImage("https://64.media.tumblr.com/bd8a57c555e94c2add81b166bc2016dc/tumblr_ovrvc4t0t61u1ry24o3_500.gif");
                         reviveMsg.setColor('00FF00');
                         reviveMsg.setFooter('Don\'t die again!');
                         message.channel.send({ embeds: [reviveMsg] });
