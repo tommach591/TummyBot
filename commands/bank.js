@@ -11,7 +11,7 @@ module.exports = {
         let updateBank = () => {
             var newDate = new Date();
             var timeDiff = newDate.getTime() - userData[userid].bankTick;
-            var tickTime = 1000 * 60 * 30;
+            var tickTime = 1000 * 60 * 60;
 
             if (timeDiff >= tickTime) {
                 var totalTicks = Math.floor(timeDiff / tickTime);
@@ -194,7 +194,7 @@ module.exports = {
 
                 var newDate = new Date();
                 var timeDiff = newDate.getTime() - userData[userid].bankTick;
-                var tickTime = 1000 * 60 * 30;
+                var tickTime = 1000 * 60 * 60;
 
                 if (timeDiff < tickTime && ((userData[userid].bank != 0) || (userData[userid].married != "" && userData[userData[userid].married] && (userData[userData[userid].married].bank != 0)))) {
                     var hours = Math.floor((tickTime - timeDiff) / (1000 * 60 * 60));
