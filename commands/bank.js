@@ -25,13 +25,7 @@ module.exports = {
                         currentBalance = userData[userid].bank;
                     }
     
-                    for (let j = 0; j < currentBalance; j++) {
-                        var luck = Math.floor((Math.random() * 1000) + 1);
-                        var chance = 100 * 0.01;
-                        if (luck <= chance) {
-                            addBalance++;
-                        }
-                    }
+                    addBalance = Math.floor(currentBalance * 0.01 * ((Math.random() * 0.4) + 0.8));
 
                     userData[userid].bank += addBalance;
                 }
@@ -47,13 +41,7 @@ module.exports = {
                         var addBalance = 0;
                         var currentBalance = userData[userid].bank + userData[userData[userid].married].bank;
         
-                        for (let j = 0; j < currentBalance; j++) {
-                            var luck = Math.floor((Math.random() * 1000) + 1);
-                            var chance = 100 * 0.01;
-                            if (luck <= chance) {
-                                addBalance++;
-                            }
-                        }
+                        addBalance = Math.floor(currentBalance * 0.01 * ((Math.random() * 0.4) + 0.8));
 
                         userData[userData[userid].married].bank += addBalance;
                     }

@@ -440,13 +440,13 @@ client.on('messageCreate', message => {
                     income = 2;
                     break;
                 case 3:
-                    income = 4;
+                    income = 20;
                     break;
                 case 4:
-                    income = 7;
+                    income = 200;
                     break;
                 case 5:
-                    income = 10;
+                    income = 2000;
                     break;
             }
             if (timeDiff >= incomeCD) {
