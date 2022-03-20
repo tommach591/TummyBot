@@ -431,8 +431,26 @@ client.on('messageCreate', message => {
         if (userData[sender.id]) {
             var timeDiff = newTime.getTime() - userData[sender.id].incomeTime;
             var incomeCD = 1000 * 60; // 1min
+            var income = 1;
+            switch (userData[sender.id].income) {
+                case 1:
+                    income = 1;
+                    break;
+                case 2:
+                    income = 2;
+                    break;
+                case 3:
+                    income = 4;
+                    break;
+                case 4:
+                    income = 7;
+                    break;
+                case 5:
+                    income = 10;
+                    break;
+            }
             if (timeDiff >= incomeCD) {
-                userData[sender.id].points += Math.floor(timeDiff / incomeCD) * userData[sender.id].income;
+                userData[sender.id].points += Math.floor(timeDiff / incomeCD) * income;
                 userData[sender.id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
             }
         }
