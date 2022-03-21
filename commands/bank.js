@@ -19,13 +19,13 @@ module.exports = {
                     var addBalance = 0;
                     var currentBalance = 0;
                     if (userData[userid].married != "" && userData[userData[userid].married]) {
-                        currentBalance = userData[userid].bank + userData[userData[userid].married].bank;
+                        currentBalance = userData[userid].bank + Math.floor(userData[userData[userid].married].bank / 2);
                     }
                     else {
                         currentBalance = userData[userid].bank;
                     }
     
-                    addBalance = Math.floor(currentBalance * 0.01 * ((Math.random() * 0.4) + 0.8));
+                    addBalance = Math.floor(currentBalance * 0.01 * ((Math.random() * 0.9) + 0.1));
 
                     userData[userid].bank += addBalance;
                 }
@@ -39,9 +39,9 @@ module.exports = {
                     var totalTicks = Math.floor(timeDiff / tickTime);
                     for (let i = 0; i < totalTicks; i++) {
                         var addBalance = 0;
-                        var currentBalance = userData[userid].bank + userData[userData[userid].married].bank;
+                        var currentBalance = userData[userid].bank + Math.floor(userData[userData[userid].married].bank / 2);
         
-                        addBalance = Math.floor(currentBalance * 0.01 * ((Math.random() * 0.4) + 0.8));
+                        addBalance = Math.floor(currentBalance * 0.01 * ((Math.random() * 0.9) + 0.1));
 
                         userData[userData[userid].married].bank += addBalance;
                     }
