@@ -596,7 +596,7 @@ module.exports = {
                                 {
                                     setTimeout(() => {
                                         delete currHunt["active"];
-                                    }, 600000);
+                                    }, 1000 * 60 * 3);
                                 });
                             }
                         }

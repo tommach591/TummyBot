@@ -372,7 +372,7 @@ let attackAll = (newTime) => {
                 {
                     setTimeout(() => {
                         delete currHunt["active"];
-                    }, 600000);
+                    }, 1000 * 60 * 3);
                 });
             }
         }
@@ -648,7 +648,7 @@ client.on('messageCreate', message => {
                 {
                     setTimeout(() => {
                         delete currHunt["active"];
-                    }, 600000);
+                    }, 1000 * 60 * 3);
                 });
             }
         }
