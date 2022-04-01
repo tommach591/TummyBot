@@ -586,19 +586,16 @@ module.exports = {
                             rewardMsg.setColor("FFF000");
                             rewardMsg.setFooter("Hooray!");
                             
-                            for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                                currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(msg => 
+                            let channels = currHunt["active"].channels;
+                            for (let i = 0; i < channels.length; i++) {
+                                channels[i].send({ embeds: [embedMsg] }).then(msg => 
                                     {
                                     setTimeout(() => {
-                                        currHunt["active"].channels[i].send({ embeds: [rewardMsg] });
+                                        channels[i].send({ embeds: [rewardMsg] });
                                     }, 3000);
-                                }).then(() => 
-                                {
-                                    setTimeout(() => {
-                                        delete currHunt["active"];
-                                    }, 1000 * 60 * 3);
-                                });
+                                })
                             }
+                            delete currHunt["active"];
                         }
                         else {
                             embedMsg.setTitle("Attack!");
