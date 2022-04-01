@@ -367,14 +367,11 @@ let attackAll = (newTime) => {
             retreatMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
             retreatMsg.setColor("FF0000");
 
-            for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                currHunt["active"].channels[i].send({ embeds: [retreatMsg] }).then(() => 
-                {
-                    setTimeout(() => {
-                        delete currHunt["active"];
-                    }, 1000 * 60 * 3);
-                });
+            let channels = currHunt["active"].channels;
+            for (let i = 0; i < channels.length; i++) {
+                channels[i].send({ embeds: [retreatMsg] });
             }
+            delete currHunt["active"];
         }
     }
 }
@@ -643,14 +640,11 @@ client.on('messageCreate', message => {
             embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
             embedMsg.setColor("FF0000");
 
-            for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                currHunt["active"].channels[i].send({ embeds: [embedMsg] }).then(() => 
-                {
-                    setTimeout(() => {
-                        delete currHunt["active"];
-                    }, 1000 * 60 * 3);
-                });
+            let channels = currHunt["active"].channels;
+            for (let i = 0; i < channels.length; i++) {
+                channels[i].send({ embeds: [embedMsg] });
             }
+            delete currHunt["active"];
         }
 
         if (currHunt["active"] && !currHunt["active"].retreated) {
