@@ -962,9 +962,9 @@
         "attackImage": "https://i.imgur.com/TdCWqYH.gif",
         "maxHP": 100000,
         "attack": 500,
-        "defense": 150,
-        "magicdefense": 150,
-        "attackCD": 15000,
+        "defense": 500,
+        "magicdefense": 500,
+        "attackCD": 10000,
         "difficulty": 5,
         "loot": ["Triumph and Testament", "Old Fatalis Armor", "Dragonator"]
     }
