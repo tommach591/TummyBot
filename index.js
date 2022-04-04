@@ -199,6 +199,7 @@ let spawnMonster = (newTime) => {
         var diffThree = [];
         var diffFour = [];
         var diffFive = [];
+        var diffSix = [];
         for (var k in monsterdex) {
             switch(monsterdex[k].difficulty) {
                 case 1:
@@ -216,6 +217,9 @@ let spawnMonster = (newTime) => {
                 case 5:
                     diffFive.push(k);
                     break;
+                case 6:
+                    diffSix.push(k);
+                    break;
             }
         }
         var selectedMonster;
@@ -226,16 +230,19 @@ let spawnMonster = (newTime) => {
 
         while (!selectedMonster || currHunt.lastDifficulty.includes(selectedMonster.difficulty)) {
             var luck = Math.random() * 101;
-            if (luck <= 10) {
+            if (luck <= 5) {
+                selectedMonster = monsterdex[diffSix[Math.floor(Math.random() * diffSix.length)]];
+            }
+            if (luck <= 15) {
                 selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
             }
-            else if (luck <= 25) {
+            else if (luck <= 30) {
                 selectedMonster = monsterdex[diffFour[Math.floor(Math.random() * diffFour.length)]];
             }
-            else if (luck <= 45) {
+            else if (luck <= 50) {
                 selectedMonster = monsterdex[diffThree[Math.floor(Math.random() * diffThree.length)]];
             }
-            else if (luck <= 65) {
+            else if (luck <= 70) {
                 selectedMonster = monsterdex[diffTwo[Math.floor(Math.random() * diffTwo.length)]];
             }
             else {

@@ -13,7 +13,7 @@
         "defense": 50,
         "magicdefense": 50,
         "attackCD": 15000,
-        "difficulty": 5,
+        "difficulty": 6,
         "loot": ["Fatalis Dual Skies", "Fatalis Alpha", "Exploiter Charm III"]
     },
     "2": {
@@ -965,7 +965,7 @@
         "defense": 500,
         "magicdefense": 500,
         "attackCD": 10000,
-        "difficulty": 5,
+        "difficulty": 6,
         "loot": ["Triumph and Testament", "Old Fatalis Armor", "Dragonator"]
     }
 }
