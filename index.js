@@ -226,13 +226,13 @@ let spawnMonster = (newTime) => {
 
         while (!selectedMonster || currHunt.lastDifficulty.includes(selectedMonster.difficulty)) {
             var luck = Math.random() * 101;
-            if (luck <= 5) {
+            if (luck <= 10) {
                 selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
             }
-            else if (luck <= 15) {
+            else if (luck <= 25) {
                 selectedMonster = monsterdex[diffFour[Math.floor(Math.random() * diffFour.length)]];
             }
-            else if (luck <= 35) {
+            else if (luck <= 45) {
                 selectedMonster = monsterdex[diffThree[Math.floor(Math.random() * diffThree.length)]];
             }
             else if (luck <= 65) {

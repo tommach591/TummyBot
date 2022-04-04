@@ -950,5 +950,22 @@
         "attackCD": 30000,
         "difficulty": 5,
         "loot": ["Charizard", "Blastoise", "Venusaur"]
+    },
+    "57": {
+        "id": "57",
+        "name": "White Fatalis",
+        "info": "N/A",
+        "entry": "A old dragon appears from the heavens.",
+        "shoutout": "The old dragon calls forth red lightning storms.",
+        "death": "The old dragon has been slain.",
+        "image": "https://c.tenor.com/J6jt7VQV97gAAAAC/white-fatalis-monster-hunter.gif",
+        "attackImage": "https://i.imgur.com/TdCWqYH.gif",
+        "maxHP": 100000,
+        "attack": 500,
+        "defense": 150,
+        "magicdefense": 150,
+        "attackCD": 15000,
+        "difficulty": 5,
+        "loot": ["Triumph and Testament", "Old Fatalis Armor", "Dragonator"]
     }
 }

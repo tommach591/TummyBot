@@ -889,5 +889,38 @@
         "magic": 50,
         "defense": 50,
         "speed": 0
+    },
+    "Triumph and Testament": {
+        "name": "Triumph and Testament",
+        "type": 0,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 0,
+        "attack": 70,
+        "magic": 70,
+        "defense": 0,
+        "speed": 160
+    },
+    "Old Fatalis Armor": {
+        "name": "Old Fatalis Armor",
+        "type": 1,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 500,
+        "attack": 0,
+        "magic": 0,
+        "defense": 200,
+        "speed": 0
+    },
+    "Dragonator": {
+        "name": "Dragonator",
+        "type": 2,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 0,
+        "attack": 150,
+        "magic": 150,
+        "defense": 0,
+        "speed": 0
     }
 }
