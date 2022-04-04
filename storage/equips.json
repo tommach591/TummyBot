@@ -890,8 +890,8 @@
         "defense": 50,
         "speed": 0
     },
-    "Triumph and Testament": {
-        "name": "Triumph and Testament",
+    "Fatalis Legacy": {
+        "name": "Fatalis Legacy",
         "type": 0,
         "rarity": 10,
         "image": "",
@@ -912,8 +912,8 @@
         "defense": 200,
         "speed": 0
     },
-    "Dragonator": {
-        "name": "Dragonator",
+    "Triumph and Testament": {
+        "name": "Triumph and Testament",
         "type": 2,
         "rarity": 10,
         "image": "",
@@ -922,5 +922,38 @@
         "magic": 150,
         "defense": 0,
         "speed": 0
+    },
+    "True Obliterator": {
+        "name": "True Obliterator",
+        "type": 0,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 0,
+        "attack": 150,
+        "magic": 0,
+        "defense": 0,
+        "speed": 150
+    },
+    "Fatalis Crimson Armor": {
+        "name": "Fatalis Crimson Armor",
+        "type": 1,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 0,
+        "attack": 150,
+        "magic": 0,
+        "defense": 0,
+        "speed": 150
+    },
+    "Bow of Fury and Perfidy": {
+        "name": "Bow of Fury and Perfidy",
+        "type": 2,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 0,
+        "attack": 150,
+        "magic": 0,
+        "defense": 0,
+        "speed": 150
     }
 }

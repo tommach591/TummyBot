@@ -964,8 +964,25 @@
         "attack": 500,
         "defense": 500,
         "magicdefense": 500,
-        "attackCD": 10000,
+        "attackCD": 20000,
         "difficulty": 6,
-        "loot": ["Triumph and Testament", "Old Fatalis Armor", "Dragonator"]
+        "loot": ["Fatalis Legacy", "Old Fatalis Armor", "Triumph and Testament"]
+    },
+    "58": {
+        "id": "58",
+        "name": "Crimson Fatalis",
+        "info": "N/A",
+        "entry": "The enraged dragon rises from the molten lava.",
+        "shoutout": "The enraged dragon rains down destruction.",
+        "death": "The enraged dragon has been slain.",
+        "image": "https://64.media.tumblr.com/2bf207991b9a703e225973d473731092/f7ef50fd59c15b3c-ee/s500x750/f761515caf9c9628b0fe3b3f3307d7b3dc044fa0.gif",
+        "attackImage": "https://i.imgur.com/guQ4wOh.gif",
+        "maxHP": 100000,
+        "attack": 500,
+        "defense": 100,
+        "magicdefense": 100,
+        "attackCD": 5000,
+        "difficulty": 6,
+        "loot": ["True Obliterator", "Fatalis Crimson Armor", "Bow of Fury and Perfidy"]
     }
 }
