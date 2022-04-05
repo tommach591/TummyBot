@@ -986,7 +986,7 @@
         "loot": []
     },
     "59": {
-        "id": "58",
+        "id": "59",
         "name": "Crimson Fatalis",
         "info": "N/A",
         "entry": "The enraged dragon rises from the molten lava.",
@@ -1003,7 +1003,7 @@
         "loot": ["True Obliterator", "Fatalis Crimson Armor", "Bow of Fury and Perfidy"]
     },
     "60": {
-        "id": "57",
+        "id": "60",
         "name": "White Fatalis",
         "info": "N/A",
         "entry": "An old dragon appears from the heavens.",
