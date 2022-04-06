@@ -197,6 +197,7 @@ module.exports = {
                 let getInfo = (id) => {
                     var newTime = new Date();
                     var target = client.users.cache.get(id);
+                    
                     embedMsg.setTitle('Hunting Equipment');
                     embedMsg.setAuthor({ name: userData[id].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setThumbnail(target.displayAvatarURL());
@@ -249,8 +250,10 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                             return;
                         }
-        
+                        
+                        updateStats(mention);
                         getInfo(mention);
+                        updateStats(userid);
                     }
                     else {
                         embedMsg.setTitle('Error!');
