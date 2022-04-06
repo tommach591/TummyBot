@@ -234,7 +234,7 @@ module.exports = {
                 }
 
                 if (args.length > 1) {
-                    var mention = args[0];
+                    var mention = args[1];
                     if (mention.startsWith('<@') && mention.endsWith('>')) {
                         mention = mention.slice(2, -1);
                     
@@ -251,6 +251,13 @@ module.exports = {
                         }
         
                         getInfo(mention);
+                    }
+                    else {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('User does not exist!');
+                        message.channel.send({ embeds: [embedMsg] });
+                        return;
                     }
                 }
                 else {
