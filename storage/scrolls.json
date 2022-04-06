@@ -54,40 +54,40 @@
         "speed": 0
     },
     "6": {
-        "name": "Scroll for Three Attack 20%",
+        "name": "Scroll for Four Attack 20%",
         "rate": 0.20,
         "maxHP": 0,
-        "attack": 3,
+        "attack": 4,
         "magic": 0,
         "defense": 0,
         "speed": 0
     },
     "7": {
-        "name": "Scroll for Three Magic Attack 20%",
+        "name": "Scroll for Four Magic Attack 20%",
         "rate": 0.20,
         "maxHP": 0,
         "attack": 0,
-        "magic": 3,
+        "magic": 4,
         "defense": 0,
         "speed": 0
     },
     "8": {
-        "name": "Scroll for Three Defense 20%",
+        "name": "Scroll for Four Defense 20%",
         "rate": 0.20,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 3,
+        "defense": 4,
         "speed": 0
     },
     "9": {
-        "name": "Scroll for Three Speed 20%",
+        "name": "Scroll for Four Speed 20%",
         "rate": 0.20,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 3
+        "speed": 4
     },
     "10": {
         "name": "Scroll for Five HP 60%",
@@ -126,49 +126,49 @@
         "speed": 0
     },
     "14": {
-        "name": "Scroll for Forty HP 10%",
+        "name": "Scroll for Thirty HP 10%",
         "rate": 0.10,
-        "maxHP": 40,
+        "maxHP": 30,
         "attack": 0,
         "magic": 0,
         "defense": 0,
         "speed": 0
     },
     "15": {
-        "name": "Scroll for Four Attack 10%",
+        "name": "Scroll for Six Attack 10%",
         "rate": 0.10,
         "maxHP": 0,
-        "attack": 4,
+        "attack": 6,
         "magic": 0,
         "defense": 0,
         "speed": 0
     },
     "16": {
-        "name": "Scroll for Four Magic Attack 10%",
+        "name": "Scroll for Six Magic Attack 10%",
         "rate": 0.10,
         "maxHP": 0,
         "attack": 0,
-        "magic": 4,
+        "magic": 6,
         "defense": 0,
         "speed": 0
     },
     "17": {
-        "name": "Scroll for Four Defense 10%",
+        "name": "Scroll for Six Defense 10%",
         "rate": 0.10,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 4,
+        "defense": 6,
         "speed": 0
     },
     "18": {
-        "name": "Scroll for Four Speed 10%",
+        "name": "Scroll for Six Speed 10%",
         "rate": 0.10,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 4
+        "speed": 6
     },
     "19": {
         "name": "Scroll for All Stats (10/2/2/2/2) 10%",
@@ -225,49 +225,49 @@
         "speed": 2
     },
     "25": {
-        "name": "Lucky Scroll for Thirty HP 25%",
+        "name": "Lucky Scroll for Twenty HP 25%",
         "rate": 0.25,
-        "maxHP": 30,
+        "maxHP": 20,
         "attack": 0,
         "magic": 0,
         "defense": 0,
         "speed": 0
     },
     "26": {
-        "name": "Lucky Scroll for Three Attack 25%",
+        "name": "Lucky Scroll for Four Attack 25%",
         "rate": 0.25,
         "maxHP": 0,
-        "attack": 3,
+        "attack": 4,
         "magic": 0,
         "defense": 0,
         "speed": 0
     },
     "27": {
-        "name": "Lucky Scroll for Three Magic Attack 25%",
+        "name": "Lucky Scroll for Four Magic Attack 25%",
         "rate": 0.25,
         "maxHP": 0,
         "attack": 0,
-        "magic": 3,
+        "magic": 4,
         "defense": 0,
         "speed": 0
     },
     "28": {
-        "name": "Lucky Scroll for Three Defense 25%",
+        "name": "Lucky Scroll for Four Defense 25%",
         "rate": 0.25,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 3,
+        "defense": 4,
         "speed": 0
     },
     "29": {
-        "name": "Lucky Scroll for Three Speed 25%",
+        "name": "Lucky Scroll for Four Speed 25%",
         "rate": 0.25,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 3
+        "speed": 4
     },
     "30": {
         "name": "Lucky Scroll for Two Attack and Two Magic 25%",
@@ -297,40 +297,40 @@
         "speed": 0
     },
     "33": {
-        "name": "Lucky Scroll for Four Attack 15%",
+        "name": "Lucky Scroll for Six Attack 15%",
         "rate": 0.15,
         "maxHP": 0,
-        "attack": 4,
+        "attack": 6,
         "magic": 0,
         "defense": 0,
         "speed": 0
     },
     "34": {
-        "name": "Lucky Scroll for Four Magic Attack 15%",
+        "name": "Lucky Scroll for Six Magic Attack 15%",
         "rate": 0.15,
         "maxHP": 0,
         "attack": 0,
-        "magic": 4,
+        "magic": 6,
         "defense": 0,
         "speed": 0
     },
     "35": {
-        "name": "Lucky Scroll for Four Defense 15%",
+        "name": "Lucky Scroll for Six Defense 15%",
         "rate": 0.15,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 4,
+        "defense": 6,
         "speed": 0
     },
     "36": {
-        "name": "Lucky Scroll for Four Speed 15%",
+        "name": "Lucky Scroll for Six Speed 15%",
         "rate": 0.15,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 4
+        "speed": 6
     },
     "37": {
         "name": "Lucky Scroll for All Stats (10/2/2/2/2) 15%",
@@ -387,13 +387,13 @@
         "speed": 0
     },
     "48": {
-        "name": "Cursed Scroll for Four Attack and Four Magic 20%",
+        "name": "Cursed Scroll for Two Attack, Two Magic, and Two Speed 20%",
         "rate": 0.20,
         "maxHP": -30,
-        "attack": 4,
-        "magic": 4,
+        "attack": 2,
+        "magic": 2,
         "defense": 0,
-        "speed": 0
+        "speed": 2
     },
     "49": {
         "name": "Scroll for Three Attack and Three Magic 10%",
