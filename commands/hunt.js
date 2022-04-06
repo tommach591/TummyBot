@@ -194,42 +194,68 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'info':
-                var newTime = new Date();
-                var target = client.users.cache.get(userid);
-                embedMsg.setTitle('Hunting Equipment');
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
-                embedMsg.setThumbnail(target.displayAvatarURL());
-                embedMsg.setColor('FFF000');
+                let getInfo = (id) => {
+                    var newTime = new Date();
+                    var target = client.users.cache.get(id);
+                    embedMsg.setTitle('Hunting Equipment');
+                    embedMsg.setAuthor({ name: userData[id].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setThumbnail(target.displayAvatarURL());
+                    embedMsg.setColor('FFF000');
+    
+                    var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
+                    var currentCondition = "HP: " + userHunt[id].currentHP + "\n";
+    
+                    if (currHunt["active"])
+                        currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)))) * 100).toFixed(2) + "%\n";
+                    else {
+                        currentCondition += "Resistance: -.--%\n";
+                    }
+                    
+                    currentCondition += "Affinity: " + critChance.toFixed(2) + "%\n";
+                    currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
+    
+                    currentCondition += "Respawn: ";
+                    var respawntime = Math.floor((1000 * 120 - (newTime.getTime() - userHunt[id].deathTime)) / 1000);
+                    if (userHunt[id].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated && respawntime > 0) {
+                        currentCondition += respawntime.toString() + "s\n";
+                    }
+                    else {
+                        currentCondition += "0s\n";
+                    }
+    
+                    embedMsg.setFields(
+                        {name: "__Weapon:__  :dagger: ⠀⠀⠀⠀", value: "" + weapon.name + "\n", inline: true},
+                        {name: "__Armor:__  :shield: ⠀⠀⠀⠀⠀", value: "" + armor.name + "\n", inline: true},
+                        {name: "__Accessory:__  :feather: ⠀⠀⠀⠀", value: "" + accessory.name + "\n", inline: true},
+                        {name: "__Stats:__  :bow_and_arrow: ⠀⠀⠀⠀", value: stats + "\n", inline: true},
+                        {name: "__Battle Stats:__  :crossed_swords: ⠀⠀⠀⠀", value: currentCondition + "\n", inline: true},
+                    );
+                    message.channel.send({ embeds: [embedMsg] });
+                }
 
-                var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
-                var currentCondition = "HP: " + userHunt[userid].currentHP + "\n";
-
-                if (currHunt["active"])
-                    currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)))) * 100).toFixed(2) + "%\n";
+                if (args.length > 1) {
+                    var mention = args[0];
+                    if (mention.startsWith('<@') && mention.endsWith('>')) {
+                        mention = mention.slice(2, -1);
+                    
+                        if (mention.startsWith('!')) {
+                            mention = mention.slice(1);
+                        }
+                    
+                        if (!userData[mention]) {
+                            embedMsg.setTitle('Error!');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription('User does not exist!');
+                            message.channel.send({ embeds: [embedMsg] });
+                            return;
+                        }
+        
+                        getInfo(mention);
+                    }
+                }
                 else {
-                    currentCondition += "Resistance: -.--%\n";
+                    getInfo(userid);
                 }
-                
-                currentCondition += "Affinity: " + critChance.toFixed(2) + "%\n";
-                currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
-
-                currentCondition += "Respawn: ";
-                var respawntime = Math.floor((1000 * 120 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000);
-                if (userHunt[userid].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated && respawntime > 0) {
-                    currentCondition += respawntime.toString() + "s\n";
-                }
-                else {
-                    currentCondition += "0s\n";
-                }
-
-                embedMsg.setFields(
-                    {name: "__Weapon:__  :dagger: ⠀⠀⠀⠀", value: "" + weapon.name + "\n", inline: true},
-                    {name: "__Armor:__  :shield: ⠀⠀⠀⠀⠀", value: "" + armor.name + "\n", inline: true},
-                    {name: "__Accessory:__  :feather: ⠀⠀⠀⠀", value: "" + accessory.name + "\n", inline: true},
-                    {name: "__Stats:__  :bow_and_arrow: ⠀⠀⠀⠀", value: stats + "\n", inline: true},
-                    {name: "__Battle Stats:__  :crossed_swords: ⠀⠀⠀⠀", value: currentCondition + "\n", inline: true},
-                );
-                message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'gear':
                 var target = client.users.cache.get(userid);
