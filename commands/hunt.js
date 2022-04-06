@@ -522,7 +522,7 @@ module.exports = {
                                 for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.0075; // 0.75%
-                                    if (luck <= chance) {
+                                    if (luck <= chance && rewardLevel >= 3) {
                                         var itemObtained = generateEquip(threestar[Math.floor(Math.random() * threestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
                                         itemsEarned += ", " + items[itemObtained].name;
