@@ -571,8 +571,6 @@ module.exports = {
 
                                 userData[player].points += goldEarned;
                                 updateStats(player);
-
-                                userHunt[player]
                                 
                                 reward += userData[player].name + " has been awarded with: " + goldEarned + " points" + itemsEarned + "\n\n";
                             }
