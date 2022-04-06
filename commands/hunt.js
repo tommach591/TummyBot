@@ -105,16 +105,16 @@ module.exports = {
         var critChance;
         var critDmg;
 
-        let updateStats = () => {
-            weapon = items[userHunt[userid].weapon];
-            armor = items[userHunt[userid].armor];
-            accessory = items[userHunt[userid].accessory];
+        let updateStats = (id) => {
+            weapon = items[userHunt[id].weapon];
+            armor = items[userHunt[id].armor];
+            accessory = items[userHunt[id].accessory];
     
-            maxHP = userHunt[userid].maxHP;
-            attack = userHunt[userid].attack;
-            magic = userHunt[userid].magic;
-            defense = userHunt[userid].defense;
-            speed = userHunt[userid].speed;
+            maxHP = userHunt[id].maxHP;
+            attack = userHunt[id].attack;
+            magic = userHunt[id].magic;
+            defense = userHunt[id].defense;
+            speed = userHunt[id].speed;
     
             if (weapon.name != "Nothing") {
                 maxHP += weapon.maxHP + equips[weapon.name].maxHP;
@@ -160,12 +160,12 @@ module.exports = {
             critDmg = 4 + (speed * 0.02);
 
             if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
-                userHunt[userid].currentHP = maxHP;
+                userHunt[id].currentHP = maxHP;
             }
             
         }
 
-        updateStats();
+        updateStats(userid);
 
         var command = args[0];
         switch(command) {
@@ -570,6 +570,9 @@ module.exports = {
                                 }
 
                                 userData[player].points += goldEarned;
+                                updateStats(player);
+
+                                userHunt[player]
                                 
                                 reward += userData[player].name + " has been awarded with: " + goldEarned + " points" + itemsEarned + "\n\n";
                             }
@@ -846,7 +849,7 @@ module.exports = {
                                     userHunt[userid].accessory = selected;
                                     break;
                             }
-                            updateStats();
+                            updateStats(userid);
                             embedMsg.setTitle('Equiped!');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(userData[userid].name + ' equiped ' + items[selected].name);
@@ -877,7 +880,7 @@ module.exports = {
                             if (userHunt[userid].weapon != "000000") {
                                 userHunt[userid].equips.push(userHunt[userid].weapon);
                                 userHunt[userid].weapon = "000000";
-                                updateStats();
+                                updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setDescription('Successfully unequiped weapon!');
@@ -894,7 +897,7 @@ module.exports = {
                             if (userHunt[userid].armor != "000000") {
                                 userHunt[userid].equips.push(userHunt[userid].armor);
                                 userHunt[userid].armor = "000000";
-                                updateStats();
+                                updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setDescription('Successfully unequiped armor!');
@@ -912,7 +915,7 @@ module.exports = {
                             if (userHunt[userid].accessory != "000000") {
                                 userHunt[userid].equips.push(userHunt[userid].accessory);
                                 userHunt[userid].accessory = "000000";
-                                updateStats();
+                                updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setDescription('Successfully unequiped accessory!');
@@ -1167,7 +1170,7 @@ module.exports = {
                                         items[userHunt[userid].weapon].defense += theScroll.defense;
                                         items[userHunt[userid].weapon].speed += theScroll.speed;
                                         items[userHunt[userid].weapon].slots--;
-                                        updateStats();
+                                        updateStats(userid);
                                         embedMsg.setTitle('Success! - ' + theScroll.name);
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
@@ -1206,7 +1209,7 @@ module.exports = {
                                         items[userHunt[userid].armor].defense += theScroll.defense;
                                         items[userHunt[userid].armor].speed += theScroll.speed;
                                         items[userHunt[userid].armor].slots--;
-                                        updateStats();
+                                        updateStats(userid);
                                         embedMsg.setTitle('Success! - ' + theScroll.name);
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
@@ -1246,7 +1249,7 @@ module.exports = {
                                         items[userHunt[userid].accessory].defense += theScroll.defense;
                                         items[userHunt[userid].accessory].speed += theScroll.speed;
                                         items[userHunt[userid].accessory].slots--;
-                                        updateStats();
+                                        updateStats(userid);
                                         embedMsg.setTitle('Success! - ' + theScroll.name);
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
