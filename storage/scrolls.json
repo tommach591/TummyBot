@@ -344,34 +344,34 @@
     "38": {
         "name": "Cursed Scroll for Six Attack 20%",
         "rate": 0.20,
-        "maxHP": -30,
+        "maxHP": -20,
         "attack": 6,
         "magic": 0,
-        "defense": 0,
+        "defense": -2,
         "speed": 0
     },
     "39": {
         "name": "Cursed Scroll for Six Magic 20%",
         "rate": 0.20,
-        "maxHP": -30,
+        "maxHP": -20,
         "attack": 0,
         "magic": 6,
-        "defense": 0,
+        "defense": -2,
         "speed": 0
     },
     "40": {
         "name": "Cursed Scroll for Six Speed 20%",
         "rate": 0.20,
-        "maxHP": -30,
+        "maxHP": -20,
         "attack": 0,
         "magic": 0,
-        "defense": 0,
+        "defense": -2,
         "speed": 6
     },
     "41": {
-        "name": "Cursed Scroll for Fifty Health 20%",
+        "name": "Cursed Scroll for Sixty Health 20%",
         "rate": 0.20,
-        "maxHP": 50,
+        "maxHP": 60,
         "attack": -2,
         "magic": -2,
         "defense": 0,
@@ -389,10 +389,10 @@
     "48": {
         "name": "Cursed Scroll for Two Attack, Two Magic, and Two Speed 20%",
         "rate": 0.20,
-        "maxHP": -30,
+        "maxHP": -20,
         "attack": 2,
         "magic": 2,
-        "defense": 0,
+        "defense": -2,
         "speed": 2
     },
     "49": {
