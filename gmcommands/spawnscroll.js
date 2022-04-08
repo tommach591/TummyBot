@@ -69,7 +69,7 @@ module.exports = {
             embedMsg.setTitle('Error!');
             embedMsg.setColor('FF0000');
             embedMsg.setDescription('You do not have permission to use this command!');
-            message.channel.send({ embeds: [embedMsg] });
+            message.channel.send({ embeds: [embedMsg] }); 
         }
     }
 }
