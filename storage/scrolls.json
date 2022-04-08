@@ -414,8 +414,8 @@
         "speed": 0
     },
     "51": {
-        "name": "Chaos Scroll (★) 25%",
-        "rate": 0.25,
+        "name": "Chaos Scroll (★) 42%",
+        "rate": 0.42,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
@@ -424,8 +424,8 @@
         "chaos": 1
     },
     "52": {
-        "name": "Chaos Scroll (★★) 25%",
-        "rate": 0.25,
+        "name": "Chaos Scroll (★★) 42%",
+        "rate": 0.42,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
@@ -434,8 +434,8 @@
         "chaos": 2
     },
     "53": {
-        "name": "Chaos Scroll (★★★) 25%",
-        "rate": 0.25,
+        "name": "Chaos Scroll (★★★) 42%",
+        "rate": 0.42,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
