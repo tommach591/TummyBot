@@ -414,8 +414,8 @@
         "speed": 0
     },
     "51": {
-        "name": "Chaos Scroll Level 1 20%",
-        "rate": 0.20,
+        "name": "Chaos Scroll Level 1 50%",
+        "rate": 0.50,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
@@ -424,8 +424,8 @@
         "chaos": 1
     },
     "52": {
-        "name": "Chaos Scroll Level 2 20%",
-        "rate": 0.20,
+        "name": "Chaos Scroll Level 2 50%",
+        "rate": 0.50,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
@@ -434,8 +434,8 @@
         "chaos": 2
     },
     "53": {
-        "name": "Chaos Scroll Level 3 20%",
-        "rate": 0.20,
+        "name": "Chaos Scroll Level 3 50%",
+        "rate": 0.50,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
