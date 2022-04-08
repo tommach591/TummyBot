@@ -1051,6 +1051,9 @@ module.exports = {
                                 allscrolls[index] += "\nChaos: " + (scrolls[element].chaos);
                                 allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
                             }
+                            if (scrolls[element].purity) {
+                                allscrolls[index] += "\nPurifies your equipment from the good and the bad.";
+                            }
                             allscrolls[index] += "\n\n";
                             count++;
                         }
