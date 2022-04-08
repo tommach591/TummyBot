@@ -1199,11 +1199,11 @@ module.exports = {
                                 var chance = 100 * theScroll.rate;
                                 if (luck <= chance) {
                                     if (theScroll.chaos) {
-                                        items[gear].maxHP += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos)) * 5;
-                                        items[gear].attack += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
-                                        items[gear].magic += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
-                                        items[gear].defense += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
-                                        items[gear].speed += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
+                                        items[gear].maxHP += (Math.floor(Math.random() * 7) - 3) * theScroll.chaos * 5;
+                                        items[gear].attack += (Math.floor(Math.random() * 7) - 3) * theScroll.chaos;
+                                        items[gear].magic += (Math.floor(Math.random() * 7) - 3) * theScroll.chaos;
+                                        items[gear].defense += (Math.floor(Math.random() * 7) - 3) * theScroll.chaos;
+                                        items[gear].speed += (Math.floor(Math.random() * 7) - 3) * theScroll.chaos;
                                     }
                                     else {
                                         items[gear].maxHP += theScroll.maxHP;
