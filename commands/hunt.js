@@ -1048,7 +1048,7 @@ module.exports = {
                                 allscrolls[index] += "\nSpeed: " + (scrolls[element].speed);
                             }
                             if (scrolls[element].chaos) {
-                                allscrolls[index] += "\nChaos: " + (scrolls[element].chaos * 3);
+                                allscrolls[index] += "\nChaos: " + (scrolls[element].chaos);
                                 allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
                             }
                             allscrolls[index] += "\n\n";
