@@ -1048,7 +1048,7 @@ module.exports = {
                                 allscrolls[index] += "\nSpeed: " + (scrolls[element].speed);
                             }
                             if (scrolls[element].chaos) {
-                                allscrolls[index] += "\nCh͔̞̭̳̱͌ͣ̿̔̂ȧ͇͈̘̼̝͗ͣ́ͨ͂ͅö̃̇̂͋s͑ͤ: " + (scrolls[element].chaos);
+                                allscrolls[index] += "\nƆɥɐoʇᴉɔ ˥ǝʌǝl: " + (scrolls[element].chaos);
                             }
                             allscrolls[index] += "\n\n";
                             count++;
@@ -1255,7 +1255,7 @@ module.exports = {
                                     updateStats(userid);
                                     embedMsg.setTitle('Success! - ' + theScroll.name);
                                     embedMsg.setColor('00FF00');
-                                    embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
+                                    embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                     embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                     embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                     message.channel.send({ embeds: [embedMsg] });
@@ -1264,7 +1264,7 @@ module.exports = {
                                 else {
                                     embedMsg.setTitle('Fail! - ' + theScroll.name);
                                     embedMsg.setColor('FF0000');
-                                    embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
+                                    embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
                                     embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
                                     embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                     message.channel.send({ embeds: [embedMsg] });
