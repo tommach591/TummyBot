@@ -33,13 +33,13 @@ module.exports = {
                     embedMsg.setColor('2EFAFF');
                     break;
             }
-            var fishtext = "" + userFish[id].fishdex.length + " ";
+            var fishtext = "" + userFish[id].fishdex.length + "/" + "105 ";
             if (userFish[id].fishdex.length == 105) {
                 fishtext += ":trophy:";
             }
             fishtext += "\n";
             
-            var gardentext = "" + userGarden[id].gardendex.length + " ";
+            var gardentext = "" + userGarden[id].gardendex.length + "/" + "25 ";
             if (userGarden[id].gardendex.length == 25) {
                 gardentext += ":trophy:";
             }
