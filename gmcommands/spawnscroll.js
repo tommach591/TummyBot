@@ -36,7 +36,7 @@ module.exports = {
 
                 if (!isNaN(choice) && scrolls[choice]) {
                     var scrollobtained = scrolls[choice];
-                    userHunt[mention].equips.push(scrollobtained);
+                    userHunt[mention].scrolls.push(scrollobtained);
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
                     embedMsg.setDescription(userData[mention].name + ' was gifted a ' + scrollobtained.name + '!');
