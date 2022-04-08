@@ -10,8 +10,8 @@
         "attackImage": "https://c.tenor.com/EjgdY5TUPXIAAAAd/mhw-fatalis.gif",
         "maxHP": 75000,
         "attack": 300,
-        "defense": 50,
-        "magicdefense": 50,
+        "defense": 100,
+        "magicdefense": 100,
         "attackCD": 15000,
         "difficulty": 6,
         "loot": ["Fatalis Dual Skies", "Fatalis Alpha", "Exploiter Charm III"]
@@ -998,7 +998,7 @@
         "attack": 500,
         "defense": 100,
         "magicdefense": 100,
-        "attackCD": 5000,
+        "attackCD": 7500,
         "difficulty": 6,
         "loot": ["True Obliterator", "Fatalis Crimson Armor", "Bow of Fury and Perfidy"]
     },
@@ -1012,9 +1012,9 @@
         "image": "https://c.tenor.com/J6jt7VQV97gAAAAC/white-fatalis-monster-hunter.gif",
         "attackImage": "https://i.imgur.com/TdCWqYH.gif",
         "maxHP": 100000,
-        "attack": 500,
-        "defense": 500,
-        "magicdefense": 500,
+        "attack": 400,
+        "defense": 400,
+        "magicdefense": 400,
         "attackCD": 20000,
         "difficulty": 6,
         "loot": ["Fatalis Legacy", "Old Fatalis Armor", "Triumph and Testament"]

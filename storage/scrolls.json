@@ -342,58 +342,58 @@
         "speed": 2
     },
     "38": {
-        "name": "Cursed Scroll for Six Attack 20%",
-        "rate": 0.20,
+        "name": "Cursed Scroll for Eight Attack 15%",
+        "rate": 0.15,
         "maxHP": -20,
-        "attack": 6,
+        "attack": 8,
         "magic": 0,
         "defense": -2,
         "speed": 0
     },
     "39": {
-        "name": "Cursed Scroll for Six Magic 20%",
-        "rate": 0.20,
+        "name": "Cursed Scroll for Eight Magic 15%",
+        "rate": 0.15,
         "maxHP": -20,
         "attack": 0,
-        "magic": 6,
+        "magic": 8,
         "defense": -2,
         "speed": 0
     },
     "40": {
-        "name": "Cursed Scroll for Six Speed 20%",
-        "rate": 0.20,
+        "name": "Cursed Scroll for Eight Speed 15%",
+        "rate": 0.15,
         "maxHP": -20,
         "attack": 0,
         "magic": 0,
         "defense": -2,
-        "speed": 6
+        "speed": 8
     },
     "41": {
-        "name": "Cursed Scroll for Sixty Health 20%",
-        "rate": 0.20,
-        "maxHP": 60,
+        "name": "Cursed Scroll for Eighty Health 15%",
+        "rate": 0.15,
+        "maxHP": 80,
         "attack": -2,
         "magic": -2,
         "defense": 0,
         "speed": 0
     },
     "42": {
-        "name": "Cursed Scroll for Six Defense 20%",
-        "rate": 0.20,
+        "name": "Cursed Scroll for Eight Defense 15%",
+        "rate": 0.15,
         "maxHP": 0,
         "attack": -2,
         "magic": -2,
-        "defense": 6,
+        "defense": 8,
         "speed": 0
     },
     "48": {
-        "name": "Cursed Scroll for Two Attack, Two Magic, and Two Speed 20%",
-        "rate": 0.20,
+        "name": "Cursed Scroll for Four Attack and Four Magic 15%",
+        "rate": 0.15,
         "maxHP": -20,
-        "attack": 2,
-        "magic": 2,
+        "attack": 4,
+        "magic": 4,
         "defense": -2,
-        "speed": 2
+        "speed": 0
     },
     "49": {
         "name": "Scroll for Three Attack and Three Magic 10%",
@@ -412,5 +412,35 @@
         "magic": 3,
         "defense": 0,
         "speed": 0
+    },
+    "51": {
+        "name": "Chaos Scroll Level 1 20%",
+        "rate": 0.20,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "chaos": 1
+    },
+    "52": {
+        "name": "Chaos Scroll Level 2 20%",
+        "rate": 0.20,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "chaos": 2
+    },
+    "53": {
+        "name": "Chaos Scroll Level 3 20%",
+        "rate": 0.20,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "chaos": 3
     }
 }

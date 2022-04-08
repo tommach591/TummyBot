@@ -1192,123 +1192,65 @@ module.exports = {
                     }
                     else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < userHunt[userid].scrolls.length) {
                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
+
+                        let scrollGear = (gear) => {
+                            if (gear != "000000" && items[gear].slots > 0) {
+                                var luck = Math.floor((Math.random() * 100) + 1);
+                                var chance = 100 * theScroll.rate;
+                                if (luck <= chance) {
+                                    if (theScroll.chaos) {
+                                        items[gear].maxHP += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
+                                        items[gear].attack += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
+                                        items[gear].magic += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
+                                        items[gear].defense += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
+                                        items[gear].speed += Math.floor((Math.random() * 7 * theScroll.chaos) - (3 * theScroll.chaos));
+                                    }
+                                    else {
+                                        items[gear].maxHP += theScroll.maxHP;
+                                        items[gear].attack += theScroll.attack;
+                                        items[gear].magic += theScroll.magic;
+                                        items[gear].defense += theScroll.defense;
+                                        items[gear].speed += theScroll.speed;
+                                    }
+                                    items[gear].slots--;
+                                    updateStats(userid);
+                                    embedMsg.setTitle('Success! - ' + theScroll.name);
+                                    embedMsg.setColor('00FF00');
+                                    embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
+                                    embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
+                                    embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                    message.channel.send({ embeds: [embedMsg] });
+                                    userHunt[userid].scrolls.splice(selectedindex, 1);
+                                }
+                                else {
+                                    embedMsg.setTitle('Fail! - ' + theScroll.name);
+                                    embedMsg.setColor('FF0000');
+                                    embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
+                                    embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
+                                    embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                    message.channel.send({ embeds: [embedMsg] });
+                                    userHunt[userid].scrolls.splice(selectedindex, 1);
+                                }
+                            }
+                            else {
+                                embedMsg.setTitle('Error!');
+                                embedMsg.setColor('FF0000');
+                                embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
+                                embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
+                                message.channel.send({ embeds: [embedMsg] });
+                            }
+                        }
+                        
                         switch (choice) {
                             case "weapon":
-                                if (userHunt[userid].weapon != "000000" && items[userHunt[userid].weapon].slots > 0) {
-                                    var luck = Math.floor((Math.random() * 100) + 1);
-                                    var chance = 100 * theScroll.rate;
-                                    if (luck <= chance) {
-                                        items[userHunt[userid].weapon].maxHP += theScroll.maxHP;
-                                        items[userHunt[userid].weapon].attack += theScroll.attack;
-                                        items[userHunt[userid].weapon].magic += theScroll.magic;
-                                        items[userHunt[userid].weapon].defense += theScroll.defense;
-                                        items[userHunt[userid].weapon].speed += theScroll.speed;
-                                        items[userHunt[userid].weapon].slots--;
-                                        updateStats(userid);
-                                        embedMsg.setTitle('Success! - ' + theScroll.name);
-                                        embedMsg.setColor('00FF00');
-                                        embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
-                                        embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
-                                        message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
-                                    }
-                                    else {
-                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
-                                        embedMsg.setColor('FF0000');
-                                        embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
-                                        embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
-                                        message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
-                                    }
-                                }
-                                else {
-                                    embedMsg.setTitle('Error!');
-                                    embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
-                                    embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
-                                    message.channel.send({ embeds: [embedMsg] });
-                                }
+                                scrollGear(userHunt[userid].weapon);
                                 break;
                             case "armor":
-                                if (userHunt[userid].armor != "000000" && items[userHunt[userid].armor].slots > 0) {
-                                    var luck = Math.floor((Math.random() * 100) + 1);
-                                    var chance = 100 * theScroll.rate;
-                                    if (luck <= chance) {
-                                        theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
-                                        items[userHunt[userid].armor].maxHP += theScroll.maxHP;
-                                        items[userHunt[userid].armor].attack += theScroll.attack;
-                                        items[userHunt[userid].armor].magic += theScroll.magic;
-                                        items[userHunt[userid].armor].defense += theScroll.defense;
-                                        items[userHunt[userid].armor].speed += theScroll.speed;
-                                        items[userHunt[userid].armor].slots--;
-                                        updateStats(userid);
-                                        embedMsg.setTitle('Success! - ' + theScroll.name);
-                                        embedMsg.setColor('00FF00');
-                                        embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
-                                        embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
-                                        message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
-                                    }
-                                    else {
-                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
-                                        embedMsg.setColor('FF0000');
-                                        embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
-                                        embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
-                                        message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
-                                    }
-                                }
-                                else {
-                                    embedMsg.setTitle('Error!');
-                                    embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
-                                    embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
-                                    message.channel.send({ embeds: [embedMsg] });
-                                }
+                                scrollGear(userHunt[userid].armor);
                                 break;
                             case "accessory":
                             case "acc":
-                                if (userHunt[userid].accessory != "000000" && items[userHunt[userid].accessory].slots > 0) {
-                                    var luck = Math.floor((Math.random() * 100) + 1);
-                                    var chance = 100 * theScroll.rate;
-                                    if (luck <= chance) {
-                                        theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
-                                        items[userHunt[userid].accessory].maxHP += theScroll.maxHP;
-                                        items[userHunt[userid].accessory].attack += theScroll.attack;
-                                        items[userHunt[userid].accessory].magic += theScroll.magic;
-                                        items[userHunt[userid].accessory].defense += theScroll.defense;
-                                        items[userHunt[userid].accessory].speed += theScroll.speed;
-                                        items[userHunt[userid].accessory].slots--;
-                                        updateStats(userid);
-                                        embedMsg.setTitle('Success! - ' + theScroll.name);
-                                        embedMsg.setColor('00FF00');
-                                        embedMsg.setThumbnail('https://i.imgur.com/dHbQVgC.gif');
-                                        embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
-                                        message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
-                                    }
-                                    else {
-                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
-                                        embedMsg.setColor('FF0000');
-                                        embedMsg.setThumbnail('https://i.imgur.com/Bi2LNzQ.gif');
-                                        embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
-                                        message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
-                                    }
-                                }
-                                else {
-                                    embedMsg.setTitle('Error!');
-                                    embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
-                                    embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
-                                    message.channel.send({ embeds: [embedMsg] });
-                                }
+                                scrollGear(userHunt[userid].accessory);
                                 break;
                             default:
                                 embedMsg.setTitle('Error!');
