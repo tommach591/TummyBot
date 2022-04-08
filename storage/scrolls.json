@@ -421,7 +421,8 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 1
+        "chaos": 1,
+        "badLuck": 3
     },
     "52": {
         "name": "Chaos Scroll (★★) 66%",
@@ -431,7 +432,8 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 2
+        "chaos": 2,
+        "badLuck": 3
     },
     "53": {
         "name": "Chaos Scroll (★★★) 33%",
@@ -441,7 +443,8 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 3
+        "chaos": 3,
+        "badLuck": 3
     },
     "54": {
         "name": "Chaos Scroll 𝔼𝕏 (☆) 3%",
@@ -451,7 +454,8 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 11
+        "chaos": 11,
+        "badLuck": 3
     },
     "55": {
         "name": "Chaos Scroll 𝔼𝕏 (☆☆) 2%",
@@ -461,7 +465,8 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 22
+        "chaos": 22,
+        "badLuck": 3
     },
     "56": {
         "name": "Chaos Scroll 𝔼𝕏 (☆☆☆) 1%",
@@ -471,6 +476,50 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 33
+        "chaos": 33,
+        "badLuck": 3
+    },
+    "57": {
+        "name": "Chaos Scroll of Fortune (✷) 27%",
+        "rate": 0.27,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "chaos": 2,
+        "badLuck": 2
+    },
+    "58": {
+        "name": "Chaos Scroll of Fortune (✷✷) 17%",
+        "rate": 0.17,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "chaos": 2,
+        "badLuck": 1
+    },
+    "59": {
+        "name": "Chaos Scroll of Fortune (✷✷✷) 7%",
+        "rate": 0.07,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "chaos": 2,
+        "badLuck": 0
+    },
+    "60": {
+        "name": "Angel Scroll 50%",
+        "rate": 0.50,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "purity": 1
     }
 }

@@ -1049,6 +1049,7 @@ module.exports = {
                             }
                             if (scrolls[element].chaos) {
                                 allscrolls[index] += "\nChaos: " + (scrolls[element].chaos * 3);
+                                allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
                             }
                             allscrolls[index] += "\n\n";
                             count++;
@@ -1262,11 +1263,20 @@ module.exports = {
                                 var chance = 100 * theScroll.rate;
                                 if (luck <= chance) {
                                     if (theScroll.chaos) {
-                                        items[gear].maxHP += (Math.floor(Math.random() * 7) - 3) * Math.floor((Math.random() * theScroll.chaos) + 1) * 5;
-                                        items[gear].attack += (Math.floor(Math.random() * 7) - 3) * Math.floor((Math.random() * theScroll.chaos) + 1);
-                                        items[gear].magic += (Math.floor(Math.random() * 7) - 3) * Math.floor((Math.random() * theScroll.chaos) + 1);
-                                        items[gear].defense += (Math.floor(Math.random() * 7) - 3) * Math.floor((Math.random() * theScroll.chaos) + 1);
-                                        items[gear].speed += (Math.floor(Math.random() * 7) - 3) * Math.floor((Math.random() * theScroll.chaos) + 1);
+                                        items[gear].maxHP += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1) * 5;
+                                        items[gear].attack += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
+                                        items[gear].magic += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
+                                        items[gear].defense += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
+                                        items[gear].speed += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
+                                        items[gear].slots--;
+                                    }
+                                    else if (theScroll.purity) {
+                                        items[gear].maxHP = 0;
+                                        items[gear].attack = 0;
+                                        items[gear].magic = 0;
+                                        items[gear].defense = 0;
+                                        items[gear].speed = 0;
+                                        items[gear].slots = (equips[items[gear].name].rarity * 10) + 5
                                     }
                                     else {
                                         items[gear].maxHP += theScroll.maxHP;
@@ -1274,8 +1284,8 @@ module.exports = {
                                         items[gear].magic += theScroll.magic;
                                         items[gear].defense += theScroll.defense;
                                         items[gear].speed += theScroll.speed;
+                                        items[gear].slots--;
                                     }
-                                    items[gear].slots--;
                                     updateStats(userid);
                                     embedMsg.setTitle('Success! - ' + theScroll.name);
                                     embedMsg.setColor('00FF00');
