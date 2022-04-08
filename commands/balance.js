@@ -40,7 +40,7 @@ module.exports = {
             fishtext += "\n";
             
             var gardentext = "" + userGarden[id].gardendex.length + " ";
-            if (userFish[id].gardendex.length == 25) {
+            if (userGarden[id].gardendex.length == 25) {
                 gardentext += ":trophy:";
             }
             gardentext += "\n";
