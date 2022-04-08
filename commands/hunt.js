@@ -1212,6 +1212,30 @@ module.exports = {
                                 });
                                 embedMsg.setDescription('Scrolls sorted by speed!');
                                 break;
+                            case "chaos":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].chaos && scrolls[secondEl].chaos && scrolls[firstEl].chaos > scrolls[secondEl].chaos) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].chaos && scrolls[secondEl].chaos && scrolls[firstEl].chaos < scrolls[secondEl].chaos) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].chaos && !scrolls[secondEl].chaos) {
+                                        return -1;
+                                    }
+                                    if (!scrolls[firstEl].chaos && scrolls[secondEl].chaos) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                embedMsg.setDescription('Scrolls sorted by speed!');
+                                break;
                             default:
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
