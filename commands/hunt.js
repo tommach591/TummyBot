@@ -152,6 +152,9 @@ module.exports = {
             if (defense < 0) {
                 defense = 0;
             }
+            if (speed < 0) {
+                speed = 0;
+            }
 
             critChance = 5 + (100 * (speed * 0.5 / 100));
             if (critChance > 100) {
