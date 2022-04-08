@@ -271,90 +271,123 @@ module.exports = {
                 }
                 break;
             case 'gear':
-                var target = client.users.cache.get(userid);
-                embedMsg.setTitle('Equiped Gear');
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
-                embedMsg.setThumbnail(target.displayAvatarURL());
-                embedMsg.setColor('FFF000');
+                let displayGear = (id) => {
+                    var target = client.users.cache.get(id);
+                    embedMsg.setTitle('Equiped Gear');
+                    embedMsg.setAuthor({ name: userData[id].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setThumbnail(target.displayAvatarURL());
+                    embedMsg.setColor('FFF000');
 
-                var weapon = items[userHunt[userid].weapon];
-                var armor = items[userHunt[userid].armor];
-                var accessory = items[userHunt[userid].accessory];
+                    var weapon = items[userHunt[id].weapon];
+                    var armor = items[userHunt[id].armor];
+                    var accessory = items[userHunt[id].accessory];
 
-                var baseWeapon = equips[weapon.name];
-                var baseArmor = equips[armor.name];
-                var baseAccessory = equips[accessory.name];
+                    var baseWeapon = equips[weapon.name];
+                    var baseArmor = equips[armor.name];
+                    var baseAccessory = equips[accessory.name];
 
-                var weaponMaxHP = weapon.maxHP.toString();
-                var weaponAttack = weapon.attack.toString();
-                var weaponMagic = weapon.magic.toString();
-                var weaponDefense = weapon.defense.toString();
-                var weaponSpeed = weapon.speed.toString();
-                
-                var armorMaxHP = armor.maxHP.toString();
-                var armorAttack = armor.attack.toString();
-                var armorMagic = armor.magic.toString();
-                var armorDefense = armor.defense.toString();
-                var armorSpeed = armor.speed.toString();
+                    var weaponMaxHP = weapon.maxHP.toString();
+                    var weaponAttack = weapon.attack.toString();
+                    var weaponMagic = weapon.magic.toString();
+                    var weaponDefense = weapon.defense.toString();
+                    var weaponSpeed = weapon.speed.toString();
+                    
+                    var armorMaxHP = armor.maxHP.toString();
+                    var armorAttack = armor.attack.toString();
+                    var armorMagic = armor.magic.toString();
+                    var armorDefense = armor.defense.toString();
+                    var armorSpeed = armor.speed.toString();
 
-                var accessoryMaxHP = accessory.maxHP.toString();
-                var accessoryAttack = accessory.attack.toString();
-                var accessoryMagic = accessory.magic.toString();
-                var accessoryDefense = accessory.defense.toString();
-                var accessorySpeed = accessory.speed.toString();
+                    var accessoryMaxHP = accessory.maxHP.toString();
+                    var accessoryAttack = accessory.attack.toString();
+                    var accessoryMagic = accessory.magic.toString();
+                    var accessoryDefense = accessory.defense.toString();
+                    var accessorySpeed = accessory.speed.toString();
 
-                if (weapon.maxHP >= 0) weaponMaxHP = "+" + weaponMaxHP;
-                if (weapon.attack >= 0) weaponAttack = "+" + weaponAttack;
-                if (weapon.magic >= 0) weaponMagic = "+" + weaponMagic;
-                if (weapon.defense >= 0) weaponDefense = "+" + weaponDefense;
-                if (weapon.speed >= 0) weaponSpeed = "+" + weaponSpeed;
+                    if (weapon.maxHP >= 0) weaponMaxHP = "+" + weaponMaxHP;
+                    if (weapon.attack >= 0) weaponAttack = "+" + weaponAttack;
+                    if (weapon.magic >= 0) weaponMagic = "+" + weaponMagic;
+                    if (weapon.defense >= 0) weaponDefense = "+" + weaponDefense;
+                    if (weapon.speed >= 0) weaponSpeed = "+" + weaponSpeed;
 
-                if (armor.maxHP >= 0) armorMaxHP = "+" + armorMaxHP;
-                if (armor.attack >= 0) armorAttack = "+" + armorAttack;
-                if (armor.magic >= 0) armorMagic = "+" + armorMagic;
-                if (armor.defense >= 0) armorDefense = "+" + armorDefense;
-                if (armor.speed >= 0) armorSpeed = "+" + armorSpeed;
+                    if (armor.maxHP >= 0) armorMaxHP = "+" + armorMaxHP;
+                    if (armor.attack >= 0) armorAttack = "+" + armorAttack;
+                    if (armor.magic >= 0) armorMagic = "+" + armorMagic;
+                    if (armor.defense >= 0) armorDefense = "+" + armorDefense;
+                    if (armor.speed >= 0) armorSpeed = "+" + armorSpeed;
 
-                if (accessory.maxHP >= 0) accessoryMaxHP = "+" + accessoryMaxHP;
-                if (accessory.attack >= 0) accessoryAttack = "+" + accessoryAttack;
-                if (accessory.magic >= 0) accessoryMagic = "+" + accessoryMagic;
-                if (accessory.defense >= 0) accessoryDefense = "+" + accessoryDefense;
-                if (accessory.speed >= 0) accessorySpeed = "+" + accessorySpeed;
+                    if (accessory.maxHP >= 0) accessoryMaxHP = "+" + accessoryMaxHP;
+                    if (accessory.attack >= 0) accessoryAttack = "+" + accessoryAttack;
+                    if (accessory.magic >= 0) accessoryMagic = "+" + accessoryMagic;
+                    if (accessory.defense >= 0) accessoryDefense = "+" + accessoryDefense;
+                    if (accessory.speed >= 0) accessorySpeed = "+" + accessorySpeed;
 
 
-                var weaponText = "\nRarity: " + baseWeapon.rarity
-                + "\nMaxHP: " + (weapon.maxHP + baseWeapon.maxHP) + " (" + weaponMaxHP + ")"
-                + "\nAttack: " + (weapon.attack + baseWeapon.attack) + " (" + weaponAttack + ")"
-                + "\nMagic: " + (weapon.magic + baseWeapon.magic) + " (" + weaponMagic + ")"
-                + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (" + weaponDefense + ")"
-                + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (" + weaponSpeed + ")"
-                + "\nSlots: " + weapon.slots
-                + "\n\n";
+                    var weaponText = "\nRarity: " + baseWeapon.rarity
+                    + "\nMaxHP: " + (weapon.maxHP + baseWeapon.maxHP) + " (" + weaponMaxHP + ")"
+                    + "\nAttack: " + (weapon.attack + baseWeapon.attack) + " (" + weaponAttack + ")"
+                    + "\nMagic: " + (weapon.magic + baseWeapon.magic) + " (" + weaponMagic + ")"
+                    + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (" + weaponDefense + ")"
+                    + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (" + weaponSpeed + ")"
+                    + "\nSlots: " + weapon.slots
+                    + "\n\n";
 
-                var armorText = "\nRarity: " + baseArmor.rarity
-                + "\nMaxHP: " + (armor.maxHP + baseArmor.maxHP) + " (" + armorMaxHP + ")"
-                + "\nAttack: " + (armor.attack + baseArmor.attack) + " (" + armorAttack + ")"
-                + "\nMagic: " + (armor.magic + baseArmor.magic) + " (" + armorMagic + ")"
-                + "\nDefense: " + (armor.defense + baseArmor.defense) + " (" + armorDefense + ")"
-                + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (" + armorSpeed + ")"
-                + "\nSlots: " + armor.slots
-                + "\n\n";
+                    var armorText = "\nRarity: " + baseArmor.rarity
+                    + "\nMaxHP: " + (armor.maxHP + baseArmor.maxHP) + " (" + armorMaxHP + ")"
+                    + "\nAttack: " + (armor.attack + baseArmor.attack) + " (" + armorAttack + ")"
+                    + "\nMagic: " + (armor.magic + baseArmor.magic) + " (" + armorMagic + ")"
+                    + "\nDefense: " + (armor.defense + baseArmor.defense) + " (" + armorDefense + ")"
+                    + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (" + armorSpeed + ")"
+                    + "\nSlots: " + armor.slots
+                    + "\n\n";
 
-                var accessoryText = "\nRarity: " + baseAccessory.rarity
-                + "\nMaxHP: " + (accessory.maxHP + baseAccessory.maxHP) + " (" + accessoryMaxHP + ")"
-                + "\nAttack: " + (accessory.attack + baseAccessory.attack) + " (" + accessoryAttack + ")"
-                + "\nMagic: " + (accessory.magic + baseAccessory.magic) + " (" + accessoryMagic + ")"
-                + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (" + accessoryDefense + ")"
-                + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (" + accessorySpeed + ")"
-                + "\nSlots: " + accessory.slots
-                + "\n\n";
+                    var accessoryText = "\nRarity: " + baseAccessory.rarity
+                    + "\nMaxHP: " + (accessory.maxHP + baseAccessory.maxHP) + " (" + accessoryMaxHP + ")"
+                    + "\nAttack: " + (accessory.attack + baseAccessory.attack) + " (" + accessoryAttack + ")"
+                    + "\nMagic: " + (accessory.magic + baseAccessory.magic) + " (" + accessoryMagic + ")"
+                    + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (" + accessoryDefense + ")"
+                    + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (" + accessorySpeed + ")"
+                    + "\nSlots: " + accessory.slots
+                    + "\n\n";
 
-                embedMsg.setFields(
-                    {name: "" + weapon.name + "⠀⠀⠀⠀⠀⠀", value: weaponText, inline: true},
-                    {name: "" + armor.name + "⠀⠀⠀⠀⠀⠀", value: armorText, inline: true},
-                    {name: "" + accessory.name + "⠀⠀⠀⠀⠀⠀", value: accessoryText, inline: true}
-                );
-                message.channel.send({ embeds: [embedMsg] });
+                    embedMsg.setFields(
+                        {name: "" + weapon.name + "⠀⠀⠀⠀⠀⠀", value: weaponText, inline: true},
+                        {name: "" + armor.name + "⠀⠀⠀⠀⠀⠀", value: armorText, inline: true},
+                        {name: "" + accessory.name + "⠀⠀⠀⠀⠀⠀", value: accessoryText, inline: true}
+                    );
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+
+                if (args.length > 1) {
+                    var mention = args[1];
+                    if (mention.startsWith('<@') && mention.endsWith('>')) {
+                        mention = mention.slice(2, -1);
+                    
+                        if (mention.startsWith('!')) {
+                            mention = mention.slice(1);
+                        }
+                    
+                        if (!userData[mention]) {
+                            embedMsg.setTitle('Error!');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription('User does not exist!');
+                            message.channel.send({ embeds: [embedMsg] });
+                            return;
+                        }
+                        displayGear(mention);
+                    }
+                    else {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('User does not exist!');
+                        message.channel.send({ embeds: [embedMsg] });
+                        return;
+                    }
+                }
+                else {
+                    displayGear(userid);
+                }
+
                 break;
             case 'boss':
                 if (currHunt["active"] && !currHunt["active"].retreated && currHunt["active"].currentHP > 0) {
@@ -1013,6 +1046,9 @@ module.exports = {
                             }
                             if (scrolls[element].speed != 0) {
                                 allscrolls[index] += "\nSpeed: " + (scrolls[element].speed);
+                            }
+                            if (scrolls[element].chaos) {
+                                allscrolls[index] += "\nCh͔̞̭̳̱͌ͣ̿̔̂ȧ͇͈̘̼̝͗ͣ́ͨ͂ͅö̃̇̂͋s͑ͤ: " + (scrolls[element].chaos);
                             }
                             allscrolls[index] += "\n\n";
                             count++;
