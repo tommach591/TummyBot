@@ -1050,6 +1050,7 @@ module.exports = {
                             if (scrolls[element].chaos) {
                                 allscrolls[index] += "\nChaos: " + (scrolls[element].chaos);
                                 allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
+                                allscrolls[index] += "\nGain random stats based off of chaos and bad luck for each stat.";
                             }
                             if (scrolls[element].purity) {
                                 allscrolls[index] += "\nPurifies your equipment from the good and the bad.";
