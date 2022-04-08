@@ -444,7 +444,7 @@
         "chaos": 3
     },
     "54": {
-        "name": "Chaos Scroll EX (☆) 3%",
+        "name": "Chaos Scroll 𝔼𝕏 (☆) 3%",
         "rate": 0.03,
         "maxHP": 0,
         "attack": 0,
@@ -454,7 +454,7 @@
         "chaos": 11
     },
     "55": {
-        "name": "Chaos Scroll EX (☆☆) 2%",
+        "name": "Chaos Scroll 𝔼𝕏 (☆☆) 2%",
         "rate": 0.02,
         "maxHP": 0,
         "attack": 0,
@@ -464,7 +464,7 @@
         "chaos": 22
     },
     "56": {
-        "name": "Chaos Scroll EX (☆☆☆) 1%",
+        "name": "Chaos Scroll 𝔼𝕏 (☆☆☆) 1%",
         "rate": 0.01,
         "maxHP": 0,
         "attack": 0,
