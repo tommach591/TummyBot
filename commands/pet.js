@@ -909,7 +909,7 @@ module.exports = {
                         .setDescription(pages[page-1])
                         .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Pets')
-                        .setThumbnail('https://i.imgur.com/EJA4Vzn.png')
+                        .setThumbnail('https://i.imgur.com/k6sloj8.png')
                         .setColor('FFF000');
 
                     message.channel.send({ embeds: [embedMsg] }).then(msg => {

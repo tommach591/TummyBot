@@ -33,12 +33,24 @@ module.exports = {
                     embedMsg.setColor('2EFAFF');
                     break;
             }
+            var fishtext = "" + userFish[id].fishdex.length + " ";
+            if (userFish[id].fishdex.length == 105) {
+                fishtext += ":trophy:";
+            }
+            fishtext += "\n";
+            
+            var gardentext = "" + userGarden[id].gardendex.length + " ";
+            if (userFish[id].gardendex.length == 25) {
+                gardentext += ":trophy:";
+            }
+            gardentext += "\n";
+
             embedMsg.setFields(
                 {name: "__Points:__  :moneybag: ⠀⠀⠀⠀", value: "" + userData[id].points + "\n", inline: true},
                 {name: "__Income:__  :money_with_wings: ⠀⠀⠀⠀⠀", value: "" + tier + "\n", inline: true},
                 {name: "__Fame:__  :sparkles: ⠀⠀⠀⠀", value: "" + userData[id].fame + "\n", inline: true},
-                {name: "__Fishdex Entries:__  :fish: ⠀⠀⠀⠀⠀⠀⠀", value: "" + userFish[id].fishdex.length + "\n", inline: false},
-                {name: "__Gardendex Entries:__  :sunflower: ⠀⠀⠀⠀⠀⠀⠀", value: "" + userGarden[id].gardendex.length + "\n", inline: false}
+                {name: "__Fishdex Entries:__  :fish: ⠀⠀⠀⠀⠀⠀⠀", value: fishtext, inline: false},
+                {name: "__Gardendex Entries:__  :sunflower: ⠀⠀⠀⠀⠀⠀⠀", value: gardentext, inline: false}
             );
 
             if (userData[id].married != "" && userData[userData[id].married]) {

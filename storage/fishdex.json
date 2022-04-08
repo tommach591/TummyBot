@@ -719,5 +719,19 @@
         "image": "https://i.imgur.com/4YR9UGd.png",
         "value": 500,
         "info": "CHIKMNUGET!!!"
+    },
+    "104": {
+        "id": "104",
+        "name": "Fuwush",
+        "image": "https://i.imgur.com/gACltdW.png",
+        "value": 500,
+        "info": "UWU"
+    },
+    "105": {
+        "id": "105",
+        "name": "Feesh",
+        "image": "https://i.imgur.com/ou46psZ.png",
+        "value": 500,
+        "info": "FEEEEEEEEEEEEEEEEEEEEEEESH!"
     }
 }

@@ -1258,7 +1258,7 @@ module.exports = {
                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
 
                         let scrollGear = (gear) => {
-                            if (gear != "000000" && items[gear].slots > 0) {
+                            if (gear != "000000" && (items[gear].slots > 0 || theScroll.purity)) {
                                 var luck = Math.floor((Math.random() * 100) + 1);
                                 var chance = 100 * theScroll.rate;
                                 if (luck <= chance) {
