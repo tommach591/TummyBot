@@ -33,13 +33,22 @@ module.exports = {
                 const target = client.users.cache.get(mention);
 
                 var choice = Math.floor(Number(args[1]));
+                var amount = Math.floor(Number(args[2]));
 
                 if (!isNaN(choice) && scrolls[choice]) {
                     var scrollobtained = scrolls[choice];
-                    userHunt[mention].scrolls.push(choice);
+                    if (!isNaN(amount) && amount > 0) {
+                        for (let i = 0; i < amount; i++) {
+                            userHunt[mention].scrolls.push(choice);
+                        }
+                        embedMsg.setDescription(userData[mention].name + ' was gifted ' + amount + " " + scrollobtained.name + '\'s!');
+                    }
+                    else {
+                        userHunt[mention].scrolls.push(choice);
+                        embedMsg.setDescription(userData[mention].name + ' was gifted a ' + scrollobtained.name + '!');
+                    }
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
-                    embedMsg.setDescription(userData[mention].name + ' was gifted a ' + scrollobtained.name + '!');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
