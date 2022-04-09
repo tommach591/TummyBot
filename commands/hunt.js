@@ -1267,11 +1267,17 @@ module.exports = {
                                 var chance = 100 * theScroll.rate;
                                 if (luck <= chance) {
                                     if (theScroll.chaos) {
-                                        items[gear].maxHP += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1) * 5;
-                                        items[gear].attack += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
-                                        items[gear].magic += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
-                                        items[gear].defense += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
-                                        items[gear].speed += (Math.floor(Math.random() * 7) - theScroll.badLuck) * Math.floor((Math.random() * theScroll.chaos) + 1);
+                                        var range = []
+                                        var rangeMin = (0 - theScroll.badLuck) * theScroll.chaos;
+                                        var rangeMax = (3 * 2 * theScroll.chaos) + 1 + rangeMin;
+                                        for (let i = rangeMin; i < rangeMax; i++)
+	                                        range.push(i);
+
+                                        items[gear].maxHP += range[Math.floor(Math.random() * range.length)] * 5;
+                                        items[gear].attack += range[Math.floor(Math.random() * range.length)];
+                                        items[gear].magic += range[Math.floor(Math.random() * range.length)];
+                                        items[gear].defense += range[Math.floor(Math.random() * range.length)];
+                                        items[gear].speed += range[Math.floor(Math.random() * range.length)];
                                         items[gear].slots--;
                                     }
                                     else if (theScroll.purity) {
