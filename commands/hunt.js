@@ -1556,6 +1556,7 @@ module.exports = {
                 else {
                     var type = args[1];
                     var target = Math.floor(Number(args[2]) - 1);
+                    var all = args[3];
                     if (!isNaN(target)) {
                         switch(type) {
                             case "inv":
@@ -1566,6 +1567,73 @@ module.exports = {
                                     embedMsg.setDescription('Weapon does not exist!');
                                     embedMsg.setFooter("!tp hunt sell equip/scroll #");
                                     message.channel.send({ embeds: [embedMsg] });
+                                }
+                                else if (all == "all") {
+                                    let original = [...userHunt[userid].equips];
+                                    var price = 0;
+                                    for (let i = target; i < userHunt[userid].equips.length; i++) {
+                                        var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
+                                        if (selectedWeapon.rarity != 0) {
+                                            price += selectedWeapon.rarity * 500;
+                                        }
+                                        else {
+                                            price += 100;
+                                        }
+                                    }
+                                    const proposalMsg = new MessageEmbed();
+                                    proposalMsg.setTitle('Selling!');
+                                    proposalMsg.setColor('FFF000');
+                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell all equips above " + target + " for " + price + " points?");
+
+                                    let proposal; 
+                                    message.channel.send({ embeds: [proposalMsg] }).then(
+                                        sent => { proposal = sent } 
+                                    ).then(
+                                        () => {
+                                            proposal.react('👍').then(() => proposal.react('👎'));
+                                            const filter = (reaction, user) => {
+                                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                            };
+                                            proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                            .then(
+                                                collected => {
+                                                const reaction = collected.first();
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
+                                                    userData[userid].points += price;
+
+                                                    for (let i = target; i < userHunt[userid].equips.length; i++) {
+                                                        var itemToDelete = userHunt[userid].equips[target];
+                                                        delete items[itemToDelete];
+                                                    }
+
+                                                    userHunt[userid].equips.splice(target, userHunt[userid].equips.length - target);
+
+                                                    embedMsg.setTitle('Sold!');
+                                                    embedMsg.setColor('00FF00');
+                                                    embedMsg.setDescription(userData[userid].name + " sold all equips above " + target + " for " + price + " points!");
+                                                    message.channel.send({ embeds: [embedMsg] });
+                                                } 
+                                                else if (reaction.emoji.name === '👎') {
+                                                    embedMsg.setTitle('Declined!');
+                                                    embedMsg.setColor('FF0000');
+                                                    embedMsg.setDescription(userData[userid].name + " declined!");
+                                                    message.channel.send({ embeds: [embedMsg] });
+                                                }
+                                                else {
+                                                    embedMsg.setTitle('Fail!');
+                                                    embedMsg.setColor('FF0000');
+                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                    message.channel.send({ embeds: [embedMsg] });
+                                                }
+                                            })
+                                            .catch(collected => {
+                                                embedMsg.setTitle('Fail!');
+                                                embedMsg.setColor('FF0000');
+                                                embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            });
+                                        }
+                                    );
                                 }
                                 else {
                                     let original = [...userHunt[userid].equips];
