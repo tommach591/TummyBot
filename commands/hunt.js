@@ -566,7 +566,7 @@ module.exports = {
                             getDrops();
 
                             currHunt.lastSpawn = newTime.getTime();
-                            currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
+                            currHunt.nextSpawn = (1000 * 60 * 30) + (1000 * 60 * 45 * Math.random());
                             currHunt.lastDifficulty = [];
 
                             var rewardLevel = currHunt["active"].difficulty;
