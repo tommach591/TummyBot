@@ -1053,8 +1053,8 @@ module.exports = {
 
                                 allscrolls[index] += "\nChaos: " + (scrolls[element].chaos);
                                 allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
-                                allscrolls[index] += "\nMin: " + rangeMin;
-                                allscrolls[index] += "\nMax: " + rangeMax;
+                                allscrolls[index] += "\nMin Range: " + rangeMin;
+                                allscrolls[index] += "\nMax Range: " + rangeMax;
                                 allscrolls[index] += "\nGain random stats based off of chaos and bad luck for each stat.";
                             }
                             if (scrolls[element].purity) {
