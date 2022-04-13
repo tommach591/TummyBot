@@ -1048,8 +1048,8 @@ module.exports = {
                                 allscrolls[index] += "\nSpeed: " + (scrolls[element].speed);
                             }
                             if (scrolls[element].chaos) {
-                                var rangeMin = (0 - theScroll.badLuck) * theScroll.chaos;
-                                var rangeMax = (3 * 2 * theScroll.chaos) + 1 + rangeMin;
+                                var rangeMin = (0 - scrolls[element].badLuck) * scrolls[element].chaos;
+                                var rangeMax = (3 * 2 * scrolls[element].chaos) + 1 + rangeMin;
 
                                 allscrolls[index] += "\nChaos: " + (scrolls[element].chaos);
                                 allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
