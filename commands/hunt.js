@@ -1265,32 +1265,35 @@ module.exports = {
                         theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
 
                         let scrollGear = (gear) => {
-                            if (gear != "000000" && (items[gear].slots > 0 || theScroll.purity)) {
+                            if (gear != "000000" && (items[gear].slots > 0 || theScroll.purity)) 
+                            {
                                 var luck = Math.floor((Math.random() * 100) + 1);
                                 var chance = 100 * theScroll.rate;
-                                if (luck <= chance) {
-                                    if (theScroll.purity) {
-                                        let original = [...userHunt[userid].scrolls];
 
-                                        const proposalMsg = new MessageEmbed();
-                                        proposalMsg.setTitle('Use Angel Scroll?');
-                                        proposalMsg.setColor('FFF000');
-                                        proposalMsg.setDescription("Would " + userData[userid].name + " like to purify " + items[gear].name + "?");
-                                        
-                                        let proposal; 
-                                        message.channel.send({ embeds: [proposalMsg] }).then(
-                                            sent => { proposal = sent } 
-                                        ).then(
-                                            () => {
-                                                proposal.react('👍').then(() => proposal.react('👎'));
-                                                const filter = (reaction, user) => {
-                                                    return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
-                                                };
-                                                proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
-                                                .then(
-                                                    collected => {
-                                                    const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
+                                if (theScroll.purity) 
+                                {
+                                    let original = [...userHunt[userid].scrolls];
+
+                                    const proposalMsg = new MessageEmbed();
+                                    proposalMsg.setTitle('Use Angel Scroll?');
+                                    proposalMsg.setColor('FFF000');
+                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to purify " + items[gear].name + "?");
+                    
+                                    let proposal; 
+                                    message.channel.send({ embeds: [proposalMsg] }).then(
+                                        sent => { proposal = sent } 
+                                    ).then(
+                                        () => {
+                                            proposal.react('👍').then(() => proposal.react('👎'));
+                                            const filter = (reaction, user) => {
+                                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                            };
+                                            proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                            .then(
+                                                collected => {
+                                                const reaction = collected.first();
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
+                                                    if (luck <= chance) {
                                                         items[gear].maxHP = 0;
                                                         items[gear].attack = 0;
                                                         items[gear].magic = 0;
@@ -1298,35 +1301,51 @@ module.exports = {
                                                         items[gear].speed = 0;
                                                         items[gear].slots = (equips[items[gear].name].rarity * 10) + 5
 
-                                                        embedMsg.setTitle('Success!');
+                                                        updateStats(userid);
+                                                        embedMsg.setTitle('Success! - ' + theScroll.name);
                                                         embedMsg.setColor('00FF00');
-                                                        embedMsg.setDescription(userData[userid].name + " purified " + items[gear].name + "!");
+                                                        embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
+                                                        embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
+                                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
-                                                    } 
-                                                    else if (reaction.emoji.name === '👎')
-                                                    {
-                                                        embedMsg.setTitle('Error!');
-                                                        embedMsg.setColor('FF0000');
-                                                        embedMsg.setDescription(userData[userid].name + " declined!");
-                                                        message.channel.send({ embeds: [embedMsg] });
+                                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                                     }
                                                     else {
-                                                        embedMsg.setTitle('Fail!');
+                                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
                                                         embedMsg.setColor('FF0000');
-                                                        embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                        embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
+                                                        embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
+                                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
+                                                        userHunt[userid].scrolls.splice(selectedindex, 1);
                                                     }
-                                                })
-                                                .catch(collected => {
+                                                } 
+                                                else if (reaction.emoji.name === '👎')
+                                                {
                                                     embedMsg.setTitle('Error!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " took too long to decide!");
+                                                    embedMsg.setDescription(userData[userid].name + " declined!");
                                                     message.channel.send({ embeds: [embedMsg] });
-                                                });
-                                            }
-                                        );
-                                    }
-                                    else
+                                                }
+                                                else {
+                                                    embedMsg.setTitle('Fail!');
+                                                    embedMsg.setColor('FF0000');
+                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                    message.channel.send({ embeds: [embedMsg] });
+                                                }
+                                            })
+                                            .catch(collected => {
+                                                embedMsg.setTitle('Error!');
+                                                embedMsg.setColor('FF0000');
+                                                embedMsg.setDescription(userData[userid].name + " took too long to decide!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            });
+                                        }
+                                    );
+                                }
+                                else 
+                                {
+                                    if (luck <= chance) 
                                     {
                                         if (theScroll.chaos) {
                                             var range = []
@@ -1359,15 +1378,15 @@ module.exports = {
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
-                                }
-                                else {
-                                    embedMsg.setTitle('Fail! - ' + theScroll.name);
-                                    embedMsg.setColor('FF0000');
-                                    embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
-                                    embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                    embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
-                                    message.channel.send({ embeds: [embedMsg] });
-                                    userHunt[userid].scrolls.splice(selectedindex, 1);
+                                    else {
+                                        embedMsg.setTitle('Fail! - ' + theScroll.name);
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
+                                        embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
+                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                        userHunt[userid].scrolls.splice(selectedindex, 1);
+                                    }
                                 }
                             }
                             else {
