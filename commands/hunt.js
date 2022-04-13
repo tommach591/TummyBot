@@ -1051,11 +1051,9 @@ module.exports = {
                                 var rangeMin = (0 - scrolls[element].badLuck) * scrolls[element].chaos;
                                 var rangeMax = (3 * 2 * scrolls[element].chaos) + rangeMin;
 
-                                allscrolls[index] += "\nChaos: " + (scrolls[element].chaos);
-                                allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
                                 allscrolls[index] += "\nMin Range: " + rangeMin;
                                 allscrolls[index] += "\nMax Range: " + rangeMax;
-                                allscrolls[index] += "\nGain random stats based off of chaos and bad luck for each stat.";
+                                allscrolls[index] += "\nChaotic energy infuses into your equipment, affecting all stats.";
                             }
                             if (scrolls[element].purity) {
                                 allscrolls[index] += "\nPurifies your equipment from the good and the bad.";
