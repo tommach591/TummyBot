@@ -571,7 +571,7 @@ module.exports = {
 
                             var rewardLevel = currHunt["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
-                            var multiplier = 3;
+                            var multiplier = 5;
                             var reward = "";
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
                                 var player = currHunt["active"].targets[i];
@@ -1657,11 +1657,12 @@ module.exports = {
                                         }
                                         total_items++;
                                     }
+                                    
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
                                     proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedWeapon.name + 
-                                                                " and the " + total_items + " above item(s) for " + price + " points?");
+                                                                " and the " + (total_items - 1) + " above item(s) for " + price + " points?");
 
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -1688,7 +1689,7 @@ module.exports = {
 
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
-                                                    embedMsg.setDescription(userData[userid].name + " sold all equips above " + target + " for " + price + " points!");
+                                                    embedMsg.setDescription(userData[userid].name + " sold " + total_items + " equips for " + price + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
                                                 else if (reaction.emoji.name === '👎') {
