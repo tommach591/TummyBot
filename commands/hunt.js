@@ -571,7 +571,7 @@ module.exports = {
 
                             var rewardLevel = currHunt["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
-                            var multiplier = 5;
+                            var multiplier = 3;
                             var reward = "";
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
                                 var player = currHunt["active"].targets[i];
