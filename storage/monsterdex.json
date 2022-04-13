@@ -297,7 +297,7 @@
         "death": "I will never be a memory.",
         "image": "https://c.tenor.com/FZHEiqVbPVMAAAAd/sephiroth.gif",
         "attackImage": "https://i.imgur.com/6b0z1lE.gif",
-        "maxHP": 30000,
+        "maxHP": 40000,
         "attack": 150,
         "defense": 50,
         "magicdefense": 25,
