@@ -447,8 +447,8 @@
         "badLuck": 3
     },
     "54": {
-        "name": "Chaos Scroll 𝔼𝕏 (☆) 3%",
-        "rate": 0.03,
+        "name": "Chaos Scroll 𝔼𝕏 (☆) 5%",
+        "rate": 0.05,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
@@ -458,8 +458,8 @@
         "badLuck": 3
     },
     "55": {
-        "name": "Chaos Scroll 𝔼𝕏 (☆☆) 2%",
-        "rate": 0.02,
+        "name": "Chaos Scroll 𝔼𝕏 (☆☆) 3%",
+        "rate": 0.03,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
