@@ -283,18 +283,23 @@ let spawnMonster = (newTime) => {
 }
 
 let attackAll = (newTime) => {
-    if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= currHunt["active"].attackCD) {
+    var attackCD = currHunt["active"].attackCD;
+    var alivePlayers = 0;
+
+    for (let i = 0; i < currHunt["active"].targets.length; i++) {
+        var target = currHunt["active"].targets[i];
+        if (userHunt[target].currentHP > 0) {
+            alivePlayers++;
+        }
+    }
+
+    if (alivePlayers == 1) {
+        attackCD = Math.floor(attackCD / 1.5);
+    }
+    if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= attackCD) {
         var count = 0;
         var playersHit = "";
         var faints = "";
-        var alivePlayers = 0;
-
-        for (let i = 0; i < currHunt["active"].targets.length; i++) {
-            var target = currHunt["active"].targets[i];
-            if (userHunt[target].currentHP > 0) {
-                alivePlayers++;
-            }
-        }
 
         for (let i = 0; i < currHunt["active"].targets.length; i++) {
             var target = currHunt["active"].targets[i];
