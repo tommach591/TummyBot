@@ -1378,7 +1378,7 @@ module.exports = {
                                         message.channel.send({ embeds: [embedMsg] });
                                         userHunt[userid].scrolls.splice(selectedindex, 1);
                                     }
-                                    else {
+                                    else { 
                                         embedMsg.setTitle('Fail! - ' + theScroll.name);
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
