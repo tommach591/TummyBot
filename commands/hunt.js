@@ -1048,8 +1048,13 @@ module.exports = {
                                 allscrolls[index] += "\nSpeed: " + (scrolls[element].speed);
                             }
                             if (scrolls[element].chaos) {
+                                var rangeMin = (0 - theScroll.badLuck) * theScroll.chaos;
+                                var rangeMax = (3 * 2 * theScroll.chaos) + 1 + rangeMin;
+
                                 allscrolls[index] += "\nChaos: " + (scrolls[element].chaos);
                                 allscrolls[index] += "\nBad Luck: " + (scrolls[element].badLuck);
+                                allscrolls[index] += "\nMin: " + rangeMin;
+                                allscrolls[index] += "\nMax: " + rangeMax;
                                 allscrolls[index] += "\nGain random stats based off of chaos and bad luck for each stat.";
                             }
                             if (scrolls[element].purity) {
