@@ -233,7 +233,7 @@ let spawnMonster = (newTime) => {
             if (luck <= 3) {
                 selectedMonster = monsterdex[diffSix[Math.floor(Math.random() * diffSix.length)]];
             }
-            else if (luck <= 14) {
+            else if (luck <= 15) {
                 selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
             }
             else if (luck <= 30) {
