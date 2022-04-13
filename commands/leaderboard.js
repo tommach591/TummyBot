@@ -61,7 +61,7 @@ module.exports = {
                 msg.react("▶️")
 
                 const filter = (reaction, user) => ["◀️", "▶️"].includes(reaction.emoji.name) && user.id === userid;
-                const collector = msg.createReactionCollector({ filter, time: 1000 * 30 });
+                const collector = msg.createReactionCollector({ filter, time: 1000 * 60 * 5 });
 
                 collector.on('collect', r => {
                     embedMsg.setTitle("**__The Leaderboard__**")
