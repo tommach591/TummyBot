@@ -90,22 +90,22 @@
         "speed": 4
     },
     "10": {
-        "name": "Scroll for Five HP 60%",
-        "rate": 0.60,
-        "maxHP": 5,
-        "attack": 0,
-        "magic": 0,
-        "defense": 0,
-        "speed": 0
+        "name": "Berserker's Scroll 10%",
+        "rate": 0.10,
+        "maxHP": -30,
+        "attack": 12,
+        "magic": -6,
+        "defense": -6,
+        "speed": 12
     },
     "11": {
-        "name": "Scroll for One Defense 60%",
+        "name": "Magician's Scroll 10%",
         "rate": 0.60,
-        "maxHP": 0,
-        "attack": 0,
-        "magic": 0,
-        "defense": 1,
-        "speed": 0
+        "maxHP": -30,
+        "attack": -6,
+        "magic": 30,
+        "defense": -6,
+        "speed": -6
     },
     "12": {
         "name": "Scroll for Two Attack and Two Magic 20%",
