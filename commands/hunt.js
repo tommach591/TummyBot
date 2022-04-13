@@ -571,6 +571,7 @@ module.exports = {
 
                             var rewardLevel = currHunt["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
+                            var multiplier = 3;
                             var reward = "";
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
                                 var player = currHunt["active"].targets[i];
@@ -580,7 +581,7 @@ module.exports = {
                                 var itemsEarned = "";
 
                                 if (unqiueDrops.length != 0) {
-                                    for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
+                                    for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                         var luck = Math.floor((Math.random() * 100000) + 1);
                                         var chance = 100000 * 0.0075; // 0.75%
                                         if (luck <= chance) {
@@ -591,7 +592,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.0125; // 1.25%
                                     if (luck <= chance && rewardLevel >= 3) {
@@ -601,7 +602,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.025; // 2.50%
                                     if (luck <= chance) {
@@ -611,7 +612,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.05; // 5.00%
                                     if (luck <= chance) {
@@ -621,7 +622,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.10; // 10.00%
                                     if (luck <= chance) {
@@ -631,7 +632,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * 1.99); i++) {
+                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.20; // 20.00%
                                     if (luck <= chance) {
@@ -1645,6 +1646,7 @@ module.exports = {
                                 else if (all == "all") {
                                     let original = [...userHunt[userid].equips];
                                     var price = 0;
+                                    var total_items = 0;
                                     for (let i = target; i < userHunt[userid].equips.length; i++) {
                                         var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
                                         if (selectedWeapon.rarity != 0) {
@@ -1653,11 +1655,13 @@ module.exports = {
                                         else {
                                             price += 100;
                                         }
+                                        total_items++;
                                     }
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
-                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell all equips above " + target + " for " + price + " points?");
+                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedWeapon.name + 
+                                                                " and the " + total_items + " above item(s) for " + price + " points?");
 
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
