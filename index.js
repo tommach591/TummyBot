@@ -163,11 +163,11 @@ savefile.startTime = startTime;
 savefile.lastSave = startTime;
 
 currHunt.lastSpawn = savefile.startTime.getTime();
-currHunt.nextSpawn = (1000 * 60 * 45) + (1000 * 60 * 45 * Math.random());
+currHunt.nextSpawn = (1000 * 60 * 30) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
 
 let saveBeforeReset = () => {
-    var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 50);
+    var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 55);
     setTimeout(
         function() {
             if (userData != "") {
@@ -230,10 +230,10 @@ let spawnMonster = (newTime) => {
 
         while (!selectedMonster || currHunt.lastDifficulty.includes(selectedMonster.difficulty)) {
             var luck = Math.random() * 101;
-            if (luck <= 5) {
+            if (luck <= 3) {
                 selectedMonster = monsterdex[diffSix[Math.floor(Math.random() * diffSix.length)]];
             }
-            else if (luck <= 15) {
+            else if (luck <= 14) {
                 selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
             }
             else if (luck <= 30) {
