@@ -35,13 +35,14 @@ module.exports = {
             "https://c.tenor.com/zXhf6-giP9cAAAAC/genshin-impact.gif",                              // Ayaka Elemental Burst
             "https://i.makeagif.com/media/7-26-2021/DF8TCX.gif",                                    // Raidan Elemental Burst
             "https://c.tenor.com/WAMsvlUj2zkAAAAC/kid-dog.gif",                                     // Doge Tackle
-            "https://i.kym-cdn.com/photos/images/original/002/258/764/977.gif",                     // Smol Ame Punch
+            "https://c.tenor.com/rhwVCB8Fi3wAAAAC/smol-ame-shooting.gif",                           // Smol Ame Punch
             "https://c.tenor.com/z7_bvudApncAAAAC/full-metal-alchemist-electricity.gif",            // Edward Elric Alchemy
             "https://i.imgur.com/LLJkJzK.gif",                                                      // Principal German Suplex Deer
             "https://c.tenor.com/VrWzG0RWmRQAAAAC/anime-punch.gif",                                 // Face Slam
             "https://media4.giphy.com/media/YD8BdrZl0aXpS/giphy.gif",                               // Naruto Rasen Shuriken
             "https://c.tenor.com/CWV7klJfPQQAAAAC/unrelenting-force.gif",                           // Fus Ro Dah
-            "https://media2.giphy.com/media/l46CbSLdhmBcD8hIA/giphy.gif",                           // Gordon Ramsay
+            "https://64.media.tumblr.com/5b6680f3484571290ccef4dc69d8abb2/5994a566b5352703-1a/s500x750/ff78b1a8f39657841951ceac74bbfcc59a569006.gif",
+                                                                                                    // Calli vs Gura
             "https://c.tenor.com/bsWTj91W6KQAAAAd/rengoku.gif",                                     // Rengoku 
             "https://thumbs.gfycat.com/AcrobaticGorgeousIntermediateegret-max-1mb.gif",             // Haru Slam
             "https://c.tenor.com/q9__eH7qPYAAAAAC/smash-bros-falcon-punch.gif",                     // Falcon Punch

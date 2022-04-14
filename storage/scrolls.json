@@ -100,7 +100,7 @@
     },
     "11": {
         "name": "Magician's Scroll 10%",
-        "rate": 0.60,
+        "rate": 0.10,
         "maxHP": -30,
         "attack": -6,
         "magic": 30,
