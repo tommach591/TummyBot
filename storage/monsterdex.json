@@ -859,9 +859,9 @@
         "image": "https://pa1.narvii.com/6177/6cad9ea2bdeee418e2d88372482e0f8fddf64917_hq.gif",
         "attackImage": "https://pa1.narvii.com/6408/2c71c2038ba9a23793983159913cea41cd3de735_hq.gif",
         "maxHP": 75000,
-        "attack": 300,
-        "defense": 75,
-        "magicdefense": 50,
+        "attack": 200,
+        "defense": 50,
+        "magicdefense": 30,
         "attackCD": 30000,
         "difficulty": 5,
         "loot": ["Master Sword", "Hero's Tunic", "Triforce of Courage"]
