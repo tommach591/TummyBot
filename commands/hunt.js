@@ -20,7 +20,8 @@ module.exports = {
             "https://i.makeagif.com/media/8-26-2017/pcdhp5.gif",                                    // MHW Greatsword
             "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif",              // Haru All Out Attack
             "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif",                       // Rock Lee Hidden Lotus
-            "https://i.kym-cdn.com/photos/images/newsfeed/000/895/077/5ef.gif",                     // Link Spin Attack
+            "https://64.media.tumblr.com/dd15ab10cf2ddeed4509e63f75092ad0/08ebc2f82f6d00f7-a2/s540x810/c0773326827098d21ea129af98a092c4f74cafe4.gif",                     
+                                                                                                    // Link Spin Attack
             "https://i.imgur.com/Db207vf.gif",                                                      // MHR SnS
             "https://media0.giphy.com/media/dyjrpqaUVqCELGuQVr/giphy.gif",                          // Demon Slayer Tanjiro
             "https://www.icegif.com/wp-content/uploads/demon-slayer-icegif-1.gif",                  // Demon Slayer Zenitsu
@@ -28,14 +29,29 @@ module.exports = {
             "https://i.imgur.com/7uTs615.gif",                                                      // Phoenix Molly
             "https://i.imgur.com/VIoBlJq.gif",                                                      // Yoru Ult
             "https://i.kym-cdn.com/photos/images/newsfeed/000/890/770/1fe.gif",                     // Kirby Hammer
-            "https://c.tenor.com/BsF5YeqExysAAAAC/mario-bowser.gif",                                // Mario Spin Bowser
+            "https://c.tenor.com/HjT9IC9T6cEAAAAM/so-long-bowser-bowser.gif",                       // Mario Spin Bowser
             "https://media1.giphy.com/media/qyjexFwQwJp9yUvMxq/giphy.gif",                          // Will Smith Slap
             "https://c.tenor.com/okMAfIsn7gAAAAAC/kimchi-slap-angry.gif",                           // Kimchi Slap
             "https://c.tenor.com/zXhf6-giP9cAAAAC/genshin-impact.gif",                              // Ayaka Elemental Burst
             "https://i.makeagif.com/media/7-26-2021/DF8TCX.gif",                                    // Raidan Elemental Burst
-            "https://i.gifer.com/QLB.gif",                                                          // Angry Chihuahua
+            "https://c.tenor.com/WAMsvlUj2zkAAAAC/kid-dog.gif",                                     // Doge Tackle
             "https://i.kym-cdn.com/photos/images/original/002/258/764/977.gif",                     // Smol Ame Punch
-            "https://c.tenor.com/z7_bvudApncAAAAC/full-metal-alchemist-electricity.gif"             // Edward Elric Alchemy
+            "https://c.tenor.com/z7_bvudApncAAAAC/full-metal-alchemist-electricity.gif",            // Edward Elric Alchemy
+            "https://i.imgur.com/LLJkJzK.gif",                                                      // Principal German Suplex Deer
+            "https://c.tenor.com/VrWzG0RWmRQAAAAC/anime-punch.gif",                                 // Face Slam
+            "https://media4.giphy.com/media/YD8BdrZl0aXpS/giphy.gif",                               // Naruto Rasen Shuriken
+            "https://c.tenor.com/CWV7klJfPQQAAAAC/unrelenting-force.gif",                           // Fus Ro Dah
+            "https://media2.giphy.com/media/l46CbSLdhmBcD8hIA/giphy.gif",                           // Gordon Ramsay
+            "https://c.tenor.com/bsWTj91W6KQAAAAd/rengoku.gif",                                     // Rengoku 
+            "https://thumbs.gfycat.com/AcrobaticGorgeousIntermediateegret-max-1mb.gif",             // Haru Slam
+            "https://c.tenor.com/q9__eH7qPYAAAAAC/smash-bros-falcon-punch.gif",                     // Falcon Punch
+            "https://c.tenor.com/CZT2fuNfH0QAAAAC/gintama-punching.gif",                            // Gintama Gangup
+            "https://c.tenor.com/zo7Xv4QuctQAAAAC/gintama-sadaharu-elizabeth.gif",                  // Sadaharu Punch Elizabeth
+            "https://cdn.quotesgram.com/img/12/88/1840491438-tumblr_n8s23ilIjG1tgagauo1_500.gif",   // Reaper Chop
+            "https://c.tenor.com/ZvX1_7YBGkEAAAAC/hinamatsuri-angry.gif",                           // Anzu vs Hina
+            "https://64.media.tumblr.com/02f219b7d962585dce83f18e313835f5/e30ee1afb9436b78-0d/s500x750/7afba7d4a38fd19441e0f56f856f8fd8e2b8adaf.gif",
+                                                                                                    // Mao vs Monks
+            "https://i.gifer.com/ntL.gif",                                                          // Mugen vs Samurai
         ];
 
         let generateEquip = (itemName) => {
@@ -566,7 +582,12 @@ module.exports = {
                         if (currHunt["active"].currentHP <= 0) {
                             embedMsg.setTitle("Attack!");
                             embedMsg.setDescription(userData[userid].name + " lands the finishing blow on " + currHunt["active"].name + "!\n\n" + currHunt["active"].death);
-                            embedMsg.setImage("https://c.tenor.com/1Sd82w25kacAAAAM/one-punch-man-punch.gif");
+                            if (isCrit) {
+                                embedMsg.setImage("https://giffiles.alphacoders.com/169/169719.gif");
+                            }
+                            else {
+                                embedMsg.setImage("https://c.tenor.com/1Sd82w25kacAAAAM/one-punch-man-punch.gif");
+                            }
                             embedMsg.setColor("00FF00");
                             embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
 

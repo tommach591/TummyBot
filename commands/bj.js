@@ -176,6 +176,8 @@ module.exports = {
                     }
                 }
 
+                userData[userid].points += reward;
+
                 if (reward > totalBet) {
                     embedMsg.setColor('00FF00');
                     outcome = "You WON " + reward + " points!";
@@ -190,9 +192,11 @@ module.exports = {
                     embedMsg.setColor('FF0000');
                     outcome = "You LOST " + totalBet + " points!";
                     embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
+                    if (userData[userid].points == 0 && totalBet >= 1000000) {
+                        embedMsg.setImage('https://c.tenor.com/K9-SqJMNjkEAAAAC/emotional-damage.gif');
+                    }
                 }
 
-                userData[userid].points += reward;
             }
 
             for (var i = 0; i < blackjack[userid].hand.length; i++) {
