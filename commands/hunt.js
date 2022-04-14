@@ -6,29 +6,36 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
         const randomAttackGifs = [
-            "https://i.imgur.com/O62yU0U.gif", // Starburst Stream
-            "https://c.tenor.com/O0Rd9v0NpjkAAAAC/keqing-genshin-impact.gif", // Keqing Q
-            "https://c.tenor.com/fG4HO_ccb68AAAAC/anime-my-hero-academia.gif", // Deku Smash
-            "https://c.tenor.com/kWtHiHKx0EYAAAAd/naruto-vs.gif", // Uzumaki Barrage
-            "https://i.makeagif.com/media/8-02-2015/0jqzEj.gif", // Night Guy
-            "https://c.tenor.com/P951zVBB_vkAAAAC/ao-t-shingeki-no-kyojin.gif", // Levi Spin
-            "https://c.tenor.com/IM60lqQKKY0AAAAC/kid-goku-kamehameha.gif", // Goku Kamehameha
-            "https://c.tenor.com/xc19_U9dSNMAAAAC/chika-fujiwara-hit.gif", // Chika Fan
-            "https://c.tenor.com/Oxl7m7l88FwAAAAC/megumin-konosuba.gif", // Explosion
-            "https://c.tenor.com/w9MEZlRNxOUAAAAC/sword-art-online-sinon-asada.gif", // Sinon Gun
-            "https://c.tenor.com/p7fVqdR0FWkAAAAC/punch-vi.gif", // Vi Punch
-            "https://i.makeagif.com/media/8-26-2017/pcdhp5.gif", // MHW Greatsword
-            "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif", // Haru All Out Attack
-            "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif", // Rock Lee Hidden Lotus
-            "https://i.makeagif.com/media/4-19-2017/F5U3KL.gif", // Windwaker Ganon Plunge
-            "https://thumbs.gfycat.com/AcademicAltruisticAsianwaterbuffalo-size_restricted.gif", // MHW Longsword
-            "https://i.imgur.com/Db207vf.gif", // MHR SnS
-            "https://i.imgur.com/JiiWAYm.gif", // Vi and Cait Vs Urgot
-            "https://media0.giphy.com/media/dyjrpqaUVqCELGuQVr/giphy.gif", // Demon Slayer Tanjiro
-            "https://www.icegif.com/wp-content/uploads/demon-slayer-icegif-1.gif", // Demon Slayer Zenitsu
-            "https://i.imgur.com/jOJhpgq.gif", // Eris Vs Ruijerd
-            "https://i.imgur.com/7uTs615.gif", // Phoenix Molly
-            "https://i.imgur.com/VIoBlJq.gif" // Yoru Ult
+            "https://i.imgur.com/O62yU0U.gif",                                                      // Starburst Stream
+            "https://c.tenor.com/O0Rd9v0NpjkAAAAC/keqing-genshin-impact.gif",                       // Keqing Elemental Burst
+            "https://c.tenor.com/fG4HO_ccb68AAAAC/anime-my-hero-academia.gif",                      // Deku Smash
+            "https://c.tenor.com/kWtHiHKx0EYAAAAd/naruto-vs.gif",                                   // Uzumaki Barrage
+            "https://i.makeagif.com/media/8-02-2015/0jqzEj.gif",                                    // Night Guy
+            "https://c.tenor.com/P951zVBB_vkAAAAC/ao-t-shingeki-no-kyojin.gif",                     // Levi Spin
+            "https://c.tenor.com/IM60lqQKKY0AAAAC/kid-goku-kamehameha.gif",                         // Goku Kamehameha
+            "https://c.tenor.com/xc19_U9dSNMAAAAC/chika-fujiwara-hit.gif",                          // Chika Fan
+            "https://c.tenor.com/Oxl7m7l88FwAAAAC/megumin-konosuba.gif",                            // Explosion
+            "https://c.tenor.com/w9MEZlRNxOUAAAAC/sword-art-online-sinon-asada.gif",                // Sinon Gun
+            "https://c.tenor.com/p7fVqdR0FWkAAAAC/punch-vi.gif",                                    // Vi Punch
+            "https://i.makeagif.com/media/8-26-2017/pcdhp5.gif",                                    // MHW Greatsword
+            "https://thumbs.gfycat.com/BlackandwhiteTangibleCero-size_restricted.gif",              // Haru All Out Attack
+            "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif",                       // Rock Lee Hidden Lotus
+            "https://i.kym-cdn.com/photos/images/newsfeed/000/895/077/5ef.gif",                     // Link Spin Attack
+            "https://i.imgur.com/Db207vf.gif",                                                      // MHR SnS
+            "https://media0.giphy.com/media/dyjrpqaUVqCELGuQVr/giphy.gif",                          // Demon Slayer Tanjiro
+            "https://www.icegif.com/wp-content/uploads/demon-slayer-icegif-1.gif",                  // Demon Slayer Zenitsu
+            "https://i.imgur.com/jOJhpgq.gif",                                                      // Eris Vs Ruijerd
+            "https://i.imgur.com/7uTs615.gif",                                                      // Phoenix Molly
+            "https://i.imgur.com/VIoBlJq.gif",                                                      // Yoru Ult
+            "https://i.kym-cdn.com/photos/images/newsfeed/000/890/770/1fe.gif",                     // Kirby Hammer
+            "https://c.tenor.com/BsF5YeqExysAAAAC/mario-bowser.gif",                                // Mario Spin Bowser
+            "https://media1.giphy.com/media/qyjexFwQwJp9yUvMxq/giphy.gif",                          // Will Smith Slap
+            "https://c.tenor.com/okMAfIsn7gAAAAAC/kimchi-slap-angry.gif",                           // Kimchi Slap
+            "https://c.tenor.com/zXhf6-giP9cAAAAC/genshin-impact.gif",                              // Ayaka Elemental Burst
+            "https://i.makeagif.com/media/7-26-2021/DF8TCX.gif",                                    // Raidan Elemental Burst
+            "https://i.gifer.com/QLB.gif",                                                          // Angry Chihuahua
+            "https://i.kym-cdn.com/photos/images/original/002/258/764/977.gif",                     // Smol Ame Punch
+            "https://c.tenor.com/z7_bvudApncAAAAC/full-metal-alchemist-electricity.gif"             // Edward Elric Alchemy
         ];
 
         let generateEquip = (itemName) => {
