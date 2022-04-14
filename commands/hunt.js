@@ -52,6 +52,7 @@ module.exports = {
             "https://64.media.tumblr.com/02f219b7d962585dce83f18e313835f5/e30ee1afb9436b78-0d/s500x750/7afba7d4a38fd19441e0f56f856f8fd8e2b8adaf.gif",
                                                                                                     // Mao vs Monks
             "https://i.gifer.com/ntL.gif",                                                          // Mugen vs Samurai
+            "https://pa1.narvii.com/6792/1b835eb6198553d5c0a5528fccebea9290d72654_hq.gif"           // GGO Alt Bunny Pew Pew
         ];
 
         let generateEquip = (itemName) => {
@@ -581,12 +582,13 @@ module.exports = {
 
                         if (currHunt["active"].currentHP <= 0) {
                             embedMsg.setTitle("Attack!");
-                            embedMsg.setDescription(userData[userid].name + " lands the finishing blow on " + currHunt["active"].name + "!\n\n" + currHunt["active"].death);
                             if (isCrit) {
                                 embedMsg.setImage("https://giffiles.alphacoders.com/169/169719.gif");
+                                embedMsg.setDescription(userData[userid].name + " lands obliterates " + currHunt["active"].name + "!\n\n" + currHunt["active"].death);
                             }
                             else {
                                 embedMsg.setImage("https://c.tenor.com/1Sd82w25kacAAAAM/one-punch-man-punch.gif");
+                                embedMsg.setDescription(userData[userid].name + " lands the finishing blow on " + currHunt["active"].name + "!\n\n" + currHunt["active"].death);
                             }
                             embedMsg.setColor("00FF00");
                             embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
