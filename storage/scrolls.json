@@ -342,8 +342,8 @@
         "speed": 2
     },
     "38": {
-        "name": "Cursed Scroll for Eight Attack 15%",
-        "rate": 0.15,
+        "name": "Cursed Scroll for Eight Attack 20%",
+        "rate": 0.20,
         "maxHP": -20,
         "attack": 8,
         "magic": 0,
@@ -351,8 +351,8 @@
         "speed": 0
     },
     "39": {
-        "name": "Cursed Scroll for Eight Magic 15%",
-        "rate": 0.15,
+        "name": "Cursed Scroll for Eight Magic 20%",
+        "rate": 0.20,
         "maxHP": -20,
         "attack": 0,
         "magic": 8,
@@ -360,8 +360,8 @@
         "speed": 0
     },
     "40": {
-        "name": "Cursed Scroll for Eight Speed 15%",
-        "rate": 0.15,
+        "name": "Cursed Scroll for Eight Speed 20%",
+        "rate": 0.20,
         "maxHP": -20,
         "attack": 0,
         "magic": 0,
@@ -369,8 +369,8 @@
         "speed": 8
     },
     "41": {
-        "name": "Cursed Scroll for Eighty Health 15%",
-        "rate": 0.15,
+        "name": "Cursed Scroll for Eighty Health 20%",
+        "rate": 0.20,
         "maxHP": 80,
         "attack": -2,
         "magic": -2,
@@ -378,8 +378,8 @@
         "speed": 0
     },
     "42": {
-        "name": "Cursed Scroll for Eight Defense 15%",
-        "rate": 0.15,
+        "name": "Cursed Scroll for Eight Defense 20%",
+        "rate": 0.20,
         "maxHP": 0,
         "attack": -2,
         "magic": -2,
@@ -387,8 +387,8 @@
         "speed": 0
     },
     "48": {
-        "name": "Cursed Scroll for Four Attack and Four Magic 15%",
-        "rate": 0.15,
+        "name": "Cursed Scroll for Four Attack and Four Magic 20%",
+        "rate": 0.20,
         "maxHP": -20,
         "attack": 4,
         "magic": 4,
@@ -487,7 +487,7 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 2,
+        "chaos": 1,
         "badLuck": 2
     },
     "58": {
@@ -498,7 +498,7 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 2,
+        "chaos": 1,
         "badLuck": 1
     },
     "59": {
@@ -509,7 +509,7 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "chaos": 2,
+        "chaos": 1,
         "badLuck": 0
     },
     "60": {
