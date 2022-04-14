@@ -584,7 +584,7 @@ module.exports = {
                             embedMsg.setTitle("Attack!");
                             if (isCrit) {
                                 embedMsg.setImage("https://giffiles.alphacoders.com/169/169719.gif");
-                                embedMsg.setDescription(userData[userid].name + " obliterates " + currHunt["active"].name + " with critical hit!\n\n" + currHunt["active"].death);
+                                embedMsg.setDescription(userData[userid].name + " obliterates " + currHunt["active"].name + " with a critical hit!\n\n" + currHunt["active"].death);
                             }
                             else {
                                 embedMsg.setImage("https://c.tenor.com/1Sd82w25kacAAAAM/one-punch-man-punch.gif");
