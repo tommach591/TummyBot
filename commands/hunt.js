@@ -53,7 +53,8 @@ module.exports = {
             "https://64.media.tumblr.com/02f219b7d962585dce83f18e313835f5/e30ee1afb9436b78-0d/s500x750/7afba7d4a38fd19441e0f56f856f8fd8e2b8adaf.gif",
                                                                                                     // Mao vs Monks
             "https://i.gifer.com/ntL.gif",                                                          // Mugen vs Samurai
-            "https://pa1.narvii.com/6792/1b835eb6198553d5c0a5528fccebea9290d72654_hq.gif"           // GGO Alt Bunny Pew Pew
+            "https://pa1.narvii.com/6792/1b835eb6198553d5c0a5528fccebea9290d72654_hq.gif",          // GGO Alt Bunny Pew Pew
+            "https://c.tenor.com/gojUDeNvaQsAAAAC/takanashi-kiara-kiara-takanashi.gif"              // Kiara Pet
         ];
 
         let generateEquip = (itemName) => {

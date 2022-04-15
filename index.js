@@ -336,13 +336,15 @@ let attackAll = (newTime) => {
                     var luck = Math.floor((Math.random() * 100) + 1);
                     var chance = 100 * resistance / 3.33;
                     if (luck <= chance) {
-                        reflectDmg = damageDealt * 2;
+                        reflectDmg = currHunt["active"].attack * 5;
                         if (currHunt["active"].currentHP <= reflectDmg) 
                         {
                             reflectDmg = currHunt["active"].currentHP - 1;
                         }
                         currHunt["active"].currentHP -= reflectDmg;
                         damageDealt = 0;
+                        
+                        currHunt["active"].playerDamage[currHunt["active"].targets.indexOf(target)] += reflectDmg;
                     }
                 }
 
