@@ -332,20 +332,18 @@ let attackAll = (newTime) => {
                     damageDealt = 1;
                 }
                 
-                if (resistance >= 0.50) {
-                    var luck = Math.floor((Math.random() * 100) + 1);
-                    var chance = 100 * resistance / 3.33;
-                    if (luck <= chance) {
-                        reflectDmg = Math.floor(currHunt["active"].attack * (100 * (resistance / 20)));
-                        if (currHunt["active"].currentHP <= reflectDmg) 
-                        {
-                            reflectDmg = currHunt["active"].currentHP - 1;
-                        }
-                        currHunt["active"].currentHP -= reflectDmg;
-                        damageDealt = 0;
-                        
-                        currHunt["active"].playerDamage[currHunt["active"].targets.indexOf(target)] += reflectDmg;
+                var luck = Math.floor((Math.random() * 100) + 1);
+                var chance = 100 * resistance / 3.33;
+                if (luck <= chance) {
+                    reflectDmg = Math.floor(currHunt["active"].attack * (100 * (resistance / 20)));
+                    if (currHunt["active"].currentHP <= reflectDmg) 
+                    {
+                        reflectDmg = currHunt["active"].currentHP - 1;
                     }
+                    currHunt["active"].currentHP -= reflectDmg;
+                    damageDealt = 0;
+                    
+                    currHunt["active"].playerDamage[currHunt["active"].targets.indexOf(target)] += reflectDmg;
                 }
 
                 userHunt[target].currentHP -= damageDealt;
