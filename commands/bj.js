@@ -401,7 +401,7 @@ module.exports = {
                 }
                 else {
                     var bet = args[0];
-                    if (!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) {
+                    if ((!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) || bet == "all") {
                         bet = Math.floor(bet);
 
                         if (userData[userid].points < bet) {
