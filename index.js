@@ -321,8 +321,9 @@ let attackAll = (newTime) => {
                     defense += accessory.defense + equips[accessory.name].defense;
                 }
 
-                var resistance =  (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
-                var damageDealt = Math.floor(currHunt["active"].attack * resistance);
+                var multiplier = (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
+                var resistance = 1 - multiplier;
+                var damageDealt = Math.floor(currHunt["active"].attack * multiplier);
                 var reflectDmg = 0;
                 if (alivePlayers == 1) {
                     damageDealt = Math.floor(1.5 * damageDealt);
