@@ -231,8 +231,8 @@
         "attackImage": "https://thumbs.gfycat.com/DifferentImaginaryGrizzlybear-size_restricted.gif",
         "maxHP": 2000,
         "attack": 0,
-        "defense": 5000,
-        "magicdefense": 5000,
+        "defense": 10000,
+        "magicdefense": 10000,
         "attackCD": 200,
         "difficulty": 4,
         "loot": ["Real Knife"]
