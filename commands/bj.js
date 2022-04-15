@@ -192,7 +192,7 @@ module.exports = {
                     embedMsg.setColor('FF0000');
                     outcome = "You LOST " + totalBet + " points!";
                     embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
-                    if (userData[userid].points == 0 && userData[userid].bank == 0 && totalBet >= 10000) {
+                    if (userData[userid].points == 0 && totalBet >= 10000 && dealerValue == 21) {
                         embedMsg.setImage('https://c.tenor.com/K9-SqJMNjkEAAAAC/emotional-damage.gif');
                     }
                 }
