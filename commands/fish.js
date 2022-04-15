@@ -331,7 +331,7 @@ module.exports = {
             case 'start':
                 var newTime = new Date();
                 var timeDiff = newTime.getTime() - userFish[userid].fishTime;
-                var fishCD = 1000 * 7;
+                var fishCD = 1000 * 5;
 
                 if (userFish[userid].fishBait == 0) {
                     embedMsg.setTitle('No Bait!');
@@ -349,7 +349,8 @@ module.exports = {
                 }
                 else {
                     const fishingMsg = new MessageEmbed();
-                    var fishTime = 1000 * Math.floor((Math.random() * 3) + 3);
+                    //var fishTime = 1000 * Math.floor((Math.random() * 3) + 2);
+                    var fishTime = 1000 * 5;
                     userFish[userid].fishBait--;
                     var newFishingTime = new Date();
                     userFish[userid].fishTime = newFishingTime.getTime();
