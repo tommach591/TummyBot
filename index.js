@@ -321,12 +321,7 @@ let attackAll = (newTime) => {
                     defense += accessory.defense + equips[accessory.name].defense;
                 }
 
-                var scaler = (currHunt["active"].attack + (defense * 2));
-                if (scaler < 1)
-                {
-                    scaler = 1;
-                }
-                var multiplier = (currHunt["active"].attack / scaler);
+                var multiplier = (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
                 var resistance = 1 - multiplier;
                 var damageDealt = Math.floor(currHunt["active"].attack * multiplier);
                 var reflectDmg = 0;
@@ -338,7 +333,7 @@ let attackAll = (newTime) => {
                 }
                 
                 var luck = Math.floor((Math.random() * 100) + 1);
-                var chance = 100 * resistance / 3.33;
+                var chance = Math.floor(100 * resistance / 2.22);
                 if (luck <= chance) {
                     reflectDmg = Math.floor(currHunt["active"].attack * (100 * (resistance / 20)));
                     if (currHunt["active"].currentHP <= reflectDmg) 
