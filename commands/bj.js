@@ -413,6 +413,9 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
+                            if (bet == "all") {
+                                bet = userData[userid].points;
+                            }
                             userData[userid].points -= bet;
                             var newDeck = buildDeck();
                             blackjack[userid] = {
