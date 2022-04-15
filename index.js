@@ -321,20 +321,39 @@ let attackAll = (newTime) => {
                     defense += accessory.defense + equips[accessory.name].defense;
                 }
 
-                var damageDealt = Math.floor(currHunt["active"].attack * (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2))));
+                var resistance =  (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
+                var damageDealt = Math.floor(currHunt["active"].attack * resistance);
+                var reflectDmg = 0;
                 if (alivePlayers == 1) {
                     damageDealt = Math.floor(1.5 * damageDealt);
                 }
                 if (damageDealt <= 0) {
                     damageDealt = 1;
                 }
-
+                
+                if (resistance >= 0.50) {
+                    var luck = Math.floor((Math.random() * 100) + 1);
+                    var chance = 100 * Math.floor(resistance / 3.33);
+                    if (luck <= chance) {
+                        reflectDmg = damageDealt;
+                        if (currHunt["active"].currentHP <= reflectDmg) 
+                        {
+                            reflectDmg = currHunt["active"].currentHP - 1;
+                        }
+                        currHunt["active"].currentHP -= reflectDmg;
+                        damageDealt = 0;
+                    }
+                }
+                
                 userHunt[target].currentHP -= damageDealt;
                 if (userHunt[target].currentHP <= 0) {
                     userHunt[target].deathTime = newTime.getTime();
                     playersHit += userData[target].name + " takes " + damageDealt + " damage!\n";
                     faints += userData[target].name + " has fainted!\n";
                     currHunt["active"].deathCount++
+                }
+                else if (damageDealt == 0) {
+                    playersHit += userData[target].name + " counters the attack, dealing " + reflectDmg + " damage!\n";
                 }
                 else {
                     playersHit += userData[target].name + " takes " + damageDealt + " damage!\n";
