@@ -1398,7 +1398,7 @@ module.exports = {
                                             items[gear].defense += defgain;
                                             items[gear].speed += spdgain;
                                             items[gear].slots--;
-                                            embedMsg.setTitle('Success! - ' + theScroll.name + " - [" + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain + "]");
+                                            embedMsg.setTitle('Success! - ' + theScroll.name + " - (" + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain + ")");
                                         }
                                         else {
                                             items[gear].maxHP += theScroll.maxHP;
@@ -1407,7 +1407,7 @@ module.exports = {
                                             items[gear].defense += theScroll.defense;
                                             items[gear].speed += theScroll.speed;
                                             items[gear].slots--;
-                                            embedMsg.setTitle('Success! - ' + theScroll.name)
+                                            embedMsg.setTitle('Success! - ' + theScroll.name);
                                         }
                                         updateStats(userid);
                                         embedMsg.setColor('00FF00');
