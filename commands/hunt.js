@@ -1385,13 +1385,20 @@ module.exports = {
                                             var rangeMax = (3 * 2 * theScroll.chaos) + 1 + rangeMin;
                                             for (let i = rangeMin; i < rangeMax; i++)
                                                 range.push(i);
+                                            
+                                            var hpgain = range[Math.floor(Math.random() * range.length)] * 5;
+                                            var atkgain = range[Math.floor(Math.random() * range.length)];
+                                            var maggain = range[Math.floor(Math.random() * range.length)];
+                                            var defgain = range[Math.floor(Math.random() * range.length)];
+                                            var spdgain = range[Math.floor(Math.random() * range.length)];
 
-                                            items[gear].maxHP += range[Math.floor(Math.random() * range.length)] * 5;
-                                            items[gear].attack += range[Math.floor(Math.random() * range.length)];
-                                            items[gear].magic += range[Math.floor(Math.random() * range.length)];
-                                            items[gear].defense += range[Math.floor(Math.random() * range.length)];
-                                            items[gear].speed += range[Math.floor(Math.random() * range.length)];
+                                            items[gear].maxHP += hpgain;
+                                            items[gear].attack += atkgain;
+                                            items[gear].magic += maggain;
+                                            items[gear].defense += defgain;
+                                            items[gear].speed += spdgain;
                                             items[gear].slots--;
+                                            embedMsg.setTitle('Success! - ' + theScroll.name + " " + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain);
                                         }
                                         else {
                                             items[gear].maxHP += theScroll.maxHP;
@@ -1400,9 +1407,9 @@ module.exports = {
                                             items[gear].defense += theScroll.defense;
                                             items[gear].speed += theScroll.speed;
                                             items[gear].slots--;
+                                            embedMsg.setTitle('Success! - ' + theScroll.name)
                                         }
                                         updateStats(userid);
-                                        embedMsg.setTitle('Success! - ' + theScroll.name);
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
