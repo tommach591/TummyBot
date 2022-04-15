@@ -336,7 +336,7 @@ let attackAll = (newTime) => {
                     var luck = Math.floor((Math.random() * 100) + 1);
                     var chance = 100 * resistance / 3.33;
                     if (luck <= chance) {
-                        reflectDmg = currHunt["active"].attack * 5;
+                        reflectDmg = Math.floor(currHunt["active"].attack * (100 * (resistance / 20)));
                         if (currHunt["active"].currentHP <= reflectDmg) 
                         {
                             reflectDmg = currHunt["active"].currentHP - 1;
