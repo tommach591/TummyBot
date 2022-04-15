@@ -402,7 +402,13 @@ module.exports = {
                 else {
                     var bet = args[0];
                     if ((!isNaN(Number(bet)) && Math.floor(Number(bet)) > 0) || bet == "all") {
-                        bet = Math.floor(bet);
+                        if (bet == "all") {
+                            bet = userData[userid].points;
+                        }
+                        else
+                        {
+                            bet = Math.floor(bet);
+                        }
 
                         if (userData[userid].points < bet) {
                             embedMsg.setTitle('Error!');
@@ -413,9 +419,6 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
-                            if (bet == "all") {
-                                bet = userData[userid].points;
-                            }
                             userData[userid].points -= bet;
                             var newDeck = buildDeck();
                             blackjack[userid] = {
