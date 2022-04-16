@@ -326,7 +326,16 @@ let attackAll = (newTime) => {
                     defense = 0;
                 }
 
-                var multiplier = (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
+                var multiplier;
+                var resistance
+                if ((currHunt["active"].attack + (defense * 2)) == 0)
+                {
+                    multiplier = 1;
+                }
+                else
+                {
+                    multiplier = (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
+                }
                 var resistance = 1 - multiplier;
                 var damageDealt = Math.floor(currHunt["active"].attack * multiplier);
                 var reflectDmg = 0;
