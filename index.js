@@ -321,6 +321,11 @@ let attackAll = (newTime) => {
                     defense += accessory.defense + equips[accessory.name].defense;
                 }
 
+                if (defense < 0)
+                {
+                    defense = 0;
+                }
+
                 var multiplier = (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
                 var resistance = 1 - multiplier;
                 var damageDealt = Math.floor(currHunt["active"].attack * multiplier);
