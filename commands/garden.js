@@ -98,7 +98,7 @@ module.exports = {
                     proposalMsg.setColor('FFF000');
                     proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                     proposalMsg.setDescription("Would " + userData[userid].name + " like to plant a mystery seed for " + cost + " points?");
-                    proposalMsg.setFooter("Harvest in 8 hours to make " + cost + " profit!");
+                    proposalMsg.setFooter("Harvest in 8 hours for profit!");
 
                     let proposal; 
                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -166,7 +166,7 @@ module.exports = {
                 break;
             case 'harvest':
                 var profit = 0;
-                var reward = 600;
+                var reward = 600 * Math.pow(userData[userid].income, 2);
                 var newPlant = [];
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();
