@@ -138,7 +138,16 @@ module.exports = {
                     embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setThumbnail("https://i.imgur.com/jxuwNmo.png");
 
-                    var amount = Math.floor(Number(args[1]));
+                    var amount;
+                    if (args[1] == "all")
+                    {
+                        amount = userData[userid].bank;
+                    }
+                    else
+                    {
+                        amount = Math.floor(Number(args[1]));
+                    }
+
                     if (!isNaN(amount)) {
                         if (userData[userid].bank >= amount && amount > 0) {
 
