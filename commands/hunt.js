@@ -1230,7 +1230,7 @@ module.exports = {
                                     }
                                     return 0;
                                 });
-                                embedMsg.setDescription('Scrolls sorted by magic!');
+                                embedMsg.setDescription('Scrolls sorted by mixed damage!');
                                 break;
                             case "def":
                             case "defense":
