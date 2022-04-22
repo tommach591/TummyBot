@@ -1220,6 +1220,10 @@ module.exports = {
                                         && scrolls[firstEl].attack != 0) {
                                         return -1;
                                     }
+                                    if (scrolls[secondEl].attack == scrolls[secondEl].magic 
+                                        && scrolls[secondEl].attack != 0) {
+                                        return 1;
+                                    }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
                                         return -1;
                                     }
