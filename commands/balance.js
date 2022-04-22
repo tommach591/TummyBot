@@ -32,6 +32,10 @@ module.exports = {
                     tier = "Diamond";
                     embedMsg.setColor('2EFAFF');
                     break;
+                case 6:
+                    tier = "Onyx";
+                    embedMsg.setColor('07001E');
+                    break;
             }
             var fishtext = "" + userFish[id].fishdex.length + "/" + "105 ";
             if (userFish[id].fishdex.length == 105) {

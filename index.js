@@ -492,6 +492,9 @@ client.on('messageCreate', message => {
                 case 5:
                     income = 500;
                     break;
+                case 6:
+                    income = 5000;
+                    break;
             }
             if (timeDiff >= incomeCD) {
                 userData[sender.id].points += Math.floor(timeDiff / incomeCD) * income;
