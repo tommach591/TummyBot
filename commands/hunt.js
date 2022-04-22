@@ -1214,6 +1214,24 @@ module.exports = {
                                 });
                                 embedMsg.setDescription('Scrolls sorted by magic!');
                                 break;
+                            case "mix":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack && scrolls[firstEl].magic > scrolls[secondEl].magic) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack && scrolls[firstEl].magic < scrolls[secondEl].magic) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                embedMsg.setDescription('Scrolls sorted by magic!');
+                                break;
                             case "def":
                             case "defense":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
