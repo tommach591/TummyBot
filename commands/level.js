@@ -99,7 +99,7 @@ module.exports = {
                 askToLevel();
                 break;
             case 5:
-                price = 13333333337;
+                price = 1333333337;
                 nextPrice = "Infinite";
                 tier = "Onyx";
                 askToLevel();
