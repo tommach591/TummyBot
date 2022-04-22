@@ -1216,18 +1216,23 @@ module.exports = {
                                 break;
                             case "mix":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack 
-                                            && scrolls[firstEl].attack == scrolls[firstEl].magic) {
+                                    if (scrolls[firstEl].attack == scrolls[firstEl].magic) {
                                         return -1;
                                     }
-                                    else
-                                    {
-                                        if (scrolls[firstEl].name < scrolls[secondEl].name) {
-                                            return -1;
-                                        }
-                                        if (scrolls[firstEl].name > scrolls[secondEl].name) {
-                                            return 1;
-                                        }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack && scrolls[firstEl].magic > scrolls[secondEl].magic) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack && scrolls[firstEl].magic < scrolls[secondEl].magic) {
+                                        return 1;
                                     }
                                     return 0;
                                 });
