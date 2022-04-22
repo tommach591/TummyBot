@@ -374,7 +374,7 @@ module.exports = {
                                 fishingPower = 3;
                                 break;
                             case "Super Rod":
-                                fishingPower = 4;
+                                fishingPower = 5;
                                 break;
                         }
 
