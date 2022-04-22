@@ -1216,10 +1216,10 @@ module.exports = {
                                 break;
                             case "mix":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack && scrolls[firstEl].magic > scrolls[secondEl].magic) {
+                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack && scrolls[firstEl].attack == scrolls[secondEl].magic) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack && scrolls[firstEl].magic < scrolls[secondEl].magic) {
+                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack && scrolls[firstEl].attack == scrolls[secondEl].magic) {
                                         return 1;
                                     }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
