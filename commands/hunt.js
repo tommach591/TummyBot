@@ -1216,7 +1216,8 @@ module.exports = {
                                 break;
                             case "mix":
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].attack == scrolls[firstEl].magic) {
+                                    if (scrolls[firstEl].attack == scrolls[firstEl].magic 
+                                        && scrolls[firstEl].attack > 0) {
                                         return -1;
                                     }
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
