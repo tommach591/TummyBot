@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'reset',
+    name: 'banish',
     description: "Basically delete an account.",
 
     execute(message, args, userid, userData, userFish, userGarden, userHunt, items, client) {
@@ -41,6 +41,11 @@ module.exports = {
                         delete items[userHunt[mention].equips[i]];
                     }
                     delete userHunt[mention];
+                }
+                if (userData[mention].married != "") 
+                {
+                    userData[userData[mention].married] = "";
+                    userData[mention].married = "";
                 }
                     
                 delete userData[mention];

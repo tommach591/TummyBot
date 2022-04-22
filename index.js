@@ -616,7 +616,7 @@ client.on('messageCreate', message => {
                 break;
             case 'banish':
                 if (userData[sender.id])
-                    client.gmcommands.get('reset').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, items, client);
+                    client.gmcommands.get('banish').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, items, client);
                 break;
             case 'registerall':
                 if (userData[sender.id]) {
