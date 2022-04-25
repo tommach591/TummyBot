@@ -202,21 +202,21 @@ module.exports = {
                                 var luck = Math.floor(Math.random() * 101);
                                 if (luck == 100) {
                                     user.points += 5000;
-                                    embedMsg.setDescription(user.name + " won 5000 points!");
-                                    embedMsg.setFooter("Net gain: 4500 points");
+                                    embedMsg.setDescription(user.name + " won 5,000 points!");
+                                    embedMsg.setFooter("Net gain: 4,500 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (luck > 90) {
                                     user.points += 2000;
-                                    embedMsg.setDescription(user.name + " won 2000 points!");
-                                    embedMsg.setFooter("Net gain: 1500 points");
+                                    embedMsg.setDescription(user.name + " won 2,000 points!");
+                                    embedMsg.setFooter("Net gain: 1,500 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (luck > 70) {
                                     user.points += 1000;
-                                    embedMsg.setDescription(user.name + " won 1000 points!");
+                                    embedMsg.setDescription(user.name + " won 1,000 points!");
                                     embedMsg.setFooter("Net gain: 500 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -255,11 +255,11 @@ module.exports = {
                         break;
                     case 5:
                         if (user.points >= 1000) {
-                            embedMsg.setTitle('Scratcher #5: Costs 1000 points');
+                            embedMsg.setTitle('Scratcher #5: Costs 1,000 points');
                             embedMsg.setColor('00FF00');
                             user.points -= 1000;
 
-                            scratchingMsg.setTitle('Scratcher #5: Costs 1000 points');
+                            scratchingMsg.setTitle('Scratcher #5: Costs 1,000 points');
                             scratchingMsg.setDescription('Scratching...');
                             scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
                             message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
@@ -268,14 +268,14 @@ module.exports = {
                                 var luck = Math.floor(Math.random() * 101);
                                 if (luck == 100) {
                                     user.points += 10000;
-                                    embedMsg.setDescription(user.name + " won 10000 points!");
+                                    embedMsg.setDescription(user.name + " won 10,000 points!");
                                     embedMsg.setFooter("Net gain: 9000 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (luck > 66) {
                                     user.points += 2000;
-                                    embedMsg.setDescription(user.name + " won 2000 points!");
+                                    embedMsg.setDescription(user.name + " won 2,000 points!");
                                     embedMsg.setFooter("Net gain: 1000 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -290,7 +290,7 @@ module.exports = {
                                 }
                                 else {
                                     embedMsg.setDescription(user.name + " won depression!");
-                                    embedMsg.setFooter("Net gain: -1000 points");
+                                    embedMsg.setFooter("Net gain: -1,000 points");
                                     embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                                     embedMsg.setColor('FF0000');
                                     message.channel.send({ embeds: [embedMsg] });
@@ -304,10 +304,160 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         break;
+                        case 6:
+                            var amount = Math.floor(user.points * 0.10);
+                            var profit;
+                            var netGain;
+                            user.points -= amount;
+    
+                            embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (10%)');
+                            embedMsg.setColor('00FF00');
+                            scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (10%)');
+                            scratchingMsg.setDescription('Scratching...');
+                            scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
+                            message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
+    
+                            setTimeout(function() {
+                                profit = Math.floor(Math.random() * 2 * amount);
+                                user.points += profit;
+                                netGain = profit - amount;
+                                embedMsg.setDescription(user.name + " won " + profit.toLocaleString() + " points!");
+                                embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
+                                if (netGain <= 0)
+                                {
+                                    embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
+                                }
+                                else
+                                {
+                                    embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
+                                }
+                                message.channel.send({ embeds: [embedMsg] });
+                            }, scratchTime - 500);
+                            break;
+                    case 7:
+                        var amount = Math.floor(user.points * 0.25);
+                        var profit;
+                        var netGain;
+                        user.points -= amount;
+
+                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (25%)');
+                        embedMsg.setColor('00FF00');
+                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (25%)');
+                        scratchingMsg.setDescription('Scratching...');
+                        scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
+                        message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
+
+                        setTimeout(function() {
+                            profit = Math.floor(Math.random() * 2 * amount);
+                            user.points += profit;
+                            netGain = profit - amount;
+                            embedMsg.setDescription(user.name + " won " + profit.toLocaleString() + " points!");
+                            embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
+                            if (netGain <= 0)
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
+                            }
+                            else
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
+                            }
+                            message.channel.send({ embeds: [embedMsg] });
+                        }, scratchTime - 500);
+                        break;
+                    case 8:
+                        var amount = Math.floor(user.points * 0.50);
+                        var profit;
+                        var netGain;
+                        user.points -= amount;
+
+                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (50%)');
+                        embedMsg.setColor('00FF00');
+                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (50%)');
+                        scratchingMsg.setDescription('Scratching...');
+                        scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
+                        message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
+
+                        setTimeout(function() {
+                            profit = Math.floor(Math.random() * 2 * amount);
+                            user.points += profit;
+                            netGain = profit - amount;
+                            embedMsg.setDescription(user.name + " won " + profit.toLocaleString() + " points!");
+                            embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
+                            if (netGain <= 0)
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
+                            }
+                            else
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
+                            }
+                            message.channel.send({ embeds: [embedMsg] });
+                        }, scratchTime - 500);
+                        break;
+                    case 9:
+                        var amount = Math.floor(user.points * 0.75);
+                        var profit;
+                        var netGain;
+                        user.points -= amount;
+
+                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (75%)');
+                        embedMsg.setColor('00FF00');
+                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (75%)');
+                        scratchingMsg.setDescription('Scratching...');
+                        scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
+                        message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
+
+                        setTimeout(function() {
+                            profit = Math.floor(Math.random() * 2 * amount);
+                            user.points += profit;
+                            netGain = profit - amount;
+                            embedMsg.setDescription(user.name + " won " + profit.toLocaleString() + " points!");
+                            embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
+                            if (netGain <= 0)
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
+                            }
+                            else
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
+                            }
+                            message.channel.send({ embeds: [embedMsg] });
+                        }, scratchTime - 500);
+                        break;
+                    case 10:
+                        var amount = Math.floor(user.points * 1.00);
+                        var profit;
+                        var netGain;
+                        user.points -= amount;
+
+                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (100%)');
+                        embedMsg.setColor('00FF00');
+                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (100%)');
+                        scratchingMsg.setDescription('Scratching...');
+                        scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
+                        message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
+
+                        setTimeout(function() {
+                            profit = Math.floor(Math.random() * 2 * amount);
+                            user.points += profit;
+                            netGain = profit - amount;
+                            embedMsg.setDescription(user.name + " won " + profit.toLocaleString() + " points!");
+                            embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
+                            if (netGain <= 0)
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
+                            }
+                            else
+                            {
+                                embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
+                            }
+                            message.channel.send({ embeds: [embedMsg] });
+                        }, scratchTime - 500);
+                        break;
                     default:
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setDescription("Choose a scratcher 1-5!");
+                        embedMsg.setDescription("Choose a scratcher 1-10!");
                         message.channel.send({ embeds: [embedMsg] });
                         break;
                 }

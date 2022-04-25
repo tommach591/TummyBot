@@ -81,7 +81,7 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'plant':
-                var cost = 300;
+                var cost = 100;
                 var target = client.users.cache.get(userid);
                 embedMsg.setTitle('Gardening Info');
                 embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
@@ -166,7 +166,7 @@ module.exports = {
                 break;
             case 'harvest':
                 var profit = 0;
-                var reward = 600 * Math.pow(userData[userid].income, 3);
+                var reward = 100 * Math.pow(userData[userid].income, userData[userid].income - 1);
                 var newPlant = [];
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();
@@ -222,12 +222,12 @@ module.exports = {
                 for (let i = 1; i < 3; i++) {
                     if (userGarden[userid].pots[i] == "-1") {
                         if (i == 1) {
-                            cost = 3000;
+                            cost = 5000;
                             potIndex = i;
                             break;
                         }
                         if (i == 2) {
-                            cost = 5000;
+                            cost = 10000;
                             potIndex = i;
                             break;
                         }
@@ -303,9 +303,9 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         if (potIndex == 1)
-                            embedMsg.setDescription("Next pot costs 3000 points!");
-                        else
                             embedMsg.setDescription("Next pot costs 5000 points!");
+                        else
+                            embedMsg.setDescription("Next pot costs 10000 points!");
                         embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
                         embedMsg.setFooter('Haha you\'re poor!');
                         message.channel.send({ embeds: [embedMsg] });
