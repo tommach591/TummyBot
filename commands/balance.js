@@ -91,7 +91,7 @@ module.exports = {
                         income = 250;
                         break;
                     case 6:
-                        income = 300000;
+                        income = 500000;
                         break;
                 }
                 if (timeDiff >= incomeCD) {
