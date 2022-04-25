@@ -231,8 +231,8 @@ module.exports = {
                     embedMsg.setThumbnail(target.displayAvatarURL());
                     embedMsg.setColor('FFF000');
     
-                    var stats = "Max HP: " + maxHP.toString() + "\nAttack: " + attack.toString() + "\nMagic: " + magic.toString() + "\nDefense: " + defense.toString() + "\nSpeed: " + speed.toString() + "\n";
-                    var currentCondition = "HP: " + userHunt[id].currentHP + "\n";
+                    var stats = "Max HP: " + maxHP.toLocaleString() + "\nAttack: " + attack.toLocaleString() + "\nMagic: " + magic.toLocaleString() + "\nDefense: " + defense.toLocaleString() + "\nSpeed: " + speed.toLocaleString() + "\n";
+                    var currentCondition = "HP: " + userHunt[id].currentHP.toLocaleString() + "\n";
     
                     if (currHunt["active"])
                         currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)))) * 100).toFixed(2) + "%\n";
