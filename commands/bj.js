@@ -180,7 +180,7 @@ module.exports = {
 
                 if (reward > totalBet) {
                     embedMsg.setColor('00FF00');
-                    outcome = "You WON " + reward + " points!";
+                    outcome = "You WON " + reward.toLocaleString() + " points!";
                     embedMsg.setFooter("Net gain: " + (reward - totalBet).toLocaleString() + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
                 }
                 else if (reward == totalBet) {
