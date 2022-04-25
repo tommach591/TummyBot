@@ -116,9 +116,9 @@ module.exports = {
                 ranks[index] = "";
             }
 
-            names[index] += userData[keys[i]].name + "\n";
+            names[index] += userData[keys[i]].name + "⠀⠀⠀\n";
             points[index] += (userData[keys[i]].points + userData[keys[i]].bank).toLocaleString() + "⠀⠀⠀\n";
-            ranks[index] += "" + (i + 1) + ".\n";
+            ranks[index] += "" + (i + 1) + ".⠀⠀⠀\n";
             count++;
         }
 
