@@ -114,7 +114,7 @@ module.exports = {
             const reducer = (previousValue, currentValue) => previousValue + currentValue;
             var totalBet = blackjack[userid].bet.reduce(reducer)
             
-            embedMsg.setTitle('Blackjack - Bet ' + totalBet + ' points');
+            embedMsg.setTitle('Blackjack - Bet ' + totalBet.toLocaleString() + ' points');
 
             for (let i = 0; i < blackjack[userid].hand.length; i++) {
                 var hand = blackjack[userid].hand[i];
@@ -181,17 +181,17 @@ module.exports = {
                 if (reward > totalBet) {
                     embedMsg.setColor('00FF00');
                     outcome = "You WON " + reward + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
+                    embedMsg.setFooter("Net gain: " + (reward - totalBet).toLocaleString() + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
                 }
                 else if (reward == totalBet) {
                     embedMsg.setColor('FFB000');
-                    outcome = "You PUSH for " + totalBet + " points!";
+                    outcome = "You PUSH for " + totalBet.toLocaleString() + " points!";
                     embedMsg.setFooter("Net gain: 0 points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
                 }
                 else {
                     embedMsg.setColor('FF0000');
-                    outcome = "You LOST " + totalBet + " points!";
-                    embedMsg.setFooter("Net gain: " + (reward - totalBet) + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
+                    outcome = "You LOST " + totalBet.toLocaleString() + " points!";
+                    embedMsg.setFooter("Net gain: " + (reward - totalBet).toLocaleString() + " points ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Cards in Deck: " + blackjack[userid].deck.length);
                     if (userData[userid].points == 0 && totalBet >= 10000 && dealerValue == 21) {
                         embedMsg.setImage('https://c.tenor.com/K9-SqJMNjkEAAAAC/emotional-damage.gif');
                     }

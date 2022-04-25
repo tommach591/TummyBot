@@ -580,7 +580,7 @@ module.exports = {
                                 embedMsg.setDescription(userData[userid].name + " lands the finishing blow on " + currHunt["active"].name + "!\n\n" + currHunt["active"].death);
                             }
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
 
                             getDrops();
 
