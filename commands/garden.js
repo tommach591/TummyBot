@@ -89,7 +89,7 @@ module.exports = {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription("Not enough points!");
-                    embedMsg.setFooter("Planting costs " + cost + " points!");
+                    embedMsg.setFooter("Planting costs " + cost.toLocaleString() + " points!");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -97,7 +97,7 @@ module.exports = {
                     proposalMsg.setTitle('Gardening Info!');
                     proposalMsg.setColor('FFF000');
                     proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
-                    proposalMsg.setDescription("Would " + userData[userid].name + " like to plant a mystery seed for " + cost + " points?");
+                    proposalMsg.setDescription("Would " + userData[userid].name + " like to plant a mystery seed for " + cost.toLocaleString() + " points?");
                     proposalMsg.setFooter("Harvest in 8 hours for profit!");
 
                     let proposal; 
@@ -166,7 +166,7 @@ module.exports = {
                 break;
             case 'harvest':
                 var profit = 0;
-                var reward = 600 * Math.pow(userData[userid].income, 2);
+                var reward = 600 * Math.pow(userData[userid].income, 3);
                 var newPlant = [];
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();
@@ -325,9 +325,11 @@ module.exports = {
                         embedMsg.setDescription("#" + gardendex[selected].id + ". " + gardendex[selected].name + "\n");
                         embedMsg.setThumbnail(gardendex[selected].image);
                         embedMsg.addField('Gardendex Entry', "" + gardendex[selected].info);
+                        message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
                         embedMsg.setDescription('You never planted this plant or it does not exist!');
+                        message.channel.send({ embeds: [embedMsg] });
                     }
                 }
                 else {
