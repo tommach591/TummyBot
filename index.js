@@ -389,7 +389,7 @@ let attackAll = (newTime) => {
             embedMsg.setTitle(currHunt["active"].name + stars + " - Attacks!");
             embedMsg.setDescription(currHunt["active"].shoutout + "\n\n" + playersHit + "\n" + faints);
             embedMsg.setImage(currHunt["active"].attackImage);
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+            embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
             embedMsg.setColor("49000F");
             for (let i = 0; i < currHunt["active"].channels.length; i++) {
                 currHunt["active"].channels[i].send({ embeds: [embedMsg] });
