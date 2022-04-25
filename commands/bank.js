@@ -107,13 +107,13 @@ module.exports = {
 
                             embedMsg.setTitle('Success!');
                             embedMsg.setColor('00FF00');
-                            embedMsg.setDescription(userData[userid].name + " deposited " + amount + " point(s) into the bank!");
+                            embedMsg.setDescription(userData[userid].name + " deposited " + amount.toLocaleString() + " point(s) into the bank!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + amount + " point(s)!");
+                            embedMsg.setDescription(userData[userid].name + " does not have " + amount.toLocaleString() + " point(s)!");
                             embedMsg.setFooter("Maybe you would have enough if you stopped spamming blackjack.");
                             message.channel.send({ embeds: [embedMsg] });
                         }
@@ -163,13 +163,13 @@ module.exports = {
 
                             embedMsg.setTitle('Success!');
                             embedMsg.setColor('00FF00');
-                            embedMsg.setDescription(userData[userid].name + " withdrew " + amount + " point(s) from the bank!");
+                            embedMsg.setDescription(userData[userid].name + " withdrew " + amount.toLocaleString() + " point(s) from the bank!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + amount + " point(s) in the bank!");
+                            embedMsg.setDescription(userData[userid].name + " does not have " + amount.toLocaleString() + " point(s) in the bank!");
                             embedMsg.setFooter("Maybe you would have enough if you stopped spamming blackjack.");
                             message.channel.send({ embeds: [embedMsg] });
                         }
@@ -189,10 +189,10 @@ module.exports = {
                 embedMsg.setColor('FFF000');
                 embedMsg.setFooter('Bank tick resets on withdraw and deposit from either you or your spouse.');
 
-                embedMsg.addField("__Bank:__  :coin: ⠀⠀⠀⠀", "" + userData[userid].bank + "\n", true);
+                embedMsg.addField("__Bank:__  :coin: ⠀⠀⠀⠀", "" + userData[userid].bank.toLocaleString() + "\n", true);
 
                 if (userData[userid].married != "" && userData[userData[userid].married]) {
-                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀", userData[userData[userid].married].bank + "\n", true);
+                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀", userData[userData[userid].married].bank.toLocaleString() + "\n", true);
                 }
                 else {
                     embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀",  "*Not Married*\n", true);
