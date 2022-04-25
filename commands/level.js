@@ -16,7 +16,7 @@ module.exports = {
             if (userData[userid].points < price) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription("Next level costs " + price + " points!");
+                embedMsg.setDescription("Next level costs " + price.toLocaleString() + " points!");
                 embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
                 embedMsg.setFooter('Try grinding at Pig Beach!');
                 message.channel.send({ embeds: [embedMsg] });
@@ -26,7 +26,7 @@ module.exports = {
                 proposalMsg.setTitle('Leveling Up!');
                 proposalMsg.setColor('FFF000');
                 proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
-                proposalMsg.setDescription("Would " + userData[userid].name + " like to level up their income for " + price + " points?");
+                proposalMsg.setDescription("Would " + userData[userid].name + " like to level up their income for " + price.toLocaleString() + " points?");
 
                 let proposal; 
                 message.channel.send({ embeds: [proposalMsg] }).then(
