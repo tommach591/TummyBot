@@ -106,7 +106,7 @@ module.exports = {
                         proposalMsg.setTitle('Adopting a Pet!');
                         proposalMsg.setColor('FFF000');
                         proposalMsg.setThumbnail('https://c.tenor.com/_4xCiEhhoZsAAAAM/dog-smile.gif');
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to buy a new pet for " + cost + " points?");
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to buy a new pet for " + cost.toLocaleString() + " points?");
     
                         let proposal; 
                         message.channel.send({ embeds: [proposalMsg] }).then(
@@ -330,7 +330,7 @@ module.exports = {
                     else if (userData[userid].points < cost) {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setDescription(userData[userid].name + " does not have " + cost + " points!");
+                        embedMsg.setDescription(userData[userid].name + " does not have " + cost.toLocaleString() + " points!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (badnames.includes(newName) || newName.length > maxSize) {
@@ -345,7 +345,7 @@ module.exports = {
                         proposalMsg.setTitle('Renaming Pet!');
                         proposalMsg.setColor('FFF000');
                         proposalMsg.setThumbnail(userPet[userid].image);
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to rename " + userPet[userid].petName + " to " + newName + " for "+ cost + " points?");
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to rename " + userPet[userid].petName + " to " + newName + " for "+ cost.toLocaleString() + " points?");
 
                         let proposal; 
                         message.channel.send({ embeds: [proposalMsg] }).then(
@@ -771,7 +771,7 @@ module.exports = {
                         proposalMsg.setTitle('Reviving a Pet!');
                         proposalMsg.setColor('FFF000');
                         proposalMsg.setThumbnail(userPet[userid].image);
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to revive their pet for " + cost + " points?");
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to revive their pet for " + cost.toLocaleString() + " points?");
     
                         let proposal; 
                         message.channel.send({ embeds: [proposalMsg] }).then(
@@ -831,7 +831,7 @@ module.exports = {
                     else {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setDescription("Reviving a pet costs 50000 points!");
+                        embedMsg.setDescription("Reviving a pet costs " + cost.toLocaleString() + " points!");
                         embedMsg.setThumbnail(userPet[userid].image);
                         embedMsg.setFooter('Wow, you can\'t even afford to revive your pet!');
                         message.channel.send({ embeds: [embedMsg] });
