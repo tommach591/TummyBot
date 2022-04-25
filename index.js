@@ -483,19 +483,19 @@ client.on('messageCreate', message => {
                         income = 1;
                         break;
                     case 2:
-                        income = 3;
+                        income = 2;
                         break;
                     case 3:
-                        income = 10;
+                        income = 3;
                         break;
                     case 4:
-                        income = 50;
+                        income = 25;
                         break;
                     case 5:
-                        income = 500;
+                        income = 250;
                         break;
                     case 6:
-                        income = 10000;
+                        income = 300000;
                         break;
                 }
                 if (timeDiff >= incomeCD) {

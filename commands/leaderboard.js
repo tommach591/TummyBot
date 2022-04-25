@@ -18,19 +18,19 @@ module.exports = {
                         income = 1;
                         break;
                     case 2:
-                        income = 3;
+                        income = 2;
                         break;
                     case 3:
-                        income = 10;
+                        income = 3;
                         break;
                     case 4:
-                        income = 50;
+                        income = 25;
                         break;
                     case 5:
-                        income = 500;
+                        income = 250;
                         break;
                     case 6:
-                        income = 10000;
+                        income = 300000;
                         break;
                 }
                 if (timeDiff >= incomeCD) {
@@ -57,7 +57,7 @@ module.exports = {
                         currentBalance = userData[id].bank;
                     }
     
-                    addBalance = Math.floor(currentBalance * 0.005 * ((Math.random() * 0.9) + 0.1));
+                    addBalance = Math.floor(currentBalance * 0.01 * Math.random() * Math.random() * Math.random());
 
                     userData[id].bank += addBalance;
                 }
@@ -73,7 +73,7 @@ module.exports = {
                         var addBalance = 0;
                         var currentBalance = userData[id].bank + Math.floor(userData[userData[id].married].bank / 2);
         
-                        addBalance = Math.floor(currentBalance * 0.005 * ((Math.random() * 0.9) + 0.1));
+                        addBalance = Math.floor(currentBalance * 0.01 * Math.random() * Math.random() * Math.random());
 
                         userData[userData[id].married].bank += addBalance;
                     }
