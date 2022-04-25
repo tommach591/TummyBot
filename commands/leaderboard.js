@@ -130,9 +130,9 @@ module.exports = {
         .setColor('FFF000')
         .setFooter(`Page ${page} of ${ranks.length}`)
         .setFields(
-            {name: "**__Rank__**", value: ranks[page-1], inline: true},
-            {name: "**__Player__**", value: names[page-1], inline: true},
-            {name: "**__Points__**", value: points[page-1], inline: true}
+            {name: "**__Rank__**⠀⠀⠀⠀", value: ranks[page-1], inline: true},
+            {name: "**__Player__**⠀⠀⠀⠀⠀", value: names[page-1], inline: true},
+            {name: "**__Points__**⠀⠀⠀⠀", value: points[page-1], inline: true}
         )
 
         message.channel.send({ embeds: [embedMsg] }).then(msg => {
