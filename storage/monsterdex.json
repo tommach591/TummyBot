@@ -1018,5 +1018,22 @@
         "attackCD": 20000,
         "difficulty": 6,
         "loot": ["Fatalis Legacy", "Old Fatalis Armor", "Triumph and Testament"]
+    },
+    "61": {
+        "id": "61",
+        "name": "Mega Rayquaza",
+        "info": "It flies forever through the ozone layer, consuming meteoroids for sustenance. The many meteoroids in its body provide the energy it needs to Mega Evolve.",
+        "entry": "Rayquaza Mega Evolves!",
+        "shoutout": "Rayquaza uses Dragon Ascent!",
+        "death": "Rayquaza has fainted!",
+        "image": "https://c.tenor.com/DVb61z0jC8wAAAAC/rayquaza.gif",
+        "attackImage": "https://i.pinimg.com/originals/95/f1/f1/95f1f154264c04c55f3621f7b48d4d97.gif",
+        "maxHP": 50000,
+        "attack": 200,
+        "defense": 0,
+        "magicdefense": 0,
+        "attackCD": 15000,
+        "difficulty": 4,
+        "loot": ["Meteorite"]
     }
 }

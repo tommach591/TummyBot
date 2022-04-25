@@ -528,18 +528,6 @@ module.exports = {
                             currHunt["active"].targets.push(userid);
                             currHunt["active"].playerDamage.push(0);
                         }
-                        if (!userHunt[userid].monsterdex.includes(currHunt["active"].id)) {
-                            userHunt[userid].monsterdex.push(currHunt["active"].id);
-                            userHunt[userid].monsterdex.sort((firstEl, secondEl) => { 
-                                if (Number(firstEl) < Number(secondEl)) {
-                                    return -1;
-                                }
-                                if (Number(firstEl) > Number(secondEl)) {
-                                    return 1;
-                                }
-                                return 0;
-                            });
-                        }
                         
                         var isCrit = false;
 
@@ -675,6 +663,19 @@ module.exports = {
 
                                 userData[player].points += goldEarned;
                                 updateStats(player);
+
+                                if (!userHunt[player].monsterdex.includes(currHunt["active"].id)) {
+                                    userHunt[player].monsterdex.push(currHunt["active"].id);
+                                    userHunt[player].monsterdex.sort((firstEl, secondEl) => { 
+                                        if (Number(firstEl) < Number(secondEl)) {
+                                            return -1;
+                                        }
+                                        if (Number(firstEl) > Number(secondEl)) {
+                                            return 1;
+                                        }
+                                        return 0;
+                                    });
+                                }
                                 
                                 reward += userData[player].name + " has been awarded with: " + goldEarned + " points" + itemsEarned + "\n\n";
                             }
