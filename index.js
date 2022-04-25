@@ -369,10 +369,10 @@ let attackAll = (newTime) => {
                     currHunt["active"].deathCount++
                 }
                 else if (damageDealt == 0) {
-                    playersHit += userData[target].name + " counters the attack, dealing " + reflectDmg + " damage!\n";
+                    playersHit += userData[target].name + " counters the attack, dealing " + reflectDmg.toLocaleString() + " damage!\n";
                 }
                 else {
-                    playersHit += userData[target].name + " takes " + damageDealt + " damage!\n";
+                    playersHit += userData[target].name + " takes " + damageDealt.toLocaleString() + " damage!\n";
                 }
                 count++;
             }
@@ -472,35 +472,40 @@ client.on('messageCreate', message => {
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
 
-        if (userData[sender.id]) {
-            var timeDiff = newTime.getTime() - userData[sender.id].incomeTime;
-            var incomeCD = 1000 * 60; // 1min
-            var income = 1;
-            switch (userData[sender.id].income) {
-                case 1:
-                    income = 1;
-                    break;
-                case 2:
-                    income = 3;
-                    break;
-                case 3:
-                    income = 10;
-                    break;
-                case 4:
-                    income = 50;
-                    break;
-                case 5:
-                    income = 500;
-                    break;
-                case 6:
-                    income = 10000;
-                    break;
-            }
-            if (timeDiff >= incomeCD) {
-                userData[sender.id].points += Math.floor(timeDiff / incomeCD) * income;
-                userData[sender.id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
+        let updateBalance = (id) =>
+        {
+            if (userData[id]) {
+                var timeDiff = newTime.getTime() - userData[id].incomeTime;
+                var incomeCD = 1000 * 60; // 1min
+                var income = 1;
+                switch (userData[id].income) {
+                    case 1:
+                        income = 1;
+                        break;
+                    case 2:
+                        income = 3;
+                        break;
+                    case 3:
+                        income = 10;
+                        break;
+                    case 4:
+                        income = 50;
+                        break;
+                    case 5:
+                        income = 500;
+                        break;
+                    case 6:
+                        income = 10000;
+                        break;
+                }
+                if (timeDiff >= incomeCD) {
+                    userData[id].points += Math.floor(timeDiff / incomeCD) * income;
+                    userData[id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
+                }
             }
         }
+
+        updateBalance(sender.id);
 
         switch(command) {
             // Base Commands
@@ -672,7 +677,7 @@ client.on('messageCreate', message => {
             embedMsg.setTitle(currHunt["active"].name + stars);
             embedMsg.setDescription(currHunt["active"].entry);
             embedMsg.setImage(currHunt["active"].image);
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+            embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString());
             embedMsg.setColor("49000F");
             currHunt["active"].channels[0].send({ embeds: [embedMsg] });
         }
@@ -691,7 +696,7 @@ client.on('messageCreate', message => {
             stars += ")"
             embedMsg.setTitle(currHunt["active"].name + stars + " - Retreats!");
             embedMsg.setDescription(currHunt["active"].name + " got bored and left the battlegrounds.");
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+            embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString());
             embedMsg.setColor("FF0000");
 
             let channels = currHunt["active"].channels;

@@ -48,7 +48,7 @@ module.exports = {
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setDescription(userData[userid].name + " leveled up to " + tier + " tier!");
                                 embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
-                                embedMsg.setFooter('Next level: ' + nextPrice + ' points');
+                                embedMsg.setFooter('Next level: ' + nextPrice.toLocaleString() + ' points');
                                 message.channel.send({ embeds: [embedMsg] });
                             } 
                             else {
@@ -56,7 +56,7 @@ module.exports = {
                                 embedMsg.setColor('FF0000');
                                 proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                 embedMsg.setDescription(userData[userid].name + " declined!");
-                                embedMsg.setFooter('Next level: ' + price + ' points');
+                                embedMsg.setFooter('Next level: ' + price.toLocaleString() + ' points');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                         })
@@ -65,7 +65,7 @@ module.exports = {
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription(userData[userid].name + " took too long to respond!");
                             proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
-                            embedMsg.setFooter('Next level: ' + price + ' points');
+                            embedMsg.setFooter('Next level: ' + price.toLocaleString() + ' points');
                             message.channel.send({ embeds: [embedMsg] });
                         });
                     }

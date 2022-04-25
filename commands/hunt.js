@@ -677,7 +677,7 @@ module.exports = {
                                     });
                                 }
                                 
-                                reward += userData[player].name + " has been awarded with: " + goldEarned + " points" + itemsEarned + "\n\n";
+                                reward += userData[player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "\n\n";
                             }
 
                             const rewardMsg = new MessageEmbed();
@@ -700,10 +700,10 @@ module.exports = {
                         else {
                             embedMsg.setTitle("Attack!");
                             if (isCrit) {
-                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt + " (" + critDmg.toFixed(2) + "x)" + " damage to " + currHunt["active"].name + "!");
+                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt.toLocaleString() + " (" + critDmg.toFixed(2) + "x)" + " damage to " + currHunt["active"].name + "!");
                             }
                             else {
-                                embedMsg.setDescription(userData[userid].name + " deals " + damageDealt + " damage to " + currHunt["active"].name + "!");
+                                embedMsg.setDescription(userData[userid].name + " deals " + damageDealt.toLocaleString() + " damage to " + currHunt["active"].name + "!");
                             }
                             embedMsg.setImage(randomAttackGifs[Math.floor(Math.random() * randomAttackGifs.length)]);
                             embedMsg.setColor("00FF00");
@@ -1730,7 +1730,7 @@ module.exports = {
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
                                     proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedWeapon.name + 
-                                                                " and the " + (total_items - 1) + " above item(s) for " + price + " points?");
+                                                                " and the " + (total_items - 1) + " above item(s) for " + price.toLocaleString() + " points?");
 
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -1757,7 +1757,7 @@ module.exports = {
 
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
-                                                    embedMsg.setDescription(userData[userid].name + " sold " + total_items + " equips for " + price + " points!");
+                                                    embedMsg.setDescription(userData[userid].name + " sold " + total_items + " equips for " + price.toLocaleString() + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
                                                 else if (reaction.emoji.name === '👎') {
@@ -1795,7 +1795,7 @@ module.exports = {
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
-                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedWeapon.name + " for " + price + " points?");
+                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedWeapon.name + " for " + price.toLocaleString() + " points?");
         
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -1817,7 +1817,7 @@ module.exports = {
                                                     delete items[itemToDelete];
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
-                                                    embedMsg.setDescription(userData[userid].name + " sold " + selectedWeapon.name + " for " + price + " points!");
+                                                    embedMsg.setDescription(userData[userid].name + " sold " + selectedWeapon.name + " for " + price.toLocaleString() + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
                                                 else if (reaction.emoji.name === '👎') {
@@ -1858,7 +1858,7 @@ module.exports = {
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
-                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedScroll.name + " for " + price + " points?");
+                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedScroll.name + " for " + price.toLocaleString() + " points?");
         
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -1878,7 +1878,7 @@ module.exports = {
                                                     userHunt[userid].scrolls.splice(target, 1)
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
-                                                    embedMsg.setDescription(userData[userid].name + " sold " + selectedScroll.name + " for " + price + " points!");
+                                                    embedMsg.setDescription(userData[userid].name + " sold " + selectedScroll.name + " for " + price.toLocaleString() + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
                                                 else if (reaction.emoji.name === '👎') {

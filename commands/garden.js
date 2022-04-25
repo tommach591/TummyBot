@@ -201,7 +201,7 @@ module.exports = {
                 else {
                     embedMsg.setTitle('Successfully Harvested!');
                     embedMsg.setColor('00FF00');
-                    embedMsg.setDescription("Your harvest earned you " + profit + " points!");
+                    embedMsg.setDescription("Your harvest earned you " + profit.toLocaleString() + " points!");
                     userData[userid].points += profit;
                     message.channel.send({ embeds: [embedMsg] });
                     if (newPlant.length != 0) {
@@ -245,7 +245,7 @@ module.exports = {
                         proposalMsg.setTitle('Buying Pot!');
                         proposalMsg.setColor('FFF000');
                         proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to buy a new pot for " + cost + " points?");
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to buy a new pot for " + cost.toLocaleString() + " points?");
     
                         let proposal; 
                         message.channel.send({ embeds: [proposalMsg] }).then(
@@ -268,7 +268,7 @@ module.exports = {
                                         embedMsg.setDescription(userData[userid].name + " bought a new pot!");
                                         embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                         if (potIndex == 1)
-                                            embedMsg.setFooter('Next pot: 5000 points');
+                                            embedMsg.setFooter('Next pot: 5,000 points');
                                         else 
                                             embedMsg.setFooter('Maxed pot!');
                                         message.channel.send({ embeds: [embedMsg] });
@@ -279,9 +279,9 @@ module.exports = {
                                         embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                         embedMsg.setDescription(userData[userid].name + " declined!");
                                         if (potIndex == 0)
-                                            embedMsg.setFooter('Next pot: 3000 points');
+                                            embedMsg.setFooter('Next pot: 3,000 points');
                                         else 
-                                            embedMsg.setFooter('Next pot: 5000 points');
+                                            embedMsg.setFooter('Next pot: 5,000 points');
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                 })
@@ -291,9 +291,9 @@ module.exports = {
                                     embedMsg.setDescription(userData[userid].name + " took too long to respond!");
                                     embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                     if (potIndex == 0)
-                                        embedMsg.setFooter('Next pot: 3000 points');
+                                        embedMsg.setFooter('Next pot: 3,000 points');
                                     else 
-                                        embedMsg.setFooter('Next pot: 5000 points');
+                                        embedMsg.setFooter('Next pot: 5,000 points');
                                     message.channel.send({ embeds: [embedMsg] });
                                 });
                             }

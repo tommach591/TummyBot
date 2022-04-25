@@ -50,7 +50,7 @@ module.exports = {
             gardentext += "\n";
 
             embedMsg.setFields(
-                {name: "__Points:__  :moneybag: ⠀⠀⠀⠀", value: "" + userData[id].points + "\n", inline: true},
+                {name: "__Points:__  :moneybag: ⠀⠀⠀⠀", value: "" + userData[id].points.toLocaleString() + "\n", inline: true},
                 {name: "__Income:__  :money_with_wings: ⠀⠀⠀⠀⠀", value: "" + tier + "\n", inline: true},
                 {name: "__Fame:__  :sparkles: ⠀⠀⠀⠀", value: "" + userData[id].fame + "\n", inline: true},
                 {name: "__Fishdex Entries:__  :fish: ⠀⠀⠀⠀⠀⠀⠀", value: fishtext, inline: false},
@@ -65,6 +65,39 @@ module.exports = {
             }
 
             message.channel.send({ embeds: [embedMsg] });
+        }
+
+        let updateBalance = (id) =>
+        {
+            if (userData[id]) {
+                var timeDiff = newTime.getTime() - userData[id].incomeTime;
+                var incomeCD = 1000 * 60; // 1min
+                var income = 1;
+                switch (userData[id].income) {
+                    case 1:
+                        income = 1;
+                        break;
+                    case 2:
+                        income = 3;
+                        break;
+                    case 3:
+                        income = 10;
+                        break;
+                    case 4:
+                        income = 50;
+                        break;
+                    case 5:
+                        income = 500;
+                        break;
+                    case 6:
+                        income = 10000;
+                        break;
+                }
+                if (timeDiff >= incomeCD) {
+                    userData[id].points += Math.floor(timeDiff / incomeCD) * income;
+                    userData[id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
+                }
+            }
         }
 
         if (args.length > 0) {
@@ -84,6 +117,7 @@ module.exports = {
                     return;
                 }
 
+                updateBalance(mention);
                 sendMsg(mention);
             }
             else {

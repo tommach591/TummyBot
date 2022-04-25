@@ -78,7 +78,7 @@ module.exports = {
                             proposalMsg.setTitle('Buying Bait!');
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to buy " + amount + " fish bait for " + (amount * cost) + " points?");
+                            proposalMsg.setDescription("Would " + userData[userid].name + " like to buy " + amount + " fish bait for " + (amount * cost).toLocaleString() + " points?");
                             proposalMsg.setFooter("Bait costs " + cost + " points each!");
 
                             let proposal; 
@@ -100,7 +100,7 @@ module.exports = {
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                                            embedMsg.setDescription(userData[userid].name + " buys " + amount + " fish bait for " + amount * cost + " points!");
+                                            embedMsg.setDescription(userData[userid].name + " buys " + amount + " fish bait for " + (amount * cost).toLocaleString() + " points!");
                                             message.channel.send({ embeds: [embedMsg] });
                                         } 
                                         else {
@@ -124,8 +124,8 @@ module.exports = {
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + (amount * cost) + " point(s)!");
-                            embedMsg.setFooter("Bait costs " + cost + " points each!");
+                            embedMsg.setDescription(userData[userid].name + " does not have " + (amount * cost).toLocaleString() + " point(s)!");
+                            embedMsg.setFooter("Bait costs " + cost.toLocaleString() + " points each!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
@@ -143,7 +143,7 @@ module.exports = {
                         if (userData[userid].points < 1000) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription("Old Rod costs 1000 points!");
+                            embedMsg.setDescription("Old Rod costs 1,000 points!");
                             embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
                             embedMsg.setFooter('Try fishing with your bare hands!');
                             message.channel.send({ embeds: [embedMsg] });
@@ -153,7 +153,7 @@ module.exports = {
                             proposalMsg.setTitle('Upgrading Rod!');
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Old Rod for 1000 points?");
+                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Old Rod for 1,000 points?");
 
                             let proposal; 
                             message.channel.send({ embeds: [proposalMsg] }).then(
@@ -175,7 +175,7 @@ module.exports = {
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setDescription(userData[userid].name + " bought an Old Rod!");
                                             embedMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
-                                            embedMsg.setFooter('Next level: 10000 points');
+                                            embedMsg.setFooter('Next level: 10,000 points');
                                             message.channel.send({ embeds: [embedMsg] });
                                         } 
                                         else {
@@ -183,7 +183,7 @@ module.exports = {
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setThumbnail('https://i.imgur.com/aMY06nC.png');
                                             embedMsg.setDescription(userData[userid].name + " declined!");
-                                            embedMsg.setFooter('Next level: 1000 points');
+                                            embedMsg.setFooter('Next level: 1,000 points');
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                     })
@@ -192,7 +192,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/aMY06nC.png');
                                         embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                        embedMsg.setFooter('Next level: 1000 points');
+                                        embedMsg.setFooter('Next level: 1,000 points');
                                         message.channel.send({ embeds: [embedMsg] });
                                     });
                                 }
@@ -203,7 +203,7 @@ module.exports = {
                         if (userData[userid].points < 10000) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription("Good Rod costs 10000 points!");
+                            embedMsg.setDescription("Good Rod costs 10,000 points!");
                             embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
                             embedMsg.setFooter('Try fishing with your bare hands!');
                             message.channel.send({ embeds: [embedMsg] });
@@ -213,7 +213,7 @@ module.exports = {
                             proposalMsg.setTitle('Upgrading Rod!');
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Good Rod for 10000 points?");
+                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Good Rod for 10,000 points?");
 
                             let proposal; 
                             message.channel.send({ embeds: [proposalMsg] }).then(
@@ -235,7 +235,7 @@ module.exports = {
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setDescription(userData[userid].name + " bought a Good Rod!");
                                             embedMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
-                                            embedMsg.setFooter('Next level: 100000 points');
+                                            embedMsg.setFooter('Next level: 10,0000 points');
                                             message.channel.send({ embeds: [embedMsg] });
                                         } 
                                         else {
@@ -243,7 +243,7 @@ module.exports = {
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
                                             embedMsg.setDescription(userData[userid].name + " declined!");
-                                            embedMsg.setFooter('Next level: 10000 points');
+                                            embedMsg.setFooter('Next level: 10,000 points');
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                     })
@@ -252,7 +252,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
                                         embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                        embedMsg.setFooter('Next level: 10000 points');
+                                        embedMsg.setFooter('Next level: 10,000 points');
                                         message.channel.send({ embeds: [embedMsg] });
                                     });
                                 }
@@ -263,7 +263,7 @@ module.exports = {
                         if (userData[userid].points < 100000) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription("Super Rod costs 100000 points!");
+                            embedMsg.setDescription("Super Rod costs 100,000 points!");
                             embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
                             embedMsg.setFooter('Try fishing with your bare hands!');
                             message.channel.send({ embeds: [embedMsg] });
@@ -273,7 +273,7 @@ module.exports = {
                             proposalMsg.setTitle('Upgrading Rod!');
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Super Rod for 100000 points?");
+                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Super Rod for 100,000 points?");
 
                             let proposal; 
                             message.channel.send({ embeds: [proposalMsg] }).then(
@@ -303,7 +303,7 @@ module.exports = {
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
                                             embedMsg.setDescription(userData[userid].name + " declined!");
-                                            embedMsg.setFooter('Next level: 100000 points');
+                                            embedMsg.setFooter('Next level: 100,000 points');
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                     })
@@ -312,7 +312,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
                                         embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                        embedMsg.setFooter('Next level: 100000 points');
+                                        embedMsg.setFooter('Next level: 100,000 points');
                                         message.channel.send({ embeds: [embedMsg] });
                                     });
                                 }
@@ -491,7 +491,7 @@ module.exports = {
                         embedMsg.setTitle('Sold!');
                         embedMsg.setColor('00FF00');
                         embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
-                        embedMsg.setDescription('Sold everything for ' + profit + ' points!');
+                        embedMsg.setDescription('Sold everything for ' + profit.toLocaleString() + ' points!');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
@@ -520,7 +520,7 @@ module.exports = {
                                 embedMsg.setTitle('Sold!');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
-                                embedMsg.setDescription('Sold ' + fishdex[target].name + ' for ' + profit + ' points!');
+                                embedMsg.setDescription('Sold ' + fishdex[target].name + ' for ' + profit.toLocaleString() + ' points!');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                         }
@@ -560,7 +560,7 @@ module.exports = {
                         }
                         if (lastFish != element) {
                             var amount = userFish[userid].fishInventory.filter(match => match == element).length;
-                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + fishdex[element].value + "\n\n";
+                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + fishdex[element].value.toLocaleString() + "\n\n";
                             lastFish = element;
                             count++;
                         }
@@ -600,7 +600,7 @@ module.exports = {
                                     }
                                     page--;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    embedMsg.setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 else if (r.emoji.name === "▶️") {
@@ -610,7 +610,7 @@ module.exports = {
                                     }
                                     page++;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    embedMsg.setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 r.users.remove(userid);
@@ -652,7 +652,7 @@ module.exports = {
                         embedMsg.setDescription("#" + fishdex[selected].id + ". " + fishdex[selected].name + stars + "\n");
                         embedMsg.setThumbnail(fishdex[selected].image);
                         embedMsg.addField('Fishdex Entry', "" + fishdex[selected].info);
-                        embedMsg.addField('Value', "" + fishdex[selected].value);
+                        embedMsg.addField('Value', "" + fishdex[selected].value.toLocaleString());
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
