@@ -325,10 +325,12 @@ module.exports = {
                                 embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
                                 if (netGain <= 0)
                                 {
+                                    embedMsg.setColor('FF0000');
                                     embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                                 }
                                 else
                                 {
+                                    embedMsg.setColor('00FF00');
                                     embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                                 }
                                 message.channel.send({ embeds: [embedMsg] });
@@ -340,9 +342,9 @@ module.exports = {
                         var netGain;
                         user.points -= amount;
 
-                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (25%)');
+                        embedMsg.setTitle('Scratcher #7: Costs ' + amount.toLocaleString() + ' points (25%)');
                         embedMsg.setColor('00FF00');
-                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (25%)');
+                        scratchingMsg.setTitle('Scratcher #7: Costs ' + amount.toLocaleString() + ' points (25%)');
                         scratchingMsg.setDescription('Scratching...');
                         scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
                         message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
@@ -355,10 +357,12 @@ module.exports = {
                             embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
                             if (netGain <= 0)
                             {
+                                embedMsg.setColor('FF0000');
                                 embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                             }
                             else
                             {
+                                embedMsg.setColor('00FF00');
                                 embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                             }
                             message.channel.send({ embeds: [embedMsg] });
@@ -370,9 +374,9 @@ module.exports = {
                         var netGain;
                         user.points -= amount;
 
-                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (50%)');
+                        embedMsg.setTitle('Scratcher #8: Costs ' + amount.toLocaleString() + ' points (50%)');
                         embedMsg.setColor('00FF00');
-                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (50%)');
+                        scratchingMsg.setTitle('Scratcher #8: Costs ' + amount.toLocaleString() + ' points (50%)');
                         scratchingMsg.setDescription('Scratching...');
                         scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
                         message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
@@ -385,10 +389,12 @@ module.exports = {
                             embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
                             if (netGain <= 0)
                             {
+                                embedMsg.setColor('FF0000');
                                 embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                             }
                             else
                             {
+                                embedMsg.setColor('00FF00');
                                 embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                             }
                             message.channel.send({ embeds: [embedMsg] });
@@ -400,9 +406,9 @@ module.exports = {
                         var netGain;
                         user.points -= amount;
 
-                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (75%)');
+                        embedMsg.setTitle('Scratcher #9: Costs ' + amount.toLocaleString() + ' points (75%)');
                         embedMsg.setColor('00FF00');
-                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (75%)');
+                        scratchingMsg.setTitle('Scratcher #9: Costs ' + amount.toLocaleString() + ' points (75%)');
                         scratchingMsg.setDescription('Scratching...');
                         scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
                         message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
@@ -415,10 +421,12 @@ module.exports = {
                             embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
                             if (netGain <= 0)
                             {
+                                embedMsg.setColor('FF0000');
                                 embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                             }
                             else
                             {
+                                embedMsg.setColor('00FF00');
                                 embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                             }
                             message.channel.send({ embeds: [embedMsg] });
@@ -430,9 +438,9 @@ module.exports = {
                         var netGain;
                         user.points -= amount;
 
-                        embedMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (100%)');
+                        embedMsg.setTitle('Scratcher #10: Costs ' + amount.toLocaleString() + ' points (100%)');
                         embedMsg.setColor('00FF00');
-                        scratchingMsg.setTitle('Scratcher #6: Costs ' + amount.toLocaleString() + ' points (100%)');
+                        scratchingMsg.setTitle('Scratcher #10: Costs ' + amount.toLocaleString() + ' points (100%)');
                         scratchingMsg.setDescription('Scratching...');
                         scratchingMsg.setThumbnail('https://c.tenor.com/cSxnxUFCeo4AAAAC/gawr-gura.gif');
                         message.channel.send({ embeds: [scratchingMsg] }).then(msg=> {setTimeout(() => msg.delete(), scratchTime - 500)});
@@ -445,10 +453,12 @@ module.exports = {
                             embedMsg.setFooter("Net gain: " + netGain.toLocaleString() + " points");
                             if (netGain <= 0)
                             {
+                                embedMsg.setColor('FF0000');
                                 embedMsg.setThumbnail('https://c.tenor.com/QQpkCbV07UIAAAAC/mochj-cat.gif');
                             }
                             else
                             {
+                                embedMsg.setColor('00FF00');
                                 embedMsg.setThumbnail('https://c.tenor.com/TcMXxO_U0dgAAAAC/mochi-mochi-cat-peach.gif');
                             }
                             message.channel.send({ embeds: [embedMsg] });
@@ -465,7 +475,7 @@ module.exports = {
             else {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription("Choose a scratcher 1-5!");
+                embedMsg.setDescription("Choose a scratcher 1-10!");
                 message.channel.send({ embeds: [embedMsg] });
             }
         }
@@ -477,7 +487,12 @@ module.exports = {
                 {name: "Scratcher #2 - 50 points", value: "1% chance of winning BIG.", inline: false },
                 {name: "Scratcher #3 - 100 points", value: "50/50. No cap.", inline: false },
                 {name: "Scratcher #4 - 500 points", value: "Idk more stuff.", inline: false },
-                {name: "Scratcher #5 - 1000 points", value: "Same.", inline: false }
+                {name: "Scratcher #5 - 1000 points", value: "Same.", inline: false },
+                {name: "Scratcher #6 - 10% points", value: "Pray to RNG Gods.", inline: false },
+                {name: "Scratcher #7 - 25% points", value: "Pray to RNG Gods.", inline: false },
+                {name: "Scratcher #8 - 50% points", value: "Pray to RNG Gods.", inline: false },
+                {name: "Scratcher #9 - 75% points", value: "Pray to RNG Gods.", inline: false },
+                {name: "Scratcher #10 - 100% points", value: "Pray to RNG Gods.", inline: false }
             )
             embedMsg.setFooter("Select with !tp scratch #");
             message.channel.send({ embeds: [embedMsg] });
