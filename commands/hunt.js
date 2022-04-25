@@ -427,14 +427,14 @@ module.exports = {
                     embedMsg.setTitle(currHunt["active"].name + stars);
                     embedMsg.setDescription(currHunt["active"].name + " is here!");
                     embedMsg.setImage(currHunt["active"].image);
-                    embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+                    embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
                     embedMsg.setColor("49000F");
 
                     var selected = currHunt["active"].id;
-                    embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP, true);
-                    embedMsg.addField('Attack', "" + monsterdex[selected].attack, true);
-                    embedMsg.addField('Defense', "" + monsterdex[selected].defense, true);
-                    embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense, true);
+                    embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP.toLocaleString(), true);
+                    embedMsg.addField('Attack', "" + monsterdex[selected].attack.toLocaleString(), true);
+                    embedMsg.addField('Defense', "" + monsterdex[selected].defense.toLocaleString(), true);
+                    embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense.toLocaleString(), true);
                     embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s", true);
 
                     message.channel.send({ embeds: [embedMsg] });
@@ -707,7 +707,7 @@ module.exports = {
                             }
                             embedMsg.setImage(randomAttackGifs[Math.floor(Math.random() * randomAttackGifs.length)]);
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
