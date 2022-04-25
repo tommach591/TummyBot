@@ -8,6 +8,7 @@ module.exports = {
 
         let updateBalance = (id) =>
         {
+            var newTime = new Date();
             if (userData[id]) {
                 var timeDiff = newTime.getTime() - userData[id].incomeTime;
                 var incomeCD = 1000 * 60; // 1min
