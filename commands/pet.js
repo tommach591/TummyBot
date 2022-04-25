@@ -791,12 +791,6 @@ module.exports = {
 
                                         userPet[userid].dead = false;
                                         userPet[userid].deathTimer = 0;
-                                        userPet[userid].happinessTimer = 0;
-                                        userPet[userid].level = 1;
-                                        userPet[userid].hunger = 25;
-                                        userPet[userid].hydration = 25;
-                                        userPet[userid].cleanliness = 0;
-                                        userPet[userid].happiness = 0;
 
                                         var newTime = new Date();
                                         userPet[userid].hungerTimer = newTime.getTime();
