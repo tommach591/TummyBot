@@ -162,7 +162,7 @@ module.exports = {
                             });
                         }
                     );
-                }
+                } 
                 break;
             case 'harvest':
                 var profit = 0;
