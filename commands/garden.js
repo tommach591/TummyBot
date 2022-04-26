@@ -166,7 +166,7 @@ module.exports = {
                 break;
             case 'harvest':
                 var profit = 0;
-                var reward = 100 * Math.pow(userData[userid].income, userData[userid].income - 1);
+                var reward = 200 * Math.pow(userData[userid].income, userData[userid].income - 1);
                 var newPlant = [];
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();
