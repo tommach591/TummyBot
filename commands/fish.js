@@ -492,6 +492,7 @@ module.exports = {
                         embedMsg.setColor('00FF00');
                         embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
                         embedMsg.setDescription('Sold everything for ' + profit.toLocaleString() + ' points!');
+                        embedMsg.setFooter('Fish price scaled by income.');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
@@ -521,6 +522,7 @@ module.exports = {
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
                                 embedMsg.setDescription('Sold ' + fishdex[target].name + ' for ' + profit.toLocaleString() + ' points!');
+                                embedMsg.setFooter('Fish price scaled by income.');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                         }
@@ -551,7 +553,7 @@ module.exports = {
                     var count = 0;
                     var cost = 0;
                     userFish[userid].fishInventory.forEach((element) => {
-                        cost += fishdex[element].value;
+                        cost += fishdex[element].value * Math.pow(userData[userid].income, userData[userid].income - 1);
                         if (count >= 5) {
                             fishes[index] += "\n";
                             index++;
@@ -573,7 +575,7 @@ module.exports = {
 
                     let page = 1;
                     embedMsg
-                        .setFooter(`Total Base Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                        .setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
                         .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Fish Inventory')
@@ -600,7 +602,7 @@ module.exports = {
                                     }
                                     page--;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Total Base Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    embedMsg.setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 else if (r.emoji.name === "▶️") {
@@ -610,7 +612,7 @@ module.exports = {
                                     }
                                     page++;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Total Base Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    embedMsg.setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 r.users.remove(userid);
