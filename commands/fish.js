@@ -451,11 +451,11 @@ module.exports = {
                                 return 0;
                             });
                             embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!\n\n**Fishdex Entry**\n" + fishCaught.info);
-                            embedMsg.setFooter("Value: " + fishCaught.value + " points (New!)");
+                            embedMsg.setFooter("Base Value: " + fishCaught.value + " points (New!)");
                         }
                         else {
                             embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!");
-                            embedMsg.setFooter("Value: " + fishCaught.value + " points");
+                            embedMsg.setFooter("Base Value: " + fishCaught.value + " points");
                         }
                         userFish[userid].fishInventory.push(fishCaught.id);
                         userFish[userid].fishInventory.sort((firstEl, secondEl) => { 
@@ -560,7 +560,7 @@ module.exports = {
                         }
                         if (lastFish != element) {
                             var amount = userFish[userid].fishInventory.filter(match => match == element).length;
-                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + fishdex[element].value.toLocaleString() + "\n\n";
+                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nBase Value: " + fishdex[element].value.toLocaleString() + "\n\n";
                             lastFish = element;
                             count++;
                         }
@@ -573,7 +573,7 @@ module.exports = {
 
                     let page = 1;
                     embedMsg
-                        .setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                        .setFooter(`Total Base Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
                         .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Fish Inventory')
@@ -600,7 +600,7 @@ module.exports = {
                                     }
                                     page--;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    embedMsg.setFooter(`Total Base Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 else if (r.emoji.name === "▶️") {
@@ -610,7 +610,7 @@ module.exports = {
                                     }
                                     page++;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                                    embedMsg.setFooter(`Total Base Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 r.users.remove(userid);
@@ -652,7 +652,7 @@ module.exports = {
                         embedMsg.setDescription("#" + fishdex[selected].id + ". " + fishdex[selected].name + stars + "\n");
                         embedMsg.setThumbnail(fishdex[selected].image);
                         embedMsg.addField('Fishdex Entry', "" + fishdex[selected].info);
-                        embedMsg.addField('Value', "" + fishdex[selected].value.toLocaleString());
+                        embedMsg.addField('Base Value', "" + fishdex[selected].value.toLocaleString());
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
