@@ -575,7 +575,7 @@ module.exports = {
 
                     let page = 1;
                     embedMsg
-                        .setFooter(`Total Value: ${cost} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
+                        .setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
                         .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Fish Inventory')
