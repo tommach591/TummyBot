@@ -70,7 +70,7 @@ module.exports = {
                 }
                 else {
                     var amount = Math.floor(Number(args[1]));
-                    var cost = 5;
+                    var cost = 5 * Math.pow(userData[userid].income, userData[userid].income - 1);
                     if (!isNaN(amount)) {
                         if (userData[userid].points >= amount * cost && amount > 0) {
 
@@ -485,7 +485,7 @@ module.exports = {
                         var profit = 0;
                         while (userFish[userid].fishInventory.length > 0) {
                             var temp = userFish[userid].fishInventory.pop();
-                            profit += fishdex[temp].value;
+                            profit += fishdex[temp].value * Math.pow(userData[userid].income, userData[userid].income - 1);
                         }
                         userData[userid].points += profit;
                         embedMsg.setTitle('Sold!');
@@ -512,7 +512,7 @@ module.exports = {
                                 for (let i = 0; i < amount; i++) {
                                     const index = userFish[userid].fishInventory.indexOf(target);
                                     if (index > -1) {
-                                        profit += fishdex[target].value;
+                                        profit += fishdex[target].value * Math.pow(userData[userid].income, userData[userid].income - 1);
                                         userFish[userid].fishInventory.splice(index, 1);
                                     }
                                 }
