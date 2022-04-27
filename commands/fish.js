@@ -56,7 +56,7 @@ module.exports = {
                 }
                 embedMsg.addFields(
                     { name: "__Fishing Rod__ :fishing_pole_and_fish:", value: "" + userFish[userid].fishingRod, inline: true },
-                    { name: "__Bait__ :worm:", value: "" + userFish[userid].fishBait, inline: true }
+                    { name: "__Bait__ :worm:", value: "" + userFish[userid].fishBait.toLocaleString(), inline: true }
                 )
                 embedMsg.setColor('FFF000');
                 message.channel.send({ embeds: [embedMsg] });
@@ -68,10 +68,21 @@ module.exports = {
                     embedMsg.setDescription('Please enter amount of fish bait to buy!');
                     message.channel.send({ embeds: [embedMsg] });
                 }
+                else if (userFish[userid].fishBait >= 100) 
+                {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription('Your fish bait pouch is full!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
                 else {
                     var amount = Math.floor(Number(args[1]));
+                    if (userFish[userid].fishBait + amount > 100)
+                    {
+                        amount = 100 - userFish[userid].fishBait;
+                    }
                     var cost = 5 * Math.pow(userData[userid].income, userData[userid].income - 1);
-                    if (!isNaN(amount)) {
+                    if (!isNaN(amount) || amount > 0) {
                         if (userData[userid].points >= amount * cost && amount > 0) {
 
                             const proposalMsg = new MessageEmbed();
@@ -133,191 +144,100 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please enter a valid amount!');
+                        embedMsg.setFooter("Or maybe your pouch is too full?");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }
                 break;
             case 'upgrade':
+                let upgradeRod = (cost, newRod, oldImage, newImage) =>
+                {
+                    if (userData[userid].points < cost) {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription(newRod + " costs " + cost.toLocaleString() +  " points!");
+                        embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
+                        embedMsg.setFooter('Try fishing with your bare hands!');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else {
+                        const proposalMsg = new MessageEmbed();
+                        proposalMsg.setTitle('Upgrading Rod!');
+                        proposalMsg.setColor('FFF000');
+                        proposalMsg.setThumbnail(newImage);
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to " + newRod + " for " +  cost.toLocaleString() + " points?");
+
+                        let proposal; 
+                        message.channel.send({ embeds: [proposalMsg] }).then(
+                            sent => { proposal = sent } 
+                        ).then(
+                            () => {
+                                proposal.react('👍').then(() => proposal.react('👎'));
+                                const filter = (reaction, user) => {
+                                    return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                };
+                                proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                .then(
+                                    collected => {
+                                    const reaction = collected.first();
+                                    if (reaction.emoji.name === '👍') {
+                                        userData[userid].points -= cost;
+                                        userFish[userid].fishingRod = newRod;
+                                        embedMsg.setTitle('Congratz!');
+                                        embedMsg.setColor('00FF00');
+                                        embedMsg.setDescription(userData[userid].name + " bought an " + newRod + "!");
+                                        embedMsg.setThumbnail(newImage);
+                                        embedMsg.setFooter('Next level: ' + (cost * 10).toLocaleString() + ' points');
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    } 
+                                    else {
+                                        embedMsg.setTitle('Declined!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setThumbnail(oldImage);
+                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                        embedMsg.setFooter('Next level: ' + cost.toLocaleString() + ' points');
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    }
+                                })
+                                .catch(collected => {
+                                    embedMsg.setTitle('Fail!');
+                                    embedMsg.setColor('FF0000');
+                                    embedMsg.setThumbnail(oldImage);
+                                    embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                    embedMsg.setFooter('Next level: ' + cost.toLocaleString() + ' points');
+                                    message.channel.send({ embeds: [embedMsg] });
+                                });
+                            }
+                        );
+                    }
+                }
+
+                var cost;
+                var newRod;
+                var oldImage;
+                var newImage;
+
                 switch(userFish[userid].fishingRod) {
                     case 'Bare Hand':
-                        if (userData[userid].points < 1000) {
-                            embedMsg.setTitle('Error!');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setDescription("Old Rod costs 1,000 points!");
-                            embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
-                            embedMsg.setFooter('Try fishing with your bare hands!');
-                            message.channel.send({ embeds: [embedMsg] });
-                        }
-                        else {
-                            const proposalMsg = new MessageEmbed();
-                            proposalMsg.setTitle('Upgrading Rod!');
-                            proposalMsg.setColor('FFF000');
-                            proposalMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Old Rod for 1,000 points?");
-
-                            let proposal; 
-                            message.channel.send({ embeds: [proposalMsg] }).then(
-                                sent => { proposal = sent } 
-                            ).then(
-                                () => {
-                                    proposal.react('👍').then(() => proposal.react('👎'));
-                                    const filter = (reaction, user) => {
-                                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
-                                    };
-                                    proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
-                                    .then(
-                                        collected => {
-                                        const reaction = collected.first();
-                                        if (reaction.emoji.name === '👍') {
-                                            userData[userid].points -= 1000;
-                                            userFish[userid].fishingRod = 'Old Rod';
-                                            embedMsg.setTitle('Congratz!');
-                                            embedMsg.setColor('00FF00');
-                                            embedMsg.setDescription(userData[userid].name + " bought an Old Rod!");
-                                            embedMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
-                                            embedMsg.setFooter('Next level: 10,000 points');
-                                            message.channel.send({ embeds: [embedMsg] });
-                                        } 
-                                        else {
-                                            embedMsg.setTitle('Declined!');
-                                            embedMsg.setColor('FF0000');
-                                            embedMsg.setThumbnail('https://i.imgur.com/aMY06nC.png');
-                                            embedMsg.setDescription(userData[userid].name + " declined!");
-                                            embedMsg.setFooter('Next level: 1,000 points');
-                                            message.channel.send({ embeds: [embedMsg] });
-                                        }
-                                    })
-                                    .catch(collected => {
-                                        embedMsg.setTitle('Fail!');
-                                        embedMsg.setColor('FF0000');
-                                        embedMsg.setThumbnail('https://i.imgur.com/aMY06nC.png');
-                                        embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                        embedMsg.setFooter('Next level: 1,000 points');
-                                        message.channel.send({ embeds: [embedMsg] });
-                                    });
-                                }
-                            );
-                        }
+                        cost = 1000;
+                        newRod = 'Old Rod';
+                        oldImage = 'https://i.imgur.com/aMY06nC.png';
+                        newImage = 'https://i.imgur.com/hUOugXB.png';
+                        upgradeRod(cost, newRod, oldImage, newImage);
                         break;
                     case 'Old Rod':
-                        if (userData[userid].points < 10000) {
-                            embedMsg.setTitle('Error!');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setDescription("Good Rod costs 10,000 points!");
-                            embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
-                            embedMsg.setFooter('Try fishing with your bare hands!');
-                            message.channel.send({ embeds: [embedMsg] });
-                        }
-                        else {
-                            const proposalMsg = new MessageEmbed();
-                            proposalMsg.setTitle('Upgrading Rod!');
-                            proposalMsg.setColor('FFF000');
-                            proposalMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Good Rod for 10,000 points?");
-
-                            let proposal; 
-                            message.channel.send({ embeds: [proposalMsg] }).then(
-                                sent => { proposal = sent } 
-                            ).then(
-                                () => {
-                                    proposal.react('👍').then(() => proposal.react('👎'));
-                                    const filter = (reaction, user) => {
-                                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
-                                    };
-                                    proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
-                                    .then(
-                                        collected => {
-                                        const reaction = collected.first();
-                                        if (reaction.emoji.name === '👍') {
-                                            userData[userid].points -= 10000;
-                                            userFish[userid].fishingRod = 'Good Rod';
-                                            embedMsg.setTitle('Congratz!');
-                                            embedMsg.setColor('00FF00');
-                                            embedMsg.setDescription(userData[userid].name + " bought a Good Rod!");
-                                            embedMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
-                                            embedMsg.setFooter('Next level: 10,0000 points');
-                                            message.channel.send({ embeds: [embedMsg] });
-                                        } 
-                                        else {
-                                            embedMsg.setTitle('Declined!');
-                                            embedMsg.setColor('FF0000');
-                                            embedMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
-                                            embedMsg.setDescription(userData[userid].name + " declined!");
-                                            embedMsg.setFooter('Next level: 10,000 points');
-                                            message.channel.send({ embeds: [embedMsg] });
-                                        }
-                                    })
-                                    .catch(collected => {
-                                        embedMsg.setTitle('Fail!');
-                                        embedMsg.setColor('FF0000');
-                                        embedMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
-                                        embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                        embedMsg.setFooter('Next level: 10,000 points');
-                                        message.channel.send({ embeds: [embedMsg] });
-                                    });
-                                }
-                            );
-                        }
+                        cost = 10000;
+                        newRod = 'Good Rod';
+                        oldImage = 'https://i.imgur.com/hUOugXB.png';
+                        newImage = 'https://i.imgur.com/KXYAoKp.png';
+                        upgradeRod(cost, newRod, oldImage, newImage);
                         break;
                     case 'Good Rod':
-                        if (userData[userid].points < 100000) {
-                            embedMsg.setTitle('Error!');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setDescription("Super Rod costs 100,000 points!");
-                            embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
-                            embedMsg.setFooter('Try fishing with your bare hands!');
-                            message.channel.send({ embeds: [embedMsg] });
-                        }
-                        else {
-                            const proposalMsg = new MessageEmbed();
-                            proposalMsg.setTitle('Upgrading Rod!');
-                            proposalMsg.setColor('FFF000');
-                            proposalMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to Super Rod for 100,000 points?");
-
-                            let proposal; 
-                            message.channel.send({ embeds: [proposalMsg] }).then(
-                                sent => { proposal = sent } 
-                            ).then(
-                                () => {
-                                    proposal.react('👍').then(() => proposal.react('👎'));
-                                    const filter = (reaction, user) => {
-                                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
-                                    };
-                                    proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
-                                    .then(
-                                        collected => {
-                                        const reaction = collected.first();
-                                        if (reaction.emoji.name === '👍') {
-                                            userData[userid].points -= 100000;
-                                            userFish[userid].fishingRod = 'Super Rod';
-                                            embedMsg.setTitle('Congratz!');
-                                            embedMsg.setColor('00FF00');
-                                            embedMsg.setDescription(userData[userid].name + " bought a Super Rod! You have the best rod!");
-                                            embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
-                                            embedMsg.setFooter('Next level: Infinite points');
-                                            message.channel.send({ embeds: [embedMsg] });
-                                        } 
-                                        else {
-                                            embedMsg.setTitle('Declined!');
-                                            embedMsg.setColor('FF0000');
-                                            embedMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
-                                            embedMsg.setDescription(userData[userid].name + " declined!");
-                                            embedMsg.setFooter('Next level: 100,000 points');
-                                            message.channel.send({ embeds: [embedMsg] });
-                                        }
-                                    })
-                                    .catch(collected => {
-                                        embedMsg.setTitle('Fail!');
-                                        embedMsg.setColor('FF0000');
-                                        embedMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
-                                        embedMsg.setDescription(userData[userid].name + " took too long to respond!");
-                                        embedMsg.setFooter('Next level: 100,000 points');
-                                        message.channel.send({ embeds: [embedMsg] });
-                                    });
-                                }
-                            );
-                        }
+                        cost = 100000;
+                        newRod = 'Super Rod';
+                        oldImage = 'https://i.imgur.com/KXYAoKp.png';
+                        newImage = 'https://i.imgur.com/aP3CFzj.png';
+                        upgradeRod(cost, newRod, oldImage, newImage);
                         break;
                     default:
                         embedMsg.setTitle('Congratz!');
