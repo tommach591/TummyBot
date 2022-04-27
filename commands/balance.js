@@ -34,7 +34,7 @@ module.exports = {
                     break;
                 case 6:
                     tier = "Onyx";
-                    embedMsg.setColor('353935');
+                    embedMsg.setColor('353839');
                     break; 
             }
             var fishtext = "" + userFish[id].fishdex.length + "/" + "105 ";
