@@ -101,7 +101,7 @@ module.exports = {
             case 5:
                 price = 13333333337;
                 nextPrice = "Infinite";
-                tier = "Onyx";
+                tier = "Red Diamond";
                 askToLevel();
                 break;
             default:

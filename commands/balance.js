@@ -33,8 +33,8 @@ module.exports = {
                     embedMsg.setColor('2EFAFF');
                     break;
                 case 6:
-                    tier = "Onyx";
-                    embedMsg.setColor('353839');
+                    tier = "Red Diamond";
+                    embedMsg.setColor('892D32');
                     break; 
             }
             var fishtext = "" + userFish[id].fishdex.length + "/" + "105 ";
