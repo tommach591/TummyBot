@@ -52,7 +52,7 @@ module.exports = {
                 
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
-                embedMsg.setThumbnail('https://c.tenor.com/AdaSVzqCxLIAAAAC/yugioh-anime.gif');
+                embedMsg.setImage('https://c.tenor.com/AdaSVzqCxLIAAAAC/yugioh-anime.gif');
                 embedMsg.setDescription(username + " has been banished to the Shadow Realm!");
                 message.channel.send({ embeds: [embedMsg] });
             }
