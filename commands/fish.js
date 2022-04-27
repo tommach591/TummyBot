@@ -187,7 +187,14 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setDescription(userData[userid].name + " bought an " + newRod + "!");
                                         embedMsg.setThumbnail(newImage);
-                                        embedMsg.setFooter('Next level: ' + (cost * 10).toLocaleString() + ' points');
+                                        if (newRod == 'Super Rod')
+                                        {
+                                            embedMsg.setFooter('Next level: Infinite points');
+                                        }
+                                        else
+                                        {
+                                            embedMsg.setFooter('Next level: ' + (cost * 10).toLocaleString() + ' points');
+                                        }
                                         message.channel.send({ embeds: [embedMsg] });
                                     } 
                                     else {
