@@ -349,7 +349,6 @@ module.exports = {
                 }
                 else {
                     const fishingMsg = new MessageEmbed();
-                    //var fishTime = 1000 * Math.floor((Math.random() * 3) + 2);
                     var fishTime = 1000 * 5;
                     userFish[userid].fishBait--;
                     var newFishingTime = new Date();
@@ -562,7 +561,7 @@ module.exports = {
                         }
                         if (lastFish != element) {
                             var amount = userFish[userid].fishInventory.filter(match => match == element).length;
-                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nBase Value: " + fishdex[element].value.toLocaleString() + "\n\n";
+                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + (fishdex[element].value * Math.pow(userData[userid].income, userData[userid].income - 1)).toLocaleString() + "\n\n";
                             lastFish = element;
                             count++;
                         }

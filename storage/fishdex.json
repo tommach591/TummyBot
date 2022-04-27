@@ -3,14 +3,14 @@
         "id": "1",
         "name": "Royal Tum Fish",
         "image": "https://i.imgur.com/ZFHqtYu.png",
-        "value": 1000,
+        "value": 500,
         "info": "The man, the myth, the legend. Nobody believed this was real, but it is."
     },
     "2": {
         "id": "2",
         "name": "Tum Fish",
         "image": "https://i.imgur.com/g5yYO2t.png",
-        "value": 500,
+        "value": 250,
         "info": "The fish that started it all."
     },
     "3": {
@@ -73,14 +73,14 @@
         "id": "11",
         "name": "Raccoon (M) Fish",
         "image": "https://i.imgur.com/v9UPEAi.png",
-        "value": 50,
+        "value": 25,
         "info": "The male Raccoon Fish spends his time flirting with the female Raccoon Fish."
     },
     "12": {
         "id": "12",
         "name": "Raccoon (F) Fish",
         "image": "https://i.imgur.com/aGPaO4T.png",
-        "value": 50,
+        "value": 25,
         "info": "The female Raccoon Fish spends her time flirting with the male Raccoon Fish."
     },
     "13": {
@@ -94,14 +94,14 @@
         "id": "14",
         "name": "Golden Egg",
         "image": "https://i.imgur.com/g9l3oIR.png",
-        "value": 100,
+        "value": 50,
         "info": "Is there a goose that lays golden eggs in the sea?"
     },
     "15": {
         "id": "15",
         "name": "Aivy Fish",
         "image": "https://i.imgur.com/Pu6oPNa.png",
-        "value": 500,
+        "value": 250,
         "info": "Wow! It's the artist who draws everything!"
     },
     "16": {
@@ -115,7 +115,7 @@
         "id": "17",
         "name": "Shark Girl",
         "image": "https://i.imgur.com/rP3Iwug.png",
-        "value": 50,
+        "value": 25,
         "info": "This shark got famous for saying 'A' during her first livestream."
     },
     "18": {
@@ -150,28 +150,28 @@
         "id": "22",
         "name": "Whale",
         "image": "https://i.imgur.com/PyzoQEE.png",
-        "value": 50,
+        "value": 25,
         "info": "Yes, that is a whale in my pocket. Wink wonk."
     },
     "23": {
         "id": "23",
         "name": "Clownfish",
         "image": "https://i.imgur.com/E7wIh5e.png",
-        "value": 50,
+        "value": 25,
         "info": "They tend to tell jokes then go 'HONK HONK!'"
     },
     "24": {
         "id": "24",
         "name": "Booba Fish",
         "image": "https://i.imgur.com/7IN1A8N.png",
-        "value": 1000,
+        "value": 500,
         "info": "This is actually a pigeon that fell in the water. The breasts of the pigeon developed into floaties."
     },
     "25": {
         "id": "25",
         "name": "Sea Karol",
         "image": "https://i.imgur.com/bvM2904.png",
-        "value": 500,
+        "value": 250,
         "info": "For some reason, this fish is always depressed."
     },
     "26": {
@@ -234,49 +234,49 @@
         "id": "34",
         "name": "Tumbao Fish",
         "image": "https://i.imgur.com/ERiUBr4.png",
-        "value": 50,
+        "value": 25,
         "info": "This is just a Bao Fish with a face!"
     },
     "35": {
         "id": "35",
         "name": "Strawberry Milk",
         "image": "https://i.imgur.com/0UD6sKn.png",
-        "value": 50,
+        "value": 25,
         "info": "Yes, this is a fish."
     },
     "36": {
         "id": "36",
         "name": "Swordfish",
         "image": "https://i.imgur.com/fg6qdzZ.png",
-        "value": 50,
+        "value": 25,
         "info": "ENDGARDE!"
     },
     "37": {
         "id": "37",
         "name": "Melon Fish",
         "image": "https://i.imgur.com/rjdmWwv.png",
-        "value": 50,
+        "value": 25,
         "info": "This fish tastes even better during summer seasons!"
     },
     "38": {
         "id": "38",
         "name": "Sand Dollar",
         "image": "https://i.imgur.com/FTzHFsE.png",
-        "value": 50,
+        "value": 25,
         "info": "People are always dropping dollars at the beach!"
     },
     "39": {
         "id": "39",
         "name": "Wat",
         "image": "https://i.imgur.com/5e4eR56.png",
-        "value": 50,
+        "value": 25,
         "info": "Wat."
     },
     "40": {
         "id": "40",
         "name": "Candy",
         "image": "https://i.imgur.com/X0nYYz4.png",
-        "value": 50,
+        "value": 25,
         "info": "Candeez nutz fit in your mouth? Gottem!"
     },
     "41": {
@@ -311,7 +311,7 @@
         "id": "45",
         "name": "Rainbow Fish",
         "image": "https://i.imgur.com/UWBIlQj.png",
-        "value": 50,
+        "value": 25,
         "info": "A trail of rainbows follow this fish."
     },
     "46": {
@@ -353,385 +353,385 @@
         "id": "51",
         "name": "Apple Fish",
         "image": "https://i.imgur.com/bqrKTcY.png",
-        "value": 150,
+        "value": 75,
         "info": "An apple fish a day, keeps the doctors away!"
     },
     "52": {
         "id": "52",
         "name": "Orange Fish",
         "image": "https://i.imgur.com/RNgmb9p.png",
-        "value": 150,
+        "value": 75,
         "info": "Lots of Vitamin Sea."
     },
     "53": {
         "id": "53",
         "name": "Grape Fish",
         "image": "https://i.imgur.com/R27xZzI.png",
-        "value": 150,
+        "value": 75,
         "info": "Grape to see you!"
     },
     "54": {
         "id": "54",
         "name": "Eggplant Fish",
         "image": "https://i.imgur.com/kwoDhAU.png",
-        "value": 150,
+        "value": 75,
         "info": "Such an enormous girth!"
     },
     "55": {
         "id": "55",
         "name": "Cat Fish",
         "image": "https://i.imgur.com/pp5lltu.png",
-        "value": 150,
+        "value": 75,
         "info": "Fried cat fish is delicious!"
     },
     "56": {
         "id": "56",
         "name": "Dog Fish",
         "image": "https://i.imgur.com/TC5Kl9I.png",
-        "value": 150,
+        "value": 75,
         "info": "Don't eat this."
     },
     "57": {
         "id": "57",
         "name": "Sea Horse",
         "image": "https://i.imgur.com/pKiDn3I.png",
-        "value": 150,
+        "value": 75,
         "info": "Neigh nay?!"
     },
     "58": {
         "id": "58",
         "name": "Sea Lion",
         "image": "https://i.imgur.com/CxtAC7k.png",
-        "value": 150,
+        "value": 75,
         "info": "Rawr! Nuzzles! Pounces on you! Uwu u so warm!"
     },
     "59": {
         "id": "59",
         "name": "Sea Bear",
         "image": "https://i.imgur.com/ZLsQYIH.png",
-        "value": 150,
+        "value": 75,
         "info": "Beary cute~!"
     },
     "60": {
         "id": "60",
         "name": "Zebra Turkey Fish",
         "image": "https://i.imgur.com/JSiyngl.png",
-        "value": 150,
+        "value": 75,
         "info": "What is this thing?!"
     },
     "61": {
         "id": "61",
         "name": "Tuna",
         "image": "https://i.imgur.com/UYScRB0.png",
-        "value": 150,
+        "value": 75,
         "info": "The chicken of the sea!"
     },
     "62": {
         "id": "62",
         "name": "Dolphin",
         "image": "https://i.imgur.com/eEpE7Vt.png",
-        "value": 150,
+        "value": 75,
         "info": "Enjoys eating tuna!"
     },
     "63": {
         "id": "63",
         "name": "Blow Fish",
         "image": "https://i.imgur.com/5QFVXgR.png",
-        "value": 150,
+        "value": 75,
         "info": "I heard this is poisonous! (and tasty!)"
     },
     "64": {
         "id": "64",
         "name": "Sam Fish",
         "image": "https://i.imgur.com/aGWkoBT.png",
-        "value": 150,
+        "value": 75,
         "info": "Comes with ham and lettuce!"
     },
     "65": {
         "id": "65",
         "name": "Octopus",
         "image": "https://i.imgur.com/Gljq24A.png",
-        "value": 150,
+        "value": 75,
         "info": "Takodachi!"
     },
     "66": {
         "id": "66",
         "name": "Magical Karp",
         "image": "https://i.imgur.com/Zw2w50J.png",
-        "value": 150,
+        "value": 75,
         "info": "This karp is actually just useless."
     },
     "67": {
         "id": "67",
         "name": "L Fish",
         "image": "https://i.imgur.com/xJ0rct8.png",
-        "value": 150,
+        "value": 75,
         "info": "It is just an L."
     },
     "68": {
         "id": "68",
         "name": "Naru Fish",
         "image": "https://i.imgur.com/GZYMUcx.png",
-        "value": 500,
+        "value": 250,
         "info": "SASUKEEEEEEEEEEEE!"
     },
     "69": {
         "id": "69",
         "name": "Sasu Fish",
         "image": "https://i.imgur.com/o424LAN.png",
-        "value": 500,
+        "value": 250,
         "info": "NARUTOOOOOOOOOOOO!"
     },
     "70": {
         "id": "70",
         "name": "Mini Scarlet",
         "image": "https://i.imgur.com/7opjYBl.png",
-        "value": 1000,
+        "value": 500,
         "info": "A mini version of Scarlet!"
     },
     "71": {
         "id": "71",
         "name": "Mini Mint",
         "image": "https://i.imgur.com/pinXGna.png",
-        "value": 1000,
+        "value": 500,
         "info": "A mini version of Mint!"
     },
     "72": {
         "id": "72",
         "name": "Pantsu",
         "image": "https://i.imgur.com/eKETIA6.png",
-        "value": 500,
+        "value": 250,
         "info": "Ew, someone lost their pantsu!"
     },
     "73": {
         "id": "73",
         "name": "Koi Fish",
         "image": "https://i.imgur.com/GyN2UH6.png",
-        "value": 200,
+        "value": 100,
         "info": "Tis but a kiss I beg, Why art thou koi?"
     },
     "74": {
         "id": "74",
         "name": "Peach Fish",
         "image": "https://i.imgur.com/8rYVeBg.png",
-        "value": 150,
+        "value": 75,
         "info": "How peachy!"
     },
     "75": {
         "id": "75",
         "name": "Trash Fish",
         "image": "https://i.imgur.com/i98RSzg.png",
-        "value": 125,
+        "value": 75,
         "info": "If you look inside, you find a burger! +125 points!"
     },
     "76": {
         "id": "76",
         "name": "Angel Fish",
         "image": "https://i.imgur.com/McHvPpJ.png",
-        "value": 200,
+        "value": 100,
         "info": "Not to be confused with Angle Fish."
     },
     "77": {
         "id": "77",
         "name": "Devil Fish",
         "image": "https://i.imgur.com/DsheovW.png",
-        "value": 200,
+        "value": 100,
         "info": "#edgy."
     },
     "78": {
         "id": "78",
         "name": "Moustache Fish",
         "image": "https://i.imgur.com/zp32oie.png",
-        "value": 125,
+        "value": 75,
         "info": "I moustache you a question! To be, or not to be, that is the question!"
     },
     "79": {
         "id": "79",
         "name": "Hamster",
         "image": "https://i.imgur.com/lmNbSgr.png",
-        "value": 125,
+        "value": 75,
         "info": "This hamster is excellent at swimming. Insane."
     },
     "80": {
         "id": "80",
         "name": "Ditto?",
         "image": "https://i.imgur.com/06qivD5.png",
-        "value": 125,
+        "value": 75,
         "info": "This might be a Ditto? Weird. The artist doesn't play Pokemon."
     },
     "81": {
         "id": "81",
         "name": "Icecube Fish",
         "image": "https://i.imgur.com/PQUGUf6.png",
-        "value": 125,
+        "value": 75,
         "info": "STRAIGHT OUTTA COMPTON! CRAZY MF NAMED ICECUBE!"
     },
     "82": {
         "id": "82",
         "name": "Dory",
         "image": "https://i.imgur.com/zQeK6M4.png",
-        "value": 125,
+        "value": 75,
         "info": "MOOOWEEEEENEEEEEDTOOOOOOOOOOFFFIIIIIINDDDHIIISSSSSSSONNNN!"
     },
     "83": {
         "id": "83",
         "name": "Omega Whale",
         "image": "https://i.imgur.com/5Zf2pRZ.png",
-        "value": 125,
+        "value": 75,
         "info": "OMEGALUL!"
     },
     "84": {
         "id": "84",
         "name": "Salt and Pepper",
         "image": "https://i.imgur.com/vDCn1Yb.png",
-        "value": 125,
+        "value": 75,
         "info": "Of course you can fish salt and pepper, how is the ocean so salty? Pepper? What about it?"
     },
     "85": {
         "id": "85",
         "name": "Big Lip",
         "image": "https://i.imgur.com/5ZyHVIU.png",
-        "value": 125,
+        "value": 75,
         "info": "Chill! You can't attack yet!"
     },
     "86": {
         "id": "86",
         "name": "Pickle",
         "image": "https://i.imgur.com/rEXBuhu.png",
-        "value": 175,
+        "value": 100,
         "info": "I'M PICKLE RIIIIIIIIIIIIIIIIIICK!"
     },
     "87": {
         "id": "87",
         "name": "Frag",
         "image": "https://i.imgur.com/BFUtpa5.png",
-        "value": 175,
+        "value": 100,
         "info": "Look at this top frag!"
     },
     "88": {
         "id": "88",
         "name": "Lobster",
         "image": "https://i.imgur.com/sq3Zs7G.png",
-        "value": 125,
+        "value": 75,
         "info": "Don't mess with the lobster!"
     },
     "89": {
         "id": "89",
         "name": "Green Crab",
         "image": "https://i.imgur.com/3rRmm5x.png",
-        "value": 125,
+        "value": 75,
         "info": "This crab is green!"
     },
     "90": {
         "id": "90",
         "name": "Red Crab",
         "image": "https://i.imgur.com/OcBdai6.png",
-        "value": 125,
+        "value": 75,
         "info": "This crab is red!"
     },
     "91": {
         "id": "91",
         "name": "Sea Panda",
         "image": "https://i.imgur.com/BOqj9qE.png",
-        "value": 200,
+        "value": 100,
         "info": "So kyute!"
     },
     "92": {
         "id": "92",
         "name": "Toy Gun",
         "image": "https://i.imgur.com/tePHmIX.png",
-        "value": 200,
+        "value": 100,
         "info": "Wait a minute, this is fake!"
     },
     "93": {
         "id": "93",
         "name": "Note in a Bottle",
         "image": "https://i.imgur.com/bCOEaZ1.png",
-        "value": 200,
+        "value": 100,
         "info": "Deeznutz gottem!"
     },
     "94": {
         "id": "94",
         "name": "Key",
         "image": "https://i.imgur.com/88zAhCz.png",
-        "value": 200,
+        "value": 100,
         "info": "The key to my heart! (jk that was kind of gross.)"
     },
     "95": {
         "id": "95",
         "name": "French Bread",
         "image": "https://i.imgur.com/ZwdIcKV.png",
-        "value": 200,
+        "value": 100,
         "info": "Bread in French is Pain."
     },
     "96": {
         "id": "96",
         "name": "Donut",
         "image": "https://i.imgur.com/kmZkDLM.png",
-        "value": 200,
+        "value": 100,
         "info": "Donut gamble. Just fish."
     },
     "97": {
         "id": "97",
         "name": "Oyster",
         "image": "https://i.imgur.com/BSkHY6X.png",
-        "value": 200,
+        "value": 100,
         "info": "What did the Oyster send to the Lobster? A shellfie."
     },
     "98": {
         "id": "98",
         "name": "Unicorn",
         "image": "https://i.imgur.com/a7SnprM.png",
-        "value": 200,
+        "value": 100,
         "info": "Its the unicorn of the sea!"
     },
     "99": {
         "id": "99",
         "name": "Cake",
         "image": "https://i.imgur.com/spj8iJ6.png",
-        "value": 200,
+        "value": 100,
         "info": "The cake is a lie!"
     },
     "100": {
         "id": "100",
         "name": "Penguin",
         "image": "https://i.imgur.com/u5evYYB.png",
-        "value": 200,
+        "value": 100,
         "info": "Penguin use Bubble!"
     },
     "101": {
         "id": "101",
         "name": "Octopus 2",
         "image": "https://i.imgur.com/hppOiqH.png",
-        "value": 200,
+        "value": 100,
         "info": "A rare octopus!"
     },
     "102": {
         "id": "102",
         "name": "Real Shark",
         "image": "https://i.imgur.com/qORokpX.png",
-        "value": 200,
+        "value": 100,
         "info": "Oh my god, its a shark!"
     },
     "103": {
         "id": "103",
         "name": "Chicken Nugget",
         "image": "https://i.imgur.com/4YR9UGd.png",
-        "value": 500,
+        "value": 250,
         "info": "CHIKMNUGET!!!"
     },
     "104": {
         "id": "104",
         "name": "Fuwush",
         "image": "https://i.imgur.com/gACltdW.png",
-        "value": 500,
+        "value": 250,
         "info": "UWU"
     },
     "105": {
         "id": "105",
         "name": "Feesh",
         "image": "https://i.imgur.com/ou46psZ.png",
-        "value": 500,
+        "value": 250,
         "info": "FEEEEEEEEEEEEEEEEEEEEEEESH!"
     }
 }
