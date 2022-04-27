@@ -34,7 +34,7 @@ module.exports = {
                     break;
                 case 6:
                     tier = "Red Diamond";
-                    embedMsg.setColor('892D32');
+                    embedMsg.setColor('B91D26');
                     break; 
             }
             var fishtext = "" + userFish[id].fishdex.length + "/" + "105 ";
