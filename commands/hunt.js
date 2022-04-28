@@ -2057,9 +2057,9 @@ module.exports = {
                     else {
                         getDrops();
                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
-                        embedMsg.setDescription(userData[userid].name + " tributes \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
+                        embedMsg.setDescription(userData[userid].name + " sacrifices \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
                         scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand" + scrolls[userHunt[userid].scrolls[scroll_three]].name +
-                                "\nto summon " + scrolls[scrollobtained].name + "!");
+                                "\nto tribute summon " + scrolls[scrollobtained].name + "!");
 
                         var scrollsToDel = [scroll_one, scroll_two, scroll_three];
                         scrollsToDel.sort();
