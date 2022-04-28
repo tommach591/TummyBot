@@ -2069,7 +2069,7 @@ module.exports = {
                         const proposalMsg = new MessageEmbed();
                         proposalMsg.setTitle('Tribute Summon!');
                         proposalMsg.setColor('FFF000');
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to spend " + cost.toLocaleString() + " to sacrifice: \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + "\n" +
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to spend " + cost.toLocaleString() + " points to sacrifice: \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + "\n" +
                                                     scrolls[userHunt[userid].scrolls[scroll_two]].name + "\n" + scrolls[userHunt[userid].scrolls[scroll_three]].name +
                                                     "\n\nTo summon a random scroll?");
 
