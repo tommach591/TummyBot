@@ -2047,6 +2047,7 @@ module.exports = {
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
+                        getDrops();
                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                         embedMsg.setDescription(userData[userid].name + " tributes " + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", " +
                         scrolls[userHunt[userid].scrolls[scroll_two]].name + ", and " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
@@ -2059,7 +2060,6 @@ module.exports = {
                         {
                             userHunt[userid].scrolls.splice(scrollsToDel[i], 1);
                         }
-                        getDrops();
                         userHunt[player].scrolls.push(scrollobtained);
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
