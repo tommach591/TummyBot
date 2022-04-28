@@ -2055,26 +2055,70 @@ module.exports = {
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
-                        var target = client.users.cache.get(userid);
-                        getDrops();
-                        var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
-                        embedMsg.setDescription(userData[userid].name + " sacrifices \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
-                        scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
-                                " to summon... \n\n" + scrolls[scrollobtained].name + "!");
+                        let original = [...userHunt[userid].scrolls];
+                        const proposalMsg = new MessageEmbed();
+                        proposalMsg.setTitle('Selling!');
+                        proposalMsg.setColor('FFF000');
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to sacrifice \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
+                                                    scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
+                                                    " to summon a random scroll?");
 
-                        var scrollsToDel = [scroll_one, scroll_two, scroll_three];
-                        scrollsToDel.sort();
-                        scrollsToDel.reverse();
-                        for (let i = 0; i < 3; i++)
-                        {
-                            userHunt[userid].scrolls.splice(scrollsToDel[i], 1);
-                        }
-                        userHunt[userid].scrolls.push(scrollobtained);
-                        embedMsg.setTitle('Success!');
-                        embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
-                        embedMsg.setColor('00FF00');
-                        embedMsg.setImage('https://i.pinimg.com/originals/ff/ab/3a/ffab3adc05afc03cf59c2114095a320b.gif');
-                        message.channel.send({ embeds: [embedMsg] });
+                        let proposal; 
+                        message.channel.send({ embeds: [proposalMsg] }).then(
+                            sent => { proposal = sent } 
+                        ).then(
+                            () => {
+                                proposal.react('👍').then(() => proposal.react('👎'));
+                                const filter = (reaction, user) => {
+                                    return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                };
+                                proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                .then(
+                                    collected => {
+                                    const reaction = collected.first();
+                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
+                                        var target = client.users.cache.get(userid);
+                                        getDrops();
+                                        var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
+                                        embedMsg.setDescription(userData[userid].name + " sacrifices \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
+                                        scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
+                                                " to summon... \n\n" + scrolls[scrollobtained].name + "!");
+                
+                                        var scrollsToDel = [scroll_one, scroll_two, scroll_three];
+                                        scrollsToDel.sort();
+                                        scrollsToDel.reverse();
+                                        for (let i = 0; i < 3; i++)
+                                        {
+                                            userHunt[userid].scrolls.splice(scrollsToDel[i], 1);
+                                        }
+                                        userHunt[userid].scrolls.push(scrollobtained);
+                                        embedMsg.setTitle('Success!');
+                                        embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                        embedMsg.setColor('00FF00');
+                                        embedMsg.setImage('https://i.pinimg.com/originals/ff/ab/3a/ffab3adc05afc03cf59c2114095a320b.gif');
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    } 
+                                    else if (reaction.emoji.name === '👎') {
+                                        embedMsg.setTitle('Declined!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    }
+                                    else {
+                                        embedMsg.setTitle('Fail!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    }
+                                })
+                                .catch(collected => {
+                                    embedMsg.setTitle('Fail!');
+                                    embedMsg.setColor('FF0000');
+                                    embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                    message.channel.send({ embeds: [embedMsg] });
+                                });
+                            }
+                        );
                     }
                 }
                 break;
