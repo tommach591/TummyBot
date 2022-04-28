@@ -2060,7 +2060,7 @@ module.exports = {
                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                         embedMsg.setDescription(userData[userid].name + " sacrifices \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
                         scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
-                                " to summon \n\n" + scrolls[scrollobtained].name + "!");
+                                " to summon... \n\n" + scrolls[scrollobtained].name + "!");
 
                         var scrollsToDel = [scroll_one, scroll_two, scroll_three];
                         scrollsToDel.sort();
@@ -2071,7 +2071,7 @@ module.exports = {
                         }
                         userHunt[userid].scrolls.push(scrollobtained);
                         embedMsg.setTitle('Success!');
-                        embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                        embedMsg.setAuthor(userData[userid].name, target.displayAvatarURL());
                         embedMsg.setColor('00FF00');
                         embedMsg.setImage('https://i.pinimg.com/originals/ff/ab/3a/ffab3adc05afc03cf59c2114095a320b.gif');
                         message.channel.send({ embeds: [embedMsg] });
