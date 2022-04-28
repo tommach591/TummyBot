@@ -2036,6 +2036,7 @@ module.exports = {
                     var scroll_one = Math.floor(Number(args[1]) - 1);
                     var scroll_two = Math.floor(Number(args[2]) - 1);
                     var scroll_three = Math.floor(Number(args[3]) - 1);
+                    var cost = 10000;
 
                     if ((scroll_one >= userHunt[userid].scrolls.length || scroll_one < 0) ||
                             (scroll_two >= userHunt[userid].scrolls.length || scroll_two < 0) ||
@@ -2054,12 +2055,21 @@ module.exports = {
                         embedMsg.setFooter("!tp hunt tribute # # #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else {
+                    else if (userData[userid] < cost) 
+                    {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('You do not have enough points!');
+                        embedMsg.setFooter("Tribute costs " + cost.toLocaleString() + " points!");
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else 
+                    {
                         let original = [...userHunt[userid].scrolls];
                         const proposalMsg = new MessageEmbed();
-                        proposalMsg.setTitle('Selling!');
+                        proposalMsg.setTitle('Tribute Summon!');
                         proposalMsg.setColor('FFF000');
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to sacrifice: \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + "\n" +
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to spend " + cost.toLocaleString() + " to sacrifice: \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + "\n" +
                                                     scrolls[userHunt[userid].scrolls[scroll_two]].name + "\n" + scrolls[userHunt[userid].scrolls[scroll_three]].name +
                                                     "\n\nTo summon a random scroll?");
 
@@ -2077,6 +2087,7 @@ module.exports = {
                                     collected => {
                                     const reaction = collected.first();
                                     if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
+                                        userData[userid] -= cost;
                                         var target = client.users.cache.get(userid);
                                         getDrops();
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
