@@ -2060,7 +2060,7 @@ module.exports = {
                         {
                             userHunt[userid].scrolls.splice(scrollsToDel[i], 1);
                         }
-                        userHunt[player].scrolls.push(scrollobtained);
+                        userHunt[userid].scrolls.push(scrollobtained);
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
                         message.channel.send({ embeds: [embedMsg] });
