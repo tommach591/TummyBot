@@ -2087,7 +2087,7 @@ module.exports = {
                                     collected => {
                                     const reaction = collected.first();
                                     if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
-                                        userData[userid] -= cost;
+                                        userData[userid].points -= cost;
                                         var target = client.users.cache.get(userid);
                                         getDrops();
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
