@@ -55,10 +55,10 @@ module.exports = {
                     embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
                 }
                 else if (userFish[userid].fishingRod == "Mega Rod") {
-                    embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
+                    embedMsg.setThumbnail('https://m.media-amazon.com/images/I/51yOu0U+2iL._AC_SY450_.jpg');
                 }
                 else if (userFish[userid].fishingRod == "Ultra Rod") {
-                    embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
+                    embedMsg.setThumbnail('https://dodo.ac/np/images/5/5c/Golden_Rod_NH_Icon.png');
                 }
                 embedMsg.addFields(
                     { name: "__Fishing Rod__ :fishing_pole_and_fish:", value: "" + userFish[userid].fishingRod, inline: true },

@@ -2024,6 +2024,50 @@ module.exports = {
                     });
                 }
                 break;
+            case 'tribute':
+                if (args.length < 4) {
+                    embedMsg.setTitle('Error!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription('Please select 3 scrolls to consume!');
+                    embedMsg.setFooter("!tp hunt tribute # # #");
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else {
+                    var scroll_one = Math.floor(Number(args[1]) - 1);
+                    var scroll_two = Math.floor(Number(args[2]) - 1);
+                    var scroll_three = Math.floor(Number(args[3]) - 1);
+
+                    if ((scroll_one >= userHunt[userid].scrolls.length || scroll_one < 0) ||
+                            (scroll_two >= userHunt[userid].scrolls.length || scroll_two < 0) ||
+                                (scroll_three >= userHunt[userid].scrolls.length || scroll_three < 0)) {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('Please select a valid scroll # from scroll!');
+                        embedMsg.setFooter("!tp hunt tribute # # #");
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else {
+                        var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
+                        embedMsg.setDescription(userData[userid].name + " tributes " + userHunt[userid].scrolls[scroll_one].name + ", " +
+                            userHunt[userid].scrolls[scroll_two].name + ", and " + userHunt[userid].scrolls[scroll_three].name +
+                                " to summon " + scrollobtained.name + "!");
+
+                        var scrollsToDel = [scroll_one, scroll_two, scroll_three];
+                        scrollsToDel.sort();
+                        scrollsToDel.reverse();
+                        for (let i = 0; i < 3; i++)
+                        {
+                            userHunt[userid].scrolls.splice(scrollsToDel[i], 1);
+                        }
+                        getDrops();
+                        var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
+                        userHunt[player].scrolls.push(scrollobtained);
+                        embedMsg.setTitle('Success!');
+                        embedMsg.setColor('00FF00');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                }
+                break;
             default:
                 embedMsg.setTitle('Invalid hunting command!');
                 embedMsg.setColor('FF0000');
