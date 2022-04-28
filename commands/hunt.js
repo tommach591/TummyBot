@@ -2055,7 +2055,7 @@ module.exports = {
                         embedMsg.setFooter("!tp hunt tribute # # #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else if (userData[userid] < cost) 
+                    else if (userData[userid].points < cost) 
                     {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
