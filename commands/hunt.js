@@ -2046,12 +2046,20 @@ module.exports = {
                         embedMsg.setFooter("!tp hunt tribute # # #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
+                    else if (scroll_one == scroll_two || scroll_one == scroll_three || scroll_two == scroll_three)
+                    {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('You cannot tribute the same scroll!');
+                        embedMsg.setFooter("!tp hunt tribute # # #");
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
                     else {
                         getDrops();
                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
-                        embedMsg.setDescription(userData[userid].name + " tributes " + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", " +
-                        scrolls[userHunt[userid].scrolls[scroll_two]].name + ", and " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
-                                " to summon " + scrolls[scrollobtained].name + "!");
+                        embedMsg.setDescription(userData[userid].name + " tributes: \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + " \n" +
+                        scrolls[userHunt[userid].scrolls[scroll_two]].name + " \n" + scrolls[userHunt[userid].scrolls[scroll_three]].name +
+                                "\nto summon " + scrolls[scrollobtained].name + "!");
 
                         var scrollsToDel = [scroll_one, scroll_two, scroll_three];
                         scrollsToDel.sort();
@@ -2063,6 +2071,7 @@ module.exports = {
                         userHunt[userid].scrolls.push(scrollobtained);
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
+                        embedMsg.setImage('http://24.media.tumblr.com/9dc040642ef06da8f8f319ea678c2ee2/tumblr_moms5vAgpI1qd4mvdo1_400.gif');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }
