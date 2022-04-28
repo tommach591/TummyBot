@@ -109,7 +109,7 @@ module.exports = {
                 }
             }
 
-            if (currHunt["active"].loot.length != 0) {
+            if (currHunt["active"] && currHunt["active"].loot.length != 0) {
                 unqiueDrops = currHunt["active"].loot;
             }
 
