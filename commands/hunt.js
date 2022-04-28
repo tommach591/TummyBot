@@ -2059,9 +2059,9 @@ module.exports = {
                         const proposalMsg = new MessageEmbed();
                         proposalMsg.setTitle('Selling!');
                         proposalMsg.setColor('FFF000');
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to sacrifice \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
-                                                    scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
-                                                    "\n to summon a random scroll?");
+                        proposalMsg.setDescription("Would " + userData[userid].name + " like to sacrifice: \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + "\n" +
+                                                    scrolls[userHunt[userid].scrolls[scroll_two]].name + "\n" + scrolls[userHunt[userid].scrolls[scroll_three]].name +
+                                                    "\n\nTo summon a random scroll?");
 
                         let proposal; 
                         message.channel.send({ embeds: [proposalMsg] }).then(
