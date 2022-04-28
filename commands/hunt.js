@@ -2071,7 +2071,7 @@ module.exports = {
                         }
                         userHunt[userid].scrolls.push(scrollobtained);
                         embedMsg.setTitle('Success!');
-                        embedMsg.setAuthor(userData[userid].name, target.displayAvatarURL());
+                        embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
                         embedMsg.setColor('00FF00');
                         embedMsg.setImage('https://i.pinimg.com/originals/ff/ab/3a/ffab3adc05afc03cf59c2114095a320b.gif');
                         message.channel.send({ embeds: [embedMsg] });
