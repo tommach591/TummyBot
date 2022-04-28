@@ -298,11 +298,22 @@ module.exports = {
                     userFish[userid].fishBait--;
                     var newFishingTime = new Date();
                     userFish[userid].fishTime = newFishingTime.getTime();
+                    var lucky = false;
 
                     fishingMsg.setTitle('Fishing!');
                     fishingMsg.setDescription('Waiting...');
                     fishingMsg.setColor('008FFF');
                     fishingMsg.setImage('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0ab4b036812305.572a1cada9fdc.gif');
+
+                    var luck = Math.floor((Math.random() * 100) + 1);
+                    var chance = 100 * 0.01;
+
+                    if (luck <= chance) {
+                        fishingMsg.setDescription('I can sense a big one..!');
+                        fishingMsg.setImage('"https://c.tenor.com/X36jN0wOAAMAAAAS/kirito-anime.gif"');
+                        lucky = true;
+                    }
+
                     message.channel.send({ embeds: [fishingMsg] }).then(msg=> {setTimeout(() => msg.delete(), fishTime - 500)});
                     
                     setTimeout(function() { 
@@ -329,6 +340,26 @@ module.exports = {
                         }
 
                         var fishCaught = "-1";
+                        if (lucky) 
+                        {
+                            var luck = Math.floor((Math.random() * 100) + 1);
+                            if (luck <= 5)
+                            {
+                                embedMsg.setTitle('OMG (OH MY GOD)! (★★★★★★)');
+                                fishCaught = fishdex[sixstar[Math.floor(Math.random() * sixstar.length)]];
+                            }
+                            else if (luck <= 20)
+                            {
+                                embedMsg.setTitle('POGGERS! (★★★★★)');
+                                fishCaught = fishdex[fivestar[Math.floor(Math.random() * fivestar.length)]];
+                            }
+                            else 
+                            {
+                                embedMsg.setTitle('NO WAY! (★★★★)');
+                                fishCaught = fishdex[fourstar[Math.floor(Math.random() * fourstar.length)]];
+                            }
+                        }
+                        
                         if (fishCaught == "-1") {
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
