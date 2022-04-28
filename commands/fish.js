@@ -306,7 +306,7 @@ module.exports = {
                     fishingMsg.setImage('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0ab4b036812305.572a1cada9fdc.gif');
 
                     var luck = Math.floor((Math.random() * 100) + 1);
-                    var chance = 100 * 0.01;
+                    var chance = 100 * 1;
 
                     if (luck <= chance) {
                         fishingMsg.setDescription('I can sense a big one..!');
