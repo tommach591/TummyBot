@@ -6,7 +6,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "1": {
         "name": "Scroll for Two Attack 50%",
@@ -15,7 +16,8 @@
         "attack": 2,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "2": {
         "name": "Scroll for Two Magic Attack 50%",
@@ -24,7 +26,8 @@
         "attack": 0,
         "magic": 2,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "3": {
         "name": "Scroll for Two Defense 50%",
@@ -33,7 +36,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 2,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "4": {
         "name": "Scroll for Two Speed 50%",
@@ -42,7 +46,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 2
+        "speed": 2,
+        "rarity": 1
     },
     "5": {
         "name": "Scroll for Twenty HP 20%",
@@ -51,7 +56,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "6": {
         "name": "Scroll for Four Attack 20%",
@@ -60,7 +66,8 @@
         "attack": 4,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "7": {
         "name": "Scroll for Four Magic Attack 20%",
@@ -69,7 +76,8 @@
         "attack": 0,
         "magic": 4,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "8": {
         "name": "Scroll for Four Defense 20%",
@@ -78,7 +86,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 4,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "9": {
         "name": "Scroll for Four Speed 20%",
@@ -87,7 +96,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 4
+        "speed": 4,
+        "rarity": 2
     },
     "10": {
         "name": "Berserker's Scroll 10%",
@@ -96,7 +106,8 @@
         "attack": 12,
         "magic": -6,
         "defense": -6,
-        "speed": 12
+        "speed": 12,
+        "rarity": 3
     },
     "11": {
         "name": "Magician's Scroll 10%",
@@ -105,7 +116,8 @@
         "attack": -6,
         "magic": 30,
         "defense": -6,
-        "speed": -6
+        "speed": -6,
+        "rarity": 3
     },
     "12": {
         "name": "Scroll for Two Attack and Two Magic 20%",
@@ -114,7 +126,8 @@
         "attack": 2,
         "magic": 2,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "13": {
         "name": "Scroll for Ten HP and Two Defense 20%",
@@ -123,7 +136,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 2,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "14": {
         "name": "Scroll for Thirty HP 10%",
@@ -132,7 +146,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "15": {
         "name": "Scroll for Six Attack 10%",
@@ -141,7 +156,8 @@
         "attack": 6,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "16": {
         "name": "Scroll for Six Magic Attack 10%",
@@ -150,7 +166,8 @@
         "attack": 0,
         "magic": 6,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "17": {
         "name": "Scroll for Six Defense 10%",
@@ -159,7 +176,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 6,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "18": {
         "name": "Scroll for Six Speed 10%",
@@ -168,7 +186,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 6
+        "speed": 6,
+        "rarity": 3
     },
     "19": {
         "name": "Scroll for All Stats (10/2/2/2/2) 10%",
@@ -177,7 +196,8 @@
         "attack": 2,
         "magic": 2,
         "defense": 2,
-        "speed": 2
+        "speed": 2,
+        "rarity": 3
     },
     "20": {
         "name": "Lucky Scroll for Ten HP 55%",
@@ -186,7 +206,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "21": {
         "name": "Lucky Scroll for Two Attack 55%",
@@ -195,7 +216,8 @@
         "attack": 2,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "22": {
         "name": "Lucky Scroll for Two Magic Attack 55%",
@@ -204,7 +226,8 @@
         "attack": 0,
         "magic": 2,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "23": {
         "name": "Lucky Scroll for Two Defense 55%",
@@ -213,7 +236,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 2,
-        "speed": 0
+        "speed": 0,
+        "rarity": 1
     },
     "24": {
         "name": "Lucky Scroll for Two Speed 55%",
@@ -222,7 +246,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 2
+        "speed": 2,
+        "rarity": 1
     },
     "25": {
         "name": "Lucky Scroll for Twenty HP 25%",
@@ -231,7 +256,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "26": {
         "name": "Lucky Scroll for Four Attack 25%",
@@ -240,7 +266,8 @@
         "attack": 4,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "27": {
         "name": "Lucky Scroll for Four Magic Attack 25%",
@@ -249,7 +276,8 @@
         "attack": 0,
         "magic": 4,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "28": {
         "name": "Lucky Scroll for Four Defense 25%",
@@ -258,7 +286,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 4,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "29": {
         "name": "Lucky Scroll for Four Speed 25%",
@@ -267,7 +296,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 4
+        "speed": 4,
+        "rarity": 2
     },
     "30": {
         "name": "Lucky Scroll for Two Attack and Two Magic 25%",
@@ -276,7 +306,8 @@
         "attack": 2,
         "magic": 2,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "31": {
         "name": "Lucky Scroll for Ten HP and Two Defense 25%",
@@ -285,7 +316,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 2,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "32": {
         "name": "Lucky Scroll for Thirty HP 15%",
@@ -294,7 +326,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "33": {
         "name": "Lucky Scroll for Six Attack 15%",
@@ -303,7 +336,8 @@
         "attack": 6,
         "magic": 0,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "34": {
         "name": "Lucky Scroll for Six Magic Attack 15%",
@@ -312,7 +346,8 @@
         "attack": 0,
         "magic": 6,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "35": {
         "name": "Lucky Scroll for Six Defense 15%",
@@ -321,7 +356,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 6,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "36": {
         "name": "Lucky Scroll for Six Speed 15%",
@@ -330,7 +366,8 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 6
+        "speed": 6,
+        "rarity": 3
     },
     "37": {
         "name": "Lucky Scroll for All Stats (10/2/2/2/2) 15%",
@@ -339,7 +376,8 @@
         "attack": 2,
         "magic": 2,
         "defense": 2,
-        "speed": 2
+        "speed": 2,
+        "rarity": 3
     },
     "38": {
         "name": "Cursed Scroll for Eight Attack 20%",
@@ -348,7 +386,8 @@
         "attack": 8,
         "magic": 0,
         "defense": -2,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "39": {
         "name": "Cursed Scroll for Eight Magic 20%",
@@ -357,7 +396,8 @@
         "attack": 0,
         "magic": 8,
         "defense": -2,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "40": {
         "name": "Cursed Scroll for Eight Speed 20%",
@@ -366,7 +406,8 @@
         "attack": 0,
         "magic": 0,
         "defense": -2,
-        "speed": 8
+        "speed": 8,
+        "rarity": 2
     },
     "41": {
         "name": "Cursed Scroll for Eighty Health 20%",
@@ -375,7 +416,8 @@
         "attack": -2,
         "magic": -2,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "42": {
         "name": "Cursed Scroll for Eight Defense 20%",
@@ -384,7 +426,8 @@
         "attack": -2,
         "magic": -2,
         "defense": 8,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "48": {
         "name": "Cursed Scroll for Four Attack and Four Magic 20%",
@@ -393,7 +436,8 @@
         "attack": 4,
         "magic": 4,
         "defense": -2,
-        "speed": 0
+        "speed": 0,
+        "rarity": 2
     },
     "49": {
         "name": "Scroll for Three Attack and Three Magic 10%",
@@ -402,7 +446,8 @@
         "attack": 3,
         "magic": 3,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "50": {
         "name": "Lucky Scroll for Three Attack and Three Magic 15%",
@@ -411,7 +456,8 @@
         "attack": 3,
         "magic": 3,
         "defense": 0,
-        "speed": 0
+        "speed": 0,
+        "rarity": 3
     },
     "51": {
         "name": "Chaos Scroll (★) 100%",
@@ -422,7 +468,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 1,
-        "badLuck": 3
+        "badLuck": 3,
+        "rarity": 1
     },
     "52": {
         "name": "Chaos Scroll (★★) 75%",
@@ -433,7 +480,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 2,
-        "badLuck": 3
+        "badLuck": 3,
+        "rarity": 2
     },
     "53": {
         "name": "Chaos Scroll (★★★) 50%",
@@ -444,7 +492,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 3,
-        "badLuck": 3
+        "badLuck": 3,
+        "rarity": 3
     },
     "54": {
         "name": "Chaos Scroll 𝔼𝕏 (☆) 5%",
@@ -455,7 +504,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 11,
-        "badLuck": 3
+        "badLuck": 3,
+        "rarity": 1
     },
     "55": {
         "name": "Chaos Scroll 𝔼𝕏 (☆☆) 3%",
@@ -466,7 +516,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 22,
-        "badLuck": 3
+        "badLuck": 3,
+        "rarity": 2
     },
     "56": {
         "name": "Chaos Scroll 𝔼𝕏 (☆☆☆) 1%",
@@ -477,7 +528,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 33,
-        "badLuck": 3
+        "badLuck": 3,
+        "rarity": 3
     },
     "57": {
         "name": "Chaos Scroll of Fortune (✦) 27%",
@@ -488,7 +540,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 1,
-        "badLuck": 2
+        "badLuck": 2,
+        "rarity": 1
     },
     "58": {
         "name": "Chaos Scroll of Fortune (✦✦) 17%",
@@ -499,7 +552,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 1,
-        "badLuck": 1
+        "badLuck": 1,
+        "rarity": 2
     },
     "59": {
         "name": "Chaos Scroll of Fortune (✦✦✦) 7%",
@@ -510,7 +564,8 @@
         "defense": 0,
         "speed": 0,
         "chaos": 1,
-        "badLuck": 0
+        "badLuck": 0,
+        "rarity": 3
     },
     "60": {
         "name": "Angel Scroll 50%",
@@ -520,6 +575,7 @@
         "magic": 0,
         "defense": 0,
         "speed": 0,
-        "purity": 1
+        "purity": 1,
+        "rarity": 3
     }
 }

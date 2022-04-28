@@ -1306,6 +1306,46 @@ module.exports = {
                                 });
                                 embedMsg.setDescription('Scrolls sorted by chaos!');
                                 break;
+                            case "ascending":
+                            case "ascend":
+                            case "low":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].rarity < scrolls[secondEl].rarity) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].rarity > scrolls[secondEl].rarity) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                embedMsg.setDescription('Scrolls sorted by ascending rarity!');
+                                break;
+                            case "descending":
+                            case "descend":
+                            case "high":
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].rarity > scrolls[secondEl].rarity) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].rarity < scrolls[secondEl].rarity) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                embedMsg.setDescription('Scrolls sorted by descending rarity!');
+                                break;
                             default:
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
