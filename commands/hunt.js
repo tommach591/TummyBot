@@ -2048,9 +2048,9 @@ module.exports = {
                     }
                     else {
                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
-                        embedMsg.setDescription(userData[userid].name + " tributes " + userHunt[userid].scrolls[scroll_one].name + ", " +
-                            userHunt[userid].scrolls[scroll_two].name + ", and " + userHunt[userid].scrolls[scroll_three].name +
-                                " to summon " + scrollobtained.name + "!");
+                        embedMsg.setDescription(userData[userid].name + " tributes " + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", " +
+                        scrolls[userHunt[userid].scrolls[scroll_two]].name + ", and " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
+                                " to summon " + scrolls[scrollobtained].name + "!");
 
                         var scrollsToDel = [scroll_one, scroll_two, scroll_three];
                         scrollsToDel.sort();
@@ -2060,7 +2060,6 @@ module.exports = {
                             userHunt[userid].scrolls.splice(scrollsToDel[i], 1);
                         }
                         getDrops();
-                        var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                         userHunt[player].scrolls.push(scrollobtained);
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
