@@ -307,7 +307,7 @@ module.exports = {
 
                     if (luck <= chance) {
                         fishingMsg.setDescription('I can sense a big one..!');
-                        fishingMsg.setImage('"https://c.tenor.com/X36jN0wOAAMAAAAS/kirito-anime.gif"');
+                        fishingMsg.setImage("https://c.tenor.com/X36jN0wOAAMAAAAC/kirito-anime.gif");
                         lucky = true;
                     }
                     else 
