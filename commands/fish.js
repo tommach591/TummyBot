@@ -333,10 +333,10 @@ module.exports = {
                                 fishingPower = 5;
                                 break;
                             case "Mega Rod":
-                                fishingPower = 7;
+                                fishingPower = 10;
                                 break;
                             case "Ultra Rod":
-                                fishingPower = 12;
+                                fishingPower = 20;
                                 break;
                             default:
                                 fishingPower = 1;
