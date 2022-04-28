@@ -54,6 +54,12 @@ module.exports = {
                 else if (userFish[userid].fishingRod == "Super Rod") {
                     embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
                 }
+                else if (userFish[userid].fishingRod == "Mega Rod") {
+                    embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
+                }
+                else if (userFish[userid].fishingRod == "Ultra Rod") {
+                    embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
+                }
                 embedMsg.addFields(
                     { name: "__Fishing Rod__ :fishing_pole_and_fish:", value: "" + userFish[userid].fishingRod, inline: true },
                     { name: "__Bait__ :worm:", value: "" + userFish[userid].fishBait.toLocaleString(), inline: true }
@@ -150,7 +156,7 @@ module.exports = {
                 }
                 break;
             case 'upgrade':
-                let upgradeRod = (cost, newRod, oldImage, newImage) =>
+                let upgradeRod = (cost, newCost, newRod, oldImage, newImage) =>
                 {
                     if (userData[userid].points < cost) {
                         embedMsg.setTitle('Error!');
@@ -187,14 +193,7 @@ module.exports = {
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setDescription(userData[userid].name + " bought an " + newRod + "!");
                                         embedMsg.setThumbnail(newImage);
-                                        if (newRod == 'Super Rod')
-                                        {
-                                            embedMsg.setFooter('Next level: Infinite points');
-                                        }
-                                        else
-                                        {
-                                            embedMsg.setFooter('Next level: ' + (cost * 10).toLocaleString() + ' points');
-                                        }
+                                        embedMsg.setFooter('Next level: ' + newCost.toLocaleString() + ' points');
                                         message.channel.send({ embeds: [embedMsg] });
                                     } 
                                     else {
@@ -227,24 +226,43 @@ module.exports = {
                 switch(userFish[userid].fishingRod) {
                     case 'Bare Hand':
                         cost = 1000;
+                        newCost = 10000;
                         newRod = 'Old Rod';
                         oldImage = 'https://i.imgur.com/aMY06nC.png';
                         newImage = 'https://i.imgur.com/hUOugXB.png';
-                        upgradeRod(cost, newRod, oldImage, newImage);
+                        upgradeRod(cost, newCost, newRod, oldImage, newImage);
                         break;
                     case 'Old Rod':
                         cost = 10000;
+                        newCost = 100000;
                         newRod = 'Good Rod';
                         oldImage = 'https://i.imgur.com/hUOugXB.png';
                         newImage = 'https://i.imgur.com/KXYAoKp.png';
-                        upgradeRod(cost, newRod, oldImage, newImage);
+                        upgradeRod(cost, newCost, newRod, oldImage, newImage);
                         break;
                     case 'Good Rod':
                         cost = 100000;
+                        newCost = 10000000;
                         newRod = 'Super Rod';
                         oldImage = 'https://i.imgur.com/KXYAoKp.png';
                         newImage = 'https://i.imgur.com/aP3CFzj.png';
-                        upgradeRod(cost, newRod, oldImage, newImage);
+                        upgradeRod(cost, newCost, newRod, oldImage, newImage);
+                        break;
+                    case 'Super Rod':
+                        cost = 10000000;
+                        newCost = 1333333337;
+                        newRod = 'Mega Rod';
+                        oldImage = 'https://i.imgur.com/aP3CFzj.png';
+                        newImage = 'https://m.media-amazon.com/images/I/51yOu0U+2iL._AC_SY450_.jpg';
+                        upgradeRod(cost, newCost, newRod, oldImage, newImage);
+                        break;
+                    case 'Mega Rod':
+                        cost = 1333333337;
+                        newCost = 'Infinite';
+                        newRod = 'Ultra Rod';
+                        oldImage = 'https://m.media-amazon.com/images/I/51yOu0U+2iL._AC_SY450_.jpg';
+                        newImage = 'https://dodo.ac/np/images/5/5c/Golden_Rod_NH_Icon.png';
+                        upgradeRod(cost, newCost, newRod, oldImage, newImage);
                         break;
                     default:
                         embedMsg.setTitle('Congratz!');
@@ -290,9 +308,6 @@ module.exports = {
                     setTimeout(function() { 
                         var fishingPower;
                         switch(userFish[userid].fishingRod) {
-                            case "Bare Hand":
-                                fishingPower = 1;
-                                break;
                             case "Old Rod":
                                 fishingPower = 2;
                                 break;
@@ -301,6 +316,15 @@ module.exports = {
                                 break;
                             case "Super Rod":
                                 fishingPower = 5;
+                                break;
+                            case "Mega Rod":
+                                fishingPower = 7;
+                                break;
+                            case "Ultra Rod":
+                                fishingPower = 10;
+                                break;
+                            default:
+                                fishingPower = 1;
                                 break;
                         }
 
