@@ -301,10 +301,7 @@ module.exports = {
                     var lucky = false;
 
                     fishingMsg.setTitle('Fishing!');
-                    fishingMsg.setDescription('Waiting...');
-                    fishingMsg.setColor('008FFF');
-                    fishingMsg.setImage('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0ab4b036812305.572a1cada9fdc.gif');
-
+                    
                     var luck = Math.floor((Math.random() * 100) + 1);
                     var chance = 100 * 1;
 
@@ -313,6 +310,13 @@ module.exports = {
                         fishingMsg.setImage('"https://c.tenor.com/X36jN0wOAAMAAAAS/kirito-anime.gif"');
                         lucky = true;
                     }
+                    else 
+                    {
+                        fishingMsg.setDescription('Waiting...');
+                        fishingMsg.setImage('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0ab4b036812305.572a1cada9fdc.gif');
+                    }
+                    
+                    fishingMsg.setColor('008FFF');
 
                     message.channel.send({ embeds: [fishingMsg] }).then(msg=> {setTimeout(() => msg.delete(), fishTime - 500)});
                     
