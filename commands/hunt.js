@@ -54,6 +54,7 @@ module.exports = {
                                                                                                     // Mao vs Monks
             "https://i.gifer.com/ntL.gif",                                                          // Mugen vs Samurai
             "https://pa1.narvii.com/6792/1b835eb6198553d5c0a5528fccebea9290d72654_hq.gif",          // GGO Alt Bunny Pew Pew
+            "https://c.tenor.com/LlZtlf4W7C8AAAAC/bts-suga.gif"                                     // PSY Slap Suga
         ];
 
         let generateEquip = (itemName) => {
