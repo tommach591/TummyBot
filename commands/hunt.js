@@ -355,8 +355,8 @@ module.exports = {
                     + "\nMagic: " + (weapon.magic + baseWeapon.magic) + " (" + weaponMagic + ")"
                     + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (" + weaponDefense + ")"
                     + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (" + weaponSpeed + ")"
+                    + "\nLevel: " + ((weapon.maxHP / 5) + weapon.attack + weapon.magic + weapon.defense + weapon.speed)
                     + "\nSlots: " + weapon.slots
-                    + "\nEnchantment Level: " + ((weapon.maxHP / 5) + weapon.attack + weapon.magic + weapon.defense + weapon.speed)
                     + "\n\n";
 
                     var armorText = "\nRarity: " + baseArmor.rarity
@@ -365,8 +365,8 @@ module.exports = {
                     + "\nMagic: " + (armor.magic + baseArmor.magic) + " (" + armorMagic + ")"
                     + "\nDefense: " + (armor.defense + baseArmor.defense) + " (" + armorDefense + ")"
                     + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (" + armorSpeed + ")"
+                    + "\nLevel: " + ((armor.maxHP / 5) + armor.attack + armor.magic + armor.defense + armor.speed)
                     + "\nSlots: " + armor.slots
-                    + "\nEnchantment Level: " + ((armor.maxHP / 5) + armor.attack + armor.magic + armor.defense + armor.speed)
                     + "\n\n";
 
                     var accessoryText = "\nRarity: " + baseAccessory.rarity
@@ -375,8 +375,8 @@ module.exports = {
                     + "\nMagic: " + (accessory.magic + baseAccessory.magic) + " (" + accessoryMagic + ")"
                     + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (" + accessoryDefense + ")"
                     + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (" + accessorySpeed + ")"
+                    + "\nLevel: " + ((accessory.maxHP / 5) + accessory.attack + accessory.magic + accessory.defense + accessory.speed)
                     + "\nSlots: " + accessory.slots
-                    + "\nEnchantment Level: " + ((accessory.maxHP / 5) + accessory.attack + accessory.magic + accessory.defense + accessory.speed)
                     + "\n\n";
 
                     embedMsg.setFields(

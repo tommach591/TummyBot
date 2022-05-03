@@ -684,7 +684,7 @@ client.on('messageCreate', message => {
         }
 
         if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 10 
-            && newTime.getTime() - currHunt["active"].lastBossCheck >= 1000 * 60
+            && newTime.getTime() - currHunt["active"].lastBossCheck >= 1000 * 20
             && !currHunt["active"].retreated && currHunt["active"].currentHP > 0) {
             const embedMsg = new MessageEmbed();
             currHunt["active"].retreated = true;
