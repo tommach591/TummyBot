@@ -356,6 +356,7 @@ module.exports = {
                     + "\nDefense: " + (weapon.defense + baseWeapon.defense) + " (" + weaponDefense + ")"
                     + "\nSpeed: " + (weapon.speed + baseWeapon.speed) + " (" + weaponSpeed + ")"
                     + "\nSlots: " + weapon.slots
+                    + "\nEnchantment Level: " + ((weapon.maxHP / 5) + weapon.attack + weapon.magic + weapon.defense + weapon.speed)
                     + "\n\n";
 
                     var armorText = "\nRarity: " + baseArmor.rarity
@@ -365,6 +366,7 @@ module.exports = {
                     + "\nDefense: " + (armor.defense + baseArmor.defense) + " (" + armorDefense + ")"
                     + "\nSpeed: " + (armor.speed + baseArmor.speed) + " (" + armorSpeed + ")"
                     + "\nSlots: " + armor.slots
+                    + "\nEnchantment Level: " + ((armor.maxHP / 5) + armor.attack + armor.magic + armor.defense + armor.speed)
                     + "\n\n";
 
                     var accessoryText = "\nRarity: " + baseAccessory.rarity
@@ -374,6 +376,7 @@ module.exports = {
                     + "\nDefense: " + (accessory.defense + baseAccessory.defense) + " (" + accessoryDefense + ")"
                     + "\nSpeed: " + (accessory.speed + baseAccessory.speed) + " (" + accessorySpeed + ")"
                     + "\nSlots: " + accessory.slots
+                    + "\nEnchantment Level: " + ((accessory.maxHP / 5) + accessory.attack + accessory.magic + accessory.defense + accessory.speed)
                     + "\n\n";
 
                     embedMsg.setFields(
@@ -438,6 +441,9 @@ module.exports = {
                     embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense.toLocaleString(), true);
                     embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s", true);
 
+                    var newTime = new Date();
+                    currHunt["active"].lastBossCheck = newTime.getTime();
+
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -474,7 +480,6 @@ module.exports = {
                 var newTime = new Date();
 
                 if (userHunt[userid].currentHP <= 0) {
-                    var newTime = new Date();
                     var timeDiff = newTime.getTime() - userHunt[userid].deathTime;
                     if (timeDiff >= 1000 * 120) {
                         userHunt[userid].currentHP = maxHP;
