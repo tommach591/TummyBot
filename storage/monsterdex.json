@@ -14,7 +14,7 @@
         "magicdefense": 100,
         "attackCD": 15000,
         "difficulty": 6,
-        "loot": ["Fatalis Dual Skies", "Fatalis Alpha", "Exploiter Charm III"]
+        "loot": ["Fatalis Dual Skies", "Fatalis Alpha", "Exploiter Charm III", "Fatalis Beta", "Challenger Charm V", "Attack Charm V", "Black Fatalis Blade", "Fatalis Zaggespanon", "True Fatalis Sword", "Fatalis Demolisher", "Fatalis Menace Wailer", "True Fatalis Lance", "True Fatalis Gunlance", "True Fatalis End", "True Fatalis Charger", "True Fatalis Dyaus", "Bow of Rack & Ruin", "Fatalis Depths", "Vor Buster"]
     },
     "2": {
         "id": "2",

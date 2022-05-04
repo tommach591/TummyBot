@@ -966,5 +966,181 @@
         "magic": 0,
         "defense": 0,
         "speed": 40
+    },
+    "Fatalis Beta": {
+        "name": "Fatalis Beta",
+        "type": 1,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 400,
+        "attack": 20,
+        "magic": 20,
+        "defense": 20,
+        "speed": 40
+    },
+    "Challenger Charm V": {
+        "name": "Challenger Charm V",
+        "type": 2,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 80,
+        "magic": 0,
+        "defense": 0,
+        "speed": 60
+    },
+    "Attack Charm V": {
+        "name": "Attack Charm V",
+        "type": 2,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 140,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "Black Fatalis Blade": {
+        "name": "Black Fatalis Blade",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 200,
+        "magic": -30,
+        "defense": 0,
+        "speed": -30
+    },
+    "Fatalis Zaggespanon": {
+        "name": "Fatalis Zaggespanon",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 80,
+        "magic": 0,
+        "defense": 20,
+        "speed": 40
+    },
+    "True Fatalis Sword": {
+        "name": "True Fatalis Sword",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 60,
+        "magic": 30,
+        "defense": 30,
+        "speed": 20
+    },
+    "Fatalis Demolisher": {
+        "name": "Fatalis Demolisher",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 140,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "Fatalis Menace Wailer": {
+        "name": "Fatalis Menace Wailer",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 80,
+        "magic": 20,
+        "defense": 20,
+        "speed": 20
+    },
+    "True Fatalis Lance": {
+        "name": "True Fatalis Lance",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 70,
+        "magic": 0,
+        "defense": 70,
+        "speed": 0
+    },
+    "True Fatalis Gunlance": {
+        "name": "True Fatalis Gunlance",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 70,
+        "defense": 70,
+        "speed": 0
+    },
+    "True Fatalis End": {
+        "name": "True Fatalis End",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": -100,
+        "attack": 80,
+        "magic": 40,
+        "defense": 0,
+        "speed": 40
+    },
+    "True Fatalis Charger": {
+        "name": "True Fatalis Charger",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 80,
+        "magic": 20,
+        "defense": 40,
+        "speed": 0
+    },
+    "True Fatalis Dyaus": {
+        "name": "True Fatalis Dyaus",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 20,
+        "magic": 80,
+        "defense": 0,
+        "speed": 40
+    },
+    "Bow of Rack & Ruin": {
+        "name": "Bow of Rack & Ruin",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 80,
+        "defense": 0,
+        "speed": 60
+    },
+    "Fatalis Depths": {
+        "name": "Fatalis Depths",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": -100,
+        "attack": 0,
+        "magic": 80,
+        "defense": 0,
+        "speed": 80
+    },
+    "Vor Buster": {
+        "name": "Vor Buster",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 120,
+        "defense": 40,
+        "speed": -20
     }
 }
