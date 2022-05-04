@@ -469,7 +469,7 @@
         "speed": 0,
         "chaos": 1,
         "badLuck": 3,
-        "rarity": 1
+        "rarity": 2
     },
     "52": {
         "name": "Chaos Scroll (★★) 75%",
@@ -481,7 +481,7 @@
         "speed": 0,
         "chaos": 2,
         "badLuck": 3,
-        "rarity": 2
+        "rarity": 3
     },
     "53": {
         "name": "Chaos Scroll (★★★) 50%",
@@ -493,7 +493,7 @@
         "speed": 0,
         "chaos": 3,
         "badLuck": 3,
-        "rarity": 3
+        "rarity": 4
     },
     "54": {
         "name": "Chaos Scroll 𝔼𝕏 (☆) 5%",
@@ -505,7 +505,7 @@
         "speed": 0,
         "chaos": 11,
         "badLuck": 3,
-        "rarity": 1
+        "rarity": 2
     },
     "55": {
         "name": "Chaos Scroll 𝔼𝕏 (☆☆) 3%",
@@ -517,7 +517,7 @@
         "speed": 0,
         "chaos": 22,
         "badLuck": 3,
-        "rarity": 2
+        "rarity": 3
     },
     "56": {
         "name": "Chaos Scroll 𝔼𝕏 (☆☆☆) 1%",
@@ -529,7 +529,7 @@
         "speed": 0,
         "chaos": 33,
         "badLuck": 3,
-        "rarity": 3
+        "rarity": 4
     },
     "57": {
         "name": "Chaos Scroll of Fortune (✦) 27%",
@@ -541,7 +541,7 @@
         "speed": 0,
         "chaos": 1,
         "badLuck": 2,
-        "rarity": 1
+        "rarity": 2
     },
     "58": {
         "name": "Chaos Scroll of Fortune (✦✦) 17%",
@@ -553,7 +553,7 @@
         "speed": 0,
         "chaos": 1,
         "badLuck": 1,
-        "rarity": 2
+        "rarity": 3
     },
     "59": {
         "name": "Chaos Scroll of Fortune (✦✦✦) 7%",
@@ -565,7 +565,7 @@
         "speed": 0,
         "chaos": 1,
         "badLuck": 0,
-        "rarity": 3
+        "rarity": 4
     },
     "60": {
         "name": "Angel Scroll 50%",
@@ -576,6 +576,6 @@
         "defense": 0,
         "speed": 0,
         "purity": 1,
-        "rarity": 3
+        "rarity": 5
     }
 }
