@@ -389,11 +389,11 @@
         "type": 0,
         "rarity": 6,
         "image": "",
-        "maxHP": 0,
-        "attack": 50,
-        "magic": 50,
-        "defense": 0,
-        "speed": 40
+        "maxHP": -200,
+        "attack": 60,
+        "magic": 60,
+        "defense": -20,
+        "speed": 60
     },
     "Fatalis Alpha": {
         "name": "Fatalis Alpha",
@@ -989,6 +989,17 @@
         "defense": 0,
         "speed": 60
     },
+    "Defense Charm V": {
+        "name": "Defense Charm V",
+        "type": 2,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 140,
+        "speed": 0
+    },
     "Attack Charm V": {
         "name": "Attack Charm V",
         "type": 2,
@@ -997,6 +1008,17 @@
         "maxHP": 0,
         "attack": 140,
         "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "Wyrmsbane Charm V": {
+        "name": "Wyrmsbane Charm V",
+        "type": 2,
+        "rarity": 6,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 140,
         "defense": 0,
         "speed": 0
     },
