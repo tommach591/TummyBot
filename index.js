@@ -165,6 +165,7 @@ savefile.lastSave = startTime;
 currHunt.lastSpawn = savefile.startTime.getTime();
 currHunt.nextSpawn = (1000 * 60 * 30) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
+currHunt.dropRate = 1;
 
 let saveBeforeReset = () => {
     var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 55);
@@ -615,6 +616,10 @@ client.on('messageCreate', message => {
             case 'spawnscroll':
                 if (userData[sender.id])
                     client.gmcommands.get('spawnscroll').execute(message, args, sender.id, userData, userHunt, scrolls, client);
+                break;
+            case 'droprate':
+                if (userData[sender.id])
+                    client.gmcommands.get('spawnboss').execute(message, args, sender.id, userData, currHunt, client);
                 break;
             case 'killboss':
                 if (userData[sender.id])

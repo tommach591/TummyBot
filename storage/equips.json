@@ -1058,18 +1058,18 @@
     "Fatalis Vulcania": {
         "name": "Fatalis Vulcania",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": 0,
         "attack": 1000,
-        "magic": -650,
+        "magic": -600,
         "defense": 0,
-        "speed": -50
+        "speed": -100
     },
     "Fatalis Rapture": {
         "name": "Fatalis Rapture",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 250,
@@ -1080,7 +1080,7 @@
     "Absolute Ruiner Sword": {
         "name": "Absolute Ruiner Sword",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 100,
@@ -1091,7 +1091,7 @@
     "Twinbane Twilight": {
         "name": "Twinbane Twilight",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 200,
@@ -1102,7 +1102,7 @@
     "Fatalis Destroyer": {
         "name": "Fatalis Destroyer",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": 0,
         "attack": 600,
@@ -1113,7 +1113,7 @@
     "Fatalis Flame Aria": {
         "name": "Fatalis Flame Aria",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 175,
@@ -1124,7 +1124,7 @@
     "True Obliterator": {
         "name": "True Obliterator",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 250,
@@ -1135,7 +1135,7 @@
     "Faithful Ruiner Gunlance": {
         "name": "Faithful Ruiner Gunlance",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": -100,
@@ -1146,7 +1146,7 @@
     "Absolute Ruiner's Bane": {
         "name": "Absolute Ruiner's Bane",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 250,
@@ -1157,7 +1157,7 @@
     "Absolute Ruiner Dawn": {
         "name": "Absolute Ruiner Dawn",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 200,
@@ -1168,7 +1168,7 @@
     "Absolute Ruiner Glaive": {
         "name": "Absolute Ruiner Glaive",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": 50,
@@ -1179,7 +1179,7 @@
     "Bow of Fury & Perfidy": {
         "name": "Bow of Fury & Perfidy",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": -100,
@@ -1190,7 +1190,7 @@
     "Absolute Ruiner Recurve": {
         "name": "Absolute Ruiner Recurve",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": -100,
@@ -1201,7 +1201,7 @@
     "Destiny's Shoulder": {
         "name": "Destiny's Shoulder",
         "type": 0,
-        "rarity": 6,
+        "rarity": 10,
         "image": "",
         "maxHP": -500,
         "attack": -100,
