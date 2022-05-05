@@ -14,8 +14,8 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 return;
             }
-            var rate = Number(args[0]);
-            var time = Math.floor(Number(args[1])) * 1000 * 60;
+            var rate = Number(args[1]);
+            var time = Math.floor(Number(args[2])) * 1000 * 60;
             
             if (!isNaN(rate) && !isNaN(time)) {
                 var oldRate = currHunt.dropRate;
