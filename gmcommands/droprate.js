@@ -18,7 +18,6 @@ module.exports = {
             var time = Math.floor(Number(args[1])) * 1000 * 60;
             
             if (!isNaN(rate) && !isNaN(time)) {
-                var oldRate = currHunt.dropRate;
                 currHunt.dropRate = rate;
                 embedMsg.setTitle('Drop Rate!');
                 embedMsg.setColor('00FF00');
@@ -26,7 +25,7 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 setTimeout(
                     function() {
-                        currHunt.dropRate = oldRate;
+                        currHunt.dropRate = 1;
                     }, time
                 );
             }
