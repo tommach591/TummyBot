@@ -16,7 +16,8 @@ module.exports = {
             }
             var rate = Number(args[0]);
             var time = Math.floor(Number(args[1])) * 1000 * 60;
-            console.log(rate, time);
+            console.log(rate);
+            console.log(time);
             
             if (!isNaN(rate) && !isNaN(time)) {
                 var oldRate = currHunt.dropRate;
