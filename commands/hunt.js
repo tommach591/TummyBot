@@ -200,7 +200,7 @@ module.exports = {
             var timeDiff = newTime.getTime() - currHunt.dropRateStart;
             var duration = currHunt.dropDuration;
 
-            if (timeDiff < duration)
+            if (currHunt.dropRate != 1 && timeDiff < duration)
             {
                 currHunt.dropRate = 1;
             }
