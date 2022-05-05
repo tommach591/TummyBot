@@ -619,7 +619,7 @@ client.on('messageCreate', message => {
                 break;
             case 'droprate':
                 if (userData[sender.id])
-                    client.gmcommands.get('spawnboss').execute(message, args, sender.id, userData, currHunt, client);
+                    client.gmcommands.get('droprate').execute(message, args, sender.id, userData, currHunt, client);
                 break;
             case 'killboss':
                 if (userData[sender.id])
