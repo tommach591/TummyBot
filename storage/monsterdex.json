@@ -1000,7 +1000,7 @@
         "magicdefense": 100,
         "attackCD": 7500,
         "difficulty": 6,
-        "loot": ["True Obliterator", "Fatalis Crimson Armor", "Bow of Fury and Perfidy"]
+        "loot": ["Fatalis Vulcania", "Fatalis Rapture", "Absolute Ruiner Sword", "Twinbane Twilight", "Fatalis Destroyer", "Fatalis Flame Aria", "True Obliterator", "Faithful Ruiner Gunlance", "Absolute Ruiner's Bane", "Absolute Ruiner Dawn", "Absolute Ruiner Glaive", "Bow of Fury & Perfidy", "Absolute Ruiner Recurve", "Destiny's Shoulder", "Fatalis Crimson Armor"]
     },
     "60": {
         "id": "60",
@@ -1017,7 +1017,7 @@
         "magicdefense": 400,
         "attackCD": 20000,
         "difficulty": 6,
-        "loot": ["Fatalis Legacy", "Old Fatalis Armor", "Triumph and Testament"]
+        "loot": ["Fatalis Legacy", "Fatalis Veneranda", "Pure O. Fatalis Sword", "Ultimus Apocalypse", "Old Fatalis Ruiner", "Old Fatalis Aria", "Eternal O. Fatalis Lance", "Epic O. Fatalis Gunlance", "Fatalis Feint", "Fatalis Countenance", "Fatalis Overlord", "Absolution Bowgun", "Fatalis Transformer", "Triumph and Testament", "Old Fatalis Armor"]
     },
     "61": {
         "id": "61",
