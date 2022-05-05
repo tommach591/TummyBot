@@ -21,7 +21,7 @@ module.exports = {
                 currHunt.dropRate = rate;
                 embedMsg.setTitle('Drop Rate!');
                 embedMsg.setColor('00FF00');
-                embedMsg.setDescription('Drop rate set to ' + (currHunt.dropRate).toLocaleString() + 'x for ' + (time / (1000 * 60)).toLocaleString() + ' minutes!');
+                embedMsg.setDescription('Drop rate set to ' + (currHunt.dropRate).toLocaleString() + 'x for ' + (time / (1000 * 60)).toLocaleString() + ' minute(s)!');
                 message.channel.send({ embeds: [embedMsg] });
                 setTimeout(
                     function() {
