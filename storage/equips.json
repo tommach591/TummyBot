@@ -653,10 +653,10 @@
         "type": 0,
         "rarity": 5,
         "image": "",
-        "maxHP": -500,
-        "attack": 150,
-        "magic": 150,
-        "defense": -100,
+        "maxHP": -250,
+        "attack": 100,
+        "magic": 100,
+        "defense": -50,
         "speed": 0
     },
     "Tessaiga": {

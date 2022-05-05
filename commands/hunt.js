@@ -595,6 +595,11 @@ module.exports = {
                             currHunt.lastDifficulty = [];
 
                             var rewardLevel = currHunt["active"].difficulty;
+                            var dropRate = currHunt.dropRate;
+                            if (currHunt["active"].id == 27 && dropRate < 2)
+                            {
+                                dropRate = 2;
+                            }
                             var goldReward = 1000 * rewardLevel;
                             var multiplier = 2.5;
                             var reward = "";
@@ -608,7 +613,7 @@ module.exports = {
                                 if (unqiueDrops.length != 0) {
                                     for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                         var luck = Math.floor((Math.random() * 100000) + 1);
-                                        var chance = 100000 * 0.0050 * currHunt.dropRate; // 0.50%
+                                        var chance = 100000 * 0.0050 * dropRate; // 0.50%
                                         if (luck <= chance) {
                                             var itemObtained = generateEquip(unqiueDrops[Math.floor(Math.random() * unqiueDrops.length)]);
                                             userHunt[player].equips.push(itemObtained);
@@ -619,7 +624,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.0100 * currHunt.dropRate; // 1.00%
+                                    var chance = 100000 * 0.0100 * dropRate; // 1.00%
                                     if (luck <= chance && rewardLevel >= 3) {
                                         var itemObtained = generateEquip(threestar[Math.floor(Math.random() * threestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -629,7 +634,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.0200 * currHunt.dropRate; // 2.00%
+                                    var chance = 100000 * 0.0200 * dropRate; // 2.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(twostar[Math.floor(Math.random() * twostar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -639,7 +644,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.0400 * currHunt.dropRate; // 4.00%
+                                    var chance = 100000 * 0.0400 * dropRate; // 4.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(onestar[Math.floor(Math.random() * onestar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -649,7 +654,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.0800 * currHunt.dropRate; // 8.00%
+                                    var chance = 100000 * 0.0800 * dropRate; // 8.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(zerostar[Math.floor(Math.random() * zerostar.length)]);
                                         userHunt[player].equips.push(itemObtained);
@@ -659,7 +664,7 @@ module.exports = {
 
                                 for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
-                                    var chance = 100000 * 0.1500 * currHunt.dropRate; // 15.00%
+                                    var chance = 100000 * 0.1500 * dropRate; // 15.00%
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         userHunt[player].scrolls.push(scrollobtained);
