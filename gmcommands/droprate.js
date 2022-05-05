@@ -16,18 +16,16 @@ module.exports = {
             }
             var rate = Number(args[0]);
             var time = Math.floor(Number(args[1])) * 1000 * 60;
+            var newTime = new Date();
             
             if (!isNaN(rate) && !isNaN(time)) {
                 currHunt.dropRate = rate;
+                currHunt.dropDuration = time;
+                currHunt.dropRateStart = newTime.getTime();
                 embedMsg.setTitle('Drop Rate!');
                 embedMsg.setColor('00FF00');
                 embedMsg.setDescription('Drop rate set to ' + (currHunt.dropRate).toLocaleString() + 'x for ' + (time / (1000 * 60)).toLocaleString() + ' minute(s)!');
                 message.channel.send({ embeds: [embedMsg] });
-                setTimeout(
-                    function() {
-                        currHunt.dropRate = 1;
-                    }, time
-                );
             }
             else {
                 embedMsg.setTitle('Error!');

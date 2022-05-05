@@ -194,6 +194,18 @@ module.exports = {
             
         }
 
+        let checkDropRate = () =>
+        {
+            var newTime = new Date();
+            var timeDiff = newTime.getTime() - currHunt.dropRateStart;
+            var duration = currHunt.dropDuration;
+
+            if (timeDiff < duration)
+            {
+                currHunt.dropRate = 1;
+            }
+        }
+
         updateStats(userid);
 
         var command = args[0];
@@ -589,6 +601,7 @@ module.exports = {
                             embedMsg.setFooter('HP: ' + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
 
                             getDrops();
+                            checkDropRate();
 
                             currHunt.lastSpawn = newTime.getTime();
                             currHunt.nextSpawn = (1000 * 60 * 30) + (1000 * 60 * 45 * Math.random());

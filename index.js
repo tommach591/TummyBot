@@ -166,6 +166,8 @@ currHunt.lastSpawn = savefile.startTime.getTime();
 currHunt.nextSpawn = (1000 * 60 * 30) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
 currHunt.dropRate = 1;
+currHunt.dropDuration = 0;
+currHunt.dropRateStart = 0;
 
 let saveBeforeReset = () => {
     var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 55);
