@@ -200,7 +200,7 @@ module.exports = {
             var timeDiff = newTime.getTime() - currHunt.dropRateStart;
             var duration = currHunt.dropDuration;
 
-            if (currHunt.dropRate != 1 && timeDiff < duration)
+            if (currHunt.dropRate != 1 && timeDiff > duration)
             {
                 message.channel.send("Drop Rate reverted!");
                 currHunt.dropRate = 1;
