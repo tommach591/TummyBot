@@ -24,7 +24,7 @@ module.exports = {
                 currHunt.dropRateStart = newTime.getTime();
                 embedMsg.setTitle('Drop Rate!');
                 embedMsg.setColor('00FF00');
-                embedMsg.setDescription('Drop rate set to ' + (currHunt.dropRate).toLocaleString() + 'x for ' + (time / (1000 * 60)).toLocaleString() + ' hour(s)!');
+                embedMsg.setDescription('Drop rate set to ' + (currHunt.dropRate).toLocaleString() + 'x for ' + (time / (1000 * 60 * 60)).toLocaleString() + ' hour(s)!');
                 message.channel.send({ embeds: [embedMsg] });
             }
             else {
