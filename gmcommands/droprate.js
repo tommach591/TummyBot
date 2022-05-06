@@ -15,7 +15,7 @@ module.exports = {
                 return;
             }
             var rate = Number(args[0]);
-            var time = Math.floor(Number(args[1])) * 1000 * 60;
+            var time = Math.floor(Number(args[1])) * 1000 * 60 * 60;
             var newTime = new Date();
             
             if (!isNaN(rate) && !isNaN(time)) {
@@ -24,7 +24,7 @@ module.exports = {
                 currHunt.dropRateStart = newTime.getTime();
                 embedMsg.setTitle('Drop Rate!');
                 embedMsg.setColor('00FF00');
-                embedMsg.setDescription('Drop rate set to ' + (currHunt.dropRate).toLocaleString() + 'x for ' + (time / (1000 * 60)).toLocaleString() + ' minute(s)!');
+                embedMsg.setDescription('Drop rate set to ' + (currHunt.dropRate).toLocaleString() + 'x for ' + (time / (1000 * 60)).toLocaleString() + ' hour(s)!');
                 message.channel.send({ embeds: [embedMsg] });
             }
             else {
