@@ -162,9 +162,12 @@ var startTime = new Date();
 savefile.startTime = startTime;
 savefile.lastSave = startTime;
 
-currHunt.lastSpawn = savefile.startTime.getTime();
-currHunt.nextSpawn = (1000 * 60 * 30) + (1000 * 60 * 45 * Math.random());
 currHunt.lastDifficulty = [];
+currHunt.baseTime = (1000 * 60 * 30);
+currHunt.extraTime = (1000 * 60 * 30);
+currHunt.retreatTime = (1000 * 60 * 10);
+currHunt.lastSpawn = savefile.startTime.getTime();
+currHunt.nextSpawn = currHunt.baseTime + (currHunt.extraTime * Math.random());
 currHunt.baseDropRate = 3;
 currHunt.dropRate = currHunt.baseDropRate;
 currHunt.dropDuration = 0;
@@ -406,7 +409,7 @@ let attackAll = (newTime) => {
             
             currHunt["active"].retreated = true;
             currHunt.lastSpawn = newTime.getTime();
-            currHunt.nextSpawn = 1000 * 60 * 15;
+            currHunt.nextSpawn = currHunt.retreatTime;
             currHunt.lastDifficulty.push(currHunt["active"].difficulty);
 
             var stars = " (";
@@ -698,7 +701,7 @@ client.on('messageCreate', message => {
             const embedMsg = new MessageEmbed();
             currHunt["active"].retreated = true;
             currHunt.lastSpawn = newTime.getTime();
-            currHunt.nextSpawn = 1000 * 60 * 15;
+            currHunt.nextSpawn = currHunt.retreatTime;
             currHunt.lastDifficulty.push(currHunt["active"].difficulty);
 
             var stars = " (";

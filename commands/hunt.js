@@ -604,7 +604,7 @@ module.exports = {
                             checkDropRate();
 
                             currHunt.lastSpawn = newTime.getTime();
-                            currHunt.nextSpawn = (1000 * 60 * 30) + (1000 * 60 * 45 * Math.random());
+                            currHunt.nextSpawn = currHunt.baseTime + (currHunt.extraTime * Math.random());
                             currHunt.lastDifficulty = [];
 
                             var rewardLevel = currHunt["active"].difficulty;
