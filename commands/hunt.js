@@ -2188,10 +2188,10 @@ module.exports = {
                                     if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
                                         userData[userid].points -= cost;
                                         var target = client.users.cache.get(userid);
-                                        var scrollsTributed = [userHunt[userid].scrolls[scroll_one], userHunt[userid].scrolls[scroll_two], userHunt[userid].scrolls[scroll_three]]
+                                        var scrollsTributed = [userHunt[userid].scrolls[scroll_one], userHunt[userid].scrolls[scroll_two], userHunt[userid].scrolls[scroll_three]];
                                         getDrops();
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
-                                        while (scrollsTributed.contains(scrollobtained))
+                                        while (scrollsTributed.includes(scrollobtained))
                                         {
                                             scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         }
