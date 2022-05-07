@@ -2188,8 +2188,13 @@ module.exports = {
                                     if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
                                         userData[userid].points -= cost;
                                         var target = client.users.cache.get(userid);
+                                        var scrollsTributed = [userHunt[userid].scrolls[scroll_one], userHunt[userid].scrolls[scroll_two], userHunt[userid].scrolls[scroll_three]]
                                         getDrops();
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
+                                        while (scrollsTributed.contains(scrollobtained))
+                                        {
+                                            scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
+                                        }
                                         embedMsg.setDescription(userData[userid].name + " sacrifices \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
                                         scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
                                                 " to summon... \n\n" + scrolls[scrollobtained].name + "!");
