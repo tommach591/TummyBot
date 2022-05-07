@@ -194,6 +194,7 @@ let loadUserData = () =>
     items = "";
     userPet = "";
 
+    dataPromise = null;
     getObject(userDataParams).then(
         function(result) {
             dataPromise = result;
@@ -203,6 +204,7 @@ let loadUserData = () =>
         }
     )
 
+    fishPromise = null;
     getObject(userFishParams).then(
         function(result) {
             fishPromise = result;
@@ -212,6 +214,7 @@ let loadUserData = () =>
         }
     )
 
+    gardenPromise = null;
     getObject(userGardenParams).then(
         function(result) {
             gardenPromise = result;
@@ -221,6 +224,7 @@ let loadUserData = () =>
         }
     )
 
+    huntPromise = null;
     getObject(userHuntParams).then(
         function(result) {
             huntPromise = result;
@@ -230,6 +234,7 @@ let loadUserData = () =>
         }
     )
 
+    itemsPromise = null;
     getObject(itemsParams).then(
         function(result) {
             itemsPromise = result;
@@ -239,6 +244,7 @@ let loadUserData = () =>
         }
     )
 
+    petPromise = null;
     getObject(userPetParams).then(
         function(result) {
             petPromise = result;
