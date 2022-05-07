@@ -1396,6 +1396,14 @@ module.exports = {
                                 var luck = Math.floor((Math.random() * 100) + 1);
                                 var chance = 100 * theScroll.rate;
 
+                                var luckyLuck = Math.floor((Math.random() * 100) + 1);
+                                var luckyChance = 100 * 0.01;
+
+                                if (luckyLuck <= luckyChance)
+                                {
+                                    luck = 0;
+                                }
+
                                 if (theScroll.purity) 
                                 {
                                     let original = [...userHunt[userid].scrolls];
@@ -1428,8 +1436,16 @@ module.exports = {
                                                         items[gear].slots = (equips[items[gear].name].rarity * 10) + 5
 
                                                         updateStats(userid);
-                                                        embedMsg.setTitle('Success! - ' + theScroll.name);
-                                                        embedMsg.setColor('00FF00');
+                                                        if (luck == 0)
+                                                        {
+                                                            embedMsg.setTitle('Super Success! - ' + theScroll.name);
+                                                            embedMsg.setColor('FFF00');
+                                                        }
+                                                        else
+                                                        {
+                                                            embedMsg.setTitle('Success! - ' + theScroll.name);
+                                                            embedMsg.setColor('00FF00');
+                                                        }
                                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                                         embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
@@ -1492,7 +1508,18 @@ module.exports = {
                                             items[gear].defense += defgain;
                                             items[gear].speed += spdgain;
                                             items[gear].slots--;
-                                            embedMsg.setTitle('Success! - ' + theScroll.name + " - (" + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain + ")");
+
+                                            if (luck == 0)
+                                            {
+                                                embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain + ")");
+                                                embedMsg.setColor('FFF00');
+                                            }
+                                            else
+                                            {
+                                                embedMsg.setTitle('Success! - ' + theScroll.name + " - (" + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain + ")");
+                                                embedMsg.setColor('00FF00');
+                                            }
+
                                         }
                                         else {
                                             items[gear].maxHP += theScroll.maxHP;
@@ -1501,10 +1528,18 @@ module.exports = {
                                             items[gear].defense += theScroll.defense;
                                             items[gear].speed += theScroll.speed;
                                             items[gear].slots--;
-                                            embedMsg.setTitle('Success! - ' + theScroll.name);
+                                            if (luck == 0)
+                                            {
+                                                embedMsg.setTitle('Super Success! - ' + theScroll.name);
+                                                embedMsg.setColor('FFF00');
+                                            }
+                                            else
+                                            {
+                                                embedMsg.setTitle('Success! - ' + theScroll.name);
+                                                embedMsg.setColor('00FF00');
+                                            }
                                         }
                                         updateStats(userid);
-                                        embedMsg.setColor('00FF00');
                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                         embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
