@@ -185,6 +185,70 @@ let saveBeforeReset = () => {
     );
 }
 
+let loadUserData = () => 
+{
+    userData = "";
+    userFish = "";
+    userGarden = "";
+    userHunt = "";
+    items = "";
+    userPet = "";
+
+    getObject(userDataParams).then(
+        function(result) {
+            dataPromise = result;
+        },
+        function(err) {
+            console.log(err);
+        }
+    )
+
+    getObject(userFishParams).then(
+        function(result) {
+            fishPromise = result;
+        },
+        function(err) {
+            console.log(err);
+        }
+    )
+
+    getObject(userGardenParams).then(
+        function(result) {
+            gardenPromise = result;
+        },
+        function(err) {
+            console.log(err);
+        }
+    )
+
+    getObject(userHuntParams).then(
+        function(result) {
+            huntPromise = result;
+        },
+        function(err) {
+            console.log(err);
+        }
+    )
+
+    getObject(itemsParams).then(
+        function(result) {
+            itemsPromise = result;
+        },
+        function(err) {
+            console.log(err);
+        }
+    )
+
+    getObject(userPetParams).then(
+        function(result) {
+            petPromise = result;
+        },
+        function(err) {
+            console.log(err);
+        }
+    )
+}
+
 client.once('ready', () => {
     console.log(savefile.startTime.toLocaleString());
     console.log("TummyBot is online!");
@@ -598,7 +662,29 @@ client.on('messageCreate', message => {
                 if (userData[sender.id])
                     client.commands.get('pet').execute(message, args, sender.id, userData, userPet, pets, client);
                 break;
-            // GM Commands
+// GM Commands ****************************************************************************************************************************
+            case 'reload':
+                if (userData[sender.id])
+                {
+                    if (userData[sender.id].gm >= 1)
+                    {
+                        loadUserData();
+                        const embedMsg = new MessageEmbed();
+                        embedMsg.setTitle('Reloading Data!');
+                        embedMsg.setColor('00FF00');
+                        embedMsg.setDescription('Data reloaded to last save!');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else 
+                    {
+                        const embedMsg = new MessageEmbed();
+                        embedMsg.setTitle('Reloading Data!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('You are not GM!');
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                }
+                break;
             case 'reward':
                 if (userData[sender.id])
                     client.gmcommands.get('reward').execute(message, args, sender.id, userData, client);
