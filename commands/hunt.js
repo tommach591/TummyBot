@@ -1431,7 +1431,7 @@ module.exports = {
                                                         items[gear].maxHP = 0;
                                                         items[gear].attack = 0;
                                                         items[gear].magic = 0;
-                                                        items[gear].defense = 0;;
+                                                        items[gear].defense = 0;
                                                         items[gear].speed = 0;
                                                         items[gear].slots = (equips[items[gear].name].rarity * 10) + 5
 
