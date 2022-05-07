@@ -674,6 +674,7 @@ client.on('messageCreate', message => {
                         embedMsg.setColor('00FF00');
                         embedMsg.setDescription('Data reloaded to last save!');
                         message.channel.send({ embeds: [embedMsg] });
+                        return;
                     }
                     else 
                     {
