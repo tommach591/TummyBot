@@ -1439,7 +1439,7 @@ module.exports = {
                                                         if (luck == 0)
                                                         {
                                                             embedMsg.setTitle('Super Success! - ' + theScroll.name);
-                                                            embedMsg.setColor('FFF00');
+                                                            embedMsg.setColor('FFF000');
                                                         }
                                                         else
                                                         {
@@ -1512,7 +1512,7 @@ module.exports = {
                                             if (luck == 0)
                                             {
                                                 embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain + ")");
-                                                embedMsg.setColor('FFF00');
+                                                embedMsg.setColor('FFF000');
                                             }
                                             else
                                             {
@@ -1531,7 +1531,7 @@ module.exports = {
                                             if (luck == 0)
                                             {
                                                 embedMsg.setTitle('Super Success! - ' + theScroll.name);
-                                                embedMsg.setColor('FFF00');
+                                                embedMsg.setColor('FFF000');
                                             }
                                             else
                                             {
