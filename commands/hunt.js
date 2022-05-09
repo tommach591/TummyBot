@@ -609,9 +609,9 @@ module.exports = {
 
                             var rewardLevel = currHunt["active"].difficulty;
                             var dropRate = currHunt.dropRate;
-                            if (currHunt["active"].id == 27 && dropRate < 2)
+                            if ((currHunt["active"].id == 27 || currHunt["active"].id == 62))
                             {
-                                dropRate = 2;
+                                dropRate *= 2;
                             }
                             var goldReward = 1000 * rewardLevel;
                             var multiplier = 2.5;

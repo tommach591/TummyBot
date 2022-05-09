@@ -1035,5 +1035,22 @@
         "attackCD": 15000,
         "difficulty": 4,
         "loot": ["Meteorite"]
+    },
+    "62": {
+        "id": "62",
+        "name": "Mega Box",
+        "info": "A mega gift from the dev.",
+        "entry": "...",
+        "shoutout": "...!",
+        "death": "...?!",
+        "image": "https://media3.giphy.com/media/giKdkKxdDWecg524cE/giphy.gif",
+        "attackImage": "https://thumbs.gfycat.com/CourageousOffensiveHoverfly-size_restricted.gif",
+        "maxHP": 250000,
+        "attack": 3000,
+        "defense": 0,
+        "magicdefense": 0,
+        "attackCD": 120000,
+        "difficulty": 6,
+        "loot": []
     }
 }
