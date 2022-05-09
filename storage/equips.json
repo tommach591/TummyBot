@@ -1428,5 +1428,16 @@
         "magic": 120,
         "defense": 40,
         "speed": -20
+    },
+    "Mega Giftbox": {
+        "name": "Mega Giftbox",
+        "type": 0,
+        "rarity": 6,
+        "image": "",
+        "maxHP": -500,
+        "attack": -5,
+        "magic": -5,
+        "defense": 300,
+        "speed": -50
     }
 }

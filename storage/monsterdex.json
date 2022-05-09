@@ -1039,7 +1039,7 @@
     "62": {
         "id": "62",
         "name": "Mega Box",
-        "info": "A mega gift from the dev.",
+        "info": "The dev gifted you guys a mega giftbox of scrolls.",
         "entry": "...",
         "shoutout": "...!",
         "death": "...?!",
@@ -1051,6 +1051,6 @@
         "magicdefense": 0,
         "attackCD": 120000,
         "difficulty": 6,
-        "loot": []
+        "loot": ["Mega Giftbox"]
     }
 }
