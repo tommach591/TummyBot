@@ -472,19 +472,7 @@
         "rarity": 2
     },
     "52": {
-        "name": "Chaos Scroll (★★) 75%",
-        "rate": 0.75,
-        "maxHP": 0,
-        "attack": 0,
-        "magic": 0,
-        "defense": 0,
-        "speed": 0,
-        "chaos": 2,
-        "badLuck": 3,
-        "rarity": 3
-    },
-    "53": {
-        "name": "Chaos Scroll (★★★) 50%",
+        "name": "Chaos Scroll (★★) 50%",
         "rate": 0.50,
         "maxHP": 0,
         "attack": 0,
@@ -492,6 +480,18 @@
         "defense": 0,
         "speed": 0,
         "chaos": 3,
+        "badLuck": 3,
+        "rarity": 3
+    },
+    "53": {
+        "name": "Chaos Scroll (★★★) 25%",
+        "rate": 0.25,
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0,
+        "chaos": 5,
         "badLuck": 3,
         "rarity": 4
     },
