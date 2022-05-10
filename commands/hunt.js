@@ -1515,12 +1515,12 @@ module.exports = {
                                                             if (theScroll.purity == 2)
                                                             {
                                                                 embedMsg.setTitle('Success! - ' + theScroll.name  + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ")");
-                                                                embedMsg.setColor('FF0000');
+                                                                embedMsg.setColor('00FF00');
                                                             }
                                                             else 
                                                             {
                                                                 embedMsg.setTitle('Success! - ' + theScroll.name);
-                                                                embedMsg.setColor('FFF000');
+                                                                embedMsg.setColor('00FF00');
                                                             }
                                                         }
                                                         
