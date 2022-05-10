@@ -1409,9 +1409,13 @@ module.exports = {
                                     let original = [...userHunt[userid].scrolls];
 
                                     const proposalMsg = new MessageEmbed();
-                                    proposalMsg.setTitle('Use Angel Scroll?');
+                                    proposalMsg.setTitle('Use ' + theScroll.name +  '?');
                                     proposalMsg.setColor('FFF000');
-                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to purify " + items[gear].name + "?");
+
+                                    if (theScroll.purity.purity == 1)
+                                        proposalMsg.setDescription("Would " + userData[userid].name + " like to purify " + items[gear].name + "?");
+                                    else if (theScroll.purity.purity == 2)
+                                        proposalMsg.setDescription("Would " + userData[userid].name + " like to revert the last scroll used on " + items[gear].name + "?");
                     
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -1428,12 +1432,20 @@ module.exports = {
                                                 const reaction = collected.first();
                                                 if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
                                                     if (luck <= chance) {
-                                                        items[gear].maxHP = 0;
-                                                        items[gear].attack = 0;
-                                                        items[gear].magic = 0;
-                                                        items[gear].defense = 0;
-                                                        items[gear].speed = 0;
-                                                        items[gear].slots = (equips[items[gear].name].rarity * 10) + 5;
+
+                                                        if (theScroll.purity.purity == 1)
+                                                        {
+                                                            items[gear].maxHP = 0;
+                                                            items[gear].attack = 0;
+                                                            items[gear].magic = 0;
+                                                            items[gear].defense = 0;
+                                                            items[gear].speed = 0;
+                                                            items[gear].slots = (equips[items[gear].name].rarity * 10) + 5;
+                                                        }
+                                                        else if (theScroll.purity.purity == 2)
+                                                        {
+
+                                                        }
 
                                                         updateStats(userid);
                                                         if (luck == 0)
