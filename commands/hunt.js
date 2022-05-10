@@ -2287,7 +2287,9 @@ module.exports = {
                                                 " to summon... \n\n" + scrolls[scrollobtained].name + "!");
                 
                                         var scrollsToDel = [scroll_one, scroll_two, scroll_three];
-                                        scrollsToDel.sort();
+                                        scrollsToDel.sort(
+                                            function(a, b) { return a - b }
+                                        );
                                         scrollsToDel.reverse();
                                         for (let i = 0; i < 3; i++)
                                         {
