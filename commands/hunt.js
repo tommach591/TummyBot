@@ -1501,7 +1501,7 @@ module.exports = {
                                                         {
                                                             if (theScroll.purity == 2)
                                                             {
-                                                                embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ")");
+                                                                embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ") + 1 Slot");
                                                                 embedMsg.setColor('FFF000');
                                                             }
                                                             else 
@@ -1514,7 +1514,7 @@ module.exports = {
                                                         {
                                                             if (theScroll.purity == 2)
                                                             {
-                                                                embedMsg.setTitle('Success! - ' + theScroll.name  + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ")");
+                                                                embedMsg.setTitle('Success! - ' + theScroll.name  + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ") + 1 Slot");
                                                                 embedMsg.setColor('00FF00');
                                                             }
                                                             else 
