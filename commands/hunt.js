@@ -1119,24 +1119,6 @@ module.exports = {
                                 }
                                 else if (scrolls[element].purity == 2)
                                 {
-                                    if (scrolls[element].lastScroll)
-                                    {
-                                        if (scrolls[element].lastScroll[0] != 0) {
-                                            allscrolls[index] += "\nMaxHP: " + (scrolls[element].lastScroll[0]);
-                                        }
-                                        if (scrolls[element].lastScroll[1] != 0) {
-                                            allscrolls[index] += "\nAttack: " + (scrolls[element].lastScroll[1]);
-                                        }
-                                        if (scrolls[element].lastScroll[2] != 0) {
-                                            allscrolls[index] += "\nMagic: " + (scrolls[element].lastScroll[2]);
-                                        }
-                                        if (scrolls[element].lastScroll[3] != 0) {
-                                            allscrolls[index] += "\nDefense: " + (scrolls[element].lastScroll[3]);
-                                        }
-                                        if (scrolls[element].lastScroll[4] != 0) {
-                                            allscrolls[index] += "\nSpeed: " + (scrolls[element].lastScroll[4]);
-                                        }
-                                    }
                                     allscrolls[index] += "\nPurifies your equipment from the last scroll used.";
                                 }
                             }
@@ -1395,6 +1377,29 @@ module.exports = {
                                 });
                                 embedMsg.setDescription('Scrolls sorted by descending rarity!');
                                 break;
+                            case 'purity':
+                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
+                                    if (scrolls[firstEl].purity && scrolls[secondEl].purity && scrolls[firstEl].purity < scrolls[secondEl].purity) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].purity && scrolls[secondEl].purity && scrolls[firstEl].purity > scrolls[secondEl].purity) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].purity && !scrolls[secondEl].purity) {
+                                        return -1;
+                                    }
+                                    if (!scrolls[firstEl].purity && scrolls[secondEl].purity) {
+                                        return 1;
+                                    }
+                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                        return -1;
+                                    }
+                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                embedMsg.setDescription('Scrolls sorted by chaos!');
                             default:
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
@@ -1444,6 +1449,7 @@ module.exports = {
                                     else if (theScroll.purity == 2 && items[gear].lastScroll)
                                     {
                                         proposalMsg.setDescription("Would " + userData[userid].name + " like to revert the last scroll used on " + items[gear].name + "?");
+                                        proposalMsg.setFooter("Stats Gained Back: (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ") + 1 Slot");
                                     }
                                     else if (theScroll.purity == 2 && !items[gear].lastScroll)
                                     {
@@ -1478,11 +1484,6 @@ module.exports = {
                                                             items[gear].defense = 0;
                                                             items[gear].speed = 0;
                                                             items[gear].slots = (equips[items[gear].name].rarity * 10) + 5;
-
-                                                            if (items[gear].lastScroll)
-                                                            {
-                                                                delete items[gear].lastScroll;
-                                                            }
                                                         }
                                                         else if (theScroll.purity == 2)
                                                         {
@@ -1492,27 +1493,45 @@ module.exports = {
                                                             items[gear].defense += items[gear].lastScroll[3];
                                                             items[gear].speed += items[gear].lastScroll[4];
                                                             items[gear].slots += 1;
-
-                                                            delete items[gear].lastScroll;
-
                                                         }
 
                                                         updateStats(userid);
                                                         if (luck == 0)
                                                         {
-                                                            embedMsg.setTitle('Super Success! - ' + theScroll.name);
-                                                            embedMsg.setColor('FFF000');
+                                                            if (theScroll.purity == 2)
+                                                            {
+                                                                embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ")");
+                                                                embedMsg.setColor('FFF000');
+                                                            }
+                                                            else 
+                                                            {
+                                                                embedMsg.setTitle('Super Success! - ' + theScroll.name);
+                                                                embedMsg.setColor('FFF000');
+                                                            }
                                                         }
                                                         else
                                                         {
-                                                            embedMsg.setTitle('Success! - ' + theScroll.name);
-                                                            embedMsg.setColor('00FF00');
+                                                            if (theScroll.purity == 2)
+                                                            {
+                                                                embedMsg.setTitle('Success! - ' + theScroll.name  + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ")");
+                                                                embedMsg.setColor('FFF000');
+                                                            }
+                                                            else 
+                                                            {
+                                                                embedMsg.setTitle('Success! - ' + theScroll.name);
+                                                                embedMsg.setColor('FFF000');
+                                                            }
                                                         }
+                                                        
                                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                                         embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                         userHunt[userid].scrolls.splice(selectedindex, 1);
+                                                        if (items[gear].lastScroll)
+                                                        {
+                                                            delete items[gear].lastScroll;
+                                                        }
                                                     }
                                                     else {
                                                         embedMsg.setTitle('Fail! - ' + theScroll.name);
