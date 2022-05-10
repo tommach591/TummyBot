@@ -1113,7 +1113,32 @@ module.exports = {
                                 allscrolls[index] += "\nChaotic energy infuses into your equipment, affecting all stats.";
                             }
                             if (scrolls[element].purity) {
-                                allscrolls[index] += "\nPurifies your equipment from the good and the bad.";
+                                if (scrolls[element].purity == 1)
+                                {
+                                    allscrolls[index] += "\nPurifies your equipment from the good and the bad.";
+                                }
+                                else if (scrolls[element].purity == 2)
+                                {
+                                    if (scrolls[element].lastScroll)
+                                    {
+                                        if (scrolls[element].lastScroll[0] != 0) {
+                                            allscrolls[index] += "\nMaxHP: " + (scrolls[element].lastScroll[0]);
+                                        }
+                                        if (scrolls[element].lastScroll[1] != 0) {
+                                            allscrolls[index] += "\nAttack: " + (scrolls[element].lastScroll[1]);
+                                        }
+                                        if (scrolls[element].lastScroll[2] != 0) {
+                                            allscrolls[index] += "\nMagic: " + (scrolls[element].lastScroll[2]);
+                                        }
+                                        if (scrolls[element].lastScroll[3] != 0) {
+                                            allscrolls[index] += "\nDefense: " + (scrolls[element].lastScroll[3]);
+                                        }
+                                        if (scrolls[element].lastScroll[4] != 0) {
+                                            allscrolls[index] += "\nSpeed: " + (scrolls[element].lastScroll[4]);
+                                        }
+                                    }
+                                    allscrolls[index] += "\nPurifies your equipment from the last scroll used.";
+                                }
                             }
                             allscrolls[index] += "\n\n";
                             count++;
@@ -1412,10 +1437,22 @@ module.exports = {
                                     proposalMsg.setTitle('Use ' + theScroll.name +  '?');
                                     proposalMsg.setColor('FFF000');
 
-                                    if (theScroll.purity.purity == 1)
+                                    if (theScroll.purity == 1)
+                                    {
                                         proposalMsg.setDescription("Would " + userData[userid].name + " like to purify " + items[gear].name + "?");
-                                    else if (theScroll.purity.purity == 2)
+                                    }
+                                    else if (theScroll.purity == 2 && items[gear].lastScroll)
+                                    {
                                         proposalMsg.setDescription("Would " + userData[userid].name + " like to revert the last scroll used on " + items[gear].name + "?");
+                                    }
+                                    else if (theScroll.purity == 2 && !items[gear].lastScroll)
+                                    {
+                                        embedMsg.setTitle('Error!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setDescription(items[gear].name + " cannot revert last scroll!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                        return;
+                                    }
                     
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -1433,7 +1470,7 @@ module.exports = {
                                                 if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
                                                     if (luck <= chance) {
 
-                                                        if (theScroll.purity.purity == 1)
+                                                        if (theScroll.purity == 1)
                                                         {
                                                             items[gear].maxHP = 0;
                                                             items[gear].attack = 0;
@@ -1441,9 +1478,22 @@ module.exports = {
                                                             items[gear].defense = 0;
                                                             items[gear].speed = 0;
                                                             items[gear].slots = (equips[items[gear].name].rarity * 10) + 5;
+
+                                                            if (items[gear].lastScroll)
+                                                            {
+                                                                delete items[gear].lastScroll;
+                                                            }
                                                         }
-                                                        else if (theScroll.purity.purity == 2)
+                                                        else if (theScroll.purity == 2)
                                                         {
+                                                            items[gear].maxHP += items[gear].lastScroll[0];
+                                                            items[gear].attack += items[gear].lastScroll[1];
+                                                            items[gear].magic += items[gear].lastScroll[2];
+                                                            items[gear].defense += items[gear].lastScroll[3];
+                                                            items[gear].speed += items[gear].lastScroll[4];
+                                                            items[gear].slots += 1;
+
+                                                            delete items[gear].lastScroll;
 
                                                         }
 
@@ -1521,6 +1571,8 @@ module.exports = {
                                             items[gear].speed += spdgain;
                                             items[gear].slots--;
 
+                                            items[gear].lastScroll = [-hpgain, -atkgain, -maggain, -defgain, -spdgain];
+
                                             if (luck == 0)
                                             {
                                                 embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + hpgain + "/" + atkgain + "/" + maggain + "/"+ defgain + "/" + spdgain + ")");
@@ -1540,6 +1592,9 @@ module.exports = {
                                             items[gear].defense += theScroll.defense;
                                             items[gear].speed += theScroll.speed;
                                             items[gear].slots--;
+                                            
+                                            items[gear].lastScroll = [-theScroll.maxHP, -theScroll.attack, -theScroll.magic, -theScroll.defense, -theScroll.speed]
+
                                             if (luck == 0)
                                             {
                                                 embedMsg.setTitle('Super Success! - ' + theScroll.name);
