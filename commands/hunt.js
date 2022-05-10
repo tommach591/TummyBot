@@ -1399,7 +1399,8 @@ module.exports = {
                                     }
                                     return 0;
                                 });
-                                embedMsg.setDescription('Scrolls sorted by chaos!');
+                                embedMsg.setDescription('Scrolls sorted by purity!');
+                                break;
                             default:
                                 userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (scrolls[firstEl].name < scrolls[secondEl].name) {
