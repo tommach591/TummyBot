@@ -499,7 +499,7 @@ let attackAll = (newTime) => {
             var players = currHunt["active"].targets;
             for (let i = 0; i < players.length; i++)
             {
-                userHunt[players[i]].currentHP = maxHP;
+                userHunt[players[i]].currentHP = userHunt[players[i]].maxHP;
             }
             delete currHunt["active"];
         }
@@ -819,7 +819,7 @@ client.on('messageCreate', message => {
             var players = currHunt["active"].targets;
             for (let i = 0; i < players.length; i++)
             {
-                userHunt[players[i]].currentHP = maxHP;
+                userHunt[players[i]].currentHP = userHunt[players[i]].maxHP;
             }
             delete currHunt["active"];
         }
