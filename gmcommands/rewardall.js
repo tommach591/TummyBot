@@ -30,7 +30,7 @@ module.exports = {
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
                     embedMsg.setThumbnail('https://i.imgur.com/2J59UgH.png');
-                    embedMsg.setDescription("Everyone has been rewarded with " + amount + " points!");
+                    embedMsg.setDescription("Everyone has been rewarded with " + amount.toLocaleString() + " points!");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {

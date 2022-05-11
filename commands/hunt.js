@@ -185,8 +185,12 @@ module.exports = {
             critChance = 0 + (100 * (speed * 0.5 / 100));
             if (critChance > 100) {
                 critChance = 100;
+                critDmg = 5 + ((speed - 200) * 0.02);
             }
-            critDmg = 5 + (speed * 0.01);
+            else
+            {
+                critDmg = 3 + (speed * 0.01);
+            }
 
             if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
                 userHunt[id].currentHP = maxHP;
