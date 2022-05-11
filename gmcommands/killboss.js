@@ -8,6 +8,11 @@ module.exports = {
 
         if (userData[userid].gm >= 1) {
             if (currHunt["active"]) {
+                var players = currHunt["active"].targets;
+                for (let i = 0; i < players.length; i++)
+                {
+                    userHunt[players[i]].currentHP = maxHP;
+                }
                 delete currHunt["active"];
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('FF0000');

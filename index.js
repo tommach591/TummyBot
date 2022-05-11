@@ -496,6 +496,11 @@ let attackAll = (newTime) => {
             for (let i = 0; i < channels.length; i++) {
                 channels[i].send({ embeds: [retreatMsg] });
             }
+            var players = currHunt["active"].targets;
+            for (let i = 0; i < players.length; i++)
+            {
+                userHunt[players[i]].currentHP = maxHP;
+            }
             delete currHunt["active"];
         }
     }
@@ -810,6 +815,11 @@ client.on('messageCreate', message => {
             let channels = currHunt["active"].channels;
             for (let i = 0; i < channels.length; i++) {
                 channels[i].send({ embeds: [embedMsg] });
+            }
+            var players = currHunt["active"].targets;
+            for (let i = 0; i < players.length; i++)
+            {
+                userHunt[players[i]].currentHP = maxHP;
             }
             delete currHunt["active"];
         }
