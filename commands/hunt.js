@@ -532,7 +532,7 @@ module.exports = {
                     else if (userHunt[userid].currentHP <= 0) {
                         embedMsg.setTitle(userData[userid].name + " is dead!");
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
-                        var dead = Math.floor((Math.random() * 3) + 1);
+                        var dead = Math.floor((Math.random() * 5) + 1);
                         switch(dead)
                         {
                             case 1:
