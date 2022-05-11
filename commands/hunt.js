@@ -532,7 +532,25 @@ module.exports = {
                     else if (userHunt[userid].currentHP <= 0) {
                         embedMsg.setTitle(userData[userid].name + " is dead!");
                         embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
-                        embedMsg.setImage("https://media4.giphy.com/media/Wr2747CnxwBSqyK6xt/200.gif");
+                        var dead = Math.floor((Math.random() * 3) + 1);
+                        switch(dead)
+                        {
+                            case 1:
+                                embedMsg.setImage("https://i.imgflip.com/4smorc.gif");
+                                break;
+                            case 2:
+                                embedMsg.setImage("https://c.tenor.com/yNBsgagTI6wAAAAC/dancing-pallbearers-dancing-coffin.gif");
+                                break;
+                            case 3:
+                                embedMsg.setImage("https://c.tenor.com/bG7z11R7yx0AAAAd/funeral-coffin-meme.gif");
+                                break;
+                            case 4:
+                                embedMsg.setImage("https://c.tenor.com/5AMRzU5SQnoAAAAC/coffin-meme-coffin-dance.gif");
+                                break;
+                            default:
+                                embedMsg.setImage("https://i.imgflip.com/426jim.gif");
+                                break;
+                        }
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 120 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
