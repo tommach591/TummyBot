@@ -407,8 +407,8 @@ module.exports = {
                             proposalMsg.setTitle('Buying Pet Food!');
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to buy " + amount + " pet food for " + (amount * cost) + " points?");
-                            proposalMsg.setFooter("Pet food costs " + cost + " points each!");
+                            proposalMsg.setDescription("Would " + userData[userid].name + " like to buy " + amount.toLocaleString() + " pet food for " + (amount * cost).toLocaleString() + " points?");
+                            proposalMsg.setFooter("Pet food costs " + cost.toLocaleString() + " points each!");
 
                             let proposal; 
                             message.channel.send({ embeds: [proposalMsg] }).then(
@@ -429,7 +429,7 @@ module.exports = {
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                                            embedMsg.setDescription(userData[userid].name + " buys " + amount + " pet food for " + amount * cost + " points!");
+                                            embedMsg.setDescription(userData[userid].name + " buys " + amount.toLocaleString() + " pet food for " + (amount * cost).toLocaleString() + " points!");
                                             message.channel.send({ embeds: [embedMsg] });
                                         } 
                                         else {
@@ -453,7 +453,7 @@ module.exports = {
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + (amount * cost) + " point(s)!");
+                            embedMsg.setDescription(userData[userid].name + " does not have " + (amount * cost).toLocaleString() + " point(s)!");
                             embedMsg.setFooter("Pet food costs " + cost + " points each!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
