@@ -2,7 +2,7 @@ module.exports = {
     name: 'killboss',
     description: "Kills current boss.",
 
-    execute(message, args, userid, userData, currHunt, monsterdex, client) {
+    execute(message, args, userid, userData, userHunt, currHunt, monsterdex, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 

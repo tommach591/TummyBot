@@ -727,7 +727,7 @@ client.on('messageCreate', message => {
                 break;
             case 'killboss':
                 if (userData[sender.id])
-                    client.gmcommands.get('killboss').execute(message, args, sender.id, userData, currHunt, monsterdex, client);
+                    client.gmcommands.get('killboss').execute(message, args, sender.id, userData, userHunt, currHunt, monsterdex, client);
                 break;
             case 'banish':
                 if (userData[sender.id])
