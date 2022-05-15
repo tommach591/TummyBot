@@ -648,7 +648,7 @@ module.exports = {
                                 if (currHunt["active"].playerDamage[i] == Math.max(...currHunt["active"].playerDamage))
                                 {
                                     dropRate += 0.25;
-                                    mostDamage = "\nBonus 0.25x droprate for most damage! "
+                                    mostDamage = "\nBonus 0.25x droprate for most damage! ";
                                 }
                                 if ((currHunt["active"].id == 27 || currHunt["active"].id == 62))
                                 {
