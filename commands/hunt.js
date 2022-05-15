@@ -630,18 +630,31 @@ module.exports = {
                             currHunt.lastDifficulty = [];
 
                             var rewardLevel = currHunt["active"].difficulty;
-                            var dropRate = currHunt.dropRate;
-                            if ((currHunt["active"].id == 27 || currHunt["active"].id == 62))
-                            {
-                                dropRate *= 2;
-                            }
                             var goldReward = 1000 * rewardLevel;
-                            var multiplier = 2.5;
                             var reward = "";
+                            var lastHit = "";
+                            var mostDamage = "";
+                            
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
                                 var player = currHunt["active"].targets[i];
                                 var goldEarned = 0;
                                 goldEarned += Math.floor(goldReward * (currHunt["active"].playerDamage[i] / currHunt["active"].maxHP));
+                                var dropRate = currHunt.dropRate;
+                                if (userid == player) 
+                                {
+                                    dropRate += 0.25;
+                                    lastHit = "Bonus 0.25x droprate for last hit! ";
+                                }
+                                if (currHunt["active"].playerDamage[i] == Math.max(...currHunt["active"].playerDamage))
+                                {
+                                    dropRate += 0.25;
+                                    mostDamage = "Bonus 0.25x droprate for most damage! "
+                                }
+                                if ((currHunt["active"].id == 27 || currHunt["active"].id == 62))
+                                {
+                                    dropRate *= 2;
+                                }
+                                var multiplier = 2.5;
 
                                 var itemsEarned = "";
 
@@ -723,7 +736,7 @@ module.exports = {
                                     });
                                 }
                                 
-                                reward += userData[player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "\n\n";
+                                reward += userData[player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + lastHit + mostDamage + "\n\n";
                             }
 
                             const rewardMsg = new MessageEmbed();
