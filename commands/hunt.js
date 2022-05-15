@@ -643,12 +643,12 @@ module.exports = {
                                 if (userid == player) 
                                 {
                                     dropRate += 0.25;
-                                    lastHit = "Bonus 0.25x droprate for last hit! ";
+                                    lastHit = "\nBonus 0.25x droprate for last hit! ";
                                 }
                                 if (currHunt["active"].playerDamage[i] == Math.max(...currHunt["active"].playerDamage))
                                 {
                                     dropRate += 0.25;
-                                    mostDamage = "Bonus 0.25x droprate for most damage! "
+                                    mostDamage = "\nBonus 0.25x droprate for most damage! "
                                 }
                                 if ((currHunt["active"].id == 27 || currHunt["active"].id == 62))
                                 {
