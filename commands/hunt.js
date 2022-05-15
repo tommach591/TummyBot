@@ -632,10 +632,10 @@ module.exports = {
                             var rewardLevel = currHunt["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
                             var reward = "";
-                            var lastHit = "";
-                            var mostDamage = "";
                             
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
+                                var lastHit = "";
+                                var mostDamage = "";
                                 var player = currHunt["active"].targets[i];
                                 var goldEarned = 0;
                                 goldEarned += Math.floor(goldReward * (currHunt["active"].playerDamage[i] / currHunt["active"].maxHP));
