@@ -634,21 +634,21 @@ module.exports = {
                             var reward = "";
                             
                             for (let i = 0; i < currHunt["active"].targets.length; i++) {
-                                var lastHit = "";
                                 var mostDamage = "";
+                                var lastHit = "";
                                 var player = currHunt["active"].targets[i];
                                 var goldEarned = 0;
                                 goldEarned += Math.floor(goldReward * (currHunt["active"].playerDamage[i] / currHunt["active"].maxHP));
                                 var dropRate = currHunt.dropRate;
-                                if (userid == player) 
-                                {
-                                    dropRate += 0.25;
-                                    lastHit = "\nBonus 0.25x droprate for last hit! ";
-                                }
                                 if (currHunt["active"].playerDamage[i] == Math.max(...currHunt["active"].playerDamage))
                                 {
-                                    dropRate += 0.25;
+                                    dropRate += 2;
                                     mostDamage = "\nBonus 0.25x droprate for most damage! ";
+                                }
+                                if (userid == player) 
+                                {
+                                    dropRate += 2;
+                                    lastHit = "\nBonus 0.25x droprate for last hit! ";
                                 }
                                 if ((currHunt["active"].id == 27 || currHunt["active"].id == 62))
                                 {
@@ -736,7 +736,7 @@ module.exports = {
                                     });
                                 }
                                 
-                                reward += userData[player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + lastHit + mostDamage + "\n\n";
+                                reward += userData[player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + mostDamage + lastHit + "\n\n";
                             }
 
                             const rewardMsg = new MessageEmbed();
