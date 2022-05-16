@@ -657,10 +657,10 @@ client.on('messageCreate', message => {
 
         updateBalance(sender.id);
 
-        let role = message.guild.roles.cache.find(role => role.name === "TummyWasHere");
+        let role = message.guild.roles.cache.find(role => role.name === "guild");
         if (!role)
         {
-            message.guild.roles.create({ name: 'TummyWasHere' });
+            message.guild.roles.create({ name: 'guild' });
         }
 
         switch(command) {
