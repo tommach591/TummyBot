@@ -506,6 +506,12 @@ let attackAll = (newTime) => {
     }
 }
 
+let role = message.guild.roles.cache.find(role => role.name === "TummyWasHere");
+if (!role)
+{
+    guild.roles.create({ name: 'TummyWasHere' });
+}
+
 client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
