@@ -845,6 +845,12 @@ client.on('messageCreate', message => {
 
         if (spawnMonster(newTime) && !currHunt["active"].channels.includes(message.channel)) {
             currHunt["active"].channels.push(message.channel);
+            let role = message.guild.roles.cache.find(role => role.name === "guild");
+            var ping = "";
+            if (role)
+            {
+                ping = "<@&" + role + ">\n\n";
+            }
             const embedMsg = new MessageEmbed();
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
@@ -852,7 +858,7 @@ client.on('messageCreate', message => {
             }
             stars += ")"
             embedMsg.setTitle(currHunt["active"].name + stars);
-            embedMsg.setDescription(currHunt["active"].entry);
+            embedMsg.setDescription(ping + currHunt["active"].entry);
             embedMsg.setImage(currHunt["active"].image);
             embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString());
             embedMsg.setColor("49000F");
