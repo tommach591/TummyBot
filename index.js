@@ -506,12 +506,6 @@ let attackAll = (newTime) => {
     }
 }
 
-let role = message.guild.roles.cache.find(role => role.name === "TummyWasHere");
-if (!role)
-{
-    guild.roles.create({ name: 'TummyWasHere' });
-}
-
 client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
@@ -662,6 +656,12 @@ client.on('messageCreate', message => {
         }
 
         updateBalance(sender.id);
+
+        let role = message.guild.roles.cache.find(role => role.name === "TummyWasHere");
+        if (!role)
+        {
+            message.guild.roles.create({ name: 'TummyWasHere' });
+        }
 
         switch(command) {
             // Base Commands
