@@ -847,10 +847,6 @@ client.on('messageCreate', message => {
             currHunt["active"].channels.push(message.channel);
             let role = message.guild.roles.cache.find(role => role.name === "guild");
             var ping = "";
-            if (role)
-            {
-                ping = "<@&" + role + ">\n\n";
-            }
             const embedMsg = new MessageEmbed();
             var stars = " (";
             for (let i = 0; i < currHunt["active"].difficulty; i++) {
@@ -858,11 +854,16 @@ client.on('messageCreate', message => {
             }
             stars += ")"
             embedMsg.setTitle(currHunt["active"].name + stars);
-            embedMsg.setDescription(ping + currHunt["active"].entry);
+            embedMsg.setDescription(currHunt["active"].entry);
             embedMsg.setImage(currHunt["active"].image);
             embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString());
             embedMsg.setColor("49000F");
             currHunt["active"].channels[0].send({ embeds: [embedMsg] });
+            if (role)
+            {
+                ping = "<@&" + role + ">";
+                currHunt["active"].channels[0].send(ping);
+            }
         }
 
         if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 10 
