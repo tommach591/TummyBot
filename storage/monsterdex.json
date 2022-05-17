@@ -1052,5 +1052,22 @@
         "attackCD": 120000,
         "difficulty": 6,
         "loot": ["Mega Giftbox"]
+    },
+    "63": {
+        "id": "63",
+        "name": "Alatreon",
+        "info": "Alatreon is elementally unstable, possessing control over the Dragon, Fire, Ice, Thunder and Water elements.",
+        "entry": "Alatreon descends from the heavens.",
+        "shoutout": "Alatreon uses Escaton Judgement!",
+        "death": "Alatreon has been slayed!",
+        "image": "https://c.tenor.com/9_0L-5aCvrgAAAAC/alatreon-monster-hunter.gif",
+        "attackImage": "https://preview.redd.it/oei8er4jk2851.gif?width=600&auto=webp&s=7c14f5998214f1a9c0ed0d953ff0144681323dad",
+        "maxHP": 75000,
+        "attack": 500,
+        "defense": 500,
+        "magicdefense": 0,
+        "attackCD": 20000,
+        "difficulty": 5,
+        "loot": ["Alatreon Star", "Escadora β+ Armor", "Health Charm III"]
     }
 }

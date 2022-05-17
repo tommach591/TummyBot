@@ -1439,5 +1439,38 @@
         "magic": -5,
         "defense": 300,
         "speed": -50
+    },
+    "Alatreon Star": {
+        "name": "Alatreon Star",
+        "type": 0,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 40,
+        "magic": 20,
+        "defense": 20,
+        "speed": 20
+    },
+    "Escadora β+ Armor": {
+        "name": "Escadora β+ Armor",
+        "type": 1,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 0,
+        "attack": 20,
+        "magic": 0,
+        "defense": 60,
+        "speed": 0
+    },
+    "Health Charm III": {
+        "name": "Health Charm III",
+        "type": 2,
+        "rarity": 5,
+        "image": "",
+        "maxHP": 1000,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
     }
 }
