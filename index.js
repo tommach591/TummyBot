@@ -370,11 +370,7 @@ let attackAll = (newTime) => {
             alivePlayers++;
         }
     }
-
-    if (alivePlayers == 0)
-    {
-        currHunt["active"].lastAttack = newTime.getTime();
-    }
+    
     if (alivePlayers == 1) 
     {
         attackCD = Math.floor(attackCD / 1.5);

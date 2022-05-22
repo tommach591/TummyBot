@@ -195,6 +195,23 @@ module.exports = {
                 userHunt[id].currentHP = maxHP;
             }
             
+            if (currHunt["active"]) 
+            {
+                var alivePlayers = 0;
+                var newTime = new Date();
+
+                for (let i = 0; i < currHunt["active"].targets.length; i++) {
+                    var target = currHunt["active"].targets[i];
+                    if (userHunt[target].currentHP > 0) {
+                        alivePlayers++;
+                    }
+                }
+            
+                if (alivePlayers == 0)
+                {
+                    currHunt["active"].lastAttack = newTime.getTime();
+                }
+            }
         }
 
         let checkDropRate = () =>
