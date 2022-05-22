@@ -371,7 +371,12 @@ let attackAll = (newTime) => {
         }
     }
 
-    if (alivePlayers == 1) {
+    if (alivePlayers == 0)
+    {
+        currHunt["active"].lastAttack = newTime.getTime();
+    }
+    if (alivePlayers == 1) 
+    {
         attackCD = Math.floor(attackCD / 1.5);
     }
     if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= attackCD) {

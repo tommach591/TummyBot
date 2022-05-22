@@ -22,7 +22,7 @@ module.exports = {
             "https://c.tenor.com/FPBEXi3f8sQAAAAd/rock-lee-hidden-lotus.gif",                       // Rock Lee Hidden Lotus
             "https://64.media.tumblr.com/dd15ab10cf2ddeed4509e63f75092ad0/08ebc2f82f6d00f7-a2/s540x810/c0773326827098d21ea129af98a092c4f74cafe4.gif",                     
                                                                                                     // Link Spin Attack
-            "https://i.imgur.com/Db207vf.gif",                                                      // MHR SnS
+            "https://c.tenor.com/x0pScuOx-0gAAAAC/monster-hunter-rise.gif",                         // MHR Insect Glaive 
             "https://media0.giphy.com/media/dyjrpqaUVqCELGuQVr/giphy.gif",                          // Demon Slayer Tanjiro
             "https://www.icegif.com/wp-content/uploads/demon-slayer-icegif-1.gif",                  // Demon Slayer Zenitsu
             "https://i.imgur.com/jOJhpgq.gif",                                                      // Eris Vs Ruijerd
@@ -33,8 +33,7 @@ module.exports = {
             "https://media1.giphy.com/media/qyjexFwQwJp9yUvMxq/giphy.gif",                          // Will Smith Slap
             "https://c.tenor.com/okMAfIsn7gAAAAAC/kimchi-slap-angry.gif",                           // Kimchi Slap
             "https://c.tenor.com/zXhf6-giP9cAAAAC/genshin-impact.gif",                              // Ayaka Elemental Burst
-            "https://i.makeagif.com/media/7-26-2021/DF8TCX.gif",                                    // Raidan Elemental Burst
-            "https://c.tenor.com/WAMsvlUj2zkAAAAC/kid-dog.gif",                                     // Doge Tackle
+            "https://images.hive.blog/0x0/https://im2.ezgif.com/tmp/ezgif-2-ea0ea58b6e.gif",        // Raidan Elemental Burst
             "https://c.tenor.com/rhwVCB8Fi3wAAAAC/smol-ame-shooting.gif",                           // Smol Ame Punch
             "https://c.tenor.com/z7_bvudApncAAAAC/full-metal-alchemist-electricity.gif",            // Edward Elric Alchemy
             "https://i.imgur.com/LLJkJzK.gif",                                                      // Principal German Suplex Deer

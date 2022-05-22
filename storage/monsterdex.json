@@ -1062,11 +1062,11 @@
         "death": "Alatreon has been slayed!",
         "image": "https://c.tenor.com/9_0L-5aCvrgAAAAC/alatreon-monster-hunter.gif",
         "attackImage": "https://preview.redd.it/oei8er4jk2851.gif?width=600&auto=webp&s=7c14f5998214f1a9c0ed0d953ff0144681323dad",
-        "maxHP": 75000,
+        "maxHP": 60000,
         "attack": 500,
         "defense": 500,
         "magicdefense": 0,
-        "attackCD": 20000,
+        "attackCD": 30000,
         "difficulty": 5,
         "loot": ["Alatreon Star", "Escadora β+ Armor", "Health Charm III"]
     }
