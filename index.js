@@ -23,50 +23,53 @@ for (const file of gmCommandFiles) {
     client.gmcommands.set(gmcommand.name, gmcommand);
 }
 
-var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
-var savefile = JSON.parse("{}");
-var blackjack = JSON.parse("{}");
-var fishdex = JSON.parse(fs.readFileSync('storage/fishdex.json', 'utf8'));
-var gardendex = JSON.parse(fs.readFileSync('storage/gardendex.json', 'utf8'));
+var masterData = JSON.parse("{}");
+var masterStorage = JSON.parse("{}");
 
-var monsterdex = JSON.parse(fs.readFileSync('storage/monsterdex.json', 'utf8'));
-var currHunt = JSON.parse("{}");
-var equips = JSON.parse(fs.readFileSync('storage/equips.json', 'utf8'));
-var scrolls = JSON.parse(fs.readFileSync('storage/scrolls.json', 'utf8'));
+masterStorage["config"] = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+masterData["savefile"] = JSON.parse("{}");
+masterData["blackjack"] = JSON.parse("{}");
+masterStorage["fishdex"] = JSON.parse(fs.readFileSync('storage/fishdex.json', 'utf8'));
+masterStorage["gardendex"] = JSON.parse(fs.readFileSync('storage/gardendex.json', 'utf8'));
 
-var pets = JSON.parse(fs.readFileSync('storage/pets.json', 'utf8'));
+masterStorage["monsterdex"] = JSON.parse(fs.readFileSync('storage/monsterdex.json', 'utf8'));
+masterData["currHunt"] = JSON.parse("{}");
+masterStorage["equips"] = JSON.parse(fs.readFileSync('storage/equips.json', 'utf8'));
+masterStorage["scrolls"] = JSON.parse(fs.readFileSync('storage/scrolls.json', 'utf8'));
 
-const userDataParams = {
+masterStorage["pets"] = JSON.parse(fs.readFileSync('storage/pets.json', 'utf8'));
+
+masterStorage["userDataParams"] = {
     Bucket: process.env.BUCKET,
     Key: "storage/userData.json"
 };
 
-const userFishParams = {
+masterStorage["userFishParams"] = {
     Bucket: process.env.BUCKET,
     Key: "storage/userFish.json"
 };
 
-const userGardenParams = {
+masterStorage["userGardenParams"] = {
     Bucket: process.env.BUCKET,
     Key: "storage/userGarden.json"
 };
 
-const userHuntParams = {
+masterStorage["userHuntParams"] = {
     Bucket: process.env.BUCKET,
     Key: "storage/userHunt.json"
 };
 
-const itemsParams = {
+masterStorage["itemsParams"] = {
     Bucket: process.env.BUCKET,
     Key: "storage/items.json"
 };
 
-const userPetParams = {
+masterStorage["userPetParams"] = {
     Bucket: process.env.BUCKET,
     Key: "storage/userPet.json"
 };
 
-const s3 = new AWS.S3({
+masterStorage["s3"] = new AWS.masterStorage["s3"]({
     accessKeyId: process.env.ACCESS_KEY_ID,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
     Bucket: process.env.BUCKET
@@ -74,17 +77,17 @@ const s3 = new AWS.S3({
 
 async function getObject(params) {
     try {  
-      const data = await s3.getObject(params).promise();
+      const data = await masterStorage["s3"].getObject(params).promise();
       return data.Body.toString('utf8');
     } 
     catch (e) {
-      throw new Error(`Could not retrieve file from S3: ${e.message}`)
+      throw new Error(`Could not retrieve file from masterStorage["s3"]: ${e.message}`)
     }
 }
 
 
 let dataPromise;
-getObject(userDataParams).then(
+getObject(masterStorage["userDataParams"]).then(
     function(result) {
         dataPromise = result;
     },
@@ -94,7 +97,7 @@ getObject(userDataParams).then(
 )
 
 let fishPromise;
-getObject(userFishParams).then(
+getObject(masterStorage["userFishParams"]).then(
     function(result) {
         fishPromise = result;
     },
@@ -104,7 +107,7 @@ getObject(userFishParams).then(
 )
 
 let gardenPromise;
-getObject(userGardenParams).then(
+getObject(masterStorage["userGardenParams"]).then(
     function(result) {
         gardenPromise = result;
     },
@@ -114,7 +117,7 @@ getObject(userGardenParams).then(
 )
 
 let huntPromise;
-getObject(userHuntParams).then(
+getObject(masterStorage["userHuntParams"]).then(
     function(result) {
         huntPromise = result;
     },
@@ -124,7 +127,7 @@ getObject(userHuntParams).then(
 )
 
 let itemsPromise;
-getObject(itemsParams).then(
+getObject(masterStorage["itemsParams"]).then(
     function(result) {
         itemsPromise = result;
     },
@@ -134,7 +137,7 @@ getObject(itemsParams).then(
 )
 
 let petPromise;
-getObject(userPetParams).then(
+getObject(masterStorage["userPetParams"]).then(
     function(result) {
         petPromise = result;
     },
@@ -143,74 +146,43 @@ getObject(userPetParams).then(
     }
 )
 
-var userData = "";
-var userFish = "";
-var userGarden = "";
-var userHunt = "";
-var items = "";
-var userPet = "";
+masterData["userData"] = "";
+masterData["userFish"] = "";
+masterData["userGarden"] = "";
+masterData["userHunt"] = "";
+masterData["items"] = "";
+masterData["userPet"] = "";
 
 /* Local Host Save Files */
-// userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
-// userFish = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
-// userGarden = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
-// userHunt = JSON.parse(fs.readFileSync('storage/userHunt.json', 'utf8'));
-// items = JSON.parse(fs.readFileSync('storage/items.json', 'utf8'));
-// userPet = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
+// masterData["userData"] = JSON.parse(fs.readFileSync('storage/masterData["userData"].json', 'utf8'));
+// masterData["userFish"] = JSON.parse(fs.readFileSync('storage/masterData["userFish"].json', 'utf8'));
+// masterData["userGarden"] = JSON.parse(fs.readFileSync('storage/masterData["userGarden"].json', 'utf8'));
+// masterData["userHunt"] = JSON.parse(fs.readFileSync('storage/masterData["userHunt"].json', 'utf8'));
+// masterData["items"] = JSON.parse(fs.readFileSync('storage/masterData["items"].json', 'utf8'));
+// masterData["userPet"] = JSON.parse(fs.readFileSync('storage/masterData["userPet"].json', 'utf8'));
 
 var startTime = new Date();
-savefile.startTime = startTime;
-savefile.lastSave = startTime;
+masterData["savefile"].startTime = startTime;
+masterData["savefile"].lastSave = startTime;
 
-currHunt.lastDifficulty = [];
-currHunt.baseTime = (1000 * 60 * 30);
-currHunt.extraTime = (1000 * 60 * 30);
-currHunt.retreatTime = (1000 * 60 * 10);
-currHunt.lastSpawn = savefile.startTime.getTime();
-currHunt.nextSpawn = currHunt.baseTime + (currHunt.extraTime * Math.random());
-currHunt.baseDropRate = 3;
-currHunt.dropRate = currHunt.baseDropRate;
-currHunt.dropDuration = 0;
-currHunt.dropRateStart = 0;
-
-var masterData = JSON.parse("{}");
-var masterStorage = JSON.parse("{}");
-
-masterData["userData"] = userData;
-masterData["userFish"] = userFish;
-masterData["userGarden"] = userGarden;
-masterData["userHunt"] = userHunt;
-masterData["items"] = items;
-masterData["userPet"] = userPet;
-masterData["blackjack"] = blackjack;
-masterData["currHunt"] = currHunt;
-masterData["savefile"] = savefile;
-
-masterStorage["config"] = config;
-masterStorage["fishdex"] = fishdex;
-masterStorage["gardendex"] = gardendex;
-masterStorage["monsterdex"] = monsterdex;
-masterStorage["equips"] = equips;
-masterStorage["scrolls"] = scrolls;
-masterStorage["pets"] = pets;
-masterStorage["fs"] = fs;
-masterStorage["client"] = client;
-masterStorage["s3"] = s3;
-masterStorage["userDataParams"] = userDataParams;
-masterStorage["userFishParams"] = userFishParams;
-masterStorage["userGardenParams"] = userGardenParams;
-masterStorage["userHuntParams"] = userHuntParams;
-masterStorage["itemsParams"] = itemsParams;
-masterStorage["userPetParams"] = userPetParams;
+masterData["currHunt"].lastDifficulty = [];
+masterData["currHunt"].baseTime = (1000 * 60 * 30);
+masterData["currHunt"].extraTime = (1000 * 60 * 30);
+masterData["currHunt"].retreatTime = (1000 * 60 * 10);
+masterData["currHunt"].lastSpawn = masterData["savefile"].startTime.getTime();
+masterData["currHunt"].nextSpawn = masterData["currHunt"].baseTime + (masterData["currHunt"].extraTime * Math.random());
+masterData["currHunt"].baseDropRate = 3;
+masterData["currHunt"].dropRate = masterData["currHunt"].baseDropRate;
+masterData["currHunt"].dropDuration = 0;
+masterData["currHunt"].dropRateStart = 0;
 
 let saveBeforeReset = () => 
 {
-    userData = masterData["userData"];
     var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 55);
     setTimeout(
         function() {
-            if (userData != "") {
-                client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
+            if (masterData["userData"] != "") {
+                client.gmcommands.get('save').execute(masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], masterData["userPet"], masterStorage["config"], masterData["savefile"], masterStorage["s3"], masterStorage["userDataParams"], masterStorage["userFishParams"], masterStorage["userGardenParams"], masterStorage["userHuntParams"], masterStorage["itemsParams"], masterStorage["userPetParams"], fs);
             }
             saveBeforeReset();
         }, resetTime
@@ -221,7 +193,7 @@ let loadUserData = () =>
 {
     masterData["userData"] = "";
     masterData["userFish"] = "";
-    masterData["userGarden"] = "";
+    masterData["muserGarden"] = "";
     masterData["userHunt"] = "";
     masterData["items"] = "";
     masterData["userPet"] = "";
@@ -289,13 +261,11 @@ let loadUserData = () =>
 
 let updateBalance = (id) =>
 {
-    var userData = masterData["userData"];
-    var newTime = new Date();
-    if (userData[id]) {
-        var timeDiff = newTime.getTime() - userData[id].incomeTime;
+    if (masterData["userData"][id]) {
+        var timeDiff = newTime.getTime() - masterData["userData"][id].incomeTime;
         var incomeCD = 1000 * 60; // 1min
         var income = 1;
-        switch (userData[id].income) {
+        switch (masterData["userData"][id].income) {
             case 1:
                 income = 1;
                 break;
@@ -316,47 +286,45 @@ let updateBalance = (id) =>
                 break;
         }
         if (timeDiff >= incomeCD) {
-            userData[id].points += Math.floor(timeDiff / incomeCD) * income;
-            userData[id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
+            masterData["userData"][id].points += Math.floor(timeDiff / incomeCD) * income;
+            masterData["userData"][id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
         }
-
-        masterData["userData"] = userData;
     }
 }
 
 let updateStats = (id) => {
-    weapon = items[userHunt[id].weapon];
-    armor = items[userHunt[id].armor];
-    accessory = items[userHunt[id].accessory];
+    weapon = masterData["items"][masterData["userHunt"][id].weapon];
+    armor = masterData["items"][masterData["userHunt"][id].armor];
+    accessory = masterData["items"][masterData["userHunt"][id].accessory];
 
-    maxHP = userHunt[id].maxHP;
-    attack = userHunt[id].attack;
-    magic = userHunt[id].magic;
-    defense = userHunt[id].defense;
-    speed = userHunt[id].speed;
+    maxHP = masterData["userHunt"][id].maxHP;
+    attack = masterData["userHunt"][id].attack;
+    magic = masterData["userHunt"][id].magic;
+    defense = masterData["userHunt"][id].defense;
+    speed = masterData["userHunt"][id].speed;
 
     if (weapon.name != "Nothing") {
-        maxHP += weapon.maxHP + equips[weapon.name].maxHP;
-        attack += weapon.attack + equips[weapon.name].attack;
-        magic += weapon.magic + equips[weapon.name].magic;
-        defense += weapon.defense + equips[weapon.name].defense;
-        speed += weapon.speed + equips[weapon.name].speed;
+        maxHP += weapon.maxHP + masterStorage["equips"][weapon.name].maxHP;
+        attack += weapon.attack + masterStorage["equips"][weapon.name].attack;
+        magic += weapon.magic + masterStorage["equips"][weapon.name].magic;
+        defense += weapon.defense + masterStorage["equips"][weapon.name].defense;
+        speed += weapon.speed + masterStorage["equips"][weapon.name].speed;
     }
 
     if (armor.name != "Nothing") {
-        maxHP += armor.maxHP + equips[armor.name].maxHP;
-        attack += armor.attack + equips[armor.name].attack;
-        magic += armor.magic + equips[armor.name].magic;
-        defense += armor.defense + equips[armor.name].defense;
-        speed += armor.speed + equips[armor.name].speed;
+        maxHP += armor.maxHP + masterStorage["equips"][armor.name].maxHP;
+        attack += armor.attack + masterStorage["equips"][armor.name].attack;
+        magic += armor.magic + masterStorage["equips"][armor.name].magic;
+        defense += armor.defense + masterStorage["equips"][armor.name].defense;
+        speed += armor.speed + masterStorage["equips"][armor.name].speed;
     }
 
     if (accessory.name != "Nothing") {
-        maxHP += accessory.maxHP + equips[accessory.name].maxHP;
-        attack += accessory.attack + equips[accessory.name].attack;
-        magic += accessory.magic + equips[accessory.name].magic;
-        defense += accessory.defense + equips[accessory.name].defense;
-        speed += accessory.speed + equips[accessory.name].speed;
+        maxHP += accessory.maxHP + masterStorage["equips"][accessory.name].maxHP;
+        attack += accessory.attack + masterStorage["equips"][accessory.name].attack;
+        magic += accessory.magic + masterStorage["equips"][accessory.name].magic;
+        defense += accessory.defense + masterStorage["equips"][accessory.name].defense;
+        speed += accessory.speed + masterStorage["equips"][accessory.name].speed;
     }
 
     if (maxHP < 1) {
@@ -385,25 +353,25 @@ let updateStats = (id) => {
         critDmg = 3 + (speed * 0.01);
     }
 
-    if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
-        userHunt[id].currentHP = maxHP;
+    if (!masterData["currHunt"]["active"] || masterData["currHunt"]["active"].currentHP <= 0 || masterData["currHunt"]["active"].retreated) {
+        masterData["userHunt"][id].currentHP = maxHP;
     }
     
 }
 
 let spawnMonster = (newTime) => 
 {
-    var timeDiff = newTime.getTime() - currHunt.lastSpawn;
-    var nextSpawn = currHunt.nextSpawn;
-    if (!currHunt["active"] && timeDiff >= nextSpawn) {
+    var timeDiff = newTime.getTime() - masterData["currHunt"].lastSpawn;
+    var nextSpawn = masterData["currHunt"].nextSpawn;
+    if (!masterData["currHunt"]["active"] && timeDiff >= nextSpawn) {
         var diffOne = [];
         var diffTwo = [];
         var diffThree = [];
         var diffFour = [];
         var diffFive = [];
         var diffSix = [];
-        for (var k in monsterdex) {
-            switch(monsterdex[k].difficulty) {
+        for (var k in masterStorage["monsterdex"]) {
+            switch(masterStorage["monsterdex"][k].difficulty) {
                 case 1:
                     diffOne.push(k);
                     break;
@@ -426,33 +394,33 @@ let spawnMonster = (newTime) =>
         }
         var selectedMonster;
 
-        if (currHunt.lastDifficulty.length == 3) {
-            currHunt.lastDifficulty = [];
+        if (masterData["currHunt"].lastDifficulty.length == 3) {
+            masterData["currHunt"].lastDifficulty = [];
         }
 
-        while (!selectedMonster || currHunt.lastDifficulty.includes(selectedMonster.difficulty)) {
+        while (!selectedMonster || masterData["currHunt"].lastDifficulty.includes(selectedMonster.difficulty)) {
             var luck = Math.random() * 101;
             if (luck <= 3) {
-                selectedMonster = monsterdex[diffSix[Math.floor(Math.random() * diffSix.length)]];
+                selectedMonster = masterStorage["monsterdex"][diffSix[Math.floor(Math.random() * diffSix.length)]];
             }
             else if (luck <= 15) {
-                selectedMonster = monsterdex[diffFive[Math.floor(Math.random() * diffFive.length)]];
+                selectedMonster = masterStorage["monsterdex"][diffFive[Math.floor(Math.random() * diffFive.length)]];
             }
             else if (luck <= 30) {
-                selectedMonster = monsterdex[diffFour[Math.floor(Math.random() * diffFour.length)]];
+                selectedMonster = masterStorage["monsterdex"][diffFour[Math.floor(Math.random() * diffFour.length)]];
             }
             else if (luck <= 50) {
-                selectedMonster = monsterdex[diffThree[Math.floor(Math.random() * diffThree.length)]];
+                selectedMonster = masterStorage["monsterdex"][diffThree[Math.floor(Math.random() * diffThree.length)]];
             }
             else if (luck <= 70) {
-                selectedMonster = monsterdex[diffTwo[Math.floor(Math.random() * diffTwo.length)]];
+                selectedMonster = masterStorage["monsterdex"][diffTwo[Math.floor(Math.random() * diffTwo.length)]];
             }
             else {
-                selectedMonster = monsterdex[diffOne[Math.floor(Math.random() * diffOne.length)]];
+                selectedMonster = masterStorage["monsterdex"][diffOne[Math.floor(Math.random() * diffOne.length)]];
             }
         }
 
-        currHunt["active"] = {
+        masterData["currHunt"]["active"] = {
             id: selectedMonster.id,
             name: selectedMonster.name,
             info: selectedMonster.info,
@@ -487,12 +455,12 @@ let spawnMonster = (newTime) =>
 
 let attackAll = (newTime) => 
 {
-    var attackCD = currHunt["active"].attackCD;
+    var attackCD = masterData["currHunt"]["active"].attackCD;
     var alivePlayers = 0;
 
-    for (let i = 0; i < currHunt["active"].targets.length; i++) {
-        var target = currHunt["active"].targets[i];
-        if (userHunt[target].currentHP > 0) {
+    for (let i = 0; i < masterData["currHunt"]["active"].targets.length; i++) {
+        var target = masterData["currHunt"]["active"].targets[i];
+        if (masterData["userHunt"][target].currentHP > 0) {
             alivePlayers++;
         }
     }
@@ -501,29 +469,29 @@ let attackAll = (newTime) =>
     {
         attackCD = Math.floor(attackCD / 1.5);
     }
-    if (currHunt["active"] && currHunt["active"].currentHP > 0 && newTime.getTime() - currHunt["active"].lastAttack >= attackCD) {
+    if (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].currentHP > 0 && newTime.getTime() - masterData["currHunt"]["active"].lastAttack >= attackCD) {
         var count = 0;
         var playersHit = "";
         var faints = "";
 
-        for (let i = 0; i < currHunt["active"].targets.length; i++) {
-            var target = currHunt["active"].targets[i];
+        for (let i = 0; i < masterData["currHunt"]["active"].targets.length; i++) {
+            var target = masterData["currHunt"]["active"].targets[i];
 
-            if (userHunt[target].currentHP > 0) {
-                var weapon = items[userHunt[target].weapon];
-                var armor = items[userHunt[target].armor];
-                var accessory = items[userHunt[target].accessory];
+            if (masterData["userHunt"][target].currentHP > 0) {
+                var weapon = masterData["items"][masterData["userHunt"][target].weapon];
+                var armor = masterData["items"][masterData["userHunt"][target].armor];
+                var accessory = masterData["items"][masterData["userHunt"][target].accessory];
 
-                var defense = userHunt[target].defense;
+                var defense = masterData["userHunt"][target].defense;
 
                 if (weapon.name != "Nothing") {
-                    defense += weapon.defense + equips[weapon.name].defense;
+                    defense += weapon.defense + masterStorage["equips"][weapon.name].defense;
                 }
                 if (armor.name != "Nothing") {
-                    defense += armor.defense + equips[armor.name].defense;
+                    defense += armor.defense + masterStorage["equips"][armor.name].defense;
                 }
                 if (accessory.name != "Nothing") {
-                    defense += accessory.defense + equips[accessory.name].defense;
+                    defense += accessory.defense + masterStorage["equips"][accessory.name].defense;
                 }
 
                 if (defense < 0)
@@ -533,17 +501,17 @@ let attackAll = (newTime) =>
 
                 var multiplier;
                 var resistance
-                if ((currHunt["active"].attack + (defense * 2)) == 0)
+                if ((masterData["currHunt"]["active"].attack + (defense * 2)) == 0)
                 {
                     multiplier = 1;
                 }
                 else
                 {
-                    multiplier = (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)));
+                    multiplier = (masterData["currHunt"]["active"].attack / (masterData["currHunt"]["active"].attack + (defense * 2)));
                 }
                 resistance = 1 - multiplier;
                 
-                var damageDealt = Math.floor(currHunt["active"].attack * multiplier);
+                var damageDealt = Math.floor(masterData["currHunt"]["active"].attack * multiplier);
                 var reflectDmg = 0;
                 if (alivePlayers == 1) {
                     damageDealt = Math.floor(1.5 * damageDealt);
@@ -555,76 +523,76 @@ let attackAll = (newTime) =>
                 var luck = Math.floor((Math.random() * 100) + 1);
                 var chance = Math.floor(100 * resistance / 2.22);
                 if (luck <= chance) {
-                    reflectDmg = Math.floor(currHunt["active"].attack * (100 * (resistance / 10)));
-                    if (currHunt["active"].currentHP <= reflectDmg) 
+                    reflectDmg = Math.floor(masterData["currHunt"]["active"].attack * (100 * (resistance / 10)));
+                    if (masterData["currHunt"]["active"].currentHP <= reflectDmg) 
                     {
-                        reflectDmg = currHunt["active"].currentHP - 1;
+                        reflectDmg = masterData["currHunt"]["active"].currentHP - 1;
                     }
-                    currHunt["active"].currentHP -= reflectDmg;
+                    masterData["currHunt"]["active"].currentHP -= reflectDmg;
                     damageDealt = 0;
                     
-                    currHunt["active"].playerDamage[currHunt["active"].targets.indexOf(target)] += reflectDmg;
+                    masterData["currHunt"]["active"].playerDamage[masterData["currHunt"]["active"].targets.indexOf(target)] += reflectDmg;
                 }
 
-                userHunt[target].currentHP -= damageDealt;
-                if (userHunt[target].currentHP <= 0) {
-                    userHunt[target].deathTime = newTime.getTime();
-                    playersHit += userData[target].name + " takes " + damageDealt + " damage!\n";
-                    faints += userData[target].name + " has fainted!\n";
-                    currHunt["active"].deathCount++
+                masterData["userHunt"][target].currentHP -= damageDealt;
+                if (masterData["userHunt"][target].currentHP <= 0) {
+                    masterData["userHunt"][target].deathTime = newTime.getTime();
+                    playersHit += masterData["userData"][target].name + " takes " + damageDealt + " damage!\n";
+                    faints += masterData["userData"][target].name + " has fainted!\n";
+                    masterData["currHunt"]["active"].deathCount++
                 }
                 else if (damageDealt == 0) {
-                    playersHit += userData[target].name + " counters the attack, dealing " + reflectDmg.toLocaleString() + " damage!\n";
+                    playersHit += masterData["userData"][target].name + " counters the attack, dealing " + reflectDmg.toLocaleString() + " damage!\n";
                 }
                 else {
-                    playersHit += userData[target].name + " takes " + damageDealt.toLocaleString() + " damage!\n";
+                    playersHit += masterData["userData"][target].name + " takes " + damageDealt.toLocaleString() + " damage!\n";
                 }
                 count++;
             }
         }
-        currHunt["active"].lastAttack = newTime.getTime();
+        masterData["currHunt"]["active"].lastAttack = newTime.getTime();
 
         if (count > 0) {
             const embedMsg = new MessageEmbed();
             var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
+            for (let i = 0; i < masterData["currHunt"]["active"].difficulty; i++) {
                 stars += "★";
             }
             stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars + " - Attacks!");
-            embedMsg.setDescription(currHunt["active"].shoutout + "\n\n" + playersHit + "\n" + faints);
-            embedMsg.setImage(currHunt["active"].attackImage);
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+            embedMsg.setTitle(masterData["currHunt"]["active"].name + stars + " - Attacks!");
+            embedMsg.setDescription(masterData["currHunt"]["active"].shoutout + "\n\n" + playersHit + "\n" + faints);
+            embedMsg.setImage(masterData["currHunt"]["active"].attackImage);
+            embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
             embedMsg.setColor("49000F");
-            for (let i = 0; i < currHunt["active"].channels.length; i++) {
-                currHunt["active"].channels[i].send({ embeds: [embedMsg] });
+            for (let i = 0; i < masterData["currHunt"]["active"].channels.length; i++) {
+                masterData["currHunt"]["active"].channels[i].send({ embeds: [embedMsg] });
             }
         }
 
-        if (currHunt["active"].deathCount >= currHunt["active"].deathLimit && !currHunt["active"].retreated) {
+        if (masterData["currHunt"]["active"].deathCount >= masterData["currHunt"]["active"].deathLimit && !masterData["currHunt"]["active"].retreated) {
             const retreatMsg = new MessageEmbed();
             
-            currHunt["active"].retreated = true;
-            currHunt.lastSpawn = newTime.getTime();
-            currHunt.nextSpawn = currHunt.retreatTime;
-            currHunt.lastDifficulty.push(currHunt["active"].difficulty);
+            masterData["currHunt"]["active"].retreated = true;
+            masterData["currHunt"].lastSpawn = newTime.getTime();
+            masterData["currHunt"].nextSpawn = masterData["currHunt"].retreatTime;
+            masterData["currHunt"].lastDifficulty.push(masterData["currHunt"]["active"].difficulty);
 
             var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
+            for (let i = 0; i < masterData["currHunt"]["active"].difficulty; i++) {
                 stars += "★";
             }
             stars += ")"
-            retreatMsg.setTitle(currHunt["active"].name + stars + " - Retreats!");
-            retreatMsg.setDescription("After defeating " + currHunt["active"].deathCount + " players, " + currHunt["active"].name + " left the battlegrounds.");
-            retreatMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+            retreatMsg.setTitle(masterData["currHunt"]["active"].name + stars + " - Retreats!");
+            retreatMsg.setDescription("After defeating " + masterData["currHunt"]["active"].deathCount + " players, " + masterData["currHunt"]["active"].name + " left the battlegrounds.");
+            retreatMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP + "/" + masterData["currHunt"]["active"].maxHP);
             retreatMsg.setColor("FF0000");
 
-            let channels = currHunt["active"].channels;
+            let channels = masterData["currHunt"]["active"].channels;
             for (let i = 0; i < channels.length; i++) {
                 channels[i].send({ embeds: [retreatMsg] });
             }
-            var players = currHunt["active"].targets;
-            delete currHunt["active"];
+            var players = masterData["currHunt"]["active"].targets;
+            delete masterData["currHunt"]["active"];
             for (let i = 0; i < players.length; i++)
             {
                 updateStats(players[i])
@@ -640,7 +608,7 @@ helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAA
 helpMsg.setDescription('Use __!tp help__ for list of commands!');
 
 client.once('ready', () => {
-    console.log(savefile.startTime.toLocaleString());
+    console.log(masterData["savefile"].startTime.toLocaleString());
     console.log("TummyBot is online!");
     saveBeforeReset();
 });
@@ -702,101 +670,94 @@ client.on('messageCreate', message => {
             message.guild.roles.create({ name: 'guild' });
         }
 
-        var userData = masterData["userData"];
-        var userFish = masterData["userFish"];
-        var userGarden = masterData["userGarden"];
-        var userHunt = masterData["userHunt"];
-        var items = masterData["items"];
-        var userPet = masterData["userPet"];
-
         switch(command) {
             // Base Commands
             case 'help':
-                client.commands.get('help').execute(message, args, sender.id, userData, client);
+                client.commands.get('help').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'register':
-                client.commands.get('register').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, userPet, client);
+                client.commands.get('register').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["userPet"], client);
                 break;
             case 'uptime':
-                client.commands.get('uptime').execute(message, args, savefile);
+                client.commands.get('uptime').execute(message, args, masterData["savefile"]);
                 break;
             case 'leaderboard':
-                if (userData[sender.id])
-                    client.commands.get('leaderboard').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('leaderboard').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'b':
             case 'bal':
             case 'info':
             case 'profile':
             case 'balance':
-                if (userData[sender.id])
-                    client.commands.get('balance').execute(message, args, sender.id, userData, userFish, userGarden, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('balance').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], client);
                 break;
             case 'give':
-                if (userData[sender.id])
-                    client.commands.get('give').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('give').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'marry':
-                if (userData[sender.id])
-                    client.commands.get('marry').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('marry').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'divorce':
-                if (userData[sender.id])
-                    client.commands.get('divorce').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('divorce').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'scratch':
-                if (userData[sender.id])
-                    client.commands.get('scratch').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('scratch').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'beg':
-                if (userData[sender.id])
-                    client.commands.get('beg').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('beg').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'jamal':
-                if (userData[sender.id])
-                    client.commands.get('jamal').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('jamal').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'level':
-                if (userData[sender.id])
-                    client.commands.get('level').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('level').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'f':
             case 'fish':
-                if (userData[sender.id])
-                    client.commands.get('fish').execute(message, args, sender.id, userData, userFish, fishdex, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('fish').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterStorage["fishdex"], client);
                 break;
             case 'g':
             case 'garden':
-                if (userData[sender.id])
-                    client.commands.get('garden').execute(message, args, sender.id, userData, userGarden, gardendex, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('garden').execute(message, args, sender.id, masterData["userData"], masterData["userGarden"], masterStorage["gardendex"], client);
                 break;
             case 'bank':
-                if (userData[sender.id])
-                    client.commands.get('bank').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('bank').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'bj':
-                if (userData[sender.id])
-                    client.commands.get('bj').execute(message, args, sender.id, userData, blackjack, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('bj').execute(message, args, sender.id, masterData["userData"], masterData["blackjack"], client);
                 break;
             case 'fame':
-                if (userData[sender.id])
-                    client.commands.get('fame').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('fame').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'h':
             case 'hunt':
-                if (userData[sender.id])
-                    client.commands.get('hunt').execute(message, args, sender.id, userData, userHunt, monsterdex, currHunt, items, equips, scrolls, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('hunt').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterStorage["monsterdex"], masterData["currHunt"], masterData["items"], masterStorage["equips"], masterStorage["scrolls"], client);
                 break;
             case 'p':
             case 'pet':
-                if (userData[sender.id])
-                    client.commands.get('pet').execute(message, args, sender.id, userData, userPet, pets, client);
+                if (masterData["userData"][sender.id])
+                    client.commands.get('pet').execute(message, args, sender.id, masterData["userData"], masterData["userPet"], masterStorage["pets"], client);
                 break;
 // GM Commands ****************************************************************************************************************************
             case 'reload':
-                if (userData[sender.id])
+                if (masterData["userData"][sender.id])
                 {
-                    if (userData[sender.id].gm >= 1)
+                    if (masterData["userData"][sender.id].gm >= 1)
                     {
                         loadUserData();
                         const embedMsg = new MessageEmbed();
@@ -817,53 +778,53 @@ client.on('messageCreate', message => {
                 }
                 break;
             case 'reward':
-                if (userData[sender.id])
-                    client.gmcommands.get('reward').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('reward').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'rewardall':
-                if (userData[sender.id])
-                    client.gmcommands.get('rewardall').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('rewardall').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'spawntime':
-                if (userData[sender.id] && currHunt.lastSpawn)
-                    client.gmcommands.get('spawntime').execute(message, args, sender.id, userData, currHunt, client);
+                if (masterData["userData"][sender.id] && masterData["currHunt"].lastSpawn)
+                    client.gmcommands.get('spawntime').execute(message, args, sender.id, masterData["userData"], masterData["currHunt"], client);
                 break;
             case 'spawnboss':
-                if (userData[sender.id] && currHunt.lastSpawn)
-                    client.gmcommands.get('spawnboss').execute(message, args, sender.id, userData, currHunt, monsterdex, client);
+                if (masterData["userData"][sender.id] && masterData["currHunt"].lastSpawn)
+                    client.gmcommands.get('spawnboss').execute(message, args, sender.id, masterData["userData"], masterData["currHunt"], masterStorage["monsterdex"], client);
                 break;
             case 'spawnequip':
-                if (userData[sender.id])
-                    client.gmcommands.get('spawnequip').execute(message, args, sender.id, userData, userHunt, items, equips, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('spawnequip').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterData["items"], masterStorage["equips"], client);
                 break;
             case 'spawnscroll':
-                if (userData[sender.id])
-                    client.gmcommands.get('spawnscroll').execute(message, args, sender.id, userData, userHunt, scrolls, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('spawnscroll').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterStorage["scrolls"], client);
                 break;
             case 'droprate':
-                if (userData[sender.id])
-                    client.gmcommands.get('droprate').execute(message, args, sender.id, userData, currHunt, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('droprate').execute(message, args, sender.id, masterData["userData"], masterData["currHunt"], client);
                 break;
             case 'killboss':
-                if (userData[sender.id])
-                    client.gmcommands.get('killboss').execute(message, args, sender.id, userData, userHunt, currHunt, monsterdex, items, equips, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('killboss').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterData["currHunt"], masterStorage["monsterdex"], masterData["items"], masterStorage["equips"], client);
                 break;
             case 'banish':
-                if (userData[sender.id])
-                    client.gmcommands.get('banish').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, items, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('banish').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], client);
                 break;
             case 'registerall':
-                if (userData[sender.id]) {
-                    client.gmcommands.get('registerall').execute(message, args, sender.id, userData, userFish, userGarden, userHunt, userPet, client);
+                if (masterData["userData"][sender.id]) {
+                    client.gmcommands.get('registerall').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["userPet"], client);
                 }
                 break;
             case 'gm':
-                if (userData[sender.id])
-                    client.gmcommands.get('gm').execute(message, args, sender.id, userData, client);
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('gm').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'save':
-                if (userData[sender.id] && userData[sender.id].gm > 0) {
-                    client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs);
+                if (masterData["userData"][sender.id] && masterData["userData"][sender.id].gm > 0) {
+                    client.gmcommands.get('save').execute(masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], masterData["userPet"], masterStorage["config"], masterData["savefile"], masterStorage["s3"], masterStorage["userDataParams"], masterStorage["userFishParams"], masterStorage["userGardenParams"], masterStorage["userHuntParams"], masterStorage["itemsParams"], masterStorage["userPetParams"], fs);
                     const embedMsg = new MessageEmbed();
                     embedMsg.setTitle('Saved!');
                     embedMsg.setColor('B5EAFF');
@@ -873,7 +834,7 @@ client.on('messageCreate', message => {
                 }
                 break;
             case 'iv':
-                if (userData[sender.id] && userData[sender.id].gm > 0) {
+                if (masterData["userData"][sender.id] && masterData["userData"][sender.id].gm > 0) {
                     const embedMsg = new MessageEmbed();
                     embedMsg.setTitle('Mint and Scarlet!');
                     embedMsg.setColor('00FF00');
@@ -887,7 +848,7 @@ client.on('messageCreate', message => {
                 break;
         }
 
-        if (!userData[sender.id]) {
+        if (!masterData["userData"][sender.id]) {
             const embedMsg = new MessageEmbed();
             embedMsg.setTitle('New User!');
             embedMsg.setColor('FF0000');
@@ -895,62 +856,62 @@ client.on('messageCreate', message => {
             message.channel.send({ embeds: [embedMsg] });
         }
 
-        if (spawnMonster(newTime) && !currHunt["active"].channels.includes(message.channel)) {
-            currHunt["active"].channels.push(message.channel);
+        if (spawnMonster(newTime) && !masterData["currHunt"]["active"].channels.includes(message.channel)) {
+            masterData["currHunt"]["active"].channels.push(message.channel);
             let role = message.guild.roles.cache.find(role => role.name === "guild");
             var ping = "";
             const embedMsg = new MessageEmbed();
             var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
+            for (let i = 0; i < masterData["currHunt"]["active"].difficulty; i++) {
                 stars += "★";
             }
             stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars);
-            embedMsg.setDescription(currHunt["active"].entry);
-            embedMsg.setImage(currHunt["active"].image);
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString());
+            embedMsg.setTitle(masterData["currHunt"]["active"].name + stars);
+            embedMsg.setDescription(masterData["currHunt"]["active"].entry);
+            embedMsg.setImage(masterData["currHunt"]["active"].image);
+            embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString());
             embedMsg.setColor("49000F");
-            currHunt["active"].channels[0].send({ embeds: [embedMsg] });
+            masterData["currHunt"]["active"].channels[0].send({ embeds: [embedMsg] });
             if (role)
             {
                 ping = "<@&" + role + ">";
-                currHunt["active"].channels[0].send(ping);
+                masterData["currHunt"]["active"].channels[0].send(ping);
             }
         }
 
-        if (currHunt["active"] && newTime.getTime() - currHunt["active"].lastPlayerAttack >= 1000 * 60 * 10 
-            && newTime.getTime() - currHunt["active"].lastBossCheck >= 1000 * 15
-                && !currHunt["active"].retreated && currHunt["active"].currentHP > 0) 
+        if (masterData["currHunt"]["active"] && newTime.getTime() - masterData["currHunt"]["active"].lastPlayerAttack >= 1000 * 60 * 10 
+            && newTime.getTime() - masterData["currHunt"]["active"].lastBossCheck >= 1000 * 15
+                && !masterData["currHunt"]["active"].retreated && masterData["currHunt"]["active"].currentHP > 0) 
         {
             const embedMsg = new MessageEmbed();
-            currHunt["active"].retreated = true;
-            currHunt.lastSpawn = newTime.getTime();
-            currHunt.nextSpawn = currHunt.retreatTime;
-            currHunt.lastDifficulty.push(currHunt["active"].difficulty);
+            masterData["currHunt"]["active"].retreated = true;
+            masterData["currHunt"].lastSpawn = newTime.getTime();
+            masterData["currHunt"].nextSpawn = masterData["currHunt"].retreatTime;
+            masterData["currHunt"].lastDifficulty.push(masterData["currHunt"]["active"].difficulty);
 
             var stars = " (";
-            for (let i = 0; i < currHunt["active"].difficulty; i++) {
+            for (let i = 0; i < masterData["currHunt"]["active"].difficulty; i++) {
                 stars += "★";
             }
             stars += ")"
-            embedMsg.setTitle(currHunt["active"].name + stars + " - Retreats!");
-            embedMsg.setDescription(currHunt["active"].name + " got bored and left the battlegrounds.");
-            embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString());
+            embedMsg.setTitle(masterData["currHunt"]["active"].name + stars + " - Retreats!");
+            embedMsg.setDescription(masterData["currHunt"]["active"].name + " got bored and left the battlegrounds.");
+            embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString());
             embedMsg.setColor("FF0000");
 
-            let channels = currHunt["active"].channels;
+            let channels = masterData["currHunt"]["active"].channels;
             for (let i = 0; i < channels.length; i++) {
                 channels[i].send({ embeds: [embedMsg] });
             }
-            var players = currHunt["active"].targets;
-            delete currHunt["active"];
+            var players = masterData["currHunt"]["active"].targets;
+            delete masterData["currHunt"]["active"];
             for (let i = 0; i < players.length; i++)
             {
                 updateStats(players[i]);
             }
         }
 
-        if (currHunt["active"] && !currHunt["active"].retreated) {
+        if (masterData["currHunt"]["active"] && !masterData["currHunt"]["active"].retreated) {
             attackAll(newTime);
         }
 
@@ -965,16 +926,9 @@ client.on('messageCreate', message => {
         console.log(err);
     }
 
-    if (newTime.getTime() - savefile.lastSave.getTime() >= (1000 * 60 * 60)) {
-        client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
+    if (newTime.getTime() - masterData["savefile"].lastSave.getTime() >= (1000 * 60 * 60)) {
+        client.gmcommands.get('save').execute(masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], masterData["userPet"], masterStorage["config"], masterData["savefile"], masterStorage["s3"], masterStorage["userDataParams"], masterStorage["userFishParams"], masterStorage["userGardenParams"], masterStorage["userHuntParams"], masterStorage["itemsParams"], masterStorage["userPetParams"]);
     }
-
-    masterData["userData"] = userData;
-    masterData["userFish"] = userFish;
-    masterData["userGarden"] = userGarden;
-    masterData["userHunt"] = userHunt;
-    masterData["items"] = items;
-    masterData["userPet"] = userPet;
 });
 
 process.on('unhandledRejection', (reason, promise) => {
