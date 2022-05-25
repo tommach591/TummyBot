@@ -424,9 +424,9 @@ module.exports = {
                             fishCaught = masterStorage["fishdex"][onestar[Math.floor(Math.random() * onestar.length)]];
                         }
 
-                        if (!masterData["userFish"][userid].masterStorage["fishdex"].includes(fishCaught.id)) {
-                            masterData["userFish"][userid].masterStorage["fishdex"].push(fishCaught.id);
-                            masterData["userFish"][userid].masterStorage["fishdex"].sort((firstEl, secondEl) => { 
+                        if (!masterData["userFish"][userid].fishdex.includes(fishCaught.id)) {
+                            masterData["userFish"][userid].fishdex.push(fishCaught.id);
+                            masterData["userFish"][userid].fishdex.sort((firstEl, secondEl) => { 
                                 if (Number(firstEl) < Number(secondEl)) {
                                     return -1;
                                 }
@@ -616,7 +616,7 @@ module.exports = {
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];
-                    if (!isNaN(Number(selected)) && masterStorage["fishdex"][selected] && masterData["userFish"][userid].masterStorage["fishdex"].includes(selected)) {
+                    if (!isNaN(Number(selected)) && masterStorage["fishdex"][selected] && masterData["userFish"][userid].fishdex.includes(selected)) {
                         var stars = "";
                         if (sixstar.includes(masterStorage["fishdex"][selected].id)) {
                             stars = " (★★★★★★)";
@@ -661,7 +661,7 @@ module.exports = {
                             count = 0;
                             fishes[index] = "";
                         }
-                        if (masterData["userFish"][userid].masterStorage["fishdex"].includes(i.toString())) {
+                        if (masterData["userFish"][userid].fishdex.includes(i.toString())) {
                             fishes[index] += "#" + masterStorage["fishdex"][i].id + ". " + masterStorage["fishdex"][i].name + "\n";
                         }
                         else {
