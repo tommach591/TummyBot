@@ -645,47 +645,40 @@ client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
 
-    var userData = masterData["userData"];
-    var userFish = masterData["userFish"];
-    var userGarden = masterData["userGarden"];
-    var userHunt = masterData["userHunt"];
-    var items = masterData["items"];
-    var userPet = masterData["userPet"];
-
     try {
-        if (userData == "") {
+        if (masterData["userData"] == "") {
             if (dataPromise)
-                userData = JSON.parse(dataPromise);
+                masterData["userData"] = JSON.parse(dataPromise);
             else
                 return;
         }
-        if (userFish == "") {
+        if (masterData["userFish"] == "") {
             if (fishPromise)
-                userFish = JSON.parse(fishPromise);
+                masterData["userFish"] = JSON.parse(fishPromise);
             else
                 return;
         }
-        if (userGarden == "") {
+        if (masterData["userGarden"] == "") {
             if (gardenPromise)
-                userGarden = JSON.parse(gardenPromise);
+                masterData["userGarden"] = JSON.parse(gardenPromise);
             else
                 return;
         }
-        if (userHunt == "") {
+        if (masterData["userHunt"] == "") {
             if (huntPromise)
-                userHunt = JSON.parse(huntPromise);
+                masterData["userHunt"] = JSON.parse(huntPromise);
             else
                 return;
         }
-        if (items == "") {
+        if (masterData["items"] == "") {
             if (itemsPromise)
-                items = JSON.parse(itemsPromise);
+                masterData["items"] = JSON.parse(itemsPromise);
             else
                 return;
         }
-        if (userPet == "") {
+        if (masterData["userPet"] == "") {
             if (petPromise)
-                userPet = JSON.parse(petPromise);
+                masterData["userPet"] = JSON.parse(petPromise);
             else
                 return;
         }
@@ -704,6 +697,16 @@ client.on('messageCreate', message => {
         {
             message.guild.roles.create({ name: 'guild' });
         }
+
+        var userData = masterData["userData"];
+        var userFish = masterData["userFish"];
+        var userGarden = masterData["userGarden"];
+        var userHunt = masterData["userHunt"];
+        var items = masterData["items"];
+        var userPet = masterData["userPet"];
+
+        var currHunt = masterData["currHunt"];
+        var savefile = masterData["savefile"];
 
         switch(command) {
             // Base Commands
