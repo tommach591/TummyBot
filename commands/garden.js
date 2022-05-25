@@ -2,7 +2,7 @@ module.exports = {
     name: 'garden',
     description: "Garden for hot waifus.",
 
-    execute(message, args, userid, userData, userGarden, gardendex, client) {
+    execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -29,7 +29,7 @@ module.exports = {
             case 'info':
                 var target = client.users.cache.get(userid);
                 embedMsg.setTitle('Gardening Info');
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setThumbnail('https://i.imgur.com/xuAGOau.png');
                 for (let i = 0; i < 3; i++) {
                     var progress = "";
@@ -45,15 +45,15 @@ module.exports = {
                             pot = "__Pot Three__ :potted_plant:";
                             break;
                     }
-                    if (userGarden[userid].pots[i] == "-1") {
+                    if (masterData["userGarden"][userid].pots[i] == "-1") {
                         progress = "Progress:⠀⠀⠀⠀⠀⠀⠀Unavailable" + "\nTime: ⠀⠀⠀⠀⠀⠀⠀⠀⠀00:00:00\n";
                     }
-                    else if (userGarden[userid].pots[i] == "0") {
+                    else if (masterData["userGarden"][userid].pots[i] == "0") {
                         progress = "Progress:⠀⠀⠀⠀⠀⠀⠀Empty" + "\nTime: ⠀⠀⠀⠀⠀⠀⠀⠀⠀00:00:00\n";
                     }
                     else {
                         var newDate = new Date();
-                        var timeDiff = newDate.getTime() - userGarden[userid].potTime[i];
+                        var timeDiff = newDate.getTime() - masterData["userGarden"][userid].potTime[i];
                         var growthTime = 1000 * 60 * 60 * 8;
                         if (timeDiff < growthTime) {
                             var hours = Math.floor((growthTime - timeDiff) / (1000 * 60 * 60));
@@ -84,8 +84,8 @@ module.exports = {
                 var cost = 100;
                 var target = client.users.cache.get(userid);
                 embedMsg.setTitle('Gardening Info');
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
-                if (userData[userid].points < cost) {
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
+                if (masterData["userData"][userid].points < cost) {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription("Not enough points!");
@@ -97,7 +97,7 @@ module.exports = {
                     proposalMsg.setTitle('Gardening Info!');
                     proposalMsg.setColor('FFF000');
                     proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
-                    proposalMsg.setDescription("Would " + userData[userid].name + " like to plant a mystery seed for " + cost.toLocaleString() + " points?");
+                    proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to plant a mystery seed for " + cost.toLocaleString() + " points?");
                     proposalMsg.setFooter("Harvest in 8 hours for profit!");
 
                     let proposal; 
@@ -116,15 +116,15 @@ module.exports = {
                                 if (reaction.emoji.name === '👍') {
                                     var planted = false;
                                     var keys = [];
-                                    for (var k in gardendex) {
+                                    for (var k in masterStorage["gardendex"]) {
                                         keys.push(k);
                                     }
                                     var newDate = new Date();
                                     for (let i = 0; i < 3; i++) {
-                                        if (userGarden[userid].pots[i] == "0") {
-                                            userGarden[userid].pots[i] = keys[Math.floor(Math.random() * keys.length)];
-                                            userGarden[userid].potTime[i] = newDate.getTime();
-                                            userData[userid].points -= cost;
+                                        if (masterData["userGarden"][userid].pots[i] == "0") {
+                                            masterData["userGarden"][userid].pots[i] = keys[Math.floor(Math.random() * keys.length)];
+                                            masterData["userGarden"][userid].potTime[i] = newDate.getTime();
+                                            masterData["userData"][userid].points -= cost;
                                             planted = true;
                                             break;
                                         }
@@ -149,14 +149,14 @@ module.exports = {
                                     embedMsg.setTitle('Declined!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
-                                    embedMsg.setDescription(userData[userid].name + " declined!");
+                                    embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                             })
                             .catch(collected => {
                                 embedMsg.setTitle('Fail!');
                                 embedMsg.setColor('FF0000');
-                                embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                 embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                 message.channel.send({ embeds: [embedMsg] });
                             });
@@ -166,18 +166,18 @@ module.exports = {
                 break;
             case 'harvest':
                 var profit = 0;
-                var reward = 200 * Math.pow(userData[userid].income, userData[userid].income - 1);
+                var reward = 200 * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1);
                 var newPlant = [];
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();
-                    var timeDiff = newDate.getTime() - userGarden[userid].potTime[i];
+                    var timeDiff = newDate.getTime() - masterData["userGarden"][userid].potTime[i];
                     var growthTime = 1000 * 60 * 60 * 8;
 
-                    if (userGarden[userid].pots[i] != "0" && userGarden[userid].pots[i] != "-1" && timeDiff >= growthTime) {
-                        var plantRaised = userGarden[userid].pots[i];
-                        if (!userGarden[userid].gardendex.includes(plantRaised)) {
-                            userGarden[userid].gardendex.push(plantRaised);
-                            userGarden[userid].gardendex.sort((firstEl, secondEl) => { 
+                    if (masterData["userGarden"][userid].pots[i] != "0" && masterData["userGarden"][userid].pots[i] != "-1" && timeDiff >= growthTime) {
+                        var plantRaised = masterData["userGarden"][userid].pots[i];
+                        if (!masterData["userGarden"][userid].gardendex.includes(plantRaised)) {
+                            masterData["userGarden"][userid].gardendex.push(plantRaised);
+                            masterData["userGarden"][userid].gardendex.sort((firstEl, secondEl) => { 
                                 if (Number(firstEl) < Number(secondEl)) {
                                     return -1;
                                 }
@@ -188,7 +188,7 @@ module.exports = {
                             });
                             newPlant.push(plantRaised);
                         }
-                        userGarden[userid].pots[i] = "0";
+                        masterData["userGarden"][userid].pots[i] = "0";
                         profit += reward;
                     }
                 }
@@ -202,14 +202,14 @@ module.exports = {
                     embedMsg.setTitle('Successfully Harvested!');
                     embedMsg.setColor('00FF00');
                     embedMsg.setDescription("Your harvest earned you " + profit.toLocaleString() + " points!");
-                    userData[userid].points += profit;
+                    masterData["userData"][userid].points += profit;
                     message.channel.send({ embeds: [embedMsg] });
                     if (newPlant.length != 0) {
                         for (let i = 0; i < newPlant.length; i++) {
                             const newPlantMsg = new MessageEmbed();
                             newPlantMsg.setTitle("**New Plant #" + newPlant[i] + "**");
-                            newPlantMsg.setDescription("Omg (oh my god) is that a " + gardendex[newPlant[i]].name + "!?\n\n**Gardendex Entry** \n" + gardendex[newPlant[i]].info);
-                            newPlantMsg.setThumbnail(gardendex[newPlant[i]].image);
+                            newPlantMsg.setDescription("Omg (oh my god) is that a " + masterStorage["gardendex"][newPlant[i]].name + "!?\n\n**Gardendex Entry** \n" + masterStorage["gardendex"][newPlant[i]].info);
+                            newPlantMsg.setThumbnail(masterStorage["gardendex"][newPlant[i]].image);
                             newPlantMsg.setFooter("New plant added to the Gardendex!");
                             message.channel.send({ embeds: [newPlantMsg] });
                         }
@@ -220,7 +220,7 @@ module.exports = {
                 var cost = 0;
                 var potIndex;
                 for (let i = 1; i < 3; i++) {
-                    if (userGarden[userid].pots[i] == "-1") {
+                    if (masterData["userGarden"][userid].pots[i] == "-1") {
                         if (i == 1) {
                             cost = 5000;
                             potIndex = i;
@@ -240,12 +240,12 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    if (userData[userid].points >= cost) {
+                    if (masterData["userData"][userid].points >= cost) {
                         const proposalMsg = new MessageEmbed();
                         proposalMsg.setTitle('Buying Pot!');
                         proposalMsg.setColor('FFF000');
                         proposalMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to buy a new pot for " + cost.toLocaleString() + " points?");
+                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to buy a new pot for " + cost.toLocaleString() + " points?");
     
                         let proposal; 
                         message.channel.send({ embeds: [proposalMsg] }).then(
@@ -261,11 +261,11 @@ module.exports = {
                                     collected => {
                                     const reaction = collected.first();
                                     if (reaction.emoji.name === '👍') {
-                                        userData[userid].points -= cost;
-                                        userGarden[userid].pots[potIndex] = "0";
+                                        masterData["userData"][userid].points -= cost;
+                                        masterData["userGarden"][userid].pots[potIndex] = "0";
                                         embedMsg.setTitle('Congratz!');
                                         embedMsg.setColor('00FF00');
-                                        embedMsg.setDescription(userData[userid].name + " bought a new pot!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " bought a new pot!");
                                         embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                         if (potIndex == 1)
                                             embedMsg.setFooter('Next pot: 5,000 points');
@@ -277,7 +277,7 @@ module.exports = {
                                         embedMsg.setTitle('Declined!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
-                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                         if (potIndex == 0)
                                             embedMsg.setFooter('Next pot: 3,000 points');
                                         else 
@@ -288,7 +288,7 @@ module.exports = {
                                 .catch(collected => {
                                     embedMsg.setTitle('Fail!');
                                     embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                    embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                     embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                     if (potIndex == 0)
                                         embedMsg.setFooter('Next pot: 3,000 points');
@@ -313,18 +313,18 @@ module.exports = {
                 }
                 break;
             case 'dex':
-            case 'gardendex':
+            case 'masterStorage["gardendex"]':
                 var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Gardendex');
                 embedMsg.setThumbnail('https://i.imgur.com/CCkcmSz.png');
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];
-                    if (!isNaN(Number(selected)) && gardendex[selected] && userGarden[userid].gardendex.includes(selected)) {
-                        embedMsg.setDescription("#" + gardendex[selected].id + ". " + gardendex[selected].name + "\n");
-                        embedMsg.setThumbnail(gardendex[selected].image);
-                        embedMsg.addField('Gardendex Entry', "" + gardendex[selected].info);
+                    if (!isNaN(Number(selected)) && masterStorage["gardendex"][selected] && masterData["userGarden"][userid].gardendex.includes(selected)) {
+                        embedMsg.setDescription("#" + masterStorage["gardendex"][selected].id + ". " + masterStorage["gardendex"][selected].name + "\n");
+                        embedMsg.setThumbnail(masterStorage["gardendex"][selected].image);
+                        embedMsg.addField('Gardendex Entry', "" + masterStorage["gardendex"][selected].info);
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
@@ -337,7 +337,7 @@ module.exports = {
                     var index = 0;
                     var count = 0;
                     var keys = [];
-                    for (var k in gardendex) {
+                    for (var k in masterStorage["gardendex"]) {
                         keys.push(k);
                     }
                     for (let i = 1; i < keys.length + 1; i++) {
@@ -346,11 +346,11 @@ module.exports = {
                             count = 0;
                             plants[index] = "";
                         }
-                        if (userGarden[userid].gardendex.includes(i.toString())) {
-                            plants[index] += "#" + gardendex[i].id + ". " + gardendex[i].name + "\n";
+                        if (masterData["userGarden"][userid].gardendex.includes(i.toString())) {
+                            plants[index] += "#" + masterStorage["gardendex"][i].id + ". " + masterStorage["gardendex"][i].name + "\n";
                         }
                         else {
-                            plants[index] += "#" + gardendex[i].id + ". ???\n";
+                            plants[index] += "#" + masterStorage["gardendex"][i].id + ". ???\n";
                         }
                         count++;
                     }
@@ -364,7 +364,7 @@ module.exports = {
                     embedMsg
                         .setFooter(`Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
-                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Gardendex')
                         .setThumbnail('https://i.imgur.com/CCkcmSz.png')
                         .setColor('FFF000');
@@ -377,7 +377,7 @@ module.exports = {
                             const collector = msg.createReactionCollector({ filter, time: 1000 * 60 * 120 });
     
                             collector.on('collect', r => {
-                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                 embedMsg.setTitle('Gardendex');
                                 embedMsg.setThumbnail('https://i.imgur.com/CCkcmSz.png');
                                 embedMsg.setColor('FFF000');

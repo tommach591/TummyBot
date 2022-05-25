@@ -2,7 +2,7 @@ module.exports = {
     name: 'bank',
     description: "A way to prevent you guys from losing all your money from gambling.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, masterData, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -10,7 +10,7 @@ module.exports = {
 
         let updateBank = (id) => {
             var newDate = new Date();
-            var timeDiff = newDate.getTime() - userData[id].bankTick;
+            var timeDiff = newDate.getTime() - masterData["userData"][id].bankTick;
             var tickTime = 1000 * 60 * 60;
 
             if (timeDiff >= tickTime) {
@@ -18,35 +18,35 @@ module.exports = {
                 for (let i = 0; i < totalTicks; i++) {
                     var addBalance = 0;
                     var currentBalance = 0;
-                    if (userData[id].married != "" && userData[userData[id].married]) {
-                        currentBalance = userData[id].bank + Math.floor(userData[userData[id].married].bank / 2);
+                    if (masterData["userData"][id].married != "" && masterData["userData"][masterData["userData"][id].married]) {
+                        currentBalance = masterData["userData"][id].bank + Math.floor(masterData["userData"][masterData["userData"][id].married].bank / 2);
                     }
                     else {
-                        currentBalance = userData[id].bank;
+                        currentBalance = masterData["userData"][id].bank;
                     }
     
                     addBalance = Math.floor(currentBalance * 0.01 * Math.random() * Math.random() * Math.random());
 
-                    userData[id].bank += addBalance;
+                    masterData["userData"][id].bank += addBalance;
                 }
 
-                userData[id].bankTick = newDate.getTime() - (timeDiff % tickTime);
+                masterData["userData"][id].bankTick = newDate.getTime() - (timeDiff % tickTime);
             }
 
-            if (userData[id].married != "" && userData[userData[id].married]) {
-                var spouseTimeDiff = newDate.getTime() - userData[userData[id].married].bankTick
+            if (masterData["userData"][id].married != "" && masterData["userData"][masterData["userData"][id].married]) {
+                var spouseTimeDiff = newDate.getTime() - masterData["userData"][masterData["userData"][id].married].bankTick
                 if (spouseTimeDiff >= tickTime) {
                     var totalTicks = Math.floor(timeDiff / tickTime);
                     for (let i = 0; i < totalTicks; i++) {
                         var addBalance = 0;
-                        var currentBalance = userData[id].bank + Math.floor(userData[userData[id].married].bank / 2);
+                        var currentBalance = masterData["userData"][id].bank + Math.floor(masterData["userData"][masterData["userData"][id].married].bank / 2);
         
                         addBalance = Math.floor(currentBalance * 0.01 * Math.random() * Math.random() * Math.random());
 
-                        userData[userData[id].married].bank += addBalance;
+                        masterData["userData"][masterData["userData"][id].married].bank += addBalance;
                     }
 
-                    userData[userData[id].married].bankTick = newDate.getTime() - (timeDiff % tickTime);
+                    masterData["userData"][masterData["userData"][id].married].bankTick = newDate.getTime() - (timeDiff % tickTime);
                 }
             }
         }
@@ -78,13 +78,13 @@ module.exports = {
                 }
                 else {
                     var target = client.users.cache.get(userid);
-                    embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setThumbnail("https://i.imgur.com/jxuwNmo.png");
 
                     var amount;
                     if (args[1] == "all")
                     {
-                        amount = userData[userid].points;
+                        amount = masterData["userData"][userid].points;
                     }
                     else
                     {
@@ -92,28 +92,28 @@ module.exports = {
                     }
                     
                     if (!isNaN(amount)) {
-                        if (userData[userid].points >= amount && amount > 0) {
+                        if (masterData["userData"][userid].points >= amount && amount > 0) {
 
                             var newDate = new Date();
 
-                            userData[userid].points -= amount;
-                            userData[userid].bank += amount;
+                            masterData["userData"][userid].points -= amount;
+                            masterData["userData"][userid].bank += amount;
                             
-                            userData[userid].bankTick = newDate.getTime();
+                            masterData["userData"][userid].bankTick = newDate.getTime();
 
-                            if (userData[userid].married != "" && userData[userData[userid].married]) {
-                                userData[userData[userid].married].bankTick = newDate.getTime();
+                            if (masterData["userData"][userid].married != "" && masterData["userData"][masterData["userData"][userid].married]) {
+                                masterData["userData"][masterData["userData"][userid].married].bankTick = newDate.getTime();
                             }
 
                             embedMsg.setTitle('Success!');
                             embedMsg.setColor('00FF00');
-                            embedMsg.setDescription(userData[userid].name + " deposited " + amount.toLocaleString() + " point(s) into the bank!");
+                            embedMsg.setDescription(masterData["userData"][userid].name + " deposited " + amount.toLocaleString() + " point(s) into the bank!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + amount.toLocaleString() + " point(s)!");
+                            embedMsg.setDescription(masterData["userData"][userid].name + " does not have " + amount.toLocaleString() + " point(s)!");
                             embedMsg.setFooter("Maybe you would have enough if you stopped spamming blackjack.");
                             message.channel.send({ embeds: [embedMsg] });
                         }
@@ -135,13 +135,13 @@ module.exports = {
                 }
                 else {
                     var target = client.users.cache.get(userid);
-                    embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setThumbnail("https://i.imgur.com/jxuwNmo.png");
 
                     var amount;
                     if (args[1] == "all")
                     {
-                        amount = userData[userid].bank;
+                        amount = masterData["userData"][userid].bank;
                     }
                     else
                     {
@@ -149,27 +149,27 @@ module.exports = {
                     }
 
                     if (!isNaN(amount)) {
-                        if (userData[userid].bank >= amount && amount > 0) {
+                        if (masterData["userData"][userid].bank >= amount && amount > 0) {
 
                             var newDate = new Date();
 
-                            userData[userid].bank -= amount;
-                            userData[userid].points += amount;
-                            userData[userid].bankTick = newDate.getTime();
+                            masterData["userData"][userid].bank -= amount;
+                            masterData["userData"][userid].points += amount;
+                            masterData["userData"][userid].bankTick = newDate.getTime();
 
-                            if (userData[userid].married != "" && userData[userData[userid].married]) {
-                                userData[userData[userid].married].bankTick = newDate.getTime();
+                            if (masterData["userData"][userid].married != "" && masterData["userData"][masterData["userData"][userid].married]) {
+                                masterData["userData"][masterData["userData"][userid].married].bankTick = newDate.getTime();
                             }
 
                             embedMsg.setTitle('Success!');
                             embedMsg.setColor('00FF00');
-                            embedMsg.setDescription(userData[userid].name + " withdrew " + amount.toLocaleString() + " point(s) from the bank!");
+                            embedMsg.setDescription(masterData["userData"][userid].name + " withdrew " + amount.toLocaleString() + " point(s) from the bank!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + amount.toLocaleString() + " point(s) in the bank!");
+                            embedMsg.setDescription(masterData["userData"][userid].name + " does not have " + amount.toLocaleString() + " point(s) in the bank!");
                             embedMsg.setFooter("Maybe you would have enough if you stopped spamming blackjack.");
                             message.channel.send({ embeds: [embedMsg] });
                         }
@@ -184,25 +184,25 @@ module.exports = {
                 break;
             default:
                 var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setThumbnail("https://i.imgur.com/jxuwNmo.png");
                 embedMsg.setColor('FFF000');
                 embedMsg.setFooter('Bank tick resets on withdraw and deposit from either you or your spouse.');
 
-                embedMsg.addField("__Bank:__  :coin: ⠀⠀⠀⠀", "" + userData[userid].bank.toLocaleString() + "\n", true);
+                embedMsg.addField("__Bank:__  :coin: ⠀⠀⠀⠀", "" + masterData["userData"][userid].bank.toLocaleString() + "\n", true);
 
-                if (userData[userid].married != "" && userData[userData[userid].married]) {
-                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀", userData[userData[userid].married].bank.toLocaleString() + "\n", true);
+                if (masterData["userData"][userid].married != "" && masterData["userData"][masterData["userData"][userid].married]) {
+                    embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀", masterData["userData"][masterData["userData"][userid].married].bank.toLocaleString() + "\n", true);
                 }
                 else {
                     embedMsg.addField("__Spouse's Bank:__  :couple: ⠀⠀",  "*Not Married*\n", true);
                 }
 
                 var newDate = new Date();
-                var timeDiff = newDate.getTime() - userData[userid].bankTick;
+                var timeDiff = newDate.getTime() - masterData["userData"][userid].bankTick;
                 var tickTime = 1000 * 60 * 60;
 
-                if (timeDiff < tickTime && ((userData[userid].bank != 0) || (userData[userid].married != "" && userData[userData[userid].married] && (userData[userData[userid].married].bank != 0)))) {
+                if (timeDiff < tickTime && ((masterData["userData"][userid].bank != 0) || (masterData["userData"][userid].married != "" && masterData["userData"][masterData["userData"][userid].married] && (masterData["userData"][masterData["userData"][userid].married].bank != 0)))) {
                     var hours = Math.floor((tickTime - timeDiff) / (1000 * 60 * 60));
                     var min = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) / (1000 * 60));
                     var sec = Math.floor(((tickTime - timeDiff) % (1000 * 60 * 60)) % (1000 * 60) / (1000));

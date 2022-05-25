@@ -727,11 +727,11 @@ client.on('messageCreate', message => {
             case 'g':
             case 'garden':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('garden').execute(message, args, sender.id, masterData["userData"], masterData["userGarden"], masterStorage["gardendex"], client);
+                    client.commands.get('garden').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
             case 'bank':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('bank').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('bank').execute(message, args, sender.id, masterData, client);
                 break;
             case 'bj':
                 if (masterData["userData"][sender.id])
