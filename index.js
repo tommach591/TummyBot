@@ -289,6 +289,7 @@ let loadUserData = () =>
 
 let updateBalance = (id) =>
 {
+    var userData = masterData["userData"];
     if (userData[id]) {
         var timeDiff = newTime.getTime() - userData[id].incomeTime;
         var incomeCD = 1000 * 60; // 1min
@@ -317,6 +318,8 @@ let updateBalance = (id) =>
             userData[id].points += Math.floor(timeDiff / incomeCD) * income;
             userData[id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
         }
+
+        masterData["userData"] = userData;
     }
 }
 
@@ -704,9 +707,6 @@ client.on('messageCreate', message => {
         var userHunt = masterData["userHunt"];
         var items = masterData["items"];
         var userPet = masterData["userPet"];
-
-        var currHunt = masterData["currHunt"];
-        var savefile = masterData["savefile"];
 
         switch(command) {
             // Base Commands
