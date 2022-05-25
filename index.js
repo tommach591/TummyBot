@@ -173,7 +173,39 @@ currHunt.dropRate = currHunt.baseDropRate;
 currHunt.dropDuration = 0;
 currHunt.dropRateStart = 0;
 
-let saveBeforeReset = () => {
+var masterData = JSON.parse("{}");
+var masterStorage = JSON.parse("{}");
+
+masterData["userData"] = userData;
+masterData["userFish"] = userFish;
+masterData["userGarden"] = userGarden;
+masterData["userHunt"] = userHunt;
+masterData["items"] = items;
+masterData["userPet"] = userPet;
+masterData["blackjack"] = blackjack;
+masterData["currHunt"] = currHunt;
+masterData["savefile"] = savefile;
+
+masterStorage["config"] = config;
+masterStorage["fishdex"] = fishdex;
+masterStorage["gardendex"] = gardendex;
+masterStorage["monsterdex"] = monsterdex;
+masterStorage["equips"] = equips;
+masterStorage["scrolls"] = scrolls;
+masterStorage["pets"] = pets;
+masterStorage["fs"] = fs;
+masterStorage["client"] = client;
+masterStorage["s3"] = s3;
+masterStorage["userDataParams"] = userDataParams;
+masterStorage["userFishParams"] = userFishParams;
+masterStorage["userGardenParams"] = userGardenParams;
+masterStorage["userHuntParams"] = userHuntParams;
+masterStorage["itemsParams"] = itemsParams;
+masterStorage["userPetParams"] = userPetParams;
+
+let saveBeforeReset = () => 
+{
+    userData = masterData["userData"];
     var resetTime = (1000 * 60 * 60 * 23) + (1000 * 60 * 55);
     setTimeout(
         function() {
@@ -187,15 +219,15 @@ let saveBeforeReset = () => {
 
 let loadUserData = () => 
 {
-    userData = "";
-    userFish = "";
-    userGarden = "";
-    userHunt = "";
-    items = "";
-    userPet = "";
+    masterData["userData"] = "";
+    masterData["userFish"] = "";
+    masterData["userGarden"] = "";
+    masterData["userHunt"] = "";
+    masterData["items"] = "";
+    masterData["userPet"] = "";
 
     dataPromise = null;
-    getObject(userDataParams).then(
+    getObject(masterStorage["userDataParams"]).then(
         function(result) {
             dataPromise = result;
         },
@@ -205,7 +237,7 @@ let loadUserData = () =>
     )
 
     fishPromise = null;
-    getObject(userFishParams).then(
+    getObject(masterStorage["userFishParams"]).then(
         function(result) {
             fishPromise = result;
         },
@@ -215,7 +247,7 @@ let loadUserData = () =>
     )
 
     gardenPromise = null;
-    getObject(userGardenParams).then(
+    getObject(masterStorage["userGardenParams"]).then(
         function(result) {
             gardenPromise = result;
         },
@@ -225,7 +257,7 @@ let loadUserData = () =>
     )
 
     huntPromise = null;
-    getObject(userHuntParams).then(
+    getObject(masterStorage["userHuntParams"]).then(
         function(result) {
             huntPromise = result;
         },
@@ -235,7 +267,7 @@ let loadUserData = () =>
     )
 
     itemsPromise = null;
-    getObject(itemsParams).then(
+    getObject(masterStorage["itemsParams"]).then(
         function(result) {
             itemsPromise = result;
         },
@@ -245,7 +277,7 @@ let loadUserData = () =>
     )
 
     petPromise = null;
-    getObject(userPetParams).then(
+    getObject(masterStorage["userPetParams"]).then(
         function(result) {
             petPromise = result;
         },
@@ -255,19 +287,108 @@ let loadUserData = () =>
     )
 }
 
-client.once('ready', () => {
-    console.log(savefile.startTime.toLocaleString());
-    console.log("TummyBot is online!");
-    saveBeforeReset();
-});
+let updateBalance = (id) =>
+{
+    if (userData[id]) {
+        var timeDiff = newTime.getTime() - userData[id].incomeTime;
+        var incomeCD = 1000 * 60; // 1min
+        var income = 1;
+        switch (userData[id].income) {
+            case 1:
+                income = 1;
+                break;
+            case 2:
+                income = 2;
+                break;
+            case 3:
+                income = 3;
+                break;
+            case 4:
+                income = 25;
+                break;
+            case 5:
+                income = 250;
+                break;
+            case 6:
+                income = 500000;
+                break;
+        }
+        if (timeDiff >= incomeCD) {
+            userData[id].points += Math.floor(timeDiff / incomeCD) * income;
+            userData[id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
+        }
+    }
+}
 
-const helpMsg = new MessageEmbed();
-helpMsg.setTitle('Invalid command!');
-helpMsg.setColor('FF0000');
-helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
-helpMsg.setDescription('Use __!tp help__ for list of commands!');
+let updateStats = (id) => {
+    weapon = items[userHunt[id].weapon];
+    armor = items[userHunt[id].armor];
+    accessory = items[userHunt[id].accessory];
 
-let spawnMonster = (newTime) => {
+    maxHP = userHunt[id].maxHP;
+    attack = userHunt[id].attack;
+    magic = userHunt[id].magic;
+    defense = userHunt[id].defense;
+    speed = userHunt[id].speed;
+
+    if (weapon.name != "Nothing") {
+        maxHP += weapon.maxHP + equips[weapon.name].maxHP;
+        attack += weapon.attack + equips[weapon.name].attack;
+        magic += weapon.magic + equips[weapon.name].magic;
+        defense += weapon.defense + equips[weapon.name].defense;
+        speed += weapon.speed + equips[weapon.name].speed;
+    }
+
+    if (armor.name != "Nothing") {
+        maxHP += armor.maxHP + equips[armor.name].maxHP;
+        attack += armor.attack + equips[armor.name].attack;
+        magic += armor.magic + equips[armor.name].magic;
+        defense += armor.defense + equips[armor.name].defense;
+        speed += armor.speed + equips[armor.name].speed;
+    }
+
+    if (accessory.name != "Nothing") {
+        maxHP += accessory.maxHP + equips[accessory.name].maxHP;
+        attack += accessory.attack + equips[accessory.name].attack;
+        magic += accessory.magic + equips[accessory.name].magic;
+        defense += accessory.defense + equips[accessory.name].defense;
+        speed += accessory.speed + equips[accessory.name].speed;
+    }
+
+    if (maxHP < 1) {
+        maxHP = 1;
+    }
+    if (attack < 0) {
+        attack = 0;
+    }
+    if (magic < 0) {
+        magic = 0;
+    }
+    if (defense < 0) {
+        defense = 0;
+    }
+    if (speed < 0) {
+        speed = 0;
+    }
+
+    critChance = 0 + (100 * (speed * 0.5 / 100));
+    if (critChance > 100) {
+        critChance = 100;
+        critDmg = 5 + ((speed - 200) * 0.02);
+    }
+    else
+    {
+        critDmg = 3 + (speed * 0.01);
+    }
+
+    if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
+        userHunt[id].currentHP = maxHP;
+    }
+    
+}
+
+let spawnMonster = (newTime) => 
+{
     var timeDiff = newTime.getTime() - currHunt.lastSpawn;
     var nextSpawn = currHunt.nextSpawn;
     if (!currHunt["active"] && timeDiff >= nextSpawn) {
@@ -360,7 +481,8 @@ let spawnMonster = (newTime) => {
     return false;
 }
 
-let attackAll = (newTime) => {
+let attackAll = (newTime) => 
+{
     var attackCD = currHunt["active"].attackCD;
     var alivePlayers = 0;
 
@@ -507,9 +629,28 @@ let attackAll = (newTime) => {
     }
 }
 
+const helpMsg = new MessageEmbed();
+helpMsg.setTitle('Invalid command!');
+helpMsg.setColor('FF0000');
+helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAAMsvI/HEq47t0TPmYhX0b2igMkkxbcPQPbUXR2gCLcBGAsYHQ/s1600/AS0005827_02.gif");
+helpMsg.setDescription('Use __!tp help__ for list of commands!');
+
+client.once('ready', () => {
+    console.log(savefile.startTime.toLocaleString());
+    console.log("TummyBot is online!");
+    saveBeforeReset();
+});
+
 client.on('messageCreate', message => {
     var newTime = new Date();
     var sender = message.author;
+
+    var userData = masterData["userData"];
+    var userFish = masterData["userFish"];
+    var userGarden = masterData["userGarden"];
+    var userHunt = masterData["userHunt"];
+    var items = masterData["items"];
+    var userPet = masterData["userPet"];
 
     try {
         if (userData == "") {
@@ -555,106 +696,6 @@ client.on('messageCreate', message => {
 
         const args = message.content.slice(prefix.length).split(/ +/);
         const command = args.shift().toLowerCase();
-
-        let updateBalance = (id) =>
-        {
-            if (userData[id]) {
-                var timeDiff = newTime.getTime() - userData[id].incomeTime;
-                var incomeCD = 1000 * 60; // 1min
-                var income = 1;
-                switch (userData[id].income) {
-                    case 1:
-                        income = 1;
-                        break;
-                    case 2:
-                        income = 2;
-                        break;
-                    case 3:
-                        income = 3;
-                        break;
-                    case 4:
-                        income = 25;
-                        break;
-                    case 5:
-                        income = 250;
-                        break;
-                    case 6:
-                        income = 500000;
-                        break;
-                }
-                if (timeDiff >= incomeCD) {
-                    userData[id].points += Math.floor(timeDiff / incomeCD) * income;
-                    userData[id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
-                }
-            }
-        }
-
-        let updateStats = (id) => {
-            weapon = items[userHunt[id].weapon];
-            armor = items[userHunt[id].armor];
-            accessory = items[userHunt[id].accessory];
-    
-            maxHP = userHunt[id].maxHP;
-            attack = userHunt[id].attack;
-            magic = userHunt[id].magic;
-            defense = userHunt[id].defense;
-            speed = userHunt[id].speed;
-    
-            if (weapon.name != "Nothing") {
-                maxHP += weapon.maxHP + equips[weapon.name].maxHP;
-                attack += weapon.attack + equips[weapon.name].attack;
-                magic += weapon.magic + equips[weapon.name].magic;
-                defense += weapon.defense + equips[weapon.name].defense;
-                speed += weapon.speed + equips[weapon.name].speed;
-            }
-    
-            if (armor.name != "Nothing") {
-                maxHP += armor.maxHP + equips[armor.name].maxHP;
-                attack += armor.attack + equips[armor.name].attack;
-                magic += armor.magic + equips[armor.name].magic;
-                defense += armor.defense + equips[armor.name].defense;
-                speed += armor.speed + equips[armor.name].speed;
-            }
-    
-            if (accessory.name != "Nothing") {
-                maxHP += accessory.maxHP + equips[accessory.name].maxHP;
-                attack += accessory.attack + equips[accessory.name].attack;
-                magic += accessory.magic + equips[accessory.name].magic;
-                defense += accessory.defense + equips[accessory.name].defense;
-                speed += accessory.speed + equips[accessory.name].speed;
-            }
-
-            if (maxHP < 1) {
-                maxHP = 1;
-            }
-            if (attack < 0) {
-                attack = 0;
-            }
-            if (magic < 0) {
-                magic = 0;
-            }
-            if (defense < 0) {
-                defense = 0;
-            }
-            if (speed < 0) {
-                speed = 0;
-            }
-
-            critChance = 0 + (100 * (speed * 0.5 / 100));
-            if (critChance > 100) {
-                critChance = 100;
-                critDmg = 5 + ((speed - 200) * 0.02);
-            }
-            else
-            {
-                critDmg = 3 + (speed * 0.01);
-            }
-
-            if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
-                userHunt[id].currentHP = maxHP;
-            }
-            
-        }
 
         updateBalance(sender.id);
 
@@ -923,6 +964,13 @@ client.on('messageCreate', message => {
     if (newTime.getTime() - savefile.lastSave.getTime() >= (1000 * 60 * 60)) {
         client.gmcommands.get('save').execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams);
     }
+
+    masterData["userData"] = userData;
+    masterData["userFish"] = userFish;
+    masterData["userGarden"] = userGarden;
+    masterData["userHunt"] = userHunt;
+    masterData["items"] = items;
+    masterData["userPet"] = userPet;
 });
 
 process.on('unhandledRejection', (reason, promise) => {
