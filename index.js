@@ -261,6 +261,8 @@ let loadUserData = () =>
 
 let updateBalance = (id) =>
 {
+    var newTime = new Date();
+    
     if (masterData["userData"][id]) {
         var timeDiff = newTime.getTime() - masterData["userData"][id].incomeTime;
         var incomeCD = 1000 * 60; // 1min
