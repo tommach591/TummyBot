@@ -2,7 +2,7 @@ module.exports = {
     name: 'fame',
     description: "Fame someone.",
 
-    execute(message, args, userid, userData, client){
+    execute(message, args, userid, masterData, client){
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -22,7 +22,7 @@ module.exports = {
                 mention = mention.slice(1);
             }
     
-            if (!userData[mention] || mention == userid) {
+            if (!masterData["userData"][mention] || mention == userid) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setDescription('User does not exist!');
@@ -33,17 +33,17 @@ module.exports = {
             const target = client.users.cache.get(mention);
 
             var newTime = new Date();
-            var timeDiff = newTime.getTime() - userData[userid].fameTime;
+            var timeDiff = newTime.getTime() - masterData["userData"][userid].fameTime;
             var fameCD = 1000 * 60 * 60 * 20; // 20 hrs
 
             if (timeDiff >= fameCD) {
-                userData[mention].fame++;
+                masterData["userData"][mention].fame++;
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
                 embedMsg.setThumbnail('https://i.imgur.com/xEg1ecb.png');
-                embedMsg.setDescription(userData[userid].name + " famed " + target.username + "!");
+                embedMsg.setDescription(masterData["userData"][userid].name + " famed " + target.username + "!");
                 message.channel.send({ embeds: [embedMsg] });
-                userData[userid].fameTime = newTime.getTime();
+                masterData["userData"][userid].fameTime = newTime.getTime();
             }
             else {
                 var hours = Math.floor((fameCD - timeDiff) / (1000 * 60 * 60));
@@ -60,7 +60,7 @@ module.exports = {
                 }
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
-                embedMsg.setDescription(userData[userid].name + " can't fame yet!");
+                embedMsg.setDescription(masterData["userData"][userid].name + " can't fame yet!");
                 embedMsg.setThumbnail('https://c.tenor.com/P285-2vH5FYAAAAC/alone-lonely.gif');
                 embedMsg.setFooter('Cooldown: ' + hours + ":" + min + ":" + sec);
                 message.channel.send({ embeds: [embedMsg] });

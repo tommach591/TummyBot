@@ -735,11 +735,11 @@ client.on('messageCreate', message => {
                 break;
             case 'bj':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('bj').execute(message, args, sender.id, masterData["userData"], masterData["blackjack"], client);
+                    client.commands.get('bj').execute(message, args, sender.id, masterData, client);
                 break;
             case 'fame':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('fame').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('fame').execute(message, args, sender.id, masterData, client);
                 break;
             case 'h':
             case 'hunt':
@@ -749,7 +749,7 @@ client.on('messageCreate', message => {
             case 'p':
             case 'pet':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('pet').execute(message, args, sender.id, masterData["userData"], masterData["userPet"], masterStorage["pets"], client);
+                    client.commands.get('pet').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
 // GM Commands ****************************************************************************************************************************
             case 'reload':
