@@ -154,12 +154,12 @@ masterData["items"] = "";
 masterData["userPet"] = "";
 
 /* Local Host Save Files */
-// masterData["userData"] = JSON.parse(fs.readFileSync('storage/masterData["userData"].json', 'utf8'));
-// masterData["userFish"] = JSON.parse(fs.readFileSync('storage/masterData["userFish"].json', 'utf8'));
-// masterData["userGarden"] = JSON.parse(fs.readFileSync('storage/masterData["userGarden"].json', 'utf8'));
-// masterData["userHunt"] = JSON.parse(fs.readFileSync('storage/masterData["userHunt"].json', 'utf8'));
-// masterData["items"] = JSON.parse(fs.readFileSync('storage/masterData["items"].json', 'utf8'));
-// masterData["userPet"] = JSON.parse(fs.readFileSync('storage/masterData["userPet"].json', 'utf8'));
+// masterData["userData"] = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
+// masterData["userFish"] = JSON.parse(fs.readFileSync('storage/userFish.json', 'utf8'));
+// masterData["userGarden"] = JSON.parse(fs.readFileSync('storage/userGarden.json', 'utf8'));
+// masterData["userHunt"] = JSON.parse(fs.readFileSync('storage/userHunt.json', 'utf8'));
+// masterData["items"] = JSON.parse(fs.readFileSync('storage/items.json', 'utf8'));
+// masterData["userPet"] = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
 
 var startTime = new Date();
 masterData["savefile"].startTime = startTime;
@@ -262,7 +262,7 @@ let loadUserData = () =>
 let updateBalance = (id) =>
 {
     var newTime = new Date();
-    
+
     if (masterData["userData"][id]) {
         var timeDiff = newTime.getTime() - masterData["userData"][id].incomeTime;
         var incomeCD = 1000 * 60; // 1min
