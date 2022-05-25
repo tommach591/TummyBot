@@ -2,18 +2,18 @@ module.exports = {
     name: 'leaderboard',
     description: "Display the rankings.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
         let updateBalance = (id) =>
         {
             var newTime = new Date();
-            if (userData[id]) {
-                var timeDiff = newTime.getTime() - userData[id].incomeTime;
+            if (masterData["userData"][id]) {
+                var timeDiff = newTime.getTime() - masterData["userData"][id].incomeTime;
                 var incomeCD = 1000 * 60; // 1min
                 var income = 1;
-                switch (userData[id].income) {
+                switch (masterData["userData"][id].income) {
                     case 1:
                         income = 1;
                         break;
@@ -34,15 +34,15 @@ module.exports = {
                         break;
                 }
                 if (timeDiff >= incomeCD) {
-                    userData[id].points += Math.floor(timeDiff / incomeCD) * income;
-                    userData[id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
+                    masterData["userData"][id].points += Math.floor(timeDiff / incomeCD) * income;
+                    masterData["userData"][id].incomeTime = newTime.getTime() - (timeDiff % incomeCD);
                 }
             }
         }
 
         let updateBank = (id) => {
             var newDate = new Date();
-            var timeDiff = newDate.getTime() - userData[id].bankTick;
+            var timeDiff = newDate.getTime() - masterData["userData"][id].bankTick;
             var tickTime = 1000 * 60 * 60;
 
             if (timeDiff >= tickTime) {
@@ -50,51 +50,51 @@ module.exports = {
                 for (let i = 0; i < totalTicks; i++) {
                     var addBalance = 0;
                     var currentBalance = 0;
-                    if (userData[id].married != "" && userData[userData[id].married]) {
-                        currentBalance = userData[id].bank + Math.floor(userData[userData[id].married].bank / 2);
+                    if (masterData["userData"][id].married != "" && masterData["userData"][masterData["userData"][id].married]) {
+                        currentBalance = masterData["userData"][id].bank + Math.floor(masterData["userData"][masterData["userData"][id].married].bank / 2);
                     }
                     else {
-                        currentBalance = userData[id].bank;
+                        currentBalance = masterData["userData"][id].bank;
                     }
     
                     addBalance = Math.floor(currentBalance * 0.01 * Math.random() * Math.random() * Math.random());
 
-                    userData[id].bank += addBalance;
+                    masterData["userData"][id].bank += addBalance;
                 }
 
-                userData[id].bankTick = newDate.getTime() - (timeDiff % tickTime);
+                masterData["userData"][id].bankTick = newDate.getTime() - (timeDiff % tickTime);
             }
 
-            if (userData[id].married != "" && userData[userData[id].married]) {
-                var spouseTimeDiff = newDate.getTime() - userData[userData[id].married].bankTick
+            if (masterData["userData"][id].married != "" && masterData["userData"][masterData["userData"][id].married]) {
+                var spouseTimeDiff = newDate.getTime() - masterData["userData"][masterData["userData"][id].married].bankTick
                 if (spouseTimeDiff >= tickTime) {
                     var totalTicks = Math.floor(timeDiff / tickTime);
                     for (let i = 0; i < totalTicks; i++) {
                         var addBalance = 0;
-                        var currentBalance = userData[id].bank + Math.floor(userData[userData[id].married].bank / 2);
+                        var currentBalance = masterData["userData"][id].bank + Math.floor(masterData["userData"][masterData["userData"][id].married].bank / 2);
         
                         addBalance = Math.floor(currentBalance * 0.01 * Math.random() * Math.random() * Math.random());
 
-                        userData[userData[id].married].bank += addBalance;
+                        masterData["userData"][masterData["userData"][id].married].bank += addBalance;
                     }
 
-                    userData[userData[id].married].bankTick = newDate.getTime() - (timeDiff % tickTime);
+                    masterData["userData"][masterData["userData"][id].married].bankTick = newDate.getTime() - (timeDiff % tickTime);
                 }
             }
         }
 
         var keys = [];
-        for (var k in userData) {
+        for (var k in masterData["userData"]) {
             updateBalance(k);
             updateBank(k);
             keys.push(k);
         }
 
         keys.sort((firstEl, secondEl) => { 
-            if (userData[firstEl].points + userData[firstEl].bank > userData[secondEl].points + userData[secondEl].bank) {
+            if (masterData["userData"][firstEl].points + masterData["userData"][firstEl].bank > masterData["userData"][secondEl].points + masterData["userData"][secondEl].bank) {
                 return -1;
             }
-            if (userData[firstEl].points + userData[firstEl].bank < userData[secondEl].points + userData[secondEl].bank) {
+            if (masterData["userData"][firstEl].points + masterData["userData"][firstEl].bank < masterData["userData"][secondEl].points + masterData["userData"][secondEl].bank) {
                 return 1;
             }
             return 0;
@@ -116,8 +116,8 @@ module.exports = {
                 ranks[index] = "";
             }
 
-            names[index] += userData[keys[i]].name + "⠀⠀⠀\n";
-            points[index] += (userData[keys[i]].points + userData[keys[i]].bank).toLocaleString() + "⠀⠀⠀\n";
+            names[index] += masterData["userData"][keys[i]].name + "⠀⠀⠀\n";
+            points[index] += (masterData["userData"][keys[i]].points + masterData["userData"][keys[i]].bank).toLocaleString() + "⠀⠀⠀\n";
             ranks[index] += "" + (i + 1) + ".⠀⠀⠀\n";
             count++;
         }

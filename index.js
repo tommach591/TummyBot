@@ -678,14 +678,14 @@ client.on('messageCreate', message => {
                 client.commands.get('help').execute(message, client);
                 break;
             case 'register':
-                client.commands.get('register').execute(message, args, sender.id, masterData);
+                client.commands.get('register').execute(message, sender.id, masterData);
                 break;
             case 'uptime':
-                client.commands.get('uptime').execute(message, args, masterData["savefile"]);
+                client.commands.get('uptime').execute(message, masterData);
                 break;
             case 'leaderboard':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('leaderboard').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('leaderboard').execute(message, sender.id, masterData["userData"]);
                 break;
             case 'b':
             case 'bal':
@@ -693,7 +693,7 @@ client.on('messageCreate', message => {
             case 'profile':
             case 'balance':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('balance').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], client);
+                    client.commands.get('balance').execute(message, args, sender.id, masterData, client);
                 break;
             case 'give':
                 if (masterData["userData"][sender.id])
