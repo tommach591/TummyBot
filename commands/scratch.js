@@ -2,13 +2,13 @@ module.exports = {
     name: 'scratch',
     description: "Spend points on scratch cards.",
     
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
         const scratchingMsg = new MessageEmbed();
         if (args.length > 0) {
             var choice = Number(args[0]);
-            var user = userData[userid];
+            var user = masterData["userData"][userid];
             var scratchTime = 1000 * Math.floor((Math.random() * 3) + 2);
             if (!isNaN(choice)) {
                 switch(choice) {

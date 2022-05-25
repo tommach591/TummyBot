@@ -697,23 +697,23 @@ client.on('messageCreate', message => {
                 break;
             case 'give':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('give').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('give').execute(message, args, sender.id, masterData, client);
                 break;
             case 'marry':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('marry').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('marry').execute(message, args, sender.id, masterData, client);
                 break;
             case 'divorce':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('divorce').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('divorce').execute(message, sender.id, masterData);
                 break;
             case 'scratch':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('scratch').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('scratch').execute(message, args, sender.id, masterData);
                 break;
             case 'beg':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('beg').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('beg').execute(message, sender.id, masterData);
                 break;
             case 'level':
                 if (masterData["userData"][sender.id])

@@ -2,7 +2,7 @@ module.exports = {
     name: 'give',
     description: "Give points to someone.",
 
-    execute(message, args, userid, userData, client){
+    execute(message, args, userid, masterData, client){
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -22,7 +22,7 @@ module.exports = {
                 mention = mention.slice(1);
             }
     
-            if (!userData[mention]) {
+            if (!masterData["userData"][mention]) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setDescription('User does not exist!');
@@ -33,23 +33,23 @@ module.exports = {
             var amount = Math.floor(Number(args[1]));
 
             if (!isNaN(amount)) {
-                if (userData[userid].points >= amount && amount > 0) {
-                    userData[userid].points -= amount;
-                    userData[mention].points += amount;
+                if (masterData["userData"][userid].points >= amount && amount > 0) {
+                    masterData["userData"][userid].points -= amount;
+                    masterData["userData"][mention].points += amount;
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
                     embedMsg.setThumbnail('https://i.imgur.com/2J59UgH.png');
-                    embedMsg.setDescription(userData[userid].name + " gives " + target.username + " " + amount + " points!");
+                    embedMsg.setDescription(masterData["userData"][userid].name + " gives " + target.username + " " + amount + " points!");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     if (amount == 0) {
-                        embedMsg.setDescription(userData[userid].name + " can't give 0 points!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " can't give 0 points!");
                     }
                     else {
-                        embedMsg.setDescription(userData[userid].name + " does not have " + amount + " point(s)!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " does not have " + amount + " point(s)!");
                     }
                     message.channel.send({ embeds: [embedMsg] });
                 }

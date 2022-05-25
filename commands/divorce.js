@@ -2,14 +2,14 @@ module.exports = {
     name: 'divorce',
     description: "Divorce someone.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].married == "") {
+        if (masterData["userData"][userid].married == "") {
             embedMsg.setTitle('Error!');
             embedMsg.setColor('FF0000');
-            embedMsg.setDescription(userData[userid].name + " is already alone!");
+            embedMsg.setDescription(masterData["userData"][userid].name + " is already alone!");
             embedMsg.setFooter("HAHA YOU CAN'T DIVORCE YOUR LEFT HAND!");
             message.channel.send({ embeds: [embedMsg] });
         }
@@ -18,7 +18,7 @@ module.exports = {
             proposalMsg.setTitle('Divorce Proposal!');
             proposalMsg.setColor('FF80AB');
             proposalMsg.setThumbnail("https://i.imgur.com/C7XXOTl.png");
-            proposalMsg.setDescription("Would you, " + userData[userid].name + " , like to divorce " + userData[userData[userid].married].name + "?");
+            proposalMsg.setDescription("Would you, " + masterData["userData"][userid].name + " , like to divorce " + masterData["userData"][masterData["userData"][userid].married].name + "?");
 
             
             let proposal; 
@@ -35,12 +35,12 @@ module.exports = {
                         collected => {
                         const reaction = collected.first();
                         if (reaction.emoji.name === '👍') {
-                            userData[userData[userid].married].married = "";
-                            userData[userid].married = "";
+                            masterData["userData"][masterData["userData"][userid].married].married = "";
+                            masterData["userData"][userid].married = "";
                             embedMsg.setTitle('Congratulations!');
                             embedMsg.setColor('00FF00');
                             embedMsg.setThumbnail("https://c.tenor.com/3rT81tCWpkIAAAAC/dance-cute.gif");
-                            embedMsg.setDescription(userData[userid].name + " is are now single!");
+                            embedMsg.setDescription(masterData["userData"][userid].name + " is are now single!");
                             embedMsg.setFooter("AND READY TO MINGLE!");
                             message.channel.send({ embeds: [embedMsg] });
                         } 
@@ -48,7 +48,7 @@ module.exports = {
                             embedMsg.setTitle('Huh?');
                             embedMsg.setColor('FF80AB');
                             embedMsg.setThumbnail("https://c.tenor.com/PzUoQ5JIihsAAAAC/cute-cat.gif");
-                            embedMsg.setDescription("Maybe " + userData[userid].name + " just wasn't feeling loved at the moment...");
+                            embedMsg.setDescription("Maybe " + masterData["userData"][userid].name + " just wasn't feeling loved at the moment...");
                             embedMsg.setFooter("Make up your mind please.");
                             message.channel.send({ embeds: [embedMsg] });
                         }
@@ -57,7 +57,7 @@ module.exports = {
                         embedMsg.setTitle('Huh?');
                         embedMsg.setColor('FF0000');
                         embedMsg.setThumbnail("https://c.tenor.com/MQiDUNqWZZwAAAAC/peachcat-sleepy.gif");
-                        embedMsg.setDescription("The bot got bored of " + userData[userid].name + "'s life issues!");
+                        embedMsg.setDescription("The bot got bored of " + masterData["userData"][userid].name + "'s life issues!");
                         embedMsg.setFooter("Either you took too long or something went wrong...");
                         message.channel.send({ embeds: [embedMsg] });
                     });

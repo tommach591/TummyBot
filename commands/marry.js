@@ -2,7 +2,7 @@ module.exports = {
     name: 'marry',
     description: "Marry someone.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, masterData, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -22,14 +22,14 @@ module.exports = {
                 mention = mention.slice(1);
             }
     
-            if (!userData[mention]) {
+            if (!masterData["userData"][mention]) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setDescription('User does not exist!');
                 message.channel.send({ embeds: [embedMsg] });
                 return;
             }
-            if (userData[mention] == userData[userid]) {
+            if (masterData["userData"][mention] == masterData["userData"][userid]) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setDescription('You can\'t marry yourself!');
@@ -38,18 +38,18 @@ module.exports = {
             }
             const target = client.users.cache.get(mention);
 
-            if (userData[userid].married != "") {
+            if (masterData["userData"][userid].married != "") {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setFooter("Wow you're horrible...");
-                embedMsg.setDescription(userData[userid].name + " is already married!");
+                embedMsg.setDescription(masterData["userData"][userid].name + " is already married!");
                 message.channel.send({ embeds: [embedMsg] });
             }
-            else if (userData[mention].married != "") {
+            else if (masterData["userData"][mention].married != "") {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setFooter("Try getting them to divorce!");
-                embedMsg.setDescription(userData[mention].name + " is already married!");
+                embedMsg.setDescription(masterData["userData"][mention].name + " is already married!");
                 message.channel.send({ embeds: [embedMsg] });
             }
             else {
@@ -58,7 +58,7 @@ module.exports = {
                 proposalMsg.setTitle('Marriage Proposal!');
                 proposalMsg.setColor('FF80AB');
                 proposalMsg.setThumbnail("https://i.imgur.com/H069LVz.png");
-                proposalMsg.setDescription("Would you, " + userData[mention].name + " , like to marry me, " + userData[userid].name + "?");
+                proposalMsg.setDescription("Would you, " + masterData["userData"][mention].name + " , like to marry me, " + masterData["userData"][userid].name + "?");
 
                 
                 let proposal; 
@@ -76,22 +76,22 @@ module.exports = {
                             const reaction = collected.first();
                             if (reaction.emoji.name === '👍') {
                                 var newTime = new Date();
-                                userData[userid].married = mention;
-                                userData[mention].married = userid;
+                                masterData["userData"][userid].married = mention;
+                                masterData["userData"][mention].married = userid;
 
-                                userData[userid].bankTick = newTime.getTime();
-                                userData[mention].bankTick = newTime.getTime();
+                                masterData["userData"][userid].bankTick = newTime.getTime();
+                                masterData["userData"][mention].bankTick = newTime.getTime();
 
                                 embedMsg.setTitle('Congratulations!');
                                 embedMsg.setColor('FF80AB');
                                 embedMsg.setThumbnail("https://media4.giphy.com/media/qFmdpUKAFZ6rMobzzu/200w.gif");
-                                embedMsg.setDescription(userData[userid].name + " and " + userData[mention].name + " are now married!");
+                                embedMsg.setDescription(masterData["userData"][userid].name + " and " + masterData["userData"][mention].name + " are now married!");
                                 message.channel.send({ embeds: [embedMsg] });
                             } else {
                                 embedMsg.setTitle('HAHA!');
                                 embedMsg.setColor('FF0000');
                                 embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
-                                embedMsg.setDescription(userData[mention].name + " rejected you!");
+                                embedMsg.setDescription(masterData["userData"][mention].name + " rejected you!");
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                         })
@@ -99,7 +99,7 @@ module.exports = {
                             embedMsg.setTitle('HAHA!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setThumbnail("https://c.tenor.com/txglRAFL8SwAAAAC/cat-laugh-laugh.gif");
-                            embedMsg.setDescription(userData[mention].name + " ignored you!");
+                            embedMsg.setDescription(masterData["userData"][mention].name + " ignored you!");
                             message.channel.send({ embeds: [embedMsg] });
                         });
                     }
