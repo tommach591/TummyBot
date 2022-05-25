@@ -675,10 +675,10 @@ client.on('messageCreate', message => {
         switch(command) {
             // Base Commands
             case 'help':
-                client.commands.get('help').execute(message, args, sender.id, masterData["userData"], client);
+                client.commands.get('help').execute(message, client);
                 break;
             case 'register':
-                client.commands.get('register').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["userPet"], client);
+                client.commands.get('register').execute(message, args, sender.id, masterData);
                 break;
             case 'uptime':
                 client.commands.get('uptime').execute(message, args, masterData["savefile"]);
@@ -714,10 +714,6 @@ client.on('messageCreate', message => {
             case 'beg':
                 if (masterData["userData"][sender.id])
                     client.commands.get('beg').execute(message, args, sender.id, masterData["userData"], client);
-                break;
-            case 'jamal':
-                if (masterData["userData"][sender.id])
-                    client.commands.get('jamal').execute(message, args, sender.id, masterData["userData"], client);
                 break;
             case 'level':
                 if (masterData["userData"][sender.id])

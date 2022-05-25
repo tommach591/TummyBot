@@ -2,13 +2,13 @@ module.exports = {
     name: 'register',
     description: "Register an account.",
 
-    execute(message, args, userid, userData, userFish, userGarden, userHunt, userPet, client) {
+    execute(message, args, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (!userData[userid]) {
+        if (!masterData["userData"][userid]) {
             var newTime = new Date();
-            userData[userid] = {
+            masterData["userData"][userid] = {
                 name: message.author.username,
                 id: userid,
                 gm: 0,
@@ -22,9 +22,9 @@ module.exports = {
                 bank: 0,
                 bankTick: newTime.getTime()
             }
-            if (!userFish[userid]) {
-                userFish[userid] = {
-                    name: userData[userid].name,
+            if (!masterData["userFish"][userid]) {
+                masterData["userFish"][userid] = {
+                    name: masterData["userData"][userid].name,
                     id: userid,
                     fishingRod: 'Bare Hand',
                     fishBait: 0,
@@ -33,19 +33,19 @@ module.exports = {
                     fishInventory: []
                 }
             }
-            if (!userGarden[userid]) {
-                userGarden[userid] = {
+            if (!masterData["userGarden"][userid]) {
+                masterData["userGarden"][userid] = {
                     id: userid,
-                    name: userData[userid].name,
+                    name: masterData["userData"][userid].name,
                     pots: ["0", "-1", "-1"],
                     potTime: [0, 0, 0],
                     gardendex: []
                 }
             }
-            if (!userHunt[userid]) {
-                userHunt[userid] = {
+            if (!masterData["userHunt"][userid]) {
+                masterData["userHunt"][userid] = {
                     id: userid,
-                    name: userData[userid].name,
+                    name: masterData["userData"][userid].name,
                     maxHP: 100,
                     attack: 3,
                     magic: 3,
@@ -62,10 +62,10 @@ module.exports = {
                     monsterdex: []
                 }
             }
-            if (!userPet[userid]) {
-                userPet[userid] = {
+            if (!masterData["userPet"][userid]) {
+                masterData["userPet"][userid] = {
                     id: userid,
-                    name: userData[userid].name,
+                    name: masterData["userData"][userid].name,
                     pet: "0",
                     petName: "",
                     type: 0,
@@ -87,7 +87,7 @@ module.exports = {
 
             embedMsg.setTitle('Welcome!');
             embedMsg.setColor('00FF00');
-            embedMsg.setDescription(userData[userid].name + " has joined Fishy Boot!");
+            embedMsg.setDescription(masterData["userData"][userid].name + " has joined Fishy Boot!");
             embedMsg.setFooter('Use !tp help for list of commands!');
             message.channel.send({ embeds: [embedMsg] });
 
