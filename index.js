@@ -685,7 +685,7 @@ client.on('messageCreate', message => {
                 break;
             case 'leaderboard':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('leaderboard').execute(message, sender.id, masterData["userData"]);
+                    client.commands.get('leaderboard').execute(message, sender.id, masterData);
                 break;
             case 'b':
             case 'bal':
