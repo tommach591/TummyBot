@@ -717,12 +717,12 @@ client.on('messageCreate', message => {
                 break;
             case 'level':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('level').execute(message, args, sender.id, masterData["userData"], client);
+                    client.commands.get('level').execute(message, sender.id, masterData);
                 break;
             case 'f':
             case 'fish':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('fish').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterStorage["fishdex"], client);
+                    client.commands.get('fish').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
             case 'g':
             case 'garden':

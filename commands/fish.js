@@ -3,7 +3,7 @@ module.exports = {
     name: 'fish',
     description: "Fish for money! Gotta catch em all!",
 
-    execute(message, args, userid, userData, userFish, fishdex, client) {
+    execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -41,28 +41,28 @@ module.exports = {
             case 'info':
                 var target = client.users.cache.get(userid);
                 embedMsg.setTitle('Fishing Equipment');
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
-                if (userFish[userid].fishingRod == "Bare Hand") {
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
+                if (masterData["userFish"][userid].fishingRod == "Bare Hand") {
                     embedMsg.setThumbnail('https://i.imgur.com/rfD4zwW.png');
                 }
-                else if (userFish[userid].fishingRod == "Old Rod") {
+                else if (masterData["userFish"][userid].fishingRod == "Old Rod") {
                     embedMsg.setThumbnail('https://i.imgur.com/hUOugXB.png');
                 }
-                else if (userFish[userid].fishingRod == "Good Rod") {
+                else if (masterData["userFish"][userid].fishingRod == "Good Rod") {
                     embedMsg.setThumbnail('https://i.imgur.com/KXYAoKp.png');
                 }
-                else if (userFish[userid].fishingRod == "Super Rod") {
+                else if (masterData["userFish"][userid].fishingRod == "Super Rod") {
                     embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
                 }
-                else if (userFish[userid].fishingRod == "Mega Rod") {
+                else if (masterData["userFish"][userid].fishingRod == "Mega Rod") {
                     embedMsg.setThumbnail('https://m.media-amazon.com/images/I/51yOu0U+2iL._AC_SY450_.jpg');
                 }
-                else if (userFish[userid].fishingRod == "Ultra Rod") {
+                else if (masterData["userFish"][userid].fishingRod == "Ultra Rod") {
                     embedMsg.setThumbnail('https://dodo.ac/np/images/5/5c/Golden_Rod_NH_Icon.png');
                 }
                 embedMsg.addFields(
-                    { name: "__Fishing Rod__ :fishing_pole_and_fish:", value: "" + userFish[userid].fishingRod, inline: true },
-                    { name: "__Bait__ :worm:", value: "" + userFish[userid].fishBait.toLocaleString(), inline: true }
+                    { name: "__Fishing Rod__ :fishing_pole_and_fish:", value: "" + masterData["userFish"][userid].fishingRod, inline: true },
+                    { name: "__Bait__ :worm:", value: "" + masterData["userFish"][userid].fishBait.toLocaleString(), inline: true }
                 )
                 embedMsg.setColor('FFF000');
                 message.channel.send({ embeds: [embedMsg] });
@@ -74,7 +74,7 @@ module.exports = {
                     embedMsg.setDescription('Please enter amount of fish bait to buy!');
                     message.channel.send({ embeds: [embedMsg] });
                 }
-                else if (userFish[userid].fishBait >= 100) 
+                else if (masterData["userFish"][userid].fishBait >= 100) 
                 {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
@@ -83,19 +83,19 @@ module.exports = {
                 }
                 else {
                     var amount = Math.floor(Number(args[1]));
-                    if (userFish[userid].fishBait + amount > 100)
+                    if (masterData["userFish"][userid].fishBait + amount > 100)
                     {
-                        amount = 100 - userFish[userid].fishBait;
+                        amount = 100 - masterData["userFish"][userid].fishBait;
                     }
-                    var cost = 5 * Math.pow(userData[userid].income, userData[userid].income - 1);
+                    var cost = 5 * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1);
                     if (!isNaN(amount) || amount > 0) {
-                        if (userData[userid].points >= amount * cost && amount > 0) {
+                        if (masterData["userData"][userid].points >= amount * cost && amount > 0) {
 
                             const proposalMsg = new MessageEmbed();
                             proposalMsg.setTitle('Buying Bait!');
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                            proposalMsg.setDescription("Would " + userData[userid].name + " like to buy " + amount + " fish bait for " + (amount * cost).toLocaleString() + " points?");
+                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to buy " + amount + " fish bait for " + (amount * cost).toLocaleString() + " points?");
                             proposalMsg.setFooter("Bait costs " + cost + " points each!");
 
                             let proposal; 
@@ -112,19 +112,19 @@ module.exports = {
                                         collected => {
                                         const reaction = collected.first();
                                         if (reaction.emoji.name === '👍') {
-                                            userData[userid].points -= amount * cost;
-                                            userFish[userid].fishBait += amount;
+                                            masterData["userData"][userid].points -= amount * cost;
+                                            masterData["userFish"][userid].fishBait += amount;
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                                            embedMsg.setDescription(userData[userid].name + " buys " + amount + " fish bait for " + (amount * cost).toLocaleString() + " points!");
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " buys " + amount + " fish bait for " + (amount * cost).toLocaleString() + " points!");
                                             message.channel.send({ embeds: [embedMsg] });
                                         } 
                                         else {
                                             embedMsg.setTitle('Declined!');
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                                            embedMsg.setDescription(userData[userid].name + " declined!");
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                     })
@@ -132,7 +132,7 @@ module.exports = {
                                         embedMsg.setTitle('Fail!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail('https://i.imgur.com/ActIoIR.png');
-                                        embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                         message.channel.send({ embeds: [embedMsg] });
                                     });
                                 }
@@ -141,7 +141,7 @@ module.exports = {
                         else {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " does not have " + (amount * cost).toLocaleString() + " point(s)!");
+                            embedMsg.setDescription(masterData["userData"][userid].name + " does not have " + (amount * cost).toLocaleString() + " point(s)!");
                             embedMsg.setFooter("Bait costs " + cost.toLocaleString() + " points each!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
@@ -158,7 +158,7 @@ module.exports = {
             case 'upgrade':
                 let upgradeRod = (cost, newCost, newRod, oldImage, newImage) =>
                 {
-                    if (userData[userid].points < cost) {
+                    if (masterData["userData"][userid].points < cost) {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription(newRod + " costs " + cost.toLocaleString() +  " points!");
@@ -171,7 +171,7 @@ module.exports = {
                         proposalMsg.setTitle('Upgrading Rod!');
                         proposalMsg.setColor('FFF000');
                         proposalMsg.setThumbnail(newImage);
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to upgrade to " + newRod + " for " +  cost.toLocaleString() + " points?");
+                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to upgrade to " + newRod + " for " +  cost.toLocaleString() + " points?");
 
                         let proposal; 
                         message.channel.send({ embeds: [proposalMsg] }).then(
@@ -187,11 +187,11 @@ module.exports = {
                                     collected => {
                                     const reaction = collected.first();
                                     if (reaction.emoji.name === '👍') {
-                                        userData[userid].points -= cost;
-                                        userFish[userid].fishingRod = newRod;
+                                        masterData["userData"][userid].points -= cost;
+                                        masterData["userFish"][userid].fishingRod = newRod;
                                         embedMsg.setTitle('Congratz!');
                                         embedMsg.setColor('00FF00');
-                                        embedMsg.setDescription(userData[userid].name + " bought an " + newRod + "!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " bought an " + newRod + "!");
                                         embedMsg.setThumbnail(newImage);
                                         embedMsg.setFooter('Next level: ' + newCost.toLocaleString() + ' points');
                                         message.channel.send({ embeds: [embedMsg] });
@@ -200,7 +200,7 @@ module.exports = {
                                         embedMsg.setTitle('Declined!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setThumbnail(oldImage);
-                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                         embedMsg.setFooter('Next level: ' + cost.toLocaleString() + ' points');
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
@@ -209,7 +209,7 @@ module.exports = {
                                     embedMsg.setTitle('Fail!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setThumbnail(oldImage);
-                                    embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                    embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                     embedMsg.setFooter('Next level: ' + cost.toLocaleString() + ' points');
                                     message.channel.send({ embeds: [embedMsg] });
                                 });
@@ -223,7 +223,7 @@ module.exports = {
                 var oldImage;
                 var newImage;
 
-                switch(userFish[userid].fishingRod) {
+                switch(masterData["userFish"][userid].fishingRod) {
                     case 'Bare Hand':
                         cost = 1000;
                         newCost = 10000;
@@ -267,7 +267,7 @@ module.exports = {
                     default:
                         embedMsg.setTitle('Congratz!');
                         embedMsg.setColor('00FF00');
-                        embedMsg.setDescription(userData[userid].name + " already has the best rod!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " already has the best rod!");
                         embedMsg.setFooter('Next level: Infinite points');
                         message.channel.send({ embeds: [embedMsg] });
                         break;
@@ -275,29 +275,29 @@ module.exports = {
                 break;
             case 'start':
                 var newTime = new Date();
-                var timeDiff = newTime.getTime() - userFish[userid].fishTime;
+                var timeDiff = newTime.getTime() - masterData["userFish"][userid].fishTime;
                 var fishCD = 1000 * 5;
 
-                if (userFish[userid].fishBait == 0) {
+                if (masterData["userFish"][userid].fishBait == 0) {
                     embedMsg.setTitle('No Bait!');
                     embedMsg.setColor('FF0000');
-                    embedMsg.setDescription(userData[userid].name + " has no bait!");
+                    embedMsg.setDescription(masterData["userData"][userid].name + " has no bait!");
                     embedMsg.setFooter('Use !tp fish buy # for more bait!');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else if (timeDiff < fishCD) {
                     embedMsg.setTitle('Chill!');
                     embedMsg.setColor('FF0000');
-                    embedMsg.setDescription(userData[userid].name + " needs to rest!");
+                    embedMsg.setDescription(masterData["userData"][userid].name + " needs to rest!");
                     embedMsg.setFooter('Cooldown: ' + Math.floor((fishCD - timeDiff) / 1000) + ' seconds');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
                     const fishingMsg = new MessageEmbed();
                     var fishTime = 1000 * 5;
-                    userFish[userid].fishBait--;
+                    masterData["userFish"][userid].fishBait--;
                     var newFishingTime = new Date();
-                    userFish[userid].fishTime = newFishingTime.getTime();
+                    masterData["userFish"][userid].fishTime = newFishingTime.getTime();
                     var lucky = false;
 
                     fishingMsg.setTitle('Fishing!');
@@ -322,7 +322,7 @@ module.exports = {
                     
                     setTimeout(function() { 
                         var fishingPower;
-                        switch(userFish[userid].fishingRod) {
+                        switch(masterData["userFish"][userid].fishingRod) {
                             case "Old Rod":
                                 fishingPower = 2;
                                 break;
@@ -350,17 +350,17 @@ module.exports = {
                             if (luck <= 5)
                             {
                                 embedMsg.setTitle('OMG (OH MY GOD)! (★★★★★★)');
-                                fishCaught = fishdex[sixstar[Math.floor(Math.random() * sixstar.length)]];
+                                fishCaught = masterStorage["fishdex"][sixstar[Math.floor(Math.random() * sixstar.length)]];
                             }
                             else if (luck <= 20)
                             {
                                 embedMsg.setTitle('POGGERS! (★★★★★)');
-                                fishCaught = fishdex[fivestar[Math.floor(Math.random() * fivestar.length)]];
+                                fishCaught = masterStorage["fishdex"][fivestar[Math.floor(Math.random() * fivestar.length)]];
                             }
                             else 
                             {
                                 embedMsg.setTitle('NO WAY! (★★★★)');
-                                fishCaught = fishdex[fourstar[Math.floor(Math.random() * fourstar.length)]];
+                                fishCaught = masterStorage["fishdex"][fourstar[Math.floor(Math.random() * fourstar.length)]];
                             }
                         }
                         
@@ -370,7 +370,7 @@ module.exports = {
                                 var chance = 100000 * 0.0001;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('OMG (OH MY GOD)! (★★★★★★)');
-                                    fishCaught = fishdex[sixstar[Math.floor(Math.random() * sixstar.length)]];
+                                    fishCaught = masterStorage["fishdex"][sixstar[Math.floor(Math.random() * sixstar.length)]];
                                     break;
                                 }
                             }
@@ -381,7 +381,7 @@ module.exports = {
                                 var chance = 100000 * 0.001;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('POGGERS! (★★★★★)');
-                                    fishCaught = fishdex[fivestar[Math.floor(Math.random() * fivestar.length)]];
+                                    fishCaught = masterStorage["fishdex"][fivestar[Math.floor(Math.random() * fivestar.length)]];
                                     break;
                                 }
                             }
@@ -392,7 +392,7 @@ module.exports = {
                                 var chance = 100000 * 0.01;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('NO WAY! (★★★★)');
-                                    fishCaught = fishdex[fourstar[Math.floor(Math.random() * fourstar.length)]];
+                                    fishCaught = masterStorage["fishdex"][fourstar[Math.floor(Math.random() * fourstar.length)]];
                                     break;
                                 }
                             }
@@ -403,7 +403,7 @@ module.exports = {
                                 var chance = 100000 * 0.03;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('WOAH! (★★★)');
-                                    fishCaught = fishdex[threestar[Math.floor(Math.random() * threestar.length)]];
+                                    fishCaught = masterStorage["fishdex"][threestar[Math.floor(Math.random() * threestar.length)]];
                                     break;
                                 }
                             }
@@ -414,19 +414,19 @@ module.exports = {
                                 var chance = 100000 * 0.3;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('Wow! (★★)');
-                                    fishCaught = fishdex[twostar[Math.floor(Math.random() * twostar.length)]];
+                                    fishCaught = masterStorage["fishdex"][twostar[Math.floor(Math.random() * twostar.length)]];
                                     break;
                                 }
                             }
                         }
                         if (fishCaught == "-1") {
                             embedMsg.setTitle('Yay! (★)');
-                            fishCaught = fishdex[onestar[Math.floor(Math.random() * onestar.length)]];
+                            fishCaught = masterStorage["fishdex"][onestar[Math.floor(Math.random() * onestar.length)]];
                         }
 
-                        if (!userFish[userid].fishdex.includes(fishCaught.id)) {
-                            userFish[userid].fishdex.push(fishCaught.id);
-                            userFish[userid].fishdex.sort((firstEl, secondEl) => { 
+                        if (!masterData["userFish"][userid].masterStorage["fishdex"].includes(fishCaught.id)) {
+                            masterData["userFish"][userid].masterStorage["fishdex"].push(fishCaught.id);
+                            masterData["userFish"][userid].masterStorage["fishdex"].sort((firstEl, secondEl) => { 
                                 if (Number(firstEl) < Number(secondEl)) {
                                     return -1;
                                 }
@@ -442,8 +442,8 @@ module.exports = {
                             embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!");
                             embedMsg.setFooter("Base Value: " + fishCaught.value + " points");
                         }
-                        userFish[userid].fishInventory.push(fishCaught.id);
-                        userFish[userid].fishInventory.sort((firstEl, secondEl) => { 
+                        masterData["userFish"][userid].fishInventory.push(fishCaught.id);
+                        masterData["userFish"][userid].fishInventory.sort((firstEl, secondEl) => { 
                             if (Number(firstEl) < Number(secondEl)) {
                                 return -1;
                             }
@@ -468,11 +468,11 @@ module.exports = {
                 else {
                     if (args[1] == 'all') {
                         var profit = 0;
-                        while (userFish[userid].fishInventory.length > 0) {
-                            var temp = userFish[userid].fishInventory.pop();
-                            profit += fishdex[temp].value * Math.pow(userData[userid].income, userData[userid].income - 1);
+                        while (masterData["userFish"][userid].fishInventory.length > 0) {
+                            var temp = masterData["userFish"][userid].fishInventory.pop();
+                            profit += masterStorage["fishdex"][temp].value * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1);
                         }
-                        userData[userid].points += profit;
+                        masterData["userData"][userid].points += profit;
                         embedMsg.setTitle('Sold!');
                         embedMsg.setColor('00FF00');
                         embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
@@ -485,7 +485,7 @@ module.exports = {
                         if (!isNaN(Number(target))) {
                             var amount = Number(args[2]);
                             var profit = 0;
-                            if (!userFish[userid].fishInventory.includes(target)) {
+                            if (!masterData["userFish"][userid].fishInventory.includes(target)) {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
                                 embedMsg.setDescription('Fish does not exist!');
@@ -496,17 +496,17 @@ module.exports = {
                                     amount = 1;
                                 }
                                 for (let i = 0; i < amount; i++) {
-                                    const index = userFish[userid].fishInventory.indexOf(target);
+                                    const index = masterData["userFish"][userid].fishInventory.indexOf(target);
                                     if (index > -1) {
-                                        profit += fishdex[target].value * Math.pow(userData[userid].income, userData[userid].income - 1);
-                                        userFish[userid].fishInventory.splice(index, 1);
+                                        profit += masterStorage["fishdex"][target].value * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1);
+                                        masterData["userFish"][userid].fishInventory.splice(index, 1);
                                     }
                                 }
-                                userData[userid].points += profit;
+                                masterData["userData"][userid].points += profit;
                                 embedMsg.setTitle('Sold!');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setThumbnail('https://i.imgur.com/biKmDze.png');
-                                embedMsg.setDescription('Sold ' + fishdex[target].name + ' for ' + profit.toLocaleString() + ' points!');
+                                embedMsg.setDescription('Sold ' + masterStorage["fishdex"][target].name + ' for ' + profit.toLocaleString() + ' points!');
                                 embedMsg.setFooter('Fish price scaled by income.');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
@@ -523,11 +523,11 @@ module.exports = {
             case 'inv':
             case 'inventory':
                 var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Fish Inventory');
                 embedMsg.setColor('FFF000');
                 embedMsg.setThumbnail('https://i.imgur.com/ME2PxQ3.png');
-                if (userFish[userid].fishInventory.length == 0) {
+                if (masterData["userFish"][userid].fishInventory.length == 0) {
                     embedMsg.setDescription('No fish :(');
                     message.channel.send({ embeds: [embedMsg] });
                 }
@@ -537,8 +537,8 @@ module.exports = {
                     var index = 0;
                     var count = 0;
                     var cost = 0;
-                    userFish[userid].fishInventory.forEach((element) => {
-                        cost += fishdex[element].value * Math.pow(userData[userid].income, userData[userid].income - 1);
+                    masterData["userFish"][userid].fishInventory.forEach((element) => {
+                        cost += masterStorage["fishdex"][element].value * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1);
                         if (count >= 5) {
                             fishes[index] += "\n";
                             index++;
@@ -546,8 +546,8 @@ module.exports = {
                             fishes.push("");
                         }
                         if (lastFish != element) {
-                            var amount = userFish[userid].fishInventory.filter(match => match == element).length;
-                            fishes[index] += "**__#" + fishdex[element].id + ". " + fishdex[element].name + "__**\nAmount: " + amount + "\nValue: " + (fishdex[element].value * Math.pow(userData[userid].income, userData[userid].income - 1)).toLocaleString() + "\n\n";
+                            var amount = masterData["userFish"][userid].fishInventory.filter(match => match == element).length;
+                            fishes[index] += "**__#" + masterStorage["fishdex"][element].id + ". " + masterStorage["fishdex"][element].name + "__**\nAmount: " + amount + "\nValue: " + (masterStorage["fishdex"][element].value * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1)).toLocaleString() + "\n\n";
                             lastFish = element;
                             count++;
                         }
@@ -562,7 +562,7 @@ module.exports = {
                     embedMsg
                         .setFooter(`Total Value: ${cost.toLocaleString()} ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
-                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Fish Inventory')
                         .setThumbnail('https://i.imgur.com/ME2PxQ3.png')
                         .setColor('FFF000');
@@ -575,7 +575,7 @@ module.exports = {
                             const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                             collector.on('collect', r => {
-                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                 embedMsg.setTitle('Fish Inventory');
                                 embedMsg.setThumbnail('https://i.imgur.com/ME2PxQ3.png');
                                 embedMsg.setColor('FFF000');
@@ -608,38 +608,38 @@ module.exports = {
                 }
                 break;
             case 'dex':
-            case 'fishdex':
+            case 'masterStorage["fishdex"]':
                 var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Fishdex');
                 embedMsg.setThumbnail('https://i.imgur.com/liDWgLr.png');
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];
-                    if (!isNaN(Number(selected)) && fishdex[selected] && userFish[userid].fishdex.includes(selected)) {
+                    if (!isNaN(Number(selected)) && masterStorage["fishdex"][selected] && masterData["userFish"][userid].masterStorage["fishdex"].includes(selected)) {
                         var stars = "";
-                        if (sixstar.includes(fishdex[selected].id)) {
+                        if (sixstar.includes(masterStorage["fishdex"][selected].id)) {
                             stars = " (★★★★★★)";
                         }
-                        else if (fivestar.includes(fishdex[selected].id)) {
+                        else if (fivestar.includes(masterStorage["fishdex"][selected].id)) {
                             stars = " (★★★★★)";
                         }
-                        else if (fourstar.includes(fishdex[selected].id)) {
+                        else if (fourstar.includes(masterStorage["fishdex"][selected].id)) {
                             stars = " (★★★★)";
                         }
-                        else if (threestar.includes(fishdex[selected].id)) {
+                        else if (threestar.includes(masterStorage["fishdex"][selected].id)) {
                             stars = " (★★★)";
                         }
-                        else if (twostar.includes(fishdex[selected].id)) {
+                        else if (twostar.includes(masterStorage["fishdex"][selected].id)) {
                             stars = " (★★)";
                         }
                         else {
                             stars = " (★)"
                         }
-                        embedMsg.setDescription("#" + fishdex[selected].id + ". " + fishdex[selected].name + stars + "\n");
-                        embedMsg.setThumbnail(fishdex[selected].image);
-                        embedMsg.addField('Fishdex Entry', "" + fishdex[selected].info);
-                        embedMsg.addField('Base Value', "" + fishdex[selected].value.toLocaleString());
+                        embedMsg.setDescription("#" + masterStorage["fishdex"][selected].id + ". " + masterStorage["fishdex"][selected].name + stars + "\n");
+                        embedMsg.setThumbnail(masterStorage["fishdex"][selected].image);
+                        embedMsg.addField('Fishdex Entry', "" + masterStorage["fishdex"][selected].info);
+                        embedMsg.addField('Base Value', "" + masterStorage["fishdex"][selected].value.toLocaleString());
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
@@ -652,7 +652,7 @@ module.exports = {
                     var index = 0;
                     var count = 0;
                     var keys = [];
-                    for (var k in fishdex) {
+                    for (var k in masterStorage["fishdex"]) {
                         keys.push(k);
                     }
                     for (let i = 1; i < keys.length + 1; i++) {
@@ -661,11 +661,11 @@ module.exports = {
                             count = 0;
                             fishes[index] = "";
                         }
-                        if (userFish[userid].fishdex.includes(i.toString())) {
-                            fishes[index] += "#" + fishdex[i].id + ". " + fishdex[i].name + "\n";
+                        if (masterData["userFish"][userid].masterStorage["fishdex"].includes(i.toString())) {
+                            fishes[index] += "#" + masterStorage["fishdex"][i].id + ". " + masterStorage["fishdex"][i].name + "\n";
                         }
                         else {
-                            fishes[index] += "#" + fishdex[i].id + ". ???\n";
+                            fishes[index] += "#" + masterStorage["fishdex"][i].id + ". ???\n";
                         }
                         count++;
                     }
@@ -679,7 +679,7 @@ module.exports = {
                     embedMsg
                         .setFooter(`Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
-                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Fishdex')
                         .setThumbnail('https://i.imgur.com/liDWgLr.png')
                         .setColor('FFF000');
@@ -692,7 +692,7 @@ module.exports = {
                             const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                             collector.on('collect', r => {
-                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                 embedMsg.setTitle('Fishdex');
                                 embedMsg.setThumbnail('https://i.imgur.com/liDWgLr.png');
                                 embedMsg.setColor('FFF000');

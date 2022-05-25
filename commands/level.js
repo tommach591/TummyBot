@@ -2,18 +2,18 @@ module.exports = {
     name: 'level',
     description: "Spend points to increase income.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        var curr = userData[userid].income;
+        var curr = masterData["userData"][userid].income;
         var price;
         var nextPrice;
         var tier;
 
         let askToLevel = () =>
         {
-            if (userData[userid].points < price) {
+            if (masterData["userData"][userid].points < price) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setDescription("Next level costs " + price.toLocaleString() + " points!");
@@ -26,7 +26,7 @@ module.exports = {
                 proposalMsg.setTitle('Leveling Up!');
                 proposalMsg.setColor('FFF000');
                 proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
-                proposalMsg.setDescription("Would " + userData[userid].name + " like to level up their income for " + price.toLocaleString() + " points?");
+                proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to level up their income for " + price.toLocaleString() + " points?");
 
                 let proposal; 
                 message.channel.send({ embeds: [proposalMsg] }).then(
@@ -42,11 +42,11 @@ module.exports = {
                             collected => {
                             const reaction = collected.first();
                             if (reaction.emoji.name === '👍') {
-                                userData[userid].points -= price;
-                                userData[userid].income++;
+                                masterData["userData"][userid].points -= price;
+                                masterData["userData"][userid].income++;
                                 embedMsg.setTitle('Congratz!');
                                 embedMsg.setColor('00FF00');
-                                embedMsg.setDescription(userData[userid].name + " leveled up to " + tier + " tier!");
+                                embedMsg.setDescription(masterData["userData"][userid].name + " leveled up to " + tier + " tier!");
                                 embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                 embedMsg.setFooter('Next level: ' + nextPrice.toLocaleString() + ' points');
                                 message.channel.send({ embeds: [embedMsg] });
@@ -55,7 +55,7 @@ module.exports = {
                                 embedMsg.setTitle('Declined!');
                                 embedMsg.setColor('FF0000');
                                 proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
-                                embedMsg.setDescription(userData[userid].name + " declined!");
+                                embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                 embedMsg.setFooter('Next level: ' + price.toLocaleString() + ' points');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
@@ -63,7 +63,7 @@ module.exports = {
                         .catch(collected => {
                             embedMsg.setTitle('Fail!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                            embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                             proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                             embedMsg.setFooter('Next level: ' + price.toLocaleString() + ' points');
                             message.channel.send({ embeds: [embedMsg] });
@@ -107,7 +107,7 @@ module.exports = {
             default:
                 embedMsg.setTitle('Congratz!');
                 embedMsg.setColor('00FF00');
-                embedMsg.setDescription(userData[userid].name + " you are already maxed level!");
+                embedMsg.setDescription(masterData["userData"][userid].name + " you are already maxed level!");
                 embedMsg.setThumbnail('https://media2.giphy.com/media/xT9IgC2RzpbE7vBZ6M/giphy.gif');
                 embedMsg.setFooter('Next level: Infinite points');
                 message.channel.send({ embeds: [embedMsg] });
