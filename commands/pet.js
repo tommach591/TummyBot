@@ -958,10 +958,10 @@ module.exports = {
                 }
         
                 keys.sort((firstEl, secondEl) => { 
-                    if (masterData["userData"][firstEl].level > masterData["userData"][secondEl].level) {
+                    if (masterData["userPet"][firstEl].level > masterData["userPet"][secondEl].level) {
                         return -1;
                     }
-                    if (masterData["userData"][firstEl].level < masterData["userData"][secondEl].level) {
+                    if (masterData["userPet"][firstEl].level < masterData["userPet"][secondEl].level) {
                         return 1;
                     }
                     return 0;
