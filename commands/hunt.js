@@ -739,9 +739,9 @@ module.exports = {
                                 masterData["userData"][player].points += goldEarned;
                                 updateStats(player);
 
-                                if (!masterData["userHunt"][player].masterStorage["monsterdex"].includes(masterData["currHunt"]["active"].id)) {
-                                    masterData["userHunt"][player].masterStorage["monsterdex"].push(masterData["currHunt"]["active"].id);
-                                    masterData["userHunt"][player].masterStorage["monsterdex"].sort((firstEl, secondEl) => { 
+                                if (!masterData["userHunt"][player].monsterdex.includes(masterData["currHunt"]["active"].id)) {
+                                    masterData["userHunt"][player].monsterdex.push(masterData["currHunt"]["active"].id);
+                                    masterData["userHunt"][player].monsterdex.sort((firstEl, secondEl) => { 
                                         if (Number(firstEl) < Number(secondEl)) {
                                             return -1;
                                         }
@@ -2163,7 +2163,7 @@ module.exports = {
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];
-                    if (!isNaN(Number(selected)) && masterStorage["monsterdex"][selected] && masterData["userHunt"][userid].masterStorage["monsterdex"].includes(selected)) {
+                    if (!isNaN(Number(selected)) && masterStorage["monsterdex"][selected] && masterData["userHunt"][userid].monsterdex.includes(selected)) {
                         var stars = " (";
                         for (let i = 0; i < masterStorage["monsterdex"][selected].difficulty; i++) {
                             stars += "★";
@@ -2198,7 +2198,7 @@ module.exports = {
                             count = 0;
                             monsters[index] = "";
                         }
-                        if (masterData["userHunt"][userid].masterStorage["monsterdex"].includes(i.toString())) {
+                        if (masterData["userHunt"][userid].monsterdex.includes(i.toString())) {
                             monsters[index] += "#" + masterStorage["monsterdex"][i].id + ". " + masterStorage["monsterdex"][i].name + "\n";
                         }
                         else {
