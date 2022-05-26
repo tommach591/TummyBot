@@ -953,15 +953,15 @@ module.exports = {
                 break;
             case 'leaderboard':
                 var keys = [];
-                for (var k in masterData["userPet"]) {
+                for (var k in masterData["userData"]) {
                     keys.push(k);
                 }
         
                 keys.sort((firstEl, secondEl) => { 
-                    if (masterData["userPet"][firstEl].level > masterData["userPet"][secondEl].level) {
+                    if (masterData["userData"][firstEl].level > masterData["userData"][secondEl].level) {
                         return -1;
                     }
-                    if (masterData["userPet"][firstEl].level < masterData["userPet"][secondEl].level) {
+                    if (masterData["userData"][firstEl].level < masterData["userData"][secondEl].level) {
                         return 1;
                     }
                     return 0;
