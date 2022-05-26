@@ -61,6 +61,8 @@ module.exports = {
             "https://c.tenor.com/VOMInEglleoAAAAC/one-jump-man-animation.gif",                      // Luigi Punch
             "https://c.tenor.com/PjrHRZ83LjYAAAAC/pikachu-quick-attack.gif",                        // Pikachu Quick Attack
             "https://c.tenor.com/tlgJzKeIlJkAAAAC/anya-forger-spy-x-family.gif",                    // Anya Punch
+            "https://thumbs.gfycat.com/ArcticVeneratedGull-max-1mb.gif",                            // Kirito Asuna Attack
+            "https://data.whicdn.com/images/80210321/original.gif"                                  // Asuna Stab
         ];
 
         let generateEquip = (itemName) => {
