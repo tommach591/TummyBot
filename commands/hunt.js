@@ -733,7 +733,7 @@ module.exports = {
                                     var chance = 100000 * 0.1500 * dropRate; // 15.00%
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
-                                        masterData["userHunt"][player].masterStorage["scrolls"].push(scrollobtained);
+                                        masterData["userHunt"][player].scrolls.push(scrollobtained);
                                         itemsEarned += ", " + masterStorage["scrolls"][scrollobtained].name;
                                     }
                                 }
@@ -1124,7 +1124,7 @@ module.exports = {
                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setTitle('Scroll Inventory');
                     embedMsg.setColor('FFF000');
-                    if (masterData["userHunt"][userid].masterStorage["scrolls"].length == 0) {
+                    if (masterData["userHunt"][userid].scrolls.length == 0) {
                         embedMsg.setDescription('No masterStorage["scrolls"] :(');
                         message.channel.send({ embeds: [embedMsg] });
                     }
@@ -1133,14 +1133,14 @@ module.exports = {
                         var index = 0;
                         var count = 0;
 
-                        for (let i = 0; i < masterData["userHunt"][userid].masterStorage["scrolls"].length; i++) {
+                        for (let i = 0; i < masterData["userHunt"][userid].scrolls.length; i++) {
                             if (count >= 6) {
                                 allscrolls[index] += "\n";
                                 index++;
                                 count = 0;
                                 allscrolls.push("");
                             }
-                            var element = masterData["userHunt"][userid].masterStorage["scrolls"][i];
+                            var element = masterData["userHunt"][userid].scrolls[i];
                             allscrolls[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
                             if (masterStorage["scrolls"][element].maxHP != 0) {
                                 allscrolls[index] += "\nMaxHP: " + (masterStorage["scrolls"][element].maxHP);
@@ -1243,7 +1243,7 @@ module.exports = {
                             case "hp":
                             case "maxhp":
                             case "health":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].maxHP > masterStorage["scrolls"][secondEl].maxHP) {
                                         return -1;
                                     }
@@ -1262,7 +1262,7 @@ module.exports = {
                                 break;
                             case "atk":
                             case "attack":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].attack > masterStorage["scrolls"][secondEl].attack) {
                                         return -1;
                                     }
@@ -1282,7 +1282,7 @@ module.exports = {
                             case "mag":
                             case "matk":
                             case "magic":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].magic > masterStorage["scrolls"][secondEl].magic) {
                                         return -1;
                                     }
@@ -1300,7 +1300,7 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by magic!');
                                 break;
                             case "mix":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].attack == masterStorage["scrolls"][firstEl].magic 
                                         && masterStorage["scrolls"][firstEl].attack != 0) {
                                         return -1;
@@ -1317,7 +1317,7 @@ module.exports = {
                                     }
                                     return 0;
                                 });
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].attack > masterStorage["scrolls"][secondEl].attack && masterStorage["scrolls"][firstEl].magic > masterStorage["scrolls"][secondEl].magic) {
                                         return -1;
                                     }
@@ -1330,7 +1330,7 @@ module.exports = {
                                 break;
                             case "def":
                             case "defense":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].defense > masterStorage["scrolls"][secondEl].defense) {
                                         return -1;
                                     }
@@ -1349,7 +1349,7 @@ module.exports = {
                                 break;
                             case "spd":
                             case "speed":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].speed > masterStorage["scrolls"][secondEl].speed) {
                                         return -1;
                                     }
@@ -1367,7 +1367,7 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by speed!');
                                 break;
                             case "chaos":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].chaos && masterStorage["scrolls"][secondEl].chaos && masterStorage["scrolls"][firstEl].chaos > masterStorage["scrolls"][secondEl].chaos) {
                                         return -1;
                                     }
@@ -1393,7 +1393,7 @@ module.exports = {
                             case "ascending":
                             case "ascend":
                             case "low":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].rarity < masterStorage["scrolls"][secondEl].rarity) {
                                         return -1;
                                     }
@@ -1413,7 +1413,7 @@ module.exports = {
                             case "descending":
                             case "descend":
                             case "high":
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].rarity > masterStorage["scrolls"][secondEl].rarity) {
                                         return -1;
                                     }
@@ -1431,7 +1431,7 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by descending rarity!');
                                 break;
                             case 'purity':
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].purity && masterStorage["scrolls"][secondEl].purity && masterStorage["scrolls"][firstEl].purity < masterStorage["scrolls"][secondEl].purity) {
                                         return -1;
                                     }
@@ -1455,7 +1455,7 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by purity!');
                                 break;
                             default:
-                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                masterData["userHunt"][userid].scrolls.sort((firstEl, secondEl) => { 
                                     if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
@@ -1471,8 +1471,8 @@ module.exports = {
                         embedMsg.setColor('00FF00');
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < masterData["userHunt"][userid].masterStorage["scrolls"].length) {
-                        theScroll = masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][selectedindex]];
+                    else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < masterData["userHunt"][userid].scrolls.length) {
+                        theScroll = masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[selectedindex]];
 
                         let scrollGear = (gear) => {
                             if (gear != "000000" && (masterData["items"][gear].slots > 0 || theScroll.purity)) 
@@ -1490,7 +1490,7 @@ module.exports = {
 
                                 if (theScroll.purity) 
                                 {
-                                    let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
+                                    let original = [...masterData["userHunt"][userid].scrolls];
 
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Use ' + theScroll.name +  '?');
@@ -1527,7 +1527,7 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].scrolls) == JSON.stringify(original)) {
                                                     if (luck <= chance) {
 
                                                         if (theScroll.purity == 1)
@@ -1581,7 +1581,7 @@ module.exports = {
                                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                                         embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
-                                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
+                                                        masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                                         if (masterData["items"][gear].lastScroll)
                                                         {
                                                             delete masterData["items"][gear].lastScroll;
@@ -1594,7 +1594,7 @@ module.exports = {
                                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
                                                         embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
-                                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
+                                                        masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                                     }
                                                 } 
                                                 else if (reaction.emoji.name === '👎')
@@ -1684,7 +1684,7 @@ module.exports = {
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
                                         embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
-                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
+                                        masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                     }
                                     else { 
                                         embedMsg.setTitle('Fail! - ' + theScroll.name);
@@ -1693,7 +1693,7 @@ module.exports = {
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
                                         embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
-                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
+                                        masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                     }
                                 }
                             }
@@ -1838,7 +1838,7 @@ module.exports = {
                                     }
                                     break;
                                 case "scroll":
-                                    if (index >= masterData["userHunt"][userid].masterStorage["scrolls"].length || index < 0) {
+                                    if (index >= masterData["userHunt"][userid].scrolls.length || index < 0) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
@@ -1847,12 +1847,12 @@ module.exports = {
                                     }
                                     else {
 
-                                        let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
+                                        let original = [...masterData["userHunt"][userid].scrolls];
 
                                         const proposalMsg = new MessageEmbed();
                                         proposalMsg.setTitle('Give Item!');
                                         proposalMsg.setColor('FFF000');
-                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to give " + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][index]].name + " to " + masterData["userData"][mention].name + "?");
+                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to give " + masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[index]].name + " to " + masterData["userData"][mention].name + "?");
                         
                                         
                                         let proposal; 
@@ -1868,10 +1868,10 @@ module.exports = {
                                                 .then(
                                                     collected => {
                                                     const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
-                                                        var selected = masterData["userHunt"][userid].masterStorage["scrolls"][index];
-                                                        masterData["userHunt"][mention].masterStorage["scrolls"].push(masterData["userHunt"][userid].masterStorage["scrolls"][index]);
-                                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(index, 1);
+                                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].scrolls) == JSON.stringify(original)) {
+                                                        var selected = masterData["userHunt"][userid].scrolls[index];
+                                                        masterData["userHunt"][mention].scrolls.push(masterData["userHunt"][userid].scrolls[index]);
+                                                        masterData["userHunt"][userid].scrolls.splice(index, 1);
 
                                                         embedMsg.setTitle('Success!');
                                                         embedMsg.setColor('00FF00');
@@ -2083,7 +2083,7 @@ module.exports = {
                                 }
                                 break;
                             case "scroll":
-                                if (target < 0 || target >= masterData["userHunt"][userid].masterStorage["scrolls"].length) {
+                                if (target < 0 || target >= masterData["userHunt"][userid].scrolls.length) {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription('Scroll does not exist!');
@@ -2091,8 +2091,8 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else {
-                                    let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
-                                    var selectedScroll = masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][target]];
+                                    let original = [...masterData["userHunt"][userid].scrolls];
+                                    var selectedScroll = masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[target]];
                                     var price = 100;
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
@@ -2112,9 +2112,9 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].scrolls) == JSON.stringify(original)) {
                                                     masterData["userData"][userid].points += price;
-                                                    masterData["userHunt"][userid].masterStorage["scrolls"].splice(target, 1)
+                                                    masterData["userHunt"][userid].scrolls.splice(target, 1)
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
                                                     embedMsg.setDescription(masterData["userData"][userid].name + " sold " + selectedScroll.name + " for " + price.toLocaleString() + " points!");
@@ -2277,9 +2277,9 @@ module.exports = {
                     var scroll_three = Math.floor(Number(args[3]) - 1);
                     var cost = 10000;
 
-                    if ((scroll_one >= masterData["userHunt"][userid].masterStorage["scrolls"].length || scroll_one < 0) ||
-                            (scroll_two >= masterData["userHunt"][userid].masterStorage["scrolls"].length || scroll_two < 0) ||
-                                (scroll_three >= masterData["userHunt"][userid].masterStorage["scrolls"].length || scroll_three < 0)) {
+                    if ((scroll_one >= masterData["userHunt"][userid].scrolls.length || scroll_one < 0) ||
+                            (scroll_two >= masterData["userHunt"][userid].scrolls.length || scroll_two < 0) ||
+                                (scroll_three >= masterData["userHunt"][userid].scrolls.length || scroll_three < 0)) {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
@@ -2304,12 +2304,12 @@ module.exports = {
                     }
                     else 
                     {
-                        let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
+                        let original = [...masterData["userHunt"][userid].scrolls];
                         const proposalMsg = new MessageEmbed();
                         proposalMsg.setTitle('Tribute Summon!');
                         proposalMsg.setColor('FFF000');
-                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to spend " + cost.toLocaleString() + " points to sacrifice: \n" + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_one]].name + "\n" +
-                                                    masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_two]].name + "\n" + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_three]].name +
+                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to spend " + cost.toLocaleString() + " points to sacrifice: \n" + masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[scroll_one]].name + "\n" +
+                                                    masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[scroll_two]].name + "\n" + masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[scroll_three]].name +
                                                     "\n\nTo summon a random scroll?");
 
                         let proposal; 
@@ -2325,18 +2325,18 @@ module.exports = {
                                 .then(
                                     collected => {
                                     const reaction = collected.first();
-                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
+                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].scrolls) == JSON.stringify(original)) {
                                         masterData["userData"][userid].points -= cost;
                                         var target = client.users.cache.get(userid);
-                                        var scrollsTributed = [masterData["userHunt"][userid].masterStorage["scrolls"][scroll_one], masterData["userHunt"][userid].masterStorage["scrolls"][scroll_two], masterData["userHunt"][userid].masterStorage["scrolls"][scroll_three]];
+                                        var scrollsTributed = [masterData["userHunt"][userid].scrolls[scroll_one], masterData["userHunt"][userid].scrolls[scroll_two], masterData["userHunt"][userid].scrolls[scroll_three]];
                                         getDrops();
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         while (scrollsTributed.includes(scrollobtained))
                                         {
                                             scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         }
-                                        embedMsg.setDescription(masterData["userData"][userid].name + " sacrifices \n" + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_one]].name + ", \n" +
-                                        masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_two]].name + ", \nand " + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_three]].name +
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " sacrifices \n" + masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[scroll_one]].name + ", \n" +
+                                        masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[scroll_two]].name + ", \nand " + masterStorage["scrolls"][masterData["userHunt"][userid].scrolls[scroll_three]].name +
                                                 " to summon... \n\n" + masterStorage["scrolls"][scrollobtained].name + "!");
                 
                                         var scrollsToDel = [scroll_one, scroll_two, scroll_three];
@@ -2346,9 +2346,9 @@ module.exports = {
                                         scrollsToDel.reverse();
                                         for (let i = 0; i < 3; i++)
                                         {
-                                            masterData["userHunt"][userid].masterStorage["scrolls"].splice(scrollsToDel[i], 1);
+                                            masterData["userHunt"][userid].scrolls.splice(scrollsToDel[i], 1);
                                         }
-                                        masterData["userHunt"][userid].masterStorage["scrolls"].push(scrollobtained);
+                                        masterData["userHunt"][userid].scrolls.push(scrollobtained);
                                         embedMsg.setTitle('Success!');
                                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                         embedMsg.setColor('00FF00');
