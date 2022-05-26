@@ -2,36 +2,36 @@ module.exports = {
     name: 'spawnequip',
     description: "Generate an equip for a user!",
 
-    execute(message, args, userid, userData, userHunt, items, equips, client) {
+    execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
         let generateEquip = (itemName) => {
-            if (!equips[itemName]) {
+            if (!masterStorage["equips"][itemName]) {
                 return;
             }
             var id = "";
-            while (items[id]) {
+            while (masterData["items"][id]) {
                 id = "";
                 for (var i = 0; i < 6; i++) {
                     id += (Math.floor(Math.random() * 10)).toString();
                 }
             }
-            items[id] = {
-                name: equips[itemName].name,
-                type: equips[itemName].type,
+            masterData["items"][id] = {
+                name: masterStorage["equips"][itemName].name,
+                type: masterStorage["equips"][itemName].type,
                 maxHP: 0,
                 attack: 0,
                 magic: 0,
                 defense: 0,
                 speed: 0,
-                slots: (equips[itemName].rarity * 10) + 5
+                slots: (masterStorage["equips"][itemName].rarity * 10) + 5
             }
             return id;
         }
 
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
@@ -48,7 +48,7 @@ module.exports = {
                     mention = mention.slice(1);
                 }
         
-                if (!userData[mention]) {
+                if (!masterData["userData"][mention]) {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('User does not exist!');
@@ -65,12 +65,12 @@ module.exports = {
                     itemName += args[i];
                 }
 
-                if (equips[itemName]) {
+                if (masterStorage["equips"][itemName]) {
                     var itemObtained = generateEquip(itemName);
-                    userHunt[mention].equips.push(itemObtained);
+                    masterData["userHunt"][mention].equips.push(itemObtained);
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
-                    embedMsg.setDescription(userData[mention].name + ' was gifted a ' + itemName + '!');
+                    embedMsg.setDescription(masterData["userData"][mention].name + ' was gifted a ' + itemName + '!');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {

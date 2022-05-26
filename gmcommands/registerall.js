@@ -2,14 +2,14 @@ module.exports = {
     name: 'registerall',
     description: "Register all accounts.",
 
-    execute(message, args, userid, userData, userFish, userGarden, userHunt, userPet, client) {
+    execute(message, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
 
             var keys = [];
-            for (var k in userData) {
+            for (var k in masterData["userData"]) {
                 keys.push(k);
             }
 
@@ -18,7 +18,7 @@ module.exports = {
             for (var i = 0; i < keys.length; i++) {
 
                 /*
-                    Below this is to add to userData
+                    Below this is to add to masterData["userData"]
                 */
 
 
@@ -26,9 +26,9 @@ module.exports = {
                     Erase after done ^
                 */
 
-                if (!userFish[keys[i]]) {
-                    userFish[keys[i]] = {
-                        name: userData[keys[i]].name,
+                if (!masterData["userFish"][keys[i]]) {
+                    masterData["userFish"][keys[i]] = {
+                        name: masterData["userData"][keys[i]].name,
                         id: keys[i],
                         fishingRod: 'Bare Hand',
                         fishBait: 0,
@@ -37,20 +37,20 @@ module.exports = {
                         fishInventory: []
                     }
                 }
-                if (!userGarden[keys[i]]) {
-                    userGarden[keys[i]] = {
+                if (!masterData["userGarden"][keys[i]]) {
+                    masterData["userGarden"][keys[i]] = {
                         id: keys[i],
-                        name: userData[keys[i]].name,
+                        name: masterData["userData"][keys[i]].name,
                         pots: ["0", "-1", "-1"],
                         potTime: [0, 0, 0],
                         gardendex: []
                     }
                 }
 
-                if (!userHunt[keys[i]]) {
-                    userHunt[keys[i]] = {
+                if (!masterData["userHunt"][keys[i]]) {
+                    masterData["userHunt"][keys[i]] = {
                         id: keys[i],
-                        name: userData[keys[i]].name,
+                        name: masterData["userData"][keys[i]].name,
                         maxHP: 100,
                         attack: 3,
                         magic: 3,
@@ -68,10 +68,10 @@ module.exports = {
                     }
                 }
 
-                if (!userPet[keys[i]]) {
-                    userPet[keys[i]] = {
+                if (!masterData["userPet"][keys[i]]) {
+                    masterData["userPet"][keys[i]] = {
                         id: keys[i],
-                        name: userData[keys[i]].name,
+                        name: masterData["userData"][keys[i]].name,
                         pet: "0",
                         petName: "",
                         type: 0,

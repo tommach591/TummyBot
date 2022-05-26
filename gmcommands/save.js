@@ -2,37 +2,37 @@ module.exports = {
     name: 'save',
     description: "Save files.",
 
-    execute(userData, userFish, userGarden, userHunt, items, userPet, config, savefile, s3, userDataParams, userFishParams, userGardenParams, userHuntParams, itemsParams, userPetParams, fs) {
+    execute(masterData, masterStorage, fs) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
         let localSave = () => {
-            fs.writeFile("storage/userData.json", JSON.stringify(userData, null, 2), function(err) {
+            fs.writeFile("storage/userData.json", JSON.stringify(masterData["userData"], null, 2), function(err) {
                 if (err) {
                     console.log(err);
                 }
             });
-            fs.writeFile("storage/userFish.json", JSON.stringify(userFish, null, 2), function(err) {
+            fs.writeFile("storage/userFish.json", JSON.stringify(masterData["userFish"], null, 2), function(err) {
                 if (err) {
                     console.log(err);
                 }
             });
-            fs.writeFile("storage/userGarden.json", JSON.stringify(userGarden, null, 2), function(err) {
+            fs.writeFile("storage/userGarden.json", JSON.stringify(masterData["userGarden"], null, 2), function(err) {
                 if (err) {
                     console.log(err);
                 }
             });
-            fs.writeFile("storage/userHunt.json", JSON.stringify(userHunt, null, 2), function(err) {
+            fs.writeFile("storage/userHunt.json", JSON.stringify(masterData["userHunt"], null, 2), function(err) {
                 if (err) {
                     console.log(err);
                 }
             });
-            fs.writeFile("storage/items.json", JSON.stringify(items, null, 2), function(err) {
+            fs.writeFile("storage/items.json", JSON.stringify(masterData["items"], null, 2), function(err) {
                 if (err) {
                     console.log(err);
                 }
             });
-            fs.writeFile("storage/userPet.json", JSON.stringify(userPet, null, 2), function(err) {
+            fs.writeFile("storage/userPet.json", JSON.stringify(masterData["userPet"], null, 2), function(err) {
                 if (err) {
                     console.log(err);
                 }
@@ -40,10 +40,10 @@ module.exports = {
         }
 
         let onlineSave = () => {
-            s3.putObject({
+            masterStorage["s3"].putObject({
                 Bucket: process.env.BUCKET,
-                Key: userDataParams.Key,
-                Body: JSON.stringify(userData),
+                Key: masterStorage["userDataParams"].Key,
+                Body: JSON.stringify(masterData["userData"]),
                 ContentType: "application/json"},
                 function (err, data) {
                     if (err) {
@@ -51,10 +51,10 @@ module.exports = {
                     }
                 }
             );
-            s3.putObject({
+            masterStorage["s3"].putObject({
                 Bucket: process.env.BUCKET,
-                Key: userFishParams.Key,
-                Body: JSON.stringify(userFish),
+                Key: masterStorage["userFishParams"].Key,
+                Body: JSON.stringify(masterData["userFish"]),
                 ContentType: "application/json"},
                 function (err, data) {
                     if (err) {
@@ -62,10 +62,10 @@ module.exports = {
                     }
                 }
             );
-            s3.putObject({
+            masterStorage["s3"].putObject({
                 Bucket: process.env.BUCKET,
-                Key: userGardenParams.Key,
-                Body: JSON.stringify(userGarden),
+                Key: masterStorage["userGardenParams"].Key,
+                Body: JSON.stringify(masterData["userGarden"]),
                 ContentType: "application/json"},
                 function (err, data) {
                     if (err) {
@@ -73,10 +73,10 @@ module.exports = {
                     }
                 }
             );
-            s3.putObject({
+            masterStorage["s3"].putObject({
                 Bucket: process.env.BUCKET,
-                Key: userHuntParams.Key,
-                Body: JSON.stringify(userHunt),
+                Key: masterStorage["userHuntParams"].Key,
+                Body: JSON.stringify(masterData["userHunt"]),
                 ContentType: "application/json"},
                 function (err, data) {
                     if (err) {
@@ -84,10 +84,10 @@ module.exports = {
                     }
                 }
             );
-            s3.putObject({
+            masterStorage["s3"].putObject({
                 Bucket: process.env.BUCKET,
-                Key: itemsParams.Key,
-                Body: JSON.stringify(items),
+                Key: masterStorage["itemsParams"].Key,
+                Body: JSON.stringify(masterData["items"]),
                 ContentType: "application/json"},
                 function (err, data) {
                     if (err) {
@@ -95,10 +95,10 @@ module.exports = {
                     }
                 }
             );
-            s3.putObject({
+            masterStorage["s3"].putObject({
                 Bucket: process.env.BUCKET,
-                Key: userPetParams.Key,
-                Body: JSON.stringify(userPet),
+                Key: masterStorage["userPetParams"].Key,
+                Body: JSON.stringify(masterData["userPet"]),
                 ContentType: "application/json"},
                 function (err, data) {
                     if (err) {
@@ -111,7 +111,7 @@ module.exports = {
         // localSave();
         onlineSave();
         var time = new Date();
-        savefile.lastSave = time;
+        masterData["savefile"].lastSave = time;
 
         console.log("Saved on " + time.toLocaleString());
     }

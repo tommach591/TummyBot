@@ -2,11 +2,11 @@ module.exports = {
     name: 'rewardall',
     description: "Reward points to everyone.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
@@ -16,7 +16,7 @@ module.exports = {
             }
 
             var keys = [];
-            for (var k in userData) {
+            for (var k in masterData["userData"]) {
                 keys.push(k);
             }
 
@@ -25,7 +25,7 @@ module.exports = {
             if (!isNaN(amount)) {
                 if (amount > 0) {
                     for (var i = 0; i < keys.length; i++) {
-                        userData[keys[i]].points += amount;
+                        masterData["userData"][keys[i]].points += amount;
                     }
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
@@ -36,7 +36,7 @@ module.exports = {
                 else {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
-                    embedMsg.setDescription(userData[userid].name + " can't reward 0 points!");
+                    embedMsg.setDescription(masterData["userData"][userid].name + " can't reward 0 points!");
                     message.channel.send({ embeds: [embedMsg] });
                 }
             }

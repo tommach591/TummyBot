@@ -2,11 +2,11 @@ module.exports = {
     name: 'spawnscroll',
     description: "Generate a scroll for a user!",
 
-    execute(message, args, userid, userData, userHunt, scrolls, client) {
+    execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
@@ -23,7 +23,7 @@ module.exports = {
                     mention = mention.slice(1);
                 }
         
-                if (!userData[mention]) {
+                if (!masterData["userData"][mention]) {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('User does not exist!');
@@ -35,17 +35,17 @@ module.exports = {
                 var choice = Math.floor(Number(args[1]));
                 var amount = Math.floor(Number(args[2]));
 
-                if (!isNaN(choice) && scrolls[choice]) {
-                    var scrollobtained = scrolls[choice];
+                if (!isNaN(choice) && masterStorage["scrolls"][choice]) {
+                    var scrollobtained = masterStorage["scrolls"][choice];
                     if (!isNaN(amount) && amount > 0) {
                         for (let i = 0; i < amount; i++) {
-                            userHunt[mention].scrolls.push(choice);
+                            masterData["userHunt"][mention].scrolls.push(choice);
                         }
-                        embedMsg.setDescription(userData[mention].name + ' was gifted ' + amount + " " + scrollobtained.name + '\'s!');
+                        embedMsg.setDescription(masterData["userData"][mention].name + ' was gifted ' + amount + " " + scrollobtained.name + '\'s!');
                     }
                     else {
-                        userHunt[mention].scrolls.push(choice);
-                        embedMsg.setDescription(userData[mention].name + ' was gifted a ' + scrollobtained.name + '!');
+                        masterData["userHunt"][mention].scrolls.push(choice);
+                        embedMsg.setDescription(masterData["userData"][mention].name + ' was gifted a ' + scrollobtained.name + '!');
                     }
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');

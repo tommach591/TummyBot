@@ -2,43 +2,43 @@ module.exports = {
     name: 'killboss',
     description: "Kills current boss.",
 
-    execute(message, args, userid, userData, userHunt, currHunt, monsterdex, items, equips, client) {
+    execute(message, userid, masterData, masterStorage) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
         let updateStats = (id) => {
-            weapon = items[userHunt[id].weapon];
-            armor = items[userHunt[id].armor];
-            accessory = items[userHunt[id].accessory];
+            weapon = masterData["items"][masterData["userHunt"][id].weapon];
+            armor = masterData["items"][masterData["userHunt"][id].armor];
+            accessory = masterData["items"][masterData["userHunt"][id].accessory];
     
-            maxHP = userHunt[id].maxHP;
-            attack = userHunt[id].attack;
-            magic = userHunt[id].magic;
-            defense = userHunt[id].defense;
-            speed = userHunt[id].speed;
+            maxHP = masterData["userHunt"][id].maxHP;
+            attack = masterData["userHunt"][id].attack;
+            magic = masterData["userHunt"][id].magic;
+            defense = masterData["userHunt"][id].defense;
+            speed = masterData["userHunt"][id].speed;
     
             if (weapon.name != "Nothing") {
-                maxHP += weapon.maxHP + equips[weapon.name].maxHP;
-                attack += weapon.attack + equips[weapon.name].attack;
-                magic += weapon.magic + equips[weapon.name].magic;
-                defense += weapon.defense + equips[weapon.name].defense;
-                speed += weapon.speed + equips[weapon.name].speed;
+                maxHP += weapon.maxHP + masterStorage["equips"][weapon.name].maxHP;
+                attack += weapon.attack + masterStorage["equips"][weapon.name].attack;
+                magic += weapon.magic + masterStorage["equips"][weapon.name].magic;
+                defense += weapon.defense + masterStorage["equips"][weapon.name].defense;
+                speed += weapon.speed + masterStorage["equips"][weapon.name].speed;
             }
     
             if (armor.name != "Nothing") {
-                maxHP += armor.maxHP + equips[armor.name].maxHP;
-                attack += armor.attack + equips[armor.name].attack;
-                magic += armor.magic + equips[armor.name].magic;
-                defense += armor.defense + equips[armor.name].defense;
-                speed += armor.speed + equips[armor.name].speed;
+                maxHP += armor.maxHP + masterStorage["equips"][armor.name].maxHP;
+                attack += armor.attack + masterStorage["equips"][armor.name].attack;
+                magic += armor.magic + masterStorage["equips"][armor.name].magic;
+                defense += armor.defense + masterStorage["equips"][armor.name].defense;
+                speed += armor.speed + masterStorage["equips"][armor.name].speed;
             }
     
             if (accessory.name != "Nothing") {
-                maxHP += accessory.maxHP + equips[accessory.name].maxHP;
-                attack += accessory.attack + equips[accessory.name].attack;
-                magic += accessory.magic + equips[accessory.name].magic;
-                defense += accessory.defense + equips[accessory.name].defense;
-                speed += accessory.speed + equips[accessory.name].speed;
+                maxHP += accessory.maxHP + masterStorage["equips"][accessory.name].maxHP;
+                attack += accessory.attack + masterStorage["equips"][accessory.name].attack;
+                magic += accessory.magic + masterStorage["equips"][accessory.name].magic;
+                defense += accessory.defense + masterStorage["equips"][accessory.name].defense;
+                speed += accessory.speed + masterStorage["equips"][accessory.name].speed;
             }
 
             if (maxHP < 1) {
@@ -67,16 +67,16 @@ module.exports = {
                 critDmg = 3 + (speed * 0.01);
             }
 
-            if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
-                userHunt[id].currentHP = maxHP;
+            if (!masterData["currHunt"]["active"] || masterData["currHunt"]["active"].currentHP <= 0 || masterData["currHunt"]["active"].retreated) {
+                masterData["userHunt"][id].currentHP = maxHP;
             }
             
         }
 
-        if (userData[userid].gm >= 1) {
-            if (currHunt["active"]) {
-                var players = currHunt["active"].targets;
-                delete currHunt["active"];
+        if (masterData["userData"][userid].gm >= 1) {
+            if (masterData["currHunt"]["active"]) {
+                var players = masterData["currHunt"]["active"].targets;
+                delete masterData["currHunt"]["active"];
                 for (let i = 0; i < players.length; i++)
                 {
                     updateStats(players[i])

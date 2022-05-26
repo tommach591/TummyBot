@@ -2,11 +2,11 @@ module.exports = {
     name: 'gm',
     description: "Set GM level.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, masterData, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
@@ -23,7 +23,7 @@ module.exports = {
                     mention = mention.slice(1);
                 }
         
-                if (!userData[mention]) {
+                if (!masterData["userData"][mention]) {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('User does not exist!');
@@ -35,7 +35,7 @@ module.exports = {
 
                 if (!isNaN(level)) {
                     if (level >= 0) {
-                        userData[mention].gm = level;
+                        masterData["userData"][mention].gm = level;
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
                         embedMsg.setDescription(target.username + " has been set to GM level " + level + "!");
@@ -44,7 +44,7 @@ module.exports = {
                     else {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setDescription(userData[userid].name + " can't be set to GM level " + level + "!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " can't be set to GM level " + level + "!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }

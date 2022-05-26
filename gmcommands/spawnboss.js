@@ -2,11 +2,11 @@ module.exports = {
     name: 'spawnboss',
     description: "Spawn a specific boss.",
 
-    execute(message, args, userid, userData, currHunt, monsterdex, client) {
+    execute(message, args, userid, masterData, masterStorage) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
@@ -17,17 +17,17 @@ module.exports = {
             var boss = Math.floor(Number(args[0]));
             var newTime = new Date();
 
-            if (currHunt["active"]) {
+            if (masterData["currHunt"]["active"]) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
                 embedMsg.setDescription('Boss is already active!');
                 message.channel.send({ embeds: [embedMsg] });
             }
-            else if (!isNaN(boss) && monsterdex[boss]) {
+            else if (!isNaN(boss) && masterStorage["monsterdex"][boss]) {
 
-                var selectedMonster = monsterdex[boss];
+                var selectedMonster = masterStorage["monsterdex"][boss];
 
-                currHunt["active"] = {
+                masterData["currHunt"]["active"] = {
                     id: selectedMonster.id,
                     name: selectedMonster.name,
                     info: selectedMonster.info,
@@ -54,19 +54,19 @@ module.exports = {
                     retreated: false
                 }
 
-                currHunt["active"].channels.push(message.channel);
+                masterData["currHunt"]["active"].channels.push(message.channel);
                 const embedMsg = new MessageEmbed();
                 var stars = " (";
-                for (let i = 0; i < currHunt["active"].difficulty; i++) {
+                for (let i = 0; i < masterData["currHunt"]["active"].difficulty; i++) {
                     stars += "★";
                 }
                 stars += ")"
-                embedMsg.setTitle(currHunt["active"].name + stars);
-                embedMsg.setDescription(currHunt["active"].entry);
-                embedMsg.setImage(currHunt["active"].image);
-                embedMsg.setFooter("HP: " + currHunt["active"].currentHP + "/" + currHunt["active"].maxHP);
+                embedMsg.setTitle(masterData["currHunt"]["active"].name + stars);
+                embedMsg.setDescription(masterData["currHunt"]["active"].entry);
+                embedMsg.setImage(masterData["currHunt"]["active"].image);
+                embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP + "/" + masterData["currHunt"]["active"].maxHP);
                 embedMsg.setColor("49000F");
-                currHunt["active"].channels[0].send({ embeds: [embedMsg] });
+                masterData["currHunt"]["active"].channels[0].send({ embeds: [embedMsg] });
             }
             else {
                 embedMsg.setTitle('Error!');

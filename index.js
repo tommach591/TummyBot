@@ -182,7 +182,7 @@ let saveBeforeReset = () =>
     setTimeout(
         function() {
             if (masterData["userData"] != "") {
-                client.gmcommands.get('save').execute(masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], masterData["userPet"], masterStorage["config"], masterData["savefile"], masterStorage["s3"], masterStorage["userDataParams"], masterStorage["userFishParams"], masterStorage["userGardenParams"], masterStorage["userHuntParams"], masterStorage["itemsParams"], masterStorage["userPetParams"], fs);
+                client.gmcommands.get('save').execute(masterData, masterStorage, fs);
             }
             saveBeforeReset();
         }, resetTime
@@ -777,52 +777,52 @@ client.on('messageCreate', message => {
                 break;
             case 'reward':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('reward').execute(message, args, sender.id, masterData["userData"], client);
+                    client.gmcommands.get('reward').execute(message, args, sender.id, masterData, client);
                 break;
             case 'rewardall':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('rewardall').execute(message, args, sender.id, masterData["userData"], client);
+                    client.gmcommands.get('rewardall').execute(message, args, sender.id, masterData);
                 break;
             case 'spawntime':
                 if (masterData["userData"][sender.id] && masterData["currHunt"].lastSpawn)
-                    client.gmcommands.get('spawntime').execute(message, args, sender.id, masterData["userData"], masterData["currHunt"], client);
+                    client.gmcommands.get('spawntime').execute(message, args, sender.id, masterData);
                 break;
             case 'spawnboss':
                 if (masterData["userData"][sender.id] && masterData["currHunt"].lastSpawn)
-                    client.gmcommands.get('spawnboss').execute(message, args, sender.id, masterData["userData"], masterData["currHunt"], masterStorage["monsterdex"], client);
+                    client.gmcommands.get('spawnboss').execute(message, args, sender.id, masterData, masterStorage);
                 break;
             case 'spawnequip':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('spawnequip').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterData["items"], masterStorage["equips"], client);
+                    client.gmcommands.get('spawnequip').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
             case 'spawnscroll':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('spawnscroll').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterStorage["scrolls"], client);
+                    client.gmcommands.get('spawnscroll').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
             case 'droprate':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('droprate').execute(message, args, sender.id, masterData["userData"], masterData["currHunt"], client);
+                    client.gmcommands.get('droprate').execute(message, args, sender.id, masterData);
                 break;
             case 'killboss':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('killboss').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterData["currHunt"], masterStorage["monsterdex"], masterData["items"], masterStorage["equips"], client);
+                    client.gmcommands.get('killboss').execute(message, args, sender.id, masterData, masterStorage);
                 break;
             case 'banish':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('banish').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], client);
+                    client.gmcommands.get('banish').execute(message, args, sender.id, masterData);
                 break;
             case 'registerall':
                 if (masterData["userData"][sender.id]) {
-                    client.gmcommands.get('registerall').execute(message, args, sender.id, masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["userPet"], client);
+                    client.gmcommands.get('registerall').execute(message, sender.id, masterData);
                 }
                 break;
             case 'gm':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('gm').execute(message, args, sender.id, masterData["userData"], client);
+                    client.gmcommands.get('gm').execute(message, args, sender.id, masterData, client);
                 break;
             case 'save':
                 if (masterData["userData"][sender.id] && masterData["userData"][sender.id].gm > 0) {
-                    client.gmcommands.get('save').execute(masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], masterData["userPet"], masterStorage["config"], masterData["savefile"], masterStorage["s3"], masterStorage["userDataParams"], masterStorage["userFishParams"], masterStorage["userGardenParams"], masterStorage["userHuntParams"], masterStorage["itemsParams"], masterStorage["userPetParams"], fs);
+                    client.gmcommands.get('save').execute(masterData, masterStorage, fs);
                     const embedMsg = new MessageEmbed();
                     embedMsg.setTitle('Saved!');
                     embedMsg.setColor('B5EAFF');
@@ -925,7 +925,7 @@ client.on('messageCreate', message => {
     }
 
     if (newTime.getTime() - masterData["savefile"].lastSave.getTime() >= (1000 * 60 * 60)) {
-        client.gmcommands.get('save').execute(masterData["userData"], masterData["userFish"], masterData["userGarden"], masterData["userHunt"], masterData["items"], masterData["userPet"], masterStorage["config"], masterData["savefile"], masterStorage["s3"], masterStorage["userDataParams"], masterStorage["userFishParams"], masterStorage["userGardenParams"], masterStorage["userHuntParams"], masterStorage["itemsParams"], masterStorage["userPetParams"]);
+        client.gmcommands.get('save').execute(masterData, masterStorage, fs);
     }
 });
 

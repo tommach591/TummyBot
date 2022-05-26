@@ -2,11 +2,11 @@ module.exports = {
     name: 'reward',
     description: "Reward points to someone.",
 
-    execute(message, args, userid, userData, client) {
+    execute(message, args, userid, masterData, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
@@ -23,7 +23,7 @@ module.exports = {
                     mention = mention.slice(1);
                 }
         
-                if (!userData[mention]) {
+                if (!masterData["userData"][mention]) {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('User does not exist!');
@@ -35,7 +35,7 @@ module.exports = {
 
                 if (!isNaN(amount)) {
                     if (amount > 0) {
-                        userData[mention].points += amount;
+                        masterData["userData"][mention].points += amount;
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
                         embedMsg.setThumbnail('https://i.imgur.com/2J59UgH.png');
@@ -45,7 +45,7 @@ module.exports = {
                     else {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
-                        embedMsg.setDescription(userData[userid].name + " can't reward 0 points!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " can't reward 0 points!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }

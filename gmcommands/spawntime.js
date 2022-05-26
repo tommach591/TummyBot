@@ -2,11 +2,11 @@ module.exports = {
     name: 'spawntime',
     description: "Set a new boss spawn time.",
 
-    execute(message, args, userid, userData, currHunt, client) {
+    execute(message, args, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (userData[userid].gm >= 1) {
+        if (masterData["userData"][userid].gm >= 1) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
@@ -18,8 +18,8 @@ module.exports = {
             var lastspawn = new Date();
 
             if (!isNaN(newtime)) {
-                currHunt.lastSpawn = lastspawn.getTime();
-                currHunt.nextSpawn = (1000 * 60) * newtime;
+                masterData["currHunt"].lastSpawn = lastspawn.getTime();
+                masterData["currHunt"].nextSpawn = (1000 * 60) * newtime;
                 embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
                 embedMsg.setDescription('New boss spawn time set to next ' + newtime + ' minutes!');
