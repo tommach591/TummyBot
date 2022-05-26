@@ -59,7 +59,8 @@ module.exports = {
             "https://c.tenor.com/IelwsI6Ev-kAAAAC/anime-attack.gif",                                // Ninja Girl Slash
             "https://media2.giphy.com/media/xUO4t2gkWBxDi/giphy.gif",                               // Toradora Punch
             "https://c.tenor.com/VOMInEglleoAAAAC/one-jump-man-animation.gif",                      // Luigi Punch
-            "https://c.tenor.com/PjrHRZ83LjYAAAAC/pikachu-quick-attack.gif"                         // Pikachu Quick Attack
+            "https://c.tenor.com/PjrHRZ83LjYAAAAC/pikachu-quick-attack.gif",                        // Pikachu Quick Attack
+            "https://c.tenor.com/tlgJzKeIlJkAAAAC/anya-forger-spy-x-family.gif",                    // Anya Punch
         ];
 
         let generateEquip = (itemName) => {
