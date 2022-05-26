@@ -2,7 +2,7 @@ module.exports = {
     name: 'hunt',
     description: "Hunt for honor and glory!",
 
-    execute(message, args, userid, userData, userHunt, monsterdex, currHunt, items, equips, scrolls, client) {
+    execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
         const randomAttackGifs = [
@@ -57,25 +57,25 @@ module.exports = {
         ];
 
         let generateEquip = (itemName) => {
-            if (!equips[itemName]) {
+            if (!masterStorage["equips"][itemName]) {
                 return;
             }
             var id = "";
-            while (items[id]) {
+            while (masterData["items"][id]) {
                 id = "";
                 for (var i = 0; i < 6; i++) {
                     id += (Math.floor(Math.random() * 10)).toString();
                 }
             }
-            items[id] = {
-                name: equips[itemName].name,
-                type: equips[itemName].type,
+            masterData["items"][id] = {
+                name: masterStorage["equips"][itemName].name,
+                type: masterStorage["equips"][itemName].type,
                 maxHP: 0,
                 attack: 0,
                 magic: 0,
                 defense: 0,
                 speed: 0,
-                slots: (equips[itemName].rarity * 10) + 5
+                slots: (masterStorage["equips"][itemName].rarity * 10) + 5
             }
             return id;
         }
@@ -88,8 +88,8 @@ module.exports = {
         var scrolldrop = [];
 
         let getDrops = () => {
-            for (var k in equips) {
-                switch(equips[k].rarity) {
+            for (var k in masterStorage["equips"]) {
+                switch(masterStorage["equips"][k].rarity) {
                     case 0:
                         if (k != "Nothing") {
                             zerostar.push(k);
@@ -109,11 +109,11 @@ module.exports = {
                 }
             }
 
-            if (currHunt["active"] && currHunt["active"].loot.length != 0) {
-                unqiueDrops = currHunt["active"].loot;
+            if (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].loot.length != 0) {
+                unqiueDrops = masterData["currHunt"]["active"].loot;
             }
 
-            for (var k in scrolls) {
+            for (var k in masterStorage["scrolls"]) {
                 scrolldrop.push(k);
             }
         }
@@ -131,38 +131,38 @@ module.exports = {
         var critDmg;
 
         let updateStats = (id) => {
-            weapon = items[userHunt[id].weapon];
-            armor = items[userHunt[id].armor];
-            accessory = items[userHunt[id].accessory];
+            weapon = masterData["items"][masterData["userHunt"][id].weapon];
+            armor = masterData["items"][masterData["userHunt"][id].armor];
+            accessory = masterData["items"][masterData["userHunt"][id].accessory];
     
-            maxHP = userHunt[id].maxHP;
-            attack = userHunt[id].attack;
-            magic = userHunt[id].magic;
-            defense = userHunt[id].defense;
-            speed = userHunt[id].speed;
+            maxHP = masterData["userHunt"][id].maxHP;
+            attack = masterData["userHunt"][id].attack;
+            magic = masterData["userHunt"][id].magic;
+            defense = masterData["userHunt"][id].defense;
+            speed = masterData["userHunt"][id].speed;
     
             if (weapon.name != "Nothing") {
-                maxHP += weapon.maxHP + equips[weapon.name].maxHP;
-                attack += weapon.attack + equips[weapon.name].attack;
-                magic += weapon.magic + equips[weapon.name].magic;
-                defense += weapon.defense + equips[weapon.name].defense;
-                speed += weapon.speed + equips[weapon.name].speed;
+                maxHP += weapon.maxHP + masterStorage["equips"][weapon.name].maxHP;
+                attack += weapon.attack + masterStorage["equips"][weapon.name].attack;
+                magic += weapon.magic + masterStorage["equips"][weapon.name].magic;
+                defense += weapon.defense + masterStorage["equips"][weapon.name].defense;
+                speed += weapon.speed + masterStorage["equips"][weapon.name].speed;
             }
     
             if (armor.name != "Nothing") {
-                maxHP += armor.maxHP + equips[armor.name].maxHP;
-                attack += armor.attack + equips[armor.name].attack;
-                magic += armor.magic + equips[armor.name].magic;
-                defense += armor.defense + equips[armor.name].defense;
-                speed += armor.speed + equips[armor.name].speed;
+                maxHP += armor.maxHP + masterStorage["equips"][armor.name].maxHP;
+                attack += armor.attack + masterStorage["equips"][armor.name].attack;
+                magic += armor.magic + masterStorage["equips"][armor.name].magic;
+                defense += armor.defense + masterStorage["equips"][armor.name].defense;
+                speed += armor.speed + masterStorage["equips"][armor.name].speed;
             }
     
             if (accessory.name != "Nothing") {
-                maxHP += accessory.maxHP + equips[accessory.name].maxHP;
-                attack += accessory.attack + equips[accessory.name].attack;
-                magic += accessory.magic + equips[accessory.name].magic;
-                defense += accessory.defense + equips[accessory.name].defense;
-                speed += accessory.speed + equips[accessory.name].speed;
+                maxHP += accessory.maxHP + masterStorage["equips"][accessory.name].maxHP;
+                attack += accessory.attack + masterStorage["equips"][accessory.name].attack;
+                magic += accessory.magic + masterStorage["equips"][accessory.name].magic;
+                defense += accessory.defense + masterStorage["equips"][accessory.name].defense;
+                speed += accessory.speed + masterStorage["equips"][accessory.name].speed;
             }
 
             if (maxHP < 1) {
@@ -191,25 +191,25 @@ module.exports = {
                 critDmg = 3 + (speed * 0.01);
             }
 
-            if (!currHunt["active"] || currHunt["active"].currentHP <= 0 || currHunt["active"].retreated) {
-                userHunt[id].currentHP = maxHP;
+            if (!masterData["currHunt"]["active"] || masterData["currHunt"]["active"].currentHP <= 0 || masterData["currHunt"]["active"].retreated) {
+                masterData["userHunt"][id].currentHP = maxHP;
             }
             
-            if (currHunt["active"]) 
+            if (masterData["currHunt"]["active"]) 
             {
                 var alivePlayers = 0;
                 var newTime = new Date();
 
-                for (let i = 0; i < currHunt["active"].targets.length; i++) {
-                    var target = currHunt["active"].targets[i];
-                    if (userHunt[target].currentHP > 0) {
+                for (let i = 0; i < masterData["currHunt"]["active"].targets.length; i++) {
+                    var target = masterData["currHunt"]["active"].targets[i];
+                    if (masterData["userHunt"][target].currentHP > 0) {
                         alivePlayers++;
                     }
                 }
             
                 if (alivePlayers == 0)
                 {
-                    currHunt["active"].lastAttack = newTime.getTime();
+                    masterData["currHunt"]["active"].lastAttack = newTime.getTime();
                 }
             }
         }
@@ -217,12 +217,12 @@ module.exports = {
         let checkDropRate = () =>
         {
             var newTime = new Date();
-            var timeDiff = newTime.getTime() - currHunt.dropRateStart;
-            var duration = currHunt.dropDuration;
+            var timeDiff = newTime.getTime() - masterData["currHunt"].dropRateStart;
+            var duration = masterData["currHunt"].dropDuration;
 
-            if (currHunt.dropRate == currHunt.baseDropRate && timeDiff > duration)
+            if (masterData["currHunt"].dropRate == masterData["currHunt"].baseDropRate && timeDiff > duration)
             {
-                currHunt.dropRate = currHunt.baseDropRate;
+                masterData["currHunt"].dropRate = masterData["currHunt"].baseDropRate;
             }
         }
 
@@ -260,15 +260,15 @@ module.exports = {
                     var target = client.users.cache.get(id);
                     
                     embedMsg.setTitle('Hunting Equipment');
-                    embedMsg.setAuthor({ name: userData[id].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setAuthor({ name: masterData["userData"][id].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setThumbnail(target.displayAvatarURL());
                     embedMsg.setColor('FFF000');
     
                     var stats = "Max HP: " + maxHP.toLocaleString() + "\nAttack: " + attack.toLocaleString() + "\nMagic: " + magic.toLocaleString() + "\nDefense: " + defense.toLocaleString() + "\nSpeed: " + speed.toLocaleString() + "\n";
-                    var currentCondition = "HP: " + userHunt[id].currentHP.toLocaleString() + "\n";
+                    var currentCondition = "HP: " + masterData["userHunt"][id].currentHP.toLocaleString() + "\n";
     
-                    if (currHunt["active"])
-                        currentCondition += "Resistance: " + ((1 - (currHunt["active"].attack / (currHunt["active"].attack + (defense * 2)))) * 100).toFixed(2) + "%\n";
+                    if (masterData["currHunt"]["active"])
+                        currentCondition += "Resistance: " + ((1 - (masterData["currHunt"]["active"].attack / (masterData["currHunt"]["active"].attack + (defense * 2)))) * 100).toFixed(2) + "%\n";
                     else {
                         currentCondition += "Resistance: -.--%\n";
                     }
@@ -277,8 +277,8 @@ module.exports = {
                     currentCondition += "Crit Dmg: " + critDmg.toFixed(2) + "x\n";
     
                     currentCondition += "Respawn: ";
-                    var respawntime = Math.floor((1000 * 120 - (newTime.getTime() - userHunt[id].deathTime)) / 1000);
-                    if (userHunt[id].currentHP <= 0 && currHunt["active"] && currHunt["active"].currentHP > 0 && !currHunt["active"].retreated && respawntime > 0) {
+                    var respawntime = Math.floor((1000 * 120 - (newTime.getTime() - masterData["userHunt"][id].deathTime)) / 1000);
+                    if (masterData["userHunt"][id].currentHP <= 0 && masterData["currHunt"]["active"] && masterData["currHunt"]["active"].currentHP > 0 && !masterData["currHunt"]["active"].retreated && respawntime > 0) {
                         currentCondition += respawntime.toString() + "s\n";
                     }
                     else {
@@ -304,7 +304,7 @@ module.exports = {
                             mention = mention.slice(1);
                         }
                     
-                        if (!userData[mention]) {
+                        if (!masterData["userData"][mention]) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('User does not exist!');
@@ -332,17 +332,17 @@ module.exports = {
                 let displayGear = (id) => {
                     var target = client.users.cache.get(id);
                     embedMsg.setTitle('Equiped Gear');
-                    embedMsg.setAuthor({ name: userData[id].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setAuthor({ name: masterData["userData"][id].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setThumbnail(target.displayAvatarURL());
                     embedMsg.setColor('FFF000');
 
-                    var weapon = items[userHunt[id].weapon];
-                    var armor = items[userHunt[id].armor];
-                    var accessory = items[userHunt[id].accessory];
+                    var weapon = masterData["items"][masterData["userHunt"][id].weapon];
+                    var armor = masterData["items"][masterData["userHunt"][id].armor];
+                    var accessory = masterData["items"][masterData["userHunt"][id].accessory];
 
-                    var baseWeapon = equips[weapon.name];
-                    var baseArmor = equips[armor.name];
-                    var baseAccessory = equips[accessory.name];
+                    var baseWeapon = masterStorage["equips"][weapon.name];
+                    var baseArmor = masterStorage["equips"][armor.name];
+                    var baseAccessory = masterStorage["equips"][accessory.name];
 
                     var weaponMaxHP = weapon.maxHP.toString();
                     var weaponAttack = weapon.attack.toString();
@@ -428,7 +428,7 @@ module.exports = {
                             mention = mention.slice(1);
                         }
                     
-                        if (!userData[mention]) {
+                        if (!masterData["userData"][mention]) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('User does not exist!');
@@ -451,30 +451,30 @@ module.exports = {
 
                 break;
             case 'boss':
-                if (currHunt["active"] && !currHunt["active"].retreated && currHunt["active"].currentHP > 0) {
-                    if (!currHunt["active"].channels.includes(message.channel)) {
-                        currHunt["active"].channels.push(message.channel);
+                if (masterData["currHunt"]["active"] && !masterData["currHunt"]["active"].retreated && masterData["currHunt"]["active"].currentHP > 0) {
+                    if (!masterData["currHunt"]["active"].channels.includes(message.channel)) {
+                        masterData["currHunt"]["active"].channels.push(message.channel);
                     }
                     var stars = " (";
-                    for (let i = 0; i < currHunt["active"].difficulty; i++) {
+                    for (let i = 0; i < masterData["currHunt"]["active"].difficulty; i++) {
                         stars += "★";
                     }
                     stars += ")"
-                    embedMsg.setTitle(currHunt["active"].name + stars);
-                    embedMsg.setDescription(currHunt["active"].name + " is here!");
-                    embedMsg.setImage(currHunt["active"].image);
-                    embedMsg.setFooter("HP: " + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+                    embedMsg.setTitle(masterData["currHunt"]["active"].name + stars);
+                    embedMsg.setDescription(masterData["currHunt"]["active"].name + " is here!");
+                    embedMsg.setImage(masterData["currHunt"]["active"].image);
+                    embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
                     embedMsg.setColor("49000F");
 
-                    var selected = currHunt["active"].id;
-                    embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP.toLocaleString(), true);
-                    embedMsg.addField('Attack', "" + monsterdex[selected].attack.toLocaleString(), true);
-                    embedMsg.addField('Defense', "" + monsterdex[selected].defense.toLocaleString(), true);
-                    embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense.toLocaleString(), true);
-                    embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s", true);
+                    var selected = masterData["currHunt"]["active"].id;
+                    embedMsg.addField('MaxHP', "" + masterStorage["monsterdex"][selected].maxHP.toLocaleString(), true);
+                    embedMsg.addField('Attack', "" + masterStorage["monsterdex"][selected].attack.toLocaleString(), true);
+                    embedMsg.addField('Defense', "" + masterStorage["monsterdex"][selected].defense.toLocaleString(), true);
+                    embedMsg.addField('Magic Defense', "" + masterStorage["monsterdex"][selected].magicdefense.toLocaleString(), true);
+                    embedMsg.addField('Speed', "" + (masterStorage["monsterdex"][selected].attackCD / 1000) + "s", true);
 
                     var newTime = new Date();
-                    currHunt["active"].lastBossCheck = newTime.getTime();
+                    masterData["currHunt"]["active"].lastBossCheck = newTime.getTime();
 
                     message.channel.send({ embeds: [embedMsg] });
                 }
@@ -485,20 +485,20 @@ module.exports = {
                     embedMsg.setImage("http://i.imgur.com/7ZHrijt.gif");
 
                     var newtime = new Date();
-                    var timeDiff = newtime.getTime() - currHunt.lastSpawn;
-                    var nextSpawn = currHunt.nextSpawn;
+                    var timeDiff = newtime.getTime() - masterData["currHunt"].lastSpawn;
+                    var nextSpawn = masterData["currHunt"].nextSpawn;
                     var bossTime = nextSpawn - timeDiff;
 
-                    if (bossTime <= 1000 * 60 * 5 && (!currHunt["active"] || (currHunt["active"] && currHunt["active"].retreated))) {
+                    if (bossTime <= 1000 * 60 * 5 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
                         embedMsg.setFooter("You feel an ominous presence...");
                     }
-                    else if (bossTime <= 1000 * 60 * 10 && (!currHunt["active"] || (currHunt["active"] && currHunt["active"].retreated))) {
+                    else if (bossTime <= 1000 * 60 * 10 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
                         embedMsg.setFooter("Nature is panicking...");
                     }
-                    else if (bossTime <= 1000 * 60 * 15 && (!currHunt["active"] || (currHunt["active"] && currHunt["active"].retreated))) {
+                    else if (bossTime <= 1000 * 60 * 15 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
                         embedMsg.setFooter("You hear the howling winds...");
                     }
-                    else if (bossTime <= 1000 * 60 * 30 && (!currHunt["active"] || (currHunt["active"] && currHunt["active"].retreated))) {
+                    else if (bossTime <= 1000 * 60 * 30 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
                         embedMsg.setFooter("It is suddenly very quiet...");
                     }
                     else {
@@ -511,13 +511,13 @@ module.exports = {
             case 'attack':
                 var newTime = new Date();
 
-                if (userHunt[userid].currentHP <= 0) {
-                    var timeDiff = newTime.getTime() - userHunt[userid].deathTime;
+                if (masterData["userHunt"][userid].currentHP <= 0) {
+                    var timeDiff = newTime.getTime() - masterData["userHunt"][userid].deathTime;
                     if (timeDiff >= 1000 * 120) {
-                        userHunt[userid].currentHP = maxHP;
+                        masterData["userHunt"][userid].currentHP = maxHP;
                         const reviveMsg = new MessageEmbed()
                         reviveMsg.setTitle("A Hero Returned to Battle!");
-                        reviveMsg.setDescription(userData[userid].name + " has revived!");
+                        reviveMsg.setDescription(masterData["userData"][userid].name + " has revived!");
                         reviveMsg.setImage("https://64.media.tumblr.com/bd8a57c555e94c2add81b166bc2016dc/tumblr_ovrvc4t0t61u1ry24o3_500.gif");
                         reviveMsg.setColor('00FF00');
                         reviveMsg.setFooter('Don\'t die again!');
@@ -525,29 +525,29 @@ module.exports = {
                     }
                 }
                 
-                if (currHunt["active"]) {
-                    if (!currHunt["active"].channels.includes(message.channel)) {
-                        currHunt["active"].channels.push(message.channel);
+                if (masterData["currHunt"]["active"]) {
+                    if (!masterData["currHunt"]["active"].channels.includes(message.channel)) {
+                        masterData["currHunt"]["active"].channels.push(message.channel);
                     }
-                    var timeDiff = newTime.getTime() - userHunt[userid].lastAttack;
+                    var timeDiff = newTime.getTime() - masterData["userHunt"][userid].lastAttack;
                     var attackCD = (1000 * 4.75);
 
-                    if (currHunt["active"].retreated) {    
+                    if (masterData["currHunt"]["active"].retreated) {    
                         embedMsg.setTitle("Chotto matte!");
-                        embedMsg.setDescription(currHunt["active"].name + " has left the field!");
+                        embedMsg.setDescription(masterData["currHunt"]["active"].name + " has left the field!");
                         embedMsg.setColor("FF0000");
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else if (currHunt["active"].currentHP <= 0) {    
+                    else if (masterData["currHunt"]["active"].currentHP <= 0) {    
                         embedMsg.setTitle("Stop!");
-                        embedMsg.setDescription(currHunt["active"].name + " is already dead!");
+                        embedMsg.setDescription(masterData["currHunt"]["active"].name + " is already dead!");
                         embedMsg.setImage("https://media1.giphy.com/media/JCAZQKoMefkoX6TyTb/giphy.gif");
                         embedMsg.setColor("FF0000");
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else if (userHunt[userid].currentHP <= 0) {
-                        embedMsg.setTitle(userData[userid].name + " is dead!");
-                        embedMsg.setDescription(userData[userid].name + " can't attack when you're dead!");
+                    else if (masterData["userHunt"][userid].currentHP <= 0) {
+                        embedMsg.setTitle(masterData["userData"][userid].name + " is dead!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " can't attack when you're dead!");
                         var dead = Math.floor((Math.random() * 5) + 1);
                         switch(dead)
                         {
@@ -568,21 +568,21 @@ module.exports = {
                                 break;
                         }
                         embedMsg.setColor("FF0000");
-                        embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 120 - (newTime.getTime() - userHunt[userid].deathTime)) / 1000) + ' seconds');
+                        embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 120 - (newTime.getTime() - masterData["userHunt"][userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (timeDiff < attackCD) {
                         embedMsg.setTitle("Chotto matte!");
-                        embedMsg.setDescription(userData[userid].name + " can't attack yet!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " can't attack yet!");
                         embedMsg.setImage("https://c.tenor.com/eBByy4ihCocAAAAC/angry-fist.gif");
                         embedMsg.setColor("FF0000");
                         embedMsg.setFooter('Cooldown: ' + Math.floor((attackCD - timeDiff) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
-                        if (!currHunt["active"].targets.includes(userid)) {
-                            currHunt["active"].targets.push(userid);
-                            currHunt["active"].playerDamage.push(0);
+                        if (!masterData["currHunt"]["active"].targets.includes(userid)) {
+                            masterData["currHunt"]["active"].targets.push(userid);
+                            masterData["currHunt"]["active"].playerDamage.push(0);
                         }
                         
                         var isCrit = false;
@@ -596,12 +596,12 @@ module.exports = {
                         var physical = 0;
                         var magical = 0;
                         if (isCrit) {
-                            physical = Math.floor(attack * (100 / (100 + (currHunt["active"].defense / 2))));
-                            magical = Math.floor(magic * (100 / (100 + (currHunt["active"].magicdefense / 2))));
+                            physical = Math.floor(attack * (100 / (100 + (masterData["currHunt"]["active"].defense / 2))));
+                            magical = Math.floor(magic * (100 / (100 + (masterData["currHunt"]["active"].magicdefense / 2))));
                         }
                         else {
-                            physical = Math.floor(attack * (100 / (100 + currHunt["active"].defense)));
-                            magical = Math.floor(magic * (100 / (100 + currHunt["active"].magicdefense)));
+                            physical = Math.floor(attack * (100 / (100 + masterData["currHunt"]["active"].defense)));
+                            magical = Math.floor(magic * (100 / (100 + masterData["currHunt"]["active"].magicdefense)));
                         }
 
                         var flatDamage = Math.floor(physical + magical);
@@ -611,52 +611,52 @@ module.exports = {
                             damageDealt = 1;
                         }
 
-                        userHunt[userid].lastAttack = newTime.getTime();
+                        masterData["userHunt"][userid].lastAttack = newTime.getTime();
 
                         if (isCrit) {
                             damageDealt = Math.floor(damageDealt * critDmg);
                         }
 
-                        if (damageDealt > currHunt["active"].currentHP) {
-                            damageDealt = currHunt["active"].currentHP;
+                        if (damageDealt > masterData["currHunt"]["active"].currentHP) {
+                            damageDealt = masterData["currHunt"]["active"].currentHP;
                         }
 
-                        currHunt["active"].currentHP -= damageDealt;
-                        currHunt["active"].playerDamage[currHunt["active"].targets.indexOf(userid)] += damageDealt;
-                        currHunt["active"].lastPlayerAttack = newTime.getTime();
+                        masterData["currHunt"]["active"].currentHP -= damageDealt;
+                        masterData["currHunt"]["active"].playerDamage[masterData["currHunt"]["active"].targets.indexOf(userid)] += damageDealt;
+                        masterData["currHunt"]["active"].lastPlayerAttack = newTime.getTime();
 
-                        if (currHunt["active"].currentHP <= 0) {
+                        if (masterData["currHunt"]["active"].currentHP <= 0) {
                             embedMsg.setTitle("Attack!");
                             if (isCrit) {
                                 embedMsg.setImage("https://giffiles.alphacoders.com/169/169719.gif");
-                                embedMsg.setDescription(userData[userid].name + " obliterates " + currHunt["active"].name + " with a critical hit!\n\n" + currHunt["active"].death);
+                                embedMsg.setDescription(masterData["userData"][userid].name + " obliterates " + masterData["currHunt"]["active"].name + " with a critical hit!\n\n" + masterData["currHunt"]["active"].death);
                             }
                             else {
                                 embedMsg.setImage("https://c.tenor.com/1Sd82w25kacAAAAM/one-punch-man-punch.gif");
-                                embedMsg.setDescription(userData[userid].name + " lands the finishing blow on " + currHunt["active"].name + "!\n\n" + currHunt["active"].death);
+                                embedMsg.setDescription(masterData["userData"][userid].name + " lands the finishing blow on " + masterData["currHunt"]["active"].name + "!\n\n" + masterData["currHunt"]["active"].death);
                             }
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+                            embedMsg.setFooter('HP: ' + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
 
                             getDrops();
                             checkDropRate();
 
-                            currHunt.lastSpawn = newTime.getTime();
-                            currHunt.nextSpawn = currHunt.baseTime + (currHunt.extraTime * Math.random());
-                            currHunt.lastDifficulty = [];
+                            masterData["currHunt"].lastSpawn = newTime.getTime();
+                            masterData["currHunt"].nextSpawn = masterData["currHunt"].baseTime + (masterData["currHunt"].extraTime * Math.random());
+                            masterData["currHunt"].lastDifficulty = [];
 
-                            var rewardLevel = currHunt["active"].difficulty;
+                            var rewardLevel = masterData["currHunt"]["active"].difficulty;
                             var goldReward = 1000 * rewardLevel;
                             var reward = "";
                             
-                            for (let i = 0; i < currHunt["active"].targets.length; i++) {
+                            for (let i = 0; i < masterData["currHunt"]["active"].targets.length; i++) {
                                 var mostDamage = "";
                                 var lastHit = "";
-                                var player = currHunt["active"].targets[i];
+                                var player = masterData["currHunt"]["active"].targets[i];
                                 var goldEarned = 0;
-                                goldEarned += Math.floor(goldReward * (currHunt["active"].playerDamage[i] / currHunt["active"].maxHP));
-                                var dropRate = currHunt.dropRate;
-                                if (currHunt["active"].playerDamage[i] == Math.max(...currHunt["active"].playerDamage))
+                                goldEarned += Math.floor(goldReward * (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP));
+                                var dropRate = masterData["currHunt"].dropRate;
+                                if (masterData["currHunt"]["active"].playerDamage[i] == Math.max(...masterData["currHunt"]["active"].playerDamage))
                                 {
                                     dropRate *= 1.25;
                                     mostDamage = "\n★ Bonus 0.25x droprate for most damage! ";
@@ -666,7 +666,7 @@ module.exports = {
                                     dropRate *= 1.25;
                                     lastHit = "\n★ Bonus 0.25x droprate for last hit! ";
                                 }
-                                if ((currHunt["active"].id == 27 || currHunt["active"].id == 62))
+                                if ((masterData["currHunt"]["active"].id == 27 || masterData["currHunt"]["active"].id == 62))
                                 {
                                     dropRate *= 2;
                                 }
@@ -680,8 +680,8 @@ module.exports = {
                                         var chance = 100000 * 0.0050 * dropRate; // 0.50%
                                         if (luck <= chance) {
                                             var itemObtained = generateEquip(unqiueDrops[Math.floor(Math.random() * unqiueDrops.length)]);
-                                            userHunt[player].equips.push(itemObtained);
-                                            itemsEarned += ", " + items[itemObtained].name;
+                                            masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                            itemsEarned += ", " + masterData["items"][itemObtained].name;
                                         }
                                     }
                                 }
@@ -691,8 +691,8 @@ module.exports = {
                                     var chance = 100000 * 0.0100 * dropRate; // 1.00%
                                     if (luck <= chance && rewardLevel >= 3) {
                                         var itemObtained = generateEquip(threestar[Math.floor(Math.random() * threestar.length)]);
-                                        userHunt[player].equips.push(itemObtained);
-                                        itemsEarned += ", " + items[itemObtained].name;
+                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
 
@@ -701,8 +701,8 @@ module.exports = {
                                     var chance = 100000 * 0.0200 * dropRate; // 2.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(twostar[Math.floor(Math.random() * twostar.length)]);
-                                        userHunt[player].equips.push(itemObtained);
-                                        itemsEarned += ", " + items[itemObtained].name;
+                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
 
@@ -711,8 +711,8 @@ module.exports = {
                                     var chance = 100000 * 0.0400 * dropRate; // 4.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(onestar[Math.floor(Math.random() * onestar.length)]);
-                                        userHunt[player].equips.push(itemObtained);
-                                        itemsEarned += ", " + items[itemObtained].name;
+                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
 
@@ -721,8 +721,8 @@ module.exports = {
                                     var chance = 100000 * 0.0800 * dropRate; // 8.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(zerostar[Math.floor(Math.random() * zerostar.length)]);
-                                        userHunt[player].equips.push(itemObtained);
-                                        itemsEarned += ", " + items[itemObtained].name;
+                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
 
@@ -731,17 +731,17 @@ module.exports = {
                                     var chance = 100000 * 0.1500 * dropRate; // 15.00%
                                     if (luck <= chance) {
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
-                                        userHunt[player].scrolls.push(scrollobtained);
-                                        itemsEarned += ", " + scrolls[scrollobtained].name;
+                                        masterData["userHunt"][player].masterStorage["scrolls"].push(scrollobtained);
+                                        itemsEarned += ", " + masterStorage["scrolls"][scrollobtained].name;
                                     }
                                 }
 
-                                userData[player].points += goldEarned;
+                                masterData["userData"][player].points += goldEarned;
                                 updateStats(player);
 
-                                if (!userHunt[player].monsterdex.includes(currHunt["active"].id)) {
-                                    userHunt[player].monsterdex.push(currHunt["active"].id);
-                                    userHunt[player].monsterdex.sort((firstEl, secondEl) => { 
+                                if (!masterData["userHunt"][player].masterStorage["monsterdex"].includes(masterData["currHunt"]["active"].id)) {
+                                    masterData["userHunt"][player].masterStorage["monsterdex"].push(masterData["currHunt"]["active"].id);
+                                    masterData["userHunt"][player].masterStorage["monsterdex"].sort((firstEl, secondEl) => { 
                                         if (Number(firstEl) < Number(secondEl)) {
                                             return -1;
                                         }
@@ -752,7 +752,7 @@ module.exports = {
                                     });
                                 }
                                 
-                                reward += userData[player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + mostDamage + lastHit + "\n\n";
+                                reward += masterData["userData"][player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + mostDamage + lastHit + "\n\n";
                             }
 
                             const rewardMsg = new MessageEmbed();
@@ -761,7 +761,7 @@ module.exports = {
                             rewardMsg.setColor("FFF000");
                             rewardMsg.setFooter("Hooray!");
                             
-                            let channels = currHunt["active"].channels;
+                            let channels = masterData["currHunt"]["active"].channels;
                             for (let i = 0; i < channels.length; i++) {
                                 channels[i].send({ embeds: [embedMsg] }).then(msg => 
                                     {
@@ -770,19 +770,19 @@ module.exports = {
                                     }, 3000);
                                 })
                             }
-                            delete currHunt["active"];
+                            delete masterData["currHunt"]["active"];
                         }
                         else {
                             embedMsg.setTitle("Attack!");
                             if (isCrit) {
-                                embedMsg.setDescription(userData[userid].name + " lands a critical hit, dealing " + damageDealt.toLocaleString() + " (" + critDmg.toFixed(2) + "x)" + " damage to " + currHunt["active"].name + "!");
+                                embedMsg.setDescription(masterData["userData"][userid].name + " lands a critical hit, dealing " + damageDealt.toLocaleString() + " (" + critDmg.toFixed(2) + "x)" + " damage to " + masterData["currHunt"]["active"].name + "!");
                             }
                             else {
-                                embedMsg.setDescription(userData[userid].name + " deals " + damageDealt.toLocaleString() + " damage to " + currHunt["active"].name + "!");
+                                embedMsg.setDescription(masterData["userData"][userid].name + " deals " + damageDealt.toLocaleString() + " damage to " + masterData["currHunt"]["active"].name + "!");
                             }
                             embedMsg.setImage(randomAttackGifs[Math.floor(Math.random() * randomAttackGifs.length)]);
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + currHunt["active"].currentHP.toLocaleString() + "/" + currHunt["active"].maxHP.toLocaleString() + "\n\nDeaths: " + currHunt["active"].deathCount + "/" + currHunt["active"].deathLimit);
+                            embedMsg.setFooter('HP: ' + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
@@ -794,8 +794,8 @@ module.exports = {
                     embedMsg.setImage("http://i.imgur.com/7ZHrijt.gif");
 
                     var newtime = new Date();
-                    var timeDiff = newtime.getTime() - currHunt.lastSpawn;
-                    var nextSpawn = currHunt.nextSpawn;
+                    var timeDiff = newtime.getTime() - masterData["currHunt"].lastSpawn;
+                    var nextSpawn = masterData["currHunt"].nextSpawn;
                     var bossTime = nextSpawn - timeDiff;
 
                     if (bossTime <= 1000 * 60 * 5) {
@@ -819,37 +819,37 @@ module.exports = {
                 break;
             case 'inv':
                 var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Hunting Inventory');
                 embedMsg.setColor('FFF000');
-                if (userHunt[userid].equips.length == 0) {
-                    embedMsg.setDescription('No equips :(');
+                if (masterData["userHunt"][userid].masterStorage["equips"].length == 0) {
+                    embedMsg.setDescription('No masterStorage["equips"] :(');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else if (args.length >= 2 && args[1] == "sort") {
-                    userHunt[userid].equips.sort((firstEl, secondEl) => { 
-                        if (equips[items[firstEl].name].rarity > equips[items[secondEl].name].rarity) {
+                    masterData["userHunt"][userid].masterStorage["equips"].sort((firstEl, secondEl) => { 
+                        if (masterStorage["equips"][masterData["items"][firstEl].name].rarity > masterStorage["equips"][masterData["items"][secondEl].name].rarity) {
                             return -1;
                         }
-                        if (equips[items[firstEl].name].rarity < equips[items[secondEl].name].rarity) {
+                        if (masterStorage["equips"][masterData["items"][firstEl].name].rarity < masterStorage["equips"][masterData["items"][secondEl].name].rarity) {
                             return 1;
                         }
-                        if (equips[items[firstEl].name].type < equips[items[secondEl].name].type) {
+                        if (masterStorage["equips"][masterData["items"][firstEl].name].type < masterStorage["equips"][masterData["items"][secondEl].name].type) {
                             return -1;
                         }
-                        if (equips[items[firstEl].name].type > equips[items[secondEl].name].type) {
+                        if (masterStorage["equips"][masterData["items"][firstEl].name].type > masterStorage["equips"][masterData["items"][secondEl].name].type) {
                             return 1;
                         }
-                        if (items[firstEl].slots < items[secondEl].slots) {
+                        if (masterData["items"][firstEl].slots < masterData["items"][secondEl].slots) {
                             return -1;
                         }
-                        if (items[firstEl].slots > items[secondEl].slots) {
+                        if (masterData["items"][firstEl].slots > masterData["items"][secondEl].slots) {
                             return 1;
                         }
-                        if (items[firstEl].name < items[secondEl].name) {
+                        if (masterData["items"][firstEl].name < masterData["items"][secondEl].name) {
                             return -1;
                         }
-                        if (items[firstEl].name > items[secondEl].name) {
+                        if (masterData["items"][firstEl].name > masterData["items"][secondEl].name) {
                             return 1;
                         }
                         return 0;
@@ -863,17 +863,17 @@ module.exports = {
                     var equipment = [""];
                     var index = 0;
                     var count = 0;
-                    userHunt[userid].equips.forEach((element) => {
+                    masterData["userHunt"][userid].masterStorage["equips"].forEach((element) => {
                         if (count >= 4) {
                             equipment[index] += "\n";
                             index++;
                             count = 0;
                             equipment.push("");
                         }
-                        var standard = equips[items[element].name];
+                        var standard = masterStorage["equips"][masterData["items"][element].name];
                         var equipType = "";
 
-                        switch (items[element].type) {
+                        switch (masterData["items"][element].type) {
                             case 0:
                                 equipType = "Weapon";
                                 break;
@@ -885,50 +885,50 @@ module.exports = {
                                 break;
                         }
 
-                        equipment[index] += "**__" + (userHunt[userid].equips.indexOf(element) + 1) + ". " + items[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+                        equipment[index] += "**__" + (masterData["userHunt"][userid].masterStorage["equips"].indexOf(element) + 1) + ". " + masterData["items"][element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                         + "\nRarity: " + standard.rarity
                         + "\nType: " + equipType;
-                        if (items[element].maxHP + standard.maxHP != 0) {
-                            if (items[element].maxHP < 0) {
-                                equipment[index] += "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (" + items[element].maxHP + ")";
+                        if (masterData["items"][element].maxHP + standard.maxHP != 0) {
+                            if (masterData["items"][element].maxHP < 0) {
+                                equipment[index] += "\nMaxHP: " + (masterData["items"][element].maxHP + standard.maxHP) + " (" + masterData["items"][element].maxHP + ")";
                             }
                             else {
-                                equipment[index] += "\nMaxHP: " + (items[element].maxHP + standard.maxHP) + " (+" + items[element].maxHP + ")";
+                                equipment[index] += "\nMaxHP: " + (masterData["items"][element].maxHP + standard.maxHP) + " (+" + masterData["items"][element].maxHP + ")";
                             }
                         }
-                        if (items[element].attack + standard.attack != 0) {
-                            if (items[element].attack < 0) {
-                                equipment[index] += "\nAttack: " + (items[element].attack + standard.attack) + " (" + items[element].attack + ")";
+                        if (masterData["items"][element].attack + standard.attack != 0) {
+                            if (masterData["items"][element].attack < 0) {
+                                equipment[index] += "\nAttack: " + (masterData["items"][element].attack + standard.attack) + " (" + masterData["items"][element].attack + ")";
                             }
                             else {
-                                equipment[index] += "\nAttack: " + (items[element].attack + standard.attack) + " (+" + items[element].attack + ")";
+                                equipment[index] += "\nAttack: " + (masterData["items"][element].attack + standard.attack) + " (+" + masterData["items"][element].attack + ")";
                             }
                         }
-                        if (items[element].magic + standard.magic != 0) {
-                            if (items[element].magic < 0) {
-                                equipment[index] += "\nMagic: " + (items[element].magic + standard.magic) + " (" + items[element].magic + ")";
+                        if (masterData["items"][element].magic + standard.magic != 0) {
+                            if (masterData["items"][element].magic < 0) {
+                                equipment[index] += "\nMagic: " + (masterData["items"][element].magic + standard.magic) + " (" + masterData["items"][element].magic + ")";
                             }
                             else {
-                                equipment[index] += "\nMagic: " + (items[element].magic + standard.magic) + " (+" + items[element].magic + ")";
+                                equipment[index] += "\nMagic: " + (masterData["items"][element].magic + standard.magic) + " (+" + masterData["items"][element].magic + ")";
                             }
                         }
-                        if (items[element].defense + standard.defense != 0) {
-                            if (items[element].defense < 0) {
-                                equipment[index] += "\nDefense: " + (items[element].defense + standard.defense) + " (" + items[element].defense + ")";
+                        if (masterData["items"][element].defense + standard.defense != 0) {
+                            if (masterData["items"][element].defense < 0) {
+                                equipment[index] += "\nDefense: " + (masterData["items"][element].defense + standard.defense) + " (" + masterData["items"][element].defense + ")";
                             }
                             else {
-                                equipment[index] += "\nDefense: " + (items[element].defense + standard.defense) + " (+" + items[element].defense + ")";
+                                equipment[index] += "\nDefense: " + (masterData["items"][element].defense + standard.defense) + " (+" + masterData["items"][element].defense + ")";
                             }
                         }
-                        if (items[element].speed + standard.speed != 0) {
-                            if (items[element].speed < 0) {
-                                equipment[index] += "\nSpeed: " + (items[element].speed + standard.speed) + " (" + items[element].speed + ")";
+                        if (masterData["items"][element].speed + standard.speed != 0) {
+                            if (masterData["items"][element].speed < 0) {
+                                equipment[index] += "\nSpeed: " + (masterData["items"][element].speed + standard.speed) + " (" + masterData["items"][element].speed + ")";
                             }
                             else {
-                                equipment[index] += "\nSpeed: " + (items[element].speed + standard.speed) + " (+" + items[element].speed + ")";
+                                equipment[index] += "\nSpeed: " + (masterData["items"][element].speed + standard.speed) + " (+" + masterData["items"][element].speed + ")";
                             }
                         }
-                        equipment[index] += "\nSlots: " + items[element].slots;
+                        equipment[index] += "\nSlots: " + masterData["items"][element].slots;
                         equipment[index] += "\n\n";
                         count++;
                     });
@@ -942,7 +942,7 @@ module.exports = {
                     embedMsg
                         .setFooter(`Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
-                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Hunting Inventory')
                         .setColor('FFF000');
 
@@ -954,7 +954,7 @@ module.exports = {
                             const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                             collector.on('collect', r => {
-                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                 embedMsg.setTitle('Hunting Inventory');
                                 embedMsg.setColor('FFF000');
                                 
@@ -997,7 +997,7 @@ module.exports = {
                     var target = args[1];
                     if (!isNaN(Number(target))) {
                         target = Math.floor(target);
-                        if (target > userHunt[userid].equips.length || target <= 0) {
+                        if (target > masterData["userHunt"][userid].masterStorage["equips"].length || target <= 0) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('Please select a valid equipment # from equipments!');
@@ -1005,32 +1005,32 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
-                            var selected = userHunt[userid].equips[target-1];
-                            userHunt[userid].equips.splice(target-1, 1);
-                            switch(items[selected].type) {
+                            var selected = masterData["userHunt"][userid].masterStorage["equips"][target-1];
+                            masterData["userHunt"][userid].masterStorage["equips"].splice(target-1, 1);
+                            switch(masterData["items"][selected].type) {
                                 case 0:
-                                    if (userHunt[userid].weapon != "000000") {
-                                        userHunt[userid].equips.push(userHunt[userid].weapon);
+                                    if (masterData["userHunt"][userid].weapon != "000000") {
+                                        masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].weapon);
                                     }
-                                    userHunt[userid].weapon = selected;
+                                    masterData["userHunt"][userid].weapon = selected;
                                     break;
                                 case 1:
-                                    if (userHunt[userid].armor != "000000") {
-                                        userHunt[userid].equips.push(userHunt[userid].armor);
+                                    if (masterData["userHunt"][userid].armor != "000000") {
+                                        masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].armor);
                                     }
-                                    userHunt[userid].armor = selected;
+                                    masterData["userHunt"][userid].armor = selected;
                                     break;
                                 case 2:
-                                    if (userHunt[userid].accessory != "000000") {
-                                        userHunt[userid].equips.push(userHunt[userid].accessory);
+                                    if (masterData["userHunt"][userid].accessory != "000000") {
+                                        masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].accessory);
                                     }
-                                    userHunt[userid].accessory = selected;
+                                    masterData["userHunt"][userid].accessory = selected;
                                     break;
                             }
                             updateStats(userid);
                             embedMsg.setTitle('Equiped!');
                             embedMsg.setColor('00FF00');
-                            embedMsg.setDescription(userData[userid].name + ' equiped ' + items[selected].name);
+                            embedMsg.setDescription(masterData["userData"][userid].name + ' equiped ' + masterData["items"][selected].name);
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
@@ -1055,9 +1055,9 @@ module.exports = {
                     var choice = args[1];
                     switch (choice) {
                         case "weapon":
-                            if (userHunt[userid].weapon != "000000") {
-                                userHunt[userid].equips.push(userHunt[userid].weapon);
-                                userHunt[userid].weapon = "000000";
+                            if (masterData["userHunt"][userid].weapon != "000000") {
+                                masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].weapon);
+                                masterData["userHunt"][userid].weapon = "000000";
                                 updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
                                 embedMsg.setColor('00FF00');
@@ -1067,14 +1067,14 @@ module.exports = {
                             else {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
-                                embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped!');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' don\'t have anything equiped!');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                             break;
                         case "armor":
-                            if (userHunt[userid].armor != "000000") {
-                                userHunt[userid].equips.push(userHunt[userid].armor);
-                                userHunt[userid].armor = "000000";
+                            if (masterData["userHunt"][userid].armor != "000000") {
+                                masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].armor);
+                                masterData["userHunt"][userid].armor = "000000";
                                 updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
                                 embedMsg.setColor('00FF00');
@@ -1084,15 +1084,15 @@ module.exports = {
                             else {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
-                                embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped!');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' don\'t have anything equiped!');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                             break;
                         case "accessory":
                         case "acc":
-                            if (userHunt[userid].accessory != "000000") {
-                                userHunt[userid].equips.push(userHunt[userid].accessory);
-                                userHunt[userid].accessory = "000000";
+                            if (masterData["userHunt"][userid].accessory != "000000") {
+                                masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].accessory);
+                                masterData["userHunt"][userid].accessory = "000000";
                                 updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
                                 embedMsg.setColor('00FF00');
@@ -1102,7 +1102,7 @@ module.exports = {
                             else {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
-                                embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped!');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' don\'t have anything equiped!');
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                             break;
@@ -1119,11 +1119,11 @@ module.exports = {
             case 'scroll':
                 if (args.length < 2) {
                     var target = client.users.cache.get(userid);
-                    embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                     embedMsg.setTitle('Scroll Inventory');
                     embedMsg.setColor('FFF000');
-                    if (userHunt[userid].scrolls.length == 0) {
-                        embedMsg.setDescription('No scrolls :(');
+                    if (masterData["userHunt"][userid].masterStorage["scrolls"].length == 0) {
+                        embedMsg.setDescription('No masterStorage["scrolls"] :(');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
@@ -1131,44 +1131,44 @@ module.exports = {
                         var index = 0;
                         var count = 0;
 
-                        for (let i = 0; i < userHunt[userid].scrolls.length; i++) {
+                        for (let i = 0; i < masterData["userHunt"][userid].masterStorage["scrolls"].length; i++) {
                             if (count >= 6) {
                                 allscrolls[index] += "\n";
                                 index++;
                                 count = 0;
                                 allscrolls.push("");
                             }
-                            var element = userHunt[userid].scrolls[i];
-                            allscrolls[index] += "**__" + (i + 1) + ". " + scrolls[element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
-                            if (scrolls[element].maxHP != 0) {
-                                allscrolls[index] += "\nMaxHP: " + (scrolls[element].maxHP);
+                            var element = masterData["userHunt"][userid].masterStorage["scrolls"][i];
+                            allscrolls[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
+                            if (masterStorage["scrolls"][element].maxHP != 0) {
+                                allscrolls[index] += "\nMaxHP: " + (masterStorage["scrolls"][element].maxHP);
                             }
-                            if (scrolls[element].attack != 0) {
-                                allscrolls[index] += "\nAttack: " + (scrolls[element].attack);
+                            if (masterStorage["scrolls"][element].attack != 0) {
+                                allscrolls[index] += "\nAttack: " + (masterStorage["scrolls"][element].attack);
                             }
-                            if (scrolls[element].magic != 0) {
-                                allscrolls[index] += "\nMagic: " + (scrolls[element].magic);
+                            if (masterStorage["scrolls"][element].magic != 0) {
+                                allscrolls[index] += "\nMagic: " + (masterStorage["scrolls"][element].magic);
                             }
-                            if (scrolls[element].defense != 0) {
-                                allscrolls[index] += "\nDefense: " + (scrolls[element].defense);
+                            if (masterStorage["scrolls"][element].defense != 0) {
+                                allscrolls[index] += "\nDefense: " + (masterStorage["scrolls"][element].defense);
                             }
-                            if (scrolls[element].speed != 0) {
-                                allscrolls[index] += "\nSpeed: " + (scrolls[element].speed);
+                            if (masterStorage["scrolls"][element].speed != 0) {
+                                allscrolls[index] += "\nSpeed: " + (masterStorage["scrolls"][element].speed);
                             }
-                            if (scrolls[element].chaos) {
-                                var rangeMin = (0 - scrolls[element].badLuck) * scrolls[element].chaos;
-                                var rangeMax = (3 * 2 * scrolls[element].chaos) + rangeMin;
+                            if (masterStorage["scrolls"][element].chaos) {
+                                var rangeMin = (0 - masterStorage["scrolls"][element].badLuck) * masterStorage["scrolls"][element].chaos;
+                                var rangeMax = (3 * 2 * masterStorage["scrolls"][element].chaos) + rangeMin;
 
                                 allscrolls[index] += "\nMin Range: " + rangeMin;
                                 allscrolls[index] += "\nMax Range: " + rangeMax;
                                 allscrolls[index] += "\nChaotic energy infuses into your equipment, affecting all stats.";
                             }
-                            if (scrolls[element].purity) {
-                                if (scrolls[element].purity == 1)
+                            if (masterStorage["scrolls"][element].purity) {
+                                if (masterStorage["scrolls"][element].purity == 1)
                                 {
                                     allscrolls[index] += "\nPurifies your equipment from the good and the bad.";
                                 }
-                                else if (scrolls[element].purity == 2)
+                                else if (masterStorage["scrolls"][element].purity == 2)
                                 {
                                     allscrolls[index] += "\nPurifies your equipment from the last scroll used.";
                                 }
@@ -1186,7 +1186,7 @@ module.exports = {
                         embedMsg
                             .setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #")
                             .setDescription(pages[page-1])
-                            .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                            .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                             .setTitle('Scroll Inventory')
                             .setColor('FFF000');
 
@@ -1198,7 +1198,7 @@ module.exports = {
                                 const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                                 collector.on('collect', r => {
-                                    embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                    embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                     embedMsg.setTitle('Scroll Inventory');
                                     embedMsg.setColor('FFF000');
                                     
@@ -1241,17 +1241,17 @@ module.exports = {
                             case "hp":
                             case "maxhp":
                             case "health":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].maxHP > scrolls[secondEl].maxHP) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].maxHP > masterStorage["scrolls"][secondEl].maxHP) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].maxHP < scrolls[secondEl].maxHP) {
+                                    if (masterStorage["scrolls"][firstEl].maxHP < masterStorage["scrolls"][secondEl].maxHP) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1260,17 +1260,17 @@ module.exports = {
                                 break;
                             case "atk":
                             case "attack":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].attack > masterStorage["scrolls"][secondEl].attack) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack) {
+                                    if (masterStorage["scrolls"][firstEl].attack < masterStorage["scrolls"][secondEl].attack) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1280,17 +1280,17 @@ module.exports = {
                             case "mag":
                             case "matk":
                             case "magic":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].magic > scrolls[secondEl].magic) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].magic > masterStorage["scrolls"][secondEl].magic) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].magic < scrolls[secondEl].magic) {
+                                    if (masterStorage["scrolls"][firstEl].magic < masterStorage["scrolls"][secondEl].magic) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1298,28 +1298,28 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by magic!');
                                 break;
                             case "mix":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].attack == scrolls[firstEl].magic 
-                                        && scrolls[firstEl].attack != 0) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].attack == masterStorage["scrolls"][firstEl].magic 
+                                        && masterStorage["scrolls"][firstEl].attack != 0) {
                                         return -1;
                                     }
-                                    if (scrolls[secondEl].attack == scrolls[secondEl].magic 
-                                        && scrolls[secondEl].attack != 0) {
+                                    if (masterStorage["scrolls"][secondEl].attack == masterStorage["scrolls"][secondEl].magic 
+                                        && masterStorage["scrolls"][secondEl].attack != 0) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
                                 });
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].attack > scrolls[secondEl].attack && scrolls[firstEl].magic > scrolls[secondEl].magic) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].attack > masterStorage["scrolls"][secondEl].attack && masterStorage["scrolls"][firstEl].magic > masterStorage["scrolls"][secondEl].magic) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].attack < scrolls[secondEl].attack && scrolls[firstEl].magic < scrolls[secondEl].magic) {
+                                    if (masterStorage["scrolls"][firstEl].attack < masterStorage["scrolls"][secondEl].attack && masterStorage["scrolls"][firstEl].magic < masterStorage["scrolls"][secondEl].magic) {
                                         return 1;
                                     }
                                     return 0;
@@ -1328,17 +1328,17 @@ module.exports = {
                                 break;
                             case "def":
                             case "defense":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].defense > scrolls[secondEl].defense) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].defense > masterStorage["scrolls"][secondEl].defense) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].defense < scrolls[secondEl].defense) {
+                                    if (masterStorage["scrolls"][firstEl].defense < masterStorage["scrolls"][secondEl].defense) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1347,17 +1347,17 @@ module.exports = {
                                 break;
                             case "spd":
                             case "speed":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].speed > scrolls[secondEl].speed) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].speed > masterStorage["scrolls"][secondEl].speed) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].speed < scrolls[secondEl].speed) {
+                                    if (masterStorage["scrolls"][firstEl].speed < masterStorage["scrolls"][secondEl].speed) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1365,23 +1365,23 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by speed!');
                                 break;
                             case "chaos":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].chaos && scrolls[secondEl].chaos && scrolls[firstEl].chaos > scrolls[secondEl].chaos) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].chaos && masterStorage["scrolls"][secondEl].chaos && masterStorage["scrolls"][firstEl].chaos > masterStorage["scrolls"][secondEl].chaos) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].chaos && scrolls[secondEl].chaos && scrolls[firstEl].chaos < scrolls[secondEl].chaos) {
+                                    if (masterStorage["scrolls"][firstEl].chaos && masterStorage["scrolls"][secondEl].chaos && masterStorage["scrolls"][firstEl].chaos < masterStorage["scrolls"][secondEl].chaos) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].chaos && !scrolls[secondEl].chaos) {
+                                    if (masterStorage["scrolls"][firstEl].chaos && !masterStorage["scrolls"][secondEl].chaos) {
                                         return -1;
                                     }
-                                    if (!scrolls[firstEl].chaos && scrolls[secondEl].chaos) {
+                                    if (!masterStorage["scrolls"][firstEl].chaos && masterStorage["scrolls"][secondEl].chaos) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1391,17 +1391,17 @@ module.exports = {
                             case "ascending":
                             case "ascend":
                             case "low":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].rarity < scrolls[secondEl].rarity) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].rarity < masterStorage["scrolls"][secondEl].rarity) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].rarity > scrolls[secondEl].rarity) {
+                                    if (masterStorage["scrolls"][firstEl].rarity > masterStorage["scrolls"][secondEl].rarity) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1411,17 +1411,17 @@ module.exports = {
                             case "descending":
                             case "descend":
                             case "high":
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].rarity > scrolls[secondEl].rarity) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].rarity > masterStorage["scrolls"][secondEl].rarity) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].rarity < scrolls[secondEl].rarity) {
+                                    if (masterStorage["scrolls"][firstEl].rarity < masterStorage["scrolls"][secondEl].rarity) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1429,23 +1429,23 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by descending rarity!');
                                 break;
                             case 'purity':
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].purity && scrolls[secondEl].purity && scrolls[firstEl].purity < scrolls[secondEl].purity) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].purity && masterStorage["scrolls"][secondEl].purity && masterStorage["scrolls"][firstEl].purity < masterStorage["scrolls"][secondEl].purity) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].purity && scrolls[secondEl].purity && scrolls[firstEl].purity > scrolls[secondEl].purity) {
+                                    if (masterStorage["scrolls"][firstEl].purity && masterStorage["scrolls"][secondEl].purity && masterStorage["scrolls"][firstEl].purity > masterStorage["scrolls"][secondEl].purity) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].purity && !scrolls[secondEl].purity) {
+                                    if (masterStorage["scrolls"][firstEl].purity && !masterStorage["scrolls"][secondEl].purity) {
                                         return -1;
                                     }
-                                    if (!scrolls[firstEl].purity && scrolls[secondEl].purity) {
+                                    if (!masterStorage["scrolls"][firstEl].purity && masterStorage["scrolls"][secondEl].purity) {
                                         return 1;
                                     }
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1453,11 +1453,11 @@ module.exports = {
                                 embedMsg.setDescription('Scrolls sorted by purity!');
                                 break;
                             default:
-                                userHunt[userid].scrolls.sort((firstEl, secondEl) => { 
-                                    if (scrolls[firstEl].name < scrolls[secondEl].name) {
+                                masterData["userHunt"][userid].masterStorage["scrolls"].sort((firstEl, secondEl) => { 
+                                    if (masterStorage["scrolls"][firstEl].name < masterStorage["scrolls"][secondEl].name) {
                                         return -1;
                                     }
-                                    if (scrolls[firstEl].name > scrolls[secondEl].name) {
+                                    if (masterStorage["scrolls"][firstEl].name > masterStorage["scrolls"][secondEl].name) {
                                         return 1;
                                     }
                                     return 0;
@@ -1469,11 +1469,11 @@ module.exports = {
                         embedMsg.setColor('00FF00');
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < userHunt[userid].scrolls.length) {
-                        theScroll = scrolls[userHunt[userid].scrolls[selectedindex]];
+                    else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < masterData["userHunt"][userid].masterStorage["scrolls"].length) {
+                        theScroll = masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][selectedindex]];
 
                         let scrollGear = (gear) => {
-                            if (gear != "000000" && (items[gear].slots > 0 || theScroll.purity)) 
+                            if (gear != "000000" && (masterData["items"][gear].slots > 0 || theScroll.purity)) 
                             {
                                 var luck = Math.floor((Math.random() * 100) + 1);
                                 var chance = 100 * theScroll.rate;
@@ -1488,7 +1488,7 @@ module.exports = {
 
                                 if (theScroll.purity) 
                                 {
-                                    let original = [...userHunt[userid].scrolls];
+                                    let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
 
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Use ' + theScroll.name +  '?');
@@ -1496,18 +1496,18 @@ module.exports = {
 
                                     if (theScroll.purity == 1)
                                     {
-                                        proposalMsg.setDescription("Would " + userData[userid].name + " like to purify " + items[gear].name + "?");
+                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to purify " + masterData["items"][gear].name + "?");
                                     }
-                                    else if (theScroll.purity == 2 && items[gear].lastScroll)
+                                    else if (theScroll.purity == 2 && masterData["items"][gear].lastScroll)
                                     {
-                                        proposalMsg.setDescription("Would " + userData[userid].name + " like to revert the last scroll used on " + items[gear].name + "?");
-                                        proposalMsg.setFooter("Stats Gained Back: (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ") + 1 Slot");
+                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to revert the last scroll used on " + masterData["items"][gear].name + "?");
+                                        proposalMsg.setFooter("Stats Gained Back: (" + masterData["items"][gear].lastScroll[0] + "/" + masterData["items"][gear].lastScroll[1] + "/" + masterData["items"][gear].lastScroll[2] + "/"+ masterData["items"][gear].lastScroll[3] + "/" + masterData["items"][gear].lastScroll[4] + ") + 1 Slot");
                                     }
-                                    else if (theScroll.purity == 2 && !items[gear].lastScroll)
+                                    else if (theScroll.purity == 2 && !masterData["items"][gear].lastScroll)
                                     {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
-                                        embedMsg.setDescription(items[gear].name + " cannot revert last scroll!");
+                                        embedMsg.setDescription(masterData["items"][gear].name + " cannot revert last scroll!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         return;
                                     }
@@ -1525,26 +1525,26 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
                                                     if (luck <= chance) {
 
                                                         if (theScroll.purity == 1)
                                                         {
-                                                            items[gear].maxHP = 0;
-                                                            items[gear].attack = 0;
-                                                            items[gear].magic = 0;
-                                                            items[gear].defense = 0;
-                                                            items[gear].speed = 0;
-                                                            items[gear].slots = (equips[items[gear].name].rarity * 10) + 5;
+                                                            masterData["items"][gear].maxHP = 0;
+                                                            masterData["items"][gear].attack = 0;
+                                                            masterData["items"][gear].magic = 0;
+                                                            masterData["items"][gear].defense = 0;
+                                                            masterData["items"][gear].speed = 0;
+                                                            masterData["items"][gear].slots = (masterStorage["equips"][masterData["items"][gear].name].rarity * 10) + 5;
                                                         }
                                                         else if (theScroll.purity == 2)
                                                         {
-                                                            items[gear].maxHP += items[gear].lastScroll[0];
-                                                            items[gear].attack += items[gear].lastScroll[1];
-                                                            items[gear].magic += items[gear].lastScroll[2];
-                                                            items[gear].defense += items[gear].lastScroll[3];
-                                                            items[gear].speed += items[gear].lastScroll[4];
-                                                            items[gear].slots += 1;
+                                                            masterData["items"][gear].maxHP += masterData["items"][gear].lastScroll[0];
+                                                            masterData["items"][gear].attack += masterData["items"][gear].lastScroll[1];
+                                                            masterData["items"][gear].magic += masterData["items"][gear].lastScroll[2];
+                                                            masterData["items"][gear].defense += masterData["items"][gear].lastScroll[3];
+                                                            masterData["items"][gear].speed += masterData["items"][gear].lastScroll[4];
+                                                            masterData["items"][gear].slots += 1;
                                                         }
 
                                                         updateStats(userid);
@@ -1552,7 +1552,7 @@ module.exports = {
                                                         {
                                                             if (theScroll.purity == 2)
                                                             {
-                                                                embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ") + 1 Slot");
+                                                                embedMsg.setTitle('Super Success! - ' + theScroll.name + " - (" + masterData["items"][gear].lastScroll[0] + "/" + masterData["items"][gear].lastScroll[1] + "/" + masterData["items"][gear].lastScroll[2] + "/"+ masterData["items"][gear].lastScroll[3] + "/" + masterData["items"][gear].lastScroll[4] + ") + 1 Slot");
                                                                 embedMsg.setColor('FFF000');
                                                             }
                                                             else 
@@ -1565,7 +1565,7 @@ module.exports = {
                                                         {
                                                             if (theScroll.purity == 2)
                                                             {
-                                                                embedMsg.setTitle('Success! - ' + theScroll.name  + " - (" + items[gear].lastScroll[0] + "/" + items[gear].lastScroll[1] + "/" + items[gear].lastScroll[2] + "/"+ items[gear].lastScroll[3] + "/" + items[gear].lastScroll[4] + ") + 1 Slot");
+                                                                embedMsg.setTitle('Success! - ' + theScroll.name  + " - (" + masterData["items"][gear].lastScroll[0] + "/" + masterData["items"][gear].lastScroll[1] + "/" + masterData["items"][gear].lastScroll[2] + "/"+ masterData["items"][gear].lastScroll[3] + "/" + masterData["items"][gear].lastScroll[4] + ") + 1 Slot");
                                                                 embedMsg.setColor('00FF00');
                                                             }
                                                             else 
@@ -1577,12 +1577,12 @@ module.exports = {
                                                         
                                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
-                                                        userHunt[userid].scrolls.splice(selectedindex, 1);
-                                                        if (items[gear].lastScroll)
+                                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
+                                                        if (masterData["items"][gear].lastScroll)
                                                         {
-                                                            delete items[gear].lastScroll;
+                                                            delete masterData["items"][gear].lastScroll;
                                                         }
                                                     }
                                                     else {
@@ -1590,29 +1590,29 @@ module.exports = {
                                                         embedMsg.setColor('FF0000');
                                                         embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
                                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
-                                                        userHunt[userid].scrolls.splice(selectedindex, 1);
+                                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
                                                     }
                                                 } 
                                                 else if (reaction.emoji.name === '👎')
                                                 {
                                                     embedMsg.setTitle('Error!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " declined!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                                 else {
                                                     embedMsg.setTitle('Fail!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })
                                             .catch(collected => {
                                                 embedMsg.setTitle('Error!');
                                                 embedMsg.setColor('FF0000');
-                                                embedMsg.setDescription(userData[userid].name + " took too long to decide!");
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " took too long to decide!");
                                                 message.channel.send({ embeds: [embedMsg] });
                                             });
                                         }
@@ -1635,14 +1635,14 @@ module.exports = {
                                             var defgain = range[Math.floor(Math.random() * range.length)];
                                             var spdgain = range[Math.floor(Math.random() * range.length)];
 
-                                            items[gear].maxHP += hpgain;
-                                            items[gear].attack += atkgain;
-                                            items[gear].magic += maggain;
-                                            items[gear].defense += defgain;
-                                            items[gear].speed += spdgain;
-                                            items[gear].slots--;
+                                            masterData["items"][gear].maxHP += hpgain;
+                                            masterData["items"][gear].attack += atkgain;
+                                            masterData["items"][gear].magic += maggain;
+                                            masterData["items"][gear].defense += defgain;
+                                            masterData["items"][gear].speed += spdgain;
+                                            masterData["items"][gear].slots--;
 
-                                            items[gear].lastScroll = [-hpgain, -atkgain, -maggain, -defgain, -spdgain];
+                                            masterData["items"][gear].lastScroll = [-hpgain, -atkgain, -maggain, -defgain, -spdgain];
 
                                             if (luck == 0)
                                             {
@@ -1657,14 +1657,14 @@ module.exports = {
 
                                         }
                                         else {
-                                            items[gear].maxHP += theScroll.maxHP;
-                                            items[gear].attack += theScroll.attack;
-                                            items[gear].magic += theScroll.magic;
-                                            items[gear].defense += theScroll.defense;
-                                            items[gear].speed += theScroll.speed;
-                                            items[gear].slots--;
+                                            masterData["items"][gear].maxHP += theScroll.maxHP;
+                                            masterData["items"][gear].attack += theScroll.attack;
+                                            masterData["items"][gear].magic += theScroll.magic;
+                                            masterData["items"][gear].defense += theScroll.defense;
+                                            masterData["items"][gear].speed += theScroll.speed;
+                                            masterData["items"][gear].slots--;
                                             
-                                            items[gear].lastScroll = [-theScroll.maxHP, -theScroll.attack, -theScroll.magic, -theScroll.defense, -theScroll.speed]
+                                            masterData["items"][gear].lastScroll = [-theScroll.maxHP, -theScroll.attack, -theScroll.magic, -theScroll.defense, -theScroll.speed]
 
                                             if (luck == 0)
                                             {
@@ -1680,25 +1680,25 @@ module.exports = {
                                         updateStats(userid);
                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
+                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
                                     }
                                     else { 
                                         embedMsg.setTitle('Fail! - ' + theScroll.name);
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(userData[userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
-                                        userHunt[userid].scrolls.splice(selectedindex, 1);
+                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(selectedindex, 1);
                                     }
                                 }
                             }
                             else {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
-                                embedMsg.setDescription(userData[userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
                                 embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
                                 message.channel.send({ embeds: [embedMsg] });
                             }
@@ -1706,14 +1706,14 @@ module.exports = {
                         
                         switch (choice) {
                             case "weapon":
-                                scrollGear(userHunt[userid].weapon);
+                                scrollGear(masterData["userHunt"][userid].weapon);
                                 break;
                             case "armor":
-                                scrollGear(userHunt[userid].armor);
+                                scrollGear(masterData["userHunt"][userid].armor);
                                 break;
                             case "accessory":
                             case "acc":
-                                scrollGear(userHunt[userid].accessory);
+                                scrollGear(masterData["userHunt"][userid].accessory);
                                 break;
                             default:
                                 embedMsg.setTitle('Error!');
@@ -1752,17 +1752,17 @@ module.exports = {
                             mention = mention.slice(1);
                         }
                 
-                        if (!userData[mention]) {
+                        if (!masterData["userData"][mention]) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('User does not exist!');
                             message.channel.send({ embeds: [embedMsg] });
                             return;
                         }
-                        if (userData[mention] == userData[userid]) {
+                        if (masterData["userData"][mention] == masterData["userData"][userid]) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(userData[userid].name + ' can\'t give to yourself!');
+                            embedMsg.setDescription(masterData["userData"][userid].name + ' can\'t give to yourself!');
                             message.channel.send({ embeds: [embedMsg] });
                             return;
                         }
@@ -1771,7 +1771,7 @@ module.exports = {
                             switch(choice) {
                                 case "inv":
                                 case "equip":
-                                    if (index >= userHunt[userid].equips.length || index < 0) {
+                                    if (index >= masterData["userHunt"][userid].masterStorage["equips"].length || index < 0) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
@@ -1780,12 +1780,12 @@ module.exports = {
                                     }
                                     else {
 
-                                        let original = [...userHunt[userid].equips];
+                                        let original = [...masterData["userHunt"][userid].masterStorage["equips"]];
 
                                         const proposalMsg = new MessageEmbed();
                                         proposalMsg.setTitle('Give Item!');
                                         proposalMsg.setColor('FFF000');
-                                        proposalMsg.setDescription("Would " + userData[userid].name + " like to give " + items[userHunt[userid].equips[index]].name + " to " + userData[mention].name + "?");
+                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to give " + masterData["items"][masterData["userHunt"][userid].masterStorage["equips"][index]].name + " to " + masterData["userData"][mention].name + "?");
                         
                                         
                                         let proposal; 
@@ -1801,34 +1801,34 @@ module.exports = {
                                                 .then(
                                                     collected => {
                                                     const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
-                                                        var selected = userHunt[userid].equips[index];
-                                                        userHunt[mention].equips.push(userHunt[userid].equips[index]);
-                                                        userHunt[userid].equips.splice(index, 1);
+                                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["equips"]) == JSON.stringify(original)) {
+                                                        var selected = masterData["userHunt"][userid].masterStorage["equips"][index];
+                                                        masterData["userHunt"][mention].masterStorage["equips"].push(masterData["userHunt"][userid].masterStorage["equips"][index]);
+                                                        masterData["userHunt"][userid].masterStorage["equips"].splice(index, 1);
 
                                                         embedMsg.setTitle('Success!');
                                                         embedMsg.setColor('00FF00');
-                                                        embedMsg.setDescription(userData[userid].name + " gave " + userData[mention].name + " " + items[selected].name + "!");
+                                                        embedMsg.setDescription(masterData["userData"][userid].name + " gave " + masterData["userData"][mention].name + " " + masterData["items"][selected].name + "!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     } 
                                                     else if (reaction.emoji.name === '👎')
                                                     {
                                                         embedMsg.setTitle('Error!');
                                                         embedMsg.setColor('FF0000');
-                                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                                        embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     }
                                                     else {
                                                         embedMsg.setTitle('Fail!');
                                                         embedMsg.setColor('FF0000');
-                                                        embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                        embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     }
                                                 })
                                                 .catch(collected => {
                                                     embedMsg.setTitle('Error!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " took too long to decide!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " took too long to decide!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 });
                                             }
@@ -1836,7 +1836,7 @@ module.exports = {
                                     }
                                     break;
                                 case "scroll":
-                                    if (index >= userHunt[userid].scrolls.length || index < 0) {
+                                    if (index >= masterData["userHunt"][userid].masterStorage["scrolls"].length || index < 0) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
@@ -1845,12 +1845,12 @@ module.exports = {
                                     }
                                     else {
 
-                                        let original = [...userHunt[userid].scrolls];
+                                        let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
 
                                         const proposalMsg = new MessageEmbed();
                                         proposalMsg.setTitle('Give Item!');
                                         proposalMsg.setColor('FFF000');
-                                        proposalMsg.setDescription("Would " + userData[userid].name + " like to give " + scrolls[userHunt[userid].scrolls[index]].name + " to " + userData[mention].name + "?");
+                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to give " + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][index]].name + " to " + masterData["userData"][mention].name + "?");
                         
                                         
                                         let proposal; 
@@ -1866,33 +1866,33 @@ module.exports = {
                                                 .then(
                                                     collected => {
                                                     const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
-                                                        var selected = userHunt[userid].scrolls[index];
-                                                        userHunt[mention].scrolls.push(userHunt[userid].scrolls[index]);
-                                                        userHunt[userid].scrolls.splice(index, 1);
+                                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
+                                                        var selected = masterData["userHunt"][userid].masterStorage["scrolls"][index];
+                                                        masterData["userHunt"][mention].masterStorage["scrolls"].push(masterData["userHunt"][userid].masterStorage["scrolls"][index]);
+                                                        masterData["userHunt"][userid].masterStorage["scrolls"].splice(index, 1);
 
                                                         embedMsg.setTitle('Success!');
                                                         embedMsg.setColor('00FF00');
-                                                        embedMsg.setDescription(userData[userid].name + " gave " + userData[mention].name + " " + scrolls[selected].name + "!");
+                                                        embedMsg.setDescription(masterData["userData"][userid].name + " gave " + masterData["userData"][mention].name + " " + masterStorage["scrolls"][selected].name + "!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     } 
                                                     else if (reaction.emoji.name === '👎') {
                                                         embedMsg.setTitle('Error!');
                                                         embedMsg.setColor('FF0000');
-                                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                                        embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     }
                                                     else {
                                                         embedMsg.setTitle('Fail!');
                                                         embedMsg.setColor('FF0000');
-                                                        embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                        embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                     }
                                                 })
                                                 .catch(collected => {
                                                     embedMsg.setTitle('Error!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " took too long to decide!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " took too long to decide!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 });
                                             }
@@ -1941,7 +1941,7 @@ module.exports = {
                         switch(type) {
                             case "inv":
                             case "equip":
-                                if (target < 0 || target >= userHunt[userid].equips.length) {
+                                if (target < 0 || target >= masterData["userHunt"][userid].masterStorage["equips"].length) {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription('Weapon does not exist!');
@@ -1949,11 +1949,11 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (all == "all") {
-                                    let original = [...userHunt[userid].equips];
+                                    let original = [...masterData["userHunt"][userid].masterStorage["equips"]];
                                     var price = 0;
                                     var total_items = 0;
-                                    for (let i = target; i < userHunt[userid].equips.length; i++) {
-                                        var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
+                                    for (let i = target; i < masterData["userHunt"][userid].masterStorage["equips"].length; i++) {
+                                        var selectedWeapon = masterStorage["equips"][masterData["items"][masterData["userHunt"][userid].masterStorage["equips"][target]].name];
                                         if (selectedWeapon.rarity != 0) {
                                             price += selectedWeapon.rarity * 500;
                                         }
@@ -1966,7 +1966,7 @@ module.exports = {
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
-                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedWeapon.name + 
+                                    proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to sell " + selectedWeapon.name + 
                                                                 " and the " + (total_items - 1) + " above item(s) for " + price.toLocaleString() + " points?");
 
                                     let proposal; 
@@ -1982,47 +1982,47 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
-                                                    userData[userid].points += price;
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["equips"]) == JSON.stringify(original)) {
+                                                    masterData["userData"][userid].points += price;
 
-                                                    for (let i = target; i < userHunt[userid].equips.length; i++) {
-                                                        var itemToDelete = userHunt[userid].equips[target];
-                                                        delete items[itemToDelete];
+                                                    for (let i = target; i < masterData["userHunt"][userid].masterStorage["equips"].length; i++) {
+                                                        var itemToDelete = masterData["userHunt"][userid].masterStorage["equips"][target];
+                                                        delete masterData["items"][itemToDelete];
                                                     }
 
-                                                    userHunt[userid].equips.splice(target, userHunt[userid].equips.length - target);
+                                                    masterData["userHunt"][userid].masterStorage["equips"].splice(target, masterData["userHunt"][userid].masterStorage["equips"].length - target);
 
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
-                                                    embedMsg.setDescription(userData[userid].name + " sold " + total_items + " equips for " + price.toLocaleString() + " points!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " sold " + total_items + " equips for " + price.toLocaleString() + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
                                                 else if (reaction.emoji.name === '👎') {
                                                     embedMsg.setTitle('Declined!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " declined!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                                 else {
                                                     embedMsg.setTitle('Fail!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })
                                             .catch(collected => {
                                                 embedMsg.setTitle('Fail!');
                                                 embedMsg.setColor('FF0000');
-                                                embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                                 message.channel.send({ embeds: [embedMsg] });
                                             });
                                         }
                                     );
                                 }
                                 else {
-                                    let original = [...userHunt[userid].equips];
+                                    let original = [...masterData["userHunt"][userid].masterStorage["equips"]];
 
-                                    var selectedWeapon = equips[items[userHunt[userid].equips[target]].name];
+                                    var selectedWeapon = masterStorage["equips"][masterData["items"][masterData["userHunt"][userid].masterStorage["equips"][target]].name];
                                     if (selectedWeapon.rarity != 0) {
                                         var price = selectedWeapon.rarity * 500;
                                     }
@@ -2032,7 +2032,7 @@ module.exports = {
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
-                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedWeapon.name + " for " + price.toLocaleString() + " points?");
+                                    proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to sell " + selectedWeapon.name + " for " + price.toLocaleString() + " points?");
         
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -2047,33 +2047,33 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].equips) == JSON.stringify(original)) {
-                                                    userData[userid].points += price;
-                                                    var itemToDelete = userHunt[userid].equips[target];
-                                                    userHunt[userid].equips.splice(target, 1);
-                                                    delete items[itemToDelete];
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["equips"]) == JSON.stringify(original)) {
+                                                    masterData["userData"][userid].points += price;
+                                                    var itemToDelete = masterData["userHunt"][userid].masterStorage["equips"][target];
+                                                    masterData["userHunt"][userid].masterStorage["equips"].splice(target, 1);
+                                                    delete masterData["items"][itemToDelete];
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
-                                                    embedMsg.setDescription(userData[userid].name + " sold " + selectedWeapon.name + " for " + price.toLocaleString() + " points!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " sold " + selectedWeapon.name + " for " + price.toLocaleString() + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
                                                 else if (reaction.emoji.name === '👎') {
                                                     embedMsg.setTitle('Declined!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " declined!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                                 else {
                                                     embedMsg.setTitle('Fail!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })
                                             .catch(collected => {
                                                 embedMsg.setTitle('Fail!');
                                                 embedMsg.setColor('FF0000');
-                                                embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                                 message.channel.send({ embeds: [embedMsg] });
                                             });
                                         }
@@ -2081,7 +2081,7 @@ module.exports = {
                                 }
                                 break;
                             case "scroll":
-                                if (target < 0 || target >= userHunt[userid].scrolls.length) {
+                                if (target < 0 || target >= masterData["userHunt"][userid].masterStorage["scrolls"].length) {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription('Scroll does not exist!');
@@ -2089,13 +2089,13 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else {
-                                    let original = [...userHunt[userid].scrolls];
-                                    var selectedScroll = scrolls[userHunt[userid].scrolls[target]];
+                                    let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
+                                    var selectedScroll = masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][target]];
                                     var price = 100;
                                     const proposalMsg = new MessageEmbed();
                                     proposalMsg.setTitle('Selling!');
                                     proposalMsg.setColor('FFF000');
-                                    proposalMsg.setDescription("Would " + userData[userid].name + " like to sell " + selectedScroll.name + " for " + price.toLocaleString() + " points?");
+                                    proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to sell " + selectedScroll.name + " for " + price.toLocaleString() + " points?");
         
                                     let proposal; 
                                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -2110,31 +2110,31 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
-                                                    userData[userid].points += price;
-                                                    userHunt[userid].scrolls.splice(target, 1)
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
+                                                    masterData["userData"][userid].points += price;
+                                                    masterData["userHunt"][userid].masterStorage["scrolls"].splice(target, 1)
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
-                                                    embedMsg.setDescription(userData[userid].name + " sold " + selectedScroll.name + " for " + price.toLocaleString() + " points!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " sold " + selectedScroll.name + " for " + price.toLocaleString() + " points!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 } 
                                                 else if (reaction.emoji.name === '👎') {
                                                     embedMsg.setTitle('Declined!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " declined!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                                 else {
                                                     embedMsg.setTitle('Fail!');
                                                     embedMsg.setColor('FF0000');
-                                                    embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                                    embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
                                                     message.channel.send({ embeds: [embedMsg] });
                                                 }
                                             })
                                             .catch(collected => {
                                                 embedMsg.setTitle('Fail!');
                                                 embedMsg.setColor('FF0000');
-                                                embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                                 message.channel.send({ embeds: [embedMsg] });
                                             });
                                         }
@@ -2157,30 +2157,30 @@ module.exports = {
             case 'dex':
             case 'monsterdex':
                 var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Monsterdex');
                 embedMsg.setThumbnail('https://i.imgur.com/EJA4Vzn.png');
                 embedMsg.setColor('FFF000');
                 if (args.length > 1) {
                     var selected = args[1];
-                    if (!isNaN(Number(selected)) && monsterdex[selected] && userHunt[userid].monsterdex.includes(selected)) {
+                    if (!isNaN(Number(selected)) && masterStorage["monsterdex"][selected] && masterData["userHunt"][userid].masterStorage["monsterdex"].includes(selected)) {
                         var stars = " (";
-                        for (let i = 0; i < monsterdex[selected].difficulty; i++) {
+                        for (let i = 0; i < masterStorage["monsterdex"][selected].difficulty; i++) {
                             stars += "★";
                         }
                         stars += ")"
-                        embedMsg.setDescription("#" + monsterdex[selected].id + ". " + monsterdex[selected].name + stars + "\n");
-                        embedMsg.setImage(monsterdex[selected].image);
-                        embedMsg.addField('Monsterdex Entry', "" + monsterdex[selected].info);
-                        embedMsg.addField('MaxHP', "" + monsterdex[selected].maxHP.toLocaleString(), true);
-                        embedMsg.addField('Attack', "" + monsterdex[selected].attack.toLocaleString(), true);
-                        embedMsg.addField('Defense', "" + monsterdex[selected].defense.toLocaleString(), true);
-                        embedMsg.addField('Magic Defense', "" + monsterdex[selected].magicdefense.toLocaleString(), true);
-                        embedMsg.addField('Speed', "" + (monsterdex[selected].attackCD / 1000) + "s", true);
+                        embedMsg.setDescription("#" + masterStorage["monsterdex"][selected].id + ". " + masterStorage["monsterdex"][selected].name + stars + "\n");
+                        embedMsg.setImage(masterStorage["monsterdex"][selected].image);
+                        embedMsg.addField('Monsterdex Entry', "" + masterStorage["monsterdex"][selected].info);
+                        embedMsg.addField('MaxHP', "" + masterStorage["monsterdex"][selected].maxHP.toLocaleString(), true);
+                        embedMsg.addField('Attack', "" + masterStorage["monsterdex"][selected].attack.toLocaleString(), true);
+                        embedMsg.addField('Defense', "" + masterStorage["monsterdex"][selected].defense.toLocaleString(), true);
+                        embedMsg.addField('Magic Defense', "" + masterStorage["monsterdex"][selected].magicdefense.toLocaleString(), true);
+                        embedMsg.addField('Speed', "" + (masterStorage["monsterdex"][selected].attackCD / 1000) + "s", true);
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
-                        embedMsg.setDescription(userData[userid].name + ' never encountered this monster or it does not exist!');
+                        embedMsg.setDescription(masterData["userData"][userid].name + ' never encountered this monster or it does not exist!');
                         message.channel.send({ embeds: [embedMsg] }); 
                     }
                 }
@@ -2189,7 +2189,7 @@ module.exports = {
                     var index = 0;
                     var count = 0;
                     var keys = [];
-                    for (var k in monsterdex) {
+                    for (var k in masterStorage["monsterdex"]) {
                         keys.push(k);
                     }
                     for (let i = 1; i < keys.length + 1; i++) {
@@ -2198,11 +2198,11 @@ module.exports = {
                             count = 0;
                             monsters[index] = "";
                         }
-                        if (userHunt[userid].monsterdex.includes(i.toString())) {
-                            monsters[index] += "#" + monsterdex[i].id + ". " + monsterdex[i].name + "\n";
+                        if (masterData["userHunt"][userid].masterStorage["monsterdex"].includes(i.toString())) {
+                            monsters[index] += "#" + masterStorage["monsterdex"][i].id + ". " + masterStorage["monsterdex"][i].name + "\n";
                         }
                         else {
-                            monsters[index] += "#" + monsterdex[i].id + ". ???\n";
+                            monsters[index] += "#" + masterStorage["monsterdex"][i].id + ". ???\n";
                         }
                         count++;
                     }
@@ -2216,7 +2216,7 @@ module.exports = {
                     embedMsg
                         .setFooter(`Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
-                        .setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() })
+                        .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Monsterdex')
                         .setThumbnail('https://i.imgur.com/EJA4Vzn.png')
                         .setColor('FFF000');
@@ -2229,7 +2229,7 @@ module.exports = {
                             const collector = msg.createReactionCollector({ filter, time: 1000 * 120 });
 
                             collector.on('collect', r => {
-                                embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                 embedMsg.setTitle('Monsterdex');
                                 embedMsg.setThumbnail('https://i.imgur.com/EJA4Vzn.png');
                                 embedMsg.setColor('FFF000');
@@ -2265,7 +2265,7 @@ module.exports = {
                 if (args.length < 4) {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
-                    embedMsg.setDescription('Please select 3 scrolls to consume!');
+                    embedMsg.setDescription('Please select 3 masterStorage["scrolls"] to consume!');
                     embedMsg.setFooter("!tp hunt tribute # # #");
                     message.channel.send({ embeds: [embedMsg] });
                 }
@@ -2275,9 +2275,9 @@ module.exports = {
                     var scroll_three = Math.floor(Number(args[3]) - 1);
                     var cost = 10000;
 
-                    if ((scroll_one >= userHunt[userid].scrolls.length || scroll_one < 0) ||
-                            (scroll_two >= userHunt[userid].scrolls.length || scroll_two < 0) ||
-                                (scroll_three >= userHunt[userid].scrolls.length || scroll_three < 0)) {
+                    if ((scroll_one >= masterData["userHunt"][userid].masterStorage["scrolls"].length || scroll_one < 0) ||
+                            (scroll_two >= masterData["userHunt"][userid].masterStorage["scrolls"].length || scroll_two < 0) ||
+                                (scroll_three >= masterData["userHunt"][userid].masterStorage["scrolls"].length || scroll_three < 0)) {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
@@ -2292,7 +2292,7 @@ module.exports = {
                         embedMsg.setFooter("!tp hunt tribute # # #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
-                    else if (userData[userid].points < cost) 
+                    else if (masterData["userData"][userid].points < cost) 
                     {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
@@ -2302,12 +2302,12 @@ module.exports = {
                     }
                     else 
                     {
-                        let original = [...userHunt[userid].scrolls];
+                        let original = [...masterData["userHunt"][userid].masterStorage["scrolls"]];
                         const proposalMsg = new MessageEmbed();
                         proposalMsg.setTitle('Tribute Summon!');
                         proposalMsg.setColor('FFF000');
-                        proposalMsg.setDescription("Would " + userData[userid].name + " like to spend " + cost.toLocaleString() + " points to sacrifice: \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + "\n" +
-                                                    scrolls[userHunt[userid].scrolls[scroll_two]].name + "\n" + scrolls[userHunt[userid].scrolls[scroll_three]].name +
+                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to spend " + cost.toLocaleString() + " points to sacrifice: \n" + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_one]].name + "\n" +
+                                                    masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_two]].name + "\n" + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_three]].name +
                                                     "\n\nTo summon a random scroll?");
 
                         let proposal; 
@@ -2323,19 +2323,19 @@ module.exports = {
                                 .then(
                                     collected => {
                                     const reaction = collected.first();
-                                    if (reaction.emoji.name === '👍' && JSON.stringify(userHunt[userid].scrolls) == JSON.stringify(original)) {
-                                        userData[userid].points -= cost;
+                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["scrolls"]) == JSON.stringify(original)) {
+                                        masterData["userData"][userid].points -= cost;
                                         var target = client.users.cache.get(userid);
-                                        var scrollsTributed = [userHunt[userid].scrolls[scroll_one], userHunt[userid].scrolls[scroll_two], userHunt[userid].scrolls[scroll_three]];
+                                        var scrollsTributed = [masterData["userHunt"][userid].masterStorage["scrolls"][scroll_one], masterData["userHunt"][userid].masterStorage["scrolls"][scroll_two], masterData["userHunt"][userid].masterStorage["scrolls"][scroll_three]];
                                         getDrops();
                                         var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         while (scrollsTributed.includes(scrollobtained))
                                         {
                                             scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
                                         }
-                                        embedMsg.setDescription(userData[userid].name + " sacrifices \n" + scrolls[userHunt[userid].scrolls[scroll_one]].name + ", \n" +
-                                        scrolls[userHunt[userid].scrolls[scroll_two]].name + ", \nand " + scrolls[userHunt[userid].scrolls[scroll_three]].name +
-                                                " to summon... \n\n" + scrolls[scrollobtained].name + "!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " sacrifices \n" + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_one]].name + ", \n" +
+                                        masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_two]].name + ", \nand " + masterStorage["scrolls"][masterData["userHunt"][userid].masterStorage["scrolls"][scroll_three]].name +
+                                                " to summon... \n\n" + masterStorage["scrolls"][scrollobtained].name + "!");
                 
                                         var scrollsToDel = [scroll_one, scroll_two, scroll_three];
                                         scrollsToDel.sort(
@@ -2344,11 +2344,11 @@ module.exports = {
                                         scrollsToDel.reverse();
                                         for (let i = 0; i < 3; i++)
                                         {
-                                            userHunt[userid].scrolls.splice(scrollsToDel[i], 1);
+                                            masterData["userHunt"][userid].masterStorage["scrolls"].splice(scrollsToDel[i], 1);
                                         }
-                                        userHunt[userid].scrolls.push(scrollobtained);
+                                        masterData["userHunt"][userid].masterStorage["scrolls"].push(scrollobtained);
                                         embedMsg.setTitle('Success!');
-                                        embedMsg.setAuthor({ name: userData[userid].name, iconURL: target.displayAvatarURL() });
+                                        embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                                         embedMsg.setColor('00FF00');
                                         embedMsg.setImage('https://i.pinimg.com/originals/ff/ab/3a/ffab3adc05afc03cf59c2114095a320b.gif');
                                         message.channel.send({ embeds: [embedMsg] });
@@ -2356,20 +2356,20 @@ module.exports = {
                                     else if (reaction.emoji.name === '👎') {
                                         embedMsg.setTitle('Declined!');
                                         embedMsg.setColor('FF0000');
-                                        embedMsg.setDescription(userData[userid].name + " declined!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
                                         embedMsg.setTitle('Fail!');
                                         embedMsg.setColor('FF0000');
-                                        embedMsg.setDescription(userData[userid].name + " inventory changed!");
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                 })
                                 .catch(collected => {
                                     embedMsg.setTitle('Fail!');
                                     embedMsg.setColor('FF0000');
-                                    embedMsg.setDescription(userData[userid].name + " took too long to respond!");
+                                    embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                     message.channel.send({ embeds: [embedMsg] });
                                 });
                             }

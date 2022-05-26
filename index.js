@@ -744,7 +744,7 @@ client.on('messageCreate', message => {
             case 'h':
             case 'hunt':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('hunt').execute(message, args, sender.id, masterData["userData"], masterData["userHunt"], masterStorage["monsterdex"], masterData["currHunt"], masterData["items"], masterStorage["equips"], masterStorage["scrolls"], client);
+                    client.commands.get('hunt').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
             case 'p':
             case 'pet':

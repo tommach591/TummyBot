@@ -605,6 +605,12 @@ module.exports = {
                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
                     message.channel.send({ embeds: [embedMsg] });
                 }
+                else if (masterData["userPet"][userid].dead) {
+                    embedMsg.setTitle('Your pet is dead!');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription("Revive your pet first!");
+                    message.channel.send({ embeds: [embedMsg] });
+                }
                 else {
                     var happy = 1;
                     if (masterData["userPet"][userid].hunger > 20) {
