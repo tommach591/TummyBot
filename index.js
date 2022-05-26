@@ -805,7 +805,7 @@ client.on('messageCreate', message => {
                 break;
             case 'killboss':
                 if (masterData["userData"][sender.id])
-                    client.gmcommands.get('killboss').execute(message, args, sender.id, masterData, masterStorage);
+                    client.gmcommands.get('killboss').execute(message, sender.id, masterData, masterStorage);
                 break;
             case 'banish':
                 if (masterData["userData"][sender.id])
