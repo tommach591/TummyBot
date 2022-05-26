@@ -55,7 +55,11 @@ module.exports = {
             "https://pa1.narvii.com/6792/1b835eb6198553d5c0a5528fccebea9290d72654_hq.gif",          // GGO Alt Bunny Pew Pew
             "https://c.tenor.com/LlZtlf4W7C8AAAAC/bts-suga.gif",                                    // PSY Slap Suga
             "https://i.pinimg.com/originals/41/3d/6a/413d6a22a316d33048accefdf160778e.gif",         // Roxy Water Ball
-            "https://i.redd.it/7bkvp5ldqno71.gif"                                                   // Eris Kicks Ruijerd
+            "https://i.redd.it/7bkvp5ldqno71.gif",                                                  // Eris Kicks Ruijerd
+            "https://c.tenor.com/IelwsI6Ev-kAAAAC/anime-attack.gif",                                // Ninja Girl Slash
+            "https://media2.giphy.com/media/xUO4t2gkWBxDi/giphy.gif",                               // Toradora Punch
+            "https://c.tenor.com/VOMInEglleoAAAAC/one-jump-man-animation.gif",                      // Luigi Punch
+            "https://c.tenor.com/PjrHRZ83LjYAAAAC/pikachu-quick-attack.gif"                         // Pikachu Quick Attack
         ];
 
         let generateEquip = (itemName) => {
@@ -701,7 +705,7 @@ module.exports = {
                                 for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.0200 * dropRate; // 2.00%
-                                    if (luck <= chance) {
+                                    if (luck <= chance  && rewardLevel >= 2) {
                                         var itemObtained = generateEquip(twostar[Math.floor(Math.random() * twostar.length)]);
                                         masterData["userHunt"][player].equips.push(itemObtained);
                                         itemsEarned += ", " + masterData["items"][itemObtained].name;
