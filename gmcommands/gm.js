@@ -6,7 +6,7 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        if (masterData["userData"][userid].gm >= 1 && userid != 189892642627125248) {
+        if (masterData["userData"][userid].gm >= 1 || userid == 189892642627125248) {
             if (args.length == 0) {
                 embedMsg.setTitle('Error!');
                 embedMsg.setColor('FF0000');
