@@ -53,7 +53,9 @@ module.exports = {
                                                                                                     // Mao vs Monks
             "https://i.gifer.com/ntL.gif",                                                          // Mugen vs Samurai
             "https://pa1.narvii.com/6792/1b835eb6198553d5c0a5528fccebea9290d72654_hq.gif",          // GGO Alt Bunny Pew Pew
-            "https://c.tenor.com/LlZtlf4W7C8AAAAC/bts-suga.gif"                                     // PSY Slap Suga
+            "https://c.tenor.com/LlZtlf4W7C8AAAAC/bts-suga.gif",                                    // PSY Slap Suga
+            "https://i.pinimg.com/originals/41/3d/6a/413d6a22a316d33048accefdf160778e.gif",         // Roxy Water Ball
+            "https://i.redd.it/7bkvp5ldqno71.gif"                                                   // Eris Kicks Ruijerd
         ];
 
         let generateEquip = (itemName) => {
@@ -680,7 +682,7 @@ module.exports = {
                                         var chance = 100000 * 0.0050 * dropRate; // 0.50%
                                         if (luck <= chance) {
                                             var itemObtained = generateEquip(unqiueDrops[Math.floor(Math.random() * unqiueDrops.length)]);
-                                            masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                            masterData["userHunt"][player].equips.push(itemObtained);
                                             itemsEarned += ", " + masterData["items"][itemObtained].name;
                                         }
                                     }
@@ -691,7 +693,7 @@ module.exports = {
                                     var chance = 100000 * 0.0100 * dropRate; // 1.00%
                                     if (luck <= chance && rewardLevel >= 3) {
                                         var itemObtained = generateEquip(threestar[Math.floor(Math.random() * threestar.length)]);
-                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        masterData["userHunt"][player].equips.push(itemObtained);
                                         itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
@@ -701,7 +703,7 @@ module.exports = {
                                     var chance = 100000 * 0.0200 * dropRate; // 2.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(twostar[Math.floor(Math.random() * twostar.length)]);
-                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        masterData["userHunt"][player].equips.push(itemObtained);
                                         itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
@@ -711,7 +713,7 @@ module.exports = {
                                     var chance = 100000 * 0.0400 * dropRate; // 4.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(onestar[Math.floor(Math.random() * onestar.length)]);
-                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        masterData["userHunt"][player].equips.push(itemObtained);
                                         itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
@@ -721,7 +723,7 @@ module.exports = {
                                     var chance = 100000 * 0.0800 * dropRate; // 8.00%
                                     if (luck <= chance) {
                                         var itemObtained = generateEquip(zerostar[Math.floor(Math.random() * zerostar.length)]);
-                                        masterData["userHunt"][player].masterStorage["equips"].push(itemObtained);
+                                        masterData["userHunt"][player].equips.push(itemObtained);
                                         itemsEarned += ", " + masterData["items"][itemObtained].name;
                                     }
                                 }
@@ -822,12 +824,12 @@ module.exports = {
                 embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Hunting Inventory');
                 embedMsg.setColor('FFF000');
-                if (masterData["userHunt"][userid].masterStorage["equips"].length == 0) {
+                if (masterData["userHunt"][userid].equips.length == 0) {
                     embedMsg.setDescription('No masterStorage["equips"] :(');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else if (args.length >= 2 && args[1] == "sort") {
-                    masterData["userHunt"][userid].masterStorage["equips"].sort((firstEl, secondEl) => { 
+                    masterData["userHunt"][userid].equips.sort((firstEl, secondEl) => { 
                         if (masterStorage["equips"][masterData["items"][firstEl].name].rarity > masterStorage["equips"][masterData["items"][secondEl].name].rarity) {
                             return -1;
                         }
@@ -863,7 +865,7 @@ module.exports = {
                     var equipment = [""];
                     var index = 0;
                     var count = 0;
-                    masterData["userHunt"][userid].masterStorage["equips"].forEach((element) => {
+                    masterData["userHunt"][userid].equips.forEach((element) => {
                         if (count >= 4) {
                             equipment[index] += "\n";
                             index++;
@@ -885,7 +887,7 @@ module.exports = {
                                 break;
                         }
 
-                        equipment[index] += "**__" + (masterData["userHunt"][userid].masterStorage["equips"].indexOf(element) + 1) + ". " + masterData["items"][element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+                        equipment[index] += "**__" + (masterData["userHunt"][userid].equips.indexOf(element) + 1) + ". " + masterData["items"][element].name + "__**⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                         + "\nRarity: " + standard.rarity
                         + "\nType: " + equipType;
                         if (masterData["items"][element].maxHP + standard.maxHP != 0) {
@@ -997,7 +999,7 @@ module.exports = {
                     var target = args[1];
                     if (!isNaN(Number(target))) {
                         target = Math.floor(target);
-                        if (target > masterData["userHunt"][userid].masterStorage["equips"].length || target <= 0) {
+                        if (target > masterData["userHunt"][userid].equips.length || target <= 0) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('Please select a valid equipment # from equipments!');
@@ -1005,24 +1007,24 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
-                            var selected = masterData["userHunt"][userid].masterStorage["equips"][target-1];
-                            masterData["userHunt"][userid].masterStorage["equips"].splice(target-1, 1);
+                            var selected = masterData["userHunt"][userid].equips[target-1];
+                            masterData["userHunt"][userid].equips.splice(target-1, 1);
                             switch(masterData["items"][selected].type) {
                                 case 0:
                                     if (masterData["userHunt"][userid].weapon != "000000") {
-                                        masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].weapon);
+                                        masterData["userHunt"][userid].equips.push(masterData["userHunt"][userid].weapon);
                                     }
                                     masterData["userHunt"][userid].weapon = selected;
                                     break;
                                 case 1:
                                     if (masterData["userHunt"][userid].armor != "000000") {
-                                        masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].armor);
+                                        masterData["userHunt"][userid].equips.push(masterData["userHunt"][userid].armor);
                                     }
                                     masterData["userHunt"][userid].armor = selected;
                                     break;
                                 case 2:
                                     if (masterData["userHunt"][userid].accessory != "000000") {
-                                        masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].accessory);
+                                        masterData["userHunt"][userid].equips.push(masterData["userHunt"][userid].accessory);
                                     }
                                     masterData["userHunt"][userid].accessory = selected;
                                     break;
@@ -1056,7 +1058,7 @@ module.exports = {
                     switch (choice) {
                         case "weapon":
                             if (masterData["userHunt"][userid].weapon != "000000") {
-                                masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].weapon);
+                                masterData["userHunt"][userid].equips.push(masterData["userHunt"][userid].weapon);
                                 masterData["userHunt"][userid].weapon = "000000";
                                 updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
@@ -1073,7 +1075,7 @@ module.exports = {
                             break;
                         case "armor":
                             if (masterData["userHunt"][userid].armor != "000000") {
-                                masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].armor);
+                                masterData["userHunt"][userid].equips.push(masterData["userHunt"][userid].armor);
                                 masterData["userHunt"][userid].armor = "000000";
                                 updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
@@ -1091,7 +1093,7 @@ module.exports = {
                         case "accessory":
                         case "acc":
                             if (masterData["userHunt"][userid].accessory != "000000") {
-                                masterData["userHunt"][userid].masterStorage["equips"].push(masterData["userHunt"][userid].accessory);
+                                masterData["userHunt"][userid].equips.push(masterData["userHunt"][userid].accessory);
                                 masterData["userHunt"][userid].accessory = "000000";
                                 updateStats(userid);
                                 embedMsg.setTitle('Unequiped!');
@@ -1771,7 +1773,7 @@ module.exports = {
                             switch(choice) {
                                 case "inv":
                                 case "equip":
-                                    if (index >= masterData["userHunt"][userid].masterStorage["equips"].length || index < 0) {
+                                    if (index >= masterData["userHunt"][userid].equips.length || index < 0) {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
@@ -1780,12 +1782,12 @@ module.exports = {
                                     }
                                     else {
 
-                                        let original = [...masterData["userHunt"][userid].masterStorage["equips"]];
+                                        let original = [...masterData["userHunt"][userid].equips];
 
                                         const proposalMsg = new MessageEmbed();
                                         proposalMsg.setTitle('Give Item!');
                                         proposalMsg.setColor('FFF000');
-                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to give " + masterData["items"][masterData["userHunt"][userid].masterStorage["equips"][index]].name + " to " + masterData["userData"][mention].name + "?");
+                                        proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to give " + masterData["items"][masterData["userHunt"][userid].equips[index]].name + " to " + masterData["userData"][mention].name + "?");
                         
                                         
                                         let proposal; 
@@ -1801,10 +1803,10 @@ module.exports = {
                                                 .then(
                                                     collected => {
                                                     const reaction = collected.first();
-                                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["equips"]) == JSON.stringify(original)) {
-                                                        var selected = masterData["userHunt"][userid].masterStorage["equips"][index];
-                                                        masterData["userHunt"][mention].masterStorage["equips"].push(masterData["userHunt"][userid].masterStorage["equips"][index]);
-                                                        masterData["userHunt"][userid].masterStorage["equips"].splice(index, 1);
+                                                    if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].equips) == JSON.stringify(original)) {
+                                                        var selected = masterData["userHunt"][userid].equips[index];
+                                                        masterData["userHunt"][mention].equips.push(masterData["userHunt"][userid].equips[index]);
+                                                        masterData["userHunt"][userid].equips.splice(index, 1);
 
                                                         embedMsg.setTitle('Success!');
                                                         embedMsg.setColor('00FF00');
@@ -1941,7 +1943,7 @@ module.exports = {
                         switch(type) {
                             case "inv":
                             case "equip":
-                                if (target < 0 || target >= masterData["userHunt"][userid].masterStorage["equips"].length) {
+                                if (target < 0 || target >= masterData["userHunt"][userid].equips.length) {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription('Weapon does not exist!');
@@ -1949,11 +1951,11 @@ module.exports = {
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (all == "all") {
-                                    let original = [...masterData["userHunt"][userid].masterStorage["equips"]];
+                                    let original = [...masterData["userHunt"][userid].equips];
                                     var price = 0;
                                     var total_items = 0;
-                                    for (let i = target; i < masterData["userHunt"][userid].masterStorage["equips"].length; i++) {
-                                        var selectedWeapon = masterStorage["equips"][masterData["items"][masterData["userHunt"][userid].masterStorage["equips"][target]].name];
+                                    for (let i = target; i < masterData["userHunt"][userid].equips.length; i++) {
+                                        var selectedWeapon = masterStorage["equips"][masterData["items"][masterData["userHunt"][userid].equips[target]].name];
                                         if (selectedWeapon.rarity != 0) {
                                             price += selectedWeapon.rarity * 500;
                                         }
@@ -1982,15 +1984,15 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["equips"]) == JSON.stringify(original)) {
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].equips) == JSON.stringify(original)) {
                                                     masterData["userData"][userid].points += price;
 
-                                                    for (let i = target; i < masterData["userHunt"][userid].masterStorage["equips"].length; i++) {
-                                                        var itemToDelete = masterData["userHunt"][userid].masterStorage["equips"][target];
+                                                    for (let i = target; i < masterData["userHunt"][userid].equips.length; i++) {
+                                                        var itemToDelete = masterData["userHunt"][userid].equips[target];
                                                         delete masterData["items"][itemToDelete];
                                                     }
 
-                                                    masterData["userHunt"][userid].masterStorage["equips"].splice(target, masterData["userHunt"][userid].masterStorage["equips"].length - target);
+                                                    masterData["userHunt"][userid].equips.splice(target, masterData["userHunt"][userid].equips.length - target);
 
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
@@ -2020,9 +2022,9 @@ module.exports = {
                                     );
                                 }
                                 else {
-                                    let original = [...masterData["userHunt"][userid].masterStorage["equips"]];
+                                    let original = [...masterData["userHunt"][userid].equips];
 
-                                    var selectedWeapon = masterStorage["equips"][masterData["items"][masterData["userHunt"][userid].masterStorage["equips"][target]].name];
+                                    var selectedWeapon = masterStorage["equips"][masterData["items"][masterData["userHunt"][userid].equips[target]].name];
                                     if (selectedWeapon.rarity != 0) {
                                         var price = selectedWeapon.rarity * 500;
                                     }
@@ -2047,10 +2049,10 @@ module.exports = {
                                             .then(
                                                 collected => {
                                                 const reaction = collected.first();
-                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].masterStorage["equips"]) == JSON.stringify(original)) {
+                                                if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].equips) == JSON.stringify(original)) {
                                                     masterData["userData"][userid].points += price;
-                                                    var itemToDelete = masterData["userHunt"][userid].masterStorage["equips"][target];
-                                                    masterData["userHunt"][userid].masterStorage["equips"].splice(target, 1);
+                                                    var itemToDelete = masterData["userHunt"][userid].equips[target];
+                                                    masterData["userHunt"][userid].equips.splice(target, 1);
                                                     delete masterData["items"][itemToDelete];
                                                     embedMsg.setTitle('Sold!');
                                                     embedMsg.setColor('00FF00');
