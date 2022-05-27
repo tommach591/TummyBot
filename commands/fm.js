@@ -648,7 +648,8 @@ module.exports = {
                         {
                             let pages = [];
                             for (let i = 0; i < fmItems.length; i++) {
-                                pages.push(fmItems[i]);
+                                if (fmItems[i] != "")
+                                    pages.push(fmItems[i]);
                             }
 
                             let page = 1;
@@ -848,7 +849,8 @@ module.exports = {
                     {
                         let pages = [];
                         for (let i = 0; i < fmItems.length; i++) {
-                            pages.push(fmItems[i]);
+                            if (fmItems[i] != "")
+                                pages.push(fmItems[i]);
                         }
 
                         let page = 1;
@@ -1031,7 +1033,8 @@ module.exports = {
 
                     let pages = [];
                     for (let i = 0; i < fmItems.length; i++) {
-                        pages.push(fmItems[i]);
+                        if (fmItems[i] != "")
+                            pages.push(fmItems[i]);
                     }
 
                     let page = 1;
