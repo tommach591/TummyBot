@@ -522,7 +522,9 @@ module.exports = {
                                 count = 0;
                                 fmItems[index] = "";
                             }
-                            if (masterData["fm"][keys[i]].itemName.toLowerCase().includes(searchCondition.toLowerCase()))
+                            if (masterData["fm"][keys[i]].itemName.toLowerCase().includes(searchCondition.toLowerCase()) ||
+                                (searchCondition == "equip" && masterData["fm"][keys[i]].itemType == "equip") ||
+                                    (searchCondition == "scroll" && masterData["fm"][keys[i]].itemType == "scroll"))
                             {
                                 if (masterData["fm"][keys[i]].itemType == "equip") 
                                 {
@@ -542,7 +544,7 @@ module.exports = {
                                             break;
                                     }
 
-                                    fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :crossed_swords:"
+                                    fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** ⠀⠀:crossed_swords:"
                                     + "\nRarity: " + standard.rarity
                                     + "\nType: " + equipType;
                                     if (masterData["items"][element].maxHP + standard.maxHP != 0) {
@@ -590,7 +592,7 @@ module.exports = {
                                 }
                                 else if (masterData["fm"][keys[i]].itemType == "scroll") {
                                     var element = masterData["fm"][keys[i]].itemID;
-                                    fmItems[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__** :scroll:";
+                                    fmItems[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__** ⠀⠀:scroll:";
                                     if (masterStorage["scrolls"][element].maxHP != 0) {
                                         fmItems[index] += "\nMaxHP: " + (masterStorage["scrolls"][element].maxHP);
                                     }
@@ -742,7 +744,7 @@ module.exports = {
                                         break;
                                 }
 
-                                fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :crossed_swords:"
+                                fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** ⠀⠀:crossed_swords:"
                                 + "\nRarity: " + standard.rarity
                                 + "\nType: " + equipType;
                                 if (masterData["items"][element].maxHP + standard.maxHP != 0) {
@@ -790,7 +792,7 @@ module.exports = {
                             }
                             else if (masterData["fm"][keys[i]].itemType == "scroll") {
                                 var element = masterData["fm"][keys[i]].itemID;
-                                fmItems[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__** :scroll:";
+                                fmItems[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__** ⠀⠀:scroll:";
                                 if (masterStorage["scrolls"][element].maxHP != 0) {
                                     fmItems[index] += "\nMaxHP: " + (masterStorage["scrolls"][element].maxHP);
                                 }
@@ -938,7 +940,7 @@ module.exports = {
                                     break;
                             }
 
-                            fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :crossed_swords:"
+                            fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** ⠀⠀:crossed_swords:"
                             + "\nRarity: " + standard.rarity
                             + "\nType: " + equipType;
                             if (masterData["items"][element].maxHP + standard.maxHP != 0) {
@@ -986,7 +988,7 @@ module.exports = {
                         }
                         else if (masterData["fm"][keys[i]].itemType == "scroll") {
                             var element = masterData["fm"][keys[i]].itemID;
-                            fmItems[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__** :scroll:";
+                            fmItems[index] += "**__" + (i + 1) + ". " + masterStorage["scrolls"][element].name + "__** ⠀⠀:scroll:";
                             if (masterStorage["scrolls"][element].maxHP != 0) {
                                 fmItems[index] += "\nMaxHP: " + (masterStorage["scrolls"][element].maxHP);
                             }
