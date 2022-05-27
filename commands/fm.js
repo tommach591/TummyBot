@@ -50,7 +50,7 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'sell':
-                if (args.length > 4)
+                if (args.length < 4)
                 {
                     var type = args[1];
                     var target = Math.floor(Number(args[2]) - 1);
