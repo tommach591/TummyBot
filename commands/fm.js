@@ -484,7 +484,7 @@ module.exports = {
                     else
                     {
                         for (let i = 0; i < keys.length; i++) {
-                            if (count >= 5) {
+                            if (count >= 4) {
                                 index++;
                                 count = 0;
                                 fmItems[index] = "";
@@ -683,7 +683,7 @@ module.exports = {
                 else
                 {
                     for (let i = 0; i < keys.length; i++) {
-                        if (count >= 5) {
+                        if (count >= 4) {
                             index++;
                             count = 0;
                             fmItems[index] = "";
@@ -880,7 +880,7 @@ module.exports = {
                 else
                 {
                     for (let i = 0; i < keys.length; i++) {
-                        if (count >= 5) {
+                        if (count >= 4) {
                             index++;
                             count = 0;
                             fmItems[index] = "";
@@ -997,6 +997,11 @@ module.exports = {
                     }
 
                     let page = 1;
+                    var target = Math.floor(Number(args[1]));
+                    if (!isNaN(target))
+                    {
+                        page = target;
+                    }
 
                     embedMsg
                         .setFooter(`Page ${page} of ${pages.length}`)
