@@ -54,12 +54,12 @@ module.exports = {
             case 'help':
                 const fmCommands = new Map();
                 fmCommands.set('help', 'Displays list of FM commands.');
-                fmCommands.set('sell', 'List an item to sell.');
-                fmCommands.set('buy', 'Purchase an item from the FM.');
-                fmCommands.set('withdraw', 'Retrieve an item back from the FM.');
-                fmCommands.set('search', 'Search for an item in the FM.');
+                fmCommands.set('sell TYPE #1 #2', 'List an item to sell. TYPE - equip/scroll, #1 - index of equip/scroll, #2 - price');
+                fmCommands.set('buy #', 'Purchase an item from the FM.');
+                fmCommands.set('withdraw #', 'Retrieve an item back from the FM.');
+                fmCommands.set('search CONDITION', 'Search for an item in the FM based on CONDITION.');
                 fmCommands.set('listings', 'Display all your items in the FM.');
-                fmCommands.set('#', 'Browse the FM by page number');
+                fmCommands.set('#', 'Browse the FM by page number or leave blank to start at first page.');
 
                 embedMsg.setTitle('List of FM Commands');
                 embedMsg.setColor('FFF000');
@@ -140,7 +140,7 @@ module.exports = {
                                             else {
                                                 embedMsg.setTitle('Fail!');
                                                 embedMsg.setColor('FF0000');
-                                                embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                                embedMsg.setDescription("The FM has changed!");
                                                 embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                                 message.channel.send({ embeds: [embedMsg] });
                                             }
@@ -302,7 +302,22 @@ module.exports = {
                                     .then(
                                         collected => {
                                         const reaction = collected.first();
-                                        if (reaction.emoji.name === '👍') {
+
+                                        var newKeys = [];
+                                        for (var k in masterData["fm"]) {
+                                            newKeys.push(k);
+                                        }
+                                        newKeys.sort((firstEl, secondEl) => { 
+                                            if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
+                                                return -1;
+                                            }
+                                            if (masterData["fm"][firstEl].price > masterData["fm"][secondEl].price) {
+                                                return 1;
+                                            }
+                                            return 0;
+                                        });
+
+                                        if (reaction.emoji.name === '👍' && JSON.stringify(keys) == JSON.stringify(newKeys)) {
                                             if (masterData["fm"][keys[target]].itemType == "equip")
                                             {
                                                 masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
@@ -406,7 +421,22 @@ module.exports = {
                                     .then(
                                         collected => {
                                         const reaction = collected.first();
-                                        if (reaction.emoji.name === '👍') {
+
+                                        var newKeys = [];
+                                        for (var k in masterData["fm"]) {
+                                            newKeys.push(k);
+                                        }
+                                        newKeys.sort((firstEl, secondEl) => { 
+                                            if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
+                                                return -1;
+                                            }
+                                            if (masterData["fm"][firstEl].price > masterData["fm"][secondEl].price) {
+                                                return 1;
+                                            }
+                                            return 0;
+                                        });
+
+                                        if (reaction.emoji.name === '👍' && JSON.stringify(keys) == JSON.stringify(newKeys)) {
                                             if (masterData["fm"][keys[target]].itemType == "equip")
                                             {
                                                 masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
@@ -427,12 +457,14 @@ module.exports = {
                                             embedMsg.setTitle('Declined!');
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                         else {
                                             embedMsg.setTitle('Fail!');
                                             embedMsg.setColor('FF0000');
-                                            embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                            embedMsg.setDescription("The FM has changed!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                     })
@@ -455,7 +487,7 @@ module.exports = {
                     embedMsg.setTitle("Error!");
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription("Not enough parameters!");
-                    embedMsg.setFooter("!tp fm search name!");
+                    embedMsg.setFooter("!tp fm search condition!");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else
