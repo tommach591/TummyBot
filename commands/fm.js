@@ -508,10 +508,10 @@ module.exports = {
                     if (keys.length == 0)
                     {
                         embedMsg.setTitle('Free Market');
-                        embedMsg.setColor('FFF000');
+                        embedMsg.setColor('FFA500');
                         embedMsg.setDescription('Nothing for sale :(');
                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
-                        embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                        embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else
@@ -638,10 +638,10 @@ module.exports = {
                         if (matches == 0)
                         {
                             embedMsg.setTitle('Free Market');
-                            embedMsg.setColor('FFF000');
+                            embedMsg.setColor('FFA500');
                             embedMsg.setDescription('Nothing found :(');
                             embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
-                            embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                            embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else 
@@ -657,8 +657,8 @@ module.exports = {
                                 .setFooter(`Page ${page} of ${pages.length}`)
                                 .setDescription(pages[page-1])
                                 .setTitle('Free Market')
-                                .setColor('FFF000')
-                                .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
+                                .setColor('FFA500')
+                                .setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg")
                                 .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                             message.channel.send({ embeds: [embedMsg] }).then(msg => {
@@ -670,8 +670,8 @@ module.exports = {
 
                                     collector.on('collect', r => {
                                         embedMsg.setTitle('Free Market');
-                                        embedMsg.setColor('FFF000');
-                                        embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                                        embedMsg.setColor('FFA500');
+                                        embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                         
                                         if (r.emoji.name === "◀️") {
@@ -711,10 +711,10 @@ module.exports = {
                 if (keys.length == 0)
                 {
                     embedMsg.setTitle('Free Market');
-                    embedMsg.setColor('FFF000');
+                    embedMsg.setColor('FFA500');
                     embedMsg.setDescription('Nothing for sale :(');
                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
-                    embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                    embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else
@@ -839,10 +839,10 @@ module.exports = {
                     if (matches == 0)
                     {
                         embedMsg.setTitle('Free Market');
-                        embedMsg.setColor('FFF000');
+                        embedMsg.setColor('FFA500');
                         embedMsg.setDescription('Nothing found :(');
                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
-                        embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                        embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else 
@@ -858,8 +858,8 @@ module.exports = {
                             .setFooter(`Page ${page} of ${pages.length}`)
                             .setDescription(pages[page-1])
                             .setTitle('Free Market')
-                            .setColor('FFF000')
-                            .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
+                            .setColor('FFA500')
+                            .setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg")
                             .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                         message.channel.send({ embeds: [embedMsg] }).then(msg => {
@@ -871,8 +871,8 @@ module.exports = {
 
                                 collector.on('collect', r => {
                                     embedMsg.setTitle('Free Market');
-                                    embedMsg.setColor('FFF000');
-                                    embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                                    embedMsg.setColor('FFA500');
+                                    embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                     
                                     if (r.emoji.name === "◀️") {
@@ -910,10 +910,10 @@ module.exports = {
                 if (keys.length == 0)
                 {
                     embedMsg.setTitle('Free Market');
-                    embedMsg.setColor('FFF000');
+                    embedMsg.setColor('FFA500');
                     embedMsg.setDescription('Nothing for sale :(');
                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
-                    embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                    embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else
@@ -1048,8 +1048,8 @@ module.exports = {
                         .setFooter(`Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
                         .setTitle('Free Market')
-                        .setColor('FFF000')
-                        .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
+                        .setColor('FFA500')
+                        .setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg")
                         .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                     message.channel.send({ embeds: [embedMsg] }).then(msg => {
@@ -1061,8 +1061,8 @@ module.exports = {
 
                             collector.on('collect', r => {
                                 embedMsg.setTitle('Free Market');
-                                embedMsg.setColor('FFF000');
-                                embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
+                                embedMsg.setColor('FFA500');
+                                embedMsg.setThumbnail("http://4.bp.blogspot.com/-iRAUuRUTBhw/UsPQLo79O6I/AAAAAAAAAK4/Hxck9H7ZPa4/s1600/Maple0001.jpg");
                                 embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                 
                                 if (r.emoji.name === "◀️") {
