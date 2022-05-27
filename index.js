@@ -784,6 +784,10 @@ client.on('messageCreate', message => {
                 if (masterData["userData"][sender.id])
                     client.commands.get('pet').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
+            case 'fm':
+                if (masterData["userData"][sender.id])
+                    client.commands.get('fm').execute(message, args, sender.id, masterData, masterStorage, client);
+                break;
 // GM Commands ****************************************************************************************************************************
             case 'reload':
                 if (masterData["userData"][sender.id])
