@@ -59,6 +59,7 @@ module.exports = {
                 fmCommands.set('withdraw', 'Retrieve an item back from the FM.');
                 fmCommands.set('search', 'Search for an item in the FM.');
                 fmCommands.set('listings', 'Display all your items in the FM.');
+                fmCommands.set('#', 'Browse the FM by page number');
 
                 embedMsg.setTitle('List of FM Commands');
                 embedMsg.setColor('FFF000');
