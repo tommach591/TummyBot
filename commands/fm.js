@@ -470,6 +470,7 @@ module.exports = {
                     var fmItems = [""];
                     var index = 0;
                     var count = 0;
+                    var matches = 0;
                     if (keys.length == 0)
                     {
                         embedMsg.setTitle('Free Market');
