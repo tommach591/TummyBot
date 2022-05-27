@@ -997,11 +997,11 @@ module.exports = {
                     }
 
                     let page = 1;
-                    var target = Math.floor(Number(args[1]));
-                    if (!isNaN(target) && target >= 1 && target <= pages.length)
+                    var selectedPage = Math.floor(Number(args[1]));
+                    if (!isNaN(selectedPage) && target >= 1 && selectedPage <= pages.length)
                     {
-                        message.channel.send(target)
-                        page = target;
+                        message.channel.send(selectedPage)
+                        page = selectedPage;
                     }
 
                     embedMsg
