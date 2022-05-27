@@ -998,7 +998,7 @@ module.exports = {
 
                     let page = 1;
                     var target = Math.floor(Number(args[1]));
-                    if (!isNaN(target))
+                    if (!isNaN(target) && target > 0 && target <= pages.length)
                     {
                         page = target;
                     }
