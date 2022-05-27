@@ -544,7 +544,7 @@ module.exports = {
                                             break;
                                     }
 
-                                    fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :shield:"
+                                    fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :dagger:"
                                     + "\nRarity: " + standard.rarity
                                     + "\nType: " + equipType;
                                     if (masterData["items"][element].maxHP + standard.maxHP != 0) {
@@ -745,7 +745,7 @@ module.exports = {
                                         break;
                                 }
 
-                                fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :shield:"
+                                fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :dagger:"
                                 + "\nRarity: " + standard.rarity
                                 + "\nType: " + equipType;
                                 if (masterData["items"][element].maxHP + standard.maxHP != 0) {
@@ -942,7 +942,7 @@ module.exports = {
                                     break;
                             }
 
-                            fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :shield:"
+                            fmItems[index] += "**__" + (i + 1) + ". " + masterData["items"][element].name + "__** :dagger:"
                             + "\nRarity: " + standard.rarity
                             + "\nType: " + equipType;
                             if (masterData["items"][element].maxHP + standard.maxHP != 0) {
