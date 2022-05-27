@@ -76,14 +76,57 @@ module.exports = {
                             }
                             else 
                             {
+                                let original = [...masterData["userHunt"][userid].equips];
                                 var itemToSell = masterData["userHunt"][userid].equips[target];
-                                generateFM(type, itemToSell, price);
-                                masterData["userHunt"][userid].equips.splice(target, 1);
-                                
-                                embedMsg.setTitle('Success!');
-                                embedMsg.setColor('00FF00');
-                                embedMsg.setDescription(masterData["items"][itemToSell].name + " listed for " + price.toLocaleString() + " points!");
-                                message.channel.send({ embeds: [embedMsg] });
+                                const proposalMsg = new MessageEmbed();
+                                proposalMsg.setTitle('Selling!');
+                                proposalMsg.setColor('FFF000');
+                                proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to list " + masterData["items"][itemToSell].name + 
+                                                            " for " + price.toLocaleString() + " point(s)?");
+
+                                let proposal; 
+                                message.channel.send({ embeds: [proposalMsg] }).then(
+                                    sent => { proposal = sent } 
+                                ).then(
+                                    () => {
+                                        proposal.react('👍').then(() => proposal.react('👎'));
+                                        const filter = (reaction, user) => {
+                                            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                        };
+                                        proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                        .then(
+                                            collected => {
+                                            const reaction = collected.first();
+                                            if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].equips) == JSON.stringify(original)) {
+                                                generateFM(type, itemToSell, price);
+                                                masterData["userHunt"][userid].equips.splice(target, 1);
+                                                
+                                                embedMsg.setTitle('Success!');
+                                                embedMsg.setColor('00FF00');
+                                                embedMsg.setDescription(masterData["items"][itemToSell].name + " listed for " + price.toLocaleString() + " point(s)!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            } 
+                                            else if (reaction.emoji.name === '👎') {
+                                                embedMsg.setTitle('Declined!');
+                                                embedMsg.setColor('FF0000');
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            }
+                                            else {
+                                                embedMsg.setTitle('Fail!');
+                                                embedMsg.setColor('FF0000');
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            }
+                                        })
+                                        .catch(collected => {
+                                            embedMsg.setTitle('Fail!');
+                                            embedMsg.setColor('FF0000');
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        });
+                                    }
+                                );
                             }
                         }
                         else if (type == "scroll")
@@ -96,14 +139,57 @@ module.exports = {
                             }
                             else 
                             {
+                                let original = [...masterData["userHunt"][userid].scrolls];
                                 var itemToSell = masterData["userHunt"][userid].scrolls[target];
-                                generateFM(type, itemToSell, price);
-                                masterData["userHunt"][userid].scrolls.splice(target, 1);
-                                
-                                embedMsg.setTitle('Success!');
-                                embedMsg.setColor('00FF00');
-                                embedMsg.setDescription(masterStorage["scrolls"][itemToSell].name + " listed for " + price.toLocaleString() + " points!");
-                                message.channel.send({ embeds: [embedMsg] });
+                                const proposalMsg = new MessageEmbed();
+                                proposalMsg.setTitle('Selling!');
+                                proposalMsg.setColor('FFF000');
+                                proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to list " + masterStorage["scrolls"][itemToSell].name + 
+                                                            " for " + price.toLocaleString() + " point(s)?");
+
+                                let proposal; 
+                                message.channel.send({ embeds: [proposalMsg] }).then(
+                                    sent => { proposal = sent } 
+                                ).then(
+                                    () => {
+                                        proposal.react('👍').then(() => proposal.react('👎'));
+                                        const filter = (reaction, user) => {
+                                            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                        };
+                                        proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                        .then(
+                                            collected => {
+                                            const reaction = collected.first();
+                                            if (reaction.emoji.name === '👍' && JSON.stringify(masterData["userHunt"][userid].scrolls) == JSON.stringify(original)) {
+                                                generateFM(type, itemToSell, price);
+                                                masterData["userHunt"][userid].scrolls.splice(target, 1);
+                                                
+                                                embedMsg.setTitle('Success!');
+                                                embedMsg.setColor('00FF00');
+                                                embedMsg.setDescription(masterStorage["scrolls"][itemToSell].name + " listed for " + price.toLocaleString() + " points!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            } 
+                                            else if (reaction.emoji.name === '👎') {
+                                                embedMsg.setTitle('Declined!');
+                                                embedMsg.setColor('FF0000');
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            }
+                                            else {
+                                                embedMsg.setTitle('Fail!');
+                                                embedMsg.setColor('FF0000');
+                                                embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                                message.channel.send({ embeds: [embedMsg] });
+                                            }
+                                        })
+                                        .catch(collected => {
+                                            embedMsg.setTitle('Fail!');
+                                            embedMsg.setColor('FF0000');
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        });
+                                    }
+                                );
                             }
                         }
                         else 
@@ -255,8 +341,8 @@ module.exports = {
                                 }
                             }
                         }
-                        fmItems[index] += "\n\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString();
-                        fmItems[index] += "\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
+                        fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
+                        fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString();
                         fmItems[index] += "\n\n";
                         count++;
                     }
