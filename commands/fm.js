@@ -227,6 +227,95 @@ module.exports = {
             case 'buy':
                 break;
             case 'withdraw':
+                if (args.length < 2)
+                {
+                    embedMsg.setTitle("Error!");
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription("Not enough parameters!");
+                    embedMsg.setFooter("!tp fm withdraw #!");
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else
+                {
+                    var target = Math.floor(Number(args[1]) - 1);
+                    if (isNaN(target) || target < 0 || target >= keys.length)
+                    {
+                        embedMsg.setTitle("Error!");
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription("Invalid index!");
+                        embedMsg.setFooter("Find the index you want to withdraw!");
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else
+                    {
+                        if (masterData["fm"][keys[target]].ownerID != userid)
+                        {
+                            embedMsg.setTitle("Error!");
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription("This item is not yours!");
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else 
+                        {
+                            const proposalMsg = new MessageEmbed();
+                            proposalMsg.setTitle('Selling!');
+                            proposalMsg.setColor('FFF000');
+                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to withdraw " + masterData["fm"][keys[target]].name + 
+                                                        " from the FM?");
+
+                            let proposal; 
+                            message.channel.send({ embeds: [proposalMsg] }).then(
+                                sent => { proposal = sent } 
+                            ).then(
+                                () => {
+                                    proposal.react('👍').then(() => proposal.react('👎'));
+                                    const filter = (reaction, user) => {
+                                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                    };
+                                    proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                    .then(
+                                        collected => {
+                                        const reaction = collected.first();
+                                        if (reaction.emoji.name === '👍') {
+                                            if (masterData["fm"][keys[target]].itemType == "equip")
+                                            {
+                                                masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
+                                            }
+                                            else if (masterData["fm"][keys[target]].itemType == "scroll")
+                                            {
+                                                masterData["userHunt"][userid].scrolls.push(masterData["fm"][keys[target]].itemID);
+                                            }
+                                            embedMsg.setTitle('Success!');
+                                            embedMsg.setColor('00FF00');
+                                            embedMsg.setDescription(masterData["fm"][keys[target]].name + " withdrawed!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                            
+                                            delete masterData["fm"][keys[target]];
+                                        } 
+                                        else if (reaction.emoji.name === '👎') {
+                                            embedMsg.setTitle('Declined!');
+                                            embedMsg.setColor('FF0000');
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        }
+                                        else {
+                                            embedMsg.setTitle('Fail!');
+                                            embedMsg.setColor('FF0000');
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        }
+                                    })
+                                    .catch(collected => {
+                                        embedMsg.setTitle('Fail!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    });
+                                }
+                            );
+                        }
+                    }
+                }
                 break;
             case 'search':
                 if (args.length < 2)
@@ -369,7 +458,7 @@ module.exports = {
                                     }
                                 }
                                 fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                                fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString() + " :coin:";
+                                fmItems[index] += "\n:coin: Price: " + masterData["fm"][keys[i]].price.toLocaleString();
                                 fmItems[index] += "\n\n";
                                 count++;
                                 matches++;
@@ -560,7 +649,7 @@ module.exports = {
                                 }
                             }
                             fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                            fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString() + " :coin:";
+                            fmItems[index] += "\n:coin: Price: " + masterData["fm"][keys[i]].price.toLocaleString();
                             fmItems[index] += "\n\n";
                             count++;
                             matches++;
@@ -747,7 +836,7 @@ module.exports = {
                             }
                         }
                         fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                        fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString() + " :coin:";
+                        fmItems[index] += "\n:coin: Price: " + masterData["fm"][keys[i]].price.toLocaleString();
                         fmItems[index] += "\n\n";
                         count++;
                     }
