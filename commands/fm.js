@@ -997,13 +997,11 @@ module.exports = {
                     }
 
                     let page = 1;
-                    var selectedPage = Math.floor(Number(args[1]));
+                    var selectedPage = Math.floor(Number(args[0]));
                     if (!isNaN(selectedPage) && selectedPage >= 1 && selectedPage <= pages.length)
                     {
-                        message.channel.send(selectedPage)
                         page = selectedPage;
                     }
-                    console.log(selectedPage)
 
                     embedMsg
                         .setFooter(`Page ${page} of ${pages.length}`)
