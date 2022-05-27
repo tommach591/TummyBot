@@ -300,7 +300,7 @@ module.exports = {
                                             }
                                             masterData["userData"][userid].points -= masterData["fm"][keys[target]].price;
                                             var profit = Math.floor(masterData["fm"][keys[target]].price * 0.8);
-                                            if (profit < 0)
+                                            if (profit <= 0)
                                             {
                                                 profit = 1;
                                             }
