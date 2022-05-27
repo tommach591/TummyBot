@@ -38,6 +38,15 @@ module.exports = {
         for (var k in masterData["fm"]) {
             keys.push(k);
         }
+        keys.sort((firstEl, secondEl) => { 
+            if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
+                return -1;
+            }
+            if (masterData["fm"][firstEl].price > masterData["fm"][secondEl].price) {
+                return 1;
+            }
+            return 0;
+        });
 
         var command = args[0];
         switch(command) {
@@ -360,7 +369,7 @@ module.exports = {
                                     }
                                 }
                                 fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                                fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString();
+                                fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString() + " :coin:";
                                 fmItems[index] += "\n\n";
                                 count++;
                                 matches++;
@@ -551,7 +560,7 @@ module.exports = {
                                 }
                             }
                             fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                            fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString();
+                            fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString() + " :coin:";
                             fmItems[index] += "\n\n";
                             count++;
                             matches++;
@@ -738,7 +747,7 @@ module.exports = {
                             }
                         }
                         fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                        fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString();
+                        fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price.toLocaleString() + " :coin:";
                         fmItems[index] += "\n\n";
                         count++;
                     }
