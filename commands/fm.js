@@ -47,7 +47,7 @@ module.exports = {
             }
             return 0;
         });
-        var person = client.users.cache.get(id);
+        var person = client.users.cache.get(userid);
 
         var command = args[0];
         switch(command) {
