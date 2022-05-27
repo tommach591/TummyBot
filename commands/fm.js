@@ -54,6 +54,11 @@ module.exports = {
             case 'help':
                 const fmCommands = new Map();
                 fmCommands.set('help', 'Displays list of FM commands.');
+                fmCommands.set('sell', 'List an item to sell.');
+                fmCommands.set('buy', 'Purchase an item from the FM.');
+                fmCommands.set('withdraw', 'Retrieve an item back from the FM.');
+                fmCommands.set('search', 'Search for an item in the FM.');
+                fmCommands.set('listings', 'Display all your items in the FM.');
 
                 embedMsg.setTitle('List of FM Commands');
                 embedMsg.setColor('FFF000');
@@ -98,6 +103,7 @@ module.exports = {
                                 proposalMsg.setColor('FFF000');
                                 proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to list " + masterData["items"][itemToSell].name + 
                                                             " for " + price.toLocaleString() + " point(s)?");
+                                proposalMsg.setFooter("There will be a 20% tax when sold!");
 
                                 let proposal; 
                                 message.channel.send({ embeds: [proposalMsg] }).then(
@@ -226,6 +232,110 @@ module.exports = {
                 }
                 break;
             case 'buy':
+                if (args.length < 2)
+                {
+                    embedMsg.setTitle("Error!");
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription("Not enough parameters!");
+                    embedMsg.setFooter("!tp fm buy #!");
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                else
+                {
+                    var target = Math.floor(Number(args[1]) - 1);
+                    if (isNaN(target) || target < 0 || target >= keys.length)
+                    {
+                        embedMsg.setTitle("Error!");
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription("Invalid index!");
+                        embedMsg.setFooter("Find the index you want to withdraw!");
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else
+                    {
+                        if (masterData["fm"][keys[target]].ownerID == userid)
+                        {
+                            embedMsg.setTitle("Error!");
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription("This item is yours!");
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else if (masterData["userData"][userid].points < masterData["fm"][keys[target]].price)
+                        {
+                            embedMsg.setTitle("Error!");
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription("Not enough points!");
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else 
+                        {
+                            const proposalMsg = new MessageEmbed();
+                            proposalMsg.setTitle('Buying!');
+                            proposalMsg.setColor('FFF000');
+                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to purchase " + masterData["fm"][keys[target]].itemName + 
+                                                        " from " + masterData["userData"][masterData["fm"][keys[target]].ownerID].name +
+                                                        " for " + masterData["fm"][keys[target]].price.toLocaleString() + " point(s)?");
+
+                            let proposal; 
+                            message.channel.send({ embeds: [proposalMsg] }).then(
+                                sent => { proposal = sent } 
+                            ).then(
+                                () => {
+                                    proposal.react('👍').then(() => proposal.react('👎'));
+                                    const filter = (reaction, user) => {
+                                        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === userid;
+                                    };
+                                    proposal.awaitReactions({ filter, max: 1, time: 30000, errors: ['time'] })
+                                    .then(
+                                        collected => {
+                                        const reaction = collected.first();
+                                        if (reaction.emoji.name === '👍') {
+                                            if (masterData["fm"][keys[target]].itemType == "equip")
+                                            {
+                                                masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
+                                            }
+                                            else if (masterData["fm"][keys[target]].itemType == "scroll")
+                                            {
+                                                masterData["userHunt"][userid].scrolls.push(masterData["fm"][keys[target]].itemID);
+                                            }
+                                            masterData["userData"][userid].points -= masterData["fm"][keys[target]].price;
+                                            var profit = Math.floor(masterData["fm"][keys[target]].price * 0.8);
+                                            if (profit < 0)
+                                            {
+                                                profit = 1;
+                                            }
+                                            masterData["userData"][masterData["fm"][keys[target]].ownerID].points += profit;
+                                            embedMsg.setTitle('Success!');
+                                            embedMsg.setColor('00FF00');
+                                            embedMsg.setDescription(masterData["fm"][keys[target]].itemName + " purchased!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                            
+                                            delete masterData["fm"][keys[target]];
+                                        } 
+                                        else if (reaction.emoji.name === '👎') {
+                                            embedMsg.setTitle('Declined!');
+                                            embedMsg.setColor('FF0000');
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        }
+                                        else {
+                                            embedMsg.setTitle('Fail!');
+                                            embedMsg.setColor('FF0000');
+                                            embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                            message.channel.send({ embeds: [embedMsg] });
+                                        }
+                                    })
+                                    .catch(collected => {
+                                        embedMsg.setTitle('Fail!');
+                                        embedMsg.setColor('FF0000');
+                                        embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                        message.channel.send({ embeds: [embedMsg] });
+                                    });
+                                }
+                            );
+                        }
+                    }
+                }
                 break;
             case 'withdraw':
                 if (args.length < 2)
@@ -259,7 +369,7 @@ module.exports = {
                         else 
                         {
                             const proposalMsg = new MessageEmbed();
-                            proposalMsg.setTitle('Selling!');
+                            proposalMsg.setTitle('Withdraw!');
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to withdraw " + masterData["fm"][keys[target]].itemName + 
                                                         " from the FM?");
