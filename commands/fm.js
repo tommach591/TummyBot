@@ -1003,6 +1003,7 @@ module.exports = {
                         message.channel.send(selectedPage)
                         page = selectedPage;
                     }
+                    message.channel.send(selectedPage)
 
                     embedMsg
                         .setFooter(`Page ${page} of ${pages.length}`)
