@@ -998,7 +998,7 @@ module.exports = {
 
                     let page = 1;
                     var selectedPage = Math.floor(Number(args[1]));
-                    if (!isNaN(selectedPage) && target >= 1 && selectedPage <= pages.length)
+                    if (!isNaN(selectedPage) && selectedPage >= 1 && selectedPage <= pages.length)
                     {
                         message.channel.send(selectedPage)
                         page = selectedPage;
