@@ -103,7 +103,8 @@ module.exports = {
                                 proposalMsg.setColor('FFF000');
                                 proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to list " + masterData["items"][itemToSell].name + 
                                                             " for " + price.toLocaleString() + " point(s)?");
-                                proposalMsg.setFooter("There will be a 20% tax when sold!");
+                                proposalMsg.setFooter("There will be a 15% tax when sold!");
+                                proposalMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                                 let proposal; 
                                 message.channel.send({ embeds: [proposalMsg] }).then(
@@ -125,18 +126,21 @@ module.exports = {
                                                 embedMsg.setTitle('Success!');
                                                 embedMsg.setColor('00FF00');
                                                 embedMsg.setDescription(masterData["items"][itemToSell].name + " listed for " + price.toLocaleString() + " point(s)!");
+                                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                                 message.channel.send({ embeds: [embedMsg] });
                                             } 
                                             else if (reaction.emoji.name === '👎') {
                                                 embedMsg.setTitle('Declined!');
                                                 embedMsg.setColor('FF0000');
                                                 embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                                 message.channel.send({ embeds: [embedMsg] });
                                             }
                                             else {
                                                 embedMsg.setTitle('Fail!');
                                                 embedMsg.setColor('FF0000');
                                                 embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                                 message.channel.send({ embeds: [embedMsg] });
                                             }
                                         })
@@ -144,6 +148,7 @@ module.exports = {
                                             embedMsg.setTitle('Fail!');
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                         });
                                     }
@@ -167,6 +172,7 @@ module.exports = {
                                 proposalMsg.setColor('FFF000');
                                 proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to list " + masterStorage["scrolls"][itemToSell].name + 
                                                             " for " + price.toLocaleString() + " point(s)?");
+                                proposalMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                                 let proposal; 
                                 message.channel.send({ embeds: [proposalMsg] }).then(
@@ -188,18 +194,21 @@ module.exports = {
                                                 embedMsg.setTitle('Success!');
                                                 embedMsg.setColor('00FF00');
                                                 embedMsg.setDescription(masterStorage["scrolls"][itemToSell].name + " listed for " + price.toLocaleString() + " points!");
+                                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                                 message.channel.send({ embeds: [embedMsg] });
                                             } 
                                             else if (reaction.emoji.name === '👎') {
                                                 embedMsg.setTitle('Declined!');
                                                 embedMsg.setColor('FF0000');
                                                 embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                                 message.channel.send({ embeds: [embedMsg] });
                                             }
                                             else {
                                                 embedMsg.setTitle('Fail!');
                                                 embedMsg.setColor('FF0000');
                                                 embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                                 message.channel.send({ embeds: [embedMsg] });
                                             }
                                         })
@@ -207,6 +216,7 @@ module.exports = {
                                             embedMsg.setTitle('Fail!');
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                         });
                                     }
@@ -275,6 +285,7 @@ module.exports = {
                             proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to purchase " + masterData["fm"][keys[target]].itemName + 
                                                         " from " + masterData["userData"][masterData["fm"][keys[target]].ownerID].name +
                                                         " for " + masterData["fm"][keys[target]].price.toLocaleString() + " point(s)?");
+                            proposalMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                             let proposal; 
                             message.channel.send({ embeds: [proposalMsg] }).then(
@@ -299,7 +310,7 @@ module.exports = {
                                                 masterData["userHunt"][userid].scrolls.push(masterData["fm"][keys[target]].itemID);
                                             }
                                             masterData["userData"][userid].points -= masterData["fm"][keys[target]].price;
-                                            var profit = Math.floor(masterData["fm"][keys[target]].price * 0.8);
+                                            var profit = Math.floor(masterData["fm"][keys[target]].price * 0.85);
                                             if (profit <= 0)
                                             {
                                                 profit = 1;
@@ -308,6 +319,7 @@ module.exports = {
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setDescription(masterData["fm"][keys[target]].itemName + " purchased!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                             message.channel.send("<@!" + masterData["fm"][keys[target]].ownerID + "> sold an item!");
                                             
@@ -317,12 +329,14 @@ module.exports = {
                                             embedMsg.setTitle('Declined!');
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                         else {
                                             embedMsg.setTitle('Fail!');
                                             embedMsg.setColor('FF0000');
                                             embedMsg.setDescription(masterData["userData"][userid].name + " inventory changed!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                         }
                                     })
@@ -330,6 +344,7 @@ module.exports = {
                                         embedMsg.setTitle('Fail!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                        embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                         message.channel.send({ embeds: [embedMsg] });
                                     });
                                 }
@@ -374,6 +389,7 @@ module.exports = {
                             proposalMsg.setColor('FFF000');
                             proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to withdraw " + masterData["fm"][keys[target]].itemName + 
                                                         " from the FM?");
+                            proposalMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                             let proposal; 
                             message.channel.send({ embeds: [proposalMsg] }).then(
@@ -400,6 +416,7 @@ module.exports = {
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setDescription(masterData["fm"][keys[target]].itemName + " withdrawed!");
+                                            embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                             
                                             delete masterData["fm"][keys[target]];
@@ -421,6 +438,7 @@ module.exports = {
                                         embedMsg.setTitle('Fail!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
+                                        embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                         message.channel.send({ embeds: [embedMsg] });
                                     });
                                 }
