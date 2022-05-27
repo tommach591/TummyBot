@@ -309,6 +309,7 @@ module.exports = {
                                             embedMsg.setColor('00FF00');
                                             embedMsg.setDescription(masterData["fm"][keys[target]].itemName + " purchased!");
                                             message.channel.send({ embeds: [embedMsg] });
+                                            message.channel.send("<@!" + masterData["fm"][keys[target]].ownerID + "> sold an item!");
                                             
                                             delete masterData["fm"][keys[target]];
                                         } 
