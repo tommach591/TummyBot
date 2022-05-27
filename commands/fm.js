@@ -1000,6 +1000,7 @@ module.exports = {
                     var target = Math.floor(Number(args[1]));
                     if (!isNaN(target) && target >= 1 && target <= pages.length)
                     {
+                        message.channel.send(target)
                         page = target;
                     }
 
