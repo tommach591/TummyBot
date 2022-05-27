@@ -487,7 +487,7 @@ module.exports = {
                                 .setTitle('Free Market')
                                 .setColor('FFF000')
                                 .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
-                                .setAuthor({ name: masterData["userData"][id].name, iconURL: person.displayAvatarURL() });
+                                .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                             message.channel.send({ embeds: [embedMsg] }).then(msg => {
                                 msg.react("◀️").then(r => {
@@ -682,7 +682,7 @@ module.exports = {
                             .setTitle('Free Market')
                             .setColor('FFF000')
                             .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
-                            .setAuthor({ name: masterData["userData"][id].name, iconURL: person.displayAvatarURL() });
+                            .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                         message.channel.send({ embeds: [embedMsg] }).then(msg => {
                             msg.react("◀️").then(r => {
@@ -863,7 +863,7 @@ module.exports = {
                         .setTitle('Free Market')
                         .setColor('FFF000')
                         .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
-                        .setAuthor({ name: masterData["userData"][id].name, iconURL: person.displayAvatarURL() });
+                        .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                     message.channel.send({ embeds: [embedMsg] }).then(msg => {
                         msg.react("◀️").then(r => {
