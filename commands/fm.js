@@ -500,7 +500,7 @@ module.exports = {
                                         embedMsg.setTitle('Free Market');
                                         embedMsg.setColor('FFF000');
                                         embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                        embedMsg.setAuthor({ name: masterData["userData"][id].name, iconURL: person.displayAvatarURL() });
+                                        embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                         
                                         if (r.emoji.name === "◀️") {
                                             if (page === 1) {
@@ -695,7 +695,7 @@ module.exports = {
                                     embedMsg.setTitle('Free Market');
                                     embedMsg.setColor('FFF000');
                                     embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                    embedMsg.setAuthor({ name: masterData["userData"][id].name, iconURL: person.displayAvatarURL() });
+                                    embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                     
                                     if (r.emoji.name === "◀️") {
                                         if (page === 1) {
@@ -876,7 +876,7 @@ module.exports = {
                                 embedMsg.setTitle('Free Market');
                                 embedMsg.setColor('FFF000');
                                 embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                embedMsg.setAuthor({ name: masterData["userData"][id].name, iconURL: person.displayAvatarURL() });
+                                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                 
                                 if (r.emoji.name === "◀️") {
                                     if (page === 1) {
