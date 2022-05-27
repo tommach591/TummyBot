@@ -260,7 +260,7 @@ module.exports = {
                             const proposalMsg = new MessageEmbed();
                             proposalMsg.setTitle('Selling!');
                             proposalMsg.setColor('FFF000');
-                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to withdraw " + masterData["fm"][keys[target]].name + 
+                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to withdraw " + masterData["fm"][keys[target]].itemName + 
                                                         " from the FM?");
 
                             let proposal; 
@@ -287,7 +287,7 @@ module.exports = {
                                             }
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
-                                            embedMsg.setDescription(masterData["fm"][keys[target]].name + " withdrawed!");
+                                            embedMsg.setDescription(masterData["fm"][keys[target]].itemName + " withdrawed!");
                                             message.channel.send({ embeds: [embedMsg] });
                                             
                                             delete masterData["fm"][keys[target]];
