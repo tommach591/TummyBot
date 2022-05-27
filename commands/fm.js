@@ -470,7 +470,6 @@ module.exports = {
                     var fmItems = [""];
                     var index = 0;
                     var count = 0;
-                    searchCondition.toLowerCase();
                     if (keys.length == 0)
                     {
                         embedMsg.setTitle('Free Market');
@@ -486,9 +485,7 @@ module.exports = {
                                 count = 0;
                                 fmItems[index] = "";
                             }
-                            var temp = masterData["fm"][keys[i]].itemName;
-                            temp.toLowerCase();
-                            if (temp.includes(searchCondition))
+                            if (masterData["fm"][keys[i]].itemName.toLowerCase().includes(searchCondition.toLowerCase()))
                             {
                                 if (masterData["fm"][keys[i]].itemType == "equip") 
                                 {
