@@ -56,7 +56,7 @@ module.exports = {
                     var target = Math.floor(Number(args[2]) - 1);
                     var price = Math.floor(Number(args[3]));
 
-                    if (isNaN(Number(price) || price < 0))
+                    if (isNaN(Number(price)) || price < 0)
                     {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
@@ -65,8 +65,9 @@ module.exports = {
                     }
                     else
                     {
-                        if (type == "equip")
+                        if (type == "equip" || type == "inv")
                         {
+                            type = "equip";
                             if (target < 0 || target >= masterData["userHunt"][userid].equips.length || isNaN(Number(target))) {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
@@ -113,6 +114,14 @@ module.exports = {
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
+                }
+                else
+                {
+                    embedMsg.setTitle("Error!");
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription("Not enough parameters!");
+                    embedMsg.setFooter("!tp fm sell equip/scroll #index #price!");
+                    message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
             case 'buy':
