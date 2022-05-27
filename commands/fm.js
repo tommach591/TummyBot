@@ -255,6 +255,8 @@ module.exports = {
                                 }
                             }
                         }
+                        fmItems[index] += "\nPrice: " + masterData["fm"][keys[i]].price;
+                        fmItems[index] += "\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
                         fmItems[index] += "\n\n";
                         count++;
                     }
