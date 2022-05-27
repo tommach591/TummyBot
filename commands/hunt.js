@@ -2289,9 +2289,9 @@ module.exports = {
                     var scroll_three = Math.floor(Number(args[3]) - 1);
                     var cost = 10000;
 
-                    if ((scroll_one >= masterData["userHunt"][userid].scrolls.length || scroll_one < 0) ||
-                            (scroll_two >= masterData["userHunt"][userid].scrolls.length || scroll_two < 0) ||
-                                (scroll_three >= masterData["userHunt"][userid].scrolls.length || scroll_three < 0)) {
+                    if ((scroll_one >= masterData["userHunt"][userid].scrolls.length || scroll_one < 0 || isNan(scroll_one)) ||
+                            (scroll_two >= masterData["userHunt"][userid].scrolls.length || scroll_two < 0 || isNan(scroll_two)) ||
+                                (scroll_three >= masterData["userHunt"][userid].scrolls.length || scroll_three < 0 || isNan(scroll_three))) {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
