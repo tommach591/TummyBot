@@ -69,6 +69,11 @@ masterStorage["userPetParams"] = {
     Key: "storage/userPet.json"
 };
 
+masterStorage["freeMarketParams"] = {
+    Bucket: process.env.BUCKET,
+    Key: "storage/freeMarket.json"
+};
+
 masterStorage["s3"] = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
@@ -146,12 +151,23 @@ getObject(masterStorage["userPetParams"]).then(
     }
 )
 
+let freeMarketPromise;
+getObject(masterStorage["freeMarketParams"]).then(
+    function(result) {
+        freeMarketPromise = result;
+    },
+    function(err) {
+        console.log(err);
+    }
+)
+
 masterData["userData"] = "";
 masterData["userFish"] = "";
 masterData["userGarden"] = "";
 masterData["userHunt"] = "";
 masterData["items"] = "";
 masterData["userPet"] = "";
+masterData["fm"] = "";
 
 /* Local Host Save Files */
 // masterData["userData"] = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
@@ -160,6 +176,7 @@ masterData["userPet"] = "";
 // masterData["userHunt"] = JSON.parse(fs.readFileSync('storage/userHunt.json', 'utf8'));
 // masterData["items"] = JSON.parse(fs.readFileSync('storage/items.json', 'utf8'));
 // masterData["userPet"] = JSON.parse(fs.readFileSync('storage/userPet.json', 'utf8'));
+// masterData["fm"] = JSON.parse(fs.readFileSync('storage/freeMarket.json', 'utf8'));
 
 var startTime = new Date();
 masterData["savefile"].startTime = startTime;
@@ -252,6 +269,16 @@ let loadUserData = () =>
     getObject(masterStorage["userPetParams"]).then(
         function(result) {
             petPromise = result;
+        },
+        function(err) {
+            console.log(err);
+        }
+    )
+
+    freeMarketPromise = null;
+    getObject(masterStorage["freeMarketParams"]).then(
+        function(result) {
+            freeMarketPromise = result;
         },
         function(err) {
             console.log(err);
@@ -653,6 +680,12 @@ client.on('messageCreate', message => {
         if (masterData["userPet"] == "") {
             if (petPromise)
                 masterData["userPet"] = JSON.parse(petPromise);
+            else
+                return;
+        }
+        if (masterData["fm"] == "") {
+            if (petPromise)
+                masterData["fm"] = JSON.parse(freeMarketPromise);
             else
                 return;
         }

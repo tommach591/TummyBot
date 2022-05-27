@@ -62,7 +62,12 @@ module.exports = {
             "https://c.tenor.com/PjrHRZ83LjYAAAAC/pikachu-quick-attack.gif",                        // Pikachu Quick Attack
             "https://c.tenor.com/tlgJzKeIlJkAAAAC/anya-forger-spy-x-family.gif",                    // Anya Punch
             "https://thumbs.gfycat.com/ArcticVeneratedGull-max-1mb.gif",                            // Kirito Asuna Attack
-            "https://data.whicdn.com/images/80210321/original.gif"                                  // Asuna Stab
+            "https://data.whicdn.com/images/80210321/original.gif",                                 // Asuna Stab
+            "https://c.tenor.com/blYwpMNaaCUAAAAC/nichijou-uppercut.gif",                           // Nichijou Uppercut
+            "https://c.tenor.com/EIIInQ5_ARQAAAAC/nichijou-my-ordinary-life-in-north-america.gif",  // Nichijou Spin
+            "https://c.tenor.com/NDOBC9JMHvcAAAAC/gintoki-takasugi.gif",                            // Gintama vs Takasugi
+            "https://c.tenor.com/xRmKXpnMG1AAAAAC/konosuba-anime.gif",                              // Darkness Attack
+            "https://c.tenor.com/jqMXr4BSeeUAAAAC/sucker-punch-punch.gif",                          // Punch Michael Scott
         ];
 
         let generateEquip = (itemName) => {
@@ -832,7 +837,7 @@ module.exports = {
                 embedMsg.setTitle('Hunting Inventory');
                 embedMsg.setColor('FFF000');
                 if (masterData["userHunt"][userid].equips.length == 0) {
-                    embedMsg.setDescription('No masterStorage["equips"] :(');
+                    embedMsg.setDescription('No equips :(');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else if (args.length >= 2 && args[1] == "sort") {
@@ -1132,7 +1137,7 @@ module.exports = {
                     embedMsg.setTitle('Scroll Inventory');
                     embedMsg.setColor('FFF000');
                     if (masterData["userHunt"][userid].scrolls.length == 0) {
-                        embedMsg.setDescription('No masterStorage["scrolls"] :(');
+                        embedMsg.setDescription('No scrolls :(');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {

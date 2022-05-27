@@ -37,6 +37,11 @@ module.exports = {
                     console.log(err);
                 }
             });
+            fs.writeFile("storage/freeMarket.json", JSON.stringify(masterData["fm"], null, 2), function(err) {
+                if (err) {
+                    console.log(err);
+                }
+            });
         }
 
         let onlineSave = () => {
@@ -99,6 +104,17 @@ module.exports = {
                 Bucket: process.env.BUCKET,
                 Key: masterStorage["userPetParams"].Key,
                 Body: JSON.stringify(masterData["userPet"]),
+                ContentType: "application/json"},
+                function (err, data) {
+                    if (err) {
+                        console.log(JSON.stringify(err));
+                    }
+                }
+            );
+            masterStorage["s3"].putObject({
+                Bucket: process.env.BUCKET,
+                Key: masterStorage["freeMarketParams"].Key,
+                Body: JSON.stringify(masterData["fm"]),
                 ContentType: "application/json"},
                 function (err, data) {
                     if (err) {

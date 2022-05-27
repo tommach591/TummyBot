@@ -608,7 +608,7 @@ module.exports = {
                 }
                 break;
             case 'dex':
-            case 'masterStorage["fishdex"]':
+            case 'fishdex':
                 var target = client.users.cache.get(userid);
                 embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Fishdex');

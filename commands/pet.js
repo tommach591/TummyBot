@@ -845,7 +845,7 @@ module.exports = {
                 }
                 break;
             case 'dex':
-            case 'gacha':
+            case 'petdex':
                 var target = client.users.cache.get(userid);
                 embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
                 embedMsg.setTitle('Pets!');
