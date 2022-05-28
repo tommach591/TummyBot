@@ -1488,6 +1488,7 @@ module.exports = {
                         }
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
+                        embedMsg.setFooter("You can sort by hp/atk/mag/mix/def/spd/chaos/purity/low/high!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < masterData["userHunt"][userid].scrolls.length) {
