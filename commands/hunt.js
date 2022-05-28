@@ -694,7 +694,7 @@ module.exports = {
                                         masterData["currHunt"]["active"].id == 62 ||
                                             masterData["currHunt"]["active"].id == 64)
                                 {
-                                    dropRate *= 2;
+                                    dropRate *= 1.5;
                                 }
 
                                 if (!masterData["userHunt"][player].monsterdex.includes(masterData["currHunt"]["active"].id)) 
