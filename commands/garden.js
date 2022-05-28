@@ -25,7 +25,7 @@ module.exports = {
                     embedMsg.addField("!tp garden " + keys, values);
                 });
 
-                embedMsg.setFooter("**__You can replace garden with g.__**");
+                embedMsg.setFooter("You can replace garden with g.");
 
                 message.channel.send({ embeds: [embedMsg] });
                 break;
