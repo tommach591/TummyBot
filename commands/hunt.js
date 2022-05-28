@@ -2427,9 +2427,9 @@ module.exports = {
                 {
                     if (choice == "on")
                     {
-                        if (!player._roles.includes(role))
+                        if (!player._roles.includes(role.id))
                         {
-                            player._roles.push(role);
+                            player._roles.push(role.id);
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
@@ -2445,9 +2445,9 @@ module.exports = {
                     }
                     else if (choice == "off")
                     {
-                        if (player._roles.includes(role))
+                        if (player._roles.includes(role.id))
                         {
-                            player._roles.remove(role);
+                            player._roles.splice(player._roles.indexOf(role.id), 1);
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
