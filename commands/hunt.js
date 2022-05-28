@@ -1,6 +1,6 @@
 module.exports = {
     name: 'hunt',
-    description: "Hunt for honor and glory! Start with !tp h help.",
+    description: "Hunt for honor and glory! Start with **__!tp h help__**.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');

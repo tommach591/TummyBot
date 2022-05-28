@@ -1,6 +1,6 @@
 module.exports = {
     name: 'fm',
-    description: "Buy and sell from other players at the Free Market!",
+    description: "Buy and sell from other players at the Free Market! Start with **__!tp fm help__**.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');

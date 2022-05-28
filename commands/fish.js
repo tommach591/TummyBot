@@ -1,7 +1,7 @@
 
 module.exports = {
     name: 'fish',
-    description: "Fish for money! Gotta catch em all! Start with !tp f help.",
+    description: "Fish for money! Gotta catch em all! Start with **__!tp f help__**.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');

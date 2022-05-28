@@ -1,6 +1,6 @@
 module.exports = {
     name: 'garden',
-    description: "Garden for money money money! Basically your dailies. Start with !tp g help.",
+    description: "Garden for money money money! Basically your dailies. Start with **__!tp g help__**.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
