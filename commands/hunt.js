@@ -2408,7 +2408,7 @@ module.exports = {
                 break;
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
-                var player = message.guild.members.get(userid);
+                var player = message.guild.members.cache.get(userid);
 
                 var choice = args[1];
                 if (args.length < 2 || choice != "on" || choice != "off")
