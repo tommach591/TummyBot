@@ -2408,7 +2408,7 @@ module.exports = {
                 break;
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
-                var player = message.guild.members.fetch(userid);
+                var player = message.guild.members.cache.fetch(userid);
                 
                 console.log(player);
                 console.log(role);
