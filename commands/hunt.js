@@ -2430,7 +2430,7 @@ module.exports = {
                         {
                             if (!guildMember._roles.includes(role.id))
                             {
-                                guildMember.add(role)
+                                guildMember.roles.add(role)
                                 embedMsg.setTitle('Success');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
@@ -2448,7 +2448,7 @@ module.exports = {
                         {
                             if (guildMember._roles.includes(role.id))
                             {
-                                guildMember.remove(role);
+                                guildMember.roles.remove(role);
                                 embedMsg.setTitle('Success');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
