@@ -1085,6 +1085,6 @@
         "magicdefense": 0,
         "attackCD": 120000,
         "difficulty": 4,
-        "loot": [""]
+        "loot": []
     }
 }
