@@ -2414,7 +2414,7 @@ module.exports = {
                     guildMember = await message.guild.members.fetch(userid);
                     console.log(guildMember);
                     console.log(role);
-                    
+
                     var choice = args[1];
                     if (args.length < 2 || (choice != "on" && choice != "off"))
                     {
@@ -2428,9 +2428,9 @@ module.exports = {
                     {
                         if (choice == "on")
                         {
-                            if (!guildMember.roles.includes(role.id))
+                            if (!guildMember._roles.includes(role.id))
                             {
-                                guildMember.roles.add(role)
+                                guildMember.addRole(role)
                                 embedMsg.setTitle('Success');
                                 embedMsg.setColor('00FF00');
                                 embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
@@ -2446,7 +2446,7 @@ module.exports = {
                         }
                         else if (choice == "off")
                         {
-                            if (guildMember.roles.includes(role.id))
+                            if (guildMember._roles.includes(role.id))
                             {
                                 guildMember.remove(role.id);
                                 embedMsg.setTitle('Success');
