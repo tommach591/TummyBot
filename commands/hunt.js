@@ -68,6 +68,7 @@ module.exports = {
             "https://c.tenor.com/NDOBC9JMHvcAAAAC/gintoki-takasugi.gif",                            // Gintama vs Takasugi
             "https://c.tenor.com/xRmKXpnMG1AAAAAC/konosuba-anime.gif",                              // Darkness Attack
             "https://c.tenor.com/jqMXr4BSeeUAAAAC/sucker-punch-punch.gif",                          // Punch Michael Scott
+            "https://static.zerochan.net/Hololive.full.3203479.gif"                                 // Gura Bites Kiara
         ];
 
         let generateEquip = (itemName) => {
