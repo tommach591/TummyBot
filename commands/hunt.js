@@ -2410,6 +2410,9 @@ module.exports = {
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
                 var player = message.guild.members.cache.get(userid);
 
+                console.log(player);
+                console.log(role);
+
                 var choice = args[1];
                 if (args.length < 2 || (choice != "on" && choice != "off"))
                 {
@@ -2424,10 +2427,9 @@ module.exports = {
                 {
                     if (choice == "on")
                     {
-                        console.log(player)
                         if (!player._roles.includes(role))
                         {
-                            player.addRole(role);
+                            player._roles.push(role);
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
