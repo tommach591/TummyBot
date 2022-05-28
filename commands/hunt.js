@@ -699,8 +699,8 @@ module.exports = {
 
                                 if (!masterData["userHunt"][player].monsterdex.includes(masterData["currHunt"]["active"].id)) 
                                 {
-                                    firstClear = "\n★ Bonus 2.00x droprate for first clear! ";
-                                    dropRate *= 2;
+                                    firstClear = "\n★ Bonus 0.50x droprate for first clear! ";
+                                    dropRate *= 1.5;
                                     masterData["userHunt"][player].monsterdex.push(masterData["currHunt"]["active"].id);
                                     masterData["userHunt"][player].monsterdex.sort((firstEl, secondEl) => { 
                                         if (Number(firstEl) < Number(secondEl)) {
