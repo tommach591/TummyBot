@@ -96,7 +96,7 @@ module.exports = {
                     embedMsg.addField("!tp pet " + keys, values);
                 });
 
-                embedMsg.setFooter("You can replace pet with p.");
+                embedMsg.setFooter("**__You can replace pet with p.__**");
 
                 message.channel.send({ embeds: [embedMsg] });
                 break;

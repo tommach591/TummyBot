@@ -38,7 +38,7 @@ module.exports = {
                     embedMsg.addField("!tp fish " + keys, values);
                 });
 
-                embedMsg.setFooter("You can replace fish with f.");
+                embedMsg.setFooter("**__You can replace fish with f.__**");
 
                 message.channel.send({ embeds: [embedMsg] });
                 break;
