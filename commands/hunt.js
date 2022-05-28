@@ -2424,7 +2424,7 @@ module.exports = {
                 {
                     if (choice == "on")
                     {
-                        console.print(player)
+                        console.log(player)
                         if (!player.roles.includes(role))
                         {
                             player.addRole(role);
