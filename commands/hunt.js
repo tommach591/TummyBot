@@ -2408,7 +2408,12 @@ module.exports = {
                 break;
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
-                var player = JSON.parse(message.guild.members.fetch());
+
+                async function getMember() {
+                    const member = await message.guild.members.fetch(userid);
+                    return member;
+                }
+                var player = getMember();
                 
                 console.log(player);
                 console.log(role);
