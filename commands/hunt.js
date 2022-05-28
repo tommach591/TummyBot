@@ -671,9 +671,11 @@ module.exports = {
                             var goldReward = 1000 * rewardLevel;
                             var reward = "";
                             
-                            for (let i = 0; i < masterData["currHunt"]["active"].targets.length; i++) {
+                            for (let i = 0; i < masterData["currHunt"]["active"].targets.length; i++) 
+                            {
                                 var mostDamage = "";
                                 var lastHit = "";
+                                var firstClear = "";
                                 var player = masterData["currHunt"]["active"].targets[i];
                                 var goldEarned = 0;
                                 goldEarned += Math.floor(goldReward * (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP));
@@ -688,12 +690,30 @@ module.exports = {
                                     dropRate *= 1.25;
                                     lastHit = "\n★ Bonus 0.25x droprate for last hit! ";
                                 }
-                                if ((masterData["currHunt"]["active"].id == 27 || masterData["currHunt"]["active"].id == 62))
+                                if (masterData["currHunt"]["active"].id == 27 || 
+                                        masterData["currHunt"]["active"].id == 62 ||
+                                            masterData["currHunt"]["active"].id == 64)
                                 {
                                     dropRate *= 2;
                                 }
-                                var multiplier = 2.5;
 
+                                if (!masterData["userHunt"][player].monsterdex.includes(masterData["currHunt"]["active"].id)) 
+                                {
+                                    firstClear = "\n★ Bonus 2.00x droprate for first clear! ";
+                                    dropRate *= 2;
+                                    masterData["userHunt"][player].monsterdex.push(masterData["currHunt"]["active"].id);
+                                    masterData["userHunt"][player].monsterdex.sort((firstEl, secondEl) => { 
+                                        if (Number(firstEl) < Number(secondEl)) {
+                                            return -1;
+                                        }
+                                        if (Number(firstEl) > Number(secondEl)) {
+                                            return 1;
+                                        }
+                                        return 0;
+                                    });
+                                }
+
+                                var multiplier = 2.5;
                                 var itemsEarned = "";
 
                                 if (unqiueDrops.length != 0) {
@@ -760,21 +780,8 @@ module.exports = {
 
                                 masterData["userData"][player].points += goldEarned;
                                 updateStats(player);
-
-                                if (!masterData["userHunt"][player].monsterdex.includes(masterData["currHunt"]["active"].id)) {
-                                    masterData["userHunt"][player].monsterdex.push(masterData["currHunt"]["active"].id);
-                                    masterData["userHunt"][player].monsterdex.sort((firstEl, secondEl) => { 
-                                        if (Number(firstEl) < Number(secondEl)) {
-                                            return -1;
-                                        }
-                                        if (Number(firstEl) > Number(secondEl)) {
-                                            return 1;
-                                        }
-                                        return 0;
-                                    });
-                                }
                                 
-                                reward += masterData["userData"][player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + mostDamage + lastHit + "\n\n";
+                                reward += masterData["userData"][player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + mostDamage + lastHit + firstClear + "\n\n";
                             }
 
                             const rewardMsg = new MessageEmbed();

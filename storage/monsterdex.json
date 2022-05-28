@@ -1069,5 +1069,22 @@
         "attackCD": 30000,
         "difficulty": 5,
         "loot": ["Alatreon Star", "Escadora β+ Armor", "Health Charm III"]
+    },
+    "64": {
+        "id": "64",
+        "name": "Mini Box",
+        "info": "The dev gifted you a mini present box.",
+        "entry": "...",
+        "shoutout": "...!",
+        "death": "...?!",
+        "image": "https://cliply.co/wp-content/uploads/2019/12/371912160_CHRISTMAS_PRESENT_400px.gif",
+        "attackImage": "https://images.squarespace-cdn.com/content/v1/599bbf76914e6bb960c6d0bb/1569918470509-PAKI8HF9LPLTFAT0KQ6Q/07+Cat+Hiding+Inside+Christmas+Present+Box+Sticking+His+Head+Out.gif?format=1000w",
+        "maxHP": 10000,
+        "attack": 100,
+        "defense": 0,
+        "magicdefense": 0,
+        "attackCD": 120000,
+        "difficulty": 4,
+        "loot": [""]
     }
 }
