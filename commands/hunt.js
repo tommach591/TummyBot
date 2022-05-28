@@ -2409,14 +2409,13 @@ module.exports = {
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
 
+                let player;
                 async function getMember() {
-                    const member = await message.guild.members.fetch(userid);
-                    return member;
+                    player = await message.guild.members.fetch(userid);
+                    console.log(player);
+                    console.log(role);
                 }
-                var player = getMember();
-                
-                console.log(player);
-                console.log(role);
+                getMember();
 
                 var choice = args[1];
                 if (args.length < 2 || (choice != "on" && choice != "off"))
