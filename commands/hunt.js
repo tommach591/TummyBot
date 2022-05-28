@@ -2425,7 +2425,7 @@ module.exports = {
                     if (choice == "on")
                     {
                         console.log(player)
-                        if (!player.roles.includes(role))
+                        if (!player._roles.includes(role))
                         {
                             player.addRole(role);
                             embedMsg.setTitle('Success');
@@ -2443,9 +2443,9 @@ module.exports = {
                     }
                     else if (choice == "off")
                     {
-                        if (player.roles.includes(role))
+                        if (player._roles.includes(role))
                         {
-                            player.roles.remove(role);
+                            player._roles.remove(role);
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
