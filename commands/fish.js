@@ -38,6 +38,8 @@ module.exports = {
                     embedMsg.addField("!tp fish " + keys, values);
                 });
 
+                embedMsg.setFooter("You can replace fish with f.");
+
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'info':

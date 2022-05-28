@@ -274,6 +274,8 @@ module.exports = {
                     embedMsg.addField("!tp hunt " + keys, values);
                 });
 
+                embedMsg.setFooter("You can replace hunt with g.");
+
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'info':
