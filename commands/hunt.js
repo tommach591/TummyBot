@@ -2409,13 +2409,13 @@ module.exports = {
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
 
-                let player;
+                let guildMember;
                 async function getMember() {
-                    player = await message.guild.members.fetch(userid);
+                    guildMember = await message.guild.members.fetch(userid);
+                    console.log(guildMember);
+                    console.log(role);
                 }
                 getMember();
-                console.log(player);
-                console.log(role);
 
                 var choice = args[1];
                 if (args.length < 2 || (choice != "on" && choice != "off"))
@@ -2430,9 +2430,9 @@ module.exports = {
                 {
                     if (choice == "on")
                     {
-                        if (!player.roles.includes(role.id))
+                        if (!guildMember.roles.includes(role.id))
                         {
-                            player.roles.add(role)
+                            guildMember.roles.add(role)
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
@@ -2448,9 +2448,9 @@ module.exports = {
                     }
                     else if (choice == "off")
                     {
-                        if (player.roles.includes(role.id))
+                        if (guildMember.roles.includes(role.id))
                         {
-                            player.remove(role.id);
+                            guildMember.remove(role.id);
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
