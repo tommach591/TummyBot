@@ -2410,61 +2410,61 @@ module.exports = {
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
 
                 let guildMember;
-                async function getMember() {
+                async function setAlertMember() {
                     guildMember = await message.guild.members.fetch(userid);
                     console.log(guildMember);
                     console.log(role);
-                }
-                getMember();
-
-                var choice = args[1];
-                if (args.length < 2 || (choice != "on" && choice != "off"))
-                {
-                    embedMsg.setTitle('Error');
-                    embedMsg.setColor('FF0000');
-                    embedMsg.setDescription('Tell the bot you want it turned on or off!');
-                    embedMsg.setFooter('!tp alert on/off')
-                    message.channel.send({ embeds: [embedMsg] });
-                }
-                else
-                {
-                    if (choice == "on")
+                    
+                    var choice = args[1];
+                    if (args.length < 2 || (choice != "on" && choice != "off"))
                     {
-                        if (!guildMember.roles.includes(role.id))
+                        embedMsg.setTitle('Error');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('Tell the bot you want it turned on or off!');
+                        embedMsg.setFooter('!tp alert on/off')
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else
+                    {
+                        if (choice == "on")
                         {
-                            guildMember.roles.add(role)
-                            embedMsg.setTitle('Success');
-                            embedMsg.setColor('00FF00');
-                            embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
-                            message.channel.send({ embeds: [embedMsg] });
+                            if (!guildMember.roles.includes(role.id))
+                            {
+                                guildMember.roles.add(role)
+                                embedMsg.setTitle('Success');
+                                embedMsg.setColor('00FF00');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
+                                message.channel.send({ embeds: [embedMsg] });
+                            }
+                            else
+                            {
+                                embedMsg.setTitle('Error');
+                                embedMsg.setColor('FF0000');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' is already signed up for boss alerts!');
+                                message.channel.send({ embeds: [embedMsg] });
+                            }
                         }
-                        else
+                        else if (choice == "off")
                         {
-                            embedMsg.setTitle('Error');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(masterData["userData"][userid].name + ' is already signed up for boss alerts!');
-                            message.channel.send({ embeds: [embedMsg] });
+                            if (guildMember.roles.includes(role.id))
+                            {
+                                guildMember.remove(role.id);
+                                embedMsg.setTitle('Success');
+                                embedMsg.setColor('00FF00');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
+                                message.channel.send({ embeds: [embedMsg] });
+                            }
+                            else
+                            {
+                                embedMsg.setTitle('Error');
+                                embedMsg.setColor('FF0000');
+                                embedMsg.setDescription(masterData["userData"][userid].name + ' is not signed up for boss alerts!');
+                                message.channel.send({ embeds: [embedMsg] });
+                            }
                         }
                     }
-                    else if (choice == "off")
-                    {
-                        if (guildMember.roles.includes(role.id))
-                        {
-                            guildMember.remove(role.id);
-                            embedMsg.setTitle('Success');
-                            embedMsg.setColor('00FF00');
-                            embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
-                            message.channel.send({ embeds: [embedMsg] });
-                        }
-                        else
-                        {
-                            embedMsg.setTitle('Error');
-                            embedMsg.setColor('FF0000');
-                            embedMsg.setDescription(masterData["userData"][userid].name + ' is not signed up for boss alerts!');
-                            message.channel.send({ embeds: [embedMsg] });
-                        }
-                    }
                 }
+                setAlertMember();
                 break;
             default:
                 embedMsg.setTitle('Invalid hunting command!');
