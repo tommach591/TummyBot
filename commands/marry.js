@@ -1,6 +1,6 @@
 module.exports = {
     name: 'marry',
-    description: "Marry someone.",
+    description: "Ask @someone to marry you :pleading_face: :point_right: :point_left:.",
 
     execute(message, args, userid, masterData, client) {
         const { MessageEmbed } = require('discord.js');

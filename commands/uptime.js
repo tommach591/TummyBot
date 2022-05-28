@@ -1,6 +1,6 @@
 module.exports = {
     name: 'uptime',
-    description: "Get uptime on bot.",
+    description: "Get uptime on bot. Shows online time, current uptime, and when the bot last saved.",
 
     execute(message, masterData) {
         const { MessageEmbed } = require('discord.js');

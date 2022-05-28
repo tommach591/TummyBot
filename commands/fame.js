@@ -1,6 +1,6 @@
 module.exports = {
     name: 'fame',
-    description: "Fame someone.",
+    description: "Fame someone to make them feel special. !tp fame @person.",
 
     execute(message, args, userid, masterData, client){
         const { MessageEmbed } = require('discord.js');

@@ -1,6 +1,6 @@
 module.exports = {
     name: 'garden',
-    description: "Garden for hot waifus.",
+    description: "Garden for money money money! Basically your dailies. Start with !tp g help.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
@@ -13,9 +13,10 @@ module.exports = {
                 gardeningCommands.set('help', 'Displays list of gardening commands.');
                 gardeningCommands.set('info', 'Displays gardening info.');
                 gardeningCommands.set('plant', 'Plant a random seed.');
-                gardeningCommands.set('harvest', 'Harvest fully grown plants.');
+                gardeningCommands.set('harvest', 'Harvest all fully grown plants.');
                 gardeningCommands.set('upgrade', 'Upgrade field, allowing you to plant more.');
                 gardeningCommands.set('dex', 'Shows unique plants you have grown.');
+                gardeningCommands.set('dex #', 'Shows the gardendex entry of the plant you have grown.');
 
                 embedMsg.setTitle('List of Gardening Commands');
                 embedMsg.setColor('FFF000');

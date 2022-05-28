@@ -1,6 +1,6 @@
 module.exports = {
     name: 'bj',
-    description: "Blackjack to lose all your money.",
+    description: "Blackjack to lose all your money. Start with !tp bj help.",
 
     execute(message, args, userid, masterData, client) {
         const { MessageEmbed } = require('discord.js');

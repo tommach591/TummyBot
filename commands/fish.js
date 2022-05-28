@@ -1,7 +1,7 @@
 
 module.exports = {
     name: 'fish',
-    description: "Fish for money! Gotta catch em all!",
+    description: "Fish for money! Gotta catch em all! Start with !tp f help.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
@@ -22,12 +22,14 @@ module.exports = {
                 const fishingCommands = new Map();
                 fishingCommands.set('help', 'Displays list of fishing commands.');
                 fishingCommands.set('info', 'Displays fishing info.');
-                fishingCommands.set('start', 'Start fishing.');
-                fishingCommands.set('buy', 'Buy some bait.');
-                fishingCommands.set('sell', 'Sell your fish.');
+                fishingCommands.set('start', 'Start fishing. How exciting');
+                fishingCommands.set('buy #', 'Buy # amount of bait.');
+                fishingCommands.set('sell #1 #2', 'Sell your fish. #1 - index of fish, #2 - amount of fish.');
+                fishingCommands.set('sell all', 'Sell all your fish.');
                 fishingCommands.set('upgrade', 'Upgrades fishing rod.');
-                fishingCommands.set('inventory', 'Show all the fishes you have.');
+                fishingCommands.set('inv', 'Show all the fishes you have.');
                 fishingCommands.set('dex', 'Shows unique fishes you have caught.');
+                fishingCommands.set('dex #', 'Shows the fishdex entry of the fish you have caught.');
 
                 embedMsg.setTitle('List of Fishing Commands');
                 embedMsg.setColor('FFF000');

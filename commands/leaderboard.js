@@ -1,6 +1,6 @@
 module.exports = {
     name: 'leaderboard',
-    description: "Display the rankings.",
+    description: "Display the point rankings of all players.",
 
     execute(message, userid, masterData) {
         const { MessageEmbed } = require('discord.js');

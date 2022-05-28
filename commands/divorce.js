@@ -1,6 +1,6 @@
 module.exports = {
     name: 'divorce',
-    description: "Divorce someone.",
+    description: "Divorce your married partner. Sadness.",
 
     execute(message, userid, masterData) {
         const { MessageEmbed } = require('discord.js');

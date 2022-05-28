@@ -1,6 +1,6 @@
 module.exports = {
     name: 'pet',
-    description: "Take care of your pet.",
+    description: "Take care of your pet. Start with !tp p help.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
@@ -80,8 +80,8 @@ module.exports = {
                 petCommands.set('help', 'Displays list of pet commands.');
                 petCommands.set('adopt', 'Adopt a random pet.');
                 petCommands.set('abandon', 'Horribly abandon your pet.');
-                petCommands.set('rename', 'Rename your pet.');
-                petCommands.set('buy', 'Buy pet food.');
+                petCommands.set('rename NAME', 'Rename your pet. NAME - your new name.');
+                petCommands.set('buy #', 'Buy # amount of pet food.');
                 petCommands.set('feed', 'Feed your pet.');
                 petCommands.set('water', 'Hydrate your pet.');
                 petCommands.set('clean', 'Clean your pet.');

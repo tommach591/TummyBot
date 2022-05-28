@@ -1,6 +1,6 @@
 module.exports = {
     name: 'scratch',
-    description: "Spend points on scratch cards.",
+    description: "Spend points on scratch cards. There are ten different scratch cards!",
     
     execute(message, args, userid, masterData) {
         const { MessageEmbed } = require('discord.js');

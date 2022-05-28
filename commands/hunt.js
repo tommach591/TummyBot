@@ -1,6 +1,6 @@
 module.exports = {
     name: 'hunt',
-    description: "Hunt for honor and glory!",
+    description: "Hunt for honor and glory! Start with !tp h help.",
 
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
@@ -247,17 +247,24 @@ module.exports = {
             case 'help':
                 const huntingCommands = new Map();
                 huntingCommands.set('help', 'Displays list of hunting commands.');
-                huntingCommands.set('info', 'Displays hunting info.');
-                huntingCommands.set('gear', 'Displays equipped item info.');
+                huntingCommands.set('info', 'Displays hunting info. @someone to see their info.');
+                huntingCommands.set('gear', 'Displays equipped item info. @someone to see their equiped items.');
                 huntingCommands.set('boss', 'Checks current boss.');
                 huntingCommands.set('attack', 'Attack the boss if active!');
                 huntingCommands.set('inv', 'Display inventory.');
+                huntingCommands.set('inv sort', 'Sorts your inventory.');
                 huntingCommands.set('equip #', 'Equip an item from the index of your inventory.');
-                huntingCommands.set('unequip weapon/armor/acc', 'Unequip an item.');
-                huntingCommands.set('scroll weapon/armor/acc #', 'Select a scroll from scroll inventory to use on one type of equipment you are wearing.');
-                huntingCommands.set('give name equip/scroll #', 'Give an item from equip or scroll inventory at that index.');
-                huntingCommands.set('sell equip/scroll #', 'Sell an item from equip or scroll inventory at that index.');
-                huntingCommands.set('dex', 'Shows unique monsters you have fought.');
+                huntingCommands.set('unequip TYPE', 'Unequip an item. TYPE - weapon/armor/acc.');
+                huntingCommands.set('scroll', 'Display all your scrolls.');
+                huntingCommands.set('scroll sort CONDITION', 'Sort your scroll inventory. CONDITION - hp/atk/mag/mix/def/spd/chaos/purity/low/high, default sorts by name.');
+                huntingCommands.set('scroll TYPE #', 'Select a scroll from scroll inventory to use on your equipped equip. TYPE - weapon/armor/acc, # - index of scroll.');
+                huntingCommands.set('give PERSON TYPE #', 'Give an item from equip or scroll inventory at that index to someone. PERSON - the @user, TYPE - equip/scroll, # - index of item.');
+                huntingCommands.set('sell TYPE #', 'Sell an item from equip or scroll inventory at that index. TYPE - equip/scroll, # - index of item.');
+                huntingCommands.set('sell equip # all', 'Sell all equips starting at the index, ascending up. # - index of item.');
+                huntingCommands.set('dex', 'Shows unique monsters you have slayed.');
+                huntingCommands.set('dex #', 'Shows the monsterdex entry of the monster you have slayed.');
+                huntingCommands.set('pray', 'Increase luck by 1. Just kidding it does\'t do anything.');
+                huntingCommands.set('alert CHOICE', 'Turn on or off boss alerts. CHOICE - on/off.');
 
                 embedMsg.setTitle('List of Hunting Commands');
                 embedMsg.setColor('FFF000');
@@ -2391,6 +2398,67 @@ module.exports = {
                     }
                 }
                 break;
+            case 'pray':
+                embedMsg.setTitle('Praying!');
+                embedMsg.setColor('FFF000');
+                embedMsg.setDescription(masterData["userData"][userid].name + ' recieved +1 :sparkles: luck :sparkles:!');
+                embedMsg.setImage("http://66.media.tumblr.com/ec4a1d29ba12ddce8e7cd5050b72df9d/tumblr_occdrflyTm1vuwk4so1_400.gif");
+                embedMsg.setFooter("Oh my god so lucky!");
+                message.channel.send({ embeds: [embedMsg] });
+                break;
+            case 'alert':
+                let role = message.guild.roles.cache.find(role => role.name === "guild");
+                var player = message.guild.members.get(userid);
+
+                var choice = args[1];
+                if (args.length < 2 || choice != "on" || choice != "off")
+                {
+                    embedMsg.setTitle('Error');
+                    embedMsg.setColor('FF0000');
+                    embedMsg.setDescription('Tell the bot you want it turned on or off!');
+                    embedMsg.setFooter('!tp alert on/off')
+                    message.channel.send({ embeds: [embedMsg] });
+                    break;
+                }
+                else
+                {
+                    if (choice == "on")
+                    {
+                        if (!player.roles.has(role))
+                        {
+                            player.addRole(role);
+                            embedMsg.setTitle('Success');
+                            embedMsg.setColor('00FF00');
+                            embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else
+                        {
+                            embedMsg.setTitle('Error');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription(masterData["userData"][userid].name + ' is already signed up for boss alerts!');
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                    }
+                    else if (choice == "off")
+                    {
+                        if (player.roles.has(role))
+                        {
+                            player.roles.remove(role);
+                            embedMsg.setTitle('Success');
+                            embedMsg.setColor('00FF00');
+                            embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                        else
+                        {
+                            embedMsg.setTitle('Error');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription(masterData["userData"][userid].name + ' is not signed up for boss alerts!');
+                            message.channel.send({ embeds: [embedMsg] });
+                        }
+                    }
+                }
             default:
                 embedMsg.setTitle('Invalid hunting command!');
                 embedMsg.setColor('FF0000');
