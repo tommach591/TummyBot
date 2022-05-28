@@ -2424,7 +2424,8 @@ module.exports = {
                 {
                     if (choice == "on")
                     {
-                        if (!player.roles.has(role))
+                        console.print(player)
+                        if (!player.roles.includes(role))
                         {
                             player.addRole(role);
                             embedMsg.setTitle('Success');
@@ -2442,7 +2443,7 @@ module.exports = {
                     }
                     else if (choice == "off")
                     {
-                        if (player.roles.has(role))
+                        if (player.roles.includes(role))
                         {
                             player.roles.remove(role);
                             embedMsg.setTitle('Success');
