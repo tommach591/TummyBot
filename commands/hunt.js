@@ -2408,7 +2408,7 @@ module.exports = {
                 break;
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
-                var player = message.guild.members.cache.get(userid);
+                var player = message.guild.members.get("id", userid);
 
                 console.log(player);
                 console.log(role);
@@ -2429,7 +2429,7 @@ module.exports = {
                     {
                         if (!player._roles.includes(role.id))
                         {
-                            player._roles.push(role.id);
+                            player.addRole(role.id);
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
@@ -2447,7 +2447,7 @@ module.exports = {
                     {
                         if (player._roles.includes(role.id))
                         {
-                            player._roles.splice(player._roles.indexOf(role.id), 1);
+                            player.remove(role.id);
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will not be alerted for bosses!');
@@ -2462,6 +2462,7 @@ module.exports = {
                         }
                     }
                 }
+                break;
             default:
                 embedMsg.setTitle('Invalid hunting command!');
                 embedMsg.setColor('FF0000');
