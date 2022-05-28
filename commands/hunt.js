@@ -2412,10 +2412,10 @@ module.exports = {
                 let player;
                 async function getMember() {
                     player = await message.guild.members.fetch(userid);
-                    console.log(player);
-                    console.log(role);
                 }
                 getMember();
+                console.log(player);
+                console.log(role);
 
                 var choice = args[1];
                 if (args.length < 2 || (choice != "on" && choice != "off"))
