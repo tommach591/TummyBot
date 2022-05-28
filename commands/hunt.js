@@ -2408,8 +2408,8 @@ module.exports = {
                 break;
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
-                var player = message.guild.members.get("id", userid);
-
+                var player = await message.guild.members.fetch(userid);
+                
                 console.log(player);
                 console.log(role);
 
@@ -2427,9 +2427,9 @@ module.exports = {
                 {
                     if (choice == "on")
                     {
-                        if (!player._roles.includes(role.id))
+                        if (!player.roles.includes(role.id))
                         {
-                            player.addRole(role.id);
+                            player.roles.add(role)
                             embedMsg.setTitle('Success');
                             embedMsg.setColor('00FF00');
                             embedMsg.setDescription(masterData["userData"][userid].name + ' will be alerted for bosses!');
@@ -2445,7 +2445,7 @@ module.exports = {
                     }
                     else if (choice == "off")
                     {
-                        if (player._roles.includes(role.id))
+                        if (player.roles.includes(role.id))
                         {
                             player.remove(role.id);
                             embedMsg.setTitle('Success');
