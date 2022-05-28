@@ -2411,9 +2411,7 @@ module.exports = {
                 let guildMember;
                 async function setAlertMember() {
                     guildMember = await message.guild.members.fetch(userid);
-                    console.log(guildMember);
-                    console.log(role);
-
+                    
                     var choice = args[1];
                     if (args.length < 2 || (choice != "on" && choice != "off"))
                     {
