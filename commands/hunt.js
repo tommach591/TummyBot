@@ -2401,7 +2401,7 @@ module.exports = {
             case 'pray':
                 embedMsg.setTitle('Praying!');
                 embedMsg.setColor('FFF000');
-                embedMsg.setDescription(masterData["userData"][userid].name + ' recieved +1 :sparkles: luck :sparkles:!');
+                embedMsg.setDescription(masterData["userData"][userid].name + ' recieved +1 Luck :sparkles:!');
                 embedMsg.setImage("http://66.media.tumblr.com/ec4a1d29ba12ddce8e7cd5050b72df9d/tumblr_occdrflyTm1vuwk4so1_400.gif");
                 embedMsg.setFooter("Oh my god so lucky!");
                 message.channel.send({ embeds: [embedMsg] });
@@ -2411,7 +2411,7 @@ module.exports = {
                 var player = message.guild.members.cache.get(userid);
 
                 var choice = args[1];
-                if (args.length < 2 || choice != "on" || choice != "off")
+                if (args.length < 2 || (choice != "on" && choice != "off"))
                 {
                     embedMsg.setTitle('Error');
                     embedMsg.setColor('FF0000');
