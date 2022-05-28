@@ -17,56 +17,56 @@
         "id": "3",
         "name": "Pink Fish",
         "image": "https://i.imgur.com/6UpljSS.png",
-        "value": 2,
+        "value": 3,
         "info": "The Pink Fish survives by being cute. This attracts other partners."
     },
     "4": {
         "id": "4",
         "name": "Yellow Fish",
         "image": "https://i.imgur.com/DxITwbq.png",
-        "value": 2,
+        "value": 3,
         "info": "The Yellow Fish is obnoxious. This bright color pisses off every other fish."
     },
     "5": {
         "id": "5",
         "name": "Green Fish",
         "image": "https://i.imgur.com/NW1Ujph.png",
-        "value": 2,
+        "value": 3,
         "info": "The Green Fish is vegetarian."
     },
     "6": {
         "id": "6",
         "name": "Teal Fish",
         "image": "https://i.imgur.com/dZCl3O7.png",
-        "value": 2,
+        "value": 3,
         "info": "The Teal Fish is cold to the touch. Very useful for making drinks."
     },
     "7": {
         "id": "7",
         "name": "Indigo Fish",
         "image": "https://i.imgur.com/xGJzbE8.png",
-        "value": 2,
+        "value": 3,
         "info": "The Indigo Fish lives near the bottom of the sea."
     },
     "8": {
         "id": "8",
         "name": "Rock Fish",
         "image": "https://i.imgur.com/Z6wSC8A.png",
-        "value": 5,
+        "value": 6,
         "info": "Paper!"
     },
     "9": {
         "id": "9",
         "name": "Paper Fish",
         "image": "https://i.imgur.com/rjXHinw.png",
-        "value": 5,
+        "value": 6,
         "info": "Rock! Wait..."
     },
     "10": {
         "id": "10",
         "name": "Scissor Fish",
         "image": "https://i.imgur.com/QLpHud9.png",
-        "value": 5,
+        "value": 6,
         "info": "GUN! PEW PEW!"
     },
     "11": {
@@ -87,7 +87,7 @@
         "id": "13",
         "name": "Egg",
         "image": "https://i.imgur.com/Ga1GIom.png",
-        "value": 5,
+        "value": 7,
         "info": "Who's egg is this?!"
     },
     "14": {
@@ -108,7 +108,7 @@
         "id": "16",
         "name": "Seaweed",
         "image": "https://i.imgur.com/XVU7VvH.png",
-        "value": 2,
+        "value": 3,
         "info": "Now I can make sushi!"
     },
     "17": {
@@ -122,28 +122,28 @@
         "id": "18",
         "name": "Tomato Fish",
         "image": "https://i.imgur.com/FwzgPCY.png",
-        "value": 4,
+        "value": 5,
         "info": "TomAHto."
     },
     "19": {
         "id": "19",
         "name": "Pink Starfish",
         "image": "https://i.imgur.com/M1Y42op.png",
-        "value": 2,
+        "value": 3,
         "info": "No, this is Patrick!"
     },
     "20": {
         "id": "20",
         "name": "Green Starfish",
         "image": "https://i.imgur.com/fWs6JJc.png",
-        "value": 2,
+        "value": 3,
         "info": "This is just Patrick covered in seaweed..."
     },
     "21": {
         "id": "21",
         "name": "Blue Starfish",
         "image": "https://i.imgur.com/PUuue7m.png",
-        "value": 2,
+        "value": 3,
         "info": "Wait a minute, this isn't a Starmie..."
     },
     "22": {
@@ -178,56 +178,56 @@
         "id": "26",
         "name": "Pink Shrimp",
         "image": "https://i.imgur.com/mBFlQnu.png",
-        "value": 2,
+        "value": 3,
         "info": "Everyone's favorite shrimp!"
     },
     "27": {
         "id": "27",
         "name": "Cyan Shrimp",
         "image": "https://i.imgur.com/hgQuDCu.png",
-        "value": 2,
+        "value": 3,
         "info": "This shrimp likes to eat human skin cells."
     },
     "28": {
         "id": "28",
         "name": "Lime Shrimp",
         "image": "https://i.imgur.com/zAKlaKJ.png",
-        "value": 2,
+        "value": 3,
         "info": "Basically shrimp ceviche."
     },
     "29": {
         "id": "29",
         "name": "Violet Shrimp",
         "image": "https://i.imgur.com/l3ctUhV.png",
-        "value": 2,
+        "value": 3,
         "info": "The last shrimp of the rainbow."
     },
     "30": {
         "id": "30",
         "name": "Airplane Fish",
         "image": "https://i.imgur.com/kAiEGsp.png",
-        "value": 4,
+        "value": 5,
         "info": "Like a shooting star."
     },
     "31": {
         "id": "31",
         "name": "Bao",
         "image": "https://i.imgur.com/XCZbhmS.png",
-        "value": 4,
+        "value": 5,
         "info": "I wonder what is inside? Egg? Pork? Soup?"
     },
     "32": {
         "id": "32",
         "name": "Potato Fish",
         "image": "https://i.imgur.com/wATg8Gv.png",
-        "value": 4,
+        "value": 5,
         "info": "You can make fish and chips with this one fish!"
     },
     "33": {
         "id": "33",
         "name": "Fast AF Fish",
         "image": "https://i.imgur.com/AW6DJHp.png",
-        "value": 4,
+        "value": 5,
         "info": "This fish FAST AF!"
     },
     "34": {
@@ -318,35 +318,35 @@
         "id": "46",
         "name": "Sussy Baka (Red)",
         "image": "https://i.imgur.com/PXYUWBp.png",
-        "value": 3,
+        "value": 4,
         "info": "Most likely sus."
     },
     "47": {
         "id": "47",
         "name": "Sussy Baka (Yellow)",
         "image": "https://i.imgur.com/kyfwuhP.png",
-        "value": 3,
+        "value": 4,
         "info": "Probably dead."
     },
     "48": {
         "id": "48",
         "name": "Sussy Baka (Green)",
         "image": "https://i.imgur.com/rwkcHah.png",
-        "value": 3,
+        "value": 4,
         "info": "Probably doing tasks."
     },
     "49": {
         "id": "49",
         "name": "Sussy Baka (Blue)",
         "image": "https://i.imgur.com/ZZiI6sV.png",
-        "value": 3,
+        "value": 4,
         "info": "Doing some weird 50000 IQ strat."
     },
     "50": {
         "id": "50",
         "name": "Sussy Baka (Purple)",
         "image": "https://i.imgur.com/NjDw6QK.png",
-        "value": 3,
+        "value": 4,
         "info": "Probably on cams."
     },
     "51": {

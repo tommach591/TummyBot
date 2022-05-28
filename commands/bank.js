@@ -57,8 +57,10 @@ module.exports = {
             case 'help':
                 const bankCommands = new Map();
                 bankCommands.set('help', 'Displays list of bank commands.');
-                bankCommands.set('deposit', 'Store into bank.');
-                bankCommands.set('withdraw', 'Withdraw from bank.');
+                bankCommands.set('deposit #', 'Store # amount of points into bank.');
+                bankCommands.set('deposit all', 'Store all of your points into bank.');
+                bankCommands.set('withdraw #', 'Withdraw # amount of points from bank.');
+                bankCommands.set('withdraw all', 'Withdraw all of your points from bank.');
 
                 embedMsg.setTitle('List of Bank Commands');
                 embedMsg.setColor('FFF000');

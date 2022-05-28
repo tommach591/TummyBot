@@ -10,7 +10,7 @@ module.exports = {
             embedMsg.setTitle('Error!');
             embedMsg.setColor('FF0000');
             embedMsg.setDescription(masterData["userData"][userid].name + " is already alone!");
-            embedMsg.setFooter("HAHA YOU CAN'T DIVORCE YOUR LEFT HAND!");
+            embedMsg.setFooter("Haha you can't divorce your left hand!");
             message.channel.send({ embeds: [embedMsg] });
         }
         else {

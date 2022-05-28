@@ -89,7 +89,7 @@ module.exports = {
                 magic: 0,
                 defense: 0,
                 speed: 0,
-                slots: (masterStorage["equips"][itemName].rarity * 10) + 5
+                slots: (masterStorage["equips"][itemName].rarity * 10)
             }
             return id;
         }

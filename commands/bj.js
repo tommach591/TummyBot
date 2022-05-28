@@ -228,6 +228,7 @@ module.exports = {
                 const bjCommands = new Map();
                 bjCommands.set('help', 'Displays list of blackjack commands.');
                 bjCommands.set('#', 'Start a blackjack game with the # you entered. Win 2x bet or lost all.');
+                bjCommands.set('all', 'Start a blackjack game with the all your points. Win 2x bet or lost all.');
                 bjCommands.set('hand', 'Displays current hand.');
                 bjCommands.set('hit', 'Hit.');
                 bjCommands.set('stand', 'Stand.');
