@@ -702,7 +702,7 @@ client.on('messageCreate', message => {
         let role = message.guild.roles.cache.find(role => role.name === "guild");
         if (!role)
         {
-            message.guild.roles.create({ name: 'guild', color: '#FFBD00'});
+            message.guild.roles.create({ name: 'guild' });
         }
 
         switch(command) {
