@@ -655,6 +655,7 @@ module.exports = {
                     var love = "";
                     var luck = (Math.random() * 100) + 1;
 
+                    const loveMsg = new MessageEmbed();
                     const proposalMsg = new MessageEmbed();
                     proposalMsg.setTitle('Play Time!');
                     proposalMsg.setColor('FFF000');
