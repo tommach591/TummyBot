@@ -249,6 +249,7 @@ module.exports = {
                             newPlantMsg.setDescription("Omg (oh my god) is that a " + masterStorage["gardendex"][newPlant[i]].name + "!?\n\n**Gardendex Entry** \n" + masterStorage["gardendex"][newPlant[i]].info);
                             newPlantMsg.setThumbnail(masterStorage["gardendex"][newPlant[i]].image);
                             newPlantMsg.setFooter("New plant added to the Gardendex!");
+                            newPlantMsg.setColor('FFF000');
                             message.channel.send({ embeds: [newPlantMsg] });
                         }
                     }
