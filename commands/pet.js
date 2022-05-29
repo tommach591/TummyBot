@@ -638,7 +638,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var happy = 1;
+                    var happy = 100;
                     if (masterData["userPet"][userid].hunger > 20) {
                         happy += 2;
                     }
