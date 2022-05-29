@@ -49,6 +49,7 @@ module.exports = {
                 message.channel.send({ embeds: [embedMsg] });
             }
             else {
+                var currLevel = masterData["userData"][userid].income;
                 const proposalMsg = new MessageEmbed();
                 proposalMsg.setTitle('Leveling Up!');
                 proposalMsg.setColor('FFF000');
@@ -68,7 +69,7 @@ module.exports = {
                         .then(
                             collected => {
                             const reaction = collected.first();
-                            if (reaction.emoji.name === '👍') {
+                            if (reaction.emoji.name === '👍' && currLevel == masterData["userData"][userid].income) {
                                 masterData["userData"][userid].points -= price;
                                 masterData["userData"][userid].income++;
                                 embedMsg.setTitle('Congratz!');
