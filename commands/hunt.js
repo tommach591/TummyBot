@@ -716,7 +716,8 @@ module.exports = {
                                     });
 
                                     if ((masterData["currHunt"]["active"].id == 59 || masterData["currHunt"]["active"].id == 60) &&
-                                            !(masterData["userHunt"][player].monsterdex.includes(59) && masterData["userHunt"][player].monsterdex.includes(60)))
+                                            (masterData["userHunt"][player].monsterdex.includes(59) && !masterData["userHunt"][player].monsterdex.includes(60))
+                                                (!masterData["userHunt"][player].monsterdex.includes(59) && masterData["userHunt"][player].monsterdex.includes(60)))
                                     {
                                         fatalis = "\n★ Received Fatalis Evil Eye as a memento for this moment! ";
                                         var itemObtained = generateEquip("Fatalis Evil Eye");
