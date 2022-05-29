@@ -6,6 +6,30 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
+        let generateEquip = (itemName) => {
+            if (!masterStorage["equips"][itemName]) {
+                return;
+            }
+            var id = "";
+            while (masterData["items"][id]) {
+                id = "";
+                for (var i = 0; i < 6; i++) {
+                    id += (Math.floor(Math.random() * 10)).toString();
+                }
+            }
+            masterData["items"][id] = {
+                name: masterStorage["equips"][itemName].name,
+                type: masterStorage["equips"][itemName].type,
+                maxHP: 0,
+                attack: 0,
+                magic: 0,
+                defense: 0,
+                speed: 0,
+                slots: (masterStorage["equips"][itemName].rarity * 10)
+            }
+            return id;
+        }
+
         function updateTime() {
             if (masterData["userPet"][userid].pet != "0") {
                 var newTime = new Date();
@@ -627,12 +651,50 @@ module.exports = {
 
                     var levelupMsg = "";
                     var currentHappy = masterData["userPet"][userid].happiness;
+                    var goodluck = ""
+                    var love = "";
+                    var luck = (Math.random() * 100) + 1;
 
                     const proposalMsg = new MessageEmbed();
                     proposalMsg.setTitle('Play Time!');
                     proposalMsg.setColor('FFF000');
                     proposalMsg.setThumbnail(masterData["userPet"][userid].image);
                     proposalMsg.setDescription("How would " + masterData["userData"][userid].name + " like to play with " + masterData["userPet"][userid].petName + "?");
+
+                    let playWithPet = () =>
+                    {
+                        masterData["userPet"][userid].happiness += happy;
+                        if (masterData["userPet"][userid].happiness >= 100) {
+                            if (masterData["userPet"][userid].level != 100) {
+                                masterData["userPet"][userid].level += 100; 
+                                masterData["userPet"][userid].happiness %= 100;
+                                levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
+
+                                if (masterData["userPet"][userid].level == 100)
+                                {
+                                    var itemObtained = generateEquip("Love and Affection");
+                                    masterData["userHunt"][userid].equips.push(itemObtained);
+                                    love = masterData["userData"][userid].name + " has completed the Gardendex and was rewarded with :sparkles: Love and Affection :sparkles:!";
+                                }
+                            }
+                            else {
+                                masterData["userPet"][userid].happiness = 100;
+                            }
+                        }
+    
+                        masterData["userPet"][userid].happinessTimer = newTime.getTime();
+
+                        if (luck <= 20) {
+                            if (luck <= 1.001) {
+                                masterData["userData"][userid].points += 100000;
+                                goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 100000 point while playing!\n\n";
+                            }
+                            else {
+                                masterData["userData"][userid].points++;
+                                goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 1 point while playing!\n\n";
+                            }
+                        }
+                    }
 
                     let proposal; 
                     message.channel.send({ embeds: [proposalMsg] }).then(
@@ -647,34 +709,9 @@ module.exports = {
                             .then(
                                 collected => {
                                 const reaction = collected.first();
-                                if (reaction.emoji.name === '👋' && masterData["userPet"][userid].happiness == currentHappy) {
-                                    masterData["userPet"][userid].happiness += happy;
-                                    if (masterData["userPet"][userid].happiness >= 100) {
-                                        if (masterData["userPet"][userid].level != 100) {
-                                            masterData["userPet"][userid].level++;
-                                            masterData["userPet"][userid].happiness %= 100;
-                                            levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
-                                        }
-                                        else {
-                                            masterData["userPet"][userid].happiness = 100;
-                                        }
-                                    }
-                
-                                    masterData["userPet"][userid].happinessTimer = newTime.getTime();
-
-                                    var goodluck = ""
-                                    var luck = (Math.random() * 100) + 1;
-                                    if (luck <= 20) {
-                                        if (luck <= 1.001) {
-                                            masterData["userData"][userid].points += 100000;
-                                            goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 100000 point while playing!\n\n";
-                                        }
-                                        else {
-                                            masterData["userData"][userid].points++;
-                                            goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 1 point while playing!\n\n";
-                                        }
-                                    }
-                
+                                if (reaction.emoji.name === '👋' && masterData["userPet"][userid].happiness == currentHappy) 
+                                {
+                                    playWithPet();
                                     embedMsg.setTitle('Pet!');
                                     embedMsg.setColor('00FF00');
                                     embedMsg.setDescription(masterData["userData"][userid].name + " pets " + masterData["userPet"][userid].petName + "!\n\n" + levelupMsg 
@@ -682,29 +719,20 @@ module.exports = {
                                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
                                     embedMsg.setFooter("Current Happiness: " + masterData["userPet"][userid].happiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
-                                } 
-                                else if (reaction.emoji.name === '😚' && masterData["userPet"][userid].happiness == currentHappy) {
-                                    masterData["userPet"][userid].happiness += happy;
-                                    if (masterData["userPet"][userid].happiness >= 100) {
-                                        if (masterData["userPet"][userid].level != 100) {
-                                            masterData["userPet"][userid].level++;
-                                            masterData["userPet"][userid].happiness %= 100;
-                                            levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
-                                        }
-                                        else {
-                                            masterData["userPet"][userid].happiness = 100;
-                                        }
-                                    }
-                
-                                    masterData["userPet"][userid].happinessTimer = newTime.getTime();
 
-                                    var goodluck = ""
-                                    var luck = Math.floor(Math.random() * 101);
-                                    if (luck <= 20) {
-                                        masterData["userData"][userid].points++;
-                                        goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 1 point while playing!\n\n";
+                                    if (love != "")
+                                    {
+                                        loveMsg.setColor('FFF000');
+                                        loveMsg.setTitle('Congrats!');
+                                        loveMsg.setDescription(love);
+                                        loveMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                                        loveMsg.setFooter('Check !tp h inv!');
+                                        message.channel.send({ embeds: [loveMsg] });
                                     }
-                
+                                } 
+                                else if (reaction.emoji.name === '😚' && masterData["userPet"][userid].happiness == currentHappy) 
+                                {
+                                    playWithPet();
                                     embedMsg.setTitle('Kiss!');
                                     embedMsg.setColor('00FF00');
                                     embedMsg.setDescription(masterData["userData"][userid].name + " kissed " + masterData["userPet"][userid].petName + "!\n\n" + levelupMsg 
@@ -712,29 +740,20 @@ module.exports = {
                                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
                                     embedMsg.setFooter("Current Happiness: " + masterData["userPet"][userid].happiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
-                                }
-                                else if (reaction.emoji.name === '🎾' && masterData["userPet"][userid].happiness == currentHappy) {
-                                    masterData["userPet"][userid].happiness += happy;
-                                    if (masterData["userPet"][userid].happiness >= 100) {
-                                        if (masterData["userPet"][userid].level != 100) {
-                                            masterData["userPet"][userid].level++;
-                                            masterData["userPet"][userid].happiness %= 100;
-                                            levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
-                                        }
-                                        else {
-                                            masterData["userPet"][userid].happiness = 100;
-                                        }
-                                    }
-                
-                                    masterData["userPet"][userid].happinessTimer = newTime.getTime();
 
-                                    var goodluck = ""
-                                    var luck = Math.floor(Math.random() * 101);
-                                    if (luck <= 20) {
-                                        masterData["userData"][userid].points++;
-                                        goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 1 point while playing!\n\n";
+                                    if (love != "")
+                                    {
+                                        loveMsg.setColor('FFF000');
+                                        loveMsg.setTitle('Congrats!');
+                                        loveMsg.setDescription(love);
+                                        loveMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                                        loveMsg.setFooter('Check !tp h inv!');
+                                        message.channel.send({ embeds: [loveMsg] });
                                     }
-                
+                                }
+                                else if (reaction.emoji.name === '🎾' && masterData["userPet"][userid].happiness == currentHappy) 
+                                {
+                                    playWithPet();
                                     embedMsg.setTitle('Fetch!');
                                     embedMsg.setColor('00FF00');
                                     embedMsg.setDescription(masterData["userData"][userid].name + " played fetch with " + masterData["userPet"][userid].petName + "!\n\n" + levelupMsg 
@@ -742,6 +761,16 @@ module.exports = {
                                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
                                     embedMsg.setFooter("Current Happiness: " + masterData["userPet"][userid].happiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
+
+                                    if (love != "")
+                                    {
+                                        loveMsg.setColor('FFF000');
+                                        loveMsg.setTitle('Congrats!');
+                                        loveMsg.setDescription(love);
+                                        loveMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                                        loveMsg.setFooter('Check !tp h inv!');
+                                        message.channel.send({ embeds: [loveMsg] });
+                                    }
                                 }
                                 else {
                                     embedMsg.setTitle('Tired!');

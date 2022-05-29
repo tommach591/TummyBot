@@ -83,10 +83,10 @@ module.exports = {
                     embedMsg.setThumbnail('https://i.imgur.com/aP3CFzj.png');
                 }
                 else if (masterData["userFish"][userid].fishingRod == "Mega Rod") {
-                    embedMsg.setThumbnail('https://m.media-amazon.com/images/I/51yOu0U+2iL._AC_SY450_.jpg');
+                    embedMsg.setThumbnail('https://i.imgur.com/Cslp2iR.png');
                 }
                 else if (masterData["userFish"][userid].fishingRod == "Ultra Rod") {
-                    embedMsg.setThumbnail('https://dodo.ac/np/images/5/5c/Golden_Rod_NH_Icon.png');
+                    embedMsg.setThumbnail('https://i.imgur.com/fLZO9aw.png');
                 }
                 embedMsg.addFields(
                     { name: "__Fishing Rod__ :fishing_pole_and_fish:", value: "" + masterData["userFish"][userid].fishingRod, inline: true },
@@ -281,15 +281,15 @@ module.exports = {
                         newCost = 1333333337;
                         newRod = 'Mega Rod';
                         oldImage = 'https://i.imgur.com/aP3CFzj.png';
-                        newImage = 'https://m.media-amazon.com/images/I/51yOu0U+2iL._AC_SY450_.jpg';
+                        newImage = 'https://i.imgur.com/Cslp2iR.png';
                         upgradeRod(cost, newCost, newRod, oldImage, newImage);
                         break;
                     case 'Mega Rod':
                         cost = 1333333337;
                         newCost = 'Infinite';
                         newRod = 'Ultra Rod';
-                        oldImage = 'https://m.media-amazon.com/images/I/51yOu0U+2iL._AC_SY450_.jpg';
-                        newImage = 'https://dodo.ac/np/images/5/5c/Golden_Rod_NH_Icon.png';
+                        oldImage = 'https://i.imgur.com/Cslp2iR.png';
+                        newImage = 'https://i.imgur.com/fLZO9aw.png';
                         upgradeRod(cost, newCost, newRod, oldImage, newImage);
                         break;
                     default:

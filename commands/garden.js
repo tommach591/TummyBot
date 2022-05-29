@@ -6,6 +6,30 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
+        let generateEquip = (itemName) => {
+            if (!masterStorage["equips"][itemName]) {
+                return;
+            }
+            var id = "";
+            while (masterData["items"][id]) {
+                id = "";
+                for (var i = 0; i < 6; i++) {
+                    id += (Math.floor(Math.random() * 10)).toString();
+                }
+            }
+            masterData["items"][id] = {
+                name: masterStorage["equips"][itemName].name,
+                type: masterStorage["equips"][itemName].type,
+                maxHP: 0,
+                attack: 0,
+                magic: 0,
+                defense: 0,
+                speed: 0,
+                slots: (masterStorage["equips"][itemName].rarity * 10)
+            }
+            return id;
+        }
+        
         var command = args[0];
         switch(command) {
             case 'help':
@@ -196,7 +220,7 @@ module.exports = {
                             });
                             newPlant.push(plantRaised);
 
-                            if (masterData["userGarden"][userid].gardendex.length == 25)
+                            if (masterData["userGarden"][userid].gardendex.length == 40)
                             {
                                 var itemObtained = generateEquip("57 Leaf Clover");
                                 masterData["userHunt"][userid].equips.push(itemObtained);

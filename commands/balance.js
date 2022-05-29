@@ -43,8 +43,8 @@ module.exports = {
             }
             fishtext += "\n";
             
-            var gardentext = "" + masterData["userGarden"][id].gardendex.length + "/" + "25 ";
-            if (masterData["userGarden"][id].gardendex.length == 25) {
+            var gardentext = "" + masterData["userGarden"][id].gardendex.length + "/" + "40 ";
+            if (masterData["userGarden"][id].gardendex.length == 40) {
                 gardentext += ":trophy:";
             }
             gardentext += "\n";

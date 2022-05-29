@@ -148,5 +148,95 @@
         "name": "Green Balloon",
         "image": "https://i.imgur.com/i5oUAlp.png",
         "info": "No way! A green balloon!"
+    },
+    "26": {
+        "id": "26",
+        "name": "Burger Plant",
+        "image": "https://i.imgur.com/J2s40An.png",
+        "info": "Impossible! A veggie burger?!"
+    },
+    "27": {
+        "id": "27",
+        "name": "Butterfly Plant",
+        "image": "https://i.imgur.com/SvJ04yE.png",
+        "info": "The leaves resemble a butterfly."
+    },
+    "28": {
+        "id": "28",
+        "name": "Fertilizer",
+        "image": "https://i.imgur.com/JrGpDDW.png",
+        "info": "Its just poop!"
+    },
+    "29": {
+        "id": "29",
+        "name": "Fishy Plant",
+        "image": "https://i.imgur.com/f2kRIEe.png",
+        "info": "Glub glub."
+    },
+    "30": {
+        "id": "30",
+        "name": "French Fry",
+        "image": "https://i.imgur.com/0gIxjny.png",
+        "info": "Comes with ketchup!"
+    },
+    "31": {
+        "id": "31",
+        "name": "Neko Neko Nyan Nyan",
+        "image": "https://i.imgur.com/ph4bju3.png",
+        "info": "Nyan nyan~!"
+    },
+    "32": {
+        "id": "32",
+        "name": "Pen Pineapple Apple Pen",
+        "image": "https://i.imgur.com/mTLGJWw.png",
+        "info": "Based off a cool guy with sunglasses."
+    },
+    "33": {
+        "id": "33",
+        "name": "Strawberry",
+        "image": "https://i.imgur.com/aotY9GL.png",
+        "info": "Fun Fact: The dev thinks all strawberries are sour."
+    },
+    "34": {
+        "id": "34",
+        "name": "Taco",
+        "image": "https://i.imgur.com/pYC0DgQ.png",
+        "info": "I like tacos."
+    },
+    "35": {
+        "id": "35",
+        "name": "Tomato",
+        "image": "https://i.imgur.com/CUMf7fa.png",
+        "info": "Cause we need another tomato in this server."
+    },
+    "36": {
+        "id": "36",
+        "name": "Amethyst",
+        "image": "https://i.imgur.com/RJ05A5E.png",
+        "info": "Wow pretty, a purple gem!"
+    },
+    "37": {
+        "id": "37",
+        "name": "Emerald",
+        "image": "https://i.imgur.com/NXMuFuE.png",
+        "info": "Strangely, a leaf is growing from it."
+    },
+    "38": {
+        "id": "38",
+        "name": "Ruby",
+        "image": "https://i.imgur.com/HC5Z5se.png",
+        "info": "Is this the Philosopher's Stone?! Oh it's just a ruby."
+    },
+    "39": {
+        "id": "39",
+        "name": "Sapphire",
+        "image": "https://i.imgur.com/hwivEd1.png",
+        "info": "Reminds me of a giant blue whale..."
+    },
+    "40": {
+        "id": "40",
+        "name": "Sussy Plant",
+        "image": "https://i.imgur.com/0U3QN5T.png",
+        "info": "This plant kinda sus..."
     }
 }
