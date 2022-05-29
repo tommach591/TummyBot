@@ -57,7 +57,7 @@ module.exports = {
                     else {
                         var newDate = new Date();
                         var timeDiff = newDate.getTime() - masterData["userGarden"][userid].potTime[i];
-                        var growthTime = 1000 * 60 * 60 * 8;
+                        var growthTime = 1000 * 60 * 60 * 12;
                         if (timeDiff < growthTime) {
                             var hours = Math.floor((growthTime - timeDiff) / (1000 * 60 * 60));
                             var min = Math.floor(((growthTime - timeDiff) % (1000 * 60 * 60)) / (1000 * 60));
@@ -169,12 +169,17 @@ module.exports = {
                 break;
             case 'harvest':
                 var profit = 0;
-                var reward = 200 * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1);
+                var reward = 300 * Math.pow(masterData["userData"][userid].income, masterData["userData"][userid].income - 1);
                 var newPlant = [];
+
+                var clover = "";
+                const cloverMsg = new MessageEmbed();
+
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();
                     var timeDiff = newDate.getTime() - masterData["userGarden"][userid].potTime[i];
-                    var growthTime = 1000 * 60 * 60 * 8;
+                    //var growthTime = 1000 * 60 * 60 * 12;
+                    var growthTime = 1000;
 
                     if (masterData["userGarden"][userid].pots[i] != "0" && masterData["userGarden"][userid].pots[i] != "-1" && timeDiff >= growthTime) {
                         var plantRaised = masterData["userGarden"][userid].pots[i];
@@ -190,6 +195,13 @@ module.exports = {
                                 return 0;
                             });
                             newPlant.push(plantRaised);
+
+                            if (masterData["userFish"][userid].fishdex.length == 25)
+                            {
+                                var itemObtained = generateEquip("57 Leaf Clover");
+                                masterData["userHunt"][userid].equips.push(itemObtained);
+                                clover = masterData["userData"][userid].name + " has completed the Gardendex and was rewarded with :sparkles: 57 Leaf Clover :sparkles:!";
+                            }
                         }
                         masterData["userGarden"][userid].pots[i] = "0";
                         profit += reward;
@@ -216,6 +228,16 @@ module.exports = {
                             newPlantMsg.setFooter("New plant added to the Gardendex!");
                             message.channel.send({ embeds: [newPlantMsg] });
                         }
+                    }
+
+                    if (clover != "")
+                    {
+                        cloverMsg.setColor('FFF000');
+                        cloverMsg.setTitle('Congrats!');
+                        cloverMsg.setDescription(clover);
+                        cloverMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                        cloverMsg.setFooter('Check !tp h inv!');
+                        message.channel.send({ embeds: [cloverMsg] });
                     }
                 }
                 break;

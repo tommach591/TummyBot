@@ -398,8 +398,7 @@ module.exports = {
                         if (fishCaught == "-1") {
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
-                                //var chance = 100000 * 0.0001;
-                                var chance = 100000 * 1;
+                                var chance = 100000 * 0.0001;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('OMG (OH MY GOD)! (★★★★★★)');
                                     fishCaught = masterStorage["fishdex"][sixstar[Math.floor(Math.random() * sixstar.length)]];
@@ -474,7 +473,7 @@ module.exports = {
                             {
                                 var itemObtained = generateEquip("The Trident");
                                 masterData["userHunt"][userid].equips.push(itemObtained);
-                                trident = masterData["userData"][userid].name + " has completed the Fishdex and was rewarded with the equipement :sparkles: The Trident :sparkles:!";
+                                trident = masterData["userData"][userid].name + " has completed the Fishdex and was rewarded with :sparkles: The Trident :sparkles:!";
                             }
                         }
                         else {
@@ -501,6 +500,7 @@ module.exports = {
                             tridentMsg.setTitle('Congrats!');
                             tridentMsg.setDescription(trident);
                             tridentMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                            tridentMsg.setFooter('Check !tp h inv!');
                             message.channel.send({ embeds: [tridentMsg] });
                         }
                     }, fishTime);
