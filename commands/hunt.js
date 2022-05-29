@@ -681,7 +681,7 @@ module.exports = {
                                 var fatalis = "";
                                 var player = masterData["currHunt"]["active"].targets[i];
                                 var goldEarned = 0;
-                                var bonusDrop = [27, 59, 60, 62, 64]
+                                var bonusDrop = [1, 27, 59, 60, 62, 64]
                                 goldEarned += Math.floor(goldReward * (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP));
                                 var dropRate = masterData["currHunt"].dropRate;
                                 if (masterData["currHunt"]["active"].playerDamage[i] == Math.max(...masterData["currHunt"]["active"].playerDamage))
