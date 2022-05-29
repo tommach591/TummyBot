@@ -681,6 +681,7 @@ module.exports = {
                                 var fatalis = "";
                                 var player = masterData["currHunt"]["active"].targets[i];
                                 var goldEarned = 0;
+                                var bonusDrop = [27, 59, 60, 62, 64]
                                 goldEarned += Math.floor(goldReward * (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP));
                                 var dropRate = masterData["currHunt"].dropRate;
                                 if (masterData["currHunt"]["active"].playerDamage[i] == Math.max(...masterData["currHunt"]["active"].playerDamage))
@@ -693,9 +694,7 @@ module.exports = {
                                     dropRate *= 1.25;
                                     lastHit = "\n★ Bonus 0.25x droprate for last hit! ";
                                 }
-                                if (masterData["currHunt"]["active"].id == 27 || 
-                                        masterData["currHunt"]["active"].id == 62 ||
-                                            masterData["currHunt"]["active"].id == 64)
+                                if (bonusDrop.includes(masterData["currHunt"]["active"].id))
                                 {
                                     dropRate *= 1.5;
                                 }
@@ -729,8 +728,6 @@ module.exports = {
                                             var itemObtained = generateEquip("Fatalis Evil Eye");
                                             masterData["userHunt"][player].equips.push(itemObtained);
                                         }
-                                        console.log(masterData["userHunt"][player].monsterdex.includes('59'))
-                                        console.log(masterData["userHunt"][player].monsterdex.includes('60'))
                                     }
                                 }
 
