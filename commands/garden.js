@@ -196,7 +196,7 @@ module.exports = {
                             });
                             newPlant.push(plantRaised);
 
-                            if (masterData["userFish"][userid].gardendex.length == 25)
+                            if (masterData["userGarden"][userid].gardendex.length == 25)
                             {
                                 var itemObtained = generateEquip("57 Leaf Clover");
                                 masterData["userHunt"][userid].equips.push(itemObtained);
