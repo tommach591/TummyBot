@@ -29,7 +29,7 @@ module.exports = {
             }
             return id;
         }
-        
+
         var command = args[0];
         switch(command) {
             case 'help':
@@ -81,7 +81,7 @@ module.exports = {
                     else {
                         var newDate = new Date();
                         var timeDiff = newDate.getTime() - masterData["userGarden"][userid].potTime[i];
-                        var growthTime = 1000 * 60 * 60 * 12;
+                        var growthTime = 1000 * 60 * 60 * 8;
                         if (timeDiff < growthTime) {
                             var hours = Math.floor((growthTime - timeDiff) / (1000 * 60 * 60));
                             var min = Math.floor(((growthTime - timeDiff) % (1000 * 60 * 60)) / (1000 * 60));
@@ -202,8 +202,7 @@ module.exports = {
                 for (let i = 0; i < 3; i++) {
                     var newDate = new Date();
                     var timeDiff = newDate.getTime() - masterData["userGarden"][userid].potTime[i];
-                    //var growthTime = 1000 * 60 * 60 * 12;
-                    var growthTime = 1000;
+                    var growthTime = 1000 * 60 * 60 * 8;
 
                     if (masterData["userGarden"][userid].pots[i] != "0" && masterData["userGarden"][userid].pots[i] != "-1" && timeDiff >= growthTime) {
                         var plantRaised = masterData["userGarden"][userid].pots[i];

@@ -11,6 +11,33 @@ module.exports = {
         var nextPrice;
         var tier;
 
+        const handsMsg = new MessageEmbed();
+        var hands = "";
+
+        let generateEquip = (itemName) => {
+            if (!masterStorage["equips"][itemName]) {
+                return;
+            }
+            var id = "";
+            while (masterData["items"][id]) {
+                id = "";
+                for (var i = 0; i < 6; i++) {
+                    id += (Math.floor(Math.random() * 10)).toString();
+                }
+            }
+            masterData["items"][id] = {
+                name: masterStorage["equips"][itemName].name,
+                type: masterStorage["equips"][itemName].type,
+                maxHP: 0,
+                attack: 0,
+                magic: 0,
+                defense: 0,
+                speed: 0,
+                slots: (masterStorage["equips"][itemName].rarity * 10)
+            }
+            return id;
+        }
+
         let askToLevel = () =>
         {
             if (masterData["userData"][userid].points < price) {
@@ -50,6 +77,30 @@ module.exports = {
                                 embedMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                                 embedMsg.setFooter('Next level: ' + nextPrice.toLocaleString() + ' points');
                                 message.channel.send({ embeds: [embedMsg] });
+
+                                if (tier == "Diamond")
+                                {
+                                    var itemObtained = generateEquip("Diamond Hands");
+                                    masterData["userHunt"][userid].equips.push(itemObtained);
+                                    hands = masterData["userData"][userid].name + " has leveled to Diamond and was rewarded with :sparkles: Diamond Hands :sparkles:!";
+                                }
+
+                                if (tier == "Red Diamond")
+                                {
+                                    var itemObtained = generateEquip("Red Diamond Hands");
+                                    masterData["userHunt"][userid].equips.push(itemObtained);
+                                    hands = masterData["userData"][userid].name + " has leveled to Diamond and was rewarded with :sparkles: Red Diamond Hands :sparkles:!";
+                                }
+
+                                if (hands != "")
+                                {
+                                    handsMsg.setColor('FFF000');
+                                    handsMsg.setTitle('Congrats!');
+                                    handsMsg.setDescription(hands);
+                                    handsMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                                    handsMsg.setFooter('Check !tp h inv!');
+                                    message.channel.send({ embeds: [handsMsg] });
+                                }
                             } 
                             else {
                                 embedMsg.setTitle('Declined!');
