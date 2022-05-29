@@ -473,7 +473,7 @@ module.exports = {
                             if (masterData["userFish"][userid].fishdex.length == 105)
                             {
                                 var itemObtained = generateEquip("The Trident");
-                                masterData["userHunt"][player].equips.push(itemObtained);
+                                masterData["userHunt"][userid].equips.push(itemObtained);
                                 trident = masterData["userData"][userid].name + " has completed the Fishdex and was rewarded with the equipement :sparkles: The Trident :sparkles:!";
                             }
                         }
