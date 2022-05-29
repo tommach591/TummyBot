@@ -750,7 +750,7 @@ client.on('messageCreate', message => {
                 break;
             case 'level':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('level').execute(message, sender.id, masterData);
+                    client.commands.get('level').execute(message, sender.id, masterData, masterStorage);
                 break;
             case 'f':
             case 'fish':

@@ -790,7 +790,6 @@ module.exports = {
                                 embedMsg.setThumbnail(masterData["userPet"][userid].image);
                                 embedMsg.setFooter("Or the dev can't find what went wrong.");
                                 message.channel.send({ embeds: [embedMsg] });
-                                console.log(collected);
                             });
                         }
                     );

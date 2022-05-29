@@ -2,7 +2,7 @@ module.exports = {
     name: 'level',
     description: "Spend points to increase income.",
 
-    execute(message, userid, masterData) {
+    execute(message, userid, masterData, masterStorage) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
@@ -118,7 +118,6 @@ module.exports = {
                             proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                             embedMsg.setFooter('Next level: ' + price.toLocaleString() + ' points');
                             message.channel.send({ embeds: [embedMsg] });
-                            console.log(collected);
                         });
                     }
                 );
