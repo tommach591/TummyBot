@@ -678,6 +678,7 @@ module.exports = {
                                 var mostDamage = "";
                                 var lastHit = "";
                                 var firstClear = "";
+                                var fatalis = "";
                                 var player = masterData["currHunt"]["active"].targets[i];
                                 var goldEarned = 0;
                                 goldEarned += Math.floor(goldReward * (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP));
@@ -713,6 +714,14 @@ module.exports = {
                                         }
                                         return 0;
                                     });
+
+                                    if ((masterData["currHunt"]["active"].id == 59 || masterData["currHunt"]["active"].id == 60) &&
+                                            !(masterData["userHunt"][player].monsterdex.includes(59) && masterData["userHunt"][player].monsterdex.includes(60)))
+                                    {
+                                        fatalis = "\n★ Received Fatalis Evil Eye as a memento for this moment! ";
+                                        var itemObtained = generateEquip("Fatalis Evil Eye");
+                                        masterData["userHunt"][player].equips.push(itemObtained);
+                                    }
                                 }
 
                                 var multiplier = 2.5;
@@ -783,7 +792,8 @@ module.exports = {
                                 masterData["userData"][player].points += goldEarned;
                                 updateStats(player);
                                 
-                                reward += masterData["userData"][player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! " + mostDamage + lastHit + firstClear + "\n\n";
+                                reward += masterData["userData"][player].name + " has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! "
+                                             + mostDamage + lastHit + firstClear + fatalis + "\n\n";
                             }
 
                             const rewardMsg = new MessageEmbed();

@@ -1527,5 +1527,16 @@
         "magic": 0,
         "defense": 100,
         "speed": 100
+    },
+    "Fatalis Evil Eye": {
+        "name": "Fatalis Evil Eye",
+        "type": 2,
+        "rarity": 10,
+        "image": "",
+        "maxHP": 600,
+        "attack": 60,
+        "magic": 60,
+        "defense": 60,
+        "speed": 60
     }
 }
