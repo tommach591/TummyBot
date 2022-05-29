@@ -1011,7 +1011,7 @@
         "death": "The old dragon has been slain.",
         "image": "https://c.tenor.com/J6jt7VQV97gAAAAC/white-fatalis-monster-hunter.gif",
         "attackImage": "https://i.imgur.com/TdCWqYH.gif",
-        "maxHP": 100000,
+        "maxHP": 120000,
         "attack": 400,
         "defense": 400,
         "magicdefense": 400,
