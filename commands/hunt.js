@@ -729,6 +729,8 @@ module.exports = {
                                             var itemObtained = generateEquip("Fatalis Evil Eye");
                                             masterData["userHunt"][player].equips.push(itemObtained);
                                         }
+                                        console.log(masterData["userHunt"][player].monsterdex.includes(59))
+                                        console.log(masterData["userHunt"][player].monsterdex.includes(60))
                                     }
                                 }
 
