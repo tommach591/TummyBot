@@ -9,7 +9,7 @@ module.exports = {
             "https://i.imgur.com/O62yU0U.gif",                                                      // Starburst Stream
             "https://c.tenor.com/O0Rd9v0NpjkAAAAC/keqing-genshin-impact.gif",                       // Keqing Elemental Burst
             "https://c.tenor.com/fG4HO_ccb68AAAAC/anime-my-hero-academia.gif",                      // Deku Smash
-            "https://c.tenor.com/kWtHiHKx0EYAAAAd/naruto-vs.gif",                                   // Uzumaki Barrage
+            "https://c.tenor.com/kWtHiHKx0EYAAAAd/naruto-vs.gif",                                   // Uzumaki masterData["userHunt"][player].monsterdex.includes(60)rage
             "https://i.makeagif.com/media/8-02-2015/0jqzEj.gif",                                    // Night Guy
             "https://c.tenor.com/P951zVBB_vkAAAAC/ao-t-shingeki-no-kyojin.gif",                     // Levi Spin
             "https://c.tenor.com/IM60lqQKKY0AAAAC/kid-goku-kamehameha.gif",                         // Goku Kamehameha
@@ -274,7 +274,7 @@ module.exports = {
                     embedMsg.addField("!tp hunt " + keys, values);
                 });
 
-                embedMsg.setFooter("You can replace hunt with h.");
+                embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("You can replace hunt with h.");
 
                 message.channel.send({ embeds: [embedMsg] });
                 break;
@@ -487,7 +487,7 @@ module.exports = {
                     embedMsg.setTitle(masterData["currHunt"]["active"].name + stars);
                     embedMsg.setDescription(masterData["currHunt"]["active"].name + " is here!");
                     embedMsg.setImage(masterData["currHunt"]["active"].image);
-                    embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
+                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
                     embedMsg.setColor("49000F");
 
                     var selected = masterData["currHunt"]["active"].id;
@@ -514,19 +514,19 @@ module.exports = {
                     var bossTime = nextSpawn - timeDiff;
 
                     if (bossTime <= 1000 * 60 * 5 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
-                        embedMsg.setFooter("You feel an ominous presence...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("You feel an ominous presence...");
                     }
                     else if (bossTime <= 1000 * 60 * 10 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
-                        embedMsg.setFooter("Nature is panicking...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Nature is panicking...");
                     }
                     else if (bossTime <= 1000 * 60 * 15 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
-                        embedMsg.setFooter("You hear the howling winds...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("You hear the howling winds...");
                     }
                     else if (bossTime <= 1000 * 60 * 30 && (!masterData["currHunt"]["active"] || (masterData["currHunt"]["active"] && masterData["currHunt"]["active"].retreated))) {
-                        embedMsg.setFooter("It is suddenly very quiet...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("It is suddenly very quiet...");
                     }
                     else {
-                        embedMsg.setFooter("Let's wait for a little longer...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Let's wait for a little longer...");
                     }
 
                     message.channel.send({ embeds: [embedMsg] });
@@ -544,7 +544,7 @@ module.exports = {
                         reviveMsg.setDescription(masterData["userData"][userid].name + " has revived!");
                         reviveMsg.setImage("https://64.media.tumblr.com/bd8a57c555e94c2add81b166bc2016dc/tumblr_ovrvc4t0t61u1ry24o3_500.gif");
                         reviveMsg.setColor('00FF00');
-                        reviveMsg.setFooter('Don\'t die again!');
+                        reviveMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter('Don\'t die again!');
                         message.channel.send({ embeds: [reviveMsg] });
                     }
                 }
@@ -592,7 +592,7 @@ module.exports = {
                                 break;
                         }
                         embedMsg.setColor("FF0000");
-                        embedMsg.setFooter('Cooldown: ' + Math.floor((1000 * 120 - (newTime.getTime() - masterData["userHunt"][userid].deathTime)) / 1000) + ' seconds');
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter('Cooldown: ' + Math.floor((1000 * 120 - (newTime.getTime() - masterData["userHunt"][userid].deathTime)) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (timeDiff < attackCD) {
@@ -600,7 +600,7 @@ module.exports = {
                         embedMsg.setDescription(masterData["userData"][userid].name + " can't attack yet!");
                         embedMsg.setImage("https://c.tenor.com/eBByy4ihCocAAAAC/angry-fist.gif");
                         embedMsg.setColor("FF0000");
-                        embedMsg.setFooter('Cooldown: ' + Math.floor((attackCD - timeDiff) / 1000) + ' seconds');
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter('Cooldown: ' + Math.floor((attackCD - timeDiff) / 1000) + ' seconds');
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else {
@@ -660,7 +660,7 @@ module.exports = {
                                 embedMsg.setDescription(masterData["userData"][userid].name + " lands the finishing blow on " + masterData["currHunt"]["active"].name + "!\n\n" + masterData["currHunt"]["active"].death);
                             }
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
+                            embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter('HP: ' + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
 
                             getDrops();
                             checkDropRate();
@@ -716,7 +716,7 @@ module.exports = {
                                     });
 
                                     if ((masterData["currHunt"]["active"].id == 59 || masterData["currHunt"]["active"].id == 60) &&
-                                            (masterData["userHunt"][player].monsterdex.includes(59) ? !masterData["userHunt"][player].monsterdex.includes(60) : masterData["userHunt"][player].monsterdex.includes(60))
+                                        (( masterData["userHunt"][player].monsterdex.includes(59) && !masterData["userHunt"][player].monsterdex.includes(60) ) || ( !masterData["userHunt"][player].monsterdex.includes(59) && masterData["userHunt"][player].monsterdex.includes(60) ))
                                         )
                                     {
                                         fatalis = "\n★ Received Fatalis Evil Eye as a memento for this moment! ";
@@ -801,7 +801,7 @@ module.exports = {
                             rewardMsg.setTitle("Congrats!");
                             rewardMsg.setDescription(reward);
                             rewardMsg.setColor("FFF000");
-                            rewardMsg.setFooter("Hooray!");
+                            rewardMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Hooray!");
                             
                             let channels = masterData["currHunt"]["active"].channels;
                             for (let i = 0; i < channels.length; i++) {
@@ -824,7 +824,7 @@ module.exports = {
                             }
                             embedMsg.setImage(randomAttackGifs[Math.floor(Math.random() * randomAttackGifs.length)]);
                             embedMsg.setColor("00FF00");
-                            embedMsg.setFooter('HP: ' + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
+                            embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter('HP: ' + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
@@ -841,19 +841,19 @@ module.exports = {
                     var bossTime = nextSpawn - timeDiff;
 
                     if (bossTime <= 1000 * 60 * 5) {
-                        embedMsg.setFooter("You feel an ominous presence...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("You feel an ominous presence...");
                     }
                     else if (bossTime <= 1000 * 60 * 10) {
-                        embedMsg.setFooter("Nature is panicking...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Nature is panicking...");
                     }
                     else if (bossTime <= 1000 * 60 * 15) {
-                        embedMsg.setFooter("You hear the howling winds...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("You hear the howling winds...");
                     }
                     else if (bossTime <= 1000 * 60 * 30) {
-                        embedMsg.setFooter("It is suddenly very quiet...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("It is suddenly very quiet...");
                     }
                     else {
-                        embedMsg.setFooter("Let's wait for a little longer...");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Let's wait for a little longer...");
                     }
 
                     message.channel.send({ embeds: [embedMsg] });
@@ -982,7 +982,7 @@ module.exports = {
 
                     let page = 1;
                     embedMsg
-                        .setFooter(`Page ${page} of ${pages.length}`)
+                        .setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
                         .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Hunting Inventory')
@@ -1007,7 +1007,7 @@ module.exports = {
                                     }
                                     page--;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}`);
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 else if (r.emoji.name === "▶️") {
@@ -1017,7 +1017,7 @@ module.exports = {
                                     }
                                     page++;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}`);
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 r.users.remove(userid);
@@ -1032,7 +1032,7 @@ module.exports = {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('Please select an item to equip!');
-                    embedMsg.setFooter("!tp hunt equip #");
+                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt equip #");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -1043,7 +1043,7 @@ module.exports = {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('Please select a valid equipment # from equipments!');
-                            embedMsg.setFooter("Look at !tp hunt inv and select a number!");
+                            embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Look at !tp hunt inv and select a number!");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else {
@@ -1080,7 +1080,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
-                        embedMsg.setFooter("Look at !tp hunt inv and select a number!");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Look at !tp hunt inv and select a number!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }
@@ -1090,7 +1090,7 @@ module.exports = {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('Please select weapon/armor/acc to unequip!');
-                    embedMsg.setFooter("!tp hunt unequip weapon/armor/acc");
+                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt unequip weapon/armor/acc");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -1152,7 +1152,7 @@ module.exports = {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('Please select weapon/armor/acc to unequip!');
-                            embedMsg.setFooter("!tp hunt unequip weapon/armor/acc");
+                            embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt unequip weapon/armor/acc");
                             message.channel.send({ embeds: [embedMsg] });
                             break;
                     }
@@ -1226,7 +1226,7 @@ module.exports = {
 
                         let page = 1;
                         embedMsg
-                            .setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #")
+                            .setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #")
                             .setDescription(pages[page-1])
                             .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                             .setTitle('Scroll Inventory')
@@ -1251,7 +1251,7 @@ module.exports = {
                                         }
                                         page--;
                                         embedMsg.setDescription(pages[page-1]);
-                                        embedMsg.setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #");
+                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #");
                                         msg.edit({ embeds: [embedMsg] });
                                     }
                                     else if (r.emoji.name === "▶️") {
@@ -1261,7 +1261,7 @@ module.exports = {
                                         }
                                         page++;
                                         embedMsg.setDescription(pages[page-1]);
-                                        embedMsg.setFooter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #");
+                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}` + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ To use scroll - !tp hunt scroll weapon/armor/acc #");
                                         msg.edit({ embeds: [embedMsg] });
                                     }
                                     r.users.remove(userid);
@@ -1509,7 +1509,7 @@ module.exports = {
                         }
                         embedMsg.setTitle('Success!');
                         embedMsg.setColor('00FF00');
-                        embedMsg.setFooter("You can sort by hp/atk/mag/mix/def/spd/chaos/purity/low/high!");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("You can sort by hp/atk/mag/mix/def/spd/chaos/purity/low/high!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (!isNaN(selectedindex) && selectedindex >= 0 && selectedindex < masterData["userHunt"][userid].scrolls.length) {
@@ -1544,7 +1544,7 @@ module.exports = {
                                     else if (theScroll.purity == 2 && masterData["items"][gear].lastScroll)
                                     {
                                         proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to revert the last scroll used on " + masterData["items"][gear].name + "?");
-                                        proposalMsg.setFooter("Stats Gained Back: (" + masterData["items"][gear].lastScroll[0] + "/" + masterData["items"][gear].lastScroll[1] + "/" + masterData["items"][gear].lastScroll[2] + "/"+ masterData["items"][gear].lastScroll[3] + "/" + masterData["items"][gear].lastScroll[4] + ") + 1 Slot");
+                                        proposalMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Stats Gained Back: (" + masterData["items"][gear].lastScroll[0] + "/" + masterData["items"][gear].lastScroll[1] + "/" + masterData["items"][gear].lastScroll[2] + "/"+ masterData["items"][gear].lastScroll[3] + "/" + masterData["items"][gear].lastScroll[4] + ") + 1 Slot");
                                     }
                                     else if (theScroll.purity == 2 && !masterData["items"][gear].lastScroll)
                                     {
@@ -1620,7 +1620,7 @@ module.exports = {
                                                         
                                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                         masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                                         if (masterData["items"][gear].lastScroll)
@@ -1633,7 +1633,7 @@ module.exports = {
                                                         embedMsg.setColor('FF0000');
                                                         embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
                                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                                         message.channel.send({ embeds: [embedMsg] });
                                                         masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                                     }
@@ -1723,7 +1723,7 @@ module.exports = {
                                         updateStats(userid);
                                         embedMsg.setImage('https://i.imgur.com/dHbQVgC.gif');
                                         embedMsg.setDescription('The scroll lights up, and then its mysterious power has been transferred to the item.');
-                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -1732,7 +1732,7 @@ module.exports = {
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setImage('https://i.imgur.com/Bi2LNzQ.gif');
                                         embedMsg.setDescription('The scroll lights up, but the item winds up as if nothing happened.');
-                                        embedMsg.setFooter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
+                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(masterData["userData"][userid].name + " rolled " + luck + "/100 and needed equal to or less than " + chance.toFixed(0) + " to pass!");
                                         message.channel.send({ embeds: [embedMsg] });
                                         masterData["userHunt"][userid].scrolls.splice(selectedindex, 1);
                                     }
@@ -1742,7 +1742,7 @@ module.exports = {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
                                 embedMsg.setDescription(masterData["userData"][userid].name + ' don\'t have anything equiped or your equip ran out of slots!');
-                                embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
+                                embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt scroll weapon/armor/acc #");
                                 message.channel.send({ embeds: [embedMsg] });
                             }
                         }
@@ -1762,7 +1762,7 @@ module.exports = {
                                 embedMsg.setTitle('Error!');
                                 embedMsg.setColor('FF0000');
                                 embedMsg.setDescription('Please select weapon/armor/acc to scroll!');
-                                embedMsg.setFooter("!tp hunt scroll weapon/armor/acc #");
+                                embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt scroll weapon/armor/acc #");
                                 message.channel.send({ embeds: [embedMsg] });
                                 break;
                         }
@@ -1780,7 +1780,7 @@ module.exports = {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('Please @ the user, select equip/scroll, and index to give!');
-                    embedMsg.setFooter("!tp hunt give equip/scroll #");
+                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt give equip/scroll #");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -1818,7 +1818,7 @@ module.exports = {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid equipment # from equipments!');
-                                        embedMsg.setFooter("Look at !tp hunt inv and select a number!")
+                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Look at !tp hunt inv and select a number!")
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
@@ -1883,7 +1883,7 @@ module.exports = {
                                         embedMsg.setTitle('Error!');
                                         embedMsg.setColor('FF0000');
                                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
-                                        embedMsg.setFooter("Look at !tp hunt scroll and select a number!")
+                                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Look at !tp hunt scroll and select a number!")
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                     else {
@@ -1946,7 +1946,7 @@ module.exports = {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription('Please select either equip/scroll!');
-                                    embedMsg.setFooter("!tp hunt give equip/scroll #");
+                                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt give equip/scroll #");
                                     message.channel.send({ embeds: [embedMsg] });
                                     break;
                             }
@@ -1955,7 +1955,7 @@ module.exports = {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription('Please select a valid index from equip/scroll!');
-                            embedMsg.setFooter("!tp hunt give equip/scroll #");
+                            embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt give equip/scroll #");
                             message.channel.send({ embeds: [embedMsg] });
                         }
                     }
@@ -1963,7 +1963,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please @ a user!');
-                        embedMsg.setFooter("!tp hunt give equip/scroll #");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt give equip/scroll #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }
@@ -1973,7 +1973,7 @@ module.exports = {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('Please enter which item to sell!');
-                    embedMsg.setFooter("!tp hunt sell equip/scroll #");
+                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt sell equip/scroll #");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -1988,7 +1988,7 @@ module.exports = {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription('Weapon does not exist!');
-                                    embedMsg.setFooter("!tp hunt sell equip/scroll #");
+                                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt sell equip/scroll #");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else if (all == "all") {
@@ -2128,7 +2128,7 @@ module.exports = {
                                     embedMsg.setTitle('Error!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setDescription('Scroll does not exist!');
-                                    embedMsg.setFooter("!tp hunt sell equip/scroll #");
+                                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt sell equip/scroll #");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                                 else {
@@ -2192,7 +2192,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please enter which index to sell!');
-                        embedMsg.setFooter("!tp hunt sell equip/scroll #");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt sell equip/scroll #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                 }
@@ -2257,7 +2257,7 @@ module.exports = {
 
                     let page = 1;
                     embedMsg
-                        .setFooter(`Page ${page} of ${pages.length}`)
+                        .setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}`)
                         .setDescription(pages[page-1])
                         .setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() })
                         .setTitle('Monsterdex')
@@ -2284,7 +2284,7 @@ module.exports = {
                                     }
                                     page--;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}`);
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 else if (r.emoji.name === "▶️") {
@@ -2294,7 +2294,7 @@ module.exports = {
                                     }
                                     page++;
                                     embedMsg.setDescription(pages[page-1]);
-                                    embedMsg.setFooter(`Page ${page} of ${pages.length}`);
+                                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter(`Page ${page} of ${pages.length}`);
                                     msg.edit({ embeds: [embedMsg] });
                                 }
                                 r.users.remove(userid);
@@ -2309,7 +2309,7 @@ module.exports = {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
                     embedMsg.setDescription('Please select 3 masterStorage["scrolls"] to consume!');
-                    embedMsg.setFooter("!tp hunt tribute # # #");
+                    embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt tribute # # #");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -2324,7 +2324,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Please select a valid scroll # from scroll!');
-                        embedMsg.setFooter("!tp hunt tribute # # #");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt tribute # # #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (scroll_one == scroll_two || scroll_one == scroll_three || scroll_two == scroll_three)
@@ -2332,7 +2332,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('You cannot tribute the same scroll!');
-                        embedMsg.setFooter("!tp hunt tribute # # #");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("!tp hunt tribute # # #");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else if (masterData["userData"][userid].points < cost) 
@@ -2340,7 +2340,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('You do not have enough points!');
-                        embedMsg.setFooter("Tribute costs " + cost.toLocaleString() + " points!");
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Tribute costs " + cost.toLocaleString() + " points!");
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else 
@@ -2425,7 +2425,7 @@ module.exports = {
                 embedMsg.setColor('FFF000');
                 embedMsg.setDescription(masterData["userData"][userid].name + ' recieved +1 Luck :sparkles:!');
                 embedMsg.setImage("http://66.media.tumblr.com/ec4a1d29ba12ddce8e7cd5050b72df9d/tumblr_occdrflyTm1vuwk4so1_400.gif");
-                embedMsg.setFooter("Oh my god so lucky!");
+                embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter("Oh my god so lucky!");
                 message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'alert':
@@ -2440,7 +2440,7 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         embedMsg.setDescription('Tell the bot you want it turned on or off!');
-                        embedMsg.setFooter('!tp alert on/off')
+                        embedMsg.setmasterData["userHunt"][player].monsterdex.includes(59)ter('!tp alert on/off')
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else
