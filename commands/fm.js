@@ -5,6 +5,7 @@ module.exports = {
     execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
+        const fmMsg = new MessageEmbed();
 
         let generateFM = (itemType, itemID, price) => {
             var id = "";
@@ -48,6 +49,10 @@ module.exports = {
             return 0;
         });
         var person = client.users.cache.get(userid);
+
+        fmMsg.setTitle("Welcome to the Free Market!");
+        fmMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
+        message.channel.send({ embeds: [fmMsg] });
 
         var command = args[0];
         switch(command) {
@@ -512,7 +517,7 @@ module.exports = {
                         embedMsg.setDescription('Nothing for sale :(');
                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                         embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                        embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
+                        
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else
@@ -643,7 +648,7 @@ module.exports = {
                             embedMsg.setDescription('Nothing found :(');
                             embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                             embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                            embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
+                            
                             message.channel.send({ embeds: [embedMsg] });
                         }
                         else 
@@ -661,7 +666,7 @@ module.exports = {
                                 .setTitle('Free Market')
                                 .setColor('FFAA00')
                                 .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
-                                .setImage("https://i.imgur.com/5XN2BHd.gif")
+                                
                                 .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                             message.channel.send({ embeds: [embedMsg] }).then(msg => {
@@ -675,7 +680,7 @@ module.exports = {
                                         embedMsg.setTitle('Free Market');
                                         embedMsg.setColor('FFAA00');
                                         embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                        embedMsg.setImage("");
+                                        
                                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                         
                                         if (r.emoji.name === "◀️") {
@@ -719,7 +724,7 @@ module.exports = {
                     embedMsg.setDescription('Nothing for sale :(');
                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                     embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                    embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
+                    
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else
@@ -848,7 +853,7 @@ module.exports = {
                         embedMsg.setDescription('Nothing found :(');
                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                         embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                        embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
+                        
                         message.channel.send({ embeds: [embedMsg] });
                     }
                     else 
@@ -866,7 +871,7 @@ module.exports = {
                             .setTitle('Free Market')
                             .setColor('FFAA00')
                             .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
-                            .setImage("https://i.imgur.com/5XN2BHd.gif")
+                            
                             .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                         message.channel.send({ embeds: [embedMsg] }).then(msg => {
@@ -880,7 +885,7 @@ module.exports = {
                                     embedMsg.setTitle('Free Market');
                                     embedMsg.setColor('FFAA00');
                                     embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                    embedMsg.setImage("");
+                                    
                                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                     
                                     if (r.emoji.name === "◀️") {
@@ -922,7 +927,7 @@ module.exports = {
                     embedMsg.setDescription('Nothing for sale :(');
                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                     embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                    embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
+                    
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else
@@ -1059,7 +1064,7 @@ module.exports = {
                         .setTitle('Free Market')
                         .setColor('FFAA00')
                         .setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg")
-                        .setImage("https://i.imgur.com/5XN2BHd.gif")
+                        
                         .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                     message.channel.send({ embeds: [embedMsg] }).then(msg => {
@@ -1073,7 +1078,7 @@ module.exports = {
                                 embedMsg.setTitle('Free Market');
                                 embedMsg.setColor('FFAA00');
                                 embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                embedMsg.setImage("");
+                                
                                 embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                 
                                 if (r.emoji.name === "◀️") {
