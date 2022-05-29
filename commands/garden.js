@@ -225,12 +225,12 @@ module.exports = {
                 for (let i = 1; i < 3; i++) {
                     if (masterData["userGarden"][userid].pots[i] == "-1") {
                         if (i == 1) {
-                            cost = 5000;
+                            cost = 10000;
                             potIndex = i;
                             break;
                         }
                         if (i == 2) {
-                            cost = 10000;
+                            cost = 50000;
                             potIndex = i;
                             break;
                         }
@@ -271,7 +271,7 @@ module.exports = {
                                         embedMsg.setDescription(masterData["userData"][userid].name + " bought a new pot!");
                                         embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                         if (potIndex == 1)
-                                            embedMsg.setFooter('Next pot: 5,000 points');
+                                            embedMsg.setFooter('Next pot: 10,000 points');
                                         else 
                                             embedMsg.setFooter('Maxed pot!');
                                         message.channel.send({ embeds: [embedMsg] });
@@ -282,9 +282,9 @@ module.exports = {
                                         embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                         embedMsg.setDescription(masterData["userData"][userid].name + " declined!");
                                         if (potIndex == 0)
-                                            embedMsg.setFooter('Next pot: 3,000 points');
+                                            embedMsg.setFooter('Next pot: 10,000 points');
                                         else 
-                                            embedMsg.setFooter('Next pot: 5,000 points');
+                                            embedMsg.setFooter('Next pot: 50,000 points');
                                         message.channel.send({ embeds: [embedMsg] });
                                     }
                                 })
@@ -294,9 +294,9 @@ module.exports = {
                                     embedMsg.setDescription(masterData["userData"][userid].name + " took too long to respond!");
                                     embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                     if (potIndex == 0)
-                                        embedMsg.setFooter('Next pot: 3,000 points');
+                                        embedMsg.setFooter('Next pot: 10,000 points');
                                     else 
-                                        embedMsg.setFooter('Next pot: 5,000 points');
+                                        embedMsg.setFooter('Next pot: 50,000 points');
                                     message.channel.send({ embeds: [embedMsg] });
                                 });
                             }
@@ -306,9 +306,9 @@ module.exports = {
                         embedMsg.setTitle('Error!');
                         embedMsg.setColor('FF0000');
                         if (potIndex == 1)
-                            embedMsg.setDescription("Next pot costs 5000 points!");
+                            embedMsg.setDescription("Next pot costs 10,000 points!");
                         else
-                            embedMsg.setDescription("Next pot costs 10000 points!");
+                            embedMsg.setDescription("Next pot costs 50,000 points!");
                         embedMsg.setThumbnail('https://c.tenor.com/E05L3qlURd0AAAAd/no-money-broke.gif');
                         embedMsg.setFooter('Haha you\'re poor!');
                         message.channel.send({ embeds: [embedMsg] });

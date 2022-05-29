@@ -16,6 +16,30 @@ module.exports = {
         var twostar = ["8", "9", "10", "13", "18", "30", "31", "32", "33", "41", "42", "43", "44"];
         var onestar = ["3", "4", "5", "6", "7", "16", "19", "20", "21", "26", "27", "28", "29", "46", "47", "48", "49", "50"];
 
+        let generateEquip = (itemName) => {
+            if (!masterStorage["equips"][itemName]) {
+                return;
+            }
+            var id = "";
+            while (masterData["items"][id]) {
+                id = "";
+                for (var i = 0; i < 6; i++) {
+                    id += (Math.floor(Math.random() * 10)).toString();
+                }
+            }
+            masterData["items"][id] = {
+                name: masterStorage["equips"][itemName].name,
+                type: masterStorage["equips"][itemName].type,
+                maxHP: 0,
+                attack: 0,
+                magic: 0,
+                defense: 0,
+                speed: 0,
+                slots: (masterStorage["equips"][itemName].rarity * 10)
+            }
+            return id;
+        }
+
         var command = args[0];
         switch(command) {
             case 'help':
@@ -326,6 +350,9 @@ module.exports = {
                     
                     setTimeout(function() { 
                         var fishingPower;
+                        var trident = "";
+                        const tridentMsg = new MessageEmbed();
+
                         switch(masterData["userFish"][userid].fishingRod) {
                             case "Old Rod":
                                 fishingPower = 2;
@@ -351,7 +378,7 @@ module.exports = {
                         if (lucky) 
                         {
                             var luck = Math.floor((Math.random() * 100) + 1);
-                            if (luck <= 5)
+                            if (luck <= 500)
                             {
                                 embedMsg.setTitle('OMG (OH MY GOD)! (★★★★★★)');
                                 fishCaught = masterStorage["fishdex"][sixstar[Math.floor(Math.random() * sixstar.length)]];
@@ -441,6 +468,13 @@ module.exports = {
                             });
                             embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!\n\n**Fishdex Entry**\n" + fishCaught.info);
                             embedMsg.setFooter("Base Value: " + fishCaught.value + " points (New!)");
+
+                            if (masterData["userFish"][userid].fishdex.length == 105)
+                            {
+                                var itemObtained = generateEquip("The Trident");
+                                masterData["userHunt"][player].equips.push(itemObtained);
+                                trident = masterData["userData"][userid].name + " has completed the Fishdex and was rewarded with the equipement :sparkles: The Trident :sparkles:!";
+                            }
                         }
                         else {
                             embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!");
@@ -459,6 +493,15 @@ module.exports = {
                         embedMsg.setColor('00FF00');
                         embedMsg.setThumbnail(fishCaught.image);
                         message.channel.send({ embeds: [embedMsg] });
+
+                        if (trident != "")
+                        {
+                            tridentMsg.setColor('FFF000');
+                            tridentMsg.setTitle('Congrats!');
+                            tridentMsg.setDescription(trident);
+                            tridentMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                            message.channel.send({ embeds: [tridentMsg] });
+                        }
                     }, fishTime);
                 }
                 break;
