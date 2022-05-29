@@ -89,7 +89,7 @@ module.exports = {
                                 {
                                     var itemObtained = generateEquip("Red Diamond Hands");
                                     masterData["userHunt"][userid].equips.push(itemObtained);
-                                    hands = masterData["userData"][userid].name + " has leveled to Diamond and was rewarded with :sparkles: Red Diamond Hands :sparkles:!";
+                                    hands = masterData["userData"][userid].name + " has leveled to Red Diamond and was rewarded with :sparkles: Red Diamond Hands :sparkles:!";
                                 }
 
                                 if (hands != "")
@@ -118,6 +118,7 @@ module.exports = {
                             proposalMsg.setThumbnail('https://i.imgur.com/OKCWdNy.png');
                             embedMsg.setFooter('Next level: ' + price.toLocaleString() + ' points');
                             message.channel.send({ embeds: [embedMsg] });
+                            console.log(collected);
                         });
                     }
                 );
