@@ -675,7 +675,6 @@ module.exports = {
                                         embedMsg.setTitle('Free Market');
                                         embedMsg.setColor('FFAA00');
                                         embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                        embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
                                         embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                         
                                         if (r.emoji.name === "◀️") {
@@ -880,7 +879,6 @@ module.exports = {
                                     embedMsg.setTitle('Free Market');
                                     embedMsg.setColor('FFAA00');
                                     embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                    embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
                                     embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                     
                                     if (r.emoji.name === "◀️") {
@@ -1073,7 +1071,6 @@ module.exports = {
                                 embedMsg.setTitle('Free Market');
                                 embedMsg.setColor('FFAA00');
                                 embedMsg.setThumbnail("https://www.wikihow.com/images/thumb/b/b2/Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg/v4-460px-Be-a-Successful-Merchant-in-Maplestory-Step-8-Version-2.jpg");
-                                embedMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
                                 embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                 
                                 if (r.emoji.name === "◀️") {
