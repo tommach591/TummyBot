@@ -52,6 +52,7 @@ module.exports = {
 
         fmMsg.setTitle("Welcome to the Free Market!");
         fmMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
+        fmMsg.setColor('FFAA00');
         message.channel.send({ embeds: [fmMsg] });
 
         var command = args[0];
