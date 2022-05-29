@@ -696,6 +696,7 @@ module.exports = {
                                 }
                                 if (bonusDrop.includes(masterData["currHunt"]["active"].id))
                                 {
+                                    console.log('HI');
                                     dropRate *= 1.5;
                                 }
 
