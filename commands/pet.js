@@ -666,15 +666,15 @@ module.exports = {
                         masterData["userPet"][userid].happiness += happy;
                         if (masterData["userPet"][userid].happiness >= 100) {
                             if (masterData["userPet"][userid].level != 100) {
-                                masterData["userPet"][userid].level = 100; 
+                                masterData["userPet"][userid].level += 100; 
                                 masterData["userPet"][userid].happiness %= 100;
                                 levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
 
-                                if (masterData["userPet"][userid].level == 100)
+                                if (masterData["userPet"][userid].level >= 100)
                                 {
                                     var itemObtained = generateEquip("Love and Affection");
                                     masterData["userHunt"][userid].equips.push(itemObtained);
-                                    love = masterData["userData"][userid].name + " has completed the Gardendex and was rewarded with :sparkles: Love and Affection :sparkles:!";
+                                    love = masterData["userData"][userid].name + " has leveled their pet to 100 and was rewarded with :sparkles: Love and Affection :sparkles:!";
                                 }
                             }
                             else {
@@ -788,6 +788,7 @@ module.exports = {
                                 embedMsg.setThumbnail(masterData["userPet"][userid].image);
                                 embedMsg.setFooter("Or the dev can't find what went wrong.");
                                 message.channel.send({ embeds: [embedMsg] });
+                                console.log(collected);
                             });
                         }
                     );
