@@ -666,7 +666,7 @@ module.exports = {
                         masterData["userPet"][userid].happiness += happy;
                         if (masterData["userPet"][userid].happiness >= 100) {
                             if (masterData["userPet"][userid].level != 100) {
-                                masterData["userPet"][userid].level += 100; 
+                                masterData["userPet"][userid].level = 100; 
                                 masterData["userPet"][userid].happiness %= 100;
                                 levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
 
