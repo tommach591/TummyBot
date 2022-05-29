@@ -98,7 +98,7 @@ module.exports = {
                                     handsMsg.setColor('FFF000');
                                     handsMsg.setTitle('Congrats!');
                                     handsMsg.setDescription(hands);
-                                    handsMsg.setImage('https://i.gifer.com/origin/c9/c99a2ba9b7b577dfe17e7f74c4314fc2_w200.gif');
+                                    handsMsg.setImage('https://i.pinimg.com/originals/ad/7d/ea/ad7dea1cbc4d22bbeca62dc41d6b4549.gif');
                                     handsMsg.setFooter('Check !tp h inv!');
                                     message.channel.send({ embeds: [handsMsg] });
                                 }
