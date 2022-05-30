@@ -682,7 +682,8 @@ module.exports = {
                                 var player = masterData["currHunt"]["active"].targets[i];
                                 var goldEarned = 0;
                                 var bonusDrop = ['1', '27', '59', '60', '62', '64']
-                                goldEarned += Math.floor(goldReward * (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP));
+                                var percentDmg = (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP);
+                                goldEarned += Math.floor(goldReward * percentDmg);
                                 var dropRate = masterData["currHunt"].dropRate;
                                 if (masterData["currHunt"]["active"].playerDamage[i] == Math.max(...masterData["currHunt"]["active"].playerDamage))
                                 {
@@ -716,13 +717,7 @@ module.exports = {
 
                                     if ((masterData["currHunt"]["active"].id == 59 || masterData["currHunt"]["active"].id == 60))
                                     {
-                                        if (masterData["userHunt"][player].monsterdex.includes('59') && !(masterData["userHunt"][player].monsterdex.includes('60')))
-                                        {
-                                            fatalis = "\n★ Received Fatalis Evil Eye as a memento for this moment! ";
-                                            var itemObtained = generateEquip("Fatalis Evil Eye");
-                                            masterData["userHunt"][player].equips.push(itemObtained);
-                                        }
-                                        else if (!(masterData["userHunt"][player].monsterdex.includes('59')) && masterData["userHunt"][player].monsterdex.includes('60'))
+                                        if (masterData["userHunt"][player].monsterdex.includes('59') && (masterData["userHunt"][player].monsterdex.includes('60')))
                                         {
                                             fatalis = "\n★ Received Fatalis Evil Eye as a memento for this moment! ";
                                             var itemObtained = generateEquip("Fatalis Evil Eye");
