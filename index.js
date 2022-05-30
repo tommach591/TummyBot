@@ -818,6 +818,7 @@ client.on('messageCreate', message => {
                         embedMsg.setDescription('You are not GM!');
                         message.channel.send({ embeds: [embedMsg] });
                     }
+                    validCommand = true;
                 }
                 break;
             case 'reward':
@@ -892,7 +893,7 @@ client.on('messageCreate', message => {
                     embedMsg.setColor('00FF00');
                     embedMsg.setDescription('All save data was wiped!');
                     message.channel.send({ embeds: [embedMsg] });
-                    return;
+                    validCommand = true;
                 }
                 break;
             default:
