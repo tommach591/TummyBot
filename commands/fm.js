@@ -40,7 +40,6 @@ module.exports = {
         var keys = [];
         var keysToDelete = [];
         var expireTime = 1000 * 60 * 60 * 24 * 2;
-        expireTime = 1000 * 60 * 2;
 
         var newTime = new Date();
         for (var k in masterData["fm"]) {
@@ -80,7 +79,6 @@ module.exports = {
         fmMsg.setTitle("Welcome to the Free Market!");
         fmMsg.setImage("https://i.imgur.com/5XN2BHd.gif");
         fmMsg.setColor('FFAA00');
-        message.channel.send({ embeds: [fmMsg] });
 
         var command = args[0];
         switch(command) {
@@ -1124,6 +1122,7 @@ module.exports = {
                         
                         .setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
+                    message.channel.send({ embeds: [fmMsg] });
                     message.channel.send({ embeds: [embedMsg] }).then(msg => {
                         msg.react("◀️").then(r => {
                             msg.react("▶️")

@@ -16,7 +16,7 @@
         "rarity": 0,
         "image": "",
         "maxHP": 0,
-        "attack": 2,
+        "attack": 5,
         "magic": 0,
         "defense": 0,
         "speed": 0
@@ -180,9 +180,9 @@
         "type": 1,
         "rarity": 0,
         "image": "",
-        "maxHP": 0,
-        "attack": 0,
-        "magic": 0,
+        "maxHP": 10,
+        "attack": 1,
+        "magic": 1,
         "defense": 2,
         "speed": 0
     },
@@ -191,11 +191,11 @@
         "type": 2,
         "rarity": 0,
         "image": "",
-        "maxHP": 0,
+        "maxHP": 10,
         "attack": 0,
         "magic": 0,
         "defense": 2,
-        "speed": 0
+        "speed": 2
     },
     "Chestplate": {
         "name": "Chestplate",
