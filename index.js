@@ -711,17 +711,19 @@ client.on('messageCreate', message => {
             message.guild.roles.create({ name: 'guild' });
         }
 
-        var badCommand = false;
+        var validCommand = false;
         switch(command) {
             // Base Commands
             case 'help':
                 client.commands.get('help').execute(message, client);
+                validCommand = true;
                 break;
             case 'register':
                 client.commands.get('register').execute(message, sender.id, masterData);
                 break;
             case 'uptime':
                 client.commands.get('uptime').execute(message, masterData);
+                validCommand = true;
                 break;
             case 'leaderboard':
                 if (masterData["userData"][sender.id])
@@ -893,23 +895,12 @@ client.on('messageCreate', message => {
                     return;
                 }
                 break;
-            case 'iv':
-                if (masterData["userData"][sender.id] && masterData["userData"][sender.id].gm > 0) {
-                    const embedMsg = new MessageEmbed();
-                    embedMsg.setTitle('Mint and Scarlet!');
-                    embedMsg.setColor('00FF00');
-                    embedMsg.setThumbnail("https://i.imgur.com/2hWPL7A.png");
-                    embedMsg.setDescription('Drawing of Mint and Scarlet!');
-                    message.channel.send({ embeds: [embedMsg] });
-                }
-            break;
             default:
                 message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
-                badCommand = true;
                 break;
         }
 
-        if (!masterData["userData"][sender.id] && badCommand) {
+        if (!masterData["userData"][sender.id] && !validCommand) {
             const embedMsg = new MessageEmbed();
             embedMsg.setTitle('New User!');
             embedMsg.setColor('FF0000');
