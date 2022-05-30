@@ -101,6 +101,7 @@ module.exports = {
 
                 message.channel.send({ embeds: [embedMsg] });
                 break;
+            case 'list':
             case 'sell':
                 if (args.length <= 4)
                 {

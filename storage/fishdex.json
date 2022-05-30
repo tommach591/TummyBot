@@ -52,21 +52,21 @@
         "id": "8",
         "name": "Rock Fish",
         "image": "https://i.imgur.com/Z6wSC8A.png",
-        "value": 6,
+        "value": 7,
         "info": "Paper!"
     },
     "9": {
         "id": "9",
         "name": "Paper Fish",
         "image": "https://i.imgur.com/rjXHinw.png",
-        "value": 6,
+        "value": 7,
         "info": "Rock! Wait..."
     },
     "10": {
         "id": "10",
         "name": "Scissor Fish",
         "image": "https://i.imgur.com/QLpHud9.png",
-        "value": 6,
+        "value": 7,
         "info": "GUN! PEW PEW!"
     },
     "11": {
@@ -87,7 +87,7 @@
         "id": "13",
         "name": "Egg",
         "image": "https://i.imgur.com/Ga1GIom.png",
-        "value": 7,
+        "value": 8,
         "info": "Who's egg is this?!"
     },
     "14": {
@@ -122,7 +122,7 @@
         "id": "18",
         "name": "Tomato Fish",
         "image": "https://i.imgur.com/FwzgPCY.png",
-        "value": 5,
+        "value": 6,
         "info": "TomAHto."
     },
     "19": {
@@ -206,28 +206,28 @@
         "id": "30",
         "name": "Airplane Fish",
         "image": "https://i.imgur.com/kAiEGsp.png",
-        "value": 5,
+        "value": 7,
         "info": "Like a shooting star."
     },
     "31": {
         "id": "31",
         "name": "Bao",
         "image": "https://i.imgur.com/XCZbhmS.png",
-        "value": 5,
+        "value": 7,
         "info": "I wonder what is inside? Egg? Pork? Soup?"
     },
     "32": {
         "id": "32",
         "name": "Potato Fish",
         "image": "https://i.imgur.com/wATg8Gv.png",
-        "value": 5,
+        "value": 7,
         "info": "You can make fish and chips with this one fish!"
     },
     "33": {
         "id": "33",
         "name": "Fast AF Fish",
         "image": "https://i.imgur.com/AW6DJHp.png",
-        "value": 5,
+        "value": 7,
         "info": "This fish FAST AF!"
     },
     "34": {
@@ -283,28 +283,28 @@
         "id": "41",
         "name": "Butterfly Fish",
         "image": "https://i.imgur.com/3Q5Spcw.png",
-        "value": 5,
+        "value": 8,
         "info": "Shouldn't this be fluttering in the air?"
     },
     "42": {
         "id": "42",
         "name": "Froge",
         "image": "https://i.imgur.com/KAfh76T.png",
-        "value": 5,
+        "value": 8,
         "info": "Next cryptocurrency is going to be Frogecoin!"
     },
     "43": {
         "id": "43",
         "name": "Snek",
         "image": "https://i.imgur.com/D3a8w9n.png",
-        "value": 5,
+        "value": 8,
         "info": "ARGH SNEK A SNEK! SNEK A SNEEEK OOOO ITS A SNEK!"
     },
     "44": {
         "id": "44",
         "name": "Bobfish",
         "image": "https://i.imgur.com/nh4hXR1.png",
-        "value": 5,
+        "value": 8,
         "info": "Not a blobfish, but a fish named Bob."
     },
     "45": {
