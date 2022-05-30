@@ -334,21 +334,7 @@ module.exports = {
                                         collected => {
                                         const reaction = collected.first();
 
-                                        var newKeys = [];
-                                        for (var k in masterData["fm"]) {
-                                            newKeys.push(k);
-                                        }
-                                        newKeys.sort((firstEl, secondEl) => { 
-                                            if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
-                                                return -1;
-                                            }
-                                            if (masterData["fm"][firstEl].price > masterData["fm"][secondEl].price) {
-                                                return 1;
-                                            }
-                                            return 0;
-                                        });
-
-                                        if (reaction.emoji.name === '👍' && JSON.stringify(keys) == JSON.stringify(newKeys)) {
+                                        if (reaction.emoji.name === '👍' && masterData["fm"][keys[target]]) {
                                             if (masterData["fm"][keys[target]].itemType == "equip")
                                             {
                                                 masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
@@ -453,21 +439,7 @@ module.exports = {
                                         collected => {
                                         const reaction = collected.first();
 
-                                        var newKeys = [];
-                                        for (var k in masterData["fm"]) {
-                                            newKeys.push(k);
-                                        }
-                                        newKeys.sort((firstEl, secondEl) => { 
-                                            if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
-                                                return -1;
-                                            }
-                                            if (masterData["fm"][firstEl].price > masterData["fm"][secondEl].price) {
-                                                return 1;
-                                            }
-                                            return 0;
-                                        });
-
-                                        if (reaction.emoji.name === '👍' && JSON.stringify(keys) == JSON.stringify(newKeys)) {
+                                        if (reaction.emoji.name === '👍' && masterData["fm"][keys[target]]) {
                                             if (masterData["fm"][keys[target]].itemType == "equip")
                                             {
                                                 masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
@@ -883,7 +855,7 @@ module.exports = {
                                 }
                             }
                             fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                            var timeDiff = newDate.getTime() - masterData["fm"][keys[i]].listingTime;
+                            var timeDiff = newTime.getTime() - masterData["fm"][keys[i]].listingTime;
                             var days = Math.floor((expireTime - timeDiff) / (1000 * 60 * 60 * 24));
                             var hours = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                             var min = Math.floor((((expireTime - timeDiff) % (1000 * 60 * 60 * 24))) % (1000 * 60 * 60) / (1000 * 60));
@@ -1102,7 +1074,7 @@ module.exports = {
                             }
                         }
                         fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                        var timeDiff = newDate.getTime() - masterData["fm"][keys[i]].listingTime;
+                        var timeDiff = newTime.getTime() - masterData["fm"][keys[i]].listingTime;
                         var days = Math.floor((expireTime - timeDiff) / (1000 * 60 * 60 * 24));
                         var hours = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                         var min = Math.floor((((expireTime - timeDiff) % (1000 * 60 * 60 * 24))) % (1000 * 60 * 60) / (1000 * 60));
