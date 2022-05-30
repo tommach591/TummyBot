@@ -685,7 +685,6 @@ module.exports = {
                             }
                             else {
                                 masterData["userPet"][userid].level = 100;
-                                masterData["userPet"][userid].happiness = 100;
                             }
                         }
     
@@ -1137,10 +1136,15 @@ module.exports = {
                 }
                 cleanliness = "``" + cleanliness + "``";
 
-                for (let i = 0; i < Math.floor(masterData["userPet"][userid].happiness / each); i++) {
+                var tempHappiness = masterData["userPet"][userid].happiness;
+                if (tempHappiness > 100)
+                {
+                    tempHappiness = 100;
+                }
+                for (let i = 0; i < Math.floor(tempHappiness / each); i++) {
                     happiness += "█";
                 }
-                for (let i = Math.floor(masterData["userPet"][userid].happiness / each); i < max; i++) {
+                for (let i = Math.floor(tempHappiness / each); i < max; i++) {
                     happiness += " ";
                 }
                 happiness = "``" + happiness + "``";
@@ -1170,7 +1174,7 @@ module.exports = {
                         { name: "__Hunger__: " + masterData["userPet"][userid].hunger + "% :meat_on_bone:", value: "" + hunger, inline: false },
                         { name: "__Hydration__: " + masterData["userPet"][userid].hydration + "% :droplet:", value: "" + hydration, inline: false },
                         { name: "__Cleanliness__: " + masterData["userPet"][userid].cleanliness + "% :soap:", value: "" + cleanliness, inline: false },
-                        { name: "__Happiness__: " + masterData["userPet"][userid].happiness + "% :smile:", value: "" + happiness, inline: false },
+                        { name: "__Happiness__: " + tempHappiness + "% :smile:", value: "" + happiness, inline: false },
                         { name: "__Status__ :heart:", value: "" + status, inline: false }
                     );
                     message.channel.send({ embeds: [embedMsg] });
