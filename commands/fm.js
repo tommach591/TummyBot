@@ -39,7 +39,9 @@ module.exports = {
 
         var keys = [];
         var keysToDelete = [];
-        var expireTime = 1000 * 60 * 60 * 24 * 3;
+        var expireTime = 1000 * 60 * 60 * 24 * 2;
+        expireTime = 1000 * 60 * 2;
+
         var newTime = new Date();
         for (var k in masterData["fm"]) {
             var timeDiff = newTime.getTime() - masterData["fm"][k].listingTime;
@@ -312,12 +314,14 @@ module.exports = {
                         }
                         else 
                         {
+                            var itemID = keys[target];
+
                             const proposalMsg = new MessageEmbed();
                             proposalMsg.setTitle('Buying!');
                             proposalMsg.setColor('FFF000');
-                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to purchase " + masterData["fm"][keys[target]].itemName + 
-                                                        " from " + masterData["userData"][masterData["fm"][keys[target]].ownerID].name +
-                                                        " for " + masterData["fm"][keys[target]].price.toLocaleString() + " point(s)?");
+                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to purchase " + masterData["fm"][itemID].itemName + 
+                                                        " from " + masterData["userData"][masterData["fm"][itemID].ownerID].name +
+                                                        " for " + masterData["fm"][itemID].price.toLocaleString() + " point(s)?");
                             proposalMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                             let proposal; 
@@ -334,30 +338,30 @@ module.exports = {
                                         collected => {
                                         const reaction = collected.first();
 
-                                        if (reaction.emoji.name === '👍' && masterData["fm"][keys[target]]) {
-                                            if (masterData["fm"][keys[target]].itemType == "equip")
+                                        if (reaction.emoji.name === '👍' && masterData["fm"][itemID]) {
+                                            if (masterData["fm"][itemID].itemType == "equip")
                                             {
-                                                masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
+                                                masterData["userHunt"][userid].equips.push(masterData["fm"][itemID].itemID);
                                             }
-                                            else if (masterData["fm"][keys[target]].itemType == "scroll")
+                                            else if (masterData["fm"][itemID].itemType == "scroll")
                                             {
-                                                masterData["userHunt"][userid].scrolls.push(masterData["fm"][keys[target]].itemID);
+                                                masterData["userHunt"][userid].scrolls.push(masterData["fm"][itemID].itemID);
                                             }
-                                            masterData["userData"][userid].points -= masterData["fm"][keys[target]].price;
-                                            var profit = Math.floor(masterData["fm"][keys[target]].price * 0.80);
+                                            masterData["userData"][userid].points -= masterData["fm"][itemID].price;
+                                            var profit = Math.floor(masterData["fm"][itemID].price * 0.80);
                                             if (profit <= 0)
                                             {
                                                 profit = 1;
                                             }
-                                            masterData["userData"][masterData["fm"][keys[target]].ownerID].points += profit;
+                                            masterData["userData"][masterData["fm"][itemID].ownerID].points += profit;
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
-                                            embedMsg.setDescription(masterData["fm"][keys[target]].itemName + " purchased!");
+                                            embedMsg.setDescription(masterData["fm"][itemID].itemName + " purchased!");
                                             embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
-                                            message.channel.send("<@!" + masterData["fm"][keys[target]].ownerID + "> sold an item!");
+                                            message.channel.send("<@!" + masterData["fm"][itemID].ownerID + "> sold an item!");
                                             
-                                            delete masterData["fm"][keys[target]];
+                                            delete masterData["fm"][itemID];
                                         } 
                                         else if (reaction.emoji.name === '👎') {
                                             embedMsg.setTitle('Declined!');
@@ -418,10 +422,11 @@ module.exports = {
                         }
                         else 
                         {
+                            var itemID = keys[target];
                             const proposalMsg = new MessageEmbed();
                             proposalMsg.setTitle('Withdraw!');
                             proposalMsg.setColor('FFF000');
-                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to withdraw " + masterData["fm"][keys[target]].itemName + 
+                            proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to withdraw " + masterData["fm"][itemID].itemName + 
                                                         " from the FM?");
                             proposalMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
@@ -439,22 +444,22 @@ module.exports = {
                                         collected => {
                                         const reaction = collected.first();
 
-                                        if (reaction.emoji.name === '👍' && masterData["fm"][keys[target]]) {
-                                            if (masterData["fm"][keys[target]].itemType == "equip")
+                                        if (reaction.emoji.name === '👍' && masterData["fm"][itemID]) {
+                                            if (masterData["fm"][itemID].itemType == "equip")
                                             {
-                                                masterData["userHunt"][userid].equips.push(masterData["fm"][keys[target]].itemID);
+                                                masterData["userHunt"][userid].equips.push(masterData["fm"][itemID].itemID);
                                             }
-                                            else if (masterData["fm"][keys[target]].itemType == "scroll")
+                                            else if (masterData["fm"][itemID].itemType == "scroll")
                                             {
-                                                masterData["userHunt"][userid].scrolls.push(masterData["fm"][keys[target]].itemID);
+                                                masterData["userHunt"][userid].scrolls.push(masterData["fm"][itemID].itemID);
                                             }
                                             embedMsg.setTitle('Success!');
                                             embedMsg.setColor('00FF00');
-                                            embedMsg.setDescription(masterData["fm"][keys[target]].itemName + " withdrawed!");
+                                            embedMsg.setDescription(masterData["fm"][itemID].itemName + " withdrawed!");
                                             embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
                                             message.channel.send({ embeds: [embedMsg] });
                                             
-                                            delete masterData["fm"][keys[target]];
+                                            delete masterData["fm"][itemID];
                                         } 
                                         else if (reaction.emoji.name === '👎') {
                                             embedMsg.setTitle('Declined!');
