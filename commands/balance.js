@@ -2,7 +2,7 @@ module.exports = {
     name: 'balance',
     description: "Displays your or @somebody's balance.",
     
-    execute(message, args, userid, masterData, client) {
+    execute(message, args, userid, masterData, masterStorage, client) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 

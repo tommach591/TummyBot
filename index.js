@@ -735,7 +735,7 @@ client.on('messageCreate', message => {
             case 'profile':
             case 'balance':
                 if (masterData["userData"][sender.id])
-                    client.commands.get('balance').execute(message, args, sender.id, masterData, client);
+                    client.commands.get('balance').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
             case 'give':
                 if (masterData["userData"][sender.id])
