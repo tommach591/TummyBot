@@ -638,7 +638,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
-                    var happy = 1;
+                    var happy = 100;
                     if (masterData["userPet"][userid].hunger > 20) {
                         happy += 2;
                     }
@@ -667,7 +667,7 @@ module.exports = {
                         masterData["userPet"][userid].happiness += happy;
                         if (masterData["userPet"][userid].happiness >= 100) {
                             if (masterData["userPet"][userid].level < 100) {
-                                masterData["userPet"][userid].level++; 
+                                masterData["userPet"][userid].level += 100; 
                                 masterData["userPet"][userid].happiness %= 100;
                                 levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
 
@@ -686,15 +686,22 @@ module.exports = {
     
                         masterData["userPet"][userid].happinessTimer = newTime.getTime();
 
-                        if (luck <= 20) {
-                            if (luck <= 1.001) {
-                                masterData["userData"][userid].points += 100000;
-                                goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 100000 point while playing!\n\n";
+                        if (luck <= 1.001) {
+                            masterData["userData"][userid].points += 100000;
+                            goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 100000 point while playing!\n\n";
+                        }
+                        else if (luck <= 2) {
+                            var scrolldrop = [];
+                            for (var k in masterStorage["scrolls"]) {
+                                scrolldrop.push(k);
                             }
-                            else {
-                                masterData["userData"][userid].points++;
-                                goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 1 point while playing!\n\n";
-                            }
+                            var scrollobtained = scrolldrop[Math.floor(Math.random() * scrolldrop.length)];
+                            masterData["userHunt"][userid].scrolls.push(scrollobtained);
+                            goodluck = "\n\n" + masterData["userPet"][userid].petName + " found " + masterStorage["scrolls"][scrollobtained].name + " while playing!\n\n";
+                        }
+                        else if (luck <= 20) {
+                            masterData["userData"][userid].points++;
+                            goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 1 point while playing!\n\n";
                         }
                     }
 
