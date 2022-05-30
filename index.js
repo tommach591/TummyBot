@@ -711,6 +711,7 @@ client.on('messageCreate', message => {
             message.guild.roles.create({ name: 'guild' });
         }
 
+        var badCommand = false;
         switch(command) {
             // Base Commands
             case 'help':
@@ -806,7 +807,6 @@ client.on('messageCreate', message => {
                         embedMsg.setColor('00FF00');
                         embedMsg.setDescription('Data reloaded to last save!');
                         message.channel.send({ embeds: [embedMsg] });
-                        return;
                     }
                     else 
                     {
@@ -905,10 +905,11 @@ client.on('messageCreate', message => {
             break;
             default:
                 message.channel.send({ embeds: [helpMsg] }).then(msg=> {setTimeout(() => msg.delete(), 5000)});
+                badCommand = true;
                 break;
         }
 
-        if (!masterData["userData"][sender.id]) {
+        if (!masterData["userData"][sender.id] && badCommand) {
             const embedMsg = new MessageEmbed();
             embedMsg.setTitle('New User!');
             embedMsg.setColor('FF0000');
