@@ -730,7 +730,13 @@ module.exports = {
                                     embedMsg.setDescription(masterData["userData"][userid].name + " pets " + masterData["userPet"][userid].petName + "!\n\n" + levelupMsg 
                                      + masterData["userPet"][userid].petName + ": " + masterStorage["pets"][masterData["userPet"][userid].pet].quotes[Math.floor(Math.random() * masterStorage["pets"][masterData["userPet"][userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
-                                    embedMsg.setFooter("Current Happiness: " + masterData["userPet"][userid].happiness + "%");
+
+                                    var tempHappiness = masterData["userPet"][userid].happiness;
+                                    if (tempHappiness > 100)
+                                    {
+                                        tempHappiness = 100;
+                                    }
+                                    embedMsg.setFooter("Current Happiness: " + tempHappiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
 
                                     if (love != "")
@@ -751,7 +757,13 @@ module.exports = {
                                     embedMsg.setDescription(masterData["userData"][userid].name + " kissed " + masterData["userPet"][userid].petName + "!\n\n" + levelupMsg 
                                      + masterData["userPet"][userid].petName + ": " + masterStorage["pets"][masterData["userPet"][userid].pet].quotes[Math.floor(Math.random() * masterStorage["pets"][masterData["userPet"][userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
-                                    embedMsg.setFooter("Current Happiness: " + masterData["userPet"][userid].happiness + "%");
+
+                                    var tempHappiness = masterData["userPet"][userid].happiness;
+                                    if (tempHappiness > 100) 
+                                    {
+                                        tempHappiness = 100;
+                                    } 
+                                    embedMsg.setFooter("Current Happiness: " + tempHappiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
 
                                     if (love != "")
@@ -772,7 +784,13 @@ module.exports = {
                                     embedMsg.setDescription(masterData["userData"][userid].name + " played fetch with " + masterData["userPet"][userid].petName + "!\n\n" + levelupMsg 
                                      + masterData["userPet"][userid].petName + ": " + masterStorage["pets"][masterData["userPet"][userid].pet].quotes[Math.floor(Math.random() * masterStorage["pets"][masterData["userPet"][userid].pet].quotes.length)] + goodluck);
                                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
-                                    embedMsg.setFooter("Current Happiness: " + masterData["userPet"][userid].happiness + "%");
+                                    
+                                    var tempHappiness = masterData["userPet"][userid].happiness;
+                                    if (tempHappiness > 100) 
+                                    {
+                                        tempHappiness = 100;
+                                    } 
+                                    embedMsg.setFooter("Current Happiness: " + tempHappiness + "%");
                                     message.channel.send({ embeds: [embedMsg] });
 
                                     if (love != "")
