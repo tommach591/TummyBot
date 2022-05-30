@@ -874,6 +874,25 @@ client.on('messageCreate', message => {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
+            case 'wipe':
+                if (masterData["userData"][sender.id] && masterData["userData"][sender.id].gm > 0) {
+
+                    masterData["userData"] = JSON.parse("{}");
+                    masterData["userFish"] = JSON.parse("{}");
+                    masterData["userGarden"] = JSON.parse("{}");
+                    masterData["userHunt"] = JSON.parse("{}");
+                    masterData["items"] = JSON.parse("{}");
+                    masterData["userPet"] = JSON.parse("{}");
+                    masterData["fm"] = JSON.parse("{}");
+
+                    const embedMsg = new MessageEmbed();
+                    embedMsg.setTitle('Wipe!');
+                    embedMsg.setColor('B5EAFF');
+                    embedMsg.setImage("https://c.tenor.com/TgPXdDAfIeIAAAAM/gawr-gura-gura.gif");
+                    embedMsg.setDescription('All save data was wiped!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                break;
             case 'iv':
                 if (masterData["userData"][sender.id] && masterData["userData"][sender.id].gm > 0) {
                     const embedMsg = new MessageEmbed();
@@ -908,7 +927,7 @@ client.on('messageCreate', message => {
             }
             stars += ")"
             embedMsg.setTitle(masterData["currHunt"]["active"].name + stars);
-            embedMsg.setDescription(masterData["currHunt"]["active"].entry + "\n\nUse **__!tp h attack__** to fight!");
+            embedMsg.setDescription(masterData["currHunt"]["active"].entry + "\n\nType **__!tp h attack__** to fight!");
             embedMsg.setImage(masterData["currHunt"]["active"].image);
             embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString());
             embedMsg.setColor("49000F");

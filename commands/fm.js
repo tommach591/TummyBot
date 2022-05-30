@@ -24,20 +24,44 @@ module.exports = {
             {
                 itemName = masterStorage["scrolls"][itemID].name;
             }
+            var listingTime = new Date();
             masterData["fm"][id] = {
                 id: id,
                 ownerID: userid,
                 itemType: itemType,
                 itemID: itemID,
                 itemName: itemName,
-                price: price
+                price: price,
+                listingTime: listingTime.getTime()
             }
             return id;
         }
 
         var keys = [];
+        var keysToDelete = [];
+        var expireTime = 1000 * 60 * 60 * 24 * 7;
+        var newTime = new Date();
         for (var k in masterData["fm"]) {
-            keys.push(k);
+            if (newTime.getTime() - masterData["fm"][k].listingTime <= expireTime)
+            {
+                if (masterData["fm"][k].itemType == "equip")
+                {
+                    masterData["userHunt"][masterData["fm"][k].ownerID].equips.push(masterData["fm"][k].itemID);
+                }
+                else if (masterData["fm"][k].itemType == "scroll")
+                {
+                    masterData["userHunt"][masterData["fm"][k].ownerID].scrolls.push(masterData["fm"][k].itemID);
+                }
+                keysToDelete.push(k);
+            }
+            else 
+            {
+                keys.push(k);
+            }
+        }
+        for (k in keysToDelete)
+        {
+            delete masterData["fm"][k];
         }
         keys.sort((firstEl, secondEl) => { 
             if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
@@ -635,6 +659,24 @@ module.exports = {
                                     }
                                 }
                                 fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
+                                var timeDiff = newDate.getTime() - masterData["fm"][keys[i]].listingTime;
+                                var days = Math.floor((expireTime - timeDiff) / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var min = Math.floor((((expireTime - timeDiff) % (1000 * 60 * 60 * 24))) % (1000 * 60 * 60) / (1000 * 60));
+                                var sec = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60) % (1000 * 60) / (1000));
+                                if (days < 10) {
+                                    days = "0" + days.toString();
+                                }
+                                if (hours < 10) {
+                                    hours = "0" + hours.toString();
+                                }
+                                if (min < 10) {
+                                    min = "0" + min.toString();
+                                }
+                                if (sec < 10) {
+                                    sec = "0" + sec.toString();
+                                }
+                                fmItems[index] += "\nExpires In: " + days + " day(s), " + hours + " hour(s), " + min + " minute(s), " + sec + " second(s)";
                                 fmItems[index] += "\n**Price: " + masterData["fm"][keys[i]].price.toLocaleString() + "** :coin:";
                                 fmItems[index] += "\n\n";
                                 count++;
@@ -840,6 +882,24 @@ module.exports = {
                                 }
                             }
                             fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
+                            var timeDiff = newDate.getTime() - masterData["fm"][keys[i]].listingTime;
+                            var days = Math.floor((expireTime - timeDiff) / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var min = Math.floor((((expireTime - timeDiff) % (1000 * 60 * 60 * 24))) % (1000 * 60 * 60) / (1000 * 60));
+                            var sec = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60) % (1000 * 60) / (1000));
+                            if (days < 10) {
+                                days = "0" + days.toString();
+                            }
+                            if (hours < 10) {
+                                hours = "0" + hours.toString();
+                            }
+                            if (min < 10) {
+                                min = "0" + min.toString();
+                            }
+                            if (sec < 10) {
+                                sec = "0" + sec.toString();
+                            }
+                            fmItems[index] += "\nExpires In: " + days + " day(s), " + hours + " hour(s), " + min + " minute(s), " + sec + " second(s)";
                             fmItems[index] += "\n**Price: " + masterData["fm"][keys[i]].price.toLocaleString() + "** :coin:";
                             fmItems[index] += "\n\n";
                             count++;
@@ -1041,6 +1101,24 @@ module.exports = {
                             }
                         }
                         fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
+                        var timeDiff = newDate.getTime() - masterData["fm"][keys[i]].listingTime;
+                        var days = Math.floor((expireTime - timeDiff) / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var min = Math.floor((((expireTime - timeDiff) % (1000 * 60 * 60 * 24))) % (1000 * 60 * 60) / (1000 * 60));
+                        var sec = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60) % (1000 * 60) / (1000));
+                        if (days < 10) {
+                            days = "0" + days.toString();
+                        }
+                        if (hours < 10) {
+                            hours = "0" + hours.toString();
+                        }
+                        if (min < 10) {
+                            min = "0" + min.toString();
+                        }
+                        if (sec < 10) {
+                            sec = "0" + sec.toString();
+                        }
+                        fmItems[index] += "\nExpires In: " + days + " day(s), " + hours + " hour(s), " + min + " minute(s), " + sec + " second(s)";
                         fmItems[index] += "\n**Price: " + masterData["fm"][keys[i]].price.toLocaleString() + "** :coin:";
                         fmItems[index] += "\n\n";
                         count++;
