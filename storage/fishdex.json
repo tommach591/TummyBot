@@ -17,35 +17,35 @@
         "id": "3",
         "name": "Pink Fish",
         "image": "https://i.imgur.com/6UpljSS.png",
-        "value": 3,
+        "value": 4,
         "info": "The Pink Fish survives by being cute. This attracts other partners."
     },
     "4": {
         "id": "4",
         "name": "Yellow Fish",
         "image": "https://i.imgur.com/DxITwbq.png",
-        "value": 3,
+        "value": 4,
         "info": "The Yellow Fish is obnoxious. This bright color pisses off every other fish."
     },
     "5": {
         "id": "5",
         "name": "Green Fish",
         "image": "https://i.imgur.com/NW1Ujph.png",
-        "value": 3,
+        "value": 4,
         "info": "The Green Fish is vegetarian."
     },
     "6": {
         "id": "6",
         "name": "Teal Fish",
         "image": "https://i.imgur.com/dZCl3O7.png",
-        "value": 3,
+        "value": 4,
         "info": "The Teal Fish is cold to the touch. Very useful for making drinks."
     },
     "7": {
         "id": "7",
         "name": "Indigo Fish",
         "image": "https://i.imgur.com/xGJzbE8.png",
-        "value": 3,
+        "value": 4,
         "info": "The Indigo Fish lives near the bottom of the sea."
     },
     "8": {
@@ -108,7 +108,7 @@
         "id": "16",
         "name": "Seaweed",
         "image": "https://i.imgur.com/XVU7VvH.png",
-        "value": 3,
+        "value": 4,
         "info": "Now I can make sushi!"
     },
     "17": {
@@ -129,21 +129,21 @@
         "id": "19",
         "name": "Pink Starfish",
         "image": "https://i.imgur.com/M1Y42op.png",
-        "value": 3,
+        "value": 4,
         "info": "No, this is Patrick!"
     },
     "20": {
         "id": "20",
         "name": "Green Starfish",
         "image": "https://i.imgur.com/fWs6JJc.png",
-        "value": 3,
+        "value": 4,
         "info": "This is just Patrick covered in seaweed..."
     },
     "21": {
         "id": "21",
         "name": "Blue Starfish",
         "image": "https://i.imgur.com/PUuue7m.png",
-        "value": 3,
+        "value": 4,
         "info": "Wait a minute, this isn't a Starmie..."
     },
     "22": {
@@ -178,28 +178,28 @@
         "id": "26",
         "name": "Pink Shrimp",
         "image": "https://i.imgur.com/mBFlQnu.png",
-        "value": 3,
+        "value": 4,
         "info": "Everyone's favorite shrimp!"
     },
     "27": {
         "id": "27",
         "name": "Cyan Shrimp",
         "image": "https://i.imgur.com/hgQuDCu.png",
-        "value": 3,
+        "value": 4,
         "info": "This shrimp likes to eat human skin cells."
     },
     "28": {
         "id": "28",
         "name": "Lime Shrimp",
         "image": "https://i.imgur.com/zAKlaKJ.png",
-        "value": 3,
+        "value": 4,
         "info": "Basically shrimp ceviche."
     },
     "29": {
         "id": "29",
         "name": "Violet Shrimp",
         "image": "https://i.imgur.com/l3ctUhV.png",
-        "value": 3,
+        "value": 4,
         "info": "The last shrimp of the rainbow."
     },
     "30": {
@@ -241,7 +241,7 @@
         "id": "35",
         "name": "Strawberry Milk",
         "image": "https://i.imgur.com/0UD6sKn.png",
-        "value": 30,
+        "value": 40,
         "info": "Yes, this is a fish."
     },
     "36": {
@@ -255,7 +255,7 @@
         "id": "37",
         "name": "Melon Fish",
         "image": "https://i.imgur.com/rjdmWwv.png",
-        "value": 30,
+        "value": 40,
         "info": "This fish tastes even better during summer seasons!"
     },
     "38": {
@@ -276,7 +276,7 @@
         "id": "40",
         "name": "Candy",
         "image": "https://i.imgur.com/X0nYYz4.png",
-        "value": 30,
+        "value": 40,
         "info": "Candeez nutz fit in your mouth? Gottem!"
     },
     "41": {
