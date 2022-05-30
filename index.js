@@ -881,7 +881,7 @@ client.on('messageCreate', message => {
                     masterData["userFish"] = JSON.parse("{}");
                     masterData["userGarden"] = JSON.parse("{}");
                     masterData["userHunt"] = JSON.parse("{}");
-                    masterData["items"] = JSON.parse("{}");
+                    masterData["items"] = JSON.parse("{\"000000\":{\"name\":\"Nothing\",\"maxHP\":0,\"attack\":0,\"magic\":0,\"defense\":0,\"speed\":0,\"slots\":0}}");
                     masterData["userPet"] = JSON.parse("{}");
                     masterData["fm"] = JSON.parse("{}");
 
