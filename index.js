@@ -429,22 +429,28 @@ let spawnMonster = (newTime) =>
 
         while (!selectedMonster || masterData["currHunt"].lastDifficulty.includes(selectedMonster.difficulty)) {
             var luck = Math.random() * 101;
-            if (luck <= 3) {
+            if (luck <= 3) // 3%
+            {
                 selectedMonster = masterStorage["monsterdex"][diffSix[Math.floor(Math.random() * diffSix.length)]];
             }
-            else if (luck <= 15) {
+            else if (luck <= 13) // 10%
+            {
                 selectedMonster = masterStorage["monsterdex"][diffFive[Math.floor(Math.random() * diffFive.length)]];
             }
-            else if (luck <= 30) {
+            else if (luck <= 28) // 15%
+            {
                 selectedMonster = masterStorage["monsterdex"][diffFour[Math.floor(Math.random() * diffFour.length)]];
             }
-            else if (luck <= 50) {
+            else if (luck <= 48) // 20%
+            {
                 selectedMonster = masterStorage["monsterdex"][diffThree[Math.floor(Math.random() * diffThree.length)]];
             }
-            else if (luck <= 70) {
+            else if (luck <= 70) // 22%
+            {
                 selectedMonster = masterStorage["monsterdex"][diffTwo[Math.floor(Math.random() * diffTwo.length)]];
             }
-            else {
+            else // 30%
+            {
                 selectedMonster = masterStorage["monsterdex"][diffOne[Math.floor(Math.random() * diffOne.length)]];
             }
         }
@@ -902,7 +908,7 @@ client.on('messageCreate', message => {
             }
             stars += ")"
             embedMsg.setTitle(masterData["currHunt"]["active"].name + stars);
-            embedMsg.setDescription(masterData["currHunt"]["active"].entry);
+            embedMsg.setDescription(masterData["currHunt"]["active"].entry + "\n\nUse **__!tp h attack__** to fight!");
             embedMsg.setImage(masterData["currHunt"]["active"].image);
             embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString());
             embedMsg.setColor("49000F");
