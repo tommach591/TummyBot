@@ -616,7 +616,8 @@ module.exports = {
                 break;
             case 'play':
                 var newTime = new Date();
-                var playTime = 1000 * 60 * 5;
+                //var playTime = 1000 * 60 * 5;
+                playTime = 1000;
                 if (masterData["userPet"][userid].pet == "0") {
                     embedMsg.setTitle('You don\'t own a pet!');
                     embedMsg.setColor('FF0000');
@@ -667,7 +668,11 @@ module.exports = {
                         masterData["userPet"][userid].happiness += happy;
                         if (masterData["userPet"][userid].happiness >= 100) {
                             if (masterData["userPet"][userid].level < 100) {
-                                masterData["userPet"][userid].level += 100; 
+                                masterData["userPet"][userid].level += 100;
+                                if (masterData["userPet"][userid].level >= 100)
+                                {
+                                    masterData["userPet"][userid].level = 100;
+                                }
                                 masterData["userPet"][userid].happiness %= 100;
                                 levelupMsg = masterData["userPet"][userid].petName + " leveled to level " + masterData["userPet"][userid].level + "!\n\n";
 
