@@ -70,5 +70,53 @@
             "*\"Nuzzles\"*",
             "*\"Toot toot\"*"
         ]
+    },
+    "7": {
+        "species": "Dragon",
+        "names": ["Dragon", "Fire Dragon", "Dum Dragon", "Dark Flame Dragon"],
+        "images": ["https://i.imgur.com/g1qpPRc.png", "https://i.imgur.com/fLStcmN.png", "https://i.imgur.com/2z0yDo5.png", "https://i.imgur.com/Hlgplkq.png"],
+        "quotes": [
+            "*\"Rawr x3\"*",
+            "*\"Roar\"*",
+            "*\"Dragon things\"*",
+            "*\"Dragon deeznutz\"*",
+            "*\"Belch\"*"
+        ]
+    },
+    "8": {
+        "species": "Fish",
+        "names": ["Goldfish", "Pufferfish", "Statrick Par", "Narwhal"],
+        "images": ["https://i.imgur.com/u440yeG.png", "https://i.imgur.com/52mPYlV.png", "https://i.imgur.com/MdVt017.png", "https://i.imgur.com/ORDFNTA.png"],
+        "quotes": [
+            "*\"Blub\"*",
+            "*\"Bubble\"*",
+            "*\"Fish things\"*",
+            "*\"Stares\"*",
+            "*\"Bloop Bloop\"*"
+        ]
+    },
+    "9": {
+        "species": "Sticks & Stones",
+        "names": ["Stick", "Stone", "Big Stick", "Big Stone"],
+        "images": ["https://i.imgur.com/YQx6L0P.png", "https://i.imgur.com/GsHhIfr.png", "https://i.imgur.com/Yr0ZqI6.png", "https://i.imgur.com/WgpO0WQ.png"],
+        "quotes": [
+            "*\"...\"*",
+            "*\"..?\"*",
+            "*\"..!\"*",
+            "*\"... ... ...\"*",
+            "*\"?!\"*"
+        ]
+    },
+    "10": {
+        "species": "Smol",
+        "names": ["Smol Baer", "Smol Karol", "Smol Tum", "Smol Aivy"],
+        "images": ["https://i.imgur.com/nJ7YHIE.png", "https://i.imgur.com/lJuT116.png", "https://i.imgur.com/dUcXhwN.png", "https://i.imgur.com/36XJ5ha.png"],
+        "quotes": [
+            "*\"Sheeeeeeeesh!\"*",
+            "*\"LF> Exciting drops @@@@@@@@@@@@@@@@@@@@\"*",
+            "*\"I'm dying!\"*",
+            "*\"This is an investment.\"*",
+            "*\"Goo goo gah gah.\"*"
+        ]
     }
 }

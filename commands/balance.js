@@ -37,14 +37,24 @@ module.exports = {
                     embedMsg.setColor('F7333F');
                     break; 
             }
-            var fishtext = "" + masterData["userFish"][id].fishdex.length + "/" + "105 ";
-            if (masterData["userFish"][id].fishdex.length == 105) {
+            var fishKeys = [];
+            for (var k in masterStorage["fishdex"]) {
+                fishKeys.push(k);
+            }
+
+            var gardenKeys = [];
+            for (var k in masterStorage["gardendex"]) {
+                gardenKeys.push(k);
+            }
+
+            var fishtext = "" + masterData["userFish"][id].fishdex.length + "/" + fishKeys.length + " ";
+            if (masterData["userFish"][id].fishdex.length == fishKeys.length) {
                 fishtext += ":trophy:";
             }
             fishtext += "\n";
             
-            var gardentext = "" + masterData["userGarden"][id].gardendex.length + "/" + "40 ";
-            if (masterData["userGarden"][id].gardendex.length == 40) {
+            var gardentext = "" + masterData["userGarden"][id].gardendex.length + "/" + gardenKeys.length + " ";
+            if (masterData["userGarden"][id].gardendex.length == gardenKeys.length) {
                 gardentext += ":trophy:";
             }
             gardentext += "\n";

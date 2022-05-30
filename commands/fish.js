@@ -7,8 +7,8 @@ module.exports = {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
-        var sixstar = ["1", "24", "70", "71"];
-        var fivestar = ["2","15", "25", "68", "69", "72", "103", "104", "105"];
+        var sixstar = ["1", "24", "70", "71", "111"];
+        var fivestar = ["2","15", "25", "68", "69", "72", "103", "104", "105", "106", "107", "108", "109", "110"];
         var fourstar = ["51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "73", "74", "75", "76", "77"
         , "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101"
         , "102"];
@@ -469,11 +469,11 @@ module.exports = {
                             embedMsg.setDescription("<@!" +userid + "> caught a " + fishCaught.name + "!\n\n**Fishdex Entry**\n" + fishCaught.info);
                             embedMsg.setFooter("Base Value: " + fishCaught.value + " points (New!)");
 
-                            if (masterData["userFish"][userid].fishdex.length == 105)
+                            if (masterData["userFish"][userid].fishdex.length == 111)
                             {
                                 var itemObtained = generateEquip("The Trident");
                                 masterData["userHunt"][userid].equips.push(itemObtained);
-                                trident = masterData["userData"][userid].name + " has completed the Fishdex and was rewarded with :sparkles: The Trident :sparkles:!";
+                                trident = masterData["userData"][userid].name + " has caught 111 unique fishes and was rewarded with :sparkles: The Trident :sparkles:!";
                             }
                         }
                         else {

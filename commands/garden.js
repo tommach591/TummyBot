@@ -223,7 +223,7 @@ module.exports = {
                             {
                                 var itemObtained = generateEquip("57 Leaf Clover");
                                 masterData["userHunt"][userid].equips.push(itemObtained);
-                                clover = masterData["userData"][userid].name + " has completed the Gardendex and was rewarded with :sparkles: 57 Leaf Clover :sparkles:!";
+                                clover = masterData["userData"][userid].name + " has grown 40 unique plants and was rewarded with :sparkles: 57 Leaf Clover :sparkles:!";
                             }
                         }
                         masterData["userGarden"][userid].pots[i] = "0";

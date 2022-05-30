@@ -733,5 +733,47 @@
         "image": "https://i.imgur.com/ou46psZ.png",
         "value": 250,
         "info": "FEEEEEEEEEEEEEEEEEEEEEEESH!"
+    },
+    "106": {
+        "id": "106",
+        "name": "Poof Fish",
+        "image": "https://i.imgur.com/Ls0YeN3.png",
+        "value": 275,
+        "info": "Spiky!"
+    },
+    "107": {
+        "id": "107",
+        "name": "Squid",
+        "image": "https://i.imgur.com/kxDTO9d.png",
+        "value": 275,
+        "info": "Ooooh, calamari tonight!"
+    },
+    "108": {
+        "id": "108",
+        "name": "Tadpole",
+        "image": "https://i.imgur.com/AbPjA21.png",
+        "value": 275,
+        "info": "Hold so Frogecoin can reach the moon!"
+    },
+    "109": {
+        "id": "109",
+        "name": "Ocean Sunfish",
+        "image": "https://i.imgur.com/elIc4Mq.png",
+        "value": 300,
+        "info": "Ah! So that's how seagrass photosynthesize!"
+    },    
+    "110": {
+        "id": "110",
+        "name": "Moon Fish",
+        "image": "https://i.imgur.com/ou46psZ.png",
+        "value": 300,
+        "info": "This fish increases the amount of tidal water!"
+    },
+    "111": {
+        "id": "111",
+        "name": "Pat Star",
+        "image": "https://i.imgur.com/u76qvLa.png",
+        "value": 500,
+        "info": "No! This is Pat!"
     }
 }
