@@ -652,7 +652,7 @@ module.exports = {
                                 if (sec < 10) {
                                     sec = "0" + sec.toString();
                                 }
-                                fmItems[index] += "\nExpires In: " + days + " day(s), " + hours + " hour(s), " + min + " minute(s), " + sec + " second(s)";
+                                fmItems[index] += "\nExpires In: " + days.toString() + " day(s), " + hours.toString() + " hour(s), " + min.toString() + " minute(s), " + sec.toString() + " second(s)";
                                 fmItems[index] += "\n**Price: " + masterData["fm"][keys[i]].price.toLocaleString() + "** :coin:";
                                 fmItems[index] += "\n\n";
                                 count++;
@@ -863,19 +863,8 @@ module.exports = {
                             var hours = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                             var min = Math.floor((((expireTime - timeDiff) % (1000 * 60 * 60 * 24))) % (1000 * 60 * 60) / (1000 * 60));
                             var sec = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60) % (1000 * 60) / (1000));
-                            if (days < 10) {
-                                days = "0" + days.toString();
-                            }
-                            if (hours < 10) {
-                                hours = "0" + hours.toString();
-                            }
-                            if (min < 10) {
-                                min = "0" + min.toString();
-                            }
-                            if (sec < 10) {
-                                sec = "0" + sec.toString();
-                            }
-                            fmItems[index] += "\nExpires In: " + days + " day(s), " + hours + " hour(s), " + min + " minute(s), " + sec + " second(s)";
+
+                            fmItems[index] += "\nExpires In: " + days.toString() + " day(s), " + hours.toString() + " hour(s), " + min.toString() + " minute(s), " + sec.toString() + " second(s)";
                             fmItems[index] += "\n**Price: " + masterData["fm"][keys[i]].price.toLocaleString() + "** :coin:";
                             fmItems[index] += "\n\n";
                             count++;
@@ -1094,7 +1083,7 @@ module.exports = {
                         if (sec < 10) {
                             sec = "0" + sec.toString();
                         }
-                        fmItems[index] += "\nExpires In: " + days + " day(s), " + hours + " hour(s), " + min + " minute(s), " + sec + " second(s)";
+                        fmItems[index] += "\nExpires In: " + days.toString() + " day(s), " + hours.toString() + " hour(s), " + min.toString() + " minute(s), " + sec.toString() + " second(s)";
                         fmItems[index] += "\n**Price: " + masterData["fm"][keys[i]].price.toLocaleString() + "** :coin:";
                         fmItems[index] += "\n\n";
                         count++;
