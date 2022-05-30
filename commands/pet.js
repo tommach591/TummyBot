@@ -616,7 +616,7 @@ module.exports = {
                 break;
             case 'play':
                 var newTime = new Date();
-                //var playTime = 1000 * 60 * 5;
+                var playTime = 1000 * 60 * 5;
                 playTime = 1000;
                 if (masterData["userPet"][userid].pet == "0") {
                     embedMsg.setTitle('You don\'t own a pet!');
@@ -680,7 +680,7 @@ module.exports = {
                                 {
                                     var itemObtained = generateEquip("Love and Affection");
                                     masterData["userHunt"][userid].equips.push(itemObtained);
-                                    love = masterData["userData"][userid].name + " has leveled their pet to 100 and was rewarded with :sparkles: Love and Affection :sparkles:!";
+                                    love = masterData["userData"][userid].name + "'s pet reached level 100 and was rewarded with :sparkles: Love and Affection :sparkles:!";
                                 }
                             }
                             else {
@@ -695,7 +695,7 @@ module.exports = {
                             masterData["userData"][userid].points += 100000;
                             goodluck = "\n\n" + masterData["userPet"][userid].petName + " found 100000 point while playing!\n\n";
                         }
-                        else if (luck <= 2) {
+                        else if (luck <= 5) {
                             var scrolldrop = [];
                             for (var k in masterStorage["scrolls"]) {
                                 scrolldrop.push(k);
