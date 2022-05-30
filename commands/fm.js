@@ -39,10 +39,11 @@ module.exports = {
 
         var keys = [];
         var keysToDelete = [];
-        var expireTime = 1000 * 60 * 60 * 24 * 7;
+        var expireTime = 1000 * 60 * 60 * 24 * 3;
         var newTime = new Date();
         for (var k in masterData["fm"]) {
-            if (newTime.getTime() - masterData["fm"][k].listingTime <= expireTime)
+            var timeDiff = newTime.getTime() - masterData["fm"][k].listingTime;
+            if (timeDiff >= expireTime)
             {
                 if (masterData["fm"][k].itemType == "equip")
                 {
@@ -659,7 +660,7 @@ module.exports = {
                                     }
                                 }
                                 fmItems[index] += "\n\nSeller: " + masterData["userData"][masterData["fm"][keys[i]].ownerID].name;
-                                var timeDiff = newDate.getTime() - masterData["fm"][keys[i]].listingTime;
+                                var timeDiff = newTime.getTime() - masterData["fm"][keys[i]].listingTime;
                                 var days = Math.floor((expireTime - timeDiff) / (1000 * 60 * 60 * 24));
                                 var hours = Math.floor(((expireTime - timeDiff) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                                 var min = Math.floor((((expireTime - timeDiff) % (1000 * 60 * 60 * 24))) % (1000 * 60 * 60) / (1000 * 60));

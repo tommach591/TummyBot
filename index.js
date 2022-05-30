@@ -887,10 +887,10 @@ client.on('messageCreate', message => {
 
                     const embedMsg = new MessageEmbed();
                     embedMsg.setTitle('Wipe!');
-                    embedMsg.setColor('B5EAFF');
-                    embedMsg.setImage("https://c.tenor.com/TgPXdDAfIeIAAAAM/gawr-gura-gura.gif");
+                    embedMsg.setColor('00FF00');
                     embedMsg.setDescription('All save data was wiped!');
                     message.channel.send({ embeds: [embedMsg] });
+                    return;
                 }
                 break;
             case 'iv':
