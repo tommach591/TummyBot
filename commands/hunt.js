@@ -616,7 +616,7 @@ module.exports = {
                         
                         var isCrit = false;
 
-                        var crit = Math.floor((Math.random() * 100));
+                        var crit = Math.floor((Math.random() * 101));
 
                         if (crit <= critChance) {
                             isCrit = true;
