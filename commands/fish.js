@@ -379,12 +379,12 @@ module.exports = {
                         if (lucky) 
                         {
                             var luck = Math.floor((Math.random() * 100) + 1);
-                            if (luck <= 5)
+                            if (luck <= 1)
                             {
                                 embedMsg.setTitle('OMG (OH MY GOD)! (★★★★★★)');
                                 fishCaught = masterStorage["fishdex"][sixstar[Math.floor(Math.random() * sixstar.length)]];
                             }
-                            else if (luck <= 20)
+                            else if (luck <= 5)
                             {
                                 embedMsg.setTitle('POGGERS! (★★★★★)');
                                 fishCaught = masterStorage["fishdex"][fivestar[Math.floor(Math.random() * fivestar.length)]];
@@ -399,7 +399,7 @@ module.exports = {
                         if (fishCaught == "-1") {
                             for (let i = 0; i < fishingPower; i++) {
                                 var luck = Math.floor((Math.random() * 100000) + 1);
-                                var chance = 100000 * 0.0001;
+                                var chance = 100000 * 0.00005;
                                 if (luck <= chance) {
                                     embedMsg.setTitle('OMG (OH MY GOD)! (★★★★★★)');
                                     fishCaught = masterStorage["fishdex"][sixstar[Math.floor(Math.random() * sixstar.length)]];

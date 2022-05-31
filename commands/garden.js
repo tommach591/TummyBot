@@ -317,7 +317,7 @@ module.exports = {
                                         embedMsg.setDescription(masterData["userData"][userid].name + " bought a new pot!");
                                         embedMsg.setThumbnail('https://i.imgur.com/kWWFPYB.png');
                                         if (potIndex == 1)
-                                            embedMsg.setFooter('Next pot: 10,000 points');
+                                            embedMsg.setFooter('Next pot: 50,000 points');
                                         else 
                                             embedMsg.setFooter('Maxed pot!');
                                         message.channel.send({ embeds: [embedMsg] });

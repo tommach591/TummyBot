@@ -557,7 +557,7 @@ let attackAll = (newTime) =>
                 }
                 
                 var luck = Math.floor((Math.random() * 100) + 1);
-                var chance = Math.floor(100 * resistance / 2.22);
+                var chance = Math.floor(100 * resistance / 3);
                 if (luck <= chance) {
                     reflectDmg = Math.floor(masterData["currHunt"]["active"].attack * (100 * (resistance / 10)));
                     if (masterData["currHunt"]["active"].currentHP <= reflectDmg) 
@@ -602,7 +602,7 @@ let attackAll = (newTime) =>
             embedMsg.setColor("49000F");
             for (let i = 0; i < masterData["currHunt"]["active"].channels.length; i++) 
             {
-                if (newTime.getTime() - masterData["currHunt"]["active"].activeChannels[i] < 1000 * 10)
+                if (newTime.getTime() - masterData["currHunt"]["active"].activeChannels[i] < 1000 * 15)
                     masterData["currHunt"]["active"].channels[i].send({ embeds: [embedMsg] });
             }
         }
