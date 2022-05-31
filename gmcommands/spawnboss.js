@@ -48,6 +48,7 @@ module.exports = {
                     targets: [],
                     playerDamage: [],
                     channels: [],
+                    activeChannels: [],
                     lastPlayerAttack: newTime.getTime(),
                     deathCount: 0,
                     deathLimit: 20,
