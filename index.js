@@ -916,8 +916,6 @@ client.on('messageCreate', message => {
             masterData["currHunt"]["active"].channels.push(message.channel);
             masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
 
-            console.log(masterData["currHunt"]["active"].activeChannels)
-
             let role = message.guild.roles.cache.find(role => role.name === "guild");
             var ping = "";
             const embedMsg = new MessageEmbed();

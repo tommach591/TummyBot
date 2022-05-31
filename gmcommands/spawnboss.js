@@ -55,6 +55,7 @@ module.exports = {
                 }
 
                 masterData["currHunt"]["active"].channels.push(message.channel);
+                masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
                 const embedMsg = new MessageEmbed();
                 var stars = " (";
                 for (let i = 0; i < masterData["currHunt"]["active"].difficulty; i++) {
