@@ -476,6 +476,7 @@ let spawnMonster = (newTime) =>
             targets: [],
             playerDamage: [],
             channels: [],
+            activeChannels: [],
             lastPlayerAttack: newTime.getTime(),
             lastBossCheck: newTime.getTime(),
             deathCount: 0,
@@ -599,8 +600,10 @@ let attackAll = (newTime) =>
             embedMsg.setImage(masterData["currHunt"]["active"].attackImage);
             embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString() + "\n\nDeaths: " + masterData["currHunt"]["active"].deathCount + "/" + masterData["currHunt"]["active"].deathLimit);
             embedMsg.setColor("49000F");
-            for (let i = 0; i < masterData["currHunt"]["active"].channels.length; i++) {
-                masterData["currHunt"]["active"].channels[i].send({ embeds: [embedMsg] });
+            for (let i = 0; i < masterData["currHunt"]["active"].channels.length; i++) 
+            {
+                if (newTime.getTime() - masterData["currHunt"]["active"].activeChannels[i] < 1000 * 10)
+                    masterData["currHunt"]["active"].channels[i].send({ embeds: [embedMsg] });
             }
         }
 
@@ -911,6 +914,8 @@ client.on('messageCreate', message => {
 
         if (spawnMonster(newTime) && !masterData["currHunt"]["active"].channels.includes(message.channel)) {
             masterData["currHunt"]["active"].channels.push(message.channel);
+            masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
+
             let role = message.guild.roles.cache.find(role => role.name === "guild");
             var ping = "";
             const embedMsg = new MessageEmbed();

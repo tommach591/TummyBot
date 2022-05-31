@@ -552,6 +552,11 @@ module.exports = {
                 if (masterData["currHunt"]["active"]) {
                     if (!masterData["currHunt"]["active"].channels.includes(message.channel)) {
                         masterData["currHunt"]["active"].channels.push(message.channel);
+                        masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
+                    }
+                    else {
+                        var indexOfChannel = masterData["currHunt"]["active"].channels.indexOf(message.channel);
+                        masterData["currHunt"]["active"].activeChannels[indexOfChannel] = newTime.getTime();
                     }
                     var timeDiff = newTime.getTime() - masterData["userHunt"][userid].lastAttack;
                     var attackCD = (1000 * 4.75);
