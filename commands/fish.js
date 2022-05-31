@@ -301,6 +301,7 @@ module.exports = {
                         break;
                 }
                 break;
+            case 's':
             case 'start':
                 var newTime = new Date();
                 var timeDiff = newTime.getTime() - masterData["userFish"][userid].fishTime;
