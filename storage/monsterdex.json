@@ -127,7 +127,7 @@
         "death": "Sonic drops all his coins!",
         "image": "https://c.tenor.com/FUZ634sMnpcAAAAd/sonic.gif",
         "attackImage": "https://c.tenor.com/KTYZfnLQ3jMAAAAC/sonic-punch.gif",
-        "maxHP": 2000,
+        "maxHP": 1000,
         "attack": 5,
         "defense": 0,
         "magicdefense": 0,
