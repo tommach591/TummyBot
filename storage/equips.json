@@ -1563,7 +1563,7 @@
     },
     "Flower": {
         "name": "Flower",
-        "type": 0,
+        "type": 2,
         "rarity": 1,
         "image": "",
         "maxHP": 0,
