@@ -49,7 +49,7 @@
         "rarity": 2,
         "image": "",
         "maxHP": 0,
-        "attack": 10,
+        "attack": 15,
         "magic": 0,
         "defense": 0,
         "speed": 5
@@ -335,10 +335,10 @@
         "rarity": 2,
         "image": "",
         "maxHP": 0,
-        "attack": 30,
+        "attack": 20,
         "magic": 0,
         "defense": 0,
-        "speed": 10
+        "speed": 0
     },
     "Watch": {
         "name": "Watch",
@@ -349,7 +349,7 @@
         "attack": 0,
         "magic": 0,
         "defense": 0,
-        "speed": 40
+        "speed": 20
     },
     "Wings": {
         "name": "Wings",
@@ -1467,7 +1467,7 @@
         "type": 2,
         "rarity": 5,
         "image": "",
-        "maxHP": 1000,
+        "maxHP": 500,
         "attack": 0,
         "magic": 0,
         "defense": 0,
@@ -1500,7 +1500,7 @@
         "type": 1,
         "rarity": 6,
         "image": "",
-        "maxHP": 400,
+        "maxHP": 200,
         "attack": 0,
         "magic": 0,
         "defense": 100,
@@ -1533,10 +1533,76 @@
         "type": 2,
         "rarity": 10,
         "image": "",
-        "maxHP": 600,
+        "maxHP": 300,
         "attack": 60,
         "magic": 60,
         "defense": 60,
         "speed": 60
+    },
+    "Fruit Knife": {
+        "name": "Fruit Knife",
+        "type": 0,
+        "rarity": 1,
+        "image": "",
+        "maxHP": -25,
+        "attack": 5,
+        "magic": 0,
+        "defense": 0,
+        "speed": 10
+    },
+    "Claw": {
+        "name": "Claw",
+        "type": 1,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 0,
+        "attack": -5,
+        "magic": -5,
+        "defense": 10,
+        "speed": 10
+    },
+    "Flower": {
+        "name": "Flower",
+        "type": 0,
+        "rarity": 1,
+        "image": "",
+        "maxHP": 0,
+        "attack": 0,
+        "magic": 5,
+        "defense": 0,
+        "speed": 5
+    },
+    "Kunai": {
+        "name": "Kunai",
+        "type": 0,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 0,
+        "attack": 5,
+        "magic": -5,
+        "defense": 0,
+        "speed": 20
+    },
+    "Helmet": {
+        "name": "Helmet",
+        "type": 1,
+        "rarity": 2,
+        "image": "",
+        "maxHP": 100,
+        "attack": 0,
+        "magic": 0,
+        "defense": 0,
+        "speed": 0
+    },
+    "Strange Brew": {
+        "name": "Strange Brew",
+        "type": 2,
+        "rarity": 2,
+        "image": "",
+        "maxHP": -20,
+        "attack": 6,
+        "magic": 6,
+        "defense": 6,
+        "speed": 6
     }
 }
