@@ -205,7 +205,7 @@ module.exports = {
                                 proposalMsg.setColor('FFF000');
                                 proposalMsg.setDescription("Would " + masterData["userData"][userid].name + " like to list " + masterStorage["scrolls"][itemToSell].name + 
                                                             " for " + price.toLocaleString() + " point(s)?");
-                                proposalMsg.setFooter("There will be a 15% tax when sold!");
+                                proposalMsg.setFooter("There will be a 20% tax when sold!");
                                 proposalMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: person.displayAvatarURL() });
 
                                 let proposal; 
