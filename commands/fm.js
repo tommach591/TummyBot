@@ -65,7 +65,7 @@ module.exports = {
         for (let i = 0; i < keysToDelete.length; i++)
         {
             console.log(keysToDelete[i])
-            delete masterData["fm"][keysToDelete[i]];
+            delete masterData["fm"][keysToDelete[i].toString()];
         }
         keys.sort((firstEl, secondEl) => { 
             if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
