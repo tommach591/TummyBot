@@ -38,7 +38,6 @@ module.exports = {
         }
 
         var keys = [];
-        var keysToDelete = [];
         //var expireTime = 1000 * 60 * 60 * 24 * 2;
         var expireTime = 1000 * 30;
 
@@ -55,18 +54,14 @@ module.exports = {
                 {
                     masterData["userHunt"][masterData["fm"][k].ownerID].scrolls.push(masterData["fm"][k].itemID);
                 }
-                keysToDelete.push(masterData["fm"][k].itemID);
+                delete masterData["fm"][k]
             }
             else 
             {
                 keys.push(k);
             }
         }
-        for (let i = 0; i < keysToDelete.length; i++)
-        {
-            console.log(keysToDelete[i])
-            delete masterData["fm"][keysToDelete[i].toString()];
-        }
+
         keys.sort((firstEl, secondEl) => { 
             if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
                 return -1;
