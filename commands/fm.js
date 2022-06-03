@@ -47,6 +47,14 @@ module.exports = {
             var timeDiff = newTime.getTime() - masterData["fm"][k].listingTime;
             if (timeDiff >= expireTime)
             {
+                if (masterData["fm"][k].itemType == "equip")
+                {
+                    masterData["userHunt"][masterData["fm"][k].ownerID].equips.push(masterData["fm"][k].itemID);
+                }
+                else if (masterData["fm"][k].itemType == "scroll")
+                {
+                    masterData["userHunt"][masterData["fm"][k].ownerID].scrolls.push(masterData["fm"][k].itemID);
+                }
                 keysToDelete.push(masterData["fm"][k].itemID);
             }
             else 
@@ -56,14 +64,7 @@ module.exports = {
         }
         for (k in keysToDelete)
         {
-            if (masterData["fm"][k].itemType == "equip")
-            {
-                masterData["userHunt"][masterData["fm"][k].ownerID].equips.push(masterData["fm"][k].itemID);
-            }
-            else if (masterData["fm"][k].itemType == "scroll")
-            {
-                masterData["userHunt"][masterData["fm"][k].ownerID].scrolls.push(masterData["fm"][k].itemID);
-            }
+            console.log(k)
             delete masterData["fm"][k];
         }
         keys.sort((firstEl, secondEl) => { 
