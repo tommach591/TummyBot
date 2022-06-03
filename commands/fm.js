@@ -62,10 +62,10 @@ module.exports = {
                 keys.push(k);
             }
         }
-        for (k in keysToDelete)
+        for (let i = 0; i < keysToDelete.length; i++)
         {
-            console.log(k)
-            delete masterData["fm"][k];
+            console.log(keysToDelete[i])
+            delete masterData["fm"][keysToDelete[i]];
         }
         keys.sort((firstEl, secondEl) => { 
             if (masterData["fm"][firstEl].price < masterData["fm"][secondEl].price) {
