@@ -940,7 +940,7 @@ client.on('messageCreate', message => {
 
             for (let i = 0; i < masterData["currHunt"].alertChannels.length; i++)
             {
-                let channel = message.guild.channels.cache.get(masterData["currHunt"].alertChannels[i])
+                let channel = guilds.channels.cache.get(masterData["currHunt"].alertChannels[i])
                 if (channel)
                 {
                     channel.send({ embeds: [embedMsg] });
