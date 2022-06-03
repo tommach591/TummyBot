@@ -8,6 +8,7 @@ const prefix = '!tp ';
 
 const fs = require('fs');
 const { send } = require("process");
+const guilds = client.guilds.cache.map(guild => guild.id);
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -192,7 +193,7 @@ masterData["currHunt"].baseDropRate = 1;
 masterData["currHunt"].dropRate = masterData["currHunt"].baseDropRate;
 masterData["currHunt"].dropDuration = 0;
 masterData["currHunt"].dropRateStart = 0;
-masterData["currHunt"].alertChannels = []
+masterData["currHunt"].alertChannels = ["927637770145525820", "980663698798542858"];
 
 let saveBeforeReset = () => 
 {
@@ -647,6 +648,7 @@ helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAA
 helpMsg.setDescription('Use __!tp help__ for list of commands!');
 
 client.once('ready', () => {
+    console.log(guilds);
     console.log(masterData["savefile"].startTime.toLocaleString());
     console.log("TummyBot is online!");
     saveBeforeReset();
@@ -938,11 +940,15 @@ client.on('messageCreate', message => {
 
             for (let i = 0; i < masterData["currHunt"].alertChannels.length; i++)
             {
-                masterData["currHunt"].alertChannels[i].send({ embeds: [embedMsg] });
-                if (role)
+                let channel = message.guild.channels.cache.get(masterData["currHunt"].alertChannels[i])
+                if (channel)
                 {
-                    ping = "<@&" + role + ">";
-                    masterData["currHunt"]["active"].channels[0].send(ping);
+                    channel.send({ embeds: [embedMsg] });
+                    if (role)
+                    {
+                        ping = "<@&" + role + ">";
+                        channel.send(ping);
+                    }
                 }
             }
         }

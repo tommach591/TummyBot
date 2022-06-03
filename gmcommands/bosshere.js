@@ -10,7 +10,7 @@ module.exports = {
             if (!masterData["currHunt"].alertChannels.includes(message.channel))
             {
                 masterData["currHunt"].alertChannels.push(message.channel);
-                embedMsg.setTitle('Error!');
+                embedMsg.setTitle('Success!');
                 embedMsg.setColor('00FF00');
                 embedMsg.setDescription('This channel will be notified for boss alerts!');
                 message.channel.send({ embeds: [embedMsg] });
