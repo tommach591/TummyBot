@@ -840,7 +840,7 @@ client.on('messageCreate', message => {
             case 'spawnboss':
                 if (masterData["userData"][sender.id] && masterData["currHunt"].lastSpawn)
                     client.gmcommands.get('spawnboss').execute(message, args, sender.id, masterData, masterStorage);
-                break;
+                break
             case 'spawnequip':
                 if (masterData["userData"][sender.id])
                     client.gmcommands.get('spawnequip').execute(message, args, sender.id, masterData, masterStorage, client);
@@ -852,6 +852,10 @@ client.on('messageCreate', message => {
             case 'droprate':
                 if (masterData["userData"][sender.id])
                     client.gmcommands.get('droprate').execute(message, args, sender.id, masterData);
+                break;
+            case 'bosshere':
+                if (masterData["userData"][sender.id])
+                    client.gmcommands.get('bosshere').execute(message, sender.id, masterData);
                 break;
             case 'killboss':
                 if (masterData["userData"][sender.id])

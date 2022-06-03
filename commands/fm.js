@@ -38,8 +38,7 @@ module.exports = {
         }
 
         var keys = [];
-        //var expireTime = 1000 * 60 * 60 * 24 * 2;
-        var expireTime = 1000 * 30;
+        var expireTime = 1000 * 60 * 60 * 24 * 2;
 
         var newTime = new Date();
         for (var k in masterData["fm"]) {

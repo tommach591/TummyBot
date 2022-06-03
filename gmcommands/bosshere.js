@@ -2,7 +2,7 @@ module.exports = {
     name: 'bosshere',
     description: "Set channel to spawn boss.",
 
-    execute(message, args, userid, masterData, client) {
+    execute(message, userid, masterData) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
 
