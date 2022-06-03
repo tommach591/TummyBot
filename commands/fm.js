@@ -64,6 +64,7 @@ module.exports = {
         }
         for (k in keysToDelete)
         {
+            console.log("Deleting");
             delete masterData["fm"][k];
         }
         keys.sort((firstEl, secondEl) => { 
