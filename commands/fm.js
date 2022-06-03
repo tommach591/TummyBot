@@ -43,6 +43,7 @@ module.exports = {
 
         var newTime = new Date();
         for (var k in masterData["fm"]) {
+            console.log(k)
             var timeDiff = newTime.getTime() - masterData["fm"][k].listingTime;
             if (timeDiff >= expireTime)
             {
