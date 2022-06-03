@@ -192,6 +192,7 @@ masterData["currHunt"].baseDropRate = 1;
 masterData["currHunt"].dropRate = masterData["currHunt"].baseDropRate;
 masterData["currHunt"].dropDuration = 0;
 masterData["currHunt"].dropRateStart = 0;
+masterData["currHunt"].alertChannels = []
 
 let saveBeforeReset = () => 
 {
@@ -930,10 +931,15 @@ client.on('messageCreate', message => {
             embedMsg.setFooter("HP: " + masterData["currHunt"]["active"].currentHP.toLocaleString() + "/" + masterData["currHunt"]["active"].maxHP.toLocaleString());
             embedMsg.setColor("49000F");
             masterData["currHunt"]["active"].channels[0].send({ embeds: [embedMsg] });
-            if (role)
+
+            for (let i = 0; i < masterData["currHunt"].alertChannels.length; i++)
             {
-                ping = "<@&" + role + ">";
-                masterData["currHunt"]["active"].channels[0].send(ping);
+                masterData["currHunt"].alertChannels[i].send({ embeds: [embedMsg] });
+                if (role)
+                {
+                    ping = "<@&" + role + ">";
+                    masterData["currHunt"]["active"].channels[0].send(ping);
+                }
             }
         }
 

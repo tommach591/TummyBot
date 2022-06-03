@@ -161,9 +161,8 @@ module.exports = {
                     dealerField += "⠀" + card + symbol + "\n";
                 }
 
-
                 if (masterData["blackjack"][userid].firstTurn && handValues[0] == 21) {
-                    if (dealerValue == 21) {
+                    if (dealerValue == 21 && masterData["blackjack"][userid].dealer.length == 2) {
                         reward = totalBet;
                     }
                     else {
