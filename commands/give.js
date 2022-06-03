@@ -39,7 +39,7 @@ module.exports = {
                     embedMsg.setTitle('Success!');
                     embedMsg.setColor('00FF00');
                     embedMsg.setThumbnail('https://i.imgur.com/2J59UgH.png');
-                    embedMsg.setDescription(masterData["userData"][userid].name + " gives " + target.username + " " + amount + " points!");
+                    embedMsg.setDescription(masterData["userData"][userid].name + " gives " + target.username + " " + amount.toLocaleString() + " points!");
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 else {
@@ -49,7 +49,7 @@ module.exports = {
                         embedMsg.setDescription(masterData["userData"][userid].name + " can't give 0 points!");
                     }
                     else {
-                        embedMsg.setDescription(masterData["userData"][userid].name + " does not have " + amount + " point(s)!");
+                        embedMsg.setDescription(masterData["userData"][userid].name + " does not have " + amount.toLocaleString() + " point(s)!");
                     }
                     message.channel.send({ embeds: [embedMsg] });
                 }

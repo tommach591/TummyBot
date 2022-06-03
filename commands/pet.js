@@ -1026,6 +1026,12 @@ module.exports = {
                     if (masterData["userPet"][firstEl].level < masterData["userPet"][secondEl].level) {
                         return 1;
                     }
+                    if (masterData["userPet"][firstEl].happiness > masterData["userPet"][secondEl].happiness) {
+                        return -1;
+                    }
+                    if (masterData["userPet"][firstEl].happiness < masterData["userPet"][secondEl].happiness) {
+                        return 1;
+                    }
                     return 0;
                 });
         
