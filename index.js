@@ -950,6 +950,10 @@ client.on('messageCreate', message => {
                     if (channel)
                     {
                         channel.send({ embeds: [embedMsg] });
+                        if (!masterData["currHunt"]["active"].channels.includes(channel))
+                        {
+                            masterData["currHunt"]["active"].channels.push(channel);
+                        }
                         if (role)
                         {
                             ping = "<@&" + role + ">";
