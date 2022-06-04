@@ -8,7 +8,6 @@ const prefix = '!tp ';
 
 const fs = require('fs');
 const { send } = require("process");
-const guilds = client.guilds.cache.map(guild => guild.id);
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -648,11 +647,12 @@ helpMsg.setThumbnail("https://4.bp.blogspot.com/-DV8zj3oNPO8/XZKl8Y1_KkI/AAAAAAA
 helpMsg.setDescription('Use __!tp help__ for list of commands!');
 
 client.once('ready', () => {
-    console.log(guilds);
     console.log(masterData["savefile"].startTime.toLocaleString());
     console.log("TummyBot is online!");
     saveBeforeReset();
 });
+
+var guilds = [];
 
 client.on('messageCreate', message => {
     var newTime = new Date();
@@ -715,6 +715,11 @@ client.on('messageCreate', message => {
         if (!role)
         {
             message.guild.roles.create({ name: 'guild' });
+        }
+
+        if (!guilds.includes(message.guild))
+        {
+            guilds.push(message.guild);
         }
 
         var validCommand = false;
@@ -923,7 +928,6 @@ client.on('messageCreate', message => {
             masterData["currHunt"]["active"].channels.push(message.channel);
             masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
 
-            let role = message.guild.roles.cache.find(role => role.name === "guild");
             var ping = "";
             const embedMsg = new MessageEmbed();
             var stars = " (";
@@ -938,16 +942,19 @@ client.on('messageCreate', message => {
             embedMsg.setColor("49000F");
             masterData["currHunt"]["active"].channels[0].send({ embeds: [embedMsg] });
 
-            for (let i = 0; i < masterData["currHunt"].alertChannels.length; i++)
-            {
-                let channel = guilds.channels.cache.get(masterData["currHunt"].alertChannels[i])
-                if (channel)
+            for (let i = 0; i < guilds.length; i++) {
+                for (let j = 0; j < masterData["currHunt"].alertChannels.length; j++)
                 {
-                    channel.send({ embeds: [embedMsg] });
-                    if (role)
+                    let channel = guilds[i].channels.cache.get(masterData["currHunt"].alertChannels[j]);
+                    let role = guilds[i].roles.cache.find(role => role.name === "guild");
+                    if (channel)
                     {
-                        ping = "<@&" + role + ">";
-                        channel.send(ping);
+                        channel.send({ embeds: [embedMsg] });
+                        if (role)
+                        {
+                            ping = "<@&" + role + ">";
+                            channel.send(ping);
+                        }
                     }
                 }
             }
