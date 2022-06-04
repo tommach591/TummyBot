@@ -949,6 +949,7 @@ client.on('messageCreate', message => {
                         if (!masterData["currHunt"]["active"].channels.includes(channel))
                         {
                             masterData["currHunt"]["active"].channels.push(channel);
+                            masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
                         }
                         if (role)
                         {
