@@ -860,10 +860,6 @@ client.on('messageCreate', message => {
                 if (masterData["userData"][sender.id])
                     client.gmcommands.get('droprate').execute(message, args, sender.id, masterData);
                 break;
-            case 'bosshere':
-                if (masterData["userData"][sender.id])
-                    client.gmcommands.get('bosshere').execute(message, sender.id, masterData);
-                break;
             case 'killboss':
                 if (masterData["userData"][sender.id])
                     client.gmcommands.get('killboss').execute(message, sender.id, masterData, masterStorage);
