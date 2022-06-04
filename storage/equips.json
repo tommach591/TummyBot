@@ -1479,10 +1479,10 @@
         "rarity": 6,
         "image": "",
         "maxHP": 0,
-        "attack": 20,
-        "magic": 20,
+        "attack": 5,
+        "magic": 5,
         "defense": 0,
-        "speed": 100
+        "speed": 130
     },
     "57 Leaf Clover": {
         "name": "57 Leaf Clover",
