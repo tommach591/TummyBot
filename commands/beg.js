@@ -15,19 +15,19 @@ module.exports = {
         var begTime = 5000;
 
         if (timeDiff >= begCD) {
+            var pity = Math.floor(Math.random() * 49) + 1;
+            masterData["userData"][userid].points += pity;
+            masterData["userData"][userid].begTime = newTime.getTime();
             beggingMsg.setTitle('The Beggar Prays!');
             beggingMsg.setDescription('Begging in progress...');
             beggingMsg.setImage('https://thumbs.gfycat.com/MiserableAmusedHarvestmen-max-1mb.gif');
             message.channel.send({ embeds: [beggingMsg] }).then(msg=> {setTimeout(() => msg.delete(), begTime - 500)});
             
             setTimeout(function() { 
-                var pity = Math.floor(Math.random() * 49) + 1;
-                masterData["userData"][userid].points += pity;
                 embedMsg.setColor('00FF00');
                 embedMsg.setDescription("The gods have given the beggar " + pity + " points!");
                 embedMsg.setImage('http://media1.giphy.com/media/Sb9g8EwGfrPqg/giphy.gif');
                 message.channel.send({ embeds: [embedMsg] });
-                masterData["userData"][userid].begTime = newTime.getTime();
             }, begTime);
         }
         else {
