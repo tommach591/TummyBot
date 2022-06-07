@@ -308,6 +308,10 @@ module.exports = {
 
                     for (let i = 1; i < args.length; i++)
                     {
+                        if (i != 1)
+                        {
+                            newName += " ";
+                        }
                         newName += args[i];
                     }
                     var cost = 50000;
