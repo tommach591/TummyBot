@@ -799,7 +799,7 @@ module.exports = {
                                 masterData["userData"][player].points += goldEarned;
                                 updateStats(player);
                                 
-                                reward += "<@" + masterData["userData"][player].name + "> has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! "
+                                reward += "<@!" + masterData["userData"][player].name + "> has been awarded with: " + goldEarned.toLocaleString() + " points" + itemsEarned + "! "
                                              + mostDamage + lastHit + firstClear + fatalis + "\n\n";
                             }
 
