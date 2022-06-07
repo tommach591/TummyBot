@@ -116,7 +116,7 @@ module.exports = {
                 ranks[index] = "";
             }
 
-            names[index] += "<@!" + keys[i] + ">⠀⠀⠀\n";
+            names[index] += masterData["userData"][keys[i]].name + " <@" + keys[i] + ">" + "⠀⠀⠀\n";
             points[index] += (masterData["userData"][keys[i]].points + masterData["userData"][keys[i]].bank).toLocaleString() + "⠀⠀⠀\n";
             ranks[index] += "" + (i + 1) + ".⠀⠀⠀\n";
             count++;
@@ -126,7 +126,7 @@ module.exports = {
 
         embedMsg
         .setTitle("**__The Leaderboard__**")
-        .setThumbnail('https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif')
+        .setThumbnail('https://media0.giphy.com/media/TNb3Ihssb6T5FpcdOY/giphy.gif')
         .setColor('FFF000')
         .setFooter(`Page ${page} of ${ranks.length}`)
         .setFields(
@@ -144,7 +144,7 @@ module.exports = {
 
                 collector.on('collect', r => {
                     embedMsg.setTitle("**__The Leaderboard__**")
-                    embedMsg.setThumbnail('https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif')
+                    embedMsg.setThumbnail('https://media0.giphy.com/media/TNb3Ihssb6T5FpcdOY/giphy.gif')
                     embedMsg.setColor('FFF000')
                     
                     if (r.emoji.name === "◀️") {
