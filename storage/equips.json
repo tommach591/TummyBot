@@ -1476,31 +1476,31 @@
     "The Trident": {
         "name": "The Trident",
         "type": 0,
-        "rarity": 6,
+        "rarity": 5,
         "image": "",
         "maxHP": 0,
         "attack": 5,
         "magic": 5,
         "defense": 0,
-        "speed": 130
+        "speed": 90
     },
     "57 Leaf Clover": {
         "name": "57 Leaf Clover",
         "type": 2,
-        "rarity": 6,
+        "rarity": 5,
         "image": "",
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
-        "defense": 70,
-        "speed": 70
+        "defense": 50,
+        "speed": 50
     },
     "Love and Affection": {
         "name": "Love and Affection",
         "type": 1,
-        "rarity": 6,
+        "rarity": 5,
         "image": "",
-        "maxHP": 200,
+        "maxHP": 0,
         "attack": 0,
         "magic": 0,
         "defense": 100,
@@ -1509,12 +1509,12 @@
     "Diamond Hands": {
         "name": "Diamond Hands",
         "type": 0,
-        "rarity": 6,
+        "rarity": 5,
         "image": "",
         "maxHP": 0,
-        "attack": 100,
+        "attack": 80,
         "magic": 0,
-        "defense": 100,
+        "defense": 80,
         "speed": -60
     },
     "Red Diamond Hands": {

@@ -304,7 +304,12 @@ module.exports = {
                 }
                 else {
                     //var newName = args[1].replace(/[^a-zA-Z0-9]/gi,'');
-                    var newName = args[1];
+                    var newName = "";
+
+                    for (let i = 1; i < args.length; i++)
+                    {
+                        newName += args[i];
+                    }
                     var cost = 50000;
                     var maxSize = 16;
 
