@@ -1042,7 +1042,7 @@ module.exports = {
         
                 embedMsg
                 .setTitle("**__The Pet Leaderboard__**")
-                .setThumbnail('https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif')
+                .setThumbnail('https://c.tenor.com/OM9TmDtl0akAAAAC/krone-crown.gif')
                 .setColor('FFF000')
                 .setFooter(`Page ${page} of ${ranks.length}`)
                 .setFields(
@@ -1060,7 +1060,7 @@ module.exports = {
         
                         collector.on('collect', r => {
                             embedMsg.setTitle("**__The Leaderboard__**")
-                            embedMsg.setThumbnail('https://media3.giphy.com/media/LAWN8PxCVRPqBAW8D4/giphy.gif')
+                            embedMsg.setThumbnail('https://c.tenor.com/OM9TmDtl0akAAAAC/krone-crown.gif')
                             embedMsg.setColor('FFF000')
                             
                             if (r.emoji.name === "◀️") {
