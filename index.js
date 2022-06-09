@@ -808,6 +808,10 @@ client.on('messageCreate', message => {
                 if (masterData["userData"][sender.id])
                     client.commands.get('fm').execute(message, args, sender.id, masterData, masterStorage, client);
                 break;
+            case 'pray':
+                if (masterData["userData"][sender.id])
+                    client.commands.get('pray').execute(message, sender.id, masterData);
+                break;
 // GM Commands ****************************************************************************************************************************
             case 'reload':
                 if (masterData["userData"][sender.id])

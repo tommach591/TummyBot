@@ -264,7 +264,6 @@ module.exports = {
                 huntingCommands.set('sell equip # all', 'Sell all equips starting at the index, ascending up. # - index of item.');
                 huntingCommands.set('dex', 'Shows unique monsters you have slayed.');
                 huntingCommands.set('dex #', 'Shows the monsterdex entry of the monster you have slayed.');
-                huntingCommands.set('pray', 'Increase luck by 1. Just kidding it does\'t do anything.');
                 huntingCommands.set('alert CHOICE', 'Turn on or off boss alerts. CHOICE - on/off.');
 
                 embedMsg.setTitle('List of Hunting Commands');
@@ -2425,14 +2424,6 @@ module.exports = {
                         );
                     }
                 }
-                break;
-            case 'pray':
-                embedMsg.setTitle('Praying!');
-                embedMsg.setColor('FFF000');
-                embedMsg.setDescription(masterData["userData"][userid].name + ' recieved +1 Luck :sparkles:!');
-                embedMsg.setImage("http://66.media.tumblr.com/ec4a1d29ba12ddce8e7cd5050b72df9d/tumblr_occdrflyTm1vuwk4so1_400.gif");
-                embedMsg.setFooter("Oh my god so lucky!");
-                message.channel.send({ embeds: [embedMsg] });
                 break;
             case 'alert':
                 let role = message.guild.roles.cache.find(role => role.name === "guild");
