@@ -947,14 +947,18 @@ client.on('messageCreate', message => {
                 {
                     let channel = guilds[i].channels.cache.get(masterData["currHunt"].alertChannels[j]);
                     let role = guilds[i].roles.cache.find(role => role.name === "guild");
-                    if (channel && channel != message.channel)
+                    if (channel)
                     {
-                        channel.send({ embeds: [embedMsg] });
-                        if (!masterData["currHunt"]["active"].channels.includes(channel))
+                        if (channel != message.channel) 
                         {
-                            masterData["currHunt"]["active"].channels.push(channel);
-                            masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
+                            channel.send({ embeds: [embedMsg] });
+                            if (!masterData["currHunt"]["active"].channels.includes(channel))
+                            {
+                                masterData["currHunt"]["active"].channels.push(channel);
+                                masterData["currHunt"]["active"].activeChannels.push(newTime.getTime());
+                            }
                         }
+
                         if (role)
                         {
                             ping = "<@&" + role + ">";

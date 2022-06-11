@@ -100,7 +100,7 @@
         "rarity": 2
     },
     "10": {
-        "name": "Berserker's Scroll 10%",
+        "name": "Berserker Scroll 10%",
         "rate": 0.10,
         "maxHP": -30,
         "attack": 12,
@@ -110,7 +110,7 @@
         "rarity": 3
     },
     "11": {
-        "name": "Magician's Scroll 10%",
+        "name": "Magician Scroll 10%",
         "rate": 0.10,
         "maxHP": -30,
         "attack": -6,
@@ -588,5 +588,85 @@
         "speed": 0,
         "purity": 2,
         "rarity": 5
+    },
+    "62": {
+        "name": "Demonic Scroll for Twelve Attack 10%",
+        "rate": 0.10,
+        "maxHP": -15,
+        "attack": 12,
+        "magic": 0,
+        "defense": -3,
+        "speed": 0,
+        "rarity": 3
+    },
+    "63": {
+        "name": "Demonic Scroll for Twelve Magic 10%",
+        "rate": 0.10,
+        "maxHP": -15,
+        "attack": 0,
+        "magic": 12,
+        "defense": -3,
+        "speed": 0,
+        "rarity": 3
+    },
+    "64": {
+        "name": "Demonic Scroll for Twelve Speed 10%",
+        "rate": 0.10,
+        "maxHP": -15,
+        "attack": 0,
+        "magic": 0,
+        "defense": -3,
+        "speed": 12,
+        "rarity": 3
+    },
+    "65": {
+        "name": "Demonic Scroll for Sixty HP 10%",
+        "rate": 0.10,
+        "maxHP": 60,
+        "attack": -3,
+        "magic": -3,
+        "defense": 0,
+        "speed": 0,
+        "rarity": 3
+    },
+    "66": {
+        "name": "Demonic Scroll for Twelve Defense 10%",
+        "rate": 0.10,
+        "maxHP": 0,
+        "attack": -3,
+        "magic": -3,
+        "defense": 12,
+        "speed": 0,
+        "rarity": 3
+    },
+    "67": {
+        "name": "Demonic Scroll for Six Attack and Six Magic 10%",
+        "rate": 0.10,
+        "maxHP": -15,
+        "attack": 6,
+        "magic": 6,
+        "defense": -3,
+        "speed": 0,
+        "rarity": 3
+    },
+    "68": {
+        "name": "Paladin Scroll 10%",
+        "rate": 0.10,
+        "maxHP": 60,
+        "attack": -6,
+        "magic": -6,
+        "defense": 12,
+        "speed": -6,
+        "rarity": 3
+    },
+    "69": {
+        "name": "Ninja Scroll 10%",
+        "rate": 0.10,
+        "maxHP": -30,
+        "attack": 0,
+        "magic": 0,
+        "defense": -6,
+        "speed": 18,
+        "rarity": 3
     }
 }
