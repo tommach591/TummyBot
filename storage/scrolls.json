@@ -382,7 +382,7 @@
     "38": {
         "name": "Cursed Scroll for Eight Attack 20%",
         "rate": 0.20,
-        "maxHP": -20,
+        "maxHP": -10,
         "attack": 8,
         "magic": 0,
         "defense": -2,
@@ -392,7 +392,7 @@
     "39": {
         "name": "Cursed Scroll for Eight Magic 20%",
         "rate": 0.20,
-        "maxHP": -20,
+        "maxHP": -10,
         "attack": 0,
         "magic": 8,
         "defense": -2,
@@ -402,7 +402,7 @@
     "40": {
         "name": "Cursed Scroll for Eight Speed 20%",
         "rate": 0.20,
-        "maxHP": -20,
+        "maxHP": -10,
         "attack": 0,
         "magic": 0,
         "defense": -2,
@@ -410,9 +410,9 @@
         "rarity": 2
     },
     "41": {
-        "name": "Cursed Scroll for Eighty Health 20%",
+        "name": "Cursed Scroll for Forty HP 20%",
         "rate": 0.20,
-        "maxHP": 80,
+        "maxHP": 40,
         "attack": -2,
         "magic": -2,
         "defense": 0,
@@ -432,7 +432,7 @@
     "48": {
         "name": "Cursed Scroll for Four Attack and Four Magic 20%",
         "rate": 0.20,
-        "maxHP": -20,
+        "maxHP": -10,
         "attack": 4,
         "magic": 4,
         "defense": -2,
@@ -568,8 +568,8 @@
         "rarity": 4
     },
     "60": {
-        "name": "Angel Scroll 50%",
-        "rate": 0.50,
+        "name": "Angel Scroll 100%",
+        "rate": 1.00,
         "maxHP": 0,
         "attack": 0,
         "magic": 0,
