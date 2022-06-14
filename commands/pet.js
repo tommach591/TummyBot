@@ -1102,89 +1102,123 @@ module.exports = {
                 });
                 break;
             default:
-                var target = client.users.cache.get(userid);
-                embedMsg.setAuthor({ name: masterData["userData"][userid].name, iconURL: target.displayAvatarURL() });
-                embedMsg.setTitle('Pet Info');
-                embedMsg.setColor('FFF000');
+                let petInfo = (id) => {
+                    var target = client.users.cache.get(id);
+                    embedMsg.setAuthor({ name: masterData["userData"][id].name, iconURL: target.displayAvatarURL() });
+                    embedMsg.setTitle('Pet Info');
+                    embedMsg.setColor('FFF000');
 
-                var max = 20;
-                var each = 5;
-                var hunger = "";
-                var hydration = "";
-                var cleanliness = "";
-                var happiness = "";
+                    var max = 20;
+                    var each = 5;
+                    var hunger = "";
+                    var hydration = "";
+                    var cleanliness = "";
+                    var happiness = "";
 
-                for (let i = 0; i < Math.floor(masterData["userPet"][userid].hunger / each); i++) {
-                    hunger += "█";
-                }
-                for (let i = Math.floor(masterData["userPet"][userid].hunger / each); i < max; i++) {
-                    hunger += " ";
-                }
-                hunger = "``" + hunger + "``";
+                    for (let i = 0; i < Math.floor(masterData["userPet"][id].hunger / each); i++) {
+                        hunger += "█";
+                    }
+                    for (let i = Math.floor(masterData["userPet"][id].hunger / each); i < max; i++) {
+                        hunger += " ";
+                    }
+                    hunger = "``" + hunger + "``";
 
-                for (let i = 0; i < Math.floor(masterData["userPet"][userid].hydration / each); i++) {
-                    hydration += "█";
-                }
-                for (let i = Math.floor(masterData["userPet"][userid].hydration / each); i < max; i++) {
-                    hydration += " ";
-                }
-                hydration = "``" + hydration + "``";
+                    for (let i = 0; i < Math.floor(masterData["userPet"][id].hydration / each); i++) {
+                        hydration += "█";
+                    }
+                    for (let i = Math.floor(masterData["userPet"][id].hydration / each); i < max; i++) {
+                        hydration += " ";
+                    }
+                    hydration = "``" + hydration + "``";
 
-                for (let i = 0; i < Math.floor(masterData["userPet"][userid].cleanliness / each); i++) {
-                    cleanliness += "█";
-                }
-                for (let i = Math.floor(masterData["userPet"][userid].cleanliness / each); i < max; i++) {
-                    cleanliness += " ";
-                }
-                cleanliness = "``" + cleanliness + "``";
+                    for (let i = 0; i < Math.floor(masterData["userPet"][id].cleanliness / each); i++) {
+                        cleanliness += "█";
+                    }
+                    for (let i = Math.floor(masterData["userPet"][id].cleanliness / each); i < max; i++) {
+                        cleanliness += " ";
+                    }
+                    cleanliness = "``" + cleanliness + "``";
 
-                var tempHappiness = masterData["userPet"][userid].happiness;
-                if (tempHappiness > 100)
-                {
-                    tempHappiness = 100;
-                }
-                for (let i = 0; i < Math.floor(tempHappiness / each); i++) {
-                    happiness += "█";
-                }
-                for (let i = Math.floor(tempHappiness / each); i < max; i++) {
-                    happiness += " ";
-                }
-                happiness = "``" + happiness + "``";
+                    var tempHappiness = masterData["userPet"][id].happiness;
+                    if (tempHappiness > 100)
+                    {
+                        tempHappiness = 100;
+                    }
+                    for (let i = 0; i < Math.floor(tempHappiness / each); i++) {
+                        happiness += "█";
+                    }
+                    for (let i = Math.floor(tempHappiness / each); i < max; i++) {
+                        happiness += " ";
+                    }
+                    happiness = "``" + happiness + "``";
 
-                var status = "Healthy";
-                if (masterData["userPet"][userid].dead) {
-                    status = "Dead";
+                    var status = "Healthy";
+                    if (masterData["userPet"][id].dead) {
+                        status = "Dead";
+                    }
+                    else if (masterData["userPet"][id].hunger <= 20 && masterData["userPet"][id].hydration <= 20) {
+                        var newTime = new Date();
+                        status = "Dying";
+                    }
+                    else if (masterData["userPet"][id].hunger <= 20) {
+                        status = "Hungry";
+                    }
+                    else if (masterData["userPet"][id].hydration <= 20) {
+                        status = "Thirsty";
+                    }
+                    
+                    if (masterData["userPet"][id].pet != "0") {
+                        embedMsg.setThumbnail(masterData["userPet"][id].image);
+                        embedMsg.addFields(
+                            { name: "__Pet__ :feet:", value: "" + masterData["userPet"][id].petName, inline: false },
+                            { name: "__Type__ :rainbow:", value: "" + (masterData["userPet"][id].type + 1), inline: true },
+                            { name: "__Level__ :rocket:", value: "" + masterData["userPet"][id].level, inline: true },
+                            { name: "__Food__ :hamburger:", value: "" + masterData["userPet"][id].food, inline: true },
+                            { name: "__Hunger__: " + masterData["userPet"][id].hunger + "% :meat_on_bone:", value: "" + hunger, inline: false },
+                            { name: "__Hydration__: " + masterData["userPet"][id].hydration + "% :droplet:", value: "" + hydration, inline: false },
+                            { name: "__Cleanliness__: " + masterData["userPet"][id].cleanliness + "% :soap:", value: "" + cleanliness, inline: false },
+                            { name: "__Happiness__: " + tempHappiness + "% :smile:", value: "" + happiness, inline: false },
+                            { name: "__Status__ :heart:", value: "" + status, inline: false }
+                        );
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
+                    else {
+                        embedMsg.setDescription("No pet :(");
+                        message.channel.send({ embeds: [embedMsg] });
+                    }
                 }
-                else if (masterData["userPet"][userid].hunger <= 20 && masterData["userPet"][userid].hydration <= 20) {
-                    var newTime = new Date();
-                    status = "Dying";
-                }
-                else if (masterData["userPet"][userid].hunger <= 20) {
-                    status = "Hungry";
-                }
-                else if (masterData["userPet"][userid].hydration <= 20) {
-                    status = "Thirsty";
-                }
-                
-                if (masterData["userPet"][userid].pet != "0") {
-                    embedMsg.setThumbnail(masterData["userPet"][userid].image);
-                    embedMsg.addFields(
-                        { name: "__Pet__ :feet:", value: "" + masterData["userPet"][userid].petName, inline: false },
-                        { name: "__Type__ :rainbow:", value: "" + (masterData["userPet"][userid].type + 1), inline: true },
-                        { name: "__Level__ :rocket:", value: "" + masterData["userPet"][userid].level, inline: true },
-                        { name: "__Food__ :hamburger:", value: "" + masterData["userPet"][userid].food, inline: true },
-                        { name: "__Hunger__: " + masterData["userPet"][userid].hunger + "% :meat_on_bone:", value: "" + hunger, inline: false },
-                        { name: "__Hydration__: " + masterData["userPet"][userid].hydration + "% :droplet:", value: "" + hydration, inline: false },
-                        { name: "__Cleanliness__: " + masterData["userPet"][userid].cleanliness + "% :soap:", value: "" + cleanliness, inline: false },
-                        { name: "__Happiness__: " + tempHappiness + "% :smile:", value: "" + happiness, inline: false },
-                        { name: "__Status__ :heart:", value: "" + status, inline: false }
-                    );
-                    message.channel.send({ embeds: [embedMsg] });
+
+                if (args.length > 1) {
+                    var mention = args[1];
+                    if (mention.startsWith('<@') && mention.endsWith('>')) {
+                        mention = mention.slice(2, -1);
+                    
+                        if (mention.startsWith('!')) {
+                            mention = mention.slice(1);
+                        }
+                    
+                        if (!masterData["userData"][mention]) {
+                            embedMsg.setTitle('Error!');
+                            embedMsg.setColor('FF0000');
+                            embedMsg.setDescription('User does not exist!');
+                            message.channel.send({ embeds: [embedMsg] });
+                            return;
+                        }
+                        
+                        petInfo(mention);
+                    }
+                    else {
+                        embedMsg.setTitle('Error!');
+                        embedMsg.setColor('FF0000');
+                        embedMsg.setDescription('User does not exist!');
+                        message.channel.send({ embeds: [embedMsg] });
+                        return;
+                    }
                 }
                 else {
-                    embedMsg.setDescription("No pet :(");
-                    message.channel.send({ embeds: [embedMsg] });
+                    petInfo(userid);
                 }
+                
                 break;
         }
     }

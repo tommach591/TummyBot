@@ -687,12 +687,14 @@ module.exports = {
                                 var goldEarned = 0;
                                 var bonusDrop = ['1', '27', '59', '60', '62', '64']
                                 var percentDmg = (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP);
+                                var rolls = Math.floor(rewardLevel * multiplier);
                                 goldEarned += Math.floor(goldReward * percentDmg);
                                 var dropRate = masterData["currHunt"].dropRate;
                                 if (masterData["currHunt"]["active"].playerDamage[i] == Math.max(...masterData["currHunt"]["active"].playerDamage))
                                 {
                                     dropRate *= 1.25;
-                                    mostDamage = "\n★ Bonus 0.25x droprate for most damage! ";
+                                    rolls += 1;
+                                    mostDamage = "\n★ Bonus 0.25x droprate for most damage and extra loot! ";
                                 }
                                 if (userid == player) 
                                 {
@@ -734,7 +736,7 @@ module.exports = {
                                 var itemsEarned = "";
 
                                 if (unqiueDrops.length != 0) {
-                                    for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
+                                    for (let i = 0; i < rolls; i++) {
                                         var luck = Math.floor((Math.random() * 100000) + 1);
                                         var chance = 100000 * 0.0050 * dropRate; // 0.50%
                                         if (luck <= chance) {
@@ -745,7 +747,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
+                                for (let i = 0; i < rolls; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.0100 * dropRate; // 1.00%
                                     if (luck <= chance && rewardLevel >= 3) {
@@ -755,7 +757,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
+                                for (let i = 0; i < rolls; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.0200 * dropRate; // 2.00%
                                     if (luck <= chance  && rewardLevel >= 2) {
@@ -765,7 +767,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
+                                for (let i = 0; i < rolls; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.0400 * dropRate; // 4.00%
                                     if (luck <= chance) {
@@ -775,7 +777,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
+                                for (let i = 0; i < rolls; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.0800 * dropRate; // 8.00%
                                     if (luck <= chance) {
@@ -785,7 +787,7 @@ module.exports = {
                                     }
                                 }
 
-                                for (let i = 0; i < Math.floor(rewardLevel * multiplier); i++) {
+                                for (let i = 0; i < rolls; i++) {
                                     var luck = Math.floor((Math.random() * 100000) + 1);
                                     var chance = 100000 * 0.1500 * dropRate; // 15.00%
                                     if (luck <= chance) {
