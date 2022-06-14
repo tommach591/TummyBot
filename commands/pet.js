@@ -1188,7 +1188,7 @@ module.exports = {
                     }
                 }
 
-                if (args.length > 1) {
+                if (args.length >= 1) {
                     var mention = args[0];
                     if (mention.startsWith('<@') && mention.endsWith('>')) {
                         mention = mention.slice(2, -1);
