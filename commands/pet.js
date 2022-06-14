@@ -176,6 +176,7 @@ module.exports = {
                                         masterData["userPet"][userid].level = 1;
                                         masterData["userPet"][userid].hunger = 25;
                                         masterData["userPet"][userid].hydration = 25;
+                                        masterData["userPet"][userid].dead = false;
 
                                         var newTime = new Date();
                                         masterData["userPet"][userid].hungerTimer = newTime.getTime();
