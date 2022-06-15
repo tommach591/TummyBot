@@ -275,7 +275,7 @@ module.exports = {
                                     embedMsg.setTitle('Declined!');
                                     embedMsg.setColor('FF0000');
                                     embedMsg.setThumbnail(masterData["userPet"][userid].image);
-                                    embedMsg.setDescription(masterData["userData"][userid].name + " decided to keep" + oldpet + "!");
+                                    embedMsg.setDescription(masterData["userData"][userid].name + " decided to keep " + oldpet + "!");
                                     message.channel.send({ embeds: [embedMsg] });
                                 }
                             })
@@ -395,6 +395,7 @@ module.exports = {
                     }
                 }
                 break;
+            case 'b':
             case 'buy':
                 if (args.length < 2) {
                     embedMsg.setTitle('Error!');
@@ -471,6 +472,7 @@ module.exports = {
                     }
                 }
                 break;
+            case 'f':
             case 'feed':
                 if (masterData["userPet"][userid].pet == "0") {
                     embedMsg.setTitle('You don\'t own a pet!');
@@ -518,6 +520,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
+            case 'w':
             case 'water':
                 if (masterData["userPet"][userid].pet == "0") {
                     embedMsg.setTitle('You don\'t own a pet!');
@@ -558,6 +561,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
+            case 'c':
             case 'clean':
                 if (masterData["userPet"][userid].pet == "0") {
                     embedMsg.setTitle('You don\'t own a pet!');
@@ -593,6 +597,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
+            case 'p':
             case 'play':
                 var newTime = new Date();
                 var playTime = 1000 * 60 * 5;
