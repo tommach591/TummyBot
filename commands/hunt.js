@@ -2,7 +2,7 @@ module.exports = {
     name: 'hunt',
     description: "Hunt for honor and glory! Start with **__!tp h help__**.",
 
-    execute(message, args, userid, masterData, masterStorage, client) {
+    execute(message, args, userid, masterData, masterStorage, client, fs) {
         const { MessageEmbed } = require('discord.js');
         const embedMsg = new MessageEmbed();
         const randomAttackGifs = [
@@ -820,6 +820,8 @@ module.exports = {
                                 })
                             }
                             delete masterData["currHunt"]["active"];
+
+                            client.gmcommands.get('save').execute(masterData, masterStorage, fs);
                         }
                         else {
                             embedMsg.setTitle("Attack!");
