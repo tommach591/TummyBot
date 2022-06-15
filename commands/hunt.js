@@ -531,6 +531,7 @@ module.exports = {
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;
+            case 'a':
             case 'attack':
                 var newTime = new Date();
 
@@ -1170,6 +1171,7 @@ module.exports = {
                     }
                 }
                 break;
+            case 's':
             case 'scroll':
                 if (args.length < 2) {
                     var target = client.users.cache.get(userid);
