@@ -604,7 +604,7 @@ let attackAll = (newTime) =>
             embedMsg.setColor("49000F");
             for (let i = 0; i < masterData["currHunt"]["active"].channels.length; i++) 
             {
-                if (newTime.getTime() - masterData["currHunt"]["active"].activeChannels[i] < 1000 * 15)
+                if (newTime.getTime() - masterData["currHunt"]["active"].activeChannels[i] < 1000 * 15 || faints != "")
                     masterData["currHunt"]["active"].channels[i].send({ embeds: [embedMsg] });
             }
         }
