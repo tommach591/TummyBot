@@ -181,6 +181,7 @@ masterData["fm"] = "";
 var startTime = new Date();
 masterData["savefile"].startTime = startTime;
 masterData["savefile"].lastSave = startTime;
+masterData["savefile"].autoSave = true;
 
 masterData["currHunt"].lastDifficulty = [];
 masterData["currHunt"].baseTime = (1000 * 60 * 30);
@@ -889,6 +890,17 @@ client.on('messageCreate', message => {
                     embedMsg.setColor('B5EAFF');
                     embedMsg.setImage("https://c.tenor.com/TgPXdDAfIeIAAAAM/gawr-gura-gura.gif");
                     embedMsg.setDescription('Files have been saved!');
+                    message.channel.send({ embeds: [embedMsg] });
+                }
+                break;
+            case 'autosave':
+                if (masterData["userData"][sender.id] && masterData["userData"][sender.id].gm > 0) {
+                    masterData["savefile"].autoSave = !masterData["savefile"].autoSave;
+
+                    const embedMsg = new MessageEmbed();
+                    embedMsg.setTitle('Auto Save!');
+                    embedMsg.setColor('00FF00');
+                    embedMsg.setDescription('Auto save after bosses now ' + masterData["savefile"].autoSave + '!');
                     message.channel.send({ embeds: [embedMsg] });
                 }
                 break;

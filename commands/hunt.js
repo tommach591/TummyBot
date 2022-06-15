@@ -821,7 +821,10 @@ module.exports = {
                             }
                             delete masterData["currHunt"]["active"];
 
-                            client.gmcommands.get('save').execute(masterData, masterStorage, fs);
+                            if (masterData["savefile"].autoSave)
+                            {
+                                client.gmcommands.get('save').execute(masterData, masterStorage, fs);
+                            }
                         }
                         else {
                             embedMsg.setTitle("Attack!");
