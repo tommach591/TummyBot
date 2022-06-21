@@ -2322,7 +2322,7 @@ module.exports = {
                 if (args.length < 4) {
                     embedMsg.setTitle('Error!');
                     embedMsg.setColor('FF0000');
-                    embedMsg.setDescription('Please select 3 masterStorage["scrolls"] to consume!');
+                    embedMsg.setDescription('Please select 3 scrolls to consume!');
                     embedMsg.setFooter("!tp hunt tribute # # #");
                     message.channel.send({ embeds: [embedMsg] });
                 }
