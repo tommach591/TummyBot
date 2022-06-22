@@ -1498,9 +1498,9 @@
     "Love and Affection": {
         "name": "Love and Affection",
         "type": 1,
-        "rarity": 5,
+        "rarity": 6,
         "image": "",
-        "maxHP": 0,
+        "maxHP": 200,
         "attack": 0,
         "magic": 0,
         "defense": 100,
