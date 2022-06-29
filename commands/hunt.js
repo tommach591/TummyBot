@@ -695,7 +695,7 @@ module.exports = {
                                 {
                                     dropRate *= 1.25;
                                     rolls += 1;
-                                    mostDamage = "\n★ Bonus 0.25x droprate and extra loot for most damage! ";
+                                    mostDamage = "\n★ Bonus 0.25x droprate and extra loot roll for most damage! ";
                                 }
                                 if (userid == player) 
                                 {
