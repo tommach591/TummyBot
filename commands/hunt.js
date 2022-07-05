@@ -688,9 +688,11 @@ module.exports = {
                                 var goldEarned = 0;
                                 var bonusDrop = ['1', '27', '59', '60', '62', '64']
                                 var percentDmg = (masterData["currHunt"]["active"].playerDamage[i] / masterData["currHunt"]["active"].maxHP);
+                                var multiplier = 2.5;
                                 var rolls = Math.floor(rewardLevel * multiplier);
                                 goldEarned += Math.floor(goldReward * percentDmg);
                                 var dropRate = masterData["currHunt"].dropRate;
+
                                 if (masterData["currHunt"]["active"].playerDamage[i] == Math.max(...masterData["currHunt"]["active"].playerDamage))
                                 {
                                     dropRate *= 1.25;
@@ -711,6 +713,7 @@ module.exports = {
                                 {
                                     firstClear = "\n★ Bonus 0.50x droprate for first clear! ";
                                     dropRate *= 1.5;
+
                                     masterData["userHunt"][player].monsterdex.push(masterData["currHunt"]["active"].id);
                                     masterData["userHunt"][player].monsterdex.sort((firstEl, secondEl) => { 
                                         if (Number(firstEl) < Number(secondEl)) {
@@ -733,7 +736,6 @@ module.exports = {
                                     }
                                 }
 
-                                var multiplier = 2.5;
                                 var itemsEarned = "";
 
                                 if (unqiueDrops.length != 0) {
