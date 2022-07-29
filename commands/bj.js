@@ -415,7 +415,7 @@ module.exports = {
                             bet = Math.floor(bet);
                         }
 
-                        if (masterData["userData"][userid].points < bet) {
+                        if (masterData["userData"][userid].points < bet || bet == 0) {
                             embedMsg.setTitle('Error!');
                             embedMsg.setColor('FF0000');
                             embedMsg.setDescription(masterData["userData"][userid].name + " is broke!");
