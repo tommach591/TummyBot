@@ -798,7 +798,7 @@ client.on("messageCreate", (message) => {
         pokemon[sender.id] = "onCooldown";
         setTimeout(() => {
           delete pokemon[sender.id];
-          message.channel.send(`<@!${sender.id}> next Pokemon is ready!`);
+          message.channel.send(`<!${sender.id}> next Pokemon is ready!`);
         }, 10000);
       }
       return;
