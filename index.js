@@ -795,7 +795,7 @@ client.on("messageCreate", (message) => {
       if (message.content.startsWith(";p"))
         setTimeout(() => {
           message.channel.send(`<@!${sender.id}> next Pokemon is ready!`);
-        }, 10000);
+        }, 10500);
       return;
     }
 
