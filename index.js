@@ -795,7 +795,7 @@ client.on("messageCreate", (message) => {
 
     if (!message.content.startsWith(prefix) || message.author.bot) {
       if (message.content.startsWith(";p") && !pokemon[sender.id]) {
-        pokemon[sender.id] = "on";
+        pokemon[sender.id] = "onCooldown";
         setTimeout(() => {
           delete pokemon[sender.id];
           message.channel.send(`<@!${sender.id}> next Pokemon is ready!`);
