@@ -799,7 +799,7 @@ client.on("messageCreate", (message) => {
         setTimeout(() => {
           delete pokemon[sender.id];
           message.channel.send(
-            `${message.author.username} next Pokemon is ready!`
+            `${message.author.username}'s next Pokemon is ready!`
           );
         }, 10000);
       }
