@@ -794,7 +794,7 @@ client.on("messageCreate", (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
       if (message.content.startsWith(";p"))
         setTimeout(() => {
-          message.channel.send("Next Pokemon is ready!");
+          message.channel.send(`<@!${sender.id}> next Pokemon is ready!`);
         }, 11000);
       return;
     }
