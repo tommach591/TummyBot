@@ -757,8 +757,6 @@ client.once("ready", () => {
 
 var guilds = [];
 
-var pokemon = JSON.parse("{}");
-
 client.on("messageCreate", (message) => {
   var newTime = new Date();
   var sender = message.author;
@@ -794,15 +792,6 @@ client.on("messageCreate", (message) => {
     }
 
     if (!message.content.startsWith(prefix) || message.author.bot) {
-      if (message.content.startsWith(";p") && !pokemon[sender.id]) {
-        pokemon[sender.id] = "onCooldown";
-        setTimeout(() => {
-          delete pokemon[sender.id];
-          message.channel.send(
-            `${message.author.username}'s next Pokemon is ready!`
-          );
-        }, 10000);
-      }
       return;
     }
 
